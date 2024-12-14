@@ -9,11 +9,11 @@ importers:
   .:
     dependencies:
       canonicalize:
-        specifier: ^2.0.0
+        specifier: 2.0.0
         version: 2.0.0
     devDependencies:
       '@types/node':
-        specifier: ^22.10.2
+        specifier: 22.10.2
         version: 22.10.2
       prettier:
         specifier: 3.4.2
@@ -28,10 +28,10 @@ importers:
         specifier: 2.5.6
         version: 2.5.6(prettier@3.4.2)
       typescript:
-        specifier: ^5.7.2
+        specifier: 5.7.2
         version: 5.7.2
       viem:
-        specifier: ^2.21.55
+        specifier: 2.21.55
         version: 2.21.55(typescript@5.7.2)
 
 packages:
