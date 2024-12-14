@@ -10,15 +10,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "viem": "^2.21.55"
-  },
-  "peerDependencies": {
+    "viem": "^2.21.55",
     "typescript": "^5.7.2"
-  },
-  "peerDependenciesMeta": {
-    "typescript": {
-      "optional": true
-    }
   },
   "packageManager": "pnpm@9.15.0"
 }
