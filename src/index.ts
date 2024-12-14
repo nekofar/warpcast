@@ -1,6 +1,6 @@
 import canonicalize from 'canonicalize'
 import { JsonObject } from 'type-fest'
-import { Hex, toBytes } from 'viem'
+import { Hex, isHex, toBytes } from 'viem'
 import { mnemonicToAccount, privateKeyToAccount } from 'viem/accounts'
 import { Account, ClientConfig, WarpcastResponse } from './types'
 import { ApiError } from './utils/error-handling'
@@ -28,7 +28,7 @@ export class WarpcastClient {
         mnemonic,
         expiresAt || Date.now() + 3600 * 1000,
       )
-    } else if (privateKey) {
+    } else if (isHex(privateKey)) {
       this.authToken = await this.generateAuthTokenFromPrivateKey(
         privateKey,
         expiresAt || Date.now() + 3600 * 1000,
