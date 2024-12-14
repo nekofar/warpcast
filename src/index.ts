@@ -1,13 +1,8 @@
 import canonicalize from 'canonicalize'
 import { JsonObject } from 'type-fest'
 import { Hex, toBytes } from 'viem'
-import {
-  HDAccount,
-  mnemonicToAccount,
-  PrivateKeyAccount,
-  privateKeyToAccount,
-} from 'viem/accounts'
-import { ClientOptions, WarpcastResponse } from './types'
+import { mnemonicToAccount, privateKeyToAccount } from 'viem/accounts'
+import { Account, ClientOptions, WarpcastResponse } from './types'
 import { ApiError } from './utils/error-handling'
 
 export class WarpcastClient {
@@ -69,7 +64,7 @@ export class WarpcastClient {
   }
 
   private async generateAuthToken(
-    account: HDAccount | PrivateKeyAccount,
+    account: Account,
     expiresAt: number,
   ): Promise<string> {
     const payload = this.createAuthPayload(expiresAt)
