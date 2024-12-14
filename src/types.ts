@@ -16,7 +16,7 @@ export interface ClientConfig {
 /**
  * Standard response format for the Warpcast API.
  */
-export type WarpcastResponse<T> = {
+export interface WarpcastResponse<T> {
   result: T // The result object containing the data for the request.
 }
 
