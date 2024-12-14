@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.0-alpha.1] - 2024-12-14
+
+### ⚙️ Miscellaneous Tasks
+
+- *(build)* Remove `pnpm` version specification
+
 ## [1.0.0-alpha.0] - 2024-12-14
 
 ### 🚀 Features
