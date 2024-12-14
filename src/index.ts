@@ -17,7 +17,7 @@ export class WarpcastClient {
     this.apiKey = apiKey
     this.authToken = undefined
 
-    this.initializeAuth(parameters)
+    void this.initializeAuth(parameters)
   }
 
   private async initializeAuth(parameters: ClientConfig): Promise<void> {
