@@ -13,7 +13,7 @@ export class WarpcastClient {
   constructor(parameters: ClientConfig) {
     const { baseURL, apiKey } = parameters
 
-    this.baseURL = baseURL || 'https://api.warpcast.com'
+    this.baseURL = baseURL ?? 'https://api.warpcast.com'
     this.apiKey = apiKey
     this.authToken = undefined
 
