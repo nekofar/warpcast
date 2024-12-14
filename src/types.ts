@@ -1,9 +1,7 @@
+import { JsonObject } from 'type-fest'
 import { Hex } from 'viem'
 import { HDAccount, PrivateKeyAccount } from 'viem/accounts'
 
-/**
- * Configuration options for the WarpcastClient.
- */
 export interface ClientConfig {
   privateKey: Hex
   expiresAt: number
@@ -13,11 +11,18 @@ export interface ClientConfig {
   apiKey?: string // API key for specific endpoints that require it.
 }
 
-/**
- * Standard response format for the Warpcast API.
- */
 export interface WarpcastResponse<T> {
   result: T // The result object containing the data for the request.
 }
 
 export type Account = HDAccount | PrivateKeyAccount
+
+export interface RequestOptions {
+  requiresAuthToken?: boolean
+  requiresApiKey?: boolean
+  headers?: HeadersInit
+  method?: string
+  body?: JsonObject
+}
+
+export type RequestParams = Record<string, never>

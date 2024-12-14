@@ -2,18 +2,14 @@ import canonicalize from 'canonicalize'
 import { JsonObject } from 'type-fest'
 import { Hex, isHex, toBytes } from 'viem'
 import { mnemonicToAccount, privateKeyToAccount } from 'viem/accounts'
-import { Account, ClientConfig, WarpcastResponse } from './types'
+import {
+  Account,
+  ClientConfig,
+  RequestOptions,
+  RequestParams,
+  WarpcastResponse,
+} from './types'
 import { ApiError } from './utils/error-handling'
-
-interface WarpcastRequestOptions {
-  requiresAuthToken?: boolean
-  requiresApiKey?: boolean
-  headers?: HeadersInit
-  method?: string
-  body?: JsonObject
-}
-
-type WarpcastRequestParams = Record<string, never>
 
 export class WarpcastClient {
   private readonly baseURL: string
@@ -32,8 +28,8 @@ export class WarpcastClient {
 
   public async request<T>(
     endpoint: string,
-    params: WarpcastRequestParams = {},
-    options: WarpcastRequestOptions = {},
+    params: RequestParams = {},
+    options: RequestOptions = {},
   ): Promise<WarpcastResponse<T>> {
     const url = new URL(`${this.baseURL}${endpoint}`)
     if (options.method !== 'POST') {
