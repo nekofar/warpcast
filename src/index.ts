@@ -5,6 +5,16 @@ import { mnemonicToAccount, privateKeyToAccount } from 'viem/accounts'
 import { Account, ClientConfig, WarpcastResponse } from './types'
 import { ApiError } from './utils/error-handling'
 
+interface WarpcastRequestOptions {
+  requiresAuthToken?: boolean
+  requiresApiKey?: boolean
+  headers?: HeadersInit
+  method?: string
+  body?: JsonObject
+}
+
+type WarpcastRequestParams = Record<string, never>
+
 export class WarpcastClient {
   private readonly baseURL: string
   private authToken?: string
@@ -18,6 +28,47 @@ export class WarpcastClient {
     this.authToken = undefined
 
     void this.initializeAuth(parameters)
+  }
+
+  public async request<T>(
+    endpoint: string,
+    params: WarpcastRequestParams = {},
+    options: WarpcastRequestOptions = {},
+  ): Promise<WarpcastResponse<T>> {
+    const url = new URL(`${this.baseURL}${endpoint}`)
+    if (options.method !== 'POST') {
+      Object.entries(params).forEach(([key, value]) => {
+        url.searchParams.append(key, String(value))
+      })
+    }
+
+    const headers: Record<string, string> = {
+      'Content-Type': 'application/json',
+      ...(options.headers as Record<string, string>),
+    }
+
+    if (options.requiresAuthToken) {
+      if (!this.authToken)
+        throw new ApiError(401, 'Authentication authToken not initialized.')
+      headers.Authorization = `Bearer ${this.authToken}`
+    }
+
+    if (options.requiresApiKey) {
+      if (!this.apiKey) throw new ApiError(401, 'API key not provided.')
+      headers['X-API-Key'] = this.apiKey
+    }
+
+    const response = await fetch(url.toString(), {
+      headers,
+      method: options.method ?? 'GET',
+      body: options.body ? JSON.stringify(options.body) : undefined,
+    })
+
+    if (!response.ok) {
+      throw new ApiError(response.status, response.statusText)
+    }
+
+    return (await response.json()) as WarpcastResponse<T>
   }
 
   private async initializeAuth(parameters: ClientConfig): Promise<void> {
@@ -91,52 +142,5 @@ export class WarpcastClient {
     )
 
     return data.result.secret
-  }
-
-  public async request<T>(
-    endpoint: string,
-    params: Record<string, any> = {},
-    options: {
-      requiresAuthToken?: boolean
-      requiresApiKey?: boolean
-      headers?: HeadersInit
-      method?: string
-      body?: any
-    } = {},
-  ): Promise<WarpcastResponse<T>> {
-    const url = new URL(`${this.baseURL}${endpoint}`)
-    if (options.method !== 'POST') {
-      Object.entries(params).forEach(([key, value]) => {
-        url.searchParams.append(key, String(value))
-      })
-    }
-
-    const headers: Record<string, string> = {
-      'Content-Type': 'application/json',
-      ...(options.headers as Record<string, string>),
-    }
-
-    if (options.requiresAuthToken) {
-      if (!this.authToken)
-        throw new ApiError(401, 'Authentication authToken not initialized.')
-      headers.Authorization = `Bearer ${this.authToken}`
-    }
-
-    if (options.requiresApiKey) {
-      if (!this.apiKey) throw new ApiError(401, 'API key not provided.')
-      headers['X-API-Key'] = this.apiKey
-    }
-
-    const response = await fetch(url.toString(), {
-      headers,
-      method: options.method ?? 'GET',
-      body: options.body ? JSON.stringify(options.body) : null,
-    })
-
-    if (!response.ok) {
-      throw new ApiError(response.status, response.statusText)
-    }
-
-    return (await response.json()) as WarpcastResponse<T>
   }
 }
