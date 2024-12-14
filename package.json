@@ -10,7 +10,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "canonicalize": "2.0.0"
+    "canonicalize": "2.0.0",
+    "remeda": "2.17.4"
   },
   "devDependencies": {
     "@types/node": "22.10.2",
