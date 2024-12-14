@@ -9,6 +9,9 @@
     "prepublishOnly": "pnpm build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "dependencies": {
+    "canonicalize": "^2.0.0"
+  },
   "devDependencies": {
     "viem": "^2.21.55",
     "typescript": "^5.7.2"

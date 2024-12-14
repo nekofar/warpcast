@@ -7,6 +7,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      canonicalize:
+        specifier: ^2.0.0
+        version: 2.0.0
     devDependencies:
       typescript:
         specifier: ^5.7.2
@@ -51,6 +55,9 @@ packages:
         optional: true
       zod:
         optional: true
+
+  canonicalize@2.0.0:
+    resolution: {integrity: sha512-ulDEYPv7asdKvqahuAY35c1selLdzDwHqugK92hfkzvlDCwXRRelDkR+Er33md/PtnpqHemgkuDPanZ4fiYZ8w==}
 
   eventemitter3@5.0.1:
     resolution: {integrity: sha512-GWkBvjiSZK87ELrYOSESUYeVIc9mvLLf/nXalMOS5dYrgZq9o5OVkbZAVM06CVxYsCwH9BDZFPlQTlPA1j4ahA==}
@@ -124,6 +131,8 @@ snapshots:
   abitype@1.0.7(typescript@5.7.2):
     optionalDependencies:
       typescript: 5.7.2
+
+  canonicalize@2.0.0: {}
 
   eventemitter3@5.0.1: {}
 
