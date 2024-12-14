@@ -4,7 +4,7 @@ import { HDAccount, PrivateKeyAccount } from 'viem/accounts'
 /**
  * Configuration options for the WarpcastClient.
  */
-export interface ClientOptions {
+export interface ClientConfig {
   privateKey: Hex
   expiresAt: number
   mnemonic?: string

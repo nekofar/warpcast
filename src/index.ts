@@ -2,7 +2,7 @@ import canonicalize from 'canonicalize'
 import { JsonObject } from 'type-fest'
 import { Hex, toBytes } from 'viem'
 import { mnemonicToAccount, privateKeyToAccount } from 'viem/accounts'
-import { Account, ClientOptions, WarpcastResponse } from './types'
+import { Account, ClientConfig, WarpcastResponse } from './types'
 import { ApiError } from './utils/error-handling'
 
 export class WarpcastClient {
@@ -10,26 +10,31 @@ export class WarpcastClient {
   private authToken?: string
   private readonly apiKey?: string
 
-  constructor(options: ClientOptions) {
-    this.baseURL = options.baseURL || 'https://api.warpcast.com'
-    this.apiKey = options.apiKey
+  constructor(parameters: ClientConfig) {
+    const { baseURL, apiKey } = parameters
+
+    this.baseURL = baseURL || 'https://api.warpcast.com'
+    this.apiKey = apiKey
     this.authToken = undefined
-    this.initializeAuth(options)
+
+    this.initializeAuth(parameters)
   }
 
-  private async initializeAuth(options: ClientOptions): Promise<void> {
-    if (options.mnemonic) {
+  private async initializeAuth(parameters: ClientConfig): Promise<void> {
+    const { mnemonic, privateKey, token, expiresAt } = parameters
+
+    if (mnemonic) {
       this.authToken = await this.generateAuthTokenFromMnemonic(
-        options.mnemonic,
-        options.expiresAt || Date.now() + 3600 * 1000,
+        mnemonic,
+        expiresAt || Date.now() + 3600 * 1000,
       )
-    } else if (options.privateKey) {
+    } else if (privateKey) {
       this.authToken = await this.generateAuthTokenFromPrivateKey(
-        options.privateKey,
-        options.expiresAt || Date.now() + 3600 * 1000,
+        privateKey,
+        expiresAt || Date.now() + 3600 * 1000,
       )
-    } else if (options.token) {
-      this.authToken = options.token
+    } else if (token) {
+      this.authToken = token
     }
   }
 
