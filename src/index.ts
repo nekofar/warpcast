@@ -51,7 +51,7 @@ export class WarpcastClient {
 
     if (options.requiresApiKey) {
       if (!this.apiKey) throw new ApiError(401, 'API key not provided.')
-      headers['X-API-Key'] = this.apiKey
+      headers.Authorization = `Bearer ${this.apiKey}`
     }
 
     const response = await fetch(url.toString(), {
