@@ -69,11 +69,11 @@ export class WarpcastClient {
         });
 
         if (!response.ok) {
-            throw new ApiError(response.status, "Failed to fetch actual token.");
+            throw new ApiError(response.status, "Failed to fetch secret token.");
         }
 
-        const data = (await response.json()) as WarpcastResponse<{ token: string }>;
-        return data.result.token;
+        const data = (await response.json()) as WarpcastResponse<{ secret: string }>;
+        return data.result.secret;
     }
 
     private async request<T>(
