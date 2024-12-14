@@ -129,7 +129,7 @@ export class WarpcastClient {
 
     const response = await fetch(url.toString(), {
       headers,
-      method: options.method || 'GET',
+      method: options.method ?? 'GET',
       body: options.body ? JSON.stringify(options.body) : null,
     })
 
