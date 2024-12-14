@@ -106,9 +106,9 @@ export class WarpcastClient {
   ): Promise<WarpcastResponse<T>> {
     const url = new URL(`${this.baseURL}${endpoint}`)
     if (options.method !== 'POST') {
-      Object.entries(params).forEach(([key, value]) =>
-        url.searchParams.append(key, value.toString()),
-      )
+      Object.entries(params).forEach(([key, value]) => {
+        url.searchParams.append(key, String(value))
+      })
     }
 
     const headers: Record<string, string> = {
