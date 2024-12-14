@@ -137,6 +137,6 @@ export class WarpcastClient {
       throw new ApiError(response.status, response.statusText)
     }
 
-    return response.json()
+    return (await response.json()) as WarpcastResponse<T>
   }
 }
