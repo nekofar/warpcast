@@ -12,29 +12,29 @@ import { ApiError } from './utils/error-handling'
 
 export class WarpcastClient {
   private readonly baseURL: string
-  private token?: string
+  private authToken?: string
   private readonly apiKey?: string
 
   constructor(options: ClientOptions) {
     this.baseURL = options.baseURL || 'https://api.warpcast.com'
     this.apiKey = options.apiKey
-    this.token = undefined
+    this.authToken = undefined
     this.initializeAuth(options)
   }
 
   private async initializeAuth(options: ClientOptions): Promise<void> {
     if (options.mnemonic) {
-      this.token = await this.generateAuthTokenFromMnemonic(
+      this.authToken = await this.generateAuthTokenFromMnemonic(
         options.mnemonic,
         options.expiresAt || Date.now() + 3600 * 1000,
       )
     } else if (options.privateKey) {
-      this.token = await this.generateAuthTokenFromPrivateKey(
+      this.authToken = await this.generateAuthTokenFromPrivateKey(
         options.privateKey,
         options.expiresAt || Date.now() + 3600 * 1000,
       )
     } else if (options.token) {
-      this.token = options.token
+      this.authToken = options.token
     }
   }
 
@@ -97,7 +97,7 @@ export class WarpcastClient {
     endpoint: string,
     params: Record<string, any> = {},
     options: {
-      requiresToken?: boolean
+      requiresAuthToken?: boolean
       requiresApiKey?: boolean
       headers?: HeadersInit
       method?: string
@@ -116,10 +116,10 @@ export class WarpcastClient {
       ...((options.headers as Record<string, string>) || {}),
     }
 
-    if (options.requiresToken) {
-      if (!this.token)
-        throw new ApiError(401, 'Authentication token not initialized.')
-      headers.Authorization = `Bearer ${this.token}`
+    if (options.requiresAuthToken) {
+      if (!this.authToken)
+        throw new ApiError(401, 'Authentication authToken not initialized.')
+      headers.Authorization = `Bearer ${this.authToken}`
     }
 
     if (options.requiresApiKey) {
