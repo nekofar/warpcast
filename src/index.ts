@@ -93,7 +93,7 @@ export class WarpcastClient {
     return data.result.secret
   }
 
-  private async request<T>(
+  public async request<T>(
     endpoint: string,
     params: Record<string, any> = {},
     options: {
