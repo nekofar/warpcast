@@ -2,6 +2,38 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.0-alpha.2] - 2024-12-25
+
+### 🚀 Features
+
+- *(auth)* Validate privateKey with `isHex` utility
+
+### 🐛 Bug Fixes
+
+- *(client)* Add void to `initializeAuth` call
+- *(api)* Ensure query parameters are stringified
+- *(index)* Use nullish coalescing for `method` default
+- *(index)* Remove unnecessary fallback in headers spread
+- *(api)* Cast `response.json` to `WarpcastResponse<T>`
+- *(api)* Use `Authorization` header for API key
+
+### 🚜 Refactor
+
+- *(client)* Rename `ClientOptions` to `ClientConfig`
+- *(index)* Change `request` method to public
+- *(core)* Use nullish coalescing for `baseURL`
+- *(types)* Use `interface` instead of `type` for response
+- *(client)* Improve `request` method with stricter types
+- *(types)* Consolidate request options and params
+
+### 🎨 Styling
+
+- *(utils)* Format `ApiError` class for consistency
+
+### ⚙️ Miscellaneous Tasks
+
+- *(deps)* Bump orhun/git-cliff-action from 4.4.1 to 4.4.2 (#1)
+
 ## [1.0.0-alpha.1] - 2024-12-14
 
 ### ⚙️ Miscellaneous Tasks
