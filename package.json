@@ -14,7 +14,7 @@
   "dependencies": {
     "canonicalize": "2.0.0",
     "remeda": "2.19.0",
-    "type-fest": "4.31.0"
+    "type-fest": "4.32.0"
   },
   "devDependencies": {
     "@types/node": "22.10.5",
