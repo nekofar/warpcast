@@ -365,4 +365,26 @@ export class WarpcastClient {
 
     return data.result.like
   }
+
+  public async deleteLike(castHash: string): Promise<boolean> {
+    if (!castHash) {
+      throw new ApiError(400, 'Cast hash must be provided.')
+    }
+
+    const payload = {
+      castHash,
+    }
+
+    const data = await this.request<{ success: boolean }>(
+      `/v2/cast-likes`,
+      {},
+      {
+        method: 'DELETE',
+        authTokenRequired: true,
+        body: payload,
+      },
+    )
+
+    return data.result.success
+  }
 }
