@@ -153,4 +153,19 @@ export class WarpcastClient {
     )
     return user
   }
+
+  public async getUserAppContext(): Promise<JsonObject> {
+    const {
+      result: { context },
+    } = await this.request<{ context: JsonObject }>(
+      `/v2/user-app-context`,
+      {},
+      {
+        method: 'GET',
+        requiresAuthToken: true,
+      },
+    )
+
+    return context
+  }
 }

@@ -57,3 +57,49 @@ export interface User {
     hasUploadedInboxKeys: boolean
   }
 }
+
+export interface Context {
+  canAddLinks: boolean
+  showConnectedApps: boolean
+  signerRequestsEnabled: boolean
+  prompts: string[]
+  adminForChannelKeys: string[]
+  modOfChannelKeys: string[]
+  memberOfChannelKeys: string[]
+  canEditAllChannels: boolean
+  canUploadVideo: boolean
+  statsigEnabled: boolean
+  shouldPromptForPushNotifications: boolean
+  shouldPromptForUserFollowsSyncContacts: boolean
+  castActions: {
+    id: string
+    name: string
+    octicon: string
+    actionUrl: string
+    action: {
+      actionType: string
+      postUrl: string
+    }
+  }[]
+  canAddCastAction: boolean
+  enabledCastAction?: {
+    id: string
+    name: string
+    octicon: string
+    actionUrl: string
+    action: {
+      actionType: string
+      postUrl: string
+    }
+  }
+  notificationTabsV2: {
+    id: string
+    name: string
+  }[]
+  enabledVideoAutoplay: boolean
+  regularCastByteLimit: number
+  longCastByteLimit: number
+  newUserStatus: Record<string, unknown>
+  country: string
+  higherClientEventSamplingRateEnabled: boolean
+}
