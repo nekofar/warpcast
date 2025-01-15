@@ -12,7 +12,10 @@ export interface ClientConfig {
 }
 
 export interface WarpcastResponse<T> {
-  result: T // The result object containing the data for the request.
+  result: T
+  next?: {
+    cursor: string
+  }
 }
 
 export type Account = HDAccount | PrivateKeyAccount
