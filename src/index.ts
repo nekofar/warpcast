@@ -266,4 +266,15 @@ export class WarpcastClient {
 
     return data.result
   }
+
+  public async getStarterPacks(fid: number, limit = 15): Promise<JsonArray> {
+    if (!fid) throw new ApiError(400, 'FID must be provided.')
+    const data = await this.request<{ starterPacks: JsonArray }>(
+      `/v2/starter-packs`,
+      { fid, limit },
+      { method: 'GET', authTokenRequired: true },
+    )
+
+    return data.result.starterPacks
+  }
 }
