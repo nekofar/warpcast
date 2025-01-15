@@ -73,12 +73,12 @@ export class WarpcastClient {
     if (mnemonic) {
       this.authToken = await this.generateAuthTokenFromMnemonic(
         mnemonic,
-        expiresAt || Date.now() + 3600 * 1000,
+        expiresAt ?? Date.now() + 3600 * 1000,
       )
     } else if (isHex(privateKey)) {
       this.authToken = await this.generateAuthTokenFromPrivateKey(
         privateKey,
-        expiresAt || Date.now() + 3600 * 1000,
+        expiresAt ?? Date.now() + 3600 * 1000,
       )
     } else if (token) {
       this.authToken = token
