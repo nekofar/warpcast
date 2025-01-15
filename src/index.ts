@@ -277,4 +277,30 @@ export class WarpcastClient {
 
     return data.result.starterPacks
   }
+
+  public async createStarterPack(
+    name: string,
+    description: string,
+    fids: number[],
+    labels: string[],
+  ): Promise<JsonObject> {
+    const payload = {
+      name,
+      description,
+      fids,
+      labels,
+    }
+
+    const data = await this.request<{ starterPack: JsonObject }>(
+      `/v2/starter-pack`,
+      {},
+      {
+        method: 'POST',
+        authTokenRequired: true,
+        body: payload,
+      },
+    )
+
+    return data.result.starterPack
+  }
 }
