@@ -387,4 +387,26 @@ export class WarpcastClient {
 
     return data.result.success
   }
+
+  public async recast(castHash: string): Promise<JsonObject> {
+    if (!castHash) {
+      throw new ApiError(400, 'Cast hash must be provided.')
+    }
+
+    const payload = {
+      castHash,
+    }
+
+    const data = await this.request<{ result: JsonObject }>(
+      `/v2/recasts`,
+      {},
+      {
+        method: 'PUT',
+        authTokenRequired: true,
+        body: payload,
+      },
+    )
+
+    return data.result
+  }
 }
