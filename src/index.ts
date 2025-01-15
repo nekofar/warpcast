@@ -7,6 +7,7 @@ import {
   ClientConfig,
   RequestOptions,
   RequestParams,
+  User,
   WarpcastResponse,
 } from './types'
 import { ApiError } from './utils/error-handling'
@@ -138,5 +139,18 @@ export class WarpcastClient {
     )
 
     return data.result.secret
+  }
+
+  public async getUserByFid(fid: number): Promise<User> {
+    if (!fid) throw new ApiError(400, 'FID must be provided.')
+
+    const {
+      result: { user },
+    } = await this.request<{ user: User }>(
+      `/v2/user-by-fid`,
+      { fid },
+      { method: 'GET' },
+    )
+    return user
   }
 }

@@ -25,4 +25,35 @@ export interface RequestOptions {
   body?: JsonObject
 }
 
-export type RequestParams = Record<string, never>
+export type RequestParams = Record<string, string | number | boolean>
+
+export interface User {
+  fid: number
+  username: string
+  displayName: string
+  pfp: {
+    url: string
+    verified: boolean
+  }
+  profile: {
+    bio: {
+      text: string
+      mentions: string[]
+      channelMentions: string[]
+    }
+    location: {
+      placeId: string
+      description: string
+    }
+  }
+  followerCount: number
+  followingCount: number
+  connectedAccounts: string[]
+  viewerContext: {
+    following: boolean
+    followedBy: boolean
+    canSendDirectCasts: boolean
+    enableNotifications: boolean
+    hasUploadedInboxKeys: boolean
+  }
+}
