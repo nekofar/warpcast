@@ -155,79 +155,68 @@ export class WarpcastClient {
 
   public async getUserByFid(fid: number): Promise<User> {
     if (!fid) throw new ApiError(400, 'FID must be provided.')
-    const {
-      result: { user },
-    } = await this.request<{ user: User }>(
+    const data = await this.request<{ user: User }>(
       `/v2/user-by-fid`,
       { fid },
       { method: 'GET' },
     )
-    return user
+    return data.result.user
   }
 
   public async getUserByUsername(username: string): Promise<User> {
     if (!username) throw new ApiError(400, 'Username must be provided.')
-    const {
-      result: { user },
-    } = await this.request<{ user: User }>(
+    const data = await this.request<{ user: User }>(
       `/v2/user-by-username`,
       { username },
       { method: 'GET', authTokenRequired: true },
     )
 
-    return user
+    return data.result.user
   }
 
   public async getFollowers(fid: number, limit = 15): Promise<JsonArray> {
     if (!fid) throw new ApiError(400, 'FID must be provided.')
-    const {
-      result: { users },
-    } = await this.request<{ users: JsonArray }>(
+    const data = await this.request<{ users: JsonArray }>(
       `/v2/followers`,
       { fid, limit },
       { method: 'GET', authTokenRequired: true },
     )
 
-    return users
+    return data.result.users
   }
 
   public async getFollowing(fid: number, limit = 15): Promise<JsonArray> {
     if (!fid) throw new ApiError(400, 'FID must be provided.')
-    const {
-      result: { users },
-    } = await this.request<{ users: JsonArray }>(
+    const data = await this.request<{ users: JsonArray }>(
       `/v2/following`,
       { fid, limit },
       { method: 'GET', authTokenRequired: true },
     )
 
-    return users
+    return data.result.users
   }
 
   public async getProfileCasts(fid: number, limit = 15): Promise<JsonArray> {
     if (!fid) throw new ApiError(400, 'FID must be provided.')
-    const {
-      result: { casts },
-    } = await this.request<{ casts: JsonArray }>(
+    const data = await this.request<{ casts: JsonArray }>(
       `/v2/profile-casts`,
       { fid, limit },
       { method: 'GET', authTokenRequired: true },
     )
 
-    return casts
+    return data.result.casts
   }
 
   public async getChannel(key: string): Promise<JsonObject> {
     if (!key) throw new ApiError(400, 'Channel key must be provided.')
-    const {
-      result: { channel },
-    } = await this.request<{ channel: JsonObject }>(
+    const data = await this.request<{ channel: JsonObject }>(
       `/v2/channel`,
       { key: key },
       { method: 'GET', authTokenRequired: true },
     )
 
-    return channel
+    return data.result.channel
+  }
 
   public async getChannelFollowersYouKnow(
     channelKey: string,
