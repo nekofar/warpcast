@@ -201,6 +201,27 @@ export class WarpcastClient {
     return preferences
   }
 
+  public async getFeedItems(
+    feedKey: string,
+    feedType: string,
+    castViewEvents: string[],
+    updateState = true,
+  ): Promise<JsonObject> {
+    const {
+      result: { items },
+    } = await this.request<{ items: JsonObject }>(
+      `/v2/feed-items`,
+      {},
+      {
+        method: 'POST',
+        requiresAuthToken: true,
+        body: { feedKey, feedType, castViewEvents, updateState },
+      },
+    )
+
+    return items
+  }
+
   public async getFeeds(): Promise<JsonObject> {
     const {
       result: { feedSummaries },
