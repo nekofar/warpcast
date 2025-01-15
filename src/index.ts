@@ -203,4 +203,17 @@ export class WarpcastClient {
 
     return users
   }
+
+  public async getProfileCasts(fid: number, limit = 15): Promise<JsonArray> {
+    if (!fid) throw new ApiError(400, 'FID must be provided.')
+    const {
+      result: { casts },
+    } = await this.request<{ casts: JsonArray }>(
+      `/v2/profile-casts`,
+      { fid, limit },
+      { method: 'GET', authTokenRequired: true },
+    )
+
+    return casts
+  }
 }
