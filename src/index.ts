@@ -168,4 +168,19 @@ export class WarpcastClient {
 
     return context
   }
+
+  public async getUserPreferences(): Promise<JsonObject> {
+    const {
+      result: { preferences },
+    } = await this.request<{ preferences: JsonObject }>(
+      `/v2/user-preferences`,
+      {},
+      {
+        method: 'GET',
+        requiresAuthToken: true,
+      },
+    )
+
+    return preferences
+  }
 }
