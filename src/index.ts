@@ -154,6 +154,23 @@ export class WarpcastClient {
     return user
   }
 
+  public async getUserByUsername(username: string): Promise<User> {
+    if (!username) throw new ApiError(400, 'Username must be provided.')
+
+    const {
+      result: { user },
+    } = await this.request<{ user: User }>(
+      `/v2/user-by-username`,
+      { username },
+      {
+        method: 'GET',
+        requiresAuthToken: true,
+      },
+    )
+
+    return user
+  }
+
   public async getUserAppContext(): Promise<JsonObject> {
     const {
       result: { context },
