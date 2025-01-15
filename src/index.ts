@@ -236,4 +236,18 @@ export class WarpcastClient {
 
     return feedSummaries
   }
+
+  public async getFollowing(fid: number, limit = 15): Promise<JsonObject[]> {
+    if (!fid) throw new ApiError(400, 'FID must be provided.')
+
+    const {
+      result: { users },
+    } = await this.request<{ users: JsonObject[] }>(
+      `/v2/following`,
+      { fid, limit },
+      { method: 'GET', requiresAuthToken: true },
+    )
+
+    return users
+  }
 }
