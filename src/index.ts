@@ -332,4 +332,15 @@ export class WarpcastClient {
 
     return data.result.success
   }
+
+  public async getStarterPack(id: string): Promise<JsonObject> {
+    if (!id) throw new ApiError(400, 'Starter Pack ID must be provided.')
+    const data = await this.request<{ starterPack: JsonObject }>(
+      `/v2/starter-pack`,
+      { id },
+      { method: 'GET', authTokenRequired: true },
+    )
+
+    return data.result.starterPack
+  }
 }
