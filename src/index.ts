@@ -303,4 +303,33 @@ export class WarpcastClient {
 
     return data.result.starterPack
   }
+
+  public async updateStarterPack(
+    id: string,
+    name: string,
+    description: string,
+    fids: number[],
+    labels: string[],
+  ): Promise<boolean> {
+    if (!id) throw new ApiError(400, 'Starter Pack ID must be provided.')
+    const payload = {
+      id,
+      name,
+      description,
+      fids,
+      labels,
+    }
+
+    const data = await this.request<{ success: boolean }>(
+      `/v2/starter-pack`,
+      {},
+      {
+        method: 'PATCH',
+        authTokenRequired: true,
+        body: payload,
+      },
+    )
+
+    return data.result.success
+  }
 }
