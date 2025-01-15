@@ -231,4 +231,20 @@ export class WarpcastClient {
 
     return data.result.users
   }
+
+  public async getChannelUsers(
+    channelKey: string,
+    filterToMembers: boolean,
+    limit = 20,
+    query = '',
+  ): Promise<JsonArray> {
+    if (!channelKey) throw new ApiError(400, 'Channel key must be provided.')
+    const data = await this.request<{ users: JsonArray }>(
+      `/v1/channel-users`,
+      { channelKey, filterToMembers, limit, query },
+      { method: 'GET', authTokenRequired: true },
+    )
+
+    return data.result.users
+  }
 }
