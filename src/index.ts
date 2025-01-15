@@ -247,4 +247,23 @@ export class WarpcastClient {
 
     return data.result.users
   }
+
+  public async getDirectCastInbox(
+    cursor: string,
+    limit = 15,
+    category = 'default',
+  ): Promise<JsonObject> {
+    const data = await this.request<{
+      conversations: JsonArray
+      hasArchived: boolean
+      hasUnreadRequests: boolean
+      requestsCount: number
+    }>(
+      `/v2/direct-cast-inbox`,
+      { cursor, limit, category },
+      { method: 'GET', authTokenRequired: true },
+    )
+
+    return data.result
+  }
 }
