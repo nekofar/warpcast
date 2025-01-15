@@ -216,4 +216,17 @@ export class WarpcastClient {
 
     return casts
   }
+
+  public async getChannel(key: string): Promise<JsonObject> {
+    if (!key) throw new ApiError(400, 'Channel key must be provided.')
+    const {
+      result: { channel },
+    } = await this.request<{ channel: JsonObject }>(
+      `/v2/channel`,
+      { key: key },
+      { method: 'GET', authTokenRequired: true },
+    )
+
+    return channel
+  }
 }
