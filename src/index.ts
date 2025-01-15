@@ -409,4 +409,26 @@ export class WarpcastClient {
 
     return data.result
   }
+
+  public async deleteRecast(castHash: string): Promise<boolean> {
+    if (!castHash) {
+      throw new ApiError(400, 'Cast hash must be provided.')
+    }
+
+    const payload = {
+      castHash,
+    }
+
+    const data = await this.request<{ success: boolean }>(
+      `/v2/recasts`,
+      {},
+      {
+        method: 'DELETE',
+        authTokenRequired: true,
+        body: payload,
+      },
+    )
+
+    return data.result.success
+  }
 }
