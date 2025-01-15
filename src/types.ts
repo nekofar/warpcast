@@ -18,8 +18,8 @@ export interface WarpcastResponse<T> {
 export type Account = HDAccount | PrivateKeyAccount
 
 export interface RequestOptions {
-  requiresAuthToken?: boolean
-  requiresApiKey?: boolean
+  authTokenRequired?: boolean
+  apiKeyRequired?: boolean
   headers?: HeadersInit
   method?: string
   body?: JsonObject
