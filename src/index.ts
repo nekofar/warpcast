@@ -343,4 +343,26 @@ export class WarpcastClient {
 
     return data.result.starterPack
   }
+
+  public async like(castHash: string): Promise<JsonObject> {
+    if (!castHash) {
+      throw new ApiError(400, 'Cast hash must be provided.')
+    }
+
+    const payload = {
+      castHash,
+    }
+
+    const data = await this.request<{ like: JsonObject }>(
+      `/v2/cast-likes`,
+      {},
+      {
+        method: 'PUT',
+        authTokenRequired: true,
+        body: payload,
+      },
+    )
+
+    return data.result.like
+  }
 }
