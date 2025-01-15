@@ -3,8 +3,8 @@ import { Hex } from 'viem'
 import { HDAccount, PrivateKeyAccount } from 'viem/accounts'
 
 export interface ClientConfig {
-  privateKey: Hex
-  expiresAt: number
+  privateKey?: Hex
+  expiresAt?: number
   mnemonic?: string
   baseURL?: string // The base URL for API requests (default: "https://api.warpcast.com").
   token?: string // Authentication token for protected endpoints.
