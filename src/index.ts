@@ -228,5 +228,18 @@ export class WarpcastClient {
     )
 
     return channel
+
+  public async getChannelFollowersYouKnow(
+    channelKey: string,
+    limit = 15,
+  ): Promise<JsonArray> {
+    if (!channelKey) throw new ApiError(400, 'Channel key must be provided.')
+    const data = await this.request<{ users: JsonArray }>(
+      `/v2/channel-followers-you-know`,
+      { channelKey, limit },
+      { method: 'GET', authTokenRequired: true },
+    )
+
+    return data.result.users
   }
 }
