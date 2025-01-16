@@ -67,8 +67,8 @@ importers:
         specifier: 8.20.0
         version: 8.20.0(eslint@9.18.0)(typescript@5.7.3)
       viem:
-        specifier: 2.22.8
-        version: 2.22.8(typescript@5.7.3)
+        specifier: 2.22.9
+        version: 2.22.9(typescript@5.7.3)
       vite:
         specifier: 6.0.7
         version: 6.0.7(@types/node@22.10.6)
@@ -1313,8 +1313,8 @@ packages:
     resolution: {integrity: sha512-6IpQ7mKUxRcZNLIObR0hz7lxsapSSIYNZJwXPGeF0mTVqGKFIXj1DQcMoT22S3ROcLyY/rz0PWaWZ9ayWmad9g==}
     engines: {node: '>= 0.8.0'}
 
-  ox@0.6.0:
-    resolution: {integrity: sha512-blUzTLidvUlshv0O02CnLFqBLidNzPoAZdIth894avUAotTuWziznv6IENv5idRuOSSP3dH8WzcYw84zVdu0Aw==}
+  ox@0.6.5:
+    resolution: {integrity: sha512-vmnH8KvMDwFZDbNY1mq2CBRBWIgSliZB/dFV0xKp+DfF/dJkTENt6nmA+DzHSSAgL/GO2ydjkXWvlndJgSY4KQ==}
     peerDependencies:
       typescript: '>=5.4.0'
     peerDependenciesMeta:
@@ -1655,8 +1655,8 @@ packages:
   validate-npm-package-license@3.0.4:
     resolution: {integrity: sha512-DpKm2Ui/xN7/HQKCtpZxoRWBhZ9Z0kqtygG8XCgNQ8ZlDnxuQmWhj566j8fN4Cu3/JmbhsDo7fcAJq4s9h27Ew==}
 
-  viem@2.22.8:
-    resolution: {integrity: sha512-iB3PW/a/qzpYbpjo3R662u6a/zo6piZHez/N/bOC25C79FYXBCs8mQDqwiHk3FYErUhS4KVZLabKV9zGMd+EgQ==}
+  viem@2.22.9:
+    resolution: {integrity: sha512-2yy46qYhcdo8GZggQ3Zoq9QCahI0goddzpVI/vSnTpcClQBSDxYRCuAqRzzLqjvJ7hS0UYgplC7eRkM2sYgflw==}
     peerDependencies:
       typescript: '>=5.0.4'
     peerDependenciesMeta:
@@ -1763,9 +1763,6 @@ packages:
         optional: true
       jsdom:
         optional: true
-
-  webauthn-p256@0.0.10:
-    resolution: {integrity: sha512-EeYD+gmIT80YkSIDb2iWq0lq2zbHo1CxHlQTeJ+KkCILWpVy3zASH3ByD4bopzfk0uCwXxLqKGLqp2W4O28VFA==}
 
   which@2.0.2:
     resolution: {integrity: sha512-BLI3Tl1TW3Pvl70l3yq3Y64i+awpwXqsGBYWkkqMtnbXgrMD+yj7rhW0kuEDxzJaYXGjEW5ogapKNMEKNMjibA==}
@@ -2998,7 +2995,7 @@ snapshots:
       type-check: 0.4.0
       word-wrap: 1.2.5
 
-  ox@0.6.0(typescript@5.7.3):
+  ox@0.6.5(typescript@5.7.3):
     dependencies:
       '@adraffy/ens-normalize': 1.11.0
       '@noble/curves': 1.7.0
@@ -3325,7 +3322,7 @@ snapshots:
       spdx-correct: 3.2.0
       spdx-expression-parse: 3.0.1
 
-  viem@2.22.8(typescript@5.7.3):
+  viem@2.22.9(typescript@5.7.3):
     dependencies:
       '@noble/curves': 1.7.0
       '@noble/hashes': 1.6.1
@@ -3333,8 +3330,7 @@ snapshots:
       '@scure/bip39': 1.5.0
       abitype: 1.0.7(typescript@5.7.3)
       isows: 1.0.6(ws@8.18.0)
-      ox: 0.6.0(typescript@5.7.3)
-      webauthn-p256: 0.0.10
+      ox: 0.6.5(typescript@5.7.3)
       ws: 8.18.0
     optionalDependencies:
       typescript: 5.7.3
@@ -3413,11 +3409,6 @@ snapshots:
       - sugarss
       - supports-color
       - terser
-
-  webauthn-p256@0.0.10:
-    dependencies:
-      '@noble/curves': 1.7.0
-      '@noble/hashes': 1.6.1
 
   which@2.0.2:
     dependencies:
