@@ -17,7 +17,7 @@
     "type-fest": "4.33.0"
   },
   "devDependencies": {
-    "@types/node": "22.10.7",
+    "@types/node": "22.10.9",
     "@typescript-eslint/utils": "8.21.0",
     "eslint": "9.18.0",
     "eslint-config-prettier": "10.0.1",
