@@ -35,7 +35,7 @@
     "typescript-eslint": "8.21.0",
     "viem": "2.22.12",
     "vite": "6.0.11",
-    "vitest": "3.0.3"
+    "vitest": "3.0.4"
   },
   "packageManager": "pnpm@9.15.0"
 }
