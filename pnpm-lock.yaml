@@ -67,8 +67,8 @@ importers:
         specifier: 8.21.0
         version: 8.21.0(eslint@9.19.0)(typescript@5.7.3)
       viem:
-        specifier: 2.22.15
-        version: 2.22.15(typescript@5.7.3)
+        specifier: 2.22.16
+        version: 2.22.16(typescript@5.7.3)
       vite:
         specifier: 6.0.11
         version: 6.0.11(@types/node@22.10.10)
@@ -1508,8 +1508,8 @@ packages:
   validate-npm-package-license@3.0.4:
     resolution: {integrity: sha512-DpKm2Ui/xN7/HQKCtpZxoRWBhZ9Z0kqtygG8XCgNQ8ZlDnxuQmWhj566j8fN4Cu3/JmbhsDo7fcAJq4s9h27Ew==}
 
-  viem@2.22.15:
-    resolution: {integrity: sha512-7m5T/Emaj/C59jsRxYfZvMvckRRC4+rV+MVufKelxPS5DMhVR4z3Bk6CG8z+eQkpLVearqKBiPvvreLI0AesgA==}
+  viem@2.22.16:
+    resolution: {integrity: sha512-Eb4Ggna2fblb0oHBmy5XZ3Q4cN6fEmKxVpIWHjmAbtYVC9IfbZ28Z1/yZP2oOgvyRrostNndmnR298pgarBVGw==}
     peerDependencies:
       typescript: '>=5.0.4'
     peerDependenciesMeta:
@@ -3050,7 +3050,7 @@ snapshots:
       spdx-correct: 3.2.0
       spdx-expression-parse: 3.0.1
 
-  viem@2.22.15(typescript@5.7.3):
+  viem@2.22.16(typescript@5.7.3):
     dependencies:
       '@noble/curves': 1.8.1
       '@noble/hashes': 1.7.1
