@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "canonicalize": "2.0.0",
-    "remeda": "2.20.0",
+    "remeda": "2.20.1",
     "type-fest": "4.33.0"
   },
   "devDependencies": {
