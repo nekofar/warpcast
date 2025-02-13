@@ -41,7 +41,7 @@ jobs:
           node-version: latest
 
       - name: Install PNPM package manager
-        uses: pnpm/action-setup@v4.0.0 # Action for setting up pnpm.
+        uses: pnpm/action-setup@v4.1.0 # Action for setting up pnpm.
         id: pnpm-install
         with:
           run_install: false
