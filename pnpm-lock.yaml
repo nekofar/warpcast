@@ -12,8 +12,8 @@ importers:
         specifier: 2.0.0
         version: 2.0.0
       remeda:
-        specifier: 2.21.0
-        version: 2.21.0
+        specifier: 2.21.2
+        version: 2.21.2
       type-fest:
         specifier: 4.37.0
         version: 4.37.0
@@ -1287,8 +1287,8 @@ packages:
     resolution: {integrity: sha512-cnE+y8bz4NhMjISKbgeVJtqNbtf5QpjZP+Bslo+UqkIt9QPnX9q095eiRRASJG1/tz6dlNr6Z5NsBiWYokp6EQ==}
     hasBin: true
 
-  remeda@2.21.0:
-    resolution: {integrity: sha512-ANFqOts3BsvW1MrKOv9SVHG3ly0MzzLa0HIu5qLkiRuEPGPuH9ny3sgd7VdHvC2VOUSN/7RkmabPlAda6JtGgg==}
+  remeda@2.21.2:
+    resolution: {integrity: sha512-wdhkMDou8HRpD7RnxKJ/FHJWEGXRH7jV/pb0NsdLLSoBo+G9RjtxcY41hVhogLfEMkThk6aySKjs+Yd6PnpzBA==}
 
   resolve-from@4.0.0:
     resolution: {integrity: sha512-pb/MYmXstAkysRFx8piNI1tGFNQIFA3vkE3Gq4EuA1dF6gHp/+vgZqsCGJapvy8N3Q+4o7FwvquPJcnZ7RYy4g==}
@@ -2787,7 +2787,7 @@ snapshots:
     dependencies:
       jsesc: 3.0.2
 
-  remeda@2.21.0:
+  remeda@2.21.2:
     dependencies:
       type-fest: 4.37.0
 
