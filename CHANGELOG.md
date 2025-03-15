@@ -2,6 +2,52 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.0-alpha.5] - 2025-03-15
+
+### 🚀 Features
+
+- *(api)* Add `getUserByFid` method to fetch user by FID
+- *(api)* Add `getUserAppContext` method to fetch context
+- *(api)* Add `getUserPreferences` method
+- *(api)* Add `getUserByUsername` method
+- *(index)* Add `getFeeds` method to fetch feed summaries
+- *(api)* Add `getFeedItems` method
+- *(api)* Add `getFollowing` method to fetch user followings
+- *(api)* Add `getFollowers` method
+- *(api)* Add `getProfileCasts` method
+- *(api)* Add `getChannel` method to fetch channel data
+- *(api)* Add `getChannelFollowersYouKnow` method
+- *(api)* Add `getChannelUsers` method to fetch channel users
+- *(api)* Add `getDirectCastInbox` method
+- *(types)* Add optional `next` cursor to `WarpcastResponse`
+- *(api)* Add `getStarterPacks` method
+- *(api)* Add `createStarterPack` method
+- *(api)* Add `updateStarterPack` method
+- *(api)* Add `getStarterPack` method
+- *(api)* Add `like` method for liking a cast
+- *(index)* Add `deleteLike` method to handle deletion
+- *(api)* Add `recast` method to handle recast actions
+- *(api)* Add `deleteRecast` method
+
+### 🐛 Bug Fixes
+
+- *(types)* Make `privateKey` and `expiresAt` optional
+
+### 🚜 Refactor
+
+- *(auth)* Replace `||` with `??` for `expiresAt` fallback
+- *(client)* Improve `WarpcastClient` auth initialization
+- *(api)* Simplify response handling in `request` methods
+
+### ⚙️ Miscellaneous Tasks
+
+- *(gitignore)* Add `.env.*` to ignored files
+- *(vitest)* Add Vitest configuration setup
+- *(deps)* Bump actions/setup-node from 4.1.0 to 4.2.0 (#62)
+- *(deps)* Bump pnpm/action-setup from 4.0.0 to 4.1.0 (#81)
+- *(deps)* Bump actions/cache from 4.2.0 to 4.2.1 (#104)
+- *(deps)* Bump actions/cache from 4.2.1 to 4.2.2 (#117)
+
 ## [1.0.0-alpha.4] - 2025-01-15
 
 ### 🐛 Bug Fixes
