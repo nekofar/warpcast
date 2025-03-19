@@ -12,7 +12,7 @@
     "test": "vitest run --passWithNoTests"
   },
   "dependencies": {
-    "canonicalize": "2.0.0",
+    "canonicalize": "2.1.0",
     "remeda": "2.21.2",
     "type-fest": "4.37.0"
   },
