@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.0-alpha.6] - 2025-03-24
+
+### ⚙️ Miscellaneous Tasks
+
+- *(deps)* Bump actions/setup-node from 4.2.0 to 4.3.0 (#143)
+- *(deps)* Bump actions/cache from 4.2.2 to 4.2.3 (#149)
+
 ## [1.0.0-alpha.5] - 2025-03-15
 
 ### 🚀 Features
