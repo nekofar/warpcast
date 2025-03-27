@@ -667,9 +667,12 @@ paths:
 
   /v2/user-app-context:
     get:
+      tags:
+        - User
       summary: Get user app context
+      description: Retrieves application context information for the authenticated user
       security:
-        - bearerAuth: []
+        - bearerAuth: [ ]
       responses:
         '200':
           description: Successful retrieval of user app context
@@ -677,6 +680,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UserAppContextResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
   /v2/user-preferences:
     get:
       summary: Get user preferences
