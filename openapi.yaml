@@ -1,0 +1,3456 @@
+openapi: 3.0.3
+info:
+  title: Warpcast API
+  version: 1.0.0
+paths:
+  /v2/onboarding-state:
+    get:
+      summary: Get onboarding state
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful retrieval of onboarding state
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OnboardingStateResponse'
+  /v2/user-by-fid:
+    get:
+      summary: Get user by fid
+      parameters:
+        - name: fid
+          in: query
+          required: true
+          schema:
+            type: integer
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful retrieval of user by fid
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserByFidResponse'
+  /v2/direct-cast-inbox:
+    get:
+      summary: Get user's direct cast inbox
+      parameters:
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+        - name: category
+          in: query
+          required: false
+          schema:
+            type: string
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful retrieval of direct cast inbox
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DirectCastInboxResponse'
+  /v2/user-app-context:
+    get:
+      summary: Get user app context
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful retrieval of user app context
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserAppContextResponse'
+  /v2/user-preferences:
+    get:
+      summary: Get user preferences
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful retrieval of user preferences
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserPreferencesResponse'
+  /v2/highlighted-channels:
+    get:
+      summary: Get highlighted channels
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful retrieval of highlighted channels
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HighlightedChannelsResponse'
+  /v2/feed-items:
+    post:
+      summary: Get feed items
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                feedKey:
+                  type: string
+                feedType:
+                  type: string
+                castViewEvents:
+                  type: array
+                  items:
+                    type: object
+                updateState:
+                  type: boolean
+      responses:
+        '200':
+          description: Successful retrieval of feed items
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FeedItemsResponse'
+  /v2/user:
+    get:
+      summary: Get user by fid
+      parameters:
+        - name: fid
+          in: query
+          required: true
+          schema:
+            type: integer
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful retrieval of user information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+  /v2/user-following-channels:
+    get:
+      summary: Get user following channels
+      parameters:
+        - name: forComposer
+          in: query
+          schema:
+            type: boolean
+        - name: limit
+          in: query
+          schema:
+            type: integer
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful retrieval of user-following channels
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HighlightedChannelsResponse'
+  /v2/suggested-users:
+    get:
+      summary: Get suggested users
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: integer
+        - name: randomized
+          in: query
+          schema:
+            type: boolean
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful retrieval of suggested users
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuggestedUsersResponse'
+  /v1/favorite-frames:
+    get:
+      summary: Get user's favorite frames
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: integer
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful retrieval of favorite frames
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+                    properties:
+                      frames:
+                        type: array
+                        items:
+                          type: object
+                          additionalProperties: true
+  /v2/user-by-username:
+    get:
+      summary: Get user by username
+      parameters:
+        - name: username
+          in: query
+          required: true
+          schema:
+            type: string
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful retrieval of user by username
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+  /v2/channel-streaks:
+    get:
+      summary: Get channel streaks for user
+      parameters:
+        - name: fid
+          in: query
+          required: true
+          schema:
+            type: integer
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful retrieval of channel streaks
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+                    additionalProperties: true
+  /v2/unseen:
+    get:
+      summary: Get unseen counts and feed state
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful retrieval of unseen feed and notification data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+                    properties:
+                      notificationsCount:
+                        type: integer
+                      notificationTabs:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            tab:
+                              type: string
+                            unseenCount:
+                              type: integer
+                      inboxCount:
+                        type: integer
+                      channelFeeds:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            channelKey:
+                              type: string
+                            feedType:
+                              type: string
+                            hasNewItems:
+                              type: boolean
+                      warpTransactionCount:
+                        type: integer
+  /v2/user-thread-casts:
+    get:
+      summary: Get casts from a user thread
+      parameters:
+        - name: castHashPrefix
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: username
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: integer
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful retrieval of user thread casts
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+                    properties:
+                      casts:
+                        type: array
+                        items:
+                          type: object
+                          additionalProperties: true
+  /v2/channel-followers-you-know:
+    get:
+      summary: Get mutual followers in a channel
+      parameters:
+        - name: channelKey
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: integer
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful retrieval of known channel followers
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+                    properties:
+                      users:
+                        type: array
+                        items:
+                          type: object
+                          additionalProperties: true
+                      totalCount:
+                        type: integer
+  /v2/mark-all-notifications-read:
+    put:
+      summary: Mark all notifications as read
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+      responses:
+        '200':
+          description: Successful mark-all-read operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+                    properties:
+                      success:
+                        type: boolean
+  /v1/notifications-for-tab:
+    get:
+      summary: Get notifications for a specific tab
+      description: Returns a list of notifications for the specified tab.
+      parameters:
+        - in: query
+          name: tab
+          required: true
+          schema:
+            type: string
+            enum: [all, follows, reactions, mentions, replies]
+          description: Notification tab type
+        - in: query
+          name: limit
+          required: false
+          schema:
+            type: integer
+            default: 15
+            minimum: 1
+            maximum: 100
+          description: Number of notifications to return
+      responses:
+        '200':
+          description: A list of notifications
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+                    properties:
+                      notifications:
+                        type: array
+                        items:
+                          type: object
+                          description: Notification item
+        '401':
+          description: Unauthorized
+        '429':
+          description: Too many requests
+      security:
+        - bearerAuth: []
+  /v2/set-last-checked-timestamp:
+    put:
+      summary: Set last checked timestamp
+      description: Updates the last checked timestamp for notifications.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Empty object for now
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+                    properties:
+                      success:
+                        type: boolean
+        '401':
+          description: Unauthorized
+        '429':
+          description: Too many requests
+      security:
+        - bearerAuth: []
+  /v2/direct-cast-conversation:
+    get:
+      summary: Get direct cast conversation
+      description: Fetches a direct cast conversation by conversationId.
+      parameters:
+        - in: query
+          name: conversationId
+          required: true
+          schema:
+            type: string
+          description: Conversation ID in the format fid1-fid2
+      responses:
+        '200':
+          description: A direct cast conversation object
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+                    properties:
+                      conversation:
+                        type: object
+                        description: Conversation details (schema omitted for brevity)
+        '401':
+          description: Unauthorized
+        '429':
+          description: Too many requests
+      security:
+        - bearerAuth: []
+  /v2/discover-channels:
+    get:
+      summary: Discover channels
+      description: Retrieves a list of discoverable channels with optional limit.
+      parameters:
+        - in: query
+          name: limit
+          required: false
+          schema:
+            type: integer
+            default: 15
+            minimum: 1
+            maximum: 100
+          description: Maximum number of channels to retrieve
+      responses:
+        '200':
+          description: A list of channels
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+                    properties:
+                      channels:
+                        type: array
+                        items:
+                          type: object
+                          description: Channel details (schema omitted for brevity)
+        '401':
+          description: Unauthorized
+        '429':
+          description: Too many requests
+      security:
+        - bearerAuth: []
+  /v2/invites-available:
+    get:
+      summary: Check available invites
+      description: Returns the number of allocated and currently available invites.
+      responses:
+        '200':
+          description: Invite count information
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+                    properties:
+                      allocatedInvitesCount:
+                        type: integer
+                        description: Total number of invites allocated to the user
+                      availableInvitesCount:
+                        type: integer
+                        description: Number of invites currently available to send
+        '401':
+          description: Unauthorized
+        '429':
+          description: Too many requests
+      security:
+        - bearerAuth: []
+  /v2/warpcast-sponsored-invites:
+    get:
+      summary: Get sponsored invites
+      description: Returns a list of Warpcast-sponsored invites available to the user.
+      responses:
+        '200':
+          description: List of sponsored invites
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+                    properties:
+                      invites:
+                        type: array
+                        items:
+                          type: object
+        '401':
+          description: Unauthorized
+        '429':
+          description: Too many requests
+      security:
+        - bearerAuth: []
+  /v2/rewards-leaderboard:
+    get:
+      summary: Get rewards leaderboard
+      description: Returns a list of users in the rewards leaderboard based on invite activity.
+      parameters:
+        - name: rewardsType
+          in: query
+          required: true
+          schema:
+            type: string
+            enum: [invite]
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+        - name: cursor
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Rewards leaderboard
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+                    properties:
+                      leaderboard:
+                        type: object
+                        properties:
+                          type:
+                            type: string
+                          users:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                user:
+                                  type: object
+                                score:
+                                  type: integer
+                                rank:
+                                  type: integer
+        '401':
+          description: Unauthorized
+        '429':
+          description: Too many requests
+      security:
+        - bearerAuth: []
+  /v2/rewards-scores-for-user:
+    get:
+      summary: Get invite rewards scores for a user
+      description: Returns current, previous, and all-time invite rewards scores for the specified user.
+      parameters:
+        - name: rewardsType
+          in: query
+          required: true
+          schema:
+            type: string
+            enum: [invite]
+        - name: fid
+          in: query
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: User rewards scores
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+                    properties:
+                      scores:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            type:
+                              type: string
+                            user:
+                              type: object
+                            allTimeScore:
+                              type: integer
+                            currentPeriodScore:
+                              type: integer
+                            previousPeriodScore:
+                              type: integer
+        '401':
+          description: Unauthorized
+        '429':
+          description: Too many requests
+      security:
+        - bearerAuth: []
+  /v2/rewards-metadata:
+    get:
+      summary: Get invite rewards metadata
+      description: Returns metadata for the invite rewards program including the reward period and reward distribution details.
+      parameters:
+        - name: rewardsType
+          in: query
+          required: true
+          schema:
+            type: string
+            enum: [invite]
+      responses:
+        '200':
+          description: Invite rewards metadata
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+                    properties:
+                      metadata:
+                        type: object
+                        properties:
+                          type:
+                            type: string
+                          lastUpdateTimestamp:
+                            type: integer
+                          currentPeriodStartTimestamp:
+                            type: integer
+                          currentPeriodEndTimestamp:
+                            type: integer
+                          tiers:
+                            type: array
+                            items: {}
+                          proportionalPayout:
+                            type: object
+                            properties:
+                              numWinners:
+                                type: integer
+                              totalRewardCents:
+                                type: integer
+        '401':
+          description: Unauthorized
+        '429':
+          description: Too many requests
+      security:
+        - bearerAuth: []
+  /v2/bookmarked-casts:
+    get:
+      summary: Get bookmarked casts
+      description: Returns the most recent casts bookmarked by the user.
+      parameters:
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+            default: 15
+      responses:
+        '200':
+          description: A list of bookmarked casts
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+                    properties:
+                      bookmarks:
+                        type: array
+                        items:
+                          type: object
+      security:
+        - bearerAuth: []
+  /v2/starter-packs:
+    get:
+      summary: Get starter packs
+      description: Returns starter packs created by a specific user.
+      parameters:
+        - name: fid
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+            default: 15
+      responses:
+        '200':
+          description: A list of starter packs
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+                    properties:
+                      starterPacks:
+                        type: array
+                        items:
+                          type: object
+  /v2/starter-packs/suggested:
+    get:
+      summary: Get suggested starter packs
+      description: Returns a list of suggested starter packs.
+      parameters:
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+            default: 15
+      responses:
+        '200':
+          description: A list of suggested starter packs
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+                    properties:
+                      starterPacks:
+                        type: array
+                        items:
+                          type: object
+  /v2/starter-pack:
+    get:
+      summary: Get a specific starter pack by ID
+      description: Returns a specific starter pack.
+      parameters:
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A starter pack object
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+                    properties:
+                      starterPack:
+                        type: object
+    post:
+      summary: Create a starter pack
+      operationId: createStarterPack
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: idempotency-key
+          in: header
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [name, description, fids, labels]
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                fids:
+                  type: array
+                  items:
+                    type: integer
+                labels:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: Starter pack created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+                    properties:
+                      starterPack:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                          name:
+                            type: string
+                          description:
+                            type: string
+                          itemCount:
+                            type: integer
+                          openGraphImageUrl:
+                            type: string
+                          items:
+                            type: array
+                            items: {}
+        '400':
+          description: Invalid request (e.g., fewer than 8 fids)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        message:
+                          type: string
+    patch:
+      summary: Update a starter pack
+      operationId: updateStarterPack
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: idempotency-key
+          in: header
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [id, name, description, fids, labels]
+              properties:
+                id:
+                  type: string
+                name:
+                  type: string
+                description:
+                  type: string
+                fids:
+                  type: array
+                  items:
+                    type: integer
+                labels:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: Starter pack updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+                    properties:
+                      success:
+                        type: boolean
+    delete:
+      summary: Delete a starter pack
+      operationId: deleteStarterPack
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: idempotency-key
+          in: header
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [id]
+              properties:
+                id:
+                  type: string
+      responses:
+        '200':
+          description: Starter pack deleted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+                    properties:
+                      success:
+                        type: boolean
+  /v2/starter-pack-users:
+    get:
+      summary: Get users in a specific starter pack
+      description: Returns a list of users associated with a given starter pack.
+      parameters:
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: List of users in the starter pack
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+                    properties:
+                      users:
+                        type: array
+                        items:
+                          type: object
+  /v2/channel:
+    get:
+      summary: Get channel details
+      description: Returns metadata about a channel.
+      parameters:
+        - name: key
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Channel metadata
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+                    properties:
+                      channel:
+                        type: object
+  /v1/channel-users:
+    get:
+      summary: Get members of a specific channel
+      description: Returns users who are members of a specific channel.
+      parameters:
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+        - name: channelKey
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: filterToMembers
+          in: query
+          required: false
+          schema:
+            type: boolean
+        - name: query
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A list of users in the specified channel
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+                    properties:
+                      users:
+                        type: array
+                        items:
+                          type: object
+  /v2/following:
+    get:
+      summary: Get users a given user is following
+      description: Returns a list of users followed by a specified FID.
+      parameters:
+        - name: fid
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: A list of followed users
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+                    properties:
+                      users:
+                        type: array
+                        items:
+                          type: object
+  /v2/followers:
+    get:
+      summary: Get users following a given user
+      description: Returns a list of users who follow the specified FID.
+      parameters:
+        - name: fid
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: A list of followers
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+                    properties:
+                      users:
+                        type: array
+                        items:
+                          type: object
+  /v2/followers-you-know:
+    get:
+      summary: Get mutual followers of a given user
+      description: Returns a list of users who follow the given FID and are followed by the viewer.
+      parameters:
+        - name: fid
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: A list of mutual followers
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+                    properties:
+                      users:
+                        type: array
+                        items:
+                          type: object
+                      totalCount:
+                        type: integer
+  /v1/top-frameapps:
+    get:
+      summary: Get top FrameApps
+      description: Returns a list of top FrameApps with optional pagination.
+      parameters:
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+        - name: cursor
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A list of FrameApps
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+                    properties:
+                      frames:
+                        type: array
+                        items:
+                          type: object
+  /v2/verifications:
+    get:
+      summary: Get verified addresses for an FID
+      description: Returns verified Ethereum addresses associated with a specific FID.
+      parameters:
+        - name: fid
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: A list of verifications
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+                    properties:
+                      verifications:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            fid:
+                              type: integer
+                            address:
+                              type: string
+                            timestamp:
+                              type: integer
+                            version:
+                              type: string
+                            protocol:
+                              type: string
+                            isPrimary:
+                              type: boolean
+                            labels:
+                              type: array
+                              items:
+                                type: string
+  /v2/get-muted-keywords:
+    get:
+      summary: Get muted keywords
+      description: Returns a list of muted keywords for the authenticated user.
+      responses:
+        '200':
+          description: A list of muted keywords
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  result:
+                    type: object
+                    properties:
+                      keywords:
+                        type: array
+                        items:
+                          type: string
+                      mutedKeywords:
+                        type: array
+                        items:
+                          type: string
+  /v2/mute-keyword:
+    post:
+      summary: Mute a keyword
+      description: Mutes a keyword for the authenticated user with specified properties.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                keyword:
+                  type: string
+                properties:
+                  type: object
+                  properties:
+                    channels:
+                      type: boolean
+                    frames:
+                      type: boolean
+                    notifications:
+                      type: boolean
+      responses:
+        '200':
+          description: The muted keyword and its settings
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  result:
+                    type: object
+                    properties:
+                      keywords:
+                        type: array
+                        items:
+                          type: string
+                      mutedKeywords:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            keyword:
+                              type: string
+                            properties:
+                              type: object
+                              properties:
+                                frames:
+                                  type: boolean
+                                channels:
+                                  type: boolean
+                                notifications:
+                                  type: boolean
+  /v2/unmute-keyword:
+    post:
+      summary: Unmute a keyword
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                keyword:
+                  type: string
+      responses:
+        '200':
+          description: Keyword unmuted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  result:
+                    type: object
+                    properties:
+                      keywords:
+                        type: array
+                        items:
+                          type: string
+                      mutedKeywords:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            keyword:
+                              type: string
+                            properties:
+                              type: object
+                              properties:
+                                channels:
+                                  type: boolean
+                                frames:
+                                  type: boolean
+                                notifications:
+                                  type: boolean
+  /v2/cast-likes:
+    get:
+      summary: Get cast likes
+      operationId: getCastLikes
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: castHash
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+            default: 15
+      responses:
+        '200':
+          description: A list of cast likes
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+                    properties:
+                      likes:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            type:
+                              type: string
+                              example: like
+                            hash:
+                              type: string
+                            castHash:
+                              type: string
+                            timestamp:
+                              type: integer
+                            reactor:
+                              type: object
+                              properties:
+                                fid:
+                                  type: integer
+                                username:
+                                  type: string
+                                displayName:
+                                  type: string
+                                pfp:
+                                  type: object
+                                  properties:
+                                    url:
+                                      type: string
+                                    verified:
+                                      type: boolean
+                                profile:
+                                  type: object
+                                  properties:
+                                    bio:
+                                      type: object
+                                      properties:
+                                        text:
+                                          type: string
+                                        mentions:
+                                          type: array
+                                          items: {}
+                                        channelMentions:
+                                          type: array
+                                          items: {}
+                                    location:
+                                      type: object
+                                      properties:
+                                        placeId:
+                                          type: string
+                                        description:
+                                          type: string
+                                    earlyWalletAdopter:
+                                      type: boolean
+                                followerCount:
+                                  type: integer
+                                followingCount:
+                                  type: integer
+                                viewerContext:
+                                  type: object
+                                  properties:
+                                    following:
+                                      type: boolean
+                                    followedBy:
+                                      type: boolean
+                                    enableNotifications:
+                                      type: boolean
+    put:
+      summary: Like a cast
+      operationId: likeCast
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - castHash
+              properties:
+                castHash:
+                  type: string
+                  example: '0x0bb901f364673e86adfc0ed4c14ececb8d9b9d27'
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Like response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+                    properties:
+                      like:
+                        type: object
+                        properties:
+                          type:
+                            type: string
+                            example: like
+                          hash:
+                            type: string
+                          castHash:
+                            type: string
+                          timestamp:
+                            type: integer
+                          reactor:
+                            type: object
+                            properties:
+                              fid:
+                                type: integer
+                              username:
+                                type: string
+                              displayName:
+                                type: string
+                              pfp:
+                                type: object
+                                properties:
+                                  url:
+                                    type: string
+                                  verified:
+                                    type: boolean
+                              profile:
+                                type: object
+                                properties:
+                                  bio:
+                                    type: object
+                                    properties:
+                                      text:
+                                        type: string
+                                      mentions:
+                                        type: array
+                                        items: {}
+                                      channelMentions:
+                                        type: array
+                                        items: {}
+                                  location:
+                                    type: object
+                                    properties:
+                                      placeId:
+                                        type: string
+                                      description:
+                                        type: string
+                              followerCount:
+                                type: integer
+                              followingCount:
+                                type: integer
+                              viewerContext:
+                                type: object
+                                properties:
+                                  following:
+                                    type: boolean
+                                  followedBy:
+                                    type: boolean
+                                  enableNotifications:
+                                    type: boolean
+    delete:
+      summary: Unlike a cast
+      operationId: unlikeCast
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - castHash
+              properties:
+                castHash:
+                  type: string
+                  example: '0x0bb901f364673e86adfc0ed4c14ececb8d9b9d27'
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Unlike response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+                    properties:
+                      success:
+                        type: boolean
+                        example: true
+  /v2/recasts:
+    put:
+      summary: Recast a cast
+      operationId: recastCast
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - castHash
+              properties:
+                castHash:
+                  type: string
+                  example: '0x0bb901f364673e86adfc0ed4c14ececb8d9b9d27'
+
+      responses:
+        '200':
+          description: Recast response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+                    properties:
+                      castHash:
+                        type: string
+                        example: '0x750a7269b4a3b70e28d3f450df33487047d4927f'
+    delete:
+      summary: Undo recast
+      operationId: undoRecast
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - castHash
+              properties:
+                castHash:
+                  type: string
+                  example: '0x0bb901f364673e86adfc0ed4c14ececb8d9b9d27'
+
+      responses:
+        '200':
+          description: Undo recast response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+                    properties:
+                      success:
+                        type: boolean
+                        example: true
+  /v2/cast-attachments:
+    put:
+      summary: Attach embeds to a cast
+      operationId: attachEmbeds
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+                embeds:
+                  type: array
+                  items:
+                    type: string
+                    format: uri
+
+      responses:
+        '200':
+          description: Attachment response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+  /v2/cast-recasters:
+    get:
+      summary: Get cast recasters
+      operationId: getCastRecasters
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: castHash
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+            default: 15
+      responses:
+        '200':
+          description: A list of users who recasted the cast
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+                    properties:
+                      users:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            fid:
+                              type: integer
+                            username:
+                              type: string
+                            displayName:
+                              type: string
+                            pfp:
+                              type: object
+                              properties:
+                                url:
+                                  type: string
+                                verified:
+                                  type: boolean
+                            profile:
+                              type: object
+                              properties:
+                                bio:
+                                  type: object
+                                  properties:
+                                    text:
+                                      type: string
+                                    mentions:
+                                      type: array
+                                      items: {}
+                                    channelMentions:
+                                      type: array
+                                      items: {}
+                                location:
+                                  type: object
+                                  properties:
+                                    placeId:
+                                      type: string
+                                    description:
+                                      type: string
+                                earlyWalletAdopter:
+                                  type: boolean
+                            followerCount:
+                              type: integer
+                            followingCount:
+                              type: integer
+                            viewerContext:
+                              type: object
+                              properties:
+                                following:
+                                  type: boolean
+                                followedBy:
+                                  type: boolean
+                                enableNotifications:
+                                  type: boolean
+  /v2/cast-quotes:
+    get:
+      summary: Get quotes of a cast
+      operationId: getCastQuotes
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: castHash
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+            default: 15
+      responses:
+        '200':
+          description: A list of quote casts referencing the given cast
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+                    properties:
+                      quotes:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            hash:
+                              type: string
+                            threadHash:
+                              type: string
+                            parentSource:
+                              type: object
+                              properties:
+                                type:
+                                  type: string
+                                url:
+                                  type: string
+                            author:
+                              type: object
+                              properties:
+                                fid:
+                                  type: integer
+                                username:
+                                  type: string
+                                displayName:
+                                  type: string
+                                pfp:
+                                  type: object
+                                  properties:
+                                    url:
+                                      type: string
+                                    verified:
+                                      type: boolean
+                                profile:
+                                  type: object
+                                  properties:
+                                    bio:
+                                      type: object
+                                      properties:
+                                        text:
+                                          type: string
+                                        mentions:
+                                          type: array
+                                          items: {}
+                                        channelMentions:
+                                          type: array
+                                          items: {}
+                                    location:
+                                      type: object
+                                      properties:
+                                        placeId:
+                                          type: string
+                                        description:
+                                          type: string
+                                    earlyWalletAdopter:
+                                      type: boolean
+                                followerCount:
+                                  type: integer
+                                followingCount:
+                                  type: integer
+                                viewerContext:
+                                  type: object
+                                  properties:
+                                    following:
+                                      type: boolean
+                            text:
+                              type: string
+                            timestamp:
+                              type: integer
+  /v2/me:
+    get:
+      summary: Get current user
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful retrieval of current user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+  /v2/search-channels:
+    get:
+      summary: Search for channels
+      operationId: searchChannels
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: q
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: prioritizeFollowed
+          in: query
+          required: false
+          schema:
+            type: boolean
+            default: true
+        - name: forComposer
+          in: query
+          required: false
+          schema:
+            type: boolean
+            default: false
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+            default: 40
+      responses:
+        '200':
+          description: A list of matched channels
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+                    properties:
+                      channels:
+                        type: array
+                        items: {}
+  /v2/draft-caststorms:
+    get:
+      summary: Get draft cast storms
+      operationId: getDraftCaststorms
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+            default: 15
+      responses:
+        '200':
+          description: A list of draft cast storms
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+                    properties:
+                      drafts:
+                        type: array
+                        items: {}
+    post:
+      summary: Create a new draft caststorm
+      operationId: createDraftCaststorm
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                caststorm:
+                  type: object
+                  properties:
+                    casts:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          text:
+                            type: string
+                          embeds:
+                            type: array
+                            items: {}
+      parameters:
+        - name: idempotency-key
+          in: header
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Created draft caststorm
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+                    properties:
+                      draft:
+                        type: object
+                        properties:
+                          draftId:
+                            type: string
+                          casts:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                text:
+                                  type: string
+                                embeds:
+                                  type: array
+                                  items: {}
+  /v2/casts:
+    post:
+      summary: Create a new cast
+      operationId: createCast
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+                embeds:
+                  type: array
+                  items: {}
+
+      responses:
+        '200':
+          description: Cast created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+                    properties:
+                      cast:
+                        type: object
+                        properties:
+                          hash:
+                            type: string
+                          threadHash:
+                            type: string
+                          text:
+                            type: string
+                          timestamp:
+                            type: integer
+                          embeds:
+                            type: object
+                            properties:
+                              images:
+                                type: array
+                                items: {}
+                              urls:
+                                type: array
+                                items: {}
+                              videos:
+                                type: array
+                                items: {}
+                              unknowns:
+                                type: array
+                                items: {}
+    delete:
+      summary: Delete a cast
+      operationId: deleteCast
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                castHash:
+                  type: string
+
+      responses:
+        '200':
+          description: Cast deleted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+                    properties:
+                      success:
+                        type: boolean
+  /v2/draft-casts:
+    delete:
+      summary: Delete a draft cast
+      operationId: deleteDraftCast
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                draftId:
+                  type: string
+
+      responses:
+        '200':
+          description: Draft cast deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+  /v2/all-channels:
+    get:
+      summary: Get all channels
+      description: Returns a list of all channels on Warpcast
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+                    properties:
+                      channels:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                            url:
+                              type: string
+                            name:
+                              type: string
+                            description:
+                              type: string
+                            descriptionMentions:
+                              type: array
+                              items:
+                                type: integer
+                            descriptionMentionsPositions:
+                              type: array
+                              items:
+                                type: integer
+                            imageUrl:
+                              type: string
+                            headerImageUrl:
+                              type: string
+                            leadFid:
+                              type: integer
+                            moderatorFids:
+                              type: array
+                              items:
+                                type: integer
+                            createdAt:
+                              type: integer
+                            followerCount:
+                              type: integer
+                            memberCount:
+                              type: integer
+                            pinnedCastHash:
+                              type: string
+                            publicCasting:
+                              type: boolean
+                            externalLink:
+                              type: object
+                              properties:
+                                title:
+                                  type: string
+                                url:
+                                  type: string
+  /v1/channel:
+    get:
+      summary: Get details of a specific channel
+      parameters:
+        - name: channelId
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Channel details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+                    properties:
+                      channel:
+                        $ref: '#/components/schemas/Channel'
+  /v1/channel-followers:
+    get:
+      summary: Get followers of a channel
+      parameters:
+        - name: channelId
+          in: query
+          required: true
+          schema:
+            type: string
+          description: The ID of the channel
+        - name: cursor
+          in: query
+          required: false
+          schema:
+            type: string
+          description: Cursor for pagination
+      responses:
+        '200':
+          description: A list of channel followers
+          content:
+            application/json:
+              example:
+                result:
+                  users:
+                    - fid: 466624
+                      followedAt: 1712685183
+                    - fid: 469283
+                      followedAt: 1712685067
+                next:
+                  cursor: 'eyJwYWdlIjoxfQ=='
+  /v1/user-following-channels:
+    get:
+      summary: Get list of channels followed by a user
+      parameters:
+        - in: query
+          name: fid
+          schema:
+            type: integer
+          required: true
+      responses:
+        '200':
+          description: Successful response with list of channels followed by the user
+          content:
+            application/json:
+              example:
+                result:
+                  channels:
+                    - id: fc-updates
+                      url: https://warpcast.com/~/channel/fc-updates
+                      name: fc-updates
+                      description: Important updates about things happening in Farcaster
+                      imageUrl: https://i.imgur.com/YnnrPaH.png
+                      leadFid: 2
+                      moderatorFid: 5448
+                      moderatorFids:
+                        - 5448
+                        - 3
+                      createdAt: 1712162074
+                      followerCount: 17034
+                      followedAt: 1712162620
+                next:
+                  cursor: '...'
+  /v1/user-channel:
+    get:
+      summary: Check if a user is following a channel
+      parameters:
+        - in: query
+          name: fid
+          schema:
+            type: integer
+          required: true
+        - in: query
+          name: channelId
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response with follow status
+          content:
+            application/json:
+              example:
+                result:
+                  following: true
+                  followedAt: 1687943747
+  /fc/channel-members:
+    get:
+      summary: Get members of a channel
+      parameters:
+        - in: query
+          name: channelId
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response with list of members
+          content:
+            application/json:
+              example:
+                result:
+                  members:
+                    - fid: 466624
+                      memberAt: 1712685183
+                    - fid: 469283
+                      memberAt: 1712685067
+                next:
+                  cursor: '...'
+  /fc/channel-invites:
+    get:
+      summary: Get channel invites
+      parameters:
+        - in: query
+          name: channelId
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response with list of channel invites
+          content:
+            application/json:
+              example:
+                result:
+                  invites:
+                    - channelId: coke-zero
+                      invitedFid: 194
+                      invitedAt: 1726879628
+                      inviterFid: 18949
+                      role: member
+                    - channelId: brain-teasers
+                      invitedFid: 627785
+                      invitedAt: 1726874566
+                      inviterFid: 235128
+                      role: member
+                next:
+                  cursor: '...'
+    post:
+      summary: Invite a user to a channel
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            example:
+              channelId: 'evm'
+              inviteFid: 341234
+              role: 'member'
+      responses:
+        '200':
+          description: Successful invite operation
+          content:
+            application/json:
+              example:
+                result:
+                  success: true
+    delete:
+      summary: Remove a user's invite from a channel
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            example:
+              channelId: 'evm'
+              removeFid: 341234
+              role: 'member'
+      responses:
+        '200':
+          description: Successful removal of invite
+          content:
+            application/json:
+              example:
+                result:
+                  success: true
+    patch:
+      summary: Accept a channel invite
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            example:
+              channelId: 'evm'
+              role: 'member'
+              accept: true
+      responses:
+        '200':
+          description: Successful acceptance of invite
+          content:
+            application/json:
+              example:
+                result:
+                  success: true
+  /fc/moderated-casts:
+    get:
+      summary: Get moderated casts for a channel
+      parameters:
+        - in: query
+          name: channelId
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response with list of moderation actions
+          content:
+            application/json:
+              example:
+                result:
+                  moderationActions:
+                    - castHash: '0x6b2253105ef8c1d1b984a5df87182b105a1f0b3a'
+                      channelId: 'welcome'
+                      action: 'hide'
+                      moderatedAt: 1727767637
+                next:
+                  cursor: '...'
+  /fc/channel-restricted-users:
+    get:
+      summary: Get restricted users in a channel
+      parameters:
+        - in: query
+          name: channelId
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response with list of restricted users
+          content:
+            application/json:
+              example:
+                result:
+                  restrictedUsers:
+                    - fid: 1234
+                      channelId: 'welcome'
+                      restrictedAt: 1727767637
+                next:
+                  cursor: '...'
+  /fc/channel-bans:
+    get:
+      summary: Get banned users in a channel
+      parameters:
+        - in: query
+          name: channelId
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response with list of banned users
+          content:
+            application/json:
+              example:
+                result:
+                  bannedUsers:
+                    - fid: 1234
+                      channelId: 'welcome'
+                      bannedAt: 1727767637
+                next:
+                  cursor: '...'
+    post:
+      summary: Ban a user from a channel
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            example:
+              channelId: 'memes'
+              banFid: 1234
+      responses:
+        '200':
+          description: Successful ban operation
+          content:
+            application/json:
+              example:
+                result:
+                  success: true
+    delete:
+      summary: Unban a user from a channel
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            example:
+              channelId: 'memes'
+              banFid: 1234
+      responses:
+        '200':
+          description: Successful unban operation
+          content:
+            application/json:
+              example:
+                result:
+                  success: true
+  /fc/channel-follows:
+    post:
+      summary: Follow a channel
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            example:
+              channelId: 'evm'
+      responses:
+        '200':
+          description: Successful follow operation
+          content:
+            application/json:
+              example:
+                result:
+                  success: true
+
+    delete:
+      summary: Unfollow a channel
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            example:
+              channelId: 'evm'
+      responses:
+        '200':
+          description: Successful unfollow operation
+          content:
+            application/json:
+              example:
+                result:
+                  success: true
+  /fc/moderate-cast:
+    post:
+      summary: Moderate a cast (e.g., hide it)
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            example:
+              castHash: '0x2694aa649f3608bd11fe6621946782d1eb0ae3c4'
+              action: 'hide'
+      responses:
+        '200':
+          description: Successful moderation action
+          content:
+            application/json:
+              example:
+                result:
+                  success: true
+  /fc/pinned-casts:
+    put:
+      summary: Pin a cast to a channel
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            example:
+              castHash: '0x2694aa649f3608bd11fe6621946782d1eb0ae3c4'
+              notifyChannelFollowers: true
+      responses:
+        '200':
+          description: Successful pin operation
+          content:
+            application/json:
+              example:
+                result:
+                  success: true
+
+    delete:
+      summary: Unpin a cast from a channel
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            example:
+              channelId: 'welcome'
+      responses:
+        '200':
+          description: Successful unpin operation
+          content:
+            application/json:
+              example:
+                result:
+                  success: true
+  /v2/discover-actions:
+    get:
+      summary: Get discoverable actions
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: query
+          name: list
+          schema:
+            type: string
+          required: true
+        - in: query
+          name: limit
+          schema:
+            type: integer
+          required: false
+      responses:
+        '200':
+          description: Successful response with list of discoverable actions
+          content:
+            application/json:
+              example:
+                result:
+                  actions:
+                    - name: Upthumb
+                      icon: thumbsup
+                      description: Give casts 'upthumbs' and see them on a leaderboard.
+                      aboutUrl: https://github.com/horsefacts/upthumbs
+                      actionUrl: https://upthumbs.app/api/upthumb
+                      action:
+                        actionType: post
+                        postUrl: https://upthumbs.app/api/upthumb
+                  next:
+                    cursor: "..."
+  /v2/discover-composer-actions:
+    get:
+      summary: Get top discoverable composer actions
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: query
+          name: list
+          schema:
+            type: string
+          required: true
+        - in: query
+          name: limit
+          schema:
+            type: integer
+          required: false
+      responses:
+        '200':
+          description: Successful response with list of discoverable composer actions
+          content:
+            application/json:
+              example:
+                result:
+                  actions:
+                    - name: Poll
+                      icon: list-unordered
+                      description: Create a poll
+                      aboutUrl: https://poll.example.com/
+                      imageUrl: https://poll.example.com/images/logo.png
+                      actionUrl: https://poll.example.com/api/action/
+                      action:
+                        actionType: post
+                        postUrl: https://poll.ecample.com/api/action/
+                  next:
+                    cursor: "..."
+  /fc/blocked-users:
+    get:
+      summary: Get list of blocked users
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response with list of blocked users
+          content:
+            application/json:
+              example:
+                result:
+                  blockedUsers:
+                    - blockerFid: 5
+                      blockedFid: 10
+                      createdAt: 1724854521
+                  next:
+                    cursor: "..."
+    post:
+      summary: Block a user
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            example:
+              blockFid: 1234
+      responses:
+        '200':
+          description: Successful block operation
+          content:
+            application/json:
+              example:
+                result:
+                  success: true
+    delete:
+      security:
+        - bearerAuth: [ ]
+      summary: Unblock a user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            example:
+              unblockFid: 1234
+      responses:
+        '200':
+          description: Successful unblock operation
+          content:
+            application/json:
+              example:
+                result:
+                  success: true
+  /fc/account-verifications:
+    get:
+      summary: Get account verifications
+      parameters:
+        - in: query
+          name: fid
+          schema:
+            type: integer
+          required: false
+          description: Limit the response to a specific user.
+      responses:
+        '200':
+          description: Successful response with list of account verifications
+          content:
+            application/json:
+              example:
+                result:
+                  verifications:
+                    - fid: 3
+                      platform: "x"
+                      platformId: "9615352"
+                      platformUsername: "dwr"
+                      verifiedAt: 1728505748
+                next:
+                  cursor: "..."
+  /v1/creator-rewards-winner-history:
+    get:
+      summary: Get creator reward winners
+      parameters:
+        - in: query
+          name: periodsAgo
+          schema:
+            type: integer
+          required: false
+          description: How many periods ago to fetch the results for. 0 or undefined returns results for the most recent period.
+      responses:
+        '200':
+          description: Successful response with creator reward winners history
+          content:
+            application/json:
+              example:
+                result:
+                  periodStartTimestamp: 1738080000000
+                  periodEndTimestamp: 1738684800000
+                  winners:
+                    - fid: 1
+                      score: 10
+                      rank: 1
+                      rewardCents: 1000
+                      walletAddress: "0x0000000000000000000000000000000000000000"
+                    - fid: 420
+                      score: 1
+                      rank: 2
+                      rewardCents: 500
+                      walletAddress: "0x0000000000000000000000000000000000000001"
+                next:
+                  cursor: "..."
+  /fc/primary-address:
+    get:
+      summary: Get User Primary Address
+      parameters:
+        - in: query
+          name: fid
+          required: true
+          schema:
+            type: integer
+          description: The fid of the user.
+        - in: query
+          name: protocol
+          required: true
+          schema:
+            type: string
+            enum: [ethereum, solana]
+          description: The protocol of the address to fetch.
+      responses:
+        '200':
+          description: Successful response with the user's primary address.
+          content:
+            application/json:
+              example:
+                result:
+                  address:
+                    fid: 12152
+                    protocol: ethereum
+                    address: "0x0BD6b1DFE1eA61C2b487806ECd06b5A95383a4e3"
+  /fc/primary-addresses:
+    get:
+      summary: Get Multiple User Primary Addresses
+      parameters:
+        - in: query
+          name: fids
+          required: true
+          schema:
+            type: string
+          description: Comma-separated list of FIDs to fetch primary addresses for.
+        - in: query
+          name: protocol
+          required: true
+          schema:
+            type: string
+            enum: [ethereum, solana]
+          description: The protocol of the addresses to fetch.
+      responses:
+        '200':
+          description: Successful response with list of primary addresses.
+          content:
+            application/json:
+              example:
+                result:
+                  addresses:
+                    - fid: 12152
+                      success: true
+                      address:
+                        fid: 12152
+                        protocol: ethereum
+                        address: "0x0BD6b1DFE1eA61C2b487806ECd06b5A95383a4e3"
+                    - fid: 2
+                      success: true
+                      address:
+                        fid: 2
+                        protocol: ethereum
+                        address: "0x661E2209B9C6B06C1F32A0639f60D3294185ab35"
+                    - fid: 1315
+                      success: true
+                      address:
+                        fid: 1315
+                        protocol: ethereum
+                        address: "0x0450a8545028547Df4129Aa5b4EC5794D5aF2409"
+                    - fid: 39939393939
+                      success: false
+  /fc/starter-pack-members:
+    get:
+      summary: Get Starter Pack Members
+      parameters:
+        - in: query
+          name: id
+          required: true
+          schema:
+            type: string
+          description: >
+            Starter pack ID, as found in the public Warpcast pack URL or in the non-authed public API of starter pack metadata.
+      responses:
+        '200':
+          description: Successful response with list of starter pack members.
+          content:
+            application/json:
+              example:
+                result:
+                  members:
+                    - fid: 3
+                      memberAt: 1740172669691
+                    - fid: 296646
+                      memberAt: 1740172669691
+                next:
+                  cursor: "..."
+  /v2/ext-send-direct-cast:
+    put:
+      security:
+        - bearerAuth: []
+      summary: Send a Direct Cast via External API
+      description: >
+        Send a programmatic Direct Cast to a recipient. The request must include a unique idempotency key.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - recipientFid
+                - message
+                - idempotencyKey
+              properties:
+                recipientFid:
+                  type: integer
+                  description: The Farcaster ID of the recipient.
+                message:
+                  type: string
+                  description: The direct cast message.
+                idempotencyKey:
+                  type: string
+                  format: uuid
+                  description: A unique key to ensure idempotency.
+            example:
+              recipientFid: 6841
+              message: "this is a programmatic Direct Cast"
+              idempotencyKey: "ed3d9b95-5eed-475f-9c7d-58bdc3b9ac00"
+      responses:
+        '200':
+          description: Direct cast sent successfully
+          content:
+            application/json:
+              example:
+                result:
+                  success: true
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+  schemas:
+    OnboardingStateResponse:
+      type: object
+      properties:
+        result:
+          type: object
+          properties:
+            state:
+              $ref: '#/components/schemas/OnboardingState'
+    OnboardingState:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        email:
+          type: string
+          format: email
+        user:
+          $ref: '#/components/schemas/User'
+        hasOnboarding:
+          type: boolean
+        hasConfirmedEmail:
+          type: boolean
+        handledConnectAddress:
+          type: boolean
+        canRegisterUsername:
+          type: boolean
+        needsRegistrationPayment:
+          type: boolean
+        hasFid:
+          type: boolean
+        hasFname:
+          type: boolean
+        hasDelegatedSigner:
+          type: boolean
+        hasSetupProfile:
+          type: boolean
+        hasCompletedRegistration:
+          type: boolean
+        hasStorage:
+          type: boolean
+        handledPushNotificationsNudge:
+          type: boolean
+        handledContactsNudge:
+          type: boolean
+        handledInterestsNudge:
+          type: boolean
+        hasValidPaidInvite:
+          type: boolean
+        hasWarpcastWalletAddress:
+          type: boolean
+        hasPhone:
+          type: boolean
+        needsPhone:
+          type: boolean
+        sponsoredRegisterEligible:
+          type: boolean
+        geoRestricted:
+          type: boolean
+    UserByFidResponse:
+      type: object
+      properties:
+        result:
+          type: object
+          properties:
+            user:
+              $ref: '#/components/schemas/UserWithExtras'
+            collectionsOwned:
+              type: array
+              items: {}
+            extras:
+              $ref: '#/components/schemas/UserExtras'
+    DirectCastInboxResponse:
+      type: object
+      properties:
+        result:
+          type: object
+          properties:
+            hasArchived:
+              type: boolean
+            hasUnreadRequests:
+              type: boolean
+            requestsCount:
+              type: integer
+            conversations:
+              type: array
+              items:
+                type: object
+                properties:
+                  conversationId:
+                    type: string
+                  name:
+                    type: string
+                  description:
+                    type: string
+                  photoUrl:
+                    type: string
+                  adminFids:
+                    type: array
+                    items:
+                      type: integer
+                  lastReadTime:
+                    type: integer
+                  lastMessage:
+                    type: object
+                    properties:
+                      conversationId:
+                        type: string
+                      senderFid:
+                        type: integer
+                      messageId:
+                        type: string
+                      serverTimestamp:
+                        type: integer
+                      type:
+                        type: string
+                      message:
+                        type: string
+                      hasMention:
+                        type: boolean
+                      reactions:
+                        type: array
+                        items: {}
+                      isPinned:
+                        type: boolean
+                      isDeleted:
+                        type: boolean
+                      senderContext:
+                        $ref: '#/components/schemas/User'
+                  isGroup:
+                    type: boolean
+                  createdAt:
+                    type: integer
+                  viewerContext:
+                    type: object
+                    properties:
+                      category:
+                        type: string
+                      lastReadAt:
+                        type: integer
+                      muted:
+                        type: boolean
+                      manuallyMarkedUnread:
+                        type: boolean
+                      pinned:
+                        type: boolean
+                      unreadCount:
+                        type: integer
+                      unreadMentionsCount:
+                        type: integer
+    UserAppContextResponse:
+      type: object
+      properties:
+        result:
+          type: object
+          properties:
+            context:
+              type: object
+              properties:
+                canAddLinks:
+                  type: boolean
+                showConnectedApps:
+                  type: boolean
+                signerRequestsEnabled:
+                  type: boolean
+                prompts:
+                  type: array
+                  items: {}
+                adminForChannelKeys:
+                  type: array
+                  items:
+                    type: string
+                modOfChannelKeys:
+                  type: array
+                  items:
+                    type: string
+                memberOfChannelKeys:
+                  type: array
+                  items:
+                    type: string
+                canEditAllChannels:
+                  type: boolean
+                canUploadVideo:
+                  type: boolean
+                statsigEnabled:
+                  type: boolean
+                shouldPromptForPushNotifications:
+                  type: boolean
+                shouldPromptForUserFollowsSyncContacts:
+                  type: boolean
+                castActions:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/CastAction'
+                canAddCastAction:
+                  type: boolean
+                enabledCastAction:
+                  $ref: '#/components/schemas/CastAction'
+                notificationTabsV2:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      name:
+                        type: string
+                enabledVideoAutoplay:
+                  type: boolean
+                regularCastByteLimit:
+                  type: integer
+                longCastByteLimit:
+                  type: integer
+                newUserStatus:
+                  type: object
+                country:
+                  type: string
+                higherClientEventSamplingRateEnabled:
+                  type: boolean
+    CastAction:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        octicon:
+          type: string
+        actionUrl:
+          type: string
+        action:
+          type: object
+          properties:
+            actionType:
+              type: string
+            postUrl:
+              type: string
+    User:
+      type: object
+      properties:
+        fid:
+          type: integer
+        username:
+          type: string
+        displayName:
+          type: string
+        pfp:
+          $ref: '#/components/schemas/ProfilePicture'
+        profile:
+          $ref: '#/components/schemas/Profile'
+        followerCount:
+          type: integer
+        followingCount:
+          type: integer
+        viewerContext:
+          $ref: '#/components/schemas/ViewerContext'
+    UserWithExtras:
+      allOf:
+        - $ref: '#/components/schemas/User'
+        - type: object
+          properties:
+            connectedAccounts:
+              type: array
+              items: {}
+    ProfilePicture:
+      type: object
+      properties:
+        url:
+          type: string
+          format: uri
+        verified:
+          type: boolean
+    Profile:
+      type: object
+      properties:
+        bio:
+          $ref: '#/components/schemas/Bio'
+        location:
+          $ref: '#/components/schemas/Location'
+    Bio:
+      type: object
+      properties:
+        text:
+          type: string
+        mentions:
+          type: array
+          items: {}
+        channelMentions:
+          type: array
+          items: {}
+    Location:
+      type: object
+      properties:
+        placeId:
+          type: string
+        description:
+          type: string
+    ViewerContext:
+      type: object
+      properties:
+        following:
+          type: boolean
+        followedBy:
+          type: boolean
+        enableNotifications:
+          type: boolean
+        canSendDirectCasts:
+          type: boolean
+        hasUploadedInboxKeys:
+          type: boolean
+    UserExtras:
+      type: object
+      properties:
+        fid:
+          type: integer
+        custodyAddress:
+          type: string
+        ethWallets:
+          type: array
+          items:
+            type: string
+        solanaWallets:
+          type: array
+          items:
+            type: string
+    UserPreferencesResponse:
+      type: object
+      properties:
+        result:
+          type: object
+          properties:
+            preferences:
+              type: object
+              additionalProperties: true
+    HighlightedChannelsResponse:
+      type: object
+      properties:
+        result:
+          type: object
+          properties:
+            channels:
+              type: array
+              items:
+                $ref: '#/components/schemas/Channel'
+            viewerContext:
+              type: object
+              properties:
+                defaultFeed:
+                  type: string
+    Channel:
+      type: object
+      properties:
+        type:
+          type: string
+        key:
+          type: string
+        name:
+          type: string
+        imageUrl:
+          type: string
+        fastImageUrl:
+          type: string
+        feeds:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              type:
+                type: string
+        description:
+          type: string
+        followerCount:
+          type: integer
+        memberCount:
+          type: integer
+        showCastSourceLabels:
+          type: boolean
+        showCastTags:
+          type: boolean
+        sectionRank:
+          type: integer
+        subscribable:
+          type: boolean
+        publicCasting:
+          type: boolean
+        inviteCode:
+          type: string
+        headerImageUrl:
+          type: string
+        headerAction:
+          type: object
+          properties:
+            title:
+              type: string
+            target:
+              type: string
+        headerActionMetadata:
+          type: object
+          additionalProperties: true
+        viewerContext:
+          type: object
+          properties:
+            following:
+              type: boolean
+            isMember:
+              type: boolean
+            hasUnseenItems:
+              type: boolean
+            favoritePosition:
+              type: integer
+            activityRank:
+              type: integer
+            canCast:
+              type: boolean
+    FeedItemsResponse:
+      type: object
+      properties:
+        result:
+          type: object
+          properties:
+            items:
+              type: array
+              items:
+                type: object
+                additionalProperties: true
+            latestMainCastTimestamp:
+              type: integer
+            feedTopSeenAtTimestamp:
+              type: integer
+            replaceFeed:
+              type: boolean
+    UserResponse:
+      type: object
+      properties:
+        result:
+          type: object
+          properties:
+            user:
+              type: object
+              properties:
+                fid:
+                  type: integer
+                username:
+                  type: string
+                displayName:
+                  type: string
+                pfp:
+                  type: object
+                  properties:
+                    url:
+                      type: string
+                    verified:
+                      type: boolean
+                profile:
+                  type: object
+                  properties:
+                    bio:
+                      type: object
+                      properties:
+                        text:
+                          type: string
+                        mentions:
+                          type: array
+                          items:
+                            type: string
+                        channelMentions:
+                          type: array
+                          items:
+                            type: string
+                    location:
+                      type: object
+                      properties:
+                        placeId:
+                          type: string
+                        description:
+                          type: string
+                followerCount:
+                  type: integer
+                followingCount:
+                  type: integer
+                connectedAccounts:
+                  type: array
+                  items:
+                    type: string
+                viewerContext:
+                  type: object
+                  properties:
+                    following:
+                      type: boolean
+                    followedBy:
+                      type: boolean
+                    canSendDirectCasts:
+                      type: boolean
+                    enableNotifications:
+                      type: boolean
+                    hasUploadedInboxKeys:
+                      type: boolean
+            collectionsOwned:
+              type: array
+              items:
+                type: object
+            extras:
+              type: object
+              properties:
+                fid:
+                  type: integer
+                custodyAddress:
+                  type: string
+                ethWallets:
+                  type: array
+                  items:
+                    type: string
+                solanaWallets:
+                  type: array
+                  items:
+                    type: string
+    SuggestedUsersResponse:
+      type: object
+      properties:
+        result:
+          type: object
+          properties:
+            users:
+              type: array
+              items:
+                type: object
+                additionalProperties: true
+            next:
+              type: object
+              properties:
+                cursor:
+                  type: string
