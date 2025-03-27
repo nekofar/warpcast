@@ -767,15 +767,14 @@ paths:
 
   /v2/user:
     get:
-      summary: Get user by fid
+      tags:
+        - User
+      summary: Get user information
+      description: Retrieves detailed user information based on FID
       parameters:
-        - name: fid
-          in: query
-          required: true
-          schema:
-            type: integer
+        - $ref: '#/components/parameters/fidParam'
       security:
-        - bearerAuth: []
+        - bearerAuth: [ ]
       responses:
         '200':
           description: Successful retrieval of user information
@@ -783,6 +782,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UserResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
   /v2/user-following-channels:
     get:
       summary: Get user following channels
