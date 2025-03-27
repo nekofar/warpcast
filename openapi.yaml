@@ -619,13 +619,12 @@ paths:
 
   /v2/user-by-fid:
     get:
+      tags:
+        - User
       summary: Get user by fid
+      description: Retrieves user information based on FID
       parameters:
-        - name: fid
-          in: query
-          required: true
-          schema:
-            type: integer
+        - $ref: '#/components/parameters/fidParam'
       security:
         - bearerAuth: []
       responses:
@@ -635,6 +634,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UserByFidResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
   /v2/direct-cast-inbox:
     get:
       summary: Get user's direct cast inbox
