@@ -789,25 +789,30 @@ paths:
 
   /v2/user-following-channels:
     get:
+      tags:
+        - Channels
+        - User
       summary: Get user following channels
+      description: Retrieves channels that the authenticated user is following
       parameters:
         - name: forComposer
           in: query
           schema:
             type: boolean
-        - name: limit
-          in: query
-          schema:
-            type: integer
+          description: Whether results are intended for the composer interface
+        - $ref: '#/components/parameters/limitParam'
       security:
-        - bearerAuth: []
+        - bearerAuth: [ ]
       responses:
         '200':
-          description: Successful retrieval of user-following channels
+          description: Successful retrieval of followed channels
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/HighlightedChannelsResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
   /v2/suggested-users:
     get:
       summary: Get suggested users
