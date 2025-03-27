@@ -703,9 +703,12 @@ paths:
 
   /v2/highlighted-channels:
     get:
+      tags:
+        - Channels
       summary: Get highlighted channels
+      description: Retrieves a list of featured or recommended channels
       security:
-        - bearerAuth: []
+        - bearerAuth: [ ]
       responses:
         '200':
           description: Successful retrieval of highlighted channels
@@ -713,6 +716,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/HighlightedChannelsResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
   /v2/feed-items:
     post:
       summary: Get feed items
