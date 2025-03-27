@@ -2,6 +2,602 @@ openapi: 3.0.3
 info:
   title: Warpcast API
   version: 1.0.0
+  description: API for interacting with the Warpcast platform
+
+tags:
+  - name: User
+    description: Operations related to user information and preferences
+  - name: Feed
+    description: Operations related to content feeds
+  - name: Channels
+    description: Operations related to channel management
+  - name: Messaging
+    description: Operations related to direct messages and casts
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+
+  parameters:
+    fidParam:
+      name: fid
+      in: query
+      required: true
+      schema:
+        type: integer
+      description: The user's FID (Farcaster ID)
+
+    limitParam:
+      name: limit
+      in: query
+      required: false
+      schema:
+        type: integer
+      description: Maximum number of items to return
+
+  responses:
+    NotFound:
+      description: The specified resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+
+    Unauthorized:
+      description: Authentication is required or failed
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+        message:
+          type: string
+        status:
+          type: integer
+
+    OnboardingStateResponse:
+      type: object
+      properties:
+        result:
+          type: object
+          properties:
+            state:
+              $ref: '#/components/schemas/OnboardingState'
+    OnboardingState:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        email:
+          type: string
+          format: email
+        user:
+          $ref: '#/components/schemas/User'
+        hasOnboarding:
+          type: boolean
+        hasConfirmedEmail:
+          type: boolean
+        handledConnectAddress:
+          type: boolean
+        canRegisterUsername:
+          type: boolean
+        needsRegistrationPayment:
+          type: boolean
+        hasFid:
+          type: boolean
+        hasFname:
+          type: boolean
+        hasDelegatedSigner:
+          type: boolean
+        hasSetupProfile:
+          type: boolean
+        hasCompletedRegistration:
+          type: boolean
+        hasStorage:
+          type: boolean
+        handledPushNotificationsNudge:
+          type: boolean
+        handledContactsNudge:
+          type: boolean
+        handledInterestsNudge:
+          type: boolean
+        hasValidPaidInvite:
+          type: boolean
+        hasWarpcastWalletAddress:
+          type: boolean
+        hasPhone:
+          type: boolean
+        needsPhone:
+          type: boolean
+        sponsoredRegisterEligible:
+          type: boolean
+        geoRestricted:
+          type: boolean
+    UserByFidResponse:
+      type: object
+      properties:
+        result:
+          type: object
+          properties:
+            user:
+              $ref: '#/components/schemas/UserWithExtras'
+            collectionsOwned:
+              type: array
+              items: {}
+            extras:
+              $ref: '#/components/schemas/UserExtras'
+    DirectCastInboxResponse:
+      type: object
+      properties:
+        result:
+          type: object
+          properties:
+            hasArchived:
+              type: boolean
+            hasUnreadRequests:
+              type: boolean
+            requestsCount:
+              type: integer
+            conversations:
+              type: array
+              items:
+                type: object
+                properties:
+                  conversationId:
+                    type: string
+                  name:
+                    type: string
+                  description:
+                    type: string
+                  photoUrl:
+                    type: string
+                  adminFids:
+                    type: array
+                    items:
+                      type: integer
+                  lastReadTime:
+                    type: integer
+                  lastMessage:
+                    type: object
+                    properties:
+                      conversationId:
+                        type: string
+                      senderFid:
+                        type: integer
+                      messageId:
+                        type: string
+                      serverTimestamp:
+                        type: integer
+                      type:
+                        type: string
+                      message:
+                        type: string
+                      hasMention:
+                        type: boolean
+                      reactions:
+                        type: array
+                        items: {}
+                      isPinned:
+                        type: boolean
+                      isDeleted:
+                        type: boolean
+                      senderContext:
+                        $ref: '#/components/schemas/User'
+                  isGroup:
+                    type: boolean
+                  createdAt:
+                    type: integer
+                  viewerContext:
+                    type: object
+                    properties:
+                      category:
+                        type: string
+                      lastReadAt:
+                        type: integer
+                      muted:
+                        type: boolean
+                      manuallyMarkedUnread:
+                        type: boolean
+                      pinned:
+                        type: boolean
+                      unreadCount:
+                        type: integer
+                      unreadMentionsCount:
+                        type: integer
+    UserAppContextResponse:
+      type: object
+      properties:
+        result:
+          type: object
+          properties:
+            context:
+              type: object
+              properties:
+                canAddLinks:
+                  type: boolean
+                showConnectedApps:
+                  type: boolean
+                signerRequestsEnabled:
+                  type: boolean
+                prompts:
+                  type: array
+                  items: {}
+                adminForChannelKeys:
+                  type: array
+                  items:
+                    type: string
+                modOfChannelKeys:
+                  type: array
+                  items:
+                    type: string
+                memberOfChannelKeys:
+                  type: array
+                  items:
+                    type: string
+                canEditAllChannels:
+                  type: boolean
+                canUploadVideo:
+                  type: boolean
+                statsigEnabled:
+                  type: boolean
+                shouldPromptForPushNotifications:
+                  type: boolean
+                shouldPromptForUserFollowsSyncContacts:
+                  type: boolean
+                castActions:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/CastAction'
+                canAddCastAction:
+                  type: boolean
+                enabledCastAction:
+                  $ref: '#/components/schemas/CastAction'
+                notificationTabsV2:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      name:
+                        type: string
+                enabledVideoAutoplay:
+                  type: boolean
+                regularCastByteLimit:
+                  type: integer
+                longCastByteLimit:
+                  type: integer
+                newUserStatus:
+                  type: object
+                country:
+                  type: string
+                higherClientEventSamplingRateEnabled:
+                  type: boolean
+    CastAction:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        octicon:
+          type: string
+        actionUrl:
+          type: string
+        action:
+          type: object
+          properties:
+            actionType:
+              type: string
+            postUrl:
+              type: string
+    User:
+      type: object
+      properties:
+        fid:
+          type: integer
+        username:
+          type: string
+        displayName:
+          type: string
+        pfp:
+          $ref: '#/components/schemas/ProfilePicture'
+        profile:
+          $ref: '#/components/schemas/Profile'
+        followerCount:
+          type: integer
+        followingCount:
+          type: integer
+        viewerContext:
+          $ref: '#/components/schemas/ViewerContext'
+    UserWithExtras:
+      allOf:
+        - $ref: '#/components/schemas/User'
+        - type: object
+          properties:
+            connectedAccounts:
+              type: array
+              items: {}
+    ProfilePicture:
+      type: object
+      properties:
+        url:
+          type: string
+          format: uri
+        verified:
+          type: boolean
+    Profile:
+      type: object
+      properties:
+        bio:
+          $ref: '#/components/schemas/Bio'
+        location:
+          $ref: '#/components/schemas/Location'
+    Bio:
+      type: object
+      properties:
+        text:
+          type: string
+        mentions:
+          type: array
+          items: {}
+        channelMentions:
+          type: array
+          items: {}
+    Location:
+      type: object
+      properties:
+        placeId:
+          type: string
+        description:
+          type: string
+    ViewerContext:
+      type: object
+      properties:
+        following:
+          type: boolean
+        followedBy:
+          type: boolean
+        enableNotifications:
+          type: boolean
+        canSendDirectCasts:
+          type: boolean
+        hasUploadedInboxKeys:
+          type: boolean
+    UserExtras:
+      type: object
+      properties:
+        fid:
+          type: integer
+        custodyAddress:
+          type: string
+        ethWallets:
+          type: array
+          items:
+            type: string
+        solanaWallets:
+          type: array
+          items:
+            type: string
+    UserPreferencesResponse:
+      type: object
+      properties:
+        result:
+          type: object
+          properties:
+            preferences:
+              type: object
+              additionalProperties: true
+    HighlightedChannelsResponse:
+      type: object
+      properties:
+        result:
+          type: object
+          properties:
+            channels:
+              type: array
+              items:
+                $ref: '#/components/schemas/Channel'
+            viewerContext:
+              type: object
+              properties:
+                defaultFeed:
+                  type: string
+    Channel:
+      type: object
+      properties:
+        type:
+          type: string
+        key:
+          type: string
+        name:
+          type: string
+        imageUrl:
+          type: string
+        fastImageUrl:
+          type: string
+        feeds:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              type:
+                type: string
+        description:
+          type: string
+        followerCount:
+          type: integer
+        memberCount:
+          type: integer
+        showCastSourceLabels:
+          type: boolean
+        showCastTags:
+          type: boolean
+        sectionRank:
+          type: integer
+        subscribable:
+          type: boolean
+        publicCasting:
+          type: boolean
+        inviteCode:
+          type: string
+        headerImageUrl:
+          type: string
+        headerAction:
+          type: object
+          properties:
+            title:
+              type: string
+            target:
+              type: string
+        headerActionMetadata:
+          type: object
+          additionalProperties: true
+        viewerContext:
+          type: object
+          properties:
+            following:
+              type: boolean
+            isMember:
+              type: boolean
+            hasUnseenItems:
+              type: boolean
+            favoritePosition:
+              type: integer
+            activityRank:
+              type: integer
+            canCast:
+              type: boolean
+    FeedItemsResponse:
+      type: object
+      properties:
+        result:
+          type: object
+          properties:
+            items:
+              type: array
+              items:
+                type: object
+                additionalProperties: true
+            latestMainCastTimestamp:
+              type: integer
+            feedTopSeenAtTimestamp:
+              type: integer
+            replaceFeed:
+              type: boolean
+    UserResponse:
+      type: object
+      properties:
+        result:
+          type: object
+          properties:
+            user:
+              type: object
+              properties:
+                fid:
+                  type: integer
+                username:
+                  type: string
+                displayName:
+                  type: string
+                pfp:
+                  type: object
+                  properties:
+                    url:
+                      type: string
+                    verified:
+                      type: boolean
+                profile:
+                  type: object
+                  properties:
+                    bio:
+                      type: object
+                      properties:
+                        text:
+                          type: string
+                        mentions:
+                          type: array
+                          items:
+                            type: string
+                        channelMentions:
+                          type: array
+                          items:
+                            type: string
+                    location:
+                      type: object
+                      properties:
+                        placeId:
+                          type: string
+                        description:
+                          type: string
+                followerCount:
+                  type: integer
+                followingCount:
+                  type: integer
+                connectedAccounts:
+                  type: array
+                  items:
+                    type: string
+                viewerContext:
+                  type: object
+                  properties:
+                    following:
+                      type: boolean
+                    followedBy:
+                      type: boolean
+                    canSendDirectCasts:
+                      type: boolean
+                    enableNotifications:
+                      type: boolean
+                    hasUploadedInboxKeys:
+                      type: boolean
+            collectionsOwned:
+              type: array
+              items:
+                type: object
+            extras:
+              type: object
+              properties:
+                fid:
+                  type: integer
+                custodyAddress:
+                  type: string
+                ethWallets:
+                  type: array
+                  items:
+                    type: string
+                solanaWallets:
+                  type: array
+                  items:
+                    type: string
+    SuggestedUsersResponse:
+      type: object
+      properties:
+        result:
+          type: object
+          properties:
+            users:
+              type: array
+              items:
+                type: object
+                additionalProperties: true
+            next:
+              type: object
+              properties:
+                cursor:
+                  type: string
+
 paths:
   /v2/onboarding-state:
     get:
@@ -2628,7 +3224,7 @@ paths:
                         actionType: post
                         postUrl: https://upthumbs.app/api/upthumb
                   next:
-                    cursor: "..."
+                    cursor: '...'
   /v2/discover-composer-actions:
     get:
       summary: Get top discoverable composer actions
@@ -2663,7 +3259,7 @@ paths:
                         actionType: post
                         postUrl: https://poll.ecample.com/api/action/
                   next:
-                    cursor: "..."
+                    cursor: '...'
   /fc/blocked-users:
     get:
       summary: Get list of blocked users
@@ -2681,7 +3277,7 @@ paths:
                       blockedFid: 10
                       createdAt: 1724854521
                   next:
-                    cursor: "..."
+                    cursor: '...'
     post:
       summary: Block a user
       security:
@@ -2702,7 +3298,7 @@ paths:
                   success: true
     delete:
       security:
-        - bearerAuth: [ ]
+        - bearerAuth: []
       summary: Unblock a user
       requestBody:
         required: true
@@ -2737,12 +3333,12 @@ paths:
                 result:
                   verifications:
                     - fid: 3
-                      platform: "x"
-                      platformId: "9615352"
-                      platformUsername: "dwr"
+                      platform: 'x'
+                      platformId: '9615352'
+                      platformUsername: 'dwr'
                       verifiedAt: 1728505748
                 next:
-                  cursor: "..."
+                  cursor: '...'
   /v1/creator-rewards-winner-history:
     get:
       summary: Get creator reward winners
@@ -2767,14 +3363,14 @@ paths:
                       score: 10
                       rank: 1
                       rewardCents: 1000
-                      walletAddress: "0x0000000000000000000000000000000000000000"
+                      walletAddress: '0x0000000000000000000000000000000000000000'
                     - fid: 420
                       score: 1
                       rank: 2
                       rewardCents: 500
-                      walletAddress: "0x0000000000000000000000000000000000000001"
+                      walletAddress: '0x0000000000000000000000000000000000000001'
                 next:
-                  cursor: "..."
+                  cursor: '...'
   /fc/primary-address:
     get:
       summary: Get User Primary Address
@@ -2802,7 +3398,7 @@ paths:
                   address:
                     fid: 12152
                     protocol: ethereum
-                    address: "0x0BD6b1DFE1eA61C2b487806ECd06b5A95383a4e3"
+                    address: '0x0BD6b1DFE1eA61C2b487806ECd06b5A95383a4e3'
   /fc/primary-addresses:
     get:
       summary: Get Multiple User Primary Addresses
@@ -2833,19 +3429,19 @@ paths:
                       address:
                         fid: 12152
                         protocol: ethereum
-                        address: "0x0BD6b1DFE1eA61C2b487806ECd06b5A95383a4e3"
+                        address: '0x0BD6b1DFE1eA61C2b487806ECd06b5A95383a4e3'
                     - fid: 2
                       success: true
                       address:
                         fid: 2
                         protocol: ethereum
-                        address: "0x661E2209B9C6B06C1F32A0639f60D3294185ab35"
+                        address: '0x661E2209B9C6B06C1F32A0639f60D3294185ab35'
                     - fid: 1315
                       success: true
                       address:
                         fid: 1315
                         protocol: ethereum
-                        address: "0x0450a8545028547Df4129Aa5b4EC5794D5aF2409"
+                        address: '0x0450a8545028547Df4129Aa5b4EC5794D5aF2409'
                     - fid: 39939393939
                       success: false
   /fc/starter-pack-members:
@@ -2872,7 +3468,7 @@ paths:
                     - fid: 296646
                       memberAt: 1740172669691
                 next:
-                  cursor: "..."
+                  cursor: '...'
   /v2/ext-send-direct-cast:
     put:
       security:
@@ -2903,8 +3499,8 @@ paths:
                   description: A unique key to ensure idempotency.
             example:
               recipientFid: 6841
-              message: "this is a programmatic Direct Cast"
-              idempotencyKey: "ed3d9b95-5eed-475f-9c7d-58bdc3b9ac00"
+              message: 'this is a programmatic Direct Cast'
+              idempotencyKey: 'ed3d9b95-5eed-475f-9c7d-58bdc3b9ac00'
       responses:
         '200':
           description: Direct cast sent successfully
@@ -2913,544 +3509,3 @@ paths:
               example:
                 result:
                   success: true
-
-components:
-  securitySchemes:
-    bearerAuth:
-      type: http
-      scheme: bearer
-  schemas:
-    OnboardingStateResponse:
-      type: object
-      properties:
-        result:
-          type: object
-          properties:
-            state:
-              $ref: '#/components/schemas/OnboardingState'
-    OnboardingState:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        email:
-          type: string
-          format: email
-        user:
-          $ref: '#/components/schemas/User'
-        hasOnboarding:
-          type: boolean
-        hasConfirmedEmail:
-          type: boolean
-        handledConnectAddress:
-          type: boolean
-        canRegisterUsername:
-          type: boolean
-        needsRegistrationPayment:
-          type: boolean
-        hasFid:
-          type: boolean
-        hasFname:
-          type: boolean
-        hasDelegatedSigner:
-          type: boolean
-        hasSetupProfile:
-          type: boolean
-        hasCompletedRegistration:
-          type: boolean
-        hasStorage:
-          type: boolean
-        handledPushNotificationsNudge:
-          type: boolean
-        handledContactsNudge:
-          type: boolean
-        handledInterestsNudge:
-          type: boolean
-        hasValidPaidInvite:
-          type: boolean
-        hasWarpcastWalletAddress:
-          type: boolean
-        hasPhone:
-          type: boolean
-        needsPhone:
-          type: boolean
-        sponsoredRegisterEligible:
-          type: boolean
-        geoRestricted:
-          type: boolean
-    UserByFidResponse:
-      type: object
-      properties:
-        result:
-          type: object
-          properties:
-            user:
-              $ref: '#/components/schemas/UserWithExtras'
-            collectionsOwned:
-              type: array
-              items: {}
-            extras:
-              $ref: '#/components/schemas/UserExtras'
-    DirectCastInboxResponse:
-      type: object
-      properties:
-        result:
-          type: object
-          properties:
-            hasArchived:
-              type: boolean
-            hasUnreadRequests:
-              type: boolean
-            requestsCount:
-              type: integer
-            conversations:
-              type: array
-              items:
-                type: object
-                properties:
-                  conversationId:
-                    type: string
-                  name:
-                    type: string
-                  description:
-                    type: string
-                  photoUrl:
-                    type: string
-                  adminFids:
-                    type: array
-                    items:
-                      type: integer
-                  lastReadTime:
-                    type: integer
-                  lastMessage:
-                    type: object
-                    properties:
-                      conversationId:
-                        type: string
-                      senderFid:
-                        type: integer
-                      messageId:
-                        type: string
-                      serverTimestamp:
-                        type: integer
-                      type:
-                        type: string
-                      message:
-                        type: string
-                      hasMention:
-                        type: boolean
-                      reactions:
-                        type: array
-                        items: {}
-                      isPinned:
-                        type: boolean
-                      isDeleted:
-                        type: boolean
-                      senderContext:
-                        $ref: '#/components/schemas/User'
-                  isGroup:
-                    type: boolean
-                  createdAt:
-                    type: integer
-                  viewerContext:
-                    type: object
-                    properties:
-                      category:
-                        type: string
-                      lastReadAt:
-                        type: integer
-                      muted:
-                        type: boolean
-                      manuallyMarkedUnread:
-                        type: boolean
-                      pinned:
-                        type: boolean
-                      unreadCount:
-                        type: integer
-                      unreadMentionsCount:
-                        type: integer
-    UserAppContextResponse:
-      type: object
-      properties:
-        result:
-          type: object
-          properties:
-            context:
-              type: object
-              properties:
-                canAddLinks:
-                  type: boolean
-                showConnectedApps:
-                  type: boolean
-                signerRequestsEnabled:
-                  type: boolean
-                prompts:
-                  type: array
-                  items: {}
-                adminForChannelKeys:
-                  type: array
-                  items:
-                    type: string
-                modOfChannelKeys:
-                  type: array
-                  items:
-                    type: string
-                memberOfChannelKeys:
-                  type: array
-                  items:
-                    type: string
-                canEditAllChannels:
-                  type: boolean
-                canUploadVideo:
-                  type: boolean
-                statsigEnabled:
-                  type: boolean
-                shouldPromptForPushNotifications:
-                  type: boolean
-                shouldPromptForUserFollowsSyncContacts:
-                  type: boolean
-                castActions:
-                  type: array
-                  items:
-                    $ref: '#/components/schemas/CastAction'
-                canAddCastAction:
-                  type: boolean
-                enabledCastAction:
-                  $ref: '#/components/schemas/CastAction'
-                notificationTabsV2:
-                  type: array
-                  items:
-                    type: object
-                    properties:
-                      id:
-                        type: string
-                      name:
-                        type: string
-                enabledVideoAutoplay:
-                  type: boolean
-                regularCastByteLimit:
-                  type: integer
-                longCastByteLimit:
-                  type: integer
-                newUserStatus:
-                  type: object
-                country:
-                  type: string
-                higherClientEventSamplingRateEnabled:
-                  type: boolean
-    CastAction:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        octicon:
-          type: string
-        actionUrl:
-          type: string
-        action:
-          type: object
-          properties:
-            actionType:
-              type: string
-            postUrl:
-              type: string
-    User:
-      type: object
-      properties:
-        fid:
-          type: integer
-        username:
-          type: string
-        displayName:
-          type: string
-        pfp:
-          $ref: '#/components/schemas/ProfilePicture'
-        profile:
-          $ref: '#/components/schemas/Profile'
-        followerCount:
-          type: integer
-        followingCount:
-          type: integer
-        viewerContext:
-          $ref: '#/components/schemas/ViewerContext'
-    UserWithExtras:
-      allOf:
-        - $ref: '#/components/schemas/User'
-        - type: object
-          properties:
-            connectedAccounts:
-              type: array
-              items: {}
-    ProfilePicture:
-      type: object
-      properties:
-        url:
-          type: string
-          format: uri
-        verified:
-          type: boolean
-    Profile:
-      type: object
-      properties:
-        bio:
-          $ref: '#/components/schemas/Bio'
-        location:
-          $ref: '#/components/schemas/Location'
-    Bio:
-      type: object
-      properties:
-        text:
-          type: string
-        mentions:
-          type: array
-          items: {}
-        channelMentions:
-          type: array
-          items: {}
-    Location:
-      type: object
-      properties:
-        placeId:
-          type: string
-        description:
-          type: string
-    ViewerContext:
-      type: object
-      properties:
-        following:
-          type: boolean
-        followedBy:
-          type: boolean
-        enableNotifications:
-          type: boolean
-        canSendDirectCasts:
-          type: boolean
-        hasUploadedInboxKeys:
-          type: boolean
-    UserExtras:
-      type: object
-      properties:
-        fid:
-          type: integer
-        custodyAddress:
-          type: string
-        ethWallets:
-          type: array
-          items:
-            type: string
-        solanaWallets:
-          type: array
-          items:
-            type: string
-    UserPreferencesResponse:
-      type: object
-      properties:
-        result:
-          type: object
-          properties:
-            preferences:
-              type: object
-              additionalProperties: true
-    HighlightedChannelsResponse:
-      type: object
-      properties:
-        result:
-          type: object
-          properties:
-            channels:
-              type: array
-              items:
-                $ref: '#/components/schemas/Channel'
-            viewerContext:
-              type: object
-              properties:
-                defaultFeed:
-                  type: string
-    Channel:
-      type: object
-      properties:
-        type:
-          type: string
-        key:
-          type: string
-        name:
-          type: string
-        imageUrl:
-          type: string
-        fastImageUrl:
-          type: string
-        feeds:
-          type: array
-          items:
-            type: object
-            properties:
-              name:
-                type: string
-              type:
-                type: string
-        description:
-          type: string
-        followerCount:
-          type: integer
-        memberCount:
-          type: integer
-        showCastSourceLabels:
-          type: boolean
-        showCastTags:
-          type: boolean
-        sectionRank:
-          type: integer
-        subscribable:
-          type: boolean
-        publicCasting:
-          type: boolean
-        inviteCode:
-          type: string
-        headerImageUrl:
-          type: string
-        headerAction:
-          type: object
-          properties:
-            title:
-              type: string
-            target:
-              type: string
-        headerActionMetadata:
-          type: object
-          additionalProperties: true
-        viewerContext:
-          type: object
-          properties:
-            following:
-              type: boolean
-            isMember:
-              type: boolean
-            hasUnseenItems:
-              type: boolean
-            favoritePosition:
-              type: integer
-            activityRank:
-              type: integer
-            canCast:
-              type: boolean
-    FeedItemsResponse:
-      type: object
-      properties:
-        result:
-          type: object
-          properties:
-            items:
-              type: array
-              items:
-                type: object
-                additionalProperties: true
-            latestMainCastTimestamp:
-              type: integer
-            feedTopSeenAtTimestamp:
-              type: integer
-            replaceFeed:
-              type: boolean
-    UserResponse:
-      type: object
-      properties:
-        result:
-          type: object
-          properties:
-            user:
-              type: object
-              properties:
-                fid:
-                  type: integer
-                username:
-                  type: string
-                displayName:
-                  type: string
-                pfp:
-                  type: object
-                  properties:
-                    url:
-                      type: string
-                    verified:
-                      type: boolean
-                profile:
-                  type: object
-                  properties:
-                    bio:
-                      type: object
-                      properties:
-                        text:
-                          type: string
-                        mentions:
-                          type: array
-                          items:
-                            type: string
-                        channelMentions:
-                          type: array
-                          items:
-                            type: string
-                    location:
-                      type: object
-                      properties:
-                        placeId:
-                          type: string
-                        description:
-                          type: string
-                followerCount:
-                  type: integer
-                followingCount:
-                  type: integer
-                connectedAccounts:
-                  type: array
-                  items:
-                    type: string
-                viewerContext:
-                  type: object
-                  properties:
-                    following:
-                      type: boolean
-                    followedBy:
-                      type: boolean
-                    canSendDirectCasts:
-                      type: boolean
-                    enableNotifications:
-                      type: boolean
-                    hasUploadedInboxKeys:
-                      type: boolean
-            collectionsOwned:
-              type: array
-              items:
-                type: object
-            extras:
-              type: object
-              properties:
-                fid:
-                  type: integer
-                custodyAddress:
-                  type: string
-                ethWallets:
-                  type: array
-                  items:
-                    type: string
-                solanaWallets:
-                  type: array
-                  items:
-                    type: string
-    SuggestedUsersResponse:
-      type: object
-      properties:
-        result:
-          type: object
-          properties:
-            users:
-              type: array
-              items:
-                type: object
-                additionalProperties: true
-            next:
-              type: object
-              properties:
-                cursor:
-                  type: string
