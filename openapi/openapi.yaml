@@ -4,6 +4,12 @@ info:
   version: 1.0.0
   description: API for interacting with the Warpcast platform
 
+servers:
+  - url: https://api.warpcast.com
+    description: Main API server
+  - url: https://client.warpcccastt.com
+    description: Client-side interface
+
 tags:
   - name: User
     description: Operations related to user information and preferences
@@ -855,7 +861,7 @@ paths:
           schema:
             type: integer
       security:
-        - bearerAuth: [ ]
+        - bearerAuth: []
       responses:
         '200':
           description: Successful retrieval of favorite frames
@@ -884,7 +890,7 @@ paths:
           schema:
             type: string
       security:
-        - bearerAuth: [ ]
+        - bearerAuth: []
       responses:
         '200':
           description: Successful retrieval of user by username
@@ -904,7 +910,7 @@ paths:
           schema:
             type: integer
       security:
-        - bearerAuth: [ ]
+        - bearerAuth: []
       responses:
         '200':
           description: Successful retrieval of channel streaks
@@ -922,7 +928,7 @@ paths:
       operationId: getUnseenCounts
       summary: Get unseen counts and feed state
       security:
-        - bearerAuth: [ ]
+        - bearerAuth: []
       responses:
         '200':
           description: Successful retrieval of unseen feed and notification data
@@ -981,7 +987,7 @@ paths:
           schema:
             type: integer
       security:
-        - bearerAuth: [ ]
+        - bearerAuth: []
       responses:
         '200':
           description: Successful retrieval of user thread casts
@@ -1014,7 +1020,7 @@ paths:
           schema:
             type: integer
       security:
-        - bearerAuth: [ ]
+        - bearerAuth: []
       responses:
         '200':
           description: Successful retrieval of known channel followers
@@ -1039,7 +1045,7 @@ paths:
       operationId: markAllNotificationsRead
       summary: Mark all notifications as read
       security:
-        - bearerAuth: [ ]
+        - bearerAuth: []
       requestBody:
         required: true
         content:
@@ -1072,7 +1078,7 @@ paths:
           required: true
           schema:
             type: string
-            enum: [ all, follows, reactions, mentions, replies ]
+            enum: [all, follows, reactions, mentions, replies]
           description: Notification tab type
         - in: query
           name: limit
@@ -1104,7 +1110,7 @@ paths:
         '429':
           description: Too many requests
       security:
-        - bearerAuth: [ ]
+        - bearerAuth: []
 
   /v2/set-last-checked-timestamp:
     put:
@@ -1136,7 +1142,7 @@ paths:
         '429':
           description: Too many requests
       security:
-        - bearerAuth: [ ]
+        - bearerAuth: []
 
   /v2/direct-cast-conversation:
     get:
@@ -1169,7 +1175,7 @@ paths:
         '429':
           description: Too many requests
       security:
-        - bearerAuth: [ ]
+        - bearerAuth: []
 
   /v2/discover-channels:
     get:
@@ -1207,7 +1213,7 @@ paths:
         '429':
           description: Too many requests
       security:
-        - bearerAuth: [ ]
+        - bearerAuth: []
 
   /v2/invites-available:
     get:
@@ -1236,7 +1242,7 @@ paths:
         '429':
           description: Too many requests
       security:
-        - bearerAuth: [ ]
+        - bearerAuth: []
 
   /v2/warpcast-sponsored-invites:
     get:
@@ -1263,7 +1269,7 @@ paths:
         '429':
           description: Too many requests
       security:
-        - bearerAuth: [ ]
+        - bearerAuth: []
 
   /v2/rewards-leaderboard:
     get:
@@ -1276,7 +1282,7 @@ paths:
           required: true
           schema:
             type: string
-            enum: [ invite ]
+            enum: [invite]
         - name: limit
           in: query
           required: false
@@ -1319,7 +1325,7 @@ paths:
         '429':
           description: Too many requests
       security:
-        - bearerAuth: [ ]
+        - bearerAuth: []
 
   /v2/rewards-scores-for-user:
     get:
@@ -1332,7 +1338,7 @@ paths:
           required: true
           schema:
             type: string
-            enum: [ invite ]
+            enum: [invite]
         - name: fid
           in: query
           required: true
@@ -1369,7 +1375,7 @@ paths:
         '429':
           description: Too many requests
       security:
-        - bearerAuth: [ ]
+        - bearerAuth: []
 
   /v2/rewards-metadata:
     get:
@@ -1382,7 +1388,7 @@ paths:
           required: true
           schema:
             type: string
-            enum: [ invite ]
+            enum: [invite]
       responses:
         '200':
           description: Invite rewards metadata
@@ -1407,7 +1413,7 @@ paths:
                             type: integer
                           tiers:
                             type: array
-                            items: { }
+                            items: {}
                           proportionalPayout:
                             type: object
                             properties:
@@ -1420,7 +1426,7 @@ paths:
         '429':
           description: Too many requests
       security:
-        - bearerAuth: [ ]
+        - bearerAuth: []
 
   /v2/bookmarked-casts:
     get:
@@ -1450,7 +1456,7 @@ paths:
                         items:
                           type: object
       security:
-        - bearerAuth: [ ]
+        - bearerAuth: []
 
   /v2/starter-packs:
     get:
@@ -1905,7 +1911,7 @@ paths:
       operationId: unmuteKeyword
       summary: Unmute a keyword
       security:
-        - bearerAuth: [ ]
+        - bearerAuth: []
       requestBody:
         required: true
         content:
