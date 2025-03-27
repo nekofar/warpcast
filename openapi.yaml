@@ -601,7 +601,10 @@ components:
 paths:
   /v2/onboarding-state:
     get:
+      tags:
+        - User
       summary: Get onboarding state
+      description: Retrieves the current onboarding state for the authenticated user
       security:
         - bearerAuth: []
       responses:
@@ -611,6 +614,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/OnboardingStateResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
   /v2/user-by-fid:
     get:
       summary: Get user by fid
