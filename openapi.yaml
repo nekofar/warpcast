@@ -685,9 +685,12 @@ paths:
 
   /v2/user-preferences:
     get:
+      tags:
+        - User
       summary: Get user preferences
+      description: Retrieves preference settings for the authenticated user
       security:
-        - bearerAuth: []
+        - bearerAuth: [ ]
       responses:
         '200':
           description: Successful retrieval of user preferences
@@ -695,6 +698,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UserPreferencesResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
   /v2/highlighted-channels:
     get:
       summary: Get highlighted channels
