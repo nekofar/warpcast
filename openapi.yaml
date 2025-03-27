@@ -847,6 +847,7 @@ paths:
 
   /v1/favorite-frames:
     get:
+      operationId: getUserFavoriteFrames
       summary: Get user's favorite frames
       parameters:
         - name: limit
@@ -854,7 +855,7 @@ paths:
           schema:
             type: integer
       security:
-        - bearerAuth: []
+        - bearerAuth: [ ]
       responses:
         '200':
           description: Successful retrieval of favorite frames
@@ -871,8 +872,10 @@ paths:
                         items:
                           type: object
                           additionalProperties: true
+
   /v2/user-by-username:
     get:
+      operationId: getUserByUsername
       summary: Get user by username
       parameters:
         - name: username
@@ -881,7 +884,7 @@ paths:
           schema:
             type: string
       security:
-        - bearerAuth: []
+        - bearerAuth: [ ]
       responses:
         '200':
           description: Successful retrieval of user by username
@@ -889,8 +892,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UserResponse'
+
   /v2/channel-streaks:
     get:
+      operationId: getChannelStreaksForUser
       summary: Get channel streaks for user
       parameters:
         - name: fid
@@ -899,7 +904,7 @@ paths:
           schema:
             type: integer
       security:
-        - bearerAuth: []
+        - bearerAuth: [ ]
       responses:
         '200':
           description: Successful retrieval of channel streaks
@@ -911,11 +916,13 @@ paths:
                   result:
                     type: object
                     additionalProperties: true
+
   /v2/unseen:
     get:
+      operationId: getUnseenCounts
       summary: Get unseen counts and feed state
       security:
-        - bearerAuth: []
+        - bearerAuth: [ ]
       responses:
         '200':
           description: Successful retrieval of unseen feed and notification data
@@ -953,8 +960,10 @@ paths:
                               type: boolean
                       warpTransactionCount:
                         type: integer
+
   /v2/user-thread-casts:
     get:
+      operationId: getUserThreadCasts
       summary: Get casts from a user thread
       parameters:
         - name: castHashPrefix
@@ -972,7 +981,7 @@ paths:
           schema:
             type: integer
       security:
-        - bearerAuth: []
+        - bearerAuth: [ ]
       responses:
         '200':
           description: Successful retrieval of user thread casts
@@ -989,8 +998,10 @@ paths:
                         items:
                           type: object
                           additionalProperties: true
+
   /v2/channel-followers-you-know:
     get:
+      operationId: getChannelFollowersYouKnow
       summary: Get mutual followers in a channel
       parameters:
         - name: channelKey
@@ -1003,7 +1014,7 @@ paths:
           schema:
             type: integer
       security:
-        - bearerAuth: []
+        - bearerAuth: [ ]
       responses:
         '200':
           description: Successful retrieval of known channel followers
@@ -1022,11 +1033,13 @@ paths:
                           additionalProperties: true
                       totalCount:
                         type: integer
+
   /v2/mark-all-notifications-read:
     put:
+      operationId: markAllNotificationsRead
       summary: Mark all notifications as read
       security:
-        - bearerAuth: []
+        - bearerAuth: [ ]
       requestBody:
         required: true
         content:
@@ -1047,8 +1060,10 @@ paths:
                     properties:
                       success:
                         type: boolean
+
   /v1/notifications-for-tab:
     get:
+      operationId: getNotifications
       summary: Get notifications for a specific tab
       description: Returns a list of notifications for the specified tab.
       parameters:
@@ -1057,7 +1072,7 @@ paths:
           required: true
           schema:
             type: string
-            enum: [all, follows, reactions, mentions, replies]
+            enum: [ all, follows, reactions, mentions, replies ]
           description: Notification tab type
         - in: query
           name: limit
@@ -1089,9 +1104,11 @@ paths:
         '429':
           description: Too many requests
       security:
-        - bearerAuth: []
+        - bearerAuth: [ ]
+
   /v2/set-last-checked-timestamp:
     put:
+      operationId: setLastCheckedTimestamp
       summary: Set last checked timestamp
       description: Updates the last checked timestamp for notifications.
       requestBody:
@@ -1119,9 +1136,11 @@ paths:
         '429':
           description: Too many requests
       security:
-        - bearerAuth: []
+        - bearerAuth: [ ]
+
   /v2/direct-cast-conversation:
     get:
+      operationId: getDirectCastConversation
       summary: Get direct cast conversation
       description: Fetches a direct cast conversation by conversationId.
       parameters:
@@ -1150,9 +1169,11 @@ paths:
         '429':
           description: Too many requests
       security:
-        - bearerAuth: []
+        - bearerAuth: [ ]
+
   /v2/discover-channels:
     get:
+      operationId: discoverChannels
       summary: Discover channels
       description: Retrieves a list of discoverable channels with optional limit.
       parameters:
@@ -1186,9 +1207,11 @@ paths:
         '429':
           description: Too many requests
       security:
-        - bearerAuth: []
+        - bearerAuth: [ ]
+
   /v2/invites-available:
     get:
+      operationId: getAvailableInvites
       summary: Check available invites
       description: Returns the number of allocated and currently available invites.
       responses:
@@ -1213,9 +1236,11 @@ paths:
         '429':
           description: Too many requests
       security:
-        - bearerAuth: []
+        - bearerAuth: [ ]
+
   /v2/warpcast-sponsored-invites:
     get:
+      operationId: getSponsoredInvites
       summary: Get sponsored invites
       description: Returns a list of Warpcast-sponsored invites available to the user.
       responses:
@@ -1238,9 +1263,11 @@ paths:
         '429':
           description: Too many requests
       security:
-        - bearerAuth: []
+        - bearerAuth: [ ]
+
   /v2/rewards-leaderboard:
     get:
+      operationId: getRewardsLeaderboard
       summary: Get rewards leaderboard
       description: Returns a list of users in the rewards leaderboard based on invite activity.
       parameters:
@@ -1249,7 +1276,7 @@ paths:
           required: true
           schema:
             type: string
-            enum: [invite]
+            enum: [ invite ]
         - name: limit
           in: query
           required: false
@@ -1292,9 +1319,11 @@ paths:
         '429':
           description: Too many requests
       security:
-        - bearerAuth: []
+        - bearerAuth: [ ]
+
   /v2/rewards-scores-for-user:
     get:
+      operationId: getUserRewardsScores
       summary: Get invite rewards scores for a user
       description: Returns current, previous, and all-time invite rewards scores for the specified user.
       parameters:
@@ -1303,7 +1332,7 @@ paths:
           required: true
           schema:
             type: string
-            enum: [invite]
+            enum: [ invite ]
         - name: fid
           in: query
           required: true
@@ -1340,9 +1369,11 @@ paths:
         '429':
           description: Too many requests
       security:
-        - bearerAuth: []
+        - bearerAuth: [ ]
+
   /v2/rewards-metadata:
     get:
+      operationId: getRewardsMetadata
       summary: Get invite rewards metadata
       description: Returns metadata for the invite rewards program including the reward period and reward distribution details.
       parameters:
@@ -1351,7 +1382,7 @@ paths:
           required: true
           schema:
             type: string
-            enum: [invite]
+            enum: [ invite ]
       responses:
         '200':
           description: Invite rewards metadata
@@ -1376,7 +1407,7 @@ paths:
                             type: integer
                           tiers:
                             type: array
-                            items: {}
+                            items: { }
                           proportionalPayout:
                             type: object
                             properties:
@@ -1389,9 +1420,11 @@ paths:
         '429':
           description: Too many requests
       security:
-        - bearerAuth: []
+        - bearerAuth: [ ]
+
   /v2/bookmarked-casts:
     get:
+      operationId: getBookmarkedCasts
       summary: Get bookmarked casts
       description: Returns the most recent casts bookmarked by the user.
       parameters:
@@ -1417,9 +1450,11 @@ paths:
                         items:
                           type: object
       security:
-        - bearerAuth: []
+        - bearerAuth: [ ]
+
   /v2/starter-packs:
     get:
+      operationId: getUserStarterPacks
       summary: Get starter packs
       description: Returns starter packs created by a specific user.
       parameters:
@@ -1449,8 +1484,10 @@ paths:
                         type: array
                         items:
                           type: object
+
   /v2/starter-packs/suggested:
     get:
+      operationId: getSuggestedStarterPacks
       summary: Get suggested starter packs
       description: Returns a list of suggested starter packs.
       parameters:
@@ -1475,8 +1512,10 @@ paths:
                         type: array
                         items:
                           type: object
+
   /v2/starter-pack:
     get:
+      operationId: getStarterPack
       summary: Get a specific starter pack by ID
       description: Returns a specific starter pack.
       parameters:
@@ -1498,163 +1537,10 @@ paths:
                     properties:
                       starterPack:
                         type: object
-    post:
-      summary: Create a starter pack
-      operationId: createStarterPack
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: idempotency-key
-          in: header
-          required: true
-          schema:
-            type: string
-            format: uuid
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              required: [name, description, fids, labels]
-              properties:
-                name:
-                  type: string
-                description:
-                  type: string
-                fids:
-                  type: array
-                  items:
-                    type: integer
-                labels:
-                  type: array
-                  items:
-                    type: string
-      responses:
-        '200':
-          description: Starter pack created successfully
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  result:
-                    type: object
-                    properties:
-                      starterPack:
-                        type: object
-                        properties:
-                          id:
-                            type: string
-                          name:
-                            type: string
-                          description:
-                            type: string
-                          itemCount:
-                            type: integer
-                          openGraphImageUrl:
-                            type: string
-                          items:
-                            type: array
-                            items: {}
-        '400':
-          description: Invalid request (e.g., fewer than 8 fids)
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  errors:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        message:
-                          type: string
-    patch:
-      summary: Update a starter pack
-      operationId: updateStarterPack
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: idempotency-key
-          in: header
-          required: true
-          schema:
-            type: string
-            format: uuid
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              required: [id, name, description, fids, labels]
-              properties:
-                id:
-                  type: string
-                name:
-                  type: string
-                description:
-                  type: string
-                fids:
-                  type: array
-                  items:
-                    type: integer
-                labels:
-                  type: array
-                  items:
-                    type: string
-      responses:
-        '200':
-          description: Starter pack updated successfully
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  result:
-                    type: object
-                    properties:
-                      success:
-                        type: boolean
-    delete:
-      summary: Delete a starter pack
-      operationId: deleteStarterPack
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: idempotency-key
-          in: header
-          required: true
-          schema:
-            type: string
-            format: uuid
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              required: [id]
-              properties:
-                id:
-                  type: string
-      responses:
-        '200':
-          description: Starter pack deleted successfully
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  result:
-                    type: object
-                    properties:
-                      success:
-                        type: boolean
+
   /v2/starter-pack-users:
     get:
+      operationId: getStarterPackUsers
       summary: Get users in a specific starter pack
       description: Returns a list of users associated with a given starter pack.
       parameters:
@@ -1686,6 +1572,7 @@ paths:
 
   /v2/channel:
     get:
+      operationId: getChannel
       summary: Get channel details
       description: Returns metadata about a channel.
       parameters:
@@ -1710,6 +1597,7 @@ paths:
 
   /v1/channel-users:
     get:
+      operationId: getChannelUsers
       summary: Get members of a specific channel
       description: Returns users who are members of a specific channel.
       parameters:
@@ -1927,7 +1815,6 @@ paths:
                               type: array
                               items:
                                 type: string
-
 
   /v2/get-muted-keywords:
     get:
