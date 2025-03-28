@@ -1,30 +1,31 @@
 {
   "name": "@nekofar/warpcast",
-  "version": "1.0.0-alpha.6",
+  "version": "2.0.0-alpha.0",
   "description": "",
   "type": "module",
   "main": "dist/index.js",
   "scripts": {
-    "prebuild": "pnpm lint",
-    "build": "tsc",
+    "build": "openapi-ts",
     "prepublishOnly": "pnpm build",
     "lint": "eslint",
     "test": "vitest run --passWithNoTests"
   },
   "dependencies": {
+    "@hey-api/client-fetch": "0.8.4",
     "canonicalize": "2.1.0",
     "remeda": "2.21.2",
     "type-fest": "4.37.0"
   },
   "devDependencies": {
-    "@types/node": "22.13.12",
+    "@hey-api/openapi-ts": "0.64.15",
+    "@types/node": "22.13.13",
     "@typescript-eslint/utils": "8.27.0",
     "eslint": "9.23.0",
     "eslint-config-prettier": "10.1.1",
     "eslint-plugin-jsdoc": "50.6.9",
     "eslint-plugin-prettier": "5.2.3",
     "eslint-plugin-regexp": "2.7.0",
-    "eslint-plugin-unicorn": "57.0.0",
+    "eslint-plugin-unicorn": "58.0.0",
     "eslint-plugin-vitest": "0.5.4",
     "globals": "16.0.0",
     "prettier": "3.5.3",
@@ -32,7 +33,7 @@
     "prettier-plugin-organize-imports": "4.1.0",
     "prettier-plugin-packagejson": "2.5.10",
     "typescript": "5.8.2",
-    "typescript-eslint": "8.27.0",
+    "typescript-eslint": "8.28.0",
     "viem": "2.23.14",
     "vite": "6.2.2",
     "vitest": "3.0.9"
