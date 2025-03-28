@@ -241,36 +241,7 @@ export interface FeedItemsResponse {
 
 export interface UserResponse {
   result?: {
-    user?: {
-      fid?: number
-      username?: string
-      displayName?: string
-      pfp?: {
-        url?: string
-        verified?: boolean
-      }
-      profile?: {
-        bio?: {
-          text?: string
-          mentions?: string[]
-          channelMentions?: string[]
-        }
-        location?: {
-          placeId?: string
-          description?: string
-        }
-      }
-      followerCount?: number
-      followingCount?: number
-      connectedAccounts?: string[]
-      viewerContext?: {
-        following?: boolean
-        followedBy?: boolean
-        canSendDirectCasts?: boolean
-        enableNotifications?: boolean
-        hasUploadedInboxKeys?: boolean
-      }
-    }
+    user?: UserWithExtras
     collectionsOwned?: Record<string, unknown>[]
     extras?: {
       fid?: number
