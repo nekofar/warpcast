@@ -241,36 +241,7 @@ export interface FeedItemsResponse {
 
 export interface UserResponse {
   result?: {
-    user?: {
-      fid?: number
-      username?: string
-      displayName?: string
-      pfp?: {
-        url?: string
-        verified?: boolean
-      }
-      profile?: {
-        bio?: {
-          text?: string
-          mentions?: string[]
-          channelMentions?: string[]
-        }
-        location?: {
-          placeId?: string
-          description?: string
-        }
-      }
-      followerCount?: number
-      followingCount?: number
-      connectedAccounts?: string[]
-      viewerContext?: {
-        following?: boolean
-        followedBy?: boolean
-        canSendDirectCasts?: boolean
-        enableNotifications?: boolean
-        hasUploadedInboxKeys?: boolean
-      }
-    }
+    user?: UserWithExtras
     collectionsOwned?: Record<string, unknown>[]
     extras?: {
       fid?: number
@@ -1559,34 +1530,7 @@ export interface GetCastLikesResponses {
         hash?: string
         castHash?: string
         timestamp?: number
-        reactor?: {
-          fid?: number
-          username?: string
-          displayName?: string
-          pfp?: {
-            url?: string
-            verified?: boolean
-          }
-          profile?: {
-            bio?: {
-              text?: string
-              mentions?: unknown[]
-              channelMentions?: unknown[]
-            }
-            location?: {
-              placeId?: string
-              description?: string
-            }
-            earlyWalletAdopter?: boolean
-          }
-          followerCount?: number
-          followingCount?: number
-          viewerContext?: {
-            following?: boolean
-            followedBy?: boolean
-            enableNotifications?: boolean
-          }
-        }
+        reactor?: User
       }[]
     }
   }
@@ -1615,33 +1559,7 @@ export interface LikeCastResponses {
         hash?: string
         castHash?: string
         timestamp?: number
-        reactor?: {
-          fid?: number
-          username?: string
-          displayName?: string
-          pfp?: {
-            url?: string
-            verified?: boolean
-          }
-          profile?: {
-            bio?: {
-              text?: string
-              mentions?: unknown[]
-              channelMentions?: unknown[]
-            }
-            location?: {
-              placeId?: string
-              description?: string
-            }
-          }
-          followerCount?: number
-          followingCount?: number
-          viewerContext?: {
-            following?: boolean
-            followedBy?: boolean
-            enableNotifications?: boolean
-          }
-        }
+        reactor?: User
       }
     }
   }
@@ -1731,34 +1649,7 @@ export interface GetCastRecastersResponses {
    */
   200: {
     result?: {
-      users?: {
-        fid?: number
-        username?: string
-        displayName?: string
-        pfp?: {
-          url?: string
-          verified?: boolean
-        }
-        profile?: {
-          bio?: {
-            text?: string
-            mentions?: unknown[]
-            channelMentions?: unknown[]
-          }
-          location?: {
-            placeId?: string
-            description?: string
-          }
-          earlyWalletAdopter?: boolean
-        }
-        followerCount?: number
-        followingCount?: number
-        viewerContext?: {
-          following?: boolean
-          followedBy?: boolean
-          enableNotifications?: boolean
-        }
-      }[]
+      users?: User[]
     }
   }
 }
@@ -1789,32 +1680,7 @@ export interface GetCastQuotesResponses {
           type?: string
           url?: string
         }
-        author?: {
-          fid?: number
-          username?: string
-          displayName?: string
-          pfp?: {
-            url?: string
-            verified?: boolean
-          }
-          profile?: {
-            bio?: {
-              text?: string
-              mentions?: unknown[]
-              channelMentions?: unknown[]
-            }
-            location?: {
-              placeId?: string
-              description?: string
-            }
-            earlyWalletAdopter?: boolean
-          }
-          followerCount?: number
-          followingCount?: number
-          viewerContext?: {
-            following?: boolean
-          }
-        }
+        author?: User
         text?: string
         timestamp?: number
       }[]
@@ -2838,8 +2704,41 @@ export interface GetUserPrimaryAddressesResponses {
   /**
    * Successful response with list of primary addresses.
    */
-  200: unknown
+  200: {
+    result?: {
+      addresses?: {
+        /**
+         * The Farcaster ID of the user
+         */
+        fid: number
+        /**
+         * Whether the address was successfully retrieved
+         */
+        success: boolean
+        /**
+         * Present only if success is true
+         */
+        address?: {
+          /**
+           * The Farcaster ID of the user
+           */
+          fid: number
+          /**
+           * The blockchain protocol of the address
+           */
+          protocol: 'ethereum' | 'solana'
+          /**
+           * The blockchain address string
+           */
+          address: string
+        }
+      }[]
+    }
+  }
 }
+
+export type GetUserPrimaryAddressesResponse =
+  GetUserPrimaryAddressesResponses[keyof GetUserPrimaryAddressesResponses]
 
 export interface GetStarterPackMembersData {
   body?: never
@@ -2858,8 +2757,30 @@ export interface GetStarterPackMembersResponses {
   /**
    * Successful response with list of starter pack members.
    */
-  200: unknown
+  200: {
+    result?: {
+      members?: {
+        /**
+         * The Farcaster ID of the starter pack member
+         */
+        fid: number
+        /**
+         * Timestamp in milliseconds when the user became a member
+         */
+        memberAt: bigint
+      }[]
+    }
+    next?: {
+      /**
+       * Pagination cursor for fetching the next set of results
+       */
+      cursor?: string
+    }
+  }
 }
+
+export type GetStarterPackMembersResponse =
+  GetStarterPackMembersResponses[keyof GetStarterPackMembersResponses]
 
 export interface SendDirectCastData {
   body: {
@@ -2885,8 +2806,18 @@ export interface SendDirectCastResponses {
   /**
    * Direct cast sent successfully
    */
-  200: unknown
+  200: {
+    result: {
+      /**
+       * Indicates if the direct cast was sent successfully
+       */
+      success: boolean
+    }
+  }
 }
+
+export type SendDirectCastResponse =
+  SendDirectCastResponses[keyof SendDirectCastResponses]
 
 export interface ClientOptions {
   baseUrl:

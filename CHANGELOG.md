@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.1] - 2025-03-28
+
+### 🚀 Features
+
+- *(api)* Add `result.success` to direct cast response
+- *(openapi)* Add schema for starter pack members response
+- *(openapi)* Add response typing for `getUserPrimaryAddresses`
+
+### 🚜 Refactor
+
+- *(openapi)* Use `$ref` for user schema definition
+- *(schemas)* Use `UserWithExtras` schema reference
+- *(openapi)* Reference `User` schema in users array
+- *(types)* Simplify `users` type in API response
+- *(openapi)* Simplify user schema with `$ref`
+- *(types)* Replace inline `reactor` and `author` types
+
 ## [2.0.0-alpha.0] - 2025-03-28
 
 ### 🚀 Features

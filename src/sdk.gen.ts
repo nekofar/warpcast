@@ -6,6 +6,7 @@ import type {
   TDataShape,
 } from '@hey-api/client-fetch'
 import { client as _heyApiClient } from './client.gen'
+import { getStarterPackMembersResponseTransformer } from './transformers.gen'
 import type {
   AcceptChannelInviteData,
   AcceptChannelInviteResponse,
@@ -98,6 +99,7 @@ import type {
   GetSponsoredInvitesResponse,
   GetStarterPackData,
   GetStarterPackMembersData,
+  GetStarterPackMembersResponse,
   GetStarterPackResponse,
   GetStarterPackUsersData,
   GetStarterPackUsersResponse,
@@ -133,6 +135,7 @@ import type {
   GetUserPreferencesResponse,
   GetUserPrimaryAddressData,
   GetUserPrimaryAddressesData,
+  GetUserPrimaryAddressesResponse,
   GetUserResponse,
   GetUserRewardsScoresData,
   GetUserRewardsScoresResponse,
@@ -161,6 +164,7 @@ import type {
   SearchChannelsData,
   SearchChannelsResponse,
   SendDirectCastData,
+  SendDirectCastResponse,
   SetLastCheckedTimestampData,
   SetLastCheckedTimestampResponse,
   UnbanUserFromChannelData,
@@ -2086,7 +2090,11 @@ export const getUserPrimaryAddress = <ThrowOnError extends boolean = false>(
 export const getUserPrimaryAddresses = <ThrowOnError extends boolean = false>(
   options: Options<GetUserPrimaryAddressesData, ThrowOnError>,
 ) => {
-  return (options.client ?? _heyApiClient).get<unknown, unknown, ThrowOnError>({
+  return (options.client ?? _heyApiClient).get<
+    GetUserPrimaryAddressesResponse,
+    unknown,
+    ThrowOnError
+  >({
     url: '/fc/primary-addresses',
     ...options,
   })
@@ -2099,7 +2107,12 @@ export const getUserPrimaryAddresses = <ThrowOnError extends boolean = false>(
 export const getStarterPackMembers = <ThrowOnError extends boolean = false>(
   options: Options<GetStarterPackMembersData, ThrowOnError>,
 ) => {
-  return (options.client ?? _heyApiClient).get<unknown, unknown, ThrowOnError>({
+  return (options.client ?? _heyApiClient).get<
+    GetStarterPackMembersResponse,
+    unknown,
+    ThrowOnError
+  >({
+    responseTransformer: getStarterPackMembersResponseTransformer,
     url: '/fc/starter-pack-members',
     ...options,
   })
@@ -2113,7 +2126,11 @@ export const getStarterPackMembers = <ThrowOnError extends boolean = false>(
 export const sendDirectCast = <ThrowOnError extends boolean = false>(
   options: Options<SendDirectCastData, ThrowOnError>,
 ) => {
-  return (options.client ?? _heyApiClient).put<unknown, unknown, ThrowOnError>({
+  return (options.client ?? _heyApiClient).put<
+    SendDirectCastResponse,
+    unknown,
+    ThrowOnError
+  >({
     security: [
       {
         scheme: 'bearer',

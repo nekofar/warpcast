@@ -509,65 +509,7 @@ components:
           type: object
           properties:
             user:
-              type: object
-              properties:
-                fid:
-                  type: integer
-                username:
-                  type: string
-                displayName:
-                  type: string
-                pfp:
-                  type: object
-                  properties:
-                    url:
-                      type: string
-                    verified:
-                      type: boolean
-                profile:
-                  type: object
-                  properties:
-                    bio:
-                      type: object
-                      properties:
-                        text:
-                          type: string
-                        mentions:
-                          type: array
-                          items:
-                            type: string
-                        channelMentions:
-                          type: array
-                          items:
-                            type: string
-                    location:
-                      type: object
-                      properties:
-                        placeId:
-                          type: string
-                        description:
-                          type: string
-                followerCount:
-                  type: integer
-                followingCount:
-                  type: integer
-                connectedAccounts:
-                  type: array
-                  items:
-                    type: string
-                viewerContext:
-                  type: object
-                  properties:
-                    following:
-                      type: boolean
-                    followedBy:
-                      type: boolean
-                    canSendDirectCasts:
-                      type: boolean
-                    enableNotifications:
-                      type: boolean
-                    hasUploadedInboxKeys:
-                      type: boolean
+              $ref: '#/components/schemas/UserWithExtras'
             collectionsOwned:
               type: array
               items:
@@ -1999,57 +1941,7 @@ paths:
                             timestamp:
                               type: integer
                             reactor:
-                              type: object
-                              properties:
-                                fid:
-                                  type: integer
-                                username:
-                                  type: string
-                                displayName:
-                                  type: string
-                                pfp:
-                                  type: object
-                                  properties:
-                                    url:
-                                      type: string
-                                    verified:
-                                      type: boolean
-                                profile:
-                                  type: object
-                                  properties:
-                                    bio:
-                                      type: object
-                                      properties:
-                                        text:
-                                          type: string
-                                        mentions:
-                                          type: array
-                                          items: {}
-                                        channelMentions:
-                                          type: array
-                                          items: {}
-                                    location:
-                                      type: object
-                                      properties:
-                                        placeId:
-                                          type: string
-                                        description:
-                                          type: string
-                                    earlyWalletAdopter:
-                                      type: boolean
-                                followerCount:
-                                  type: integer
-                                followingCount:
-                                  type: integer
-                                viewerContext:
-                                  type: object
-                                  properties:
-                                    following:
-                                      type: boolean
-                                    followedBy:
-                                      type: boolean
-                                    enableNotifications:
-                                      type: boolean
+                              $ref: '#/components/schemas/User'
     put:
       summary: Like a cast
       operationId: likeCast
@@ -2091,55 +1983,7 @@ paths:
                           timestamp:
                             type: integer
                           reactor:
-                            type: object
-                            properties:
-                              fid:
-                                type: integer
-                              username:
-                                type: string
-                              displayName:
-                                type: string
-                              pfp:
-                                type: object
-                                properties:
-                                  url:
-                                    type: string
-                                  verified:
-                                    type: boolean
-                              profile:
-                                type: object
-                                properties:
-                                  bio:
-                                    type: object
-                                    properties:
-                                      text:
-                                        type: string
-                                      mentions:
-                                        type: array
-                                        items: {}
-                                      channelMentions:
-                                        type: array
-                                        items: {}
-                                  location:
-                                    type: object
-                                    properties:
-                                      placeId:
-                                        type: string
-                                      description:
-                                        type: string
-                              followerCount:
-                                type: integer
-                              followingCount:
-                                type: integer
-                              viewerContext:
-                                type: object
-                                properties:
-                                  following:
-                                    type: boolean
-                                  followedBy:
-                                    type: boolean
-                                  enableNotifications:
-                                    type: boolean
+                            $ref: '#/components/schemas/User'
     delete:
       summary: Unlike a cast
       operationId: unlikeCast
@@ -2302,57 +2146,7 @@ paths:
                       users:
                         type: array
                         items:
-                          type: object
-                          properties:
-                            fid:
-                              type: integer
-                            username:
-                              type: string
-                            displayName:
-                              type: string
-                            pfp:
-                              type: object
-                              properties:
-                                url:
-                                  type: string
-                                verified:
-                                  type: boolean
-                            profile:
-                              type: object
-                              properties:
-                                bio:
-                                  type: object
-                                  properties:
-                                    text:
-                                      type: string
-                                    mentions:
-                                      type: array
-                                      items: {}
-                                    channelMentions:
-                                      type: array
-                                      items: {}
-                                location:
-                                  type: object
-                                  properties:
-                                    placeId:
-                                      type: string
-                                    description:
-                                      type: string
-                                earlyWalletAdopter:
-                                  type: boolean
-                            followerCount:
-                              type: integer
-                            followingCount:
-                              type: integer
-                            viewerContext:
-                              type: object
-                              properties:
-                                following:
-                                  type: boolean
-                                followedBy:
-                                  type: boolean
-                                enableNotifications:
-                                  type: boolean
+                          $ref: '#/components/schemas/User'
 
   /v2/cast-quotes:
     get:
@@ -2400,53 +2194,7 @@ paths:
                                 url:
                                   type: string
                             author:
-                              type: object
-                              properties:
-                                fid:
-                                  type: integer
-                                username:
-                                  type: string
-                                displayName:
-                                  type: string
-                                pfp:
-                                  type: object
-                                  properties:
-                                    url:
-                                      type: string
-                                    verified:
-                                      type: boolean
-                                profile:
-                                  type: object
-                                  properties:
-                                    bio:
-                                      type: object
-                                      properties:
-                                        text:
-                                          type: string
-                                        mentions:
-                                          type: array
-                                          items: {}
-                                        channelMentions:
-                                          type: array
-                                          items: {}
-                                    location:
-                                      type: object
-                                      properties:
-                                        placeId:
-                                          type: string
-                                        description:
-                                          type: string
-                                    earlyWalletAdopter:
-                                      type: boolean
-                                followerCount:
-                                  type: integer
-                                followingCount:
-                                  type: integer
-                                viewerContext:
-                                  type: object
-                                  properties:
-                                    following:
-                                      type: boolean
+                              $ref: '#/components/schemas/User'
                             text:
                               type: string
                             timestamp:
@@ -3911,13 +3659,51 @@ paths:
           required: true
           schema:
             type: string
-            enum: [ethereum, solana]
+            enum: [ ethereum, solana ]
           description: The protocol of the addresses to fetch.
       responses:
         '200':
           description: Successful response with list of primary addresses.
           content:
             application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+                    properties:
+                      addresses:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            fid:
+                              type: integer
+                              description: The Farcaster ID of the user
+                            success:
+                              type: boolean
+                              description: Whether the address was successfully retrieved
+                            address:
+                              type: object
+                              description: Present only if success is true
+                              properties:
+                                fid:
+                                  type: integer
+                                  description: The Farcaster ID of the user
+                                protocol:
+                                  type: string
+                                  enum: [ ethereum, solana ]
+                                  description: The blockchain protocol of the address
+                                address:
+                                  type: string
+                                  description: The blockchain address string
+                              required:
+                                - fid
+                                - protocol
+                                - address
+                          required:
+                            - fid
+                            - success
               example:
                 result:
                   addresses:
@@ -3959,6 +3745,33 @@ paths:
           description: Successful response with list of starter pack members.
           content:
             application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+                    properties:
+                      members:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            fid:
+                              type: integer
+                              description: The Farcaster ID of the starter pack member
+                            memberAt:
+                              type: integer
+                              format: int64
+                              description: Timestamp in milliseconds when the user became a member
+                          required:
+                            - fid
+                            - memberAt
+                  next:
+                    type: object
+                    properties:
+                      cursor:
+                        type: string
+                        description: Pagination cursor for fetching the next set of results
               example:
                 result:
                   members:
@@ -4007,6 +3820,19 @@ paths:
           description: Direct cast sent successfully
           content:
             application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+                    required:
+                      - success
+                    properties:
+                      success:
+                        type: boolean
+                        description: Indicates if the direct cast was sent successfully
+                required:
+                  - result
               example:
                 result:
                   success: true
