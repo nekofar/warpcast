@@ -2244,57 +2244,7 @@ paths:
                       users:
                         type: array
                         items:
-                          type: object
-                          properties:
-                            fid:
-                              type: integer
-                            username:
-                              type: string
-                            displayName:
-                              type: string
-                            pfp:
-                              type: object
-                              properties:
-                                url:
-                                  type: string
-                                verified:
-                                  type: boolean
-                            profile:
-                              type: object
-                              properties:
-                                bio:
-                                  type: object
-                                  properties:
-                                    text:
-                                      type: string
-                                    mentions:
-                                      type: array
-                                      items: {}
-                                    channelMentions:
-                                      type: array
-                                      items: {}
-                                location:
-                                  type: object
-                                  properties:
-                                    placeId:
-                                      type: string
-                                    description:
-                                      type: string
-                                earlyWalletAdopter:
-                                  type: boolean
-                            followerCount:
-                              type: integer
-                            followingCount:
-                              type: integer
-                            viewerContext:
-                              type: object
-                              properties:
-                                following:
-                                  type: boolean
-                                followedBy:
-                                  type: boolean
-                                enableNotifications:
-                                  type: boolean
+                          $ref: '#/components/schemas/User'
 
   /v2/cast-quotes:
     get:
