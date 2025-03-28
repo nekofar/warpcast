@@ -11,7 +11,7 @@
     "test": "vitest run --passWithNoTests"
   },
   "dependencies": {
-    "@hey-api/client-fetch": "0.8.4",
+    "@hey-api/client-fetch": "0.8.4"
   },
   "devDependencies": {
     "@hey-api/openapi-ts": "0.64.15",

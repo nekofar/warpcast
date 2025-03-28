@@ -11,15 +11,6 @@ importers:
       '@hey-api/client-fetch':
         specifier: 0.8.4
         version: 0.8.4
-      canonicalize:
-        specifier: 2.1.0
-        version: 2.1.0
-      remeda:
-        specifier: 2.21.2
-        version: 2.21.2
-      type-fest:
-        specifier: 4.37.0
-        version: 4.37.0
     devDependencies:
       '@hey-api/openapi-ts':
         specifier: 0.64.15
@@ -699,10 +690,6 @@ packages:
 
   caniuse-lite@1.0.30001707:
     resolution: {integrity: sha512-3qtRjw/HQSMlDWf+X79N206fepf4SOOU6SQLMaq/0KkZLmSjPxAkBOQQ+FxbHKfHmYLZFfdWsO3KA90ceHPSnw==}
-
-  canonicalize@2.1.0:
-    resolution: {integrity: sha512-F705O3xrsUtgt98j7leetNhTWPe+5S72rlL5O4jA1pKqBVQ/dT1O1D6PFxmSXvc0SUOinWS57DKx0I3CHrXJHQ==}
-    hasBin: true
 
   chai@5.2.0:
     resolution: {integrity: sha512-mCuXncKXk5iCLhfhwTc0izo0gtEmpz5CtG2y8GiOINBlMVS6v8TMRc5TaLWKS6692m9+dVVfzgeVxR5UxWHTYw==}
@@ -1451,9 +1438,6 @@ packages:
   regjsparser@0.12.0:
     resolution: {integrity: sha512-cnE+y8bz4NhMjISKbgeVJtqNbtf5QpjZP+Bslo+UqkIt9QPnX9q095eiRRASJG1/tz6dlNr6Z5NsBiWYokp6EQ==}
     hasBin: true
-
-  remeda@2.21.2:
-    resolution: {integrity: sha512-wdhkMDou8HRpD7RnxKJ/FHJWEGXRH7jV/pb0NsdLLSoBo+G9RjtxcY41hVhogLfEMkThk6aySKjs+Yd6PnpzBA==}
 
   resolve-from@4.0.0:
     resolution: {integrity: sha512-pb/MYmXstAkysRFx8piNI1tGFNQIFA3vkE3Gq4EuA1dF6gHp/+vgZqsCGJapvy8N3Q+4o7FwvquPJcnZ7RYy4g==}
@@ -2319,8 +2303,6 @@ snapshots:
 
   caniuse-lite@1.0.30001707: {}
 
-  canonicalize@2.1.0: {}
-
   chai@5.2.0:
     dependencies:
       assertion-error: 2.0.1
@@ -3150,10 +3132,6 @@ snapshots:
   regjsparser@0.12.0:
     dependencies:
       jsesc: 3.0.2
-
-  remeda@2.21.2:
-    dependencies:
-      type-fest: 4.37.0
 
   resolve-from@4.0.0: {}
 
