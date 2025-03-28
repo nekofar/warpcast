@@ -3659,13 +3659,51 @@ paths:
           required: true
           schema:
             type: string
-            enum: [ethereum, solana]
+            enum: [ ethereum, solana ]
           description: The protocol of the addresses to fetch.
       responses:
         '200':
           description: Successful response with list of primary addresses.
           content:
             application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+                    properties:
+                      addresses:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            fid:
+                              type: integer
+                              description: The Farcaster ID of the user
+                            success:
+                              type: boolean
+                              description: Whether the address was successfully retrieved
+                            address:
+                              type: object
+                              description: Present only if success is true
+                              properties:
+                                fid:
+                                  type: integer
+                                  description: The Farcaster ID of the user
+                                protocol:
+                                  type: string
+                                  enum: [ ethereum, solana ]
+                                  description: The blockchain protocol of the address
+                                address:
+                                  type: string
+                                  description: The blockchain address string
+                              required:
+                                - fid
+                                - protocol
+                                - address
+                          required:
+                            - fid
+                            - success
               example:
                 result:
                   addresses:

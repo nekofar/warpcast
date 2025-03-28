@@ -2704,8 +2704,41 @@ export interface GetUserPrimaryAddressesResponses {
   /**
    * Successful response with list of primary addresses.
    */
-  200: unknown
+  200: {
+    result?: {
+      addresses?: {
+        /**
+         * The Farcaster ID of the user
+         */
+        fid: number
+        /**
+         * Whether the address was successfully retrieved
+         */
+        success: boolean
+        /**
+         * Present only if success is true
+         */
+        address?: {
+          /**
+           * The Farcaster ID of the user
+           */
+          fid: number
+          /**
+           * The blockchain protocol of the address
+           */
+          protocol: 'ethereum' | 'solana'
+          /**
+           * The blockchain address string
+           */
+          address: string
+        }
+      }[]
+    }
+  }
 }
+
+export type GetUserPrimaryAddressesResponse =
+  GetUserPrimaryAddressesResponses[keyof GetUserPrimaryAddressesResponses]
 
 export interface GetStarterPackMembersData {
   body?: never
