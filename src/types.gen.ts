@@ -2751,8 +2751,18 @@ export interface SendDirectCastResponses {
   /**
    * Direct cast sent successfully
    */
-  200: unknown
+  200: {
+    result: {
+      /**
+       * Indicates if the direct cast was sent successfully
+       */
+      success: boolean
+    }
+  }
 }
+
+export type SendDirectCastResponse =
+  SendDirectCastResponses[keyof SendDirectCastResponses]
 
 export interface ClientOptions {
   baseUrl:

@@ -161,6 +161,7 @@ import type {
   SearchChannelsData,
   SearchChannelsResponse,
   SendDirectCastData,
+  SendDirectCastResponse,
   SetLastCheckedTimestampData,
   SetLastCheckedTimestampResponse,
   UnbanUserFromChannelData,
@@ -2113,7 +2114,11 @@ export const getStarterPackMembers = <ThrowOnError extends boolean = false>(
 export const sendDirectCast = <ThrowOnError extends boolean = false>(
   options: Options<SendDirectCastData, ThrowOnError>,
 ) => {
-  return (options.client ?? _heyApiClient).put<unknown, unknown, ThrowOnError>({
+  return (options.client ?? _heyApiClient).put<
+    SendDirectCastResponse,
+    unknown,
+    ThrowOnError
+  >({
     security: [
       {
         scheme: 'bearer',

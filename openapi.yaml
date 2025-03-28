@@ -3755,6 +3755,19 @@ paths:
           description: Direct cast sent successfully
           content:
             application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+                    required:
+                      - success
+                    properties:
+                      success:
+                        type: boolean
+                        description: Indicates if the direct cast was sent successfully
+                required:
+                  - result
               example:
                 result:
                   success: true
