@@ -6,6 +6,7 @@ import type {
   TDataShape,
 } from '@hey-api/client-fetch'
 import { client as _heyApiClient } from './client.gen'
+import { getStarterPackMembersResponseTransformer } from './transformers.gen'
 import type {
   AcceptChannelInviteData,
   AcceptChannelInviteResponse,
@@ -98,6 +99,7 @@ import type {
   GetSponsoredInvitesResponse,
   GetStarterPackData,
   GetStarterPackMembersData,
+  GetStarterPackMembersResponse,
   GetStarterPackResponse,
   GetStarterPackUsersData,
   GetStarterPackUsersResponse,
@@ -2100,7 +2102,12 @@ export const getUserPrimaryAddresses = <ThrowOnError extends boolean = false>(
 export const getStarterPackMembers = <ThrowOnError extends boolean = false>(
   options: Options<GetStarterPackMembersData, ThrowOnError>,
 ) => {
-  return (options.client ?? _heyApiClient).get<unknown, unknown, ThrowOnError>({
+  return (options.client ?? _heyApiClient).get<
+    GetStarterPackMembersResponse,
+    unknown,
+    ThrowOnError
+  >({
+    responseTransformer: getStarterPackMembersResponseTransformer,
     url: '/fc/starter-pack-members',
     ...options,
   })

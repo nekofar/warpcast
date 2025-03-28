@@ -3707,6 +3707,33 @@ paths:
           description: Successful response with list of starter pack members.
           content:
             application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+                    properties:
+                      members:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            fid:
+                              type: integer
+                              description: The Farcaster ID of the starter pack member
+                            memberAt:
+                              type: integer
+                              format: int64
+                              description: Timestamp in milliseconds when the user became a member
+                          required:
+                            - fid
+                            - memberAt
+                  next:
+                    type: object
+                    properties:
+                      cursor:
+                        type: string
+                        description: Pagination cursor for fetching the next set of results
               example:
                 result:
                   members:

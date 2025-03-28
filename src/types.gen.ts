@@ -2724,8 +2724,30 @@ export interface GetStarterPackMembersResponses {
   /**
    * Successful response with list of starter pack members.
    */
-  200: unknown
+  200: {
+    result?: {
+      members?: {
+        /**
+         * The Farcaster ID of the starter pack member
+         */
+        fid: number
+        /**
+         * Timestamp in milliseconds when the user became a member
+         */
+        memberAt: bigint
+      }[]
+    }
+    next?: {
+      /**
+       * Pagination cursor for fetching the next set of results
+       */
+      cursor?: string
+    }
+  }
 }
+
+export type GetStarterPackMembersResponse =
+  GetStarterPackMembersResponses[keyof GetStarterPackMembersResponses]
 
 export interface SendDirectCastData {
   body: {
