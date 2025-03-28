@@ -5,8 +5,7 @@
   "type": "module",
   "main": "dist/index.js",
   "scripts": {
-    "prebuild": "pnpm lint",
-    "build": "tsc",
+    "build": "openapi-ts",
     "prepublishOnly": "pnpm build",
     "lint": "eslint",
     "test": "vitest run --passWithNoTests"
