@@ -34,7 +34,7 @@
     "prettier-plugin-packagejson": "2.5.10",
     "typescript": "5.8.2",
     "typescript-eslint": "8.28.0",
-    "viem": "2.23.14",
+    "viem": "2.24.1",
     "vite": "6.2.2",
     "vitest": "3.0.9"
   },
