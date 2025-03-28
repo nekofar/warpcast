@@ -2,6 +2,40 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.0] - 2025-03-28
+
+### 🚀 Features
+
+- *(api)* Add OpenAPI spec for Warpcast API
+- *(api)* Enhance `openapi.yaml` with expanded API specs
+- *(openapi)* Enhance `user-by-fid` endpoint
+- *(api)* Enhance `direct-cast-inbox` endpoint
+- *(api)* Enhance `user-app-context` endpoint
+- *(api)* Enhance `user-preferences` endpoint documentation
+- *(api)* Enhance feed items endpoint with new features
+- *(api)* Update `user` endpoint definitions
+- *(openapi)* Enhance `user-following-channels` endpoint
+- *(openapi)* Enhance API request/response schemas
+- *(client)* Add auto-generated API client and schemas
+
+### 🚜 Refactor
+
+- *(client)* Remove `WarpcastClient` and related utils
+
+### 📚 Documentation
+
+- *(api)* Update onboarding-state endpoint docs
+- *(api)* Update `highlighted-channels` endpoint details
+- *(openapi)* Add main and client API server definitions
+- *(openapi)* Update API documentation
+
+### ⚙️ Miscellaneous Tasks
+
+- *(openapi)* Add `operationId` fields to API paths
+- *(openapi)* Add `operationId` fields to API paths
+- *(openapi)* Move `openapi.yaml` to `openapi` folder
+- *(scripts)* Update build script to use `openapi-ts`
+
 ## [1.0.0-alpha.6] - 2025-03-24
 
 ### ⚙️ Miscellaneous Tasks
