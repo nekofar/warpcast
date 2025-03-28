@@ -12,7 +12,6 @@
   },
   "dependencies": {
     "@hey-api/client-fetch": "0.8.4",
-    "remeda": "2.21.2",
   },
   "devDependencies": {
     "@hey-api/openapi-ts": "0.64.15",
