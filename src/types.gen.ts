@@ -1530,34 +1530,7 @@ export interface GetCastLikesResponses {
         hash?: string
         castHash?: string
         timestamp?: number
-        reactor?: {
-          fid?: number
-          username?: string
-          displayName?: string
-          pfp?: {
-            url?: string
-            verified?: boolean
-          }
-          profile?: {
-            bio?: {
-              text?: string
-              mentions?: unknown[]
-              channelMentions?: unknown[]
-            }
-            location?: {
-              placeId?: string
-              description?: string
-            }
-            earlyWalletAdopter?: boolean
-          }
-          followerCount?: number
-          followingCount?: number
-          viewerContext?: {
-            following?: boolean
-            followedBy?: boolean
-            enableNotifications?: boolean
-          }
-        }
+        reactor?: User
       }[]
     }
   }
@@ -1586,33 +1559,7 @@ export interface LikeCastResponses {
         hash?: string
         castHash?: string
         timestamp?: number
-        reactor?: {
-          fid?: number
-          username?: string
-          displayName?: string
-          pfp?: {
-            url?: string
-            verified?: boolean
-          }
-          profile?: {
-            bio?: {
-              text?: string
-              mentions?: unknown[]
-              channelMentions?: unknown[]
-            }
-            location?: {
-              placeId?: string
-              description?: string
-            }
-          }
-          followerCount?: number
-          followingCount?: number
-          viewerContext?: {
-            following?: boolean
-            followedBy?: boolean
-            enableNotifications?: boolean
-          }
-        }
+        reactor?: User
       }
     }
   }
@@ -1733,32 +1680,7 @@ export interface GetCastQuotesResponses {
           type?: string
           url?: string
         }
-        author?: {
-          fid?: number
-          username?: string
-          displayName?: string
-          pfp?: {
-            url?: string
-            verified?: boolean
-          }
-          profile?: {
-            bio?: {
-              text?: string
-              mentions?: unknown[]
-              channelMentions?: unknown[]
-            }
-            location?: {
-              placeId?: string
-              description?: string
-            }
-            earlyWalletAdopter?: boolean
-          }
-          followerCount?: number
-          followingCount?: number
-          viewerContext?: {
-            following?: boolean
-          }
-        }
+        author?: User
         text?: string
         timestamp?: number
       }[]
