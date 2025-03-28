@@ -12,6 +12,7 @@
     "test": "vitest run --passWithNoTests"
   },
   "dependencies": {
+    "@hey-api/client-fetch": "0.8.4",
     "canonicalize": "2.1.0",
     "remeda": "2.21.2",
     "type-fest": "4.37.0"
