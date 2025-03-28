@@ -1702,34 +1702,7 @@ export interface GetCastRecastersResponses {
    */
   200: {
     result?: {
-      users?: {
-        fid?: number
-        username?: string
-        displayName?: string
-        pfp?: {
-          url?: string
-          verified?: boolean
-        }
-        profile?: {
-          bio?: {
-            text?: string
-            mentions?: unknown[]
-            channelMentions?: unknown[]
-          }
-          location?: {
-            placeId?: string
-            description?: string
-          }
-          earlyWalletAdopter?: boolean
-        }
-        followerCount?: number
-        followingCount?: number
-        viewerContext?: {
-          following?: boolean
-          followedBy?: boolean
-          enableNotifications?: boolean
-        }
-      }[]
+      users?: User[]
     }
   }
 }
