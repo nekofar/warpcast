@@ -868,6 +868,17 @@ components:
             starterPack:
               $ref: '#/components/schemas/StarterPack'
 
+    StarterPackUsersResponse:
+      type: object
+      required: [ result ]
+      properties:
+        result:
+          type: object
+          properties:
+            users:
+              type: array
+              items:
+                $ref: '#/components/schemas/User'
 paths:
   /v2/onboarding-state:
     $ref: './paths/v2/onboarding-state.yaml'
@@ -1012,36 +1023,7 @@ paths:
     $ref: './paths/v2/starter-pack.yaml'
 
   /v2/starter-pack-users:
-    get:
-      operationId: getStarterPackUsers
-      summary: Get users in a specific starter pack
-      description: Returns a list of users associated with a given starter pack.
-      parameters:
-        - name: id
-          in: query
-          required: true
-          schema:
-            type: string
-        - name: limit
-          in: query
-          required: false
-          schema:
-            type: integer
-      responses:
-        '200':
-          description: List of users in the starter pack
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  result:
-                    type: object
-                    properties:
-                      users:
-                        type: array
-                        items:
-                          type: object
+    $ref: './paths/v2/starter-pack-users.yaml'
 
   /v2/channel:
     get:
