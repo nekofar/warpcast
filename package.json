@@ -1,7 +1,7 @@
 {
   "name": "@nekofar/warpcast",
   "version": "2.0.0-alpha.3",
-  "description": "",
+  "description": "TypeScript client for interacting with Warpcast APIs",
   "type": "module",
   "main": "dist/index.js",
   "scripts": {
