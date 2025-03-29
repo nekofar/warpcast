@@ -23,6 +23,7 @@ export default defineConfig({
       exportFromIndex: true,
     },
     {
+      name: '@hey-api/typescript',
       enums: 'typescript',
     },
     {
