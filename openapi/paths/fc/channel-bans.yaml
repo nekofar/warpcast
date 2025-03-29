@@ -1,0 +1,127 @@
+get:
+  operationId: getChannelBannedUsers
+  summary: Get banned users in a channel
+  parameters:
+    - in: query
+      name: channelId
+      required: true
+      schema:
+        type: string
+      description: ID of the channel to get banned users for
+  responses:
+    '200':
+      description: Successful response with list of banned users
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - result
+            properties:
+              result:
+                type: object
+                required:
+                  - bannedUsers
+                properties:
+                  bannedUsers:
+                    type: array
+                    items:
+                      type: object
+                      required:
+                        - fid
+                        - channelId
+                        - bannedAt
+                      properties:
+                        fid:
+                          type: integer
+                          description: Farcaster ID of the banned user
+                        channelId:
+                          type: string
+                          description: ID of the channel where the user is banned
+                        bannedAt:
+                          type: integer
+                          description: Unix timestamp of when the user was banned
+              next:
+                type: object
+                properties:
+                  cursor:
+                    type: string
+                    description: Pagination cursor for fetching the next set of banned users
+          example:
+            result:
+              bannedUsers:
+                - fid: 1234
+                  channelId: 'welcome'
+                  bannedAt: 1727767637
+              next:
+                cursor: '...'
+
+post:
+  operationId: banUserFromChannel
+  summary: Ban a user from a channel
+  security:
+    - bearerAuth: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - channelId
+            - banFid
+          properties:
+            channelId:
+              type: string
+              description: ID of the channel from which to ban the user
+            banFid:
+              type: integer
+              description: Farcaster ID of the user to ban
+        example:
+          channelId: 'memes'
+          banFid: 1234
+  responses:
+    '200':
+      description: Successful ban operation
+      content:
+        application/json:
+          schema:
+            $ref: '../../index.yaml#/components/schemas/SuccessResponse'
+          example:
+            result:
+              success: true
+
+delete:
+  operationId: unbanUserFromChannel
+  summary: Unban a user from a channel
+  security:
+    - bearerAuth: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - channelId
+            - banFid
+          properties:
+            channelId:
+              type: string
+              description: ID of the channel from which to unban the user
+            banFid:
+              type: integer
+              description: Farcaster ID of the user to unban
+        example:
+          channelId: 'memes'
+          banFid: 1234
+  responses:
+    '200':
+      description: Successful unban operation
+      content:
+        application/json:
+          schema:
+            $ref: '../../index.yaml#/components/schemas/SuccessResponse'
+          example:
+            result:
+              success: true

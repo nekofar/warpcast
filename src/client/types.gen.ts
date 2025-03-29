@@ -2273,14 +2273,7 @@ export interface UnbanUserFromChannelResponses {
   /**
    * Successful unban operation
    */
-  200: {
-    result: {
-      /**
-       * Indicates whether the unban operation was successful
-       */
-      success: boolean
-    }
-  }
+  200: SuccessResponse
 }
 
 export type UnbanUserFromChannelResponse =
@@ -2351,14 +2344,7 @@ export interface BanUserFromChannelResponses {
   /**
    * Successful ban operation
    */
-  200: {
-    result: {
-      /**
-       * Indicates whether the ban operation was successful
-       */
-      success: boolean
-    }
-  }
+  200: SuccessResponse
 }
 
 export type BanUserFromChannelResponse =

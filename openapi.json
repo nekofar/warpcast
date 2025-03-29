@@ -4745,10 +4745,10 @@
           {
             "in": "query",
             "name": "channelId",
+            "required": true,
             "schema": {
               "type": "string"
             },
-            "required": true,
             "description": "ID of the channel to get banned users for"
           }
         ],
@@ -4759,14 +4759,25 @@
               "application/json": {
                 "schema": {
                   "type": "object",
+                  "required": [
+                    "result"
+                  ],
                   "properties": {
                     "result": {
                       "type": "object",
+                      "required": [
+                        "bannedUsers"
+                      ],
                       "properties": {
                         "bannedUsers": {
                           "type": "array",
                           "items": {
                             "type": "object",
+                            "required": [
+                              "fid",
+                              "channelId",
+                              "bannedAt"
+                            ],
                             "properties": {
                               "fid": {
                                 "type": "integer",
@@ -4780,18 +4791,10 @@
                                 "type": "integer",
                                 "description": "Unix timestamp of when the user was banned"
                               }
-                            },
-                            "required": [
-                              "fid",
-                              "channelId",
-                              "bannedAt"
-                            ]
+                            }
                           }
                         }
-                      },
-                      "required": [
-                        "bannedUsers"
-                      ]
+                      }
                     },
                     "next": {
                       "type": "object",
@@ -4802,10 +4805,7 @@
                         }
                       }
                     }
-                  },
-                  "required": [
-                    "result"
-                  ]
+                  }
                 },
                 "example": {
                   "result": {
@@ -4815,10 +4815,10 @@
                         "channelId": "welcome",
                         "bannedAt": 1727767637
                       }
-                    ]
-                  },
-                  "next": {
-                    "cursor": "..."
+                    ],
+                    "next": {
+                      "cursor": "..."
+                    }
                   }
                 }
               }
@@ -4840,6 +4840,10 @@
             "application/json": {
               "schema": {
                 "type": "object",
+                "required": [
+                  "channelId",
+                  "banFid"
+                ],
                 "properties": {
                   "channelId": {
                     "type": "string",
@@ -4849,11 +4853,7 @@
                     "type": "integer",
                     "description": "Farcaster ID of the user to ban"
                   }
-                },
-                "required": [
-                  "channelId",
-                  "banFid"
-                ]
+                }
               },
               "example": {
                 "channelId": "memes",
@@ -4868,24 +4868,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "result": {
-                      "type": "object",
-                      "properties": {
-                        "success": {
-                          "type": "boolean",
-                          "description": "Indicates whether the ban operation was successful"
-                        }
-                      },
-                      "required": [
-                        "success"
-                      ]
-                    }
-                  },
-                  "required": [
-                    "result"
-                  ]
+                  "$ref": "#/components/schemas/SuccessResponse"
                 },
                 "example": {
                   "result": {
@@ -4911,6 +4894,10 @@
             "application/json": {
               "schema": {
                 "type": "object",
+                "required": [
+                  "channelId",
+                  "banFid"
+                ],
                 "properties": {
                   "channelId": {
                     "type": "string",
@@ -4920,11 +4907,7 @@
                     "type": "integer",
                     "description": "Farcaster ID of the user to unban"
                   }
-                },
-                "required": [
-                  "channelId",
-                  "banFid"
-                ]
+                }
               },
               "example": {
                 "channelId": "memes",
@@ -4939,24 +4922,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "result": {
-                      "type": "object",
-                      "properties": {
-                        "success": {
-                          "type": "boolean",
-                          "description": "Indicates whether the unban operation was successful"
-                        }
-                      },
-                      "required": [
-                        "success"
-                      ]
-                    }
-                  },
-                  "required": [
-                    "result"
-                  ]
+                  "$ref": "#/components/schemas/SuccessResponse"
                 },
                 "example": {
                   "result": {
