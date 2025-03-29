@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.5] - 2025-03-29
+
+### ⚙️ Miscellaneous Tasks
+
+- *(eslint)* Disable `@typescript-eslint/no-misused-spread`
+
 ## [2.0.0-alpha.4] - 2025-03-29
 
 ### 📚 Documentation
