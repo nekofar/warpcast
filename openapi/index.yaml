@@ -3559,31 +3559,7 @@ paths:
                   success: true
 
   /fc/account-verifications:
-    get:
-      operationId: getAccountVerifications
-      summary: Get account verifications
-      parameters:
-        - in: query
-          name: fid
-          schema:
-            type: integer
-          required: false
-          description: Limit the response to a specific user.
-      responses:
-        '200':
-          description: Successful response with list of account verifications
-          content:
-            application/json:
-              example:
-                result:
-                  verifications:
-                    - fid: 3
-                      platform: 'x'
-                      platformId: '9615352'
-                      platformUsername: 'dwr'
-                      verifiedAt: 1728505748
-                next:
-                  cursor: '...'
+    $ref: './paths/fc/account-verifications.yaml'
 
   /v1/creator-rewards-winner-history:
     get:

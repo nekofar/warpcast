@@ -30,6 +30,7 @@ import type {
   FollowChannelData,
   FollowChannelResponse,
   GetAccountVerificationsData,
+  GetAccountVerificationsResponse,
   GetAllChannelsData,
   GetAllChannelsResponse,
   GetAvailableInvitesData,
@@ -2047,12 +2048,14 @@ export const blockUser = <ThrowOnError extends boolean = false>(
 export const getAccountVerifications = <ThrowOnError extends boolean = false>(
   options?: Options<GetAccountVerificationsData, ThrowOnError>,
 ) => {
-  return (options?.client ?? _heyApiClient).get<unknown, unknown, ThrowOnError>(
-    {
-      url: '/fc/account-verifications',
-      ...options,
-    },
-  )
+  return (options?.client ?? _heyApiClient).get<
+    GetAccountVerificationsResponse,
+    unknown,
+    ThrowOnError
+  >({
+    url: '/fc/account-verifications',
+    ...options,
+  })
 }
 
 /**

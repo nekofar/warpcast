@@ -2643,8 +2643,24 @@ export interface GetAccountVerificationsResponses {
   /**
    * Successful response with list of account verifications
    */
-  200: unknown
+  200: {
+    result?: {
+      verifications?: {
+        fid?: number
+        platform?: string
+        platformId?: string
+        platformUsername?: string
+        verifiedAt?: number
+      }[]
+    }
+    next?: {
+      cursor?: string
+    }
+  }
 }
+
+export type GetAccountVerificationsResponse =
+  GetAccountVerificationsResponses[keyof GetAccountVerificationsResponses]
 
 export interface GetCreatorRewardWinnersData {
   body?: never
