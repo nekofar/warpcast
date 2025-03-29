@@ -3571,58 +3571,7 @@ paths:
     $ref: './paths/fc/primary-addresses.yaml'
 
   /fc/starter-pack-members:
-    get:
-      operationId: getStarterPackMembers
-      summary: Get Starter Pack Members
-      parameters:
-        - in: query
-          name: id
-          required: true
-          schema:
-            type: string
-          description: >
-            Starter pack ID, as found in the public Warpcast pack URL or in the non-authed public API of starter pack metadata.
-      responses:
-        '200':
-          description: Successful response with list of starter pack members.
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  result:
-                    type: object
-                    properties:
-                      members:
-                        type: array
-                        items:
-                          type: object
-                          properties:
-                            fid:
-                              type: integer
-                              description: The Farcaster ID of the starter pack member
-                            memberAt:
-                              type: integer
-                              format: int64
-                              description: Timestamp in milliseconds when the user became a member
-                          required:
-                            - fid
-                            - memberAt
-                  next:
-                    type: object
-                    properties:
-                      cursor:
-                        type: string
-                        description: Pagination cursor for fetching the next set of results
-              example:
-                result:
-                  members:
-                    - fid: 3
-                      memberAt: 1740172669691
-                    - fid: 296646
-                      memberAt: 1740172669691
-                next:
-                  cursor: '...'
+    $ref: './paths/fc/starter-pack-members.yaml'
 
   /v2/ext-send-direct-cast:
     put:

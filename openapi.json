@@ -6007,6 +6007,10 @@
                           "type": "array",
                           "items": {
                             "type": "object",
+                            "required": [
+                              "fid",
+                              "memberAt"
+                            ],
                             "properties": {
                               "fid": {
                                 "type": "integer",
@@ -6017,11 +6021,7 @@
                                 "format": "int64",
                                 "description": "Timestamp in milliseconds when the user became a member"
                               }
-                            },
-                            "required": [
-                              "fid",
-                              "memberAt"
-                            ]
+                            }
                           }
                         }
                       }
