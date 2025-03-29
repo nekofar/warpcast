@@ -1,0 +1,25 @@
+get:
+  operationId: getUserFollowingChannels
+  tags:
+    - Channels
+    - User
+  summary: Get user following channels
+  description: Retrieves channels that the authenticated user is following
+  parameters:
+    - name: forComposer
+      in: query
+      schema:
+        type: boolean
+      description: Whether results are intended for the composer interface
+    - $ref: '../../index.yaml#/components/parameters/limitParam'
+  security:
+    - bearerAuth: []
+  responses:
+    '200':
+      description: Successful retrieval of followed channels
+      content:
+        application/json:
+          schema:
+            $ref: '../../index.yaml#/components/schemas/HighlightedChannelsResponse'
+    '401':
+      $ref: '../../index.yaml#/components/responses/Unauthorized'
