@@ -1309,6 +1309,64 @@
             }
           }
         }
+      },
+      "StarterPack": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "StarterPacksResponse": {
+        "type": "object",
+        "required": [
+          "result"
+        ],
+        "properties": {
+          "result": {
+            "type": "object",
+            "properties": {
+              "starterPacks": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/StarterPack"
+                }
+              }
+            }
+          }
+        }
+      },
+      "StarterPackResponse": {
+        "type": "object",
+        "required": [
+          "result"
+        ],
+        "properties": {
+          "result": {
+            "type": "object",
+            "properties": {
+              "starterPack": {
+                "$ref": "#/components/schemas/StarterPack"
+              }
+            }
+          }
+        }
+      },
+      "StarterPackUsersResponse": {
+        "type": "object",
+        "required": [
+          "result"
+        ],
+        "properties": {
+          "result": {
+            "type": "object",
+            "properties": {
+              "users": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          }
+        }
       }
     }
   },
@@ -2424,20 +2482,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "result": {
-                      "type": "object",
-                      "properties": {
-                        "starterPacks": {
-                          "type": "array",
-                          "items": {
-                            "type": "object"
-                          }
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/StarterPacksResponse"
                 }
               }
             }
@@ -2467,20 +2512,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "result": {
-                      "type": "object",
-                      "properties": {
-                        "starterPacks": {
-                          "type": "array",
-                          "items": {
-                            "type": "object"
-                          }
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/StarterPacksResponse"
                 }
               }
             }
@@ -2509,17 +2541,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "result": {
-                      "type": "object",
-                      "properties": {
-                        "starterPack": {
-                          "type": "object"
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/StarterPackResponse"
                 }
               }
             }
@@ -2556,20 +2578,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "result": {
-                      "type": "object",
-                      "properties": {
-                        "users": {
-                          "type": "array",
-                          "items": {
-                            "type": "object"
-                          }
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/StarterPackUsersResponse"
                 }
               }
             }

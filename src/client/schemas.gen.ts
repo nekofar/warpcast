@@ -1202,3 +1202,59 @@ export const RewardsMetadataResponseSchema = {
     },
   },
 } as const
+
+export const StarterPackSchema = {
+  type: 'object',
+  additionalProperties: true,
+} as const
+
+export const StarterPacksResponseSchema = {
+  type: 'object',
+  required: ['result'],
+  properties: {
+    result: {
+      type: 'object',
+      properties: {
+        starterPacks: {
+          type: 'array',
+          items: {
+            $ref: '#/components/schemas/StarterPack',
+          },
+        },
+      },
+    },
+  },
+} as const
+
+export const StarterPackResponseSchema = {
+  type: 'object',
+  required: ['result'],
+  properties: {
+    result: {
+      type: 'object',
+      properties: {
+        starterPack: {
+          $ref: '#/components/schemas/StarterPack',
+        },
+      },
+    },
+  },
+} as const
+
+export const StarterPackUsersResponseSchema = {
+  type: 'object',
+  required: ['result'],
+  properties: {
+    result: {
+      type: 'object',
+      properties: {
+        users: {
+          type: 'array',
+          items: {
+            $ref: '#/components/schemas/User',
+          },
+        },
+      },
+    },
+  },
+} as const

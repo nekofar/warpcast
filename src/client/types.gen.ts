@@ -410,6 +410,26 @@ export interface RewardsMetadataResponse {
   }
 }
 
+export type StarterPack = Record<string, unknown>;
+
+export interface StarterPacksResponse {
+  result: {
+    starterPacks?: StarterPack[]
+  }
+}
+
+export interface StarterPackResponse {
+  result: {
+    starterPack?: StarterPack
+  }
+}
+
+export interface StarterPackUsersResponse {
+  result: {
+    users?: User[]
+  }
+}
+
 /**
  * The user's FID (Farcaster ID)
  */
@@ -1184,11 +1204,7 @@ export interface GetUserStarterPacksResponses {
   /**
    * A list of starter packs
    */
-  200: {
-    result?: {
-      starterPacks?: Record<string, unknown>[]
-    }
-  }
+  200: StarterPacksResponse
 }
 
 export type GetUserStarterPacksResponse =
@@ -1207,11 +1223,7 @@ export interface GetSuggestedStarterPacksResponses {
   /**
    * A list of suggested starter packs
    */
-  200: {
-    result?: {
-      starterPacks?: Record<string, unknown>[]
-    }
-  }
+  200: StarterPacksResponse
 }
 
 export type GetSuggestedStarterPacksResponse =
@@ -1230,11 +1242,7 @@ export interface GetStarterPackResponses {
   /**
    * A starter pack object
    */
-  200: {
-    result?: {
-      starterPack?: Record<string, unknown>
-    }
-  }
+  200: StarterPackResponse
 }
 
 export type GetStarterPackResponse =
@@ -1254,11 +1262,7 @@ export interface GetStarterPackUsersResponses {
   /**
    * List of users in the starter pack
    */
-  200: {
-    result?: {
-      users?: Record<string, unknown>[]
-    }
-  }
+  200: StarterPackUsersResponse
 }
 
 export type GetStarterPackUsersResponse =
