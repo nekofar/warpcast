@@ -29,7 +29,7 @@ import type {
   DeleteDraftCastData,
   DeleteDraftCastResponse,
   DiscoverChannelsData,
-  DiscoverChannelsResponse,
+  DiscoverChannelsResponse2,
   FollowChannelData,
   FollowChannelResponse,
   GetAccountVerificationsData,
@@ -705,7 +705,7 @@ export const discoverChannels = <ThrowOnError extends boolean = false>(
   options?: Options<DiscoverChannelsData, ThrowOnError>,
 ) => {
   return (options?.client ?? _heyApiClient).get<
-    DiscoverChannelsResponse,
+    DiscoverChannelsResponse2,
     unknown,
     ThrowOnError
   >({

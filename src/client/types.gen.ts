@@ -936,14 +936,10 @@ export interface DiscoverChannelsResponses {
   /**
    * A list of channels
    */
-  200: {
-    result?: {
-      channels?: Record<string, unknown>[]
-    }
-  }
+  200: DiscoverChannelsResponse
 }
 
-export type DiscoverChannelsResponse =
+export type DiscoverChannelsResponse2 =
   DiscoverChannelsResponses[keyof DiscoverChannelsResponses]
 
 export interface GetAvailableInvitesData {

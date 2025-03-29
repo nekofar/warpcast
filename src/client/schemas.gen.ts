@@ -1012,3 +1012,22 @@ export const DirectCastConversationResponseSchema = {
     },
   },
 } as const
+
+export const DiscoverChannelsResponseSchema = {
+  type: 'object',
+  required: ['result'],
+  properties: {
+    result: {
+      type: 'object',
+      properties: {
+        channels: {
+          type: 'array',
+          items: {
+            type: 'object',
+            additionalProperties: true,
+          },
+        },
+      },
+    },
+  },
+} as const
