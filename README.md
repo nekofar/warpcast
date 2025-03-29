@@ -10,3 +10,8 @@
 > [!IMPORTANT]
 > This repo is for **educational and experimental use only**. It uses **non-public APIs** and may **violate Warpcast policies**.
 > **Not recommended for production or consumer products**. Use at your own risk.
+
+
+> [!IMPORTANT]
+> This project is currently **under development** and considered **unstable**. Significant changes may occur, and
+functionality is not guaranteed at this stage.
