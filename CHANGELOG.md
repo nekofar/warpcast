@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.2] - 2025-03-29
+
+### 📚 Documentation
+
+- *(readme)* Add project overview and badges
+
 ## [2.0.0-alpha.1] - 2025-03-28
 
 ### 🚀 Features
