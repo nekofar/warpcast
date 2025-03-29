@@ -844,6 +844,20 @@ components:
                       type: integer
                     totalRewardCents:
                       type: integer
+    StarterPack:
+      type: object
+      additionalProperties: true
+    StarterPacksResponse:
+      type: object
+      required: [ result ]
+      properties:
+        result:
+          type: object
+          properties:
+            starterPacks:
+              type: array
+              items:
+                $ref: '#/components/schemas/StarterPack'
 
 paths:
   /v2/onboarding-state:
@@ -955,37 +969,7 @@ paths:
         - bearerAuth: []
 
   /v2/starter-packs:
-    get:
-      operationId: getUserStarterPacks
-      summary: Get starter packs
-      description: Returns starter packs created by a specific user.
-      parameters:
-        - name: fid
-          in: query
-          required: true
-          schema:
-            type: integer
-        - name: limit
-          in: query
-          required: false
-          schema:
-            type: integer
-            default: 15
-      responses:
-        '200':
-          description: A list of starter packs
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  result:
-                    type: object
-                    properties:
-                      starterPacks:
-                        type: array
-                        items:
-                          type: object
+    $ref: './paths/v2/starter-packs.yaml'
 
   /v2/starter-packs/suggested:
     get:

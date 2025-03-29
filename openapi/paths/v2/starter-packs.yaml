@@ -1,0 +1,23 @@
+get:
+  operationId: getUserStarterPacks
+  summary: Get starter packs
+  description: Returns starter packs created by a specific user.
+  parameters:
+    - name: fid
+      in: query
+      required: true
+      schema:
+        type: integer
+    - name: limit
+      in: query
+      required: false
+      schema:
+        type: integer
+        default: 15
+  responses:
+    '200':
+      description: A list of starter packs
+      content:
+        application/json:
+          schema:
+            $ref: '../../index.yaml#/components/schemas/StarterPacksResponse'
