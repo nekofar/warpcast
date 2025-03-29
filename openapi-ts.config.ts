@@ -8,14 +8,21 @@ export default defineConfig({
     path: './src/',
   },
   plugins: [
-    '@hey-api/client-fetch',
-    '@hey-api/schemas',
+    {
+      name: '@hey-api/client-fetch',
+      exportFromIndex: true,
+    },
+    {
+      name: '@hey-api/schemas',
+      exportFromIndex: true,
+    },
     {
       dates: true,
+      exportFromIndex: true,
       name: '@hey-api/transformers',
     },
     {
-      enums: 'javascript',
+      enums: 'typescript',
       name: '@hey-api/typescript',
     },
     {
