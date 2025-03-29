@@ -623,51 +623,7 @@ paths:
     $ref: './paths/v2/highlighted-channels.yaml'
 
   /v2/feed-items:
-    post:
-      operationId: getFeedItems
-      tags:
-        - Feed
-      summary: Get feed items
-      description: Retrieves feed content based on provided filters and parameters
-      security:
-        - bearerAuth: []
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              required:
-                - feedKey
-                - feedType
-              properties:
-                feedKey:
-                  type: string
-                  description: Identifier for the specific feed
-                feedType:
-                  type: string
-                  description: Type of feed to retrieve
-                castViewEvents:
-                  type: array
-                  items:
-                    type: object
-                  description: View events for casts
-                updateState:
-                  type: boolean
-                  description: Whether to update the feed state
-            example:
-              feedKey: 'home'
-              feedType: 'following'
-              updateState: true
-      responses:
-        '200':
-          description: Successful retrieval of feed items
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/FeedItemsResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+    $ref: './paths/v2/feed-items.yaml'
 
   /v2/user:
     get:
