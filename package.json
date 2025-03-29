@@ -6,8 +6,8 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "openapi-ts",
-    "prepublishOnly": "pnpm build",
     "lint": "eslint",
+    "prepublishOnly": "pnpm build",
     "test": "vitest run --passWithNoTests"
   },
   "dependencies": {
@@ -35,5 +35,5 @@
     "vite": "^6.2.3",
     "vitest": "^3.0.9"
   },
-  "packageManager": "pnpm@9.15.0"
+  "packageManager": "pnpm@10.0.0"
 }
