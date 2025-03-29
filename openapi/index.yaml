@@ -2666,29 +2666,7 @@ paths:
                   followedAt: 1687943747
 
   /fc/channel-members:
-    get:
-      operationId: getChannelMembers
-      summary: Get members of a channel
-      parameters:
-        - in: query
-          name: channelId
-          schema:
-            type: string
-          required: true
-      responses:
-        '200':
-          description: Successful response with list of members
-          content:
-            application/json:
-              example:
-                result:
-                  members:
-                    - fid: 466624
-                      memberAt: 1712685183
-                    - fid: 469283
-                      memberAt: 1712685067
-                next:
-                  cursor: '...'
+    $ref: './paths/fc/channel-members.yaml'
 
   /fc/channel-invites:
     $ref: './paths/fc/channel-invites.yaml'

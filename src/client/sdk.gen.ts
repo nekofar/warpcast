@@ -59,6 +59,7 @@ import type {
   GetChannelInvitesData,
   GetChannelInvitesResponse,
   GetChannelMembersData,
+  GetChannelMembersResponse,
   GetChannelModeratedCastsData,
   GetChannelModeratedCastsResponse,
   GetChannelResponse,
@@ -1592,7 +1593,11 @@ export const checkUserChannelFollowStatus = <
 export const getChannelMembers = <ThrowOnError extends boolean = false>(
   options: Options<GetChannelMembersData, ThrowOnError>,
 ) => {
-  return (options.client ?? _heyApiClient).get<unknown, unknown, ThrowOnError>({
+  return (options.client ?? _heyApiClient).get<
+    GetChannelMembersResponse,
+    unknown,
+    ThrowOnError
+  >({
     url: '/fc/channel-members',
     ...options,
   })

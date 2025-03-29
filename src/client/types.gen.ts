@@ -2029,8 +2029,30 @@ export interface GetChannelMembersResponses {
   /**
    * Successful response with list of members
    */
-  200: unknown
+  200: {
+    result: {
+      members: {
+        /**
+         * Farcaster ID of the member
+         */
+        fid: number
+        /**
+         * Timestamp when the user became a member
+         */
+        memberAt: number
+      }[]
+    }
+    next?: {
+      /**
+       * Cursor for pagination
+       */
+      cursor?: string
+    }
+  }
 }
+
+export type GetChannelMembersResponse =
+  GetChannelMembersResponses[keyof GetChannelMembersResponses]
 
 export interface RemoveChannelInviteData {
   body: {

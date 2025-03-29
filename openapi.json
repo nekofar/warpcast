@@ -4223,10 +4223,10 @@
           {
             "in": "query",
             "name": "channelId",
+            "required": true,
             "schema": {
               "type": "string"
-            },
-            "required": true
+            }
           }
         ],
         "responses": {
@@ -4234,6 +4234,51 @@
             "description": "Successful response with list of members",
             "content": {
               "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "result"
+                  ],
+                  "properties": {
+                    "result": {
+                      "type": "object",
+                      "required": [
+                        "members"
+                      ],
+                      "properties": {
+                        "members": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "required": [
+                              "fid",
+                              "memberAt"
+                            ],
+                            "properties": {
+                              "fid": {
+                                "type": "integer",
+                                "description": "Farcaster ID of the member"
+                              },
+                              "memberAt": {
+                                "type": "integer",
+                                "description": "Timestamp when the user became a member"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "next": {
+                      "type": "object",
+                      "properties": {
+                        "cursor": {
+                          "type": "string",
+                          "description": "Cursor for pagination"
+                        }
+                      }
+                    }
+                  }
+                },
                 "example": {
                   "result": {
                     "members": [
@@ -4245,10 +4290,10 @@
                         "fid": 469283,
                         "memberAt": 1712685067
                       }
-                    ]
-                  },
-                  "next": {
-                    "cursor": "..."
+                    ],
+                    "next": {
+                      "cursor": "..."
+                    }
                   }
                 }
               }
