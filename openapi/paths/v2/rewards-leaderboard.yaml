@@ -1,0 +1,32 @@
+get:
+  operationId: getRewardsLeaderboard
+  summary: Get rewards leaderboard
+  description: Returns a list of users in the rewards leaderboard based on invite activity.
+  parameters:
+    - name: rewardsType
+      in: query
+      required: true
+      schema:
+        type: string
+        enum: [invite]
+    - name: limit
+      in: query
+      schema:
+        type: integer
+    - name: cursor
+      in: query
+      schema:
+        type: string
+  security:
+    - bearerAuth: []
+  responses:
+    '200':
+      description: Rewards leaderboard
+      content:
+        application/json:
+          schema:
+            $ref: '../../index.yaml#/components/schemas/RewardsLeaderboardResponse'
+    '401':
+      description: Unauthorized
+    '429':
+      description: Too many requests

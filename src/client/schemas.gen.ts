@@ -1071,3 +1071,43 @@ export const SponsoredInvitesResponseSchema = {
     additionalProperties: true,
   },
 } as const
+
+export const RewardsLeaderboardResponseSchema = {
+  type: 'object',
+  required: ['result'],
+  properties: {
+    result: {
+      type: 'object',
+      required: ['leaderboard'],
+      properties: {
+        leaderboard: {
+          type: 'object',
+          required: ['type', 'users'],
+          properties: {
+            type: {
+              type: 'string',
+            },
+            users: {
+              type: 'array',
+              items: {
+                type: 'object',
+                properties: {
+                  user: {
+                    type: 'object',
+                    additionalProperties: true,
+                  },
+                  score: {
+                    type: 'integer',
+                  },
+                  rank: {
+                    type: 'integer',
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  },
+} as const

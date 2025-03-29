@@ -369,6 +369,18 @@ export interface SponsoredInvitesResponse {
   }
 }
 
+export interface RewardsLeaderboardResponse {
+  result: {
+    leaderboard: {
+      type: string
+      users: {
+        user?: Record<string, unknown>
+        score?: number
+        rank?: number
+      }[]
+    }
+  }
+}
 /**
  * The user's FID (Farcaster ID)
  */
