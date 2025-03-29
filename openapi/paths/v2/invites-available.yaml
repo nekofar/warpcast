@@ -1,0 +1,17 @@
+get:
+  operationId: getAvailableInvites
+  summary: Check available invites
+  description: Returns the number of allocated and currently available invites.
+  security:
+    - bearerAuth: []
+  responses:
+    '200':
+      description: Invite count information
+      content:
+        application/json:
+          schema:
+            $ref: '../../index.yaml#/components/schemas/InvitesAvailableResponse'
+    '401':
+      description: Unauthorized
+    '429':
+      description: Too many requests

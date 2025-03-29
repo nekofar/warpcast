@@ -350,6 +350,25 @@ export interface DiscoverChannelsResponse {
   }
 }
 
+export interface InvitesAvailableResponse {
+  result: {
+    /**
+     * Total number of invites allocated to the user
+     */
+    allocatedInvitesCount: number
+    /**
+     * Number of invites currently available to send
+     */
+    availableInvitesCount: number
+  }
+}
+
+export interface SponsoredInvitesResponse {
+  result: {
+    invites?: Record<string, unknown>[]
+  }
+}
+
 /**
  * The user's FID (Farcaster ID)
  */
@@ -960,18 +979,7 @@ export interface GetAvailableInvitesResponses {
   /**
    * Invite count information
    */
-  200: {
-    result?: {
-      /**
-       * Total number of invites allocated to the user
-       */
-      allocatedInvitesCount?: number
-      /**
-       * Number of invites currently available to send
-       */
-      availableInvitesCount?: number
-    }
-  }
+  200: InvitesAvailableResponse
 }
 
 export type GetAvailableInvitesResponse =

@@ -1031,3 +1031,24 @@ export const DiscoverChannelsResponseSchema = {
     },
   },
 } as const
+
+export const InvitesAvailableResponseSchema = {
+  type: 'object',
+  required: ['result'],
+  properties: {
+    result: {
+      type: 'object',
+      required: ['allocatedInvitesCount', 'availableInvitesCount'],
+      properties: {
+        allocatedInvitesCount: {
+          type: 'integer',
+          description: 'Total number of invites allocated to the user',
+        },
+        availableInvitesCount: {
+          type: 'integer',
+          description: 'Number of invites currently available to send',
+        },
+      },
+    },
+  },
+} as const
