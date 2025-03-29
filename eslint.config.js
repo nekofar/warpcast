@@ -41,6 +41,7 @@ export default typescriptEslint.config(
     },
     rules: {
       ...eslintPluginUnicorn.rules.recommended,
+      "@typescript-eslint/no-misused-spread": "off",
     },
   },
   {
