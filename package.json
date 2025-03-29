@@ -25,7 +25,7 @@
   ],
   "scripts": {
     "prebuild": "pnpm clean && openapi-ts",
-    "build": "tsc",
+    "build": "tsup",
     "clean": "rimraf dist",
     "lint": "eslint",
     "prepublishOnly": "pnpm build",
