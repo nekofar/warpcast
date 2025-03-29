@@ -940,6 +940,18 @@
             }
           }
         }
+      },
+      "ChannelStreaksResponse": {
+        "type": "object",
+        "required": [
+          "result"
+        ],
+        "properties": {
+          "result": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        }
       }
     }
   },
@@ -1427,13 +1439,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "result": {
-                      "type": "object",
-                      "additionalProperties": true
-                    }
-                  }
+                  "$ref": "#/components/schemas/ChannelStreaksResponse"
                 }
               }
             }

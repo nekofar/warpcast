@@ -298,6 +298,10 @@ export interface FavoriteFramesResponse {
   }
 }
 
+export interface ChannelStreaksResponse {
+  result: Record<string, unknown>
+}
+
 /**
  * The user's FID (Farcaster ID)
  */
@@ -671,9 +675,7 @@ export interface GetChannelStreaksForUserResponses {
   /**
    * Successful retrieval of channel streaks
    */
-  200: {
-    result?: Record<string, unknown>
-  }
+  200: ChannelStreaksResponse
 }
 
 export type GetChannelStreaksForUserResponse =

@@ -869,3 +869,14 @@ export const FavoriteFramesResponseSchema = {
     },
   },
 } as const
+
+export const ChannelStreaksResponseSchema = {
+  type: 'object',
+  required: ['result'],
+  properties: {
+    result: {
+      type: 'object',
+      additionalProperties: true,
+    },
+  },
+} as const
