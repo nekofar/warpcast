@@ -1,0 +1,21 @@
+get:
+  operationId: getUserByFid
+  tags:
+    - User
+  summary: Get user by fid
+  description: Retrieves user information based on FID
+  parameters:
+    - $ref: '../../index.yaml#/components/parameters/fidParam'
+  security:
+    - bearerAuth: []
+  responses:
+    '200':
+      description: Successful retrieval of user by fid
+      content:
+        application/json:
+          schema:
+            $ref: '../../index.yaml#/components/schemas/UserByFidResponse'
+    '401':
+      $ref: '../../index.yaml#/components/responses/Unauthorized'
+    '404':
+      $ref: '../../index.yaml#/components/responses/NotFound'
