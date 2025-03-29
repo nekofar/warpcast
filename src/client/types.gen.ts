@@ -273,6 +273,15 @@ export interface Action {
   }
 }
 
+export interface SuccessResponse {
+  result: {
+    /**
+     * Indicates whether the operation was successful
+     */
+    success: boolean
+  }
+}
+
 /**
  * The user's FID (Farcaster ID)
  */
@@ -2462,14 +2471,7 @@ export interface UnpinCastFromChannelResponses {
   /**
    * Successful unpin operation
    */
-  200: {
-    result: {
-      /**
-       * Indicates whether the unpin operation was successful
-       */
-      success: boolean
-    }
-  }
+  200: SuccessResponse
 }
 
 export type UnpinCastFromChannelResponse =
@@ -2495,14 +2497,7 @@ export interface PinCastToChannelResponses {
   /**
    * Successful pin operation
    */
-  200: {
-    result: {
-      /**
-       * Indicates whether the pin operation was successful
-       */
-      success: boolean
-    }
-  }
+  200: SuccessResponse
 }
 
 export type PinCastToChannelResponse =

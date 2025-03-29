@@ -868,6 +868,26 @@
             }
           }
         }
+      },
+      "SuccessResponse": {
+        "type": "object",
+        "required": [
+          "result"
+        ],
+        "properties": {
+          "result": {
+            "type": "object",
+            "required": [
+              "success"
+            ],
+            "properties": {
+              "success": {
+                "type": "boolean",
+                "description": "Indicates whether the operation was successful"
+              }
+            }
+          }
+        }
       }
     }
   },
@@ -5199,24 +5219,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "required": [
-                    "result"
-                  ],
-                  "properties": {
-                    "result": {
-                      "type": "object",
-                      "required": [
-                        "success"
-                      ],
-                      "properties": {
-                        "success": {
-                          "type": "boolean",
-                          "description": "Indicates whether the pin operation was successful"
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/SuccessResponse"
                 },
                 "example": {
                   "result": {
@@ -5264,24 +5267,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "required": [
-                    "result"
-                  ],
-                  "properties": {
-                    "result": {
-                      "type": "object",
-                      "required": [
-                        "success"
-                      ],
-                      "properties": {
-                        "success": {
-                          "type": "boolean",
-                          "description": "Indicates whether the unpin operation was successful"
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/SuccessResponse"
                 },
                 "example": {
                   "result": {

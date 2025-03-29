@@ -802,3 +802,20 @@ export const ActionSchema = {
     },
   },
 } as const
+
+export const SuccessResponseSchema = {
+  type: 'object',
+  required: ['result'],
+  properties: {
+    result: {
+      type: 'object',
+      required: ['success'],
+      properties: {
+        success: {
+          type: 'boolean',
+          description: 'Indicates whether the operation was successful',
+        },
+      },
+    },
+  },
+} as const

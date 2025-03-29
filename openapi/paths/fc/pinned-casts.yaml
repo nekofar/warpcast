@@ -27,18 +27,7 @@ put:
       content:
         application/json:
           schema:
-            type: object
-            required:
-              - result
-            properties:
-              result:
-                type: object
-                required:
-                  - success
-                properties:
-                  success:
-                    type: boolean
-                    description: Indicates whether the pin operation was successful
+            $ref: '../../index.yaml#/components/schemas/SuccessResponse'
           example:
             result:
               success: true
@@ -68,18 +57,7 @@ delete:
       content:
         application/json:
           schema:
-            type: object
-            required:
-              - result
-            properties:
-              result:
-                type: object
-                required:
-                  - success
-                properties:
-                  success:
-                    type: boolean
-                    description: Indicates whether the unpin operation was successful
+            $ref: '../../index.yaml#/components/schemas/SuccessResponse'
           example:
             result:
               success: true
