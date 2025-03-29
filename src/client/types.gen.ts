@@ -2719,8 +2719,19 @@ export interface GetUserPrimaryAddressResponses {
   /**
    * Successful response with the user's primary address.
    */
-  200: unknown
+  200: {
+    result?: {
+      address?: {
+        fid?: number
+        protocol?: 'ethereum' | 'solana'
+        address?: string
+      }
+    }
+  }
 }
+
+export type GetUserPrimaryAddressResponse =
+  GetUserPrimaryAddressResponses[keyof GetUserPrimaryAddressResponses]
 
 export interface GetUserPrimaryAddressesData {
   body?: never

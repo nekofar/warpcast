@@ -139,6 +139,7 @@ import type {
   GetUserPreferencesError,
   GetUserPreferencesResponse,
   GetUserPrimaryAddressData,
+  GetUserPrimaryAddressResponse,
   GetUserPrimaryAddressesData,
   GetUserPrimaryAddressesResponse,
   GetUserResponse,
@@ -2087,7 +2088,11 @@ export const getCreatorRewardWinners = <ThrowOnError extends boolean = false>(
 export const getUserPrimaryAddress = <ThrowOnError extends boolean = false>(
   options: Options<GetUserPrimaryAddressData, ThrowOnError>,
 ) => {
-  return (options.client ?? _heyApiClient).get<unknown, unknown, ThrowOnError>({
+  return (options.client ?? _heyApiClient).get<
+    GetUserPrimaryAddressResponse,
+    unknown,
+    ThrowOnError
+  >({
     url: '/fc/primary-address',
     ...options,
   })

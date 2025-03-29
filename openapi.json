@@ -5801,6 +5801,34 @@
             "description": "Successful response with the user's primary address.",
             "content": {
               "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "address": {
+                          "type": "object",
+                          "properties": {
+                            "fid": {
+                              "type": "integer"
+                            },
+                            "protocol": {
+                              "type": "string",
+                              "enum": [
+                                "ethereum",
+                                "solana"
+                              ]
+                            },
+                            "address": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
                 "example": {
                   "result": {
                     "address": {
