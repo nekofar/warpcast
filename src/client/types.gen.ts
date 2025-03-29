@@ -319,6 +319,12 @@ export interface UnseenCountsResponse {
   }
 }
 
+export interface UserThreadCastsResponse {
+  result: {
+    casts: Record<string, unknown>[]
+  }
+}
+
 /**
  * The user's FID (Farcaster ID)
  */
@@ -730,11 +736,7 @@ export interface GetUserThreadCastsResponses {
   /**
    * Successful retrieval of user thread casts
    */
-  200: {
-    result?: {
-      casts?: Record<string, unknown>[]
-    }
-  }
+  200: UserThreadCastsResponse
 }
 
 export type GetUserThreadCastsResponse =

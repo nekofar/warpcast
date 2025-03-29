@@ -934,3 +934,23 @@ export const UnseenCountsResponseSchema = {
     },
   },
 } as const
+
+export const UserThreadCastsResponseSchema = {
+  type: 'object',
+  required: ['result'],
+  properties: {
+    result: {
+      type: 'object',
+      required: ['casts'],
+      properties: {
+        casts: {
+          type: 'array',
+          items: {
+            type: 'object',
+            additionalProperties: true,
+          },
+        },
+      },
+    },
+  },
+} as const

@@ -666,6 +666,21 @@ components:
                     type: boolean
             warpTransactionCount:
               type: integer
+    UserThreadCastsResponse:
+      type: object
+      required:
+        - result
+      properties:
+        result:
+          type: object
+          required:
+            - casts
+          properties:
+            casts:
+              type: array
+              items:
+                type: object
+                additionalProperties: true
 
 paths:
   /v2/onboarding-state:
@@ -711,42 +726,7 @@ paths:
     $ref: './paths/v2/unseen.yaml'
 
   /v2/user-thread-casts:
-    get:
-      operationId: getUserThreadCasts
-      summary: Get casts from a user thread
-      parameters:
-        - name: castHashPrefix
-          in: query
-          required: true
-          schema:
-            type: string
-        - name: username
-          in: query
-          required: true
-          schema:
-            type: string
-        - name: limit
-          in: query
-          schema:
-            type: integer
-      security:
-        - bearerAuth: []
-      responses:
-        '200':
-          description: Successful retrieval of user thread casts
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  result:
-                    type: object
-                    properties:
-                      casts:
-                        type: array
-                        items:
-                          type: object
-                          additionalProperties: true
+    $ref: './paths/v2/user-thread-casts.yaml'
 
   /v2/channel-followers-you-know:
     get:
