@@ -1007,11 +1007,7 @@ export interface GetSponsoredInvitesResponses {
   /**
    * List of sponsored invites
    */
-  200: {
-    result?: {
-      invites?: Record<string, unknown>[]
-    }
-  }
+  200: SponsoredInvitesResponse
 }
 
 export type GetSponsoredInvitesResponse =

@@ -747,6 +747,18 @@ components:
               type: integer
               description: Number of invites currently available to send
 
+    SponsoredInvitesResponse:
+        type: object
+        required: [ result ]
+        properties:
+          result:
+            type: object
+            properties:
+              invites:
+                type: array
+                items:
+                  type: object
+          additionalProperties: true
 
 paths:
   /v2/onboarding-state:
@@ -816,31 +828,7 @@ paths:
     $ref: './paths/v2/invites-available.yaml'
 
   /v2/warpcast-sponsored-invites:
-    get:
-      operationId: getSponsoredInvites
-      summary: Get sponsored invites
-      description: Returns a list of Warpcast-sponsored invites available to the user.
-      responses:
-        '200':
-          description: List of sponsored invites
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  result:
-                    type: object
-                    properties:
-                      invites:
-                        type: array
-                        items:
-                          type: object
-        '401':
-          description: Unauthorized
-        '429':
-          description: Too many requests
-      security:
-        - bearerAuth: []
+    $ref: './paths/v2/warpcast-sponsored-invites.yaml'
 
   /v2/rewards-leaderboard:
     get:

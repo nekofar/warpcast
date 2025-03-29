@@ -1052,3 +1052,22 @@ export const InvitesAvailableResponseSchema = {
     },
   },
 } as const
+
+export const SponsoredInvitesResponseSchema = {
+  type: 'object',
+  required: ['result'],
+  properties: {
+    result: {
+      type: 'object',
+      properties: {
+        invites: {
+          type: 'array',
+          items: {
+            type: 'object',
+          },
+        },
+      },
+    },
+    additionalProperties: true,
+  },
+} as const

@@ -1,0 +1,17 @@
+get:
+  operationId: getSponsoredInvites
+  summary: Get sponsored invites
+  description: Returns a list of Warpcast-sponsored invites available to the user.
+  security:
+    - bearerAuth: []
+  responses:
+    '200':
+      description: List of sponsored invites
+      content:
+        application/json:
+          schema:
+            $ref: '../../index.yaml#/components/schemas/SponsoredInvitesResponse'
+    '401':
+      description: Unauthorized
+    '429':
+      description: Too many requests

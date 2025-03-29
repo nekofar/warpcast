@@ -1121,6 +1121,51 @@
             }
           }
         }
+      },
+      "InvitesAvailableResponse": {
+        "type": "object",
+        "required": [
+          "result"
+        ],
+        "properties": {
+          "result": {
+            "type": "object",
+            "required": [
+              "allocatedInvitesCount",
+              "availableInvitesCount"
+            ],
+            "properties": {
+              "allocatedInvitesCount": {
+                "type": "integer",
+                "description": "Total number of invites allocated to the user"
+              },
+              "availableInvitesCount": {
+                "type": "integer",
+                "description": "Number of invites currently available to send"
+              }
+            }
+          }
+        }
+      },
+      "SponsoredInvitesResponse": {
+        "type": "object",
+        "required": [
+          "result"
+        ],
+        "properties": {
+          "result": {
+            "type": "object",
+            "properties": {
+              "invites": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "additionalProperties": true
+        }
       }
     }
   },
@@ -1952,28 +1997,18 @@
         "operationId": "getAvailableInvites",
         "summary": "Check available invites",
         "description": "Returns the number of allocated and currently available invites.",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "responses": {
           "200": {
             "description": "Invite count information",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "result": {
-                      "type": "object",
-                      "properties": {
-                        "allocatedInvitesCount": {
-                          "type": "integer",
-                          "description": "Total number of invites allocated to the user"
-                        },
-                        "availableInvitesCount": {
-                          "type": "integer",
-                          "description": "Number of invites currently available to send"
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/InvitesAvailableResponse"
                 }
               }
             }
@@ -1984,12 +2019,7 @@
           "429": {
             "description": "Too many requests"
           }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ]
+        }
       }
     },
     "/v2/warpcast-sponsored-invites": {
@@ -1997,26 +2027,18 @@
         "operationId": "getSponsoredInvites",
         "summary": "Get sponsored invites",
         "description": "Returns a list of Warpcast-sponsored invites available to the user.",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "responses": {
           "200": {
             "description": "List of sponsored invites",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "result": {
-                      "type": "object",
-                      "properties": {
-                        "invites": {
-                          "type": "array",
-                          "items": {
-                            "type": "object"
-                          }
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/SponsoredInvitesResponse"
                 }
               }
             }
@@ -2027,12 +2049,7 @@
           "429": {
             "description": "Too many requests"
           }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ]
+        }
       }
     },
     "/v2/rewards-leaderboard": {
