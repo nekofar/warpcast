@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.9] - 2025-03-29
+
+### 🚀 Features
+
+- *(openapi)* Add `channelKey` to cast posting endpoint
+
+### ⚙️ Miscellaneous Tasks
+
+- *(package)* Add `license` field to package.json
+- *(scripts)* Add `clean` script and update `prebuild`
+
 ## [2.0.0-alpha.8] - 2025-03-29
 
 ### 🚀 Features
