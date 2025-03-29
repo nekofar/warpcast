@@ -282,6 +282,16 @@ export interface SuccessResponse {
   }
 }
 
+export interface VerifiedAddress {
+  fid?: number
+  address?: string
+  timestamp?: number
+  version?: string
+  protocol?: string
+  isPrimary?: boolean
+  labels?: string[]
+}
+
 /**
  * The user's FID (Farcaster ID)
  */
@@ -1400,15 +1410,7 @@ export interface GetVerificationsResponses {
    */
   200: {
     result?: {
-      verifications?: {
-        fid?: number
-        address?: string
-        timestamp?: number
-        version?: string
-        protocol?: string
-        isPrimary?: boolean
-        labels?: string[]
-      }[]
+      verifications?: VerifiedAddress[]
     }
   }
 }

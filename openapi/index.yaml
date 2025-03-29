@@ -566,11 +566,10 @@ components:
           properties:
             actionType:
               type: string
-              enum: [ post, get, put, delete ]
+              enum: [post, get, put, delete]
             postUrl:
               type: string
               format: uri
-
     SuccessResponse:
       type: object
       required:
@@ -584,6 +583,25 @@ components:
             success:
               type: boolean
               description: Indicates whether the operation was successful
+    VerifiedAddress:
+      type: object
+      properties:
+        fid:
+          type: integer
+        address:
+          type: string
+        timestamp:
+          type: integer
+        version:
+          type: string
+        protocol:
+          type: string
+        isPrimary:
+          type: boolean
+        labels:
+          type: array
+          items:
+            type: string
 
 paths:
   /v2/onboarding-state:

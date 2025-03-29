@@ -27,21 +27,4 @@ get:
                   verifications:
                     type: array
                     items:
-                      type: object
-                      properties:
-                        fid:
-                          type: integer
-                        address:
-                          type: string
-                        timestamp:
-                          type: integer
-                        version:
-                          type: string
-                        protocol:
-                          type: string
-                        isPrimary:
-                          type: boolean
-                        labels:
-                          type: array
-                          items:
-                            type: string
+                      $ref: '../../index.yaml#/components/schemas/VerifiedAddress'

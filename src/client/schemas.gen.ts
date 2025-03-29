@@ -819,3 +819,33 @@ export const SuccessResponseSchema = {
     },
   },
 } as const
+
+export const VerifiedAddressSchema = {
+  type: 'object',
+  properties: {
+    fid: {
+      type: 'integer',
+    },
+    address: {
+      type: 'string',
+    },
+    timestamp: {
+      type: 'integer',
+    },
+    version: {
+      type: 'string',
+    },
+    protocol: {
+      type: 'string',
+    },
+    isPrimary: {
+      type: 'boolean',
+    },
+    labels: {
+      type: 'array',
+      items: {
+        type: 'string',
+      },
+    },
+  },
+} as const
