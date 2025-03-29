@@ -5387,14 +5387,25 @@
               "application/json": {
                 "schema": {
                   "type": "object",
+                  "required": [
+                    "result"
+                  ],
                   "properties": {
                     "result": {
                       "type": "object",
+                      "required": [
+                        "blockedUsers"
+                      ],
                       "properties": {
                         "blockedUsers": {
                           "type": "array",
                           "items": {
                             "type": "object",
+                            "required": [
+                              "blockerFid",
+                              "blockedFid",
+                              "createdAt"
+                            ],
                             "properties": {
                               "blockerFid": {
                                 "type": "integer",
@@ -5408,12 +5419,7 @@
                                 "type": "integer",
                                 "description": "Unix timestamp of when the user was blocked"
                               }
-                            },
-                            "required": [
-                              "blockerFid",
-                              "blockedFid",
-                              "createdAt"
-                            ]
+                            }
                           }
                         },
                         "next": {
@@ -5425,15 +5431,9 @@
                             }
                           }
                         }
-                      },
-                      "required": [
-                        "blockedUsers"
-                      ]
+                      }
                     }
-                  },
-                  "required": [
-                    "result"
-                  ]
+                  }
                 },
                 "example": {
                   "result": {
@@ -5468,15 +5468,15 @@
             "application/json": {
               "schema": {
                 "type": "object",
+                "required": [
+                  "blockFid"
+                ],
                 "properties": {
                   "blockFid": {
                     "type": "integer",
                     "description": "Farcaster ID of the user to block"
                   }
-                },
-                "required": [
-                  "blockFid"
-                ]
+                }
               },
               "example": {
                 "blockFid": 1234
@@ -5491,23 +5491,23 @@
               "application/json": {
                 "schema": {
                   "type": "object",
+                  "required": [
+                    "result"
+                  ],
                   "properties": {
                     "result": {
                       "type": "object",
+                      "required": [
+                        "success"
+                      ],
                       "properties": {
                         "success": {
                           "type": "boolean",
                           "description": "Indicates whether the block operation was successful"
                         }
-                      },
-                      "required": [
-                        "success"
-                      ]
+                      }
                     }
-                  },
-                  "required": [
-                    "result"
-                  ]
+                  }
                 },
                 "example": {
                   "result": {
@@ -5533,15 +5533,15 @@
             "application/json": {
               "schema": {
                 "type": "object",
+                "required": [
+                  "unblockFid"
+                ],
                 "properties": {
                   "unblockFid": {
                     "type": "integer",
                     "description": "Farcaster ID of the user to unblock"
                   }
-                },
-                "required": [
-                  "unblockFid"
-                ]
+                }
               },
               "example": {
                 "unblockFid": 1234
@@ -5556,23 +5556,23 @@
               "application/json": {
                 "schema": {
                   "type": "object",
+                  "required": [
+                    "result"
+                  ],
                   "properties": {
                     "result": {
                       "type": "object",
+                      "required": [
+                        "success"
+                      ],
                       "properties": {
                         "success": {
                           "type": "boolean",
                           "description": "Indicates whether the unblock operation was successful"
                         }
-                      },
-                      "required": [
-                        "success"
-                      ]
+                      }
                     }
-                  },
-                  "required": [
-                    "result"
-                  ]
+                  }
                 },
                 "example": {
                   "result": {
