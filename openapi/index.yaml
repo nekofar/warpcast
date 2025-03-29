@@ -747,31 +747,7 @@ paths:
     $ref: './paths/v2/channel-followers-you-know.yaml'
 
   /v2/mark-all-notifications-read:
-    put:
-      operationId: markAllNotificationsRead
-      summary: Mark all notifications as read
-      security:
-        - bearerAuth: []
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              additionalProperties: false
-      responses:
-        '200':
-          description: Successful mark-all-read operation
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  result:
-                    type: object
-                    properties:
-                      success:
-                        type: boolean
+    $ref: './paths/v2/mark-all-notifications-read.yaml'
 
   /v1/notifications-for-tab:
     get:

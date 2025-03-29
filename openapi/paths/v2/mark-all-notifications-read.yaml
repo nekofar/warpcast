@@ -1,0 +1,19 @@
+put:
+  operationId: markAllNotificationsRead
+  summary: Mark all notifications as read
+  security:
+    - bearerAuth: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          additionalProperties: false  # empty request body
+  responses:
+    '200':
+      description: Successful mark-all-read operation
+      content:
+        application/json:
+          schema:
+            $ref: '../../index.yaml#/components/schemas/SuccessResponse'
