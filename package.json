@@ -7,8 +7,16 @@
     "farcaster"
   ],
   "license": "Apache-2.0",
+  "sideEffects": false,
   "type": "module",
-  "main": "dist/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
   "types": "dist/index.d.ts",
   "files": [
     "dist/",
