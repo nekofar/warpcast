@@ -57,6 +57,7 @@ import type {
   GetChannelFollowersYouKnowData,
   GetChannelFollowersYouKnowResponse,
   GetChannelInvitesData,
+  GetChannelInvitesResponse,
   GetChannelMembersData,
   GetChannelModeratedCastsData,
   GetChannelModeratedCastsResponse,
@@ -1631,7 +1632,11 @@ export const removeChannelInvite = <ThrowOnError extends boolean = false>(
 export const getChannelInvites = <ThrowOnError extends boolean = false>(
   options: Options<GetChannelInvitesData, ThrowOnError>,
 ) => {
-  return (options.client ?? _heyApiClient).get<unknown, unknown, ThrowOnError>({
+  return (options.client ?? _heyApiClient).get<
+    GetChannelInvitesResponse,
+    unknown,
+    ThrowOnError
+  >({
     url: '/fc/channel-invites',
     ...options,
   })

@@ -4265,10 +4265,10 @@
           {
             "in": "query",
             "name": "channelId",
+            "required": true,
             "schema": {
               "type": "string"
-            },
-            "required": true
+            }
           }
         ],
         "responses": {
@@ -4276,6 +4276,58 @@
             "description": "Successful response with list of channel invites",
             "content": {
               "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "invites": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "required": [
+                              "channelId",
+                              "invitedFid",
+                              "invitedAt",
+                              "inviterFid",
+                              "role"
+                            ],
+                            "properties": {
+                              "channelId": {
+                                "type": "string"
+                              },
+                              "invitedFid": {
+                                "type": "integer"
+                              },
+                              "invitedAt": {
+                                "type": "integer"
+                              },
+                              "inviterFid": {
+                                "type": "integer"
+                              },
+                              "role": {
+                                "type": "string",
+                                "enum": [
+                                  "member",
+                                  "admin"
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "next": {
+                      "type": "object",
+                      "properties": {
+                        "cursor": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
                 "example": {
                   "result": {
                     "invites": [
@@ -4293,10 +4345,10 @@
                         "inviterFid": 235128,
                         "role": "member"
                       }
-                    ]
-                  },
-                  "next": {
-                    "cursor": "..."
+                    ],
+                    "next": {
+                      "cursor": "..."
+                    }
                   }
                 }
               }
@@ -4318,6 +4370,11 @@
             "application/json": {
               "schema": {
                 "type": "object",
+                "required": [
+                  "channelId",
+                  "inviteFid",
+                  "role"
+                ],
                 "properties": {
                   "channelId": {
                     "type": "string",
@@ -4329,18 +4386,13 @@
                   },
                   "role": {
                     "type": "string",
-                    "description": "Role of the invited user within the channel",
                     "enum": [
                       "member",
                       "admin"
-                    ]
+                    ],
+                    "description": "Role of the invited user within the channel"
                   }
-                },
-                "required": [
-                  "channelId",
-                  "inviteFid",
-                  "role"
-                ]
+                }
               },
               "example": {
                 "channelId": "evm",
@@ -4356,24 +4408,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "result": {
-                      "type": "object",
-                      "properties": {
-                        "success": {
-                          "type": "boolean",
-                          "description": "Indicates if the invite was successful"
-                        }
-                      },
-                      "required": [
-                        "success"
-                      ]
-                    }
-                  },
-                  "required": [
-                    "result"
-                  ]
+                  "$ref": "#/components/schemas/SuccessResponse"
                 },
                 "example": {
                   "result": {
@@ -4399,6 +4434,11 @@
             "application/json": {
               "schema": {
                 "type": "object",
+                "required": [
+                  "channelId",
+                  "removeFid",
+                  "role"
+                ],
                 "properties": {
                   "channelId": {
                     "type": "string",
@@ -4406,22 +4446,17 @@
                   },
                   "removeFid": {
                     "type": "integer",
-                    "description": "Farcaster ID (FID) of the user whose invite is being removed"
+                    "description": "Farcaster ID of the user whose invite is being removed"
                   },
                   "role": {
                     "type": "string",
-                    "description": "Role associated with the invite being removed",
                     "enum": [
                       "member",
                       "admin"
-                    ]
+                    ],
+                    "description": "Role associated with the invite being removed"
                   }
-                },
-                "required": [
-                  "channelId",
-                  "removeFid",
-                  "role"
-                ]
+                }
               },
               "example": {
                 "channelId": "evm",
@@ -4437,24 +4472,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "result": {
-                      "type": "object",
-                      "properties": {
-                        "success": {
-                          "type": "boolean",
-                          "description": "Indicates whether the removal of invite was successful"
-                        }
-                      },
-                      "required": [
-                        "success"
-                      ]
-                    }
-                  },
-                  "required": [
-                    "result"
-                  ]
+                  "$ref": "#/components/schemas/SuccessResponse"
                 },
                 "example": {
                   "result": {
@@ -4480,6 +4498,11 @@
             "application/json": {
               "schema": {
                 "type": "object",
+                "required": [
+                  "channelId",
+                  "role",
+                  "accept"
+                ],
                 "properties": {
                   "channelId": {
                     "type": "string",
@@ -4487,22 +4510,17 @@
                   },
                   "role": {
                     "type": "string",
-                    "description": "Role that the user will have in the channel",
                     "enum": [
                       "member",
                       "admin"
-                    ]
+                    ],
+                    "description": "Role that the user will have in the channel"
                   },
                   "accept": {
                     "type": "boolean",
                     "description": "Flag indicating whether to accept the invite"
                   }
-                },
-                "required": [
-                  "channelId",
-                  "role",
-                  "accept"
-                ]
+                }
               },
               "example": {
                 "channelId": "evm",
@@ -4518,24 +4536,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "result": {
-                      "type": "object",
-                      "properties": {
-                        "success": {
-                          "type": "boolean",
-                          "description": "Indicates whether the invite was successfully accepted"
-                        }
-                      },
-                      "required": [
-                        "success"
-                      ]
-                    }
-                  },
-                  "required": [
-                    "result"
-                  ]
+                  "$ref": "#/components/schemas/SuccessResponse"
                 },
                 "example": {
                   "result": {

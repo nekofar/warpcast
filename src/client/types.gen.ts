@@ -2039,7 +2039,7 @@ export interface RemoveChannelInviteData {
      */
     channelId: string
     /**
-     * Farcaster ID (FID) of the user whose invite is being removed
+     * Farcaster ID of the user whose invite is being removed
      */
     removeFid: number
     /**
@@ -2056,14 +2056,7 @@ export interface RemoveChannelInviteResponses {
   /**
    * Successful removal of invite
    */
-  200: {
-    result: {
-      /**
-       * Indicates whether the removal of invite was successful
-       */
-      success: boolean
-    }
-  }
+  200: SuccessResponse
 }
 
 export type RemoveChannelInviteResponse =
@@ -2082,8 +2075,24 @@ export interface GetChannelInvitesResponses {
   /**
    * Successful response with list of channel invites
    */
-  200: unknown
+  200: {
+    result?: {
+      invites?: {
+        channelId: string
+        invitedFid: number
+        invitedAt: number
+        inviterFid: number
+        role: 'member' | 'admin'
+      }[]
+    }
+    next?: {
+      cursor?: string
+    }
+  }
 }
+
+export type GetChannelInvitesResponse =
+  GetChannelInvitesResponses[keyof GetChannelInvitesResponses]
 
 export interface AcceptChannelInviteData {
   body: {
@@ -2109,14 +2118,7 @@ export interface AcceptChannelInviteResponses {
   /**
    * Successful acceptance of invite
    */
-  200: {
-    result: {
-      /**
-       * Indicates whether the invite was successfully accepted
-       */
-      success: boolean
-    }
-  }
+  200: SuccessResponse
 }
 
 export type AcceptChannelInviteResponse =
@@ -2146,14 +2148,7 @@ export interface InviteUserToChannelResponses {
   /**
    * Successful invite operation
    */
-  200: {
-    result: {
-      /**
-       * Indicates if the invite was successful
-       */
-      success: boolean
-    }
-  }
+  200: SuccessResponse
 }
 
 export type InviteUserToChannelResponse =
