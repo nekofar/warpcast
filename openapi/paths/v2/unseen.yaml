@@ -1,0 +1,12 @@
+get:
+  operationId: getUnseenCounts
+  summary: Get unseen counts and feed state
+  security:
+    - bearerAuth: []
+  responses:
+    '200':
+      description: Successful retrieval of unseen feed and notification data
+      content:
+        application/json:
+          schema:
+            $ref: '../../index.yaml#/components/schemas/UnseenCountsResponse'

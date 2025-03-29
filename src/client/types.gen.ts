@@ -302,6 +302,23 @@ export interface ChannelStreaksResponse {
   result: Record<string, unknown>
 }
 
+export interface UnseenCountsResponse {
+  result: {
+    notificationsCount?: number
+    notificationTabs?: {
+      tab: string
+      unseenCount: number
+    }[]
+    inboxCount?: number
+    channelFeeds?: {
+      channelKey: string
+      feedType: string
+      hasNewItems: boolean
+    }[]
+    warpTransactionCount?: number
+  }
+}
+
 /**
  * The user's FID (Farcaster ID)
  */
@@ -692,22 +709,7 @@ export interface GetUnseenCountsResponses {
   /**
    * Successful retrieval of unseen feed and notification data
    */
-  200: {
-    result?: {
-      notificationsCount?: number
-      notificationTabs?: {
-        tab?: string
-        unseenCount?: number
-      }[]
-      inboxCount?: number
-      channelFeeds?: {
-        channelKey?: string
-        feedType?: string
-        hasNewItems?: boolean
-      }[]
-      warpTransactionCount?: number
-    }
-  }
+  200: UnseenCountsResponse
 }
 
 export type GetUnseenCountsResponse =

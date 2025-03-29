@@ -880,3 +880,57 @@ export const ChannelStreaksResponseSchema = {
     },
   },
 } as const
+
+export const UnseenCountsResponseSchema = {
+  type: 'object',
+  required: ['result'],
+  properties: {
+    result: {
+      type: 'object',
+      properties: {
+        notificationsCount: {
+          type: 'integer',
+        },
+        notificationTabs: {
+          type: 'array',
+          items: {
+            type: 'object',
+            required: ['tab', 'unseenCount'],
+            properties: {
+              tab: {
+                type: 'string',
+              },
+              unseenCount: {
+                type: 'integer',
+              },
+            },
+          },
+        },
+        inboxCount: {
+          type: 'integer',
+        },
+        channelFeeds: {
+          type: 'array',
+          items: {
+            type: 'object',
+            required: ['channelKey', 'feedType', 'hasNewItems'],
+            properties: {
+              channelKey: {
+                type: 'string',
+              },
+              feedType: {
+                type: 'string',
+              },
+              hasNewItems: {
+                type: 'boolean',
+              },
+            },
+          },
+        },
+        warpTransactionCount: {
+          type: 'integer',
+        },
+      },
+    },
+  },
+} as const
