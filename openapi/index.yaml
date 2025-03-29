@@ -696,6 +696,18 @@ components:
                 additionalProperties: true
             totalCount:
               type: integer
+    NotificationsResponse:
+      type: object
+      required: [result]
+      properties:
+        result:
+          type: object
+          properties:
+            notifications:
+              type: array
+              items:
+                type: object
+                additionalProperties: true
 
 paths:
   /v2/onboarding-state:
@@ -750,49 +762,7 @@ paths:
     $ref: './paths/v2/mark-all-notifications-read.yaml'
 
   /v1/notifications-for-tab:
-    get:
-      operationId: getNotifications
-      summary: Get notifications for a specific tab
-      description: Returns a list of notifications for the specified tab.
-      parameters:
-        - in: query
-          name: tab
-          required: true
-          schema:
-            type: string
-            enum: [all, follows, reactions, mentions, replies]
-          description: Notification tab type
-        - in: query
-          name: limit
-          required: false
-          schema:
-            type: integer
-            default: 15
-            minimum: 1
-            maximum: 100
-          description: Number of notifications to return
-      responses:
-        '200':
-          description: A list of notifications
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  result:
-                    type: object
-                    properties:
-                      notifications:
-                        type: array
-                        items:
-                          type: object
-                          description: Notification item
-        '401':
-          description: Unauthorized
-        '429':
-          description: Too many requests
-      security:
-        - bearerAuth: []
+    $ref: './paths/v1/notifications-for-tab.yaml'
 
   /v2/set-last-checked-timestamp:
     put:

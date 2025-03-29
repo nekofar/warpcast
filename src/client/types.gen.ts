@@ -332,6 +332,12 @@ export interface ChannelFollowersYouKnowResponse {
   }
 }
 
+export interface NotificationsResponse {
+  result: {
+    notifications?: Record<string, unknown>[]
+  }
+}
+
 /**
  * The user's FID (Farcaster ID)
  */
@@ -817,11 +823,7 @@ export interface GetNotificationsResponses {
   /**
    * A list of notifications
    */
-  200: {
-    result?: {
-      notifications?: Record<string, unknown>[]
-    }
-  }
+  200: NotificationsResponse
 }
 
 export type GetNotificationsResponse =

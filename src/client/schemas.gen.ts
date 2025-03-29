@@ -977,3 +977,22 @@ export const ChannelFollowersYouKnowResponseSchema = {
     },
   },
 } as const
+
+export const NotificationsResponseSchema = {
+  type: 'object',
+  required: ['result'],
+  properties: {
+    result: {
+      type: 'object',
+      properties: {
+        notifications: {
+          type: 'array',
+          items: {
+            type: 'object',
+            additionalProperties: true,
+          },
+        },
+      },
+    },
+  },
+} as const
