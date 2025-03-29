@@ -14,7 +14,7 @@ export default typescriptEslint.config(
     ignores: ['**/build/**', '**/dist/**', '*.config.{js,mjs,ts}'],
   },
   javascriptEslint.configs.recommended,
-  eslintPluginJsdoc.configs['flat/recommended-typescript-error'],
+  eslintPluginJsdoc.configs['flat/recommended-typescript'],
   eslintPluginRegexp.configs['flat/recommended'],
   ...typescriptEslint.configs.strictTypeChecked,
   ...typescriptEslint.configs.stylisticTypeChecked,
