@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.10] - 2025-03-29
+
+### 💼 Other
+
+- *(tsup)* Add `tsup` configuration for bundling
+- *(package)* Update exports and module definitions
+
+### ⚙️ Miscellaneous Tasks
+
+- *(build)* Update build script to use `tsup`
+- *(test)* Remove `vitest` configuration
+
 ## [2.0.0-alpha.9] - 2025-03-29
 
 ### 🚀 Features
