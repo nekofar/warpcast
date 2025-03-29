@@ -787,36 +787,7 @@ paths:
     $ref: './paths/v1/notifications-for-tab.yaml'
 
   /v2/set-last-checked-timestamp:
-    put:
-      operationId: setLastCheckedTimestamp
-      summary: Set last checked timestamp
-      description: Updates the last checked timestamp for notifications.
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              description: Empty object for now
-      responses:
-        '200':
-          description: Success
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  result:
-                    type: object
-                    properties:
-                      success:
-                        type: boolean
-        '401':
-          description: Unauthorized
-        '429':
-          description: Too many requests
-      security:
-        - bearerAuth: []
+    $ref: './paths/v2/set-last-checked-timestamp.yaml'
 
   /v2/direct-cast-conversation:
     $ref: './paths/v2/direct-cast-conversation.yaml'

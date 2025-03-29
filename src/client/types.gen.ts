@@ -866,11 +866,7 @@ export interface SetLastCheckedTimestampResponses {
   /**
    * Success
    */
-  200: {
-    result?: {
-      success?: boolean
-    }
-  }
+  200: SuccessResponse
 }
 
 export type SetLastCheckedTimestampResponse =
