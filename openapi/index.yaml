@@ -2947,63 +2947,7 @@ paths:
                   cursor: '...'
 
   /fc/channel-restricted-users:
-    get:
-      operationId: getChannelRestrictedUsers
-      summary: Get restricted users in a channel
-      parameters:
-        - in: query
-          name: channelId
-          schema:
-            type: string
-          required: true
-          description: ID of the channel to get restricted users for
-      responses:
-        '200':
-          description: Successful response with list of restricted users
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  result:
-                    type: object
-                    properties:
-                      restrictedUsers:
-                        type: array
-                        items:
-                          type: object
-                          properties:
-                            fid:
-                              type: integer
-                              description: Farcaster ID of the restricted user
-                            channelId:
-                              type: string
-                              description: ID of the channel where the user is restricted
-                            restrictedAt:
-                              type: integer
-                              description: Unix timestamp of when the user was restricted
-                          required:
-                            - fid
-                            - channelId
-                            - restrictedAt
-                    required:
-                      - restrictedUsers
-                  next:
-                    type: object
-                    properties:
-                      cursor:
-                        type: string
-                        description: Pagination cursor for fetching the next set of results
-                required:
-                  - result
-              example:
-                result:
-                  restrictedUsers:
-                    - fid: 1234
-                      channelId: 'welcome'
-                      restrictedAt: 1727767637
-                next:
-                  cursor: '...'
+    $ref: './paths/fc/channel-restricted-users.yaml'
 
   /fc/channel-bans:
     $ref: './paths/fc/channel-bans.yaml'

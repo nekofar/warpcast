@@ -1,0 +1,57 @@
+get:
+  operationId: getChannelRestrictedUsers
+  summary: Get restricted users in a channel
+  parameters:
+    - in: query
+      name: channelId
+      required: true
+      schema:
+        type: string
+      description: ID of the channel to get restricted users for
+  responses:
+    '200':
+      description: Successful response with list of restricted users
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - result
+            properties:
+              result:
+                type: object
+                required:
+                  - restrictedUsers
+                properties:
+                  restrictedUsers:
+                    type: array
+                    items:
+                      type: object
+                      required:
+                        - fid
+                        - channelId
+                        - restrictedAt
+                      properties:
+                        fid:
+                          type: integer
+                          description: Farcaster ID of the restricted user
+                        channelId:
+                          type: string
+                          description: ID of the channel where the user is restricted
+                        restrictedAt:
+                          type: integer
+                          description: Unix timestamp of when the user was restricted
+              next:
+                type: object
+                properties:
+                  cursor:
+                    type: string
+                    description: Pagination cursor for fetching the next set of results
+          example:
+            result:
+              restrictedUsers:
+                - fid: 1234
+                  channelId: 'welcome'
+                  restrictedAt: 1727767637
+              next:
+                cursor: '...'

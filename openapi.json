@@ -4655,10 +4655,10 @@
           {
             "in": "query",
             "name": "channelId",
+            "required": true,
             "schema": {
               "type": "string"
             },
-            "required": true,
             "description": "ID of the channel to get restricted users for"
           }
         ],
@@ -4669,14 +4669,25 @@
               "application/json": {
                 "schema": {
                   "type": "object",
+                  "required": [
+                    "result"
+                  ],
                   "properties": {
                     "result": {
                       "type": "object",
+                      "required": [
+                        "restrictedUsers"
+                      ],
                       "properties": {
                         "restrictedUsers": {
                           "type": "array",
                           "items": {
                             "type": "object",
+                            "required": [
+                              "fid",
+                              "channelId",
+                              "restrictedAt"
+                            ],
                             "properties": {
                               "fid": {
                                 "type": "integer",
@@ -4690,18 +4701,10 @@
                                 "type": "integer",
                                 "description": "Unix timestamp of when the user was restricted"
                               }
-                            },
-                            "required": [
-                              "fid",
-                              "channelId",
-                              "restrictedAt"
-                            ]
+                            }
                           }
                         }
-                      },
-                      "required": [
-                        "restrictedUsers"
-                      ]
+                      }
                     },
                     "next": {
                       "type": "object",
@@ -4712,10 +4715,7 @@
                         }
                       }
                     }
-                  },
-                  "required": [
-                    "result"
-                  ]
+                  }
                 },
                 "example": {
                   "result": {
@@ -4725,10 +4725,10 @@
                         "channelId": "welcome",
                         "restrictedAt": 1727767637
                       }
-                    ]
-                  },
-                  "next": {
-                    "cursor": "..."
+                    ],
+                    "next": {
+                      "cursor": "..."
+                    }
                   }
                 }
               }
