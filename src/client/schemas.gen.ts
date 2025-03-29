@@ -954,3 +954,26 @@ export const UserThreadCastsResponseSchema = {
     },
   },
 } as const
+
+export const ChannelFollowersYouKnowResponseSchema = {
+  type: 'object',
+  required: ['result'],
+  properties: {
+    result: {
+      type: 'object',
+      required: ['users', 'totalCount'],
+      properties: {
+        users: {
+          type: 'array',
+          items: {
+            type: 'object',
+            additionalProperties: true,
+          },
+        },
+        totalCount: {
+          type: 'integer',
+        },
+      },
+    },
+  },
+} as const

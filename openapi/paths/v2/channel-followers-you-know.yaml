@@ -1,0 +1,22 @@
+get:
+  operationId: getChannelFollowersYouKnow
+  summary: Get mutual followers in a channel
+  parameters:
+    - name: channelKey
+      in: query
+      required: true
+      schema:
+        type: string
+    - name: limit
+      in: query
+      schema:
+        type: integer
+  security:
+    - bearerAuth: []
+  responses:
+    '200':
+      description: Successful retrieval of known channel followers
+      content:
+        application/json:
+          schema:
+            $ref: '../../index.yaml#/components/schemas/ChannelFollowersYouKnowResponse'

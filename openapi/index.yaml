@@ -681,6 +681,21 @@ components:
               items:
                 type: object
                 additionalProperties: true
+    ChannelFollowersYouKnowResponse:
+      type: object
+      required: [result]
+      properties:
+        result:
+          type: object
+          required: [users, totalCount]
+          properties:
+            users:
+              type: array
+              items:
+                type: object
+                additionalProperties: true
+            totalCount:
+              type: integer
 
 paths:
   /v2/onboarding-state:
@@ -729,39 +744,7 @@ paths:
     $ref: './paths/v2/user-thread-casts.yaml'
 
   /v2/channel-followers-you-know:
-    get:
-      operationId: getChannelFollowersYouKnow
-      summary: Get mutual followers in a channel
-      parameters:
-        - name: channelKey
-          in: query
-          required: true
-          schema:
-            type: string
-        - name: limit
-          in: query
-          schema:
-            type: integer
-      security:
-        - bearerAuth: []
-      responses:
-        '200':
-          description: Successful retrieval of known channel followers
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  result:
-                    type: object
-                    properties:
-                      users:
-                        type: array
-                        items:
-                          type: object
-                          additionalProperties: true
-                      totalCount:
-                        type: integer
+    $ref: './paths/v2/channel-followers-you-know.yaml'
 
   /v2/mark-all-notifications-read:
     put:

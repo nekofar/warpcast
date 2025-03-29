@@ -325,6 +325,13 @@ export interface UserThreadCastsResponse {
   }
 }
 
+export interface ChannelFollowersYouKnowResponse {
+  result: {
+    users: Record<string, unknown>[]
+    totalCount: number
+  }
+}
+
 /**
  * The user's FID (Farcaster ID)
  */
@@ -756,12 +763,7 @@ export interface GetChannelFollowersYouKnowResponses {
   /**
    * Successful retrieval of known channel followers
    */
-  200: {
-    result?: {
-      users?: Record<string, unknown>[]
-      totalCount?: number
-    }
-  }
+  200: ChannelFollowersYouKnowResponse
 }
 
 export type GetChannelFollowersYouKnowResponse =
