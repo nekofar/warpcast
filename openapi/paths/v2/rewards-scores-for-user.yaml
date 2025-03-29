@@ -1,0 +1,29 @@
+get:
+  operationId: getUserRewardsScores
+  summary: Get invite rewards scores for a user
+  description: Returns current, previous, and all-time invite rewards scores for the specified user.
+  parameters:
+    - name: rewardsType
+      in: query
+      required: true
+      schema:
+        type: string
+        enum: [invite]
+    - name: fid
+      in: query
+      required: true
+      schema:
+        type: integer
+  security:
+    - bearerAuth: []
+  responses:
+    '200':
+      description: User rewards scores
+      content:
+        application/json:
+          schema:
+            $ref: '../../index.yaml#/components/schemas/RewardsScoresResponse'
+    '401':
+      description: Unauthorized
+    '429':
+      description: Too many requests

@@ -381,6 +381,18 @@ export interface RewardsLeaderboardResponse {
     }
   }
 }
+
+export interface RewardsScoresResponse {
+  result: {
+    scores: {
+      type?: string
+      user?: Record<string, unknown>
+      allTimeScore?: number
+      currentPeriodScore?: number
+      previousPeriodScore?: number
+    }[]
+  }
+}
 /**
  * The user's FID (Farcaster ID)
  */
@@ -1093,17 +1105,7 @@ export interface GetUserRewardsScoresResponses {
   /**
    * User rewards scores
    */
-  200: {
-    result?: {
-      scores?: {
-        type?: string
-        user?: Record<string, unknown>
-        allTimeScore?: number
-        currentPeriodScore?: number
-        previousPeriodScore?: number
-      }[]
-    }
-  }
+  200: RewardsScoresResponse
 }
 
 export type GetUserRewardsScoresResponse =

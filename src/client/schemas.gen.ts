@@ -1111,3 +1111,40 @@ export const RewardsLeaderboardResponseSchema = {
     },
   },
 } as const
+
+export const RewardsScoresResponseSchema = {
+  type: 'object',
+  required: ['result'],
+  properties: {
+    result: {
+      type: 'object',
+      required: ['scores'],
+      properties: {
+        scores: {
+          type: 'array',
+          items: {
+            type: 'object',
+            properties: {
+              type: {
+                type: 'string',
+              },
+              user: {
+                type: 'object',
+                additionalProperties: true,
+              },
+              allTimeScore: {
+                type: 'integer',
+              },
+              currentPeriodScore: {
+                type: 'integer',
+              },
+              previousPeriodScore: {
+                type: 'integer',
+              },
+            },
+          },
+        },
+      },
+    },
+  },
+} as const
