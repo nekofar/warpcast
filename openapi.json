@@ -6112,6 +6112,9 @@
               "application/json": {
                 "schema": {
                   "type": "object",
+                  "required": [
+                    "result"
+                  ],
                   "properties": {
                     "result": {
                       "type": "object",
@@ -6125,10 +6128,7 @@
                         }
                       }
                     }
-                  },
-                  "required": [
-                    "result"
-                  ]
+                  }
                 },
                 "example": {
                   "result": {
