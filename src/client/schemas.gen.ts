@@ -849,3 +849,23 @@ export const VerifiedAddressSchema = {
     },
   },
 } as const
+
+export const FavoriteFramesResponseSchema = {
+  type: 'object',
+  required: ['result'],
+  properties: {
+    result: {
+      type: 'object',
+      required: ['frames'],
+      properties: {
+        frames: {
+          type: 'array',
+          items: {
+            type: 'object',
+            additionalProperties: true,
+          },
+        },
+      },
+    },
+  },
+} as const

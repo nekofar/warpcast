@@ -292,6 +292,12 @@ export interface VerifiedAddress {
   labels?: string[]
 }
 
+export interface FavoriteFramesResponse {
+  result: {
+    frames: Record<string, unknown>[]
+  }
+}
+
 /**
  * The user's FID (Farcaster ID)
  */
@@ -627,11 +633,7 @@ export interface GetUserFavoriteFramesResponses {
   /**
    * Successful retrieval of favorite frames
    */
-  200: {
-    result?: {
-      frames?: Record<string, unknown>[]
-    }
-  }
+  200: FavoriteFramesResponse
 }
 
 export type GetUserFavoriteFramesResponse =

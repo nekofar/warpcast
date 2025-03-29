@@ -917,6 +917,29 @@
             }
           }
         }
+      },
+      "FavoriteFramesResponse": {
+        "type": "object",
+        "required": [
+          "result"
+        ],
+        "properties": {
+          "result": {
+            "type": "object",
+            "required": [
+              "frames"
+            ],
+            "properties": {
+              "frames": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            }
+          }
+        }
       }
     }
   },
@@ -1338,21 +1361,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "result": {
-                      "type": "object",
-                      "properties": {
-                        "frames": {
-                          "type": "array",
-                          "items": {
-                            "type": "object",
-                            "additionalProperties": true
-                          }
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/FavoriteFramesResponse"
                 }
               }
             }
