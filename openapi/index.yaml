@@ -3012,52 +3012,7 @@ paths:
     $ref: './paths/fc/channel-follows.yaml'
 
   /fc/moderate-cast:
-    post:
-      operationId: moderateCast
-      summary: Moderate a cast (e.g., hide it)
-      security:
-        - bearerAuth: []
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                castHash:
-                  type: string
-                  description: Hash of the cast to moderate
-                action:
-                  type: string
-                  description: Type of moderation action to apply
-                  enum: ['hide']
-              required:
-                - castHash
-                - action
-            example:
-              castHash: '0x2694aa649f3608bd11fe6621946782d1eb0ae3c4'
-              action: 'hide'
-      responses:
-        '200':
-          description: Successful moderation action
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  result:
-                    type: object
-                    properties:
-                      success:
-                        type: boolean
-                        description: Indicates whether the moderation action was successful
-                    required:
-                      - success
-                required:
-                  - result
-              example:
-                result:
-                  success: true
+    $ref: './paths/fc/moderate-cast.yaml'
 
   /fc/pinned-casts:
     $ref: './paths/fc/pinned-casts.yaml'

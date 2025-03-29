@@ -5048,6 +5048,10 @@
             "application/json": {
               "schema": {
                 "type": "object",
+                "required": [
+                  "castHash",
+                  "action"
+                ],
                 "properties": {
                   "castHash": {
                     "type": "string",
@@ -5060,11 +5064,7 @@
                       "hide"
                     ]
                   }
-                },
-                "required": [
-                  "castHash",
-                  "action"
-                ]
+                }
               },
               "example": {
                 "castHash": "0x2694aa649f3608bd11fe6621946782d1eb0ae3c4",
@@ -5079,24 +5079,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "result": {
-                      "type": "object",
-                      "properties": {
-                        "success": {
-                          "type": "boolean",
-                          "description": "Indicates whether the moderation action was successful"
-                        }
-                      },
-                      "required": [
-                        "success"
-                      ]
-                    }
-                  },
-                  "required": [
-                    "result"
-                  ]
+                  "$ref": "#/components/schemas/SuccessResponse"
                 },
                 "example": {
                   "result": {

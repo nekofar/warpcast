@@ -2414,14 +2414,7 @@ export interface ModerateCastResponses {
   /**
    * Successful moderation action
    */
-  200: {
-    result: {
-      /**
-       * Indicates whether the moderation action was successful
-       */
-      success: boolean
-    }
-  }
+  200: SuccessResponse
 }
 
 export type ModerateCastResponse =

@@ -1,0 +1,35 @@
+post:
+  operationId: moderateCast
+  summary: Moderate a cast (e.g., hide it)
+  security:
+    - bearerAuth: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - castHash
+            - action
+          properties:
+            castHash:
+              type: string
+              description: Hash of the cast to moderate
+            action:
+              type: string
+              description: Type of moderation action to apply
+              enum: ['hide']
+        example:
+          castHash: '0x2694aa649f3608bd11fe6621946782d1eb0ae3c4'
+          action: 'hide'
+  responses:
+    '200':
+      description: Successful moderation action
+      content:
+        application/json:
+          schema:
+            $ref: '../../index.yaml#/components/schemas/SuccessResponse'
+          example:
+            result:
+              success: true
