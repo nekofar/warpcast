@@ -2,6 +2,10 @@
   "name": "@nekofar/warpcast",
   "version": "2.0.0-alpha.5",
   "description": "TypeScript client for interacting with Warpcast APIs",
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "Apache-2.0",
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
