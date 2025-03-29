@@ -27,15 +27,7 @@ get:
                 type: object
                 properties:
                   address:
-                    type: object
-                    properties:
-                      fid:
-                        type: integer
-                      protocol:
-                        type: string
-                        enum: [ethereum, solana]
-                      address:
-                        type: string
+                    $ref: '../../index.yaml#/components/schemas/VerifiedAddress'
           example:
             result:
               address:

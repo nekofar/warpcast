@@ -5846,22 +5846,7 @@
                       "type": "object",
                       "properties": {
                         "address": {
-                          "type": "object",
-                          "properties": {
-                            "fid": {
-                              "type": "integer"
-                            },
-                            "protocol": {
-                              "type": "string",
-                              "enum": [
-                                "ethereum",
-                                "solana"
-                              ]
-                            },
-                            "address": {
-                              "type": "string"
-                            }
-                          }
+                          "$ref": "#/components/schemas/VerifiedAddress"
                         }
                       }
                     }
@@ -5939,31 +5924,8 @@
                                 "description": "Whether the address was successfully retrieved"
                               },
                               "address": {
-                                "type": "object",
-                                "description": "Present only if success is true",
-                                "required": [
-                                  "fid",
-                                  "protocol",
-                                  "address"
-                                ],
-                                "properties": {
-                                  "fid": {
-                                    "type": "integer",
-                                    "description": "The Farcaster ID of the user"
-                                  },
-                                  "protocol": {
-                                    "type": "string",
-                                    "enum": [
-                                      "ethereum",
-                                      "solana"
-                                    ],
-                                    "description": "The blockchain protocol of the address"
-                                  },
-                                  "address": {
-                                    "type": "string",
-                                    "description": "The blockchain address string"
-                                  }
-                                }
+                                "$ref": "#/components/schemas/VerifiedAddress",
+                                "description": "Present only if success is true"
                               }
                             }
                           }

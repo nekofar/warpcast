@@ -2732,11 +2732,7 @@ export interface GetUserPrimaryAddressResponses {
    */
   200: {
     result?: {
-      address?: {
-        fid?: number
-        protocol?: 'ethereum' | 'solana'
-        address?: string
-      }
+      address?: VerifiedAddress
     }
   }
 }
@@ -2778,20 +2774,7 @@ export interface GetUserPrimaryAddressesResponses {
         /**
          * Present only if success is true
          */
-        address?: {
-          /**
-           * The Farcaster ID of the user
-           */
-          fid: number
-          /**
-           * The blockchain protocol of the address
-           */
-          protocol: 'ethereum' | 'solana'
-          /**
-           * The blockchain address string
-           */
-          address: string
-        }
+        address?: VerifiedAddress
       }[]
     }
   }
