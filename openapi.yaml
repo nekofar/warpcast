@@ -2363,6 +2363,11 @@ paths:
                 embeds:
                   type: array
                   items: {}
+                channelKey:
+                  type: string
+                  description: Optional channel to post the cast to
+              required:
+                - text
 
       responses:
         '200':
@@ -3659,7 +3664,7 @@ paths:
           required: true
           schema:
             type: string
-            enum: [ ethereum, solana ]
+            enum: [ethereum, solana]
           description: The protocol of the addresses to fetch.
       responses:
         '200':
@@ -3692,7 +3697,7 @@ paths:
                                   description: The Farcaster ID of the user
                                 protocol:
                                   type: string
-                                  enum: [ ethereum, solana ]
+                                  enum: [ethereum, solana]
                                   description: The blockchain protocol of the address
                                 address:
                                   type: string

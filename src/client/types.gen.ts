@@ -1818,8 +1818,12 @@ export type DeleteCastResponse = DeleteCastResponses[keyof DeleteCastResponses]
 
 export interface CreateCastData {
   body: {
-    text?: string
+    text: string
     embeds?: unknown[]
+    /**
+     * Optional channel to post the cast to
+     */
+    channelKey?: string
   }
   path?: never
   query?: never
