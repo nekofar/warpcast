@@ -759,15 +759,15 @@ components:
         additionalProperties: true
     RewardsLeaderboardResponse:
       type: object
-      required: [ result ]
+      required: [result]
       properties:
         result:
           type: object
-          required: [ leaderboard ]
+          required: [leaderboard]
           properties:
             leaderboard:
               type: object
-              required: [ type, users ]
+              required: [type, users]
               properties:
                 type:
                   type: string
@@ -783,14 +783,13 @@ components:
                         type: integer
                       rank:
                         type: integer
-
     RewardsScoresResponse:
       type: object
-      required: [ result ]
+      required: [result]
       properties:
         result:
           type: object
-          required: [ scores ]
+          required: [scores]
           properties:
             scores:
               type: array
@@ -807,14 +806,14 @@ components:
                   currentPeriodScore:
                     type: integer
                   previousPeriodScore:
-                      type: integer
+                    type: integer
     RewardsMetadataResponse:
       type: object
-      required: [ result ]
+      required: [result]
       properties:
         result:
           type: object
-          required: [ metadata ]
+          required: [metadata]
           properties:
             metadata:
               type: object
@@ -992,32 +991,7 @@ paths:
     $ref: './paths/v2/starter-packs.yaml'
 
   /v2/starter-packs/suggested:
-    get:
-      operationId: getSuggestedStarterPacks
-      summary: Get suggested starter packs
-      description: Returns a list of suggested starter packs.
-      parameters:
-        - name: limit
-          in: query
-          required: false
-          schema:
-            type: integer
-            default: 15
-      responses:
-        '200':
-          description: A list of suggested starter packs
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  result:
-                    type: object
-                    properties:
-                      starterPacks:
-                        type: array
-                        items:
-                          type: object
+    $ref: './paths/v2/starter-packs-suggested.yaml'
 
   /v2/starter-pack:
     $ref: './paths/v2/starter-pack.yaml'

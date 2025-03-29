@@ -1,0 +1,18 @@
+get:
+  operationId: getSuggestedStarterPacks
+  summary: Get suggested starter packs
+  description: Returns a list of suggested starter packs.
+  parameters:
+    - name: limit
+      in: query
+      required: false
+      schema:
+        type: integer
+        default: 15
+  responses:
+    '200':
+      description: A list of suggested starter packs
+      content:
+        application/json:
+          schema:
+            $ref: '../../index.yaml#/components/schemas/StarterPacksResponse'
