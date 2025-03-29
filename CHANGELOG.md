@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.4] - 2025-03-29
+
+### 📚 Documentation
+
+- *(readme)* Add note about project instability
+
 ## [2.0.0-alpha.3] - 2025-03-29
 
 ### 📚 Documentation
