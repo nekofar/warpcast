@@ -78,6 +78,7 @@ import type {
   GetDirectCastInboxResponse,
   GetDiscoverableActionsData,
   GetDiscoverableComposerActionsData,
+  GetDiscoverableComposerActionsResponse,
   GetDraftCastsData,
   GetDraftCastsResponse,
   GetFeedItemsData,
@@ -1957,7 +1958,11 @@ export const getDiscoverableComposerActions = <
 >(
   options: Options<GetDiscoverableComposerActionsData, ThrowOnError>,
 ) => {
-  return (options.client ?? _heyApiClient).get<unknown, unknown, ThrowOnError>({
+  return (options.client ?? _heyApiClient).get<
+    GetDiscoverableComposerActionsResponse,
+    unknown,
+    ThrowOnError
+  >({
     security: [
       {
         scheme: 'bearer',

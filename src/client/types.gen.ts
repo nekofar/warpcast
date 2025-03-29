@@ -2527,8 +2527,29 @@ export interface GetDiscoverableComposerActionsResponses {
   /**
    * Successful response with list of discoverable composer actions
    */
-  200: unknown
+  200: {
+    result?: {
+      actions?: {
+        name?: string
+        icon?: string
+        description?: string
+        aboutUrl?: string
+        imageUrl?: string
+        actionUrl?: string
+        action?: {
+          actionType?: 'post' | 'get' | 'put' | 'delete'
+          postUrl?: string
+        }
+      }[]
+      next?: {
+        cursor?: string
+      }
+    }
+  }
 }
+
+export type GetDiscoverableComposerActionsResponse =
+  GetDiscoverableComposerActionsResponses[keyof GetDiscoverableComposerActionsResponses]
 
 export interface UnblockUserData {
   body: {
