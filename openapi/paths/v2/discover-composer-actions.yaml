@@ -28,32 +28,7 @@ get:
                   actions:
                     type: array
                     items:
-                      type: object
-                      properties:
-                        name:
-                          type: string
-                        icon:
-                          type: string
-                        description:
-                          type: string
-                        aboutUrl:
-                          type: string
-                          format: uri
-                        imageUrl:
-                          type: string
-                          format: uri
-                        actionUrl:
-                          type: string
-                          format: uri
-                        action:
-                          type: object
-                          properties:
-                            actionType:
-                              type: string
-                              enum: [post, get, put, delete]
-                            postUrl:
-                              type: string
-                              format: uri
+                      $ref: '../../index.yaml#/components/schemas/Action'
                   next:
                     type: object
                     properties:

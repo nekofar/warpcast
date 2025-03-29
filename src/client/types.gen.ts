@@ -261,6 +261,18 @@ export interface SuggestedUsersResponse {
   }
 }
 
+export interface Action {
+  name?: string
+  icon?: string
+  description?: string
+  aboutUrl?: string
+  actionUrl?: string
+  action?: {
+    actionType?: 'post' | 'get' | 'put' | 'delete'
+    postUrl?: string
+  }
+}
+
 /**
  * The user's FID (Farcaster ID)
  */
@@ -2512,17 +2524,7 @@ export interface GetDiscoverableActionsResponses {
    */
   200: {
     result?: {
-      actions?: {
-        name?: string
-        icon?: string
-        description?: string
-        aboutUrl?: string
-        actionUrl?: string
-        action?: {
-          actionType?: 'post' | 'get' | 'put' | 'delete'
-          postUrl?: string
-        }
-      }[]
+      actions?: Action[]
       next?: {
         cursor?: string
       }
@@ -2549,18 +2551,7 @@ export interface GetDiscoverableComposerActionsResponses {
    */
   200: {
     result?: {
-      actions?: {
-        name?: string
-        icon?: string
-        description?: string
-        aboutUrl?: string
-        imageUrl?: string
-        actionUrl?: string
-        action?: {
-          actionType?: 'post' | 'get' | 'put' | 'delete'
-          postUrl?: string
-        }
-      }[]
+      actions?: Action[]
       next?: {
         cursor?: string
       }

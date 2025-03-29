@@ -766,3 +766,39 @@ export const SuggestedUsersResponseSchema = {
     },
   },
 } as const
+
+export const ActionSchema = {
+  type: 'object',
+  properties: {
+    name: {
+      type: 'string',
+    },
+    icon: {
+      type: 'string',
+    },
+    description: {
+      type: 'string',
+    },
+    aboutUrl: {
+      type: 'string',
+      format: 'uri',
+    },
+    actionUrl: {
+      type: 'string',
+      format: 'uri',
+    },
+    action: {
+      type: 'object',
+      properties: {
+        actionType: {
+          type: 'string',
+          enum: ['post', 'get', 'put', 'delete'],
+        },
+        postUrl: {
+          type: 'string',
+          format: 'uri',
+        },
+      },
+    },
+  },
+} as const
