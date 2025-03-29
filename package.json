@@ -4,8 +4,15 @@
   "description": "TypeScript client for interacting with Warpcast APIs",
   "type": "module",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
-    "build": "openapi-ts",
+    "prebuild": "openapi-ts",
+    "build": "tsc",
     "lint": "eslint",
     "prepublishOnly": "pnpm build",
     "test": "vitest run --passWithNoTests"
