@@ -1,0 +1,21 @@
+get:
+  operationId: getSuggestedUsers
+  summary: Get suggested users
+  parameters:
+    - name: limit
+      in: query
+      schema:
+        type: integer
+    - name: randomized
+      in: query
+      schema:
+        type: boolean
+  security:
+    - bearerAuth: []
+  responses:
+    '200':
+      description: Successful retrieval of suggested users
+      content:
+        application/json:
+          schema:
+            $ref: '../../index.yaml#/components/schemas/SuggestedUsersResponse'

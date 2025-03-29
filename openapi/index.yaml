@@ -632,27 +632,7 @@ paths:
     $ref: './paths/v2/user-following-channels.yaml'
 
   /v2/suggested-users:
-    get:
-      operationId: getSuggestedUsers
-      summary: Get suggested users
-      parameters:
-        - name: limit
-          in: query
-          schema:
-            type: integer
-        - name: randomized
-          in: query
-          schema:
-            type: boolean
-      security:
-        - bearerAuth: []
-      responses:
-        '200':
-          description: Successful retrieval of suggested users
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SuggestedUsersResponse'
+    $ref: './paths/v2/suggested-users.yaml'
 
   /v1/favorite-frames:
     get:
