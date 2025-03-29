@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.8] - 2025-03-29
+
+### 🚀 Features
+
+- *(index)* Export all from `client`
+
+### 🚜 Refactor
+
+- *(client)* Reorganize generated files into `client`
+
+### ⚙️ Miscellaneous Tasks
+
+- *(config)* Update openapi-ts plugin configurations
+- *(src)* Update auto-generated exports
+- *(config)* Update output path in `openapi-ts` config
+- *(config)* Update `@hey-api/client-fetch` plugin config
+
 ## [2.0.0-alpha.7] - 2025-03-29
 
 ### 🐛 Bug Fixes
