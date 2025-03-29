@@ -393,6 +393,23 @@ export interface RewardsScoresResponse {
     }[]
   }
 }
+
+export interface RewardsMetadataResponse {
+  result: {
+    metadata: {
+      type: string
+      lastUpdateTimestamp: number
+      currentPeriodStartTimestamp: number
+      currentPeriodEndTimestamp: number
+      tiers?: Record<string, unknown>[]
+      proportionalPayout?: {
+        numWinners?: number
+        totalRewardCents?: number
+      }
+    }
+  }
+}
+
 /**
  * The user's FID (Farcaster ID)
  */
@@ -1063,18 +1080,7 @@ export interface GetRewardsLeaderboardResponses {
   /**
    * Rewards leaderboard
    */
-  200: {
-    result?: {
-      leaderboard?: {
-        type?: string
-        users?: {
-          user?: Record<string, unknown>
-          score?: number
-          rank?: number
-        }[]
-      }
-    }
-  }
+  200: RewardsLeaderboardResponse
 }
 
 export type GetRewardsLeaderboardResponse =
@@ -1135,21 +1141,7 @@ export interface GetRewardsMetadataResponses {
   /**
    * Invite rewards metadata
    */
-  200: {
-    result?: {
-      metadata?: {
-        type?: string
-        lastUpdateTimestamp?: number
-        currentPeriodStartTimestamp?: number
-        currentPeriodEndTimestamp?: number
-        tiers?: unknown[]
-        proportionalPayout?: {
-          numWinners?: number
-          totalRewardCents?: number
-        }
-      }
-    }
-  }
+  200: RewardsMetadataResponse
 }
 
 export type GetRewardsMetadataResponse =

@@ -1148,3 +1148,57 @@ export const RewardsScoresResponseSchema = {
     },
   },
 } as const
+
+export const RewardsMetadataResponseSchema = {
+  type: 'object',
+  required: ['result'],
+  properties: {
+    result: {
+      type: 'object',
+      required: ['metadata'],
+      properties: {
+        metadata: {
+          type: 'object',
+          required: [
+            'type',
+            'lastUpdateTimestamp',
+            'currentPeriodStartTimestamp',
+            'currentPeriodEndTimestamp',
+          ],
+          properties: {
+            type: {
+              type: 'string',
+            },
+            lastUpdateTimestamp: {
+              type: 'integer',
+            },
+            currentPeriodStartTimestamp: {
+              type: 'integer',
+            },
+            currentPeriodEndTimestamp: {
+              type: 'integer',
+            },
+            tiers: {
+              type: 'array',
+              items: {
+                type: 'object',
+                additionalProperties: true,
+              },
+            },
+            proportionalPayout: {
+              type: 'object',
+              properties: {
+                numWinners: {
+                  type: 'integer',
+                },
+                totalRewardCents: {
+                  type: 'integer',
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  },
+} as const
