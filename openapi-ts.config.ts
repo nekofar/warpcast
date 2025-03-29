@@ -5,18 +5,26 @@ export default defineConfig({
   output: {
     format: 'prettier',
     lint: 'eslint',
-    path: './src/',
+    path: './src/client',
   },
   plugins: [
-    '@hey-api/client-fetch',
-    '@hey-api/schemas',
     {
-      dates: true,
-      name: '@hey-api/transformers',
+      name: '@hey-api/client-fetch',
+      bundle: false,
+      exportFromIndex: true,
     },
     {
-      enums: 'javascript',
+      name: '@hey-api/schemas',
+      exportFromIndex: true,
+    },
+    {
+      name: '@hey-api/transformers',
+      dates: true,
+      exportFromIndex: true,
+    },
+    {
       name: '@hey-api/typescript',
+      enums: 'typescript',
     },
     {
       name: '@hey-api/sdk',
