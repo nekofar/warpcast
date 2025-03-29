@@ -16,8 +16,9 @@
     "LICENSE"
   ],
   "scripts": {
-    "prebuild": "openapi-ts",
+    "prebuild": "pnpm clean && openapi-ts",
     "build": "tsc",
+    "clean": "rimraf dist",
     "lint": "eslint",
     "prepublishOnly": "pnpm build",
     "test": "vitest run --passWithNoTests"
