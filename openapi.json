@@ -5887,6 +5887,10 @@
                           "type": "array",
                           "items": {
                             "type": "object",
+                            "required": [
+                              "fid",
+                              "success"
+                            ],
                             "properties": {
                               "fid": {
                                 "type": "integer",
@@ -5899,6 +5903,11 @@
                               "address": {
                                 "type": "object",
                                 "description": "Present only if success is true",
+                                "required": [
+                                  "fid",
+                                  "protocol",
+                                  "address"
+                                ],
                                 "properties": {
                                   "fid": {
                                     "type": "integer",
@@ -5916,18 +5925,9 @@
                                     "type": "string",
                                     "description": "The blockchain address string"
                                   }
-                                },
-                                "required": [
-                                  "fid",
-                                  "protocol",
-                                  "address"
-                                ]
+                                }
                               }
-                            },
-                            "required": [
-                              "fid",
-                              "success"
-                            ]
+                            }
                           }
                         }
                       }
