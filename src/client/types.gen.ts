@@ -2366,14 +2366,7 @@ export interface UnfollowChannelResponses {
   /**
    * Successful unfollow operation
    */
-  200: {
-    result: {
-      /**
-       * Indicates whether the unfollow operation was successful
-       */
-      success: boolean
-    }
-  }
+  200: SuccessResponse
 }
 
 export type UnfollowChannelResponse =
@@ -2395,14 +2388,7 @@ export interface FollowChannelResponses {
   /**
    * Successful follow operation
    */
-  200: {
-    result: {
-      /**
-       * Indicates whether the follow operation was successful
-       */
-      success: boolean
-    }
-  }
+  200: SuccessResponse
 }
 
 export type FollowChannelResponse =

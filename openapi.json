@@ -4950,15 +4950,15 @@
             "application/json": {
               "schema": {
                 "type": "object",
+                "required": [
+                  "channelId"
+                ],
                 "properties": {
                   "channelId": {
                     "type": "string",
                     "description": "ID of the channel to follow"
                   }
-                },
-                "required": [
-                  "channelId"
-                ]
+                }
               },
               "example": {
                 "channelId": "evm"
@@ -4972,24 +4972,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "result": {
-                      "type": "object",
-                      "properties": {
-                        "success": {
-                          "type": "boolean",
-                          "description": "Indicates whether the follow operation was successful"
-                        }
-                      },
-                      "required": [
-                        "success"
-                      ]
-                    }
-                  },
-                  "required": [
-                    "result"
-                  ]
+                  "$ref": "#/components/schemas/SuccessResponse"
                 },
                 "example": {
                   "result": {
@@ -5015,15 +4998,15 @@
             "application/json": {
               "schema": {
                 "type": "object",
+                "required": [
+                  "channelId"
+                ],
                 "properties": {
                   "channelId": {
                     "type": "string",
                     "description": "ID of the channel to unfollow"
                   }
-                },
-                "required": [
-                  "channelId"
-                ]
+                }
               },
               "example": {
                 "channelId": "evm"
@@ -5037,24 +5020,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "result": {
-                      "type": "object",
-                      "properties": {
-                        "success": {
-                          "type": "boolean",
-                          "description": "Indicates whether the unfollow operation was successful"
-                        }
-                      },
-                      "required": [
-                        "success"
-                      ]
-                    }
-                  },
-                  "required": [
-                    "result"
-                  ]
+                  "$ref": "#/components/schemas/SuccessResponse"
                 },
                 "example": {
                   "result": {
