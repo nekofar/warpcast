@@ -708,6 +708,16 @@ components:
               items:
                 type: object
                 additionalProperties: true
+    DirectCastConversationResponse:
+      type: object
+      required: [result]
+      properties:
+        result:
+          type: object
+          properties:
+            conversation:
+              type: object
+              additionalProperties: true
 
 paths:
   /v2/onboarding-state:
@@ -797,37 +807,7 @@ paths:
         - bearerAuth: []
 
   /v2/direct-cast-conversation:
-    get:
-      operationId: getDirectCastConversation
-      summary: Get direct cast conversation
-      description: Fetches a direct cast conversation by conversationId.
-      parameters:
-        - in: query
-          name: conversationId
-          required: true
-          schema:
-            type: string
-          description: Conversation ID in the format fid1-fid2
-      responses:
-        '200':
-          description: A direct cast conversation object
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  result:
-                    type: object
-                    properties:
-                      conversation:
-                        type: object
-                        description: Conversation details (schema omitted for brevity)
-        '401':
-          description: Unauthorized
-        '429':
-          description: Too many requests
-      security:
-        - bearerAuth: []
+    $ref: './paths/v2/direct-cast-conversation.yaml'
 
   /v2/discover-channels:
     get:

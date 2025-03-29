@@ -996,3 +996,19 @@ export const NotificationsResponseSchema = {
     },
   },
 } as const
+
+export const DirectCastConversationResponseSchema = {
+  type: 'object',
+  required: ['result'],
+  properties: {
+    result: {
+      type: 'object',
+      properties: {
+        conversation: {
+          type: 'object',
+          additionalProperties: true,
+        },
+      },
+    },
+  },
+} as const

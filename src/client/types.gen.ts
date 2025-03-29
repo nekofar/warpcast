@@ -338,6 +338,18 @@ export interface NotificationsResponse {
   }
 }
 
+export interface DirectCastConversationResponse {
+  result: {
+    conversation?: Record<string, unknown>
+  }
+}
+
+export interface DiscoverChannelsResponse {
+  result: {
+    channels?: Record<string, unknown>[]
+  }
+}
+
 /**
  * The user's FID (Farcaster ID)
  */
@@ -891,14 +903,7 @@ export interface GetDirectCastConversationResponses {
   /**
    * A direct cast conversation object
    */
-  200: {
-    result?: {
-      /**
-       * Conversation details (schema omitted for brevity)
-       */
-      conversation?: Record<string, unknown>
-    }
-  }
+  200: DirectCastConversationResponse
 }
 
 export type GetDirectCastConversationResponse =
