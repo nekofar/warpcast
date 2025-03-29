@@ -3112,6 +3112,11 @@
       "put": {
         "summary": "Like a cast",
         "operationId": "likeCast",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -3131,11 +3136,6 @@
             }
           }
         },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
         "responses": {
           "200": {
             "description": "Like response",
@@ -3180,6 +3180,11 @@
       "delete": {
         "summary": "Unlike a cast",
         "operationId": "unlikeCast",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -3199,11 +3204,6 @@
             }
           }
         },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
         "responses": {
           "200": {
             "description": "Unlike response",
