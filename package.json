@@ -6,6 +6,10 @@
     "access": "public"
   },
   "license": "Apache-2.0",
+  "keywords": [
+    "warpcast",
+    "farcaster"
+  ],
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
