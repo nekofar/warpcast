@@ -5688,6 +5688,55 @@
             "description": "Successful response with creator reward winners history",
             "content": {
               "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "periodStartTimestamp": {
+                          "type": "integer",
+                          "format": "int64"
+                        },
+                        "periodEndTimestamp": {
+                          "type": "integer",
+                          "format": "int64"
+                        },
+                        "winners": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "fid": {
+                                "type": "integer"
+                              },
+                              "score": {
+                                "type": "integer"
+                              },
+                              "rank": {
+                                "type": "integer"
+                              },
+                              "rewardCents": {
+                                "type": "integer"
+                              },
+                              "walletAddress": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "next": {
+                      "type": "object",
+                      "properties": {
+                        "cursor": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
                 "example": {
                   "result": {
                     "periodStartTimestamp": 1738080000000,

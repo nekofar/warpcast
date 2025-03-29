@@ -3562,38 +3562,7 @@ paths:
     $ref: './paths/fc/account-verifications.yaml'
 
   /v1/creator-rewards-winner-history:
-    get:
-      operationId: getCreatorRewardWinners
-      summary: Get creator reward winners
-      parameters:
-        - in: query
-          name: periodsAgo
-          schema:
-            type: integer
-          required: false
-          description: How many periods ago to fetch the results for. 0 or undefined returns results for the most recent period.
-      responses:
-        '200':
-          description: Successful response with creator reward winners history
-          content:
-            application/json:
-              example:
-                result:
-                  periodStartTimestamp: 1738080000000
-                  periodEndTimestamp: 1738684800000
-                  winners:
-                    - fid: 1
-                      score: 10
-                      rank: 1
-                      rewardCents: 1000
-                      walletAddress: '0x0000000000000000000000000000000000000000'
-                    - fid: 420
-                      score: 1
-                      rank: 2
-                      rewardCents: 500
-                      walletAddress: '0x0000000000000000000000000000000000000001'
-                next:
-                  cursor: '...'
+    $ref: './paths/v1/creator-rewards-winner-history.yaml'
 
   /fc/primary-address:
     get:

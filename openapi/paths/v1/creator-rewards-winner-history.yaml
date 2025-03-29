@@ -1,0 +1,64 @@
+get:
+  operationId: getCreatorRewardWinners
+  summary: Get creator reward winners
+  parameters:
+    - in: query
+      name: periodsAgo
+      schema:
+        type: integer
+      required: false
+      description: How many periods ago to fetch the results for. 0 or undefined returns results for the most recent period.
+  responses:
+    '200':
+      description: Successful response with creator reward winners history
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              result:
+                type: object
+                properties:
+                  periodStartTimestamp:
+                    type: integer
+                    format: int64
+                  periodEndTimestamp:
+                    type: integer
+                    format: int64
+                  winners:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        fid:
+                          type: integer
+                        score:
+                          type: integer
+                        rank:
+                          type: integer
+                        rewardCents:
+                          type: integer
+                        walletAddress:
+                          type: string
+              next:
+                type: object
+                properties:
+                  cursor:
+                    type: string
+          example:
+            result:
+              periodStartTimestamp: 1738080000000
+              periodEndTimestamp: 1738684800000
+              winners:
+                - fid: 1
+                  score: 10
+                  rank: 1
+                  rewardCents: 1000
+                  walletAddress: '0x0000000000000000000000000000000000000000'
+                - fid: 420
+                  score: 1
+                  rank: 2
+                  rewardCents: 500
+                  walletAddress: '0x0000000000000000000000000000000000000001'
+            next:
+              cursor: '...'

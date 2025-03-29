@@ -2678,8 +2678,26 @@ export interface GetCreatorRewardWinnersResponses {
   /**
    * Successful response with creator reward winners history
    */
-  200: unknown
+  200: {
+    result?: {
+      periodStartTimestamp?: bigint
+      periodEndTimestamp?: bigint
+      winners?: {
+        fid?: number
+        score?: number
+        rank?: number
+        rewardCents?: number
+        walletAddress?: string
+      }[]
+    }
+    next?: {
+      cursor?: string
+    }
+  }
 }
+
+export type GetCreatorRewardWinnersResponse =
+  GetCreatorRewardWinnersResponses[keyof GetCreatorRewardWinnersResponses]
 
 export interface GetUserPrimaryAddressData {
   body?: never

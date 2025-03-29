@@ -6,7 +6,10 @@ import type {
   TDataShape,
 } from '@hey-api/client-fetch'
 import { client as _heyApiClient } from './client.gen'
-import { getStarterPackMembersResponseTransformer } from './transformers.gen'
+import {
+  getCreatorRewardWinnersResponseTransformer,
+  getStarterPackMembersResponseTransformer,
+} from './transformers.gen'
 import type {
   AcceptChannelInviteData,
   AcceptChannelInviteResponse,
@@ -65,6 +68,7 @@ import type {
   GetChannelUsersData,
   GetChannelUsersResponse,
   GetCreatorRewardWinnersData,
+  GetCreatorRewardWinnersResponse,
   GetCurrentUserData,
   GetCurrentUserResponse,
   GetDirectCastConversationData,
@@ -2065,12 +2069,15 @@ export const getAccountVerifications = <ThrowOnError extends boolean = false>(
 export const getCreatorRewardWinners = <ThrowOnError extends boolean = false>(
   options?: Options<GetCreatorRewardWinnersData, ThrowOnError>,
 ) => {
-  return (options?.client ?? _heyApiClient).get<unknown, unknown, ThrowOnError>(
-    {
-      url: '/v1/creator-rewards-winner-history',
-      ...options,
-    },
-  )
+  return (options?.client ?? _heyApiClient).get<
+    GetCreatorRewardWinnersResponse,
+    unknown,
+    ThrowOnError
+  >({
+    responseTransformer: getCreatorRewardWinnersResponseTransformer,
+    url: '/v1/creator-rewards-winner-history',
+    ...options,
+  })
 }
 
 /**
