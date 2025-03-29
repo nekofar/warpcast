@@ -18,13 +18,12 @@ export default defineConfig({
       exportFromIndex: true,
     },
     {
+      name: '@hey-api/transformers',
       dates: true,
       exportFromIndex: true,
-      name: '@hey-api/transformers',
     },
     {
       enums: 'typescript',
-      name: '@hey-api/typescript',
     },
     {
       name: '@hey-api/sdk',
