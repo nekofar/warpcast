@@ -1,0 +1,17 @@
+get:
+  operationId: getUserOnboardingState
+  tags:
+    - User
+  summary: Get onboarding state
+  description: Retrieves the current onboarding state for the authenticated user
+  security:
+    - bearerAuth: []
+  responses:
+    '200':
+      description: Successful retrieval of onboarding state
+      content:
+        application/json:
+          schema:
+            $ref: '../../index.yaml#/components/schemas/OnboardingStateResponse'
+    '401':
+      $ref: '../../index.yaml#/components/responses/Unauthorized'

@@ -587,23 +587,7 @@ components:
 
 paths:
   /v2/onboarding-state:
-    get:
-      operationId: getUserOnboardingState
-      tags:
-        - User
-      summary: Get onboarding state
-      description: Retrieves the current onboarding state for the authenticated user
-      security:
-        - bearerAuth: []
-      responses:
-        '200':
-          description: Successful retrieval of onboarding state
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/OnboardingStateResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
+    $ref: './paths/v2/onboarding-state.yaml'
 
   /v2/user-by-fid:
     get:
