@@ -858,6 +858,15 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/StarterPack'
+    StarterPackResponse:
+      type: object
+      required: [ result ]
+      properties:
+        result:
+          type: object
+          properties:
+            starterPack:
+              $ref: '#/components/schemas/StarterPack'
 
 paths:
   /v2/onboarding-state:
@@ -1000,29 +1009,7 @@ paths:
                           type: object
 
   /v2/starter-pack:
-    get:
-      operationId: getStarterPack
-      summary: Get a specific starter pack by ID
-      description: Returns a specific starter pack.
-      parameters:
-        - name: id
-          in: query
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: A starter pack object
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  result:
-                    type: object
-                    properties:
-                      starterPack:
-                        type: object
+    $ref: './paths/v2/starter-pack.yaml'
 
   /v2/starter-pack-users:
     get:
