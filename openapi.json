@@ -4556,10 +4556,10 @@
           {
             "in": "query",
             "name": "channelId",
+            "required": true,
             "schema": {
               "type": "string"
             },
-            "required": true,
             "description": "ID of the channel to get moderation actions for"
           }
         ],
@@ -4570,14 +4570,26 @@
               "application/json": {
                 "schema": {
                   "type": "object",
+                  "required": [
+                    "result"
+                  ],
                   "properties": {
                     "result": {
                       "type": "object",
+                      "required": [
+                        "moderationActions"
+                      ],
                       "properties": {
                         "moderationActions": {
                           "type": "array",
                           "items": {
                             "type": "object",
+                            "required": [
+                              "castHash",
+                              "channelId",
+                              "action",
+                              "moderatedAt"
+                            ],
                             "properties": {
                               "castHash": {
                                 "type": "string",
@@ -4589,28 +4601,19 @@
                               },
                               "action": {
                                 "type": "string",
-                                "description": "Type of moderation action applied",
                                 "enum": [
                                   "hide"
-                                ]
+                                ],
+                                "description": "Type of moderation action applied"
                               },
                               "moderatedAt": {
                                 "type": "integer",
                                 "description": "Unix timestamp of when the moderation action was taken"
                               }
-                            },
-                            "required": [
-                              "castHash",
-                              "channelId",
-                              "action",
-                              "moderatedAt"
-                            ]
+                            }
                           }
                         }
-                      },
-                      "required": [
-                        "moderationActions"
-                      ]
+                      }
                     },
                     "next": {
                       "type": "object",
@@ -4621,10 +4624,7 @@
                         }
                       }
                     }
-                  },
-                  "required": [
-                    "result"
-                  ]
+                  }
                 },
                 "example": {
                   "result": {
@@ -4635,10 +4635,10 @@
                         "action": "hide",
                         "moderatedAt": 1727767637
                       }
-                    ]
-                  },
-                  "next": {
-                    "cursor": "..."
+                    ],
+                    "next": {
+                      "cursor": "..."
+                    }
                   }
                 }
               }

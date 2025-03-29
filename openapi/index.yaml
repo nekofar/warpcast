@@ -2881,70 +2881,7 @@ paths:
                   success: true
 
   /fc/moderated-casts:
-    get:
-      operationId: getChannelModeratedCasts
-      summary: Get moderated casts for a channel
-      parameters:
-        - in: query
-          name: channelId
-          schema:
-            type: string
-          required: true
-          description: ID of the channel to get moderation actions for
-      responses:
-        '200':
-          description: Successful response with list of moderation actions
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  result:
-                    type: object
-                    properties:
-                      moderationActions:
-                        type: array
-                        items:
-                          type: object
-                          properties:
-                            castHash:
-                              type: string
-                              description: Hash of the moderated cast
-                            channelId:
-                              type: string
-                              description: ID of the channel where the cast was moderated
-                            action:
-                              type: string
-                              description: Type of moderation action applied
-                              enum:
-                                - hide
-                            moderatedAt:
-                              type: integer
-                              description: Unix timestamp of when the moderation action was taken
-                          required:
-                            - castHash
-                            - channelId
-                            - action
-                            - moderatedAt
-                    required:
-                      - moderationActions
-                  next:
-                    type: object
-                    properties:
-                      cursor:
-                        type: string
-                        description: Pagination cursor for fetching the next set of results
-                required:
-                  - result
-              example:
-                result:
-                  moderationActions:
-                    - castHash: '0x6b2253105ef8c1d1b984a5df87182b105a1f0b3a'
-                      channelId: 'welcome'
-                      action: 'hide'
-                      moderatedAt: 1727767637
-                next:
-                  cursor: '...'
+    $ref: './paths/fc/moderated-casts.yaml'
 
   /fc/channel-restricted-users:
     $ref: './paths/fc/channel-restricted-users.yaml'
