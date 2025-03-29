@@ -1739,53 +1739,7 @@ paths:
                           type: object
 
   /v2/verifications:
-    get:
-      operationId: getVerifications
-      summary: Get verified addresses for an FID
-      description: Returns verified Ethereum addresses associated with a specific FID.
-      parameters:
-        - name: fid
-          in: query
-          required: true
-          schema:
-            type: integer
-        - name: limit
-          in: query
-          required: false
-          schema:
-            type: integer
-      responses:
-        '200':
-          description: A list of verifications
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  result:
-                    type: object
-                    properties:
-                      verifications:
-                        type: array
-                        items:
-                          type: object
-                          properties:
-                            fid:
-                              type: integer
-                            address:
-                              type: string
-                            timestamp:
-                              type: integer
-                            version:
-                              type: string
-                            protocol:
-                              type: string
-                            isPrimary:
-                              type: boolean
-                            labels:
-                              type: array
-                              items:
-                                type: string
+    $ref: './paths/v2/verifications.yaml'
 
   /v2/get-muted-keywords:
     get:
