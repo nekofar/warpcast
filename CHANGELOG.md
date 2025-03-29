@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.6] - 2025-03-29
+
+### ⚙️ Miscellaneous Tasks
+
+- *(package)* Update metadata for package publishing
+- *(package)* Add keywords to improve package metadata
+
 ## [2.0.0-alpha.5] - 2025-03-29
 
 ### ⚙️ Miscellaneous Tasks
