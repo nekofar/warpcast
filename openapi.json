@@ -5172,6 +5172,9 @@
             "application/json": {
               "schema": {
                 "type": "object",
+                "required": [
+                  "castHash"
+                ],
                 "properties": {
                   "castHash": {
                     "type": "string",
@@ -5181,10 +5184,7 @@
                     "type": "boolean",
                     "description": "Whether to notify followers of the channel about the pin"
                   }
-                },
-                "required": [
-                  "castHash"
-                ]
+                }
               },
               "example": {
                 "castHash": "0x2694aa649f3608bd11fe6621946782d1eb0ae3c4",
@@ -5200,23 +5200,23 @@
               "application/json": {
                 "schema": {
                   "type": "object",
+                  "required": [
+                    "result"
+                  ],
                   "properties": {
                     "result": {
                       "type": "object",
+                      "required": [
+                        "success"
+                      ],
                       "properties": {
                         "success": {
                           "type": "boolean",
                           "description": "Indicates whether the pin operation was successful"
                         }
-                      },
-                      "required": [
-                        "success"
-                      ]
+                      }
                     }
-                  },
-                  "required": [
-                    "result"
-                  ]
+                  }
                 },
                 "example": {
                   "result": {
@@ -5242,15 +5242,15 @@
             "application/json": {
               "schema": {
                 "type": "object",
+                "required": [
+                  "channelId"
+                ],
                 "properties": {
                   "channelId": {
                     "type": "string",
                     "description": "ID of the channel from which to unpin a cast"
                   }
-                },
-                "required": [
-                  "channelId"
-                ]
+                }
               },
               "example": {
                 "channelId": "welcome"
@@ -5265,23 +5265,23 @@
               "application/json": {
                 "schema": {
                   "type": "object",
+                  "required": [
+                    "result"
+                  ],
                   "properties": {
                     "result": {
                       "type": "object",
+                      "required": [
+                        "success"
+                      ],
                       "properties": {
                         "success": {
                           "type": "boolean",
                           "description": "Indicates whether the unpin operation was successful"
                         }
-                      },
-                      "required": [
-                        "success"
-                      ]
+                      }
                     }
-                  },
-                  "required": [
-                    "result"
-                  ]
+                  }
                 },
                 "example": {
                   "result": {
