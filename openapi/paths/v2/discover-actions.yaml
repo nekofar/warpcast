@@ -1,0 +1,71 @@
+get:
+  operationId: getDiscoverableActions
+  summary: Get discoverable actions
+  security:
+    - bearerAuth: []
+  parameters:
+    - in: query
+      name: list
+      required: true
+      schema:
+        type: string
+    - in: query
+      name: limit
+      required: false
+      schema:
+        type: integer
+  responses:
+    '200':
+      description: Successful response with list of discoverable actions
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              result:
+                type: object
+                properties:
+                  actions:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        icon:
+                          type: string
+                        description:
+                          type: string
+                        aboutUrl:
+                          type: string
+                          format: uri
+                        actionUrl:
+                          type: string
+                          format: uri
+                        action:
+                          type: object
+                          properties:
+                            actionType:
+                              type: string
+                              enum: [post, get, put, delete]
+                            postUrl:
+                              type: string
+                              format: uri
+                  next:
+                    type: object
+                    properties:
+                      cursor:
+                        type: string
+          example:
+            result:
+              actions:
+                - name: Upthumb
+                  icon: thumbsup
+                  description: Give casts 'upthumbs' and see them on a leaderboard.
+                  aboutUrl: https://github.com/horsefacts/upthumbs
+                  actionUrl: https://upthumbs.app/api/upthumb
+                  action:
+                    actionType: post
+                    postUrl: https://upthumbs.app/api/upthumb
+              next:
+                cursor: '...'

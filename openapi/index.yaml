@@ -3352,40 +3352,7 @@ paths:
                   success: true
 
   /v2/discover-actions:
-    get:
-      operationId: getDiscoverableActions
-      summary: Get discoverable actions
-      security:
-        - bearerAuth: []
-      parameters:
-        - in: query
-          name: list
-          schema:
-            type: string
-          required: true
-        - in: query
-          name: limit
-          schema:
-            type: integer
-          required: false
-      responses:
-        '200':
-          description: Successful response with list of discoverable actions
-          content:
-            application/json:
-              example:
-                result:
-                  actions:
-                    - name: Upthumb
-                      icon: thumbsup
-                      description: Give casts 'upthumbs' and see them on a leaderboard.
-                      aboutUrl: https://github.com/horsefacts/upthumbs
-                      actionUrl: https://upthumbs.app/api/upthumb
-                      action:
-                        actionType: post
-                        postUrl: https://upthumbs.app/api/upthumb
-                  next:
-                    cursor: '...'
+    $ref: './paths/v2/discover-actions.yaml'
 
   /v2/discover-composer-actions:
     $ref: './paths/v2/discover-composer-actions.yaml'

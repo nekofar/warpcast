@@ -77,6 +77,7 @@ import type {
   GetDirectCastInboxError,
   GetDirectCastInboxResponse,
   GetDiscoverableActionsData,
+  GetDiscoverableActionsResponse,
   GetDiscoverableComposerActionsData,
   GetDiscoverableComposerActionsResponse,
   GetDraftCastsData,
@@ -1937,7 +1938,11 @@ export const pinCastToChannel = <ThrowOnError extends boolean = false>(
 export const getDiscoverableActions = <ThrowOnError extends boolean = false>(
   options: Options<GetDiscoverableActionsData, ThrowOnError>,
 ) => {
-  return (options.client ?? _heyApiClient).get<unknown, unknown, ThrowOnError>({
+  return (options.client ?? _heyApiClient).get<
+    GetDiscoverableActionsResponse,
+    unknown,
+    ThrowOnError
+  >({
     security: [
       {
         scheme: 'bearer',

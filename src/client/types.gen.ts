@@ -2510,8 +2510,28 @@ export interface GetDiscoverableActionsResponses {
   /**
    * Successful response with list of discoverable actions
    */
-  200: unknown
+  200: {
+    result?: {
+      actions?: {
+        name?: string
+        icon?: string
+        description?: string
+        aboutUrl?: string
+        actionUrl?: string
+        action?: {
+          actionType?: 'post' | 'get' | 'put' | 'delete'
+          postUrl?: string
+        }
+      }[]
+      next?: {
+        cursor?: string
+      }
+    }
+  }
 }
+
+export type GetDiscoverableActionsResponse =
+  GetDiscoverableActionsResponses[keyof GetDiscoverableActionsResponses]
 
 export interface GetDiscoverableComposerActionsData {
   body?: never
