@@ -1430,6 +1430,33 @@ export const createDraftCasts = <ThrowOnError extends boolean = false>(
 }
 
 /**
+ * Delete a draft cast
+ * @param options
+ */
+export const deleteDraftCast = <ThrowOnError extends boolean = false>(
+  options: Options<DeleteDraftCastData, ThrowOnError>,
+) => {
+  return (options.client ?? _heyApiClient).delete<
+    DeleteDraftCastResponse,
+    unknown,
+    ThrowOnError
+  >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
+    url: '/v2/draft-casts',
+    ...options,
+    headers: {
+      'Content-Type': 'application/json',
+      ...options.headers,
+    },
+  })
+}
+
+/**
  * Delete a cast
  * @param options
  */
@@ -1475,33 +1502,6 @@ export const createCast = <ThrowOnError extends boolean = false>(
       },
     ],
     url: '/v2/casts',
-    ...options,
-    headers: {
-      'Content-Type': 'application/json',
-      ...options.headers,
-    },
-  })
-}
-
-/**
- * Delete a draft cast
- * @param options
- */
-export const deleteDraftCast = <ThrowOnError extends boolean = false>(
-  options: Options<DeleteDraftCastData, ThrowOnError>,
-) => {
-  return (options.client ?? _heyApiClient).delete<
-    DeleteDraftCastResponse,
-    unknown,
-    ThrowOnError
-  >({
-    security: [
-      {
-        scheme: 'bearer',
-        type: 'http',
-      },
-    ],
-    url: '/v2/draft-casts',
     ...options,
     headers: {
       'Content-Type': 'application/json',

@@ -1632,6 +1632,113 @@
             }
           }
         }
+      },
+      "EmbedGroups": {
+        "type": "object",
+        "properties": {
+          "images": {
+            "type": "array",
+            "items": {}
+          },
+          "urls": {
+            "type": "array",
+            "items": {}
+          },
+          "videos": {
+            "type": "array",
+            "items": {}
+          },
+          "unknowns": {
+            "type": "array",
+            "items": {}
+          }
+        }
+      },
+      "Cast": {
+        "type": "object",
+        "properties": {
+          "hash": {
+            "type": "string"
+          },
+          "threadHash": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "integer"
+          },
+          "embeds": {
+            "$ref": "#/components/schemas/EmbedGroups"
+          }
+        }
+      },
+      "DraftCast": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string"
+          },
+          "embeds": {
+            "type": "array",
+            "items": {}
+          }
+        }
+      },
+      "Draft": {
+        "type": "object",
+        "properties": {
+          "draftId": {
+            "type": "string"
+          },
+          "casts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DraftCast"
+            }
+          }
+        }
+      },
+      "DraftsResponse": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "type": "object",
+            "properties": {
+              "drafts": {
+                "type": "array",
+                "items": {}
+              }
+            }
+          }
+        }
+      },
+      "DraftCreatedResponse": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "type": "object",
+            "properties": {
+              "draft": {
+                "$ref": "#/components/schemas/Draft"
+              }
+            }
+          }
+        }
+      },
+      "CastCreatedResponse": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "type": "object",
+            "properties": {
+              "cast": {
+                "$ref": "#/components/schemas/Cast"
+              }
+            }
+          }
+        }
       }
     }
   },
@@ -3735,7 +3842,6 @@
           {
             "name": "limit",
             "in": "query",
-            "required": false,
             "schema": {
               "type": "integer",
               "default": 15
@@ -3748,18 +3854,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "result": {
-                      "type": "object",
-                      "properties": {
-                        "drafts": {
-                          "type": "array",
-                          "items": {}
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/DraftsResponse"
                 }
               }
             }
@@ -3772,6 +3867,17 @@
         "security": [
           {
             "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "idempotency-key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
           }
         ],
         "requestBody": {
@@ -3787,190 +3893,10 @@
                       "casts": {
                         "type": "array",
                         "items": {
-                          "type": "object",
-                          "properties": {
-                            "text": {
-                              "type": "string"
-                            },
-                            "embeds": {
-                              "type": "array",
-                              "items": {}
-                            }
-                          }
+                          "$ref": "#/components/schemas/DraftCast"
                         }
                       }
                     }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "idempotency-key",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Created draft caststorm",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "result": {
-                      "type": "object",
-                      "properties": {
-                        "draft": {
-                          "type": "object",
-                          "properties": {
-                            "draftId": {
-                              "type": "string"
-                            },
-                            "casts": {
-                              "type": "array",
-                              "items": {
-                                "type": "object",
-                                "properties": {
-                                  "text": {
-                                    "type": "string"
-                                  },
-                                  "embeds": {
-                                    "type": "array",
-                                    "items": {}
-                                  }
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v2/casts": {
-      "post": {
-        "summary": "Create a new cast",
-        "operationId": "createCast",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "text": {
-                    "type": "string"
-                  },
-                  "embeds": {
-                    "type": "array",
-                    "items": {}
-                  },
-                  "channelKey": {
-                    "type": "string",
-                    "description": "Optional channel to post the cast to"
-                  }
-                },
-                "required": [
-                  "text"
-                ]
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Cast created successfully",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "result": {
-                      "type": "object",
-                      "properties": {
-                        "cast": {
-                          "type": "object",
-                          "properties": {
-                            "hash": {
-                              "type": "string"
-                            },
-                            "threadHash": {
-                              "type": "string"
-                            },
-                            "text": {
-                              "type": "string"
-                            },
-                            "timestamp": {
-                              "type": "integer"
-                            },
-                            "embeds": {
-                              "type": "object",
-                              "properties": {
-                                "images": {
-                                  "type": "array",
-                                  "items": {}
-                                },
-                                "urls": {
-                                  "type": "array",
-                                  "items": {}
-                                },
-                                "videos": {
-                                  "type": "array",
-                                  "items": {}
-                                },
-                                "unknowns": {
-                                  "type": "array",
-                                  "items": {}
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "delete": {
-        "summary": "Delete a cast",
-        "operationId": "deleteCast",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "castHash": {
-                    "type": "string"
                   }
                 }
               }
@@ -3979,21 +3905,11 @@
         },
         "responses": {
           "200": {
-            "description": "Cast deleted successfully",
+            "description": "Created draft caststorm",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "result": {
-                      "type": "object",
-                      "properties": {
-                        "success": {
-                          "type": "boolean"
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/DraftCreatedResponse"
                 }
               }
             }
@@ -4031,12 +3947,92 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "result": {
-                      "type": "object"
-                    }
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v2/casts": {
+      "post": {
+        "summary": "Create a new cast",
+        "operationId": "createCast",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "text"
+                ],
+                "properties": {
+                  "text": {
+                    "type": "string"
+                  },
+                  "embeds": {
+                    "type": "array",
+                    "items": {}
+                  },
+                  "channelKey": {
+                    "type": "string",
+                    "description": "Optional channel to post the cast to"
                   }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Cast created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CastCreatedResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a cast",
+        "operationId": "deleteCast",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "castHash": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Cast deleted successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
                 }
               }
             }

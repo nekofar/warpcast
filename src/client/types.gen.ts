@@ -514,6 +514,49 @@ export interface CastRecastersResponse {
   }
 }
 
+export interface EmbedGroups {
+  images?: unknown[]
+  urls?: unknown[]
+  videos?: unknown[]
+  unknowns?: unknown[]
+}
+
+export interface Cast {
+  hash?: string
+  threadHash?: string
+  text?: string
+  timestamp?: number
+  embeds?: EmbedGroups
+}
+
+export interface DraftCast {
+  text?: string
+  embeds?: unknown[]
+}
+
+export interface Draft {
+  draftId?: string
+  casts?: DraftCast[]
+}
+
+export interface DraftsResponse {
+  result?: {
+    drafts?: unknown[]
+  }
+}
+
+export interface DraftCreatedResponse {
+  result?: {
+    draft?: Draft
+  }
+}
+
+export interface CastCreatedResponse {
+  result?: {
+    cast?: Cast
+  }
+}
+
 /**
  * The user's FID (Farcaster ID)
  */
@@ -1784,11 +1827,7 @@ export interface GetDraftCastsResponses {
   /**
    * A list of draft cast storms
    */
-  200: {
-    result?: {
-      drafts?: unknown[]
-    }
-  }
+  200: DraftsResponse
 }
 
 export type GetDraftCastsResponse =
@@ -1797,10 +1836,7 @@ export type GetDraftCastsResponse =
 export interface CreateDraftCastsData {
   body: {
     caststorm?: {
-      casts?: {
-        text?: string
-        embeds?: unknown[]
-      }[]
+      casts?: DraftCast[]
     }
   }
   headers: {
@@ -1815,21 +1851,30 @@ export interface CreateDraftCastsResponses {
   /**
    * Created draft caststorm
    */
-  200: {
-    result?: {
-      draft?: {
-        draftId?: string
-        casts?: {
-          text?: string
-          embeds?: unknown[]
-        }[]
-      }
-    }
-  }
+  200: DraftCreatedResponse
 }
 
 export type CreateDraftCastsResponse =
   CreateDraftCastsResponses[keyof CreateDraftCastsResponses]
+
+export interface DeleteDraftCastData {
+  body: {
+    draftId?: string
+  }
+  path?: never
+  query?: never
+  url: '/v2/draft-casts'
+}
+
+export interface DeleteDraftCastResponses {
+  /**
+   * Draft cast deleted
+   */
+  200: SuccessResponse
+}
+
+export type DeleteDraftCastResponse =
+  DeleteDraftCastResponses[keyof DeleteDraftCastResponses]
 
 export interface DeleteCastData {
   body: {
@@ -1844,11 +1889,7 @@ export interface DeleteCastResponses {
   /**
    * Cast deleted successfully
    */
-  200: {
-    result?: {
-      success?: boolean
-    }
-  }
+  200: SuccessResponse
 }
 
 export type DeleteCastResponse = DeleteCastResponses[keyof DeleteCastResponses]
@@ -1871,46 +1912,10 @@ export interface CreateCastResponses {
   /**
    * Cast created successfully
    */
-  200: {
-    result?: {
-      cast?: {
-        hash?: string
-        threadHash?: string
-        text?: string
-        timestamp?: number
-        embeds?: {
-          images?: unknown[]
-          urls?: unknown[]
-          videos?: unknown[]
-          unknowns?: unknown[]
-        }
-      }
-    }
-  }
+  200: CastCreatedResponse
 }
 
 export type CreateCastResponse = CreateCastResponses[keyof CreateCastResponses]
-
-export interface DeleteDraftCastData {
-  body: {
-    draftId?: string
-  }
-  path?: never
-  query?: never
-  url: '/v2/draft-casts'
-}
-
-export interface DeleteDraftCastResponses {
-  /**
-   * Draft cast deleted
-   */
-  200: {
-    result?: Record<string, unknown>
-  }
-}
-
-export type DeleteDraftCastResponse =
-  DeleteDraftCastResponses[keyof DeleteDraftCastResponses]
 
 export interface GetAllChannelsData {
   body?: never

@@ -1,0 +1,51 @@
+post:
+  summary: Create a new cast
+  operationId: createCast
+  security:
+    - bearerAuth: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - text
+          properties:
+            text:
+              type: string
+            embeds:
+              type: array
+              items: {}
+            channelKey:
+              type: string
+              description: Optional channel to post the cast to
+  responses:
+    '200':
+      description: Cast created successfully
+      content:
+        application/json:
+          schema:
+            $ref: '../../index.yaml#/components/schemas/CastCreatedResponse'
+
+delete:
+  summary: Delete a cast
+  operationId: deleteCast
+  security:
+    - bearerAuth: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            castHash:
+              type: string
+  responses:
+    '200':
+      description: Cast deleted successfully
+      content:
+        application/json:
+          schema:
+            $ref: '../../index.yaml#/components/schemas/SuccessResponse'

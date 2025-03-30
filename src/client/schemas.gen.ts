@@ -1505,3 +1505,117 @@ export const CastRecastersResponseSchema = {
     },
   },
 } as const
+
+export const EmbedGroupsSchema = {
+  type: 'object',
+  properties: {
+    images: {
+      type: 'array',
+      items: {},
+    },
+    urls: {
+      type: 'array',
+      items: {},
+    },
+    videos: {
+      type: 'array',
+      items: {},
+    },
+    unknowns: {
+      type: 'array',
+      items: {},
+    },
+  },
+} as const
+
+export const CastSchema = {
+  type: 'object',
+  properties: {
+    hash: {
+      type: 'string',
+    },
+    threadHash: {
+      type: 'string',
+    },
+    text: {
+      type: 'string',
+    },
+    timestamp: {
+      type: 'integer',
+    },
+    embeds: {
+      $ref: '#/components/schemas/EmbedGroups',
+    },
+  },
+} as const
+
+export const DraftCastSchema = {
+  type: 'object',
+  properties: {
+    text: {
+      type: 'string',
+    },
+    embeds: {
+      type: 'array',
+      items: {},
+    },
+  },
+} as const
+
+export const DraftSchema = {
+  type: 'object',
+  properties: {
+    draftId: {
+      type: 'string',
+    },
+    casts: {
+      type: 'array',
+      items: {
+        $ref: '#/components/schemas/DraftCast',
+      },
+    },
+  },
+} as const
+
+export const DraftsResponseSchema = {
+  type: 'object',
+  properties: {
+    result: {
+      type: 'object',
+      properties: {
+        drafts: {
+          type: 'array',
+          items: {},
+        },
+      },
+    },
+  },
+} as const
+
+export const DraftCreatedResponseSchema = {
+  type: 'object',
+  properties: {
+    result: {
+      type: 'object',
+      properties: {
+        draft: {
+          $ref: '#/components/schemas/Draft',
+        },
+      },
+    },
+  },
+} as const
+
+export const CastCreatedResponseSchema = {
+  type: 'object',
+  properties: {
+    result: {
+      type: 'object',
+      properties: {
+        cast: {
+          $ref: '#/components/schemas/Cast',
+        },
+      },
+    },
+  },
+} as const

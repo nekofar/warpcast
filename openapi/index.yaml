@@ -1040,6 +1040,82 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/User'
+    EmbedGroups:
+      type: object
+      properties:
+        images:
+          type: array
+          items: { }
+        urls:
+          type: array
+          items: { }
+        videos:
+          type: array
+          items: { }
+        unknowns:
+          type: array
+          items: { }
+
+    Cast:
+      type: object
+      properties:
+        hash:
+          type: string
+        threadHash:
+          type: string
+        text:
+          type: string
+        timestamp:
+          type: integer
+        embeds:
+          $ref: '#/components/schemas/EmbedGroups'
+
+    DraftCast:
+      type: object
+      properties:
+        text:
+          type: string
+        embeds:
+          type: array
+          items: { }
+
+    Draft:
+      type: object
+      properties:
+        draftId:
+          type: string
+        casts:
+          type: array
+          items:
+            $ref: '#/components/schemas/DraftCast'
+
+    DraftsResponse:
+      type: object
+      properties:
+        result:
+          type: object
+          properties:
+            drafts:
+              type: array
+              items: { }
+
+    DraftCreatedResponse:
+      type: object
+      properties:
+        result:
+          type: object
+          properties:
+            draft:
+              $ref: '#/components/schemas/Draft'
+
+    CastCreatedResponse:
+      type: object
+      properties:
+        result:
+          type: object
+          properties:
+            cast:
+              $ref: '#/components/schemas/Cast'
 
 paths:
   /v2/onboarding-state:
@@ -1269,207 +1345,13 @@ paths:
                         items: {}
 
   /v2/draft-caststorms:
-    get:
-      summary: Get draft cast storms
-      operationId: getDraftCasts
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: limit
-          in: query
-          required: false
-          schema:
-            type: integer
-            default: 15
-      responses:
-        '200':
-          description: A list of draft cast storms
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  result:
-                    type: object
-                    properties:
-                      drafts:
-                        type: array
-                        items: {}
-    post:
-      summary: Create a new draft casts
-      operationId: createDraftCasts
-      security:
-        - bearerAuth: []
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                caststorm:
-                  type: object
-                  properties:
-                    casts:
-                      type: array
-                      items:
-                        type: object
-                        properties:
-                          text:
-                            type: string
-                          embeds:
-                            type: array
-                            items: {}
-      parameters:
-        - name: idempotency-key
-          in: header
-          required: true
-          schema:
-            type: string
-            format: uuid
-      responses:
-        '200':
-          description: Created draft caststorm
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  result:
-                    type: object
-                    properties:
-                      draft:
-                        type: object
-                        properties:
-                          draftId:
-                            type: string
-                          casts:
-                            type: array
-                            items:
-                              type: object
-                              properties:
-                                text:
-                                  type: string
-                                embeds:
-                                  type: array
-                                  items: {}
-
-  /v2/casts:
-    post:
-      summary: Create a new cast
-      operationId: createCast
-      security:
-        - bearerAuth: []
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                text:
-                  type: string
-                embeds:
-                  type: array
-                  items: {}
-                channelKey:
-                  type: string
-                  description: Optional channel to post the cast to
-              required:
-                - text
-
-      responses:
-        '200':
-          description: Cast created successfully
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  result:
-                    type: object
-                    properties:
-                      cast:
-                        type: object
-                        properties:
-                          hash:
-                            type: string
-                          threadHash:
-                            type: string
-                          text:
-                            type: string
-                          timestamp:
-                            type: integer
-                          embeds:
-                            type: object
-                            properties:
-                              images:
-                                type: array
-                                items: {}
-                              urls:
-                                type: array
-                                items: {}
-                              videos:
-                                type: array
-                                items: {}
-                              unknowns:
-                                type: array
-                                items: {}
-    delete:
-      summary: Delete a cast
-      operationId: deleteCast
-      security:
-        - bearerAuth: []
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                castHash:
-                  type: string
-
-      responses:
-        '200':
-          description: Cast deleted successfully
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  result:
-                    type: object
-                    properties:
-                      success:
-                        type: boolean
+    $ref: './paths/v2/draft-caststorms.yaml'
 
   /v2/draft-casts:
-    delete:
-      summary: Delete a draft cast
-      operationId: deleteDraftCast
-      security:
-        - bearerAuth: []
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                draftId:
-                  type: string
+    $ref: './paths/v2/draft-casts.yaml'
 
-      responses:
-        '200':
-          description: Draft cast deleted
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  result:
-                    type: object
+  /v2/casts:
+    $ref: './paths/v2/casts.yaml'
 
   /v2/all-channels:
     get:
