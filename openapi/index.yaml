@@ -940,6 +940,43 @@ components:
                 $ref: '#/components/schemas/User'
             totalCount:
               type: integer
+    MutedKeywordProperties:
+      type: object
+      properties:
+        channels:
+          type: boolean
+        frames:
+          type: boolean
+        notifications:
+          type: boolean
+
+    MutedKeyword:
+      type: object
+      required: [ keyword, properties ]
+      properties:
+        keyword:
+          type: string
+        properties:
+          $ref: '#/components/schemas/MutedKeywordProperties'
+
+    MutedKeywordsResponse:
+      type: object
+      required: [ success, result ]
+      properties:
+        success:
+          type: boolean
+        result:
+          type: object
+          required: [ keywords, mutedKeywords ]
+          properties:
+            keywords:
+              type: array
+              items:
+                type: string
+            mutedKeywords:
+              type: array
+              items:
+                $ref: '#/components/schemas/MutedKeyword'
 
 paths:
   /v2/onboarding-state:
@@ -1086,137 +1123,13 @@ paths:
     $ref: './paths/v2/verifications.yaml'
 
   /v2/get-muted-keywords:
-    get:
-      operationId: getMutedKeywords
-      summary: Get muted keywords
-      description: Returns a list of muted keywords for the authenticated user.
-      responses:
-        '200':
-          description: A list of muted keywords
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  success:
-                    type: boolean
-                  result:
-                    type: object
-                    properties:
-                      keywords:
-                        type: array
-                        items:
-                          type: string
-                      mutedKeywords:
-                        type: array
-                        items:
-                          type: string
+    $ref: './paths/v2/get-muted-keywords.yaml'
 
   /v2/mute-keyword:
-    post:
-      operationId: muteKeyword
-      summary: Mute a keyword
-      description: Mutes a keyword for the authenticated user with specified properties.
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                keyword:
-                  type: string
-                properties:
-                  type: object
-                  properties:
-                    channels:
-                      type: boolean
-                    frames:
-                      type: boolean
-                    notifications:
-                      type: boolean
-      responses:
-        '200':
-          description: The muted keyword and its settings
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  success:
-                    type: boolean
-                  result:
-                    type: object
-                    properties:
-                      keywords:
-                        type: array
-                        items:
-                          type: string
-                      mutedKeywords:
-                        type: array
-                        items:
-                          type: object
-                          properties:
-                            keyword:
-                              type: string
-                            properties:
-                              type: object
-                              properties:
-                                frames:
-                                  type: boolean
-                                channels:
-                                  type: boolean
-                                notifications:
-                                  type: boolean
+    $ref: './paths/v2/mute-keyword.yaml'
 
   /v2/unmute-keyword:
-    post:
-      operationId: unmuteKeyword
-      summary: Unmute a keyword
-      security:
-        - bearerAuth: []
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                keyword:
-                  type: string
-      responses:
-        '200':
-          description: Keyword unmuted
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  success:
-                    type: boolean
-                  result:
-                    type: object
-                    properties:
-                      keywords:
-                        type: array
-                        items:
-                          type: string
-                      mutedKeywords:
-                        type: array
-                        items:
-                          type: object
-                          properties:
-                            keyword:
-                              type: string
-                            properties:
-                              type: object
-                              properties:
-                                channels:
-                                  type: boolean
-                                frames:
-                                  type: boolean
-                                notifications:
-                                  type: boolean
+    $ref: './paths/v2/unmute-keyword.yaml'
 
   /v2/cast-likes:
     $ref: './paths/v2/cast-likes.yaml'

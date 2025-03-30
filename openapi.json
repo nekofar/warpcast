@@ -1472,6 +1472,68 @@
             }
           }
         }
+      },
+      "MutedKeywordProperties": {
+        "type": "object",
+        "properties": {
+          "channels": {
+            "type": "boolean"
+          },
+          "frames": {
+            "type": "boolean"
+          },
+          "notifications": {
+            "type": "boolean"
+          }
+        }
+      },
+      "MutedKeyword": {
+        "type": "object",
+        "required": [
+          "keyword",
+          "properties"
+        ],
+        "properties": {
+          "keyword": {
+            "type": "string"
+          },
+          "properties": {
+            "$ref": "#/components/schemas/MutedKeywordProperties"
+          }
+        }
+      },
+      "MutedKeywordsResponse": {
+        "type": "object",
+        "required": [
+          "success",
+          "result"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "result": {
+            "type": "object",
+            "required": [
+              "keywords",
+              "mutedKeywords"
+            ],
+            "properties": {
+              "keywords": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "mutedKeywords": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/MutedKeyword"
+                }
+              }
+            }
+          }
+        }
       }
     }
   },
@@ -2982,29 +3044,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "success": {
-                      "type": "boolean"
-                    },
-                    "result": {
-                      "type": "object",
-                      "properties": {
-                        "keywords": {
-                          "type": "array",
-                          "items": {
-                            "type": "string"
-                          }
-                        },
-                        "mutedKeywords": {
-                          "type": "array",
-                          "items": {
-                            "type": "string"
-                          }
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/MutedKeywordsResponse"
                 }
               }
             }
@@ -3028,18 +3068,7 @@
                     "type": "string"
                   },
                   "properties": {
-                    "type": "object",
-                    "properties": {
-                      "channels": {
-                        "type": "boolean"
-                      },
-                      "frames": {
-                        "type": "boolean"
-                      },
-                      "notifications": {
-                        "type": "boolean"
-                      }
-                    }
+                    "$ref": "#/components/schemas/MutedKeywordProperties"
                   }
                 }
               }
@@ -3052,48 +3081,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "success": {
-                      "type": "boolean"
-                    },
-                    "result": {
-                      "type": "object",
-                      "properties": {
-                        "keywords": {
-                          "type": "array",
-                          "items": {
-                            "type": "string"
-                          }
-                        },
-                        "mutedKeywords": {
-                          "type": "array",
-                          "items": {
-                            "type": "object",
-                            "properties": {
-                              "keyword": {
-                                "type": "string"
-                              },
-                              "properties": {
-                                "type": "object",
-                                "properties": {
-                                  "frames": {
-                                    "type": "boolean"
-                                  },
-                                  "channels": {
-                                    "type": "boolean"
-                                  },
-                                  "notifications": {
-                                    "type": "boolean"
-                                  }
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/MutedKeywordsResponse"
                 }
               }
             }
@@ -3131,48 +3119,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "success": {
-                      "type": "boolean"
-                    },
-                    "result": {
-                      "type": "object",
-                      "properties": {
-                        "keywords": {
-                          "type": "array",
-                          "items": {
-                            "type": "string"
-                          }
-                        },
-                        "mutedKeywords": {
-                          "type": "array",
-                          "items": {
-                            "type": "object",
-                            "properties": {
-                              "keyword": {
-                                "type": "string"
-                              },
-                              "properties": {
-                                "type": "object",
-                                "properties": {
-                                  "channels": {
-                                    "type": "boolean"
-                                  },
-                                  "frames": {
-                                    "type": "boolean"
-                                  },
-                                  "notifications": {
-                                    "type": "boolean"
-                                  }
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/MutedKeywordsResponse"
                 }
               }
             }

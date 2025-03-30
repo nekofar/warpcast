@@ -461,6 +461,25 @@ export interface UsersWithCountResponse {
   }
 }
 
+export interface MutedKeywordProperties {
+  channels?: boolean
+  frames?: boolean
+  notifications?: boolean
+}
+
+export interface MutedKeyword {
+  keyword: string
+  properties: MutedKeywordProperties
+}
+
+export interface MutedKeywordsResponse {
+  success: boolean
+  result: {
+    keywords: string[]
+    mutedKeywords: MutedKeyword[]
+  }
+}
+
 /**
  * The user's FID (Farcaster ID)
  */
@@ -1454,13 +1473,7 @@ export interface GetMutedKeywordsResponses {
   /**
    * A list of muted keywords
    */
-  200: {
-    success?: boolean
-    result?: {
-      keywords?: string[]
-      mutedKeywords?: string[]
-    }
-  }
+  200: MutedKeywordsResponse
 }
 
 export type GetMutedKeywordsResponse =
@@ -1469,11 +1482,7 @@ export type GetMutedKeywordsResponse =
 export interface MuteKeywordData {
   body: {
     keyword?: string
-    properties?: {
-      channels?: boolean
-      frames?: boolean
-      notifications?: boolean
-    }
+    properties?: MutedKeywordProperties
   }
   path?: never
   query?: never
@@ -1484,20 +1493,7 @@ export interface MuteKeywordResponses {
   /**
    * The muted keyword and its settings
    */
-  200: {
-    success?: boolean
-    result?: {
-      keywords?: string[]
-      mutedKeywords?: {
-        keyword?: string
-        properties?: {
-          frames?: boolean
-          channels?: boolean
-          notifications?: boolean
-        }
-      }[]
-    }
-  }
+  200: MutedKeywordsResponse
 }
 
 export type MuteKeywordResponse =
@@ -1516,20 +1512,7 @@ export interface UnmuteKeywordResponses {
   /**
    * Keyword unmuted
    */
-  200: {
-    success?: boolean
-    result?: {
-      keywords?: string[]
-      mutedKeywords?: {
-        keyword?: string
-        properties?: {
-          channels?: boolean
-          frames?: boolean
-          notifications?: boolean
-        }
-      }[]
-    }
-  }
+  200: MutedKeywordsResponse
 }
 
 export type UnmuteKeywordResponse =

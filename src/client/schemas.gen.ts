@@ -1354,3 +1354,59 @@ export const UsersWithCountResponseSchema = {
     },
   },
 } as const
+
+export const MutedKeywordPropertiesSchema = {
+  type: 'object',
+  properties: {
+    channels: {
+      type: 'boolean',
+    },
+    frames: {
+      type: 'boolean',
+    },
+    notifications: {
+      type: 'boolean',
+    },
+  },
+} as const
+
+export const MutedKeywordSchema = {
+  type: 'object',
+  required: ['keyword', 'properties'],
+  properties: {
+    keyword: {
+      type: 'string',
+    },
+    properties: {
+      $ref: '#/components/schemas/MutedKeywordProperties',
+    },
+  },
+} as const
+
+export const MutedKeywordsResponseSchema = {
+  type: 'object',
+  required: ['success', 'result'],
+  properties: {
+    success: {
+      type: 'boolean',
+    },
+    result: {
+      type: 'object',
+      required: ['keywords', 'mutedKeywords'],
+      properties: {
+        keywords: {
+          type: 'array',
+          items: {
+            type: 'string',
+          },
+        },
+        mutedKeywords: {
+          type: 'array',
+          items: {
+            $ref: '#/components/schemas/MutedKeyword',
+          },
+        },
+      },
+    },
+  },
+} as const
