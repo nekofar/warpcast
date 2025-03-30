@@ -1389,6 +1389,41 @@
             "$ref": "#/components/schemas/BookmarkedCast"
           }
         }
+      },
+      "ChannelResponse": {
+        "type": "object",
+        "required": [
+          "result"
+        ],
+        "properties": {
+          "result": {
+            "type": "object",
+            "properties": {
+              "channel": {
+                "$ref": "#/components/schemas/Channel"
+              }
+            }
+          }
+        }
+      },
+      "ChannelUsersResponse": {
+        "type": "object",
+        "required": [
+          "result"
+        ],
+        "properties": {
+          "result": {
+            "type": "object",
+            "properties": {
+              "users": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          }
+        }
       }
     }
   },
@@ -2616,17 +2651,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "result": {
-                      "type": "object",
-                      "properties": {
-                        "channel": {
-                          "type": "object"
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/ChannelResponse"
                 }
               }
             }
@@ -2679,20 +2704,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "result": {
-                      "type": "object",
-                      "properties": {
-                        "users": {
-                          "type": "array",
-                          "items": {
-                            "type": "object"
-                          }
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/ChannelUsersResponse"
                 }
               }
             }

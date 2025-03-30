@@ -436,6 +436,18 @@ export interface BookmarkedCastsResponse {
   result: BookmarkedCast
 }
 
+export interface ChannelResponse {
+  result: {
+    channel?: Channel
+  }
+}
+
+export interface ChannelUsersResponse {
+  result: {
+    users?: User[]
+  }
+}
+
 /**
  * The user's FID (Farcaster ID)
  */
@@ -1283,11 +1295,7 @@ export interface GetChannelResponses {
   /**
    * Channel metadata
    */
-  200: {
-    result?: {
-      channel?: Record<string, unknown>
-    }
-  }
+  200: ChannelResponse
 }
 
 export type GetChannelResponse = GetChannelResponses[keyof GetChannelResponses]
@@ -1308,11 +1316,7 @@ export interface GetChannelUsersResponses {
   /**
    * A list of users in the specified channel
    */
-  200: {
-    result?: {
-      users?: Record<string, unknown>[]
-    }
-  }
+  200: ChannelUsersResponse
 }
 
 export type GetChannelUsersResponse =

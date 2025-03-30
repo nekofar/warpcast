@@ -1280,3 +1280,36 @@ export const BookmarkedCastsResponseSchema = {
     },
   },
 } as const
+
+export const ChannelResponseSchema = {
+  type: 'object',
+  required: ['result'],
+  properties: {
+    result: {
+      type: 'object',
+      properties: {
+        channel: {
+          $ref: '#/components/schemas/Channel',
+        },
+      },
+    },
+  },
+} as const
+
+export const ChannelUsersResponseSchema = {
+  type: 'object',
+  required: ['result'],
+  properties: {
+    result: {
+      type: 'object',
+      properties: {
+        users: {
+          type: 'array',
+          items: {
+            $ref: '#/components/schemas/User',
+          },
+        },
+      },
+    },
+  },
+} as const
