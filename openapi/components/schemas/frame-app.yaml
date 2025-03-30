@@ -1,0 +1,3 @@
+FrameApp:
+  type: object
+  additionalProperties: true

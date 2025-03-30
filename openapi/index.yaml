@@ -1332,36 +1332,7 @@ paths:
     $ref: './paths/v2/followers-you-know.yaml'
 
   /v1/top-frameapps:
-    get:
-      operationId: getTopFrameApps
-      summary: Get top FrameApps
-      description: Returns a list of top FrameApps with optional pagination.
-      parameters:
-        - name: limit
-          in: query
-          required: false
-          schema:
-            type: integer
-        - name: cursor
-          in: query
-          required: false
-          schema:
-            type: string
-      responses:
-        '200':
-          description: A list of FrameApps
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  result:
-                    type: object
-                    properties:
-                      frames:
-                        type: array
-                        items:
-                          type: object
+    $ref: './paths/v1/top-frameapps.yaml'
 
   /v2/verifications:
     $ref: './paths/v2/verifications.yaml'

@@ -3328,7 +3328,8 @@
                         "frames": {
                           "type": "array",
                           "items": {
-                            "type": "object"
+                            "type": "object",
+                            "additionalProperties": true
                           }
                         }
                       }
