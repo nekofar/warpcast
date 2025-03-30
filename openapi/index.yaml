@@ -878,6 +878,20 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/User'
+    BookmarkedCast:
+      type: object
+      additionalProperties: true
+    BookmarkedCastsResponse:
+      type: object
+      required: [ result ]
+      properties:
+        result:
+          type: object
+          properties:
+            bookmarks:
+              type: array
+              items:
+          $ref: '#/components/schemas/BookmarkedCast'
 
 paths:
   /v2/onboarding-state:
@@ -959,34 +973,7 @@ paths:
     $ref: './paths/v2/rewards-metadata.yaml'
 
   /v2/bookmarked-casts:
-    get:
-      operationId: getBookmarkedCasts
-      summary: Get bookmarked casts
-      description: Returns the most recent casts bookmarked by the user.
-      parameters:
-        - name: limit
-          in: query
-          required: false
-          schema:
-            type: integer
-            default: 15
-      responses:
-        '200':
-          description: A list of bookmarked casts
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  result:
-                    type: object
-                    properties:
-                      bookmarks:
-                        type: array
-                        items:
-                          type: object
-      security:
-        - bearerAuth: []
+    $ref: './paths/v2/bookmarked-casts.yaml'
 
   /v2/starter-packs:
     $ref: './paths/v2/starter-packs.yaml'

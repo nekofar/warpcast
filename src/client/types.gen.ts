@@ -430,6 +430,12 @@ export interface StarterPackUsersResponse {
   }
 }
 
+export type BookmarkedCast = Record<string, unknown>;
+
+export interface BookmarkedCastsResponse {
+  result: BookmarkedCast
+}
+
 /**
  * The user's FID (Farcaster ID)
  */
@@ -1180,11 +1186,7 @@ export interface GetBookmarkedCastsResponses {
   /**
    * A list of bookmarked casts
    */
-  200: {
-    result?: {
-      bookmarks?: Record<string, unknown>[]
-    }
-  }
+  200: BookmarkedCastsResponse
 }
 
 export type GetBookmarkedCastsResponse =

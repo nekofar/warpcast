@@ -1258,3 +1258,25 @@ export const StarterPackUsersResponseSchema = {
     },
   },
 } as const
+
+export const BookmarkedCastSchema = {
+  type: 'object',
+  additionalProperties: true,
+} as const
+
+export const BookmarkedCastsResponseSchema = {
+  type: 'object',
+  required: ['result'],
+  properties: {
+    result: {
+      type: 'object',
+      properties: {
+        bookmarks: {
+          type: 'array',
+          items: null,
+        },
+      },
+      $ref: '#/components/schemas/BookmarkedCast',
+    },
+  },
+} as const
