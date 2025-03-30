@@ -1,0 +1,68 @@
+get:
+  operationId: getUserPrimaryAddresses
+  summary: Get Multiple User Primary Addresses
+  parameters:
+    - in: query
+      name: fids
+      required: true
+      schema:
+        type: string
+      description: Comma-separated list of FIDs to fetch primary addresses for.
+    - in: query
+      name: protocol
+      required: true
+      schema:
+        type: string
+        enum: [ethereum, solana]
+      description: The protocol of the addresses to fetch.
+  responses:
+    '200':
+      description: Successful response with list of primary addresses.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              result:
+                type: object
+                properties:
+                  addresses:
+                    type: array
+                    items:
+                      type: object
+                      required:
+                        - fid
+                        - success
+                      properties:
+                        fid:
+                          type: integer
+                          description: The Farcaster ID of the user
+                        success:
+                          type: boolean
+                          description: Whether the address was successfully retrieved
+                        address:
+                          $ref: '../../index.yaml#/components/schemas/VerifiedAddress'
+                          description: Present only if success is true
+          example:
+            result:
+              addresses:
+                - fid: 12152
+                  success: true
+                  address:
+                    fid: 12152
+                    protocol: ethereum
+                    address: '0x0BD6b1DFE1eA61C2b487806ECd06b5A95383a4e3'
+                - fid: 2
+                  success: true
+                  address:
+                    fid: 2
+                    protocol: ethereum
+                    address: '0x661E2209B9C6B06C1F32A0639f60D3294185ab35'
+                - fid: 1315
+                  success: true
+                  address:
+                    fid: 1315
+                    protocol: ethereum
+                    address: '0x0450a8545028547Df4129Aa5b4EC5794D5aF2409'
+                - fid: 39939393939
+                  success: false

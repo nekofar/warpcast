@@ -1,0 +1,63 @@
+put:
+  operationId: pinCastToChannel
+  summary: Pin a cast to a channel
+  security:
+    - bearerAuth: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - castHash
+          properties:
+            castHash:
+              type: string
+              description: Hash of the cast to pin
+            notifyChannelFollowers:
+              type: boolean
+              description: Whether to notify followers of the channel about the pin
+        example:
+          castHash: '0x2694aa649f3608bd11fe6621946782d1eb0ae3c4'
+          notifyChannelFollowers: true
+  responses:
+    '200':
+      description: Successful pin operation
+      content:
+        application/json:
+          schema:
+            $ref: '../../index.yaml#/components/schemas/SuccessResponse'
+          example:
+            result:
+              success: true
+
+delete:
+  operationId: unpinCastFromChannel
+  summary: Unpin a cast from a channel
+  security:
+    - bearerAuth: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - channelId
+          properties:
+            channelId:
+              type: string
+              description: ID of the channel from which to unpin a cast
+        example:
+          channelId: 'welcome'
+  responses:
+    '200':
+      description: Successful unpin operation
+      content:
+        application/json:
+          schema:
+            $ref: '../../index.yaml#/components/schemas/SuccessResponse'
+          example:
+            result:
+              success: true

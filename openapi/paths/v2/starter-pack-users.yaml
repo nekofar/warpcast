@@ -1,0 +1,22 @@
+get:
+  operationId: getStarterPackUsers
+  summary: Get users in a specific starter pack
+  description: Returns a list of users associated with a given starter pack.
+  parameters:
+    - name: id
+      in: query
+      required: true
+      schema:
+        type: string
+    - name: limit
+      in: query
+      required: false
+      schema:
+        type: integer
+  responses:
+    '200':
+      description: List of users in the starter pack
+      content:
+        application/json:
+          schema:
+            $ref: '../../index.yaml#/components/schemas/StarterPackUsersResponse'

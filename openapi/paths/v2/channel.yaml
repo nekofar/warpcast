@@ -1,0 +1,17 @@
+get:
+  operationId: getChannel
+  summary: Get channel details
+  description: Returns metadata about a channel.
+  parameters:
+    - name: key
+      in: query
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: Channel metadata
+      content:
+        application/json:
+          schema:
+            $ref: '../../index.yaml#/components/schemas/ChannelResponse'

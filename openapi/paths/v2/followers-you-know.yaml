@@ -1,0 +1,22 @@
+get:
+  operationId: getMutualFollowers
+  summary: Get mutual followers of a given user
+  description: Returns a list of users who follow the given FID and are followed by the viewer.
+  parameters:
+    - name: fid
+      in: query
+      required: true
+      schema:
+        type: integer
+    - name: limit
+      in: query
+      required: false
+      schema:
+        type: integer
+  responses:
+    '200':
+      description: A list of mutual followers
+      content:
+        application/json:
+          schema:
+            $ref: '../../index.yaml#/components/schemas/UsersWithCountResponse'

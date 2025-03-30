@@ -1,0 +1,185 @@
+get:
+  operationId: getChannelInvites
+  summary: Get channel invites
+  parameters:
+    - in: query
+      name: channelId
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: Successful response with list of channel invites
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              result:
+                type: object
+                properties:
+                  invites:
+                    type: array
+                    items:
+                      type: object
+                      required:
+                        - channelId
+                        - invitedFid
+                        - invitedAt
+                        - inviterFid
+                        - role
+                      properties:
+                        channelId:
+                          type: string
+                        invitedFid:
+                          type: integer
+                        invitedAt:
+                          type: integer
+                        inviterFid:
+                          type: integer
+                        role:
+                          type: string
+                          enum: [member, admin]
+              next:
+                type: object
+                properties:
+                  cursor:
+                    type: string
+          example:
+            result:
+              invites:
+                - channelId: coke-zero
+                  invitedFid: 194
+                  invitedAt: 1726879628
+                  inviterFid: 18949
+                  role: member
+                - channelId: brain-teasers
+                  invitedFid: 627785
+                  invitedAt: 1726874566
+                  inviterFid: 235128
+                  role: member
+              next:
+                cursor: '...'
+
+post:
+  operationId: inviteUserToChannel
+  summary: Invite a user to a channel
+  security:
+    - bearerAuth: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - channelId
+            - inviteFid
+            - role
+          properties:
+            channelId:
+              type: string
+              description: ID of the channel to invite the user to
+            inviteFid:
+              type: integer
+              description: Farcaster ID of the user being invited
+            role:
+              type: string
+              enum: [member, admin]
+              description: Role of the invited user within the channel
+        example:
+          channelId: 'evm'
+          inviteFid: 341234
+          role: 'member'
+  responses:
+    '200':
+      description: Successful invite operation
+      content:
+        application/json:
+          schema:
+            $ref: '../../index.yaml#/components/schemas/SuccessResponse'
+          example:
+            result:
+              success: true
+
+delete:
+  operationId: removeChannelInvite
+  summary: Remove a user's invite from a channel
+  security:
+    - bearerAuth: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - channelId
+            - removeFid
+            - role
+          properties:
+            channelId:
+              type: string
+              description: ID of the channel from which the user's invite is being removed
+            removeFid:
+              type: integer
+              description: Farcaster ID of the user whose invite is being removed
+            role:
+              type: string
+              enum: [member, admin]
+              description: Role associated with the invite being removed
+        example:
+          channelId: 'evm'
+          removeFid: 341234
+          role: 'member'
+  responses:
+    '200':
+      description: Successful removal of invite
+      content:
+        application/json:
+          schema:
+            $ref: '../../index.yaml#/components/schemas/SuccessResponse'
+          example:
+            result:
+              success: true
+
+patch:
+  operationId: acceptChannelInvite
+  summary: Accept a channel invite
+  security:
+    - bearerAuth: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - channelId
+            - role
+            - accept
+          properties:
+            channelId:
+              type: string
+              description: ID of the channel for which the invite is being accepted
+            role:
+              type: string
+              enum: [member, admin]
+              description: Role that the user will have in the channel
+            accept:
+              type: boolean
+              description: Flag indicating whether to accept the invite
+        example:
+          channelId: 'evm'
+          role: 'member'
+          accept: true
+  responses:
+    '200':
+      description: Successful acceptance of invite
+      content:
+        application/json:
+          schema:
+            $ref: '../../index.yaml#/components/schemas/SuccessResponse'
+          example:
+            result:
+              success: true

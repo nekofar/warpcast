@@ -1,0 +1,32 @@
+get:
+  operationId: getChannelUsers
+  summary: Get members of a specific channel
+  description: Returns users who are members of a specific channel.
+  parameters:
+    - name: limit
+      in: query
+      required: false
+      schema:
+        type: integer
+    - name: channelKey
+      in: query
+      required: true
+      schema:
+        type: string
+    - name: filterToMembers
+      in: query
+      required: false
+      schema:
+        type: boolean
+    - name: query
+      in: query
+      required: false
+      schema:
+        type: string
+  responses:
+    '200':
+      description: A list of users in the specified channel
+      content:
+        application/json:
+          schema:
+            $ref: '../../index.yaml#/components/schemas/ChannelUsersResponse'

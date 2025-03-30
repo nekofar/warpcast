@@ -1,0 +1,22 @@
+post:
+  operationId: muteKeyword
+  summary: Mute a keyword
+  description: Mutes a keyword for the authenticated user with specified properties.
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            keyword:
+              type: string
+            properties:
+              $ref: '../../index.yaml#/components/schemas/MutedKeywordProperties'
+  responses:
+    '200':
+      description: The muted keyword and its settings
+      content:
+        application/json:
+          schema:
+            $ref: '../../index.yaml#/components/schemas/MutedKeywordsResponse'

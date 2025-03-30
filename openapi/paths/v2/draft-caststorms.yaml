@@ -1,0 +1,52 @@
+get:
+  summary: Get draft cast storms
+  operationId: getDraftCasts
+  security:
+    - bearerAuth: []
+  parameters:
+    - name: limit
+      in: query
+      schema:
+        type: integer
+        default: 15
+  responses:
+    '200':
+      description: A list of draft cast storms
+      content:
+        application/json:
+          schema:
+            $ref: '../../index.yaml#/components/schemas/DraftsResponse'
+
+post:
+  summary: Create a new draft casts
+  operationId: createDraftCasts
+  security:
+    - bearerAuth: []
+  parameters:
+    - name: idempotency-key
+      in: header
+      required: true
+      schema:
+        type: string
+        format: uuid
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            caststorm:
+              type: object
+              properties:
+                casts:
+                  type: array
+                  items:
+                    $ref: '../../index.yaml#/components/schemas/DraftCast'
+  responses:
+    '200':
+      description: Created draft caststorm
+      content:
+        application/json:
+          schema:
+            $ref: '../../index.yaml#/components/schemas/DraftCreatedResponse'

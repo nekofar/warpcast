@@ -1,0 +1,25 @@
+get:
+  operationId: getDirectCastInbox
+  tags:
+    - Messaging
+  summary: Get user's direct cast inbox
+  description: Retrieves direct casts sent to the authenticated user
+  parameters:
+    - $ref: '../../index.yaml#/components/parameters/limitParam'
+    - name: category
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Filter by category of direct casts
+  security:
+    - bearerAuth: []
+  responses:
+    '200':
+      description: Successful retrieval of direct cast inbox
+      content:
+        application/json:
+          schema:
+            $ref: '../../index.yaml#/components/schemas/DirectCastInboxResponse'
+    '401':
+      $ref: '../../index.yaml#/components/responses/Unauthorized'

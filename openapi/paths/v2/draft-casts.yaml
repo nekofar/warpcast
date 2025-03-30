@@ -1,0 +1,21 @@
+delete:
+  summary: Delete a draft cast
+  operationId: deleteDraftCast
+  security:
+    - bearerAuth: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            draftId:
+              type: string
+  responses:
+    '200':
+      description: Draft cast deleted
+      content:
+        application/json:
+          schema:
+            $ref: '../../index.yaml#/components/schemas/SuccessResponse'

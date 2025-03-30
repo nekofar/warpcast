@@ -1,0 +1,8 @@
+UserResponse:
+  type: object
+  properties:
+    result:
+      type: object
+      properties:
+        user:
+          $ref: './user.yaml#/User'

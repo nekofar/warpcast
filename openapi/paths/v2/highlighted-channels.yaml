@@ -1,0 +1,17 @@
+get:
+  operationId: getHighlightedChannels
+  tags:
+    - Channels
+  summary: Get highlighted channels
+  description: Retrieves a list of featured or recommended channels
+  security:
+    - bearerAuth: []
+  responses:
+    '200':
+      description: Successful retrieval of highlighted channels
+      content:
+        application/json:
+          schema:
+            $ref: '../../index.yaml#/components/schemas/HighlightedChannelsResponse'
+    '401':
+      $ref: '../../index.yaml#/components/responses/Unauthorized'

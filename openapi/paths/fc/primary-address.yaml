@@ -1,0 +1,36 @@
+get:
+  operationId: getUserPrimaryAddress
+  summary: Get User Primary Address
+  parameters:
+    - in: query
+      name: fid
+      required: true
+      schema:
+        type: integer
+      description: The fid of the user.
+    - in: query
+      name: protocol
+      required: true
+      schema:
+        type: string
+        enum: [ethereum, solana]
+      description: The protocol of the address to fetch.
+  responses:
+    '200':
+      description: Successful response with the user's primary address.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              result:
+                type: object
+                properties:
+                  address:
+                    $ref: '../../index.yaml#/components/schemas/VerifiedAddress'
+          example:
+            result:
+              address:
+                fid: 12152
+                protocol: ethereum
+                address: '0x0BD6b1DFE1eA61C2b487806ECd06b5A95383a4e3'

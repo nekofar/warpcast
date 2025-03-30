@@ -1,0 +1,51 @@
+get:
+  operationId: getAccountVerifications
+  summary: Get account verifications
+  parameters:
+    - in: query
+      name: fid
+      schema:
+        type: integer
+      required: false
+      description: Limit the response to a specific user.
+  responses:
+    '200':
+      description: Successful response with list of account verifications
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              result:
+                type: object
+                properties:
+                  verifications:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        fid:
+                          type: integer
+                        platform:
+                          type: string
+                        platformId:
+                          type: string
+                        platformUsername:
+                          type: string
+                        verifiedAt:
+                          type: integer
+              next:
+                type: object
+                properties:
+                  cursor:
+                    type: string
+          example:
+            result:
+              verifications:
+                - fid: 3
+                  platform: 'x'
+                  platformId: '9615352'
+                  platformUsername: 'dwr'
+                  verifiedAt: 1728505748
+            next:
+              cursor: '...'

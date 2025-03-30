@@ -1,0 +1,53 @@
+put:
+  operationId: sendDirectCast
+  security:
+    - bearerAuth: []
+  summary: Send a Direct Cast via External API
+  description: >
+    Send a programmatic Direct Cast to a recipient. The request must include a unique idempotency key.
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - recipientFid
+            - message
+            - idempotencyKey
+          properties:
+            recipientFid:
+              type: integer
+              description: The Farcaster ID of the recipient.
+            message:
+              type: string
+              description: The direct cast message.
+            idempotencyKey:
+              type: string
+              format: uuid
+              description: A unique key to ensure idempotency.
+        example:
+          recipientFid: 6841
+          message: 'this is a programmatic Direct Cast'
+          idempotencyKey: 'ed3d9b95-5eed-475f-9c7d-58bdc3b9ac00'
+  responses:
+    '200':
+      description: Direct cast sent successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - result
+            properties:
+              result:
+                type: object
+                required:
+                  - success
+                properties:
+                  success:
+                    type: boolean
+                    description: Indicates if the direct cast was sent successfully
+          example:
+            result:
+              success: true

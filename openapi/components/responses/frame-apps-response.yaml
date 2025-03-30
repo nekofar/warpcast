@@ -1,0 +1,10 @@
+FrameAppsResponse:
+  type: object
+  properties:
+    result:
+      type: object
+      properties:
+        frames:
+          type: array
+          items:
+            $ref: '../schemas/frame-app.yaml#/FrameApp'

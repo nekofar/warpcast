@@ -1,0 +1,17 @@
+get:
+  operationId: getStarterPack
+  summary: Get a specific starter pack by ID
+  description: Returns a specific starter pack.
+  parameters:
+    - name: id
+      in: query
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: A starter pack object
+      content:
+        application/json:
+          schema:
+            $ref: '../../index.yaml#/components/schemas/StarterPackResponse'

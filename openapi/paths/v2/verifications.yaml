@@ -1,0 +1,30 @@
+get:
+  operationId: getVerifications
+  summary: Get verified addresses for an FID
+  description: Returns verified Ethereum addresses associated with a specific FID.
+  parameters:
+    - name: fid
+      in: query
+      required: true
+      schema:
+        type: integer
+    - name: limit
+      in: query
+      required: false
+      schema:
+        type: integer
+  responses:
+    '200':
+      description: A list of verifications
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              result:
+                type: object
+                properties:
+                  verifications:
+                    type: array
+                    items:
+                      $ref: '../../index.yaml#/components/schemas/VerifiedAddress'

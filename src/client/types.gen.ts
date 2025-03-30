@@ -261,6 +261,359 @@ export interface SuggestedUsersResponse {
   }
 }
 
+export interface Action {
+  name?: string
+  icon?: string
+  description?: string
+  aboutUrl?: string
+  actionUrl?: string
+  action?: {
+    actionType?: 'post' | 'get' | 'put' | 'delete'
+    postUrl?: string
+  }
+}
+
+export interface SuccessResponse {
+  result: {
+    /**
+     * Indicates whether the operation was successful
+     */
+    success: boolean
+  }
+}
+
+export interface VerifiedAddress {
+  fid?: number
+  address?: string
+  timestamp?: number
+  version?: string
+  protocol?: string
+  isPrimary?: boolean
+  labels?: string[]
+}
+
+export interface FavoriteFramesResponse {
+  result: {
+    frames: Record<string, unknown>[]
+  }
+}
+
+export interface ChannelStreaksResponse {
+  result: Record<string, unknown>
+}
+
+export interface UnseenCountsResponse {
+  result: {
+    notificationsCount?: number
+    notificationTabs?: {
+      tab: string
+      unseenCount: number
+    }[]
+    inboxCount?: number
+    channelFeeds?: {
+      channelKey: string
+      feedType: string
+      hasNewItems: boolean
+    }[]
+    warpTransactionCount?: number
+  }
+}
+
+export interface UserThreadCastsResponse {
+  result: {
+    casts: Record<string, unknown>[]
+  }
+}
+
+export interface ChannelFollowersYouKnowResponse {
+  result: {
+    users: Record<string, unknown>[]
+    totalCount: number
+  }
+}
+
+export interface NotificationsResponse {
+  result: {
+    notifications?: Record<string, unknown>[]
+  }
+}
+
+export interface DirectCastConversationResponse {
+  result: {
+    conversation?: Record<string, unknown>
+  }
+}
+
+export interface DiscoverChannelsResponse {
+  result: {
+    channels?: Record<string, unknown>[]
+  }
+}
+
+export interface InvitesAvailableResponse {
+  result: {
+    /**
+     * Total number of invites allocated to the user
+     */
+    allocatedInvitesCount: number
+    /**
+     * Number of invites currently available to send
+     */
+    availableInvitesCount: number
+  }
+}
+
+export interface SponsoredInvitesResponse {
+  result: {
+    invites?: Record<string, unknown>[]
+  }
+}
+
+export interface RewardsLeaderboardResponse {
+  result: {
+    leaderboard: {
+      type: string
+      users: {
+        user?: Record<string, unknown>
+        score?: number
+        rank?: number
+      }[]
+    }
+  }
+}
+
+export interface RewardsScoresResponse {
+  result: {
+    scores: {
+      type?: string
+      user?: Record<string, unknown>
+      allTimeScore?: number
+      currentPeriodScore?: number
+      previousPeriodScore?: number
+    }[]
+  }
+}
+
+export interface RewardsMetadataResponse {
+  result: {
+    metadata: {
+      type: string
+      lastUpdateTimestamp: number
+      currentPeriodStartTimestamp: number
+      currentPeriodEndTimestamp: number
+      tiers?: Record<string, unknown>[]
+      proportionalPayout?: {
+        numWinners?: number
+        totalRewardCents?: number
+      }
+    }
+  }
+}
+
+export type StarterPack = Record<string, unknown>;
+
+export interface StarterPacksResponse {
+  result: {
+    starterPacks?: StarterPack[]
+  }
+}
+
+export interface StarterPackResponse {
+  result: {
+    starterPack?: StarterPack
+  }
+}
+
+export interface StarterPackUsersResponse {
+  result: {
+    users?: User[]
+  }
+}
+
+export type BookmarkedCast = Record<string, unknown>;
+
+export interface BookmarkedCastsResponse {
+  result: BookmarkedCast
+}
+
+export interface ChannelResponse {
+  result: {
+    channel?: Channel
+  }
+}
+
+export interface ChannelUsersResponse {
+  result: {
+    users?: User[]
+  }
+}
+
+export interface UsersResponse {
+  result: {
+    users: User[]
+  }
+}
+
+export interface UsersWithCountResponse {
+  result: {
+    users: User[]
+    totalCount: number
+  }
+}
+
+export interface MutedKeywordProperties {
+  channels?: boolean
+  frames?: boolean
+  notifications?: boolean
+}
+
+export interface MutedKeyword {
+  keyword: string
+  properties: MutedKeywordProperties
+}
+
+export interface MutedKeywordsResponse {
+  success: boolean
+  result: {
+    keywords: string[]
+    mutedKeywords: MutedKeyword[]
+  }
+}
+
+export interface CastHashResponse {
+  result: {
+    castHash?: string
+  }
+}
+
+export interface AttachEmbedsResponse {
+  result: Record<string, unknown>
+}
+
+export interface CastQuote {
+  hash?: string
+  threadHash?: string
+  parentSource?: {
+    type?: string
+    url?: string
+  }
+  author?: User
+  text?: string
+  timestamp?: number
+}
+
+export interface CastQuotesResponse {
+  result: {
+    quotes?: CastQuote[]
+  }
+}
+
+export interface CastRecastersResponse {
+  result: {
+    users?: User[]
+  }
+}
+
+export interface EmbedGroups {
+  images?: unknown[]
+  urls?: unknown[]
+  videos?: unknown[]
+  unknowns?: unknown[]
+}
+
+export interface Cast {
+  hash?: string
+  threadHash?: string
+  text?: string
+  timestamp?: number
+  embeds?: EmbedGroups
+}
+
+export interface DraftCast {
+  text?: string
+  embeds?: unknown[]
+}
+
+export interface Draft {
+  draftId?: string
+  casts?: DraftCast[]
+}
+
+export interface DraftsResponse {
+  result?: {
+    drafts?: unknown[]
+  }
+}
+
+export interface DraftCreatedResponse {
+  result?: {
+    draft?: Draft
+  }
+}
+
+export interface CastCreatedResponse {
+  result?: {
+    cast?: Cast
+  }
+}
+
+export interface RawChannel {
+  id?: string
+  url?: string
+  name?: string
+  description?: string
+  descriptionMentions?: number[]
+  descriptionMentionsPositions?: number[]
+  imageUrl?: string
+  headerImageUrl?: string
+  leadFid?: number
+  moderatorFids?: number[]
+  createdAt?: number
+  followerCount?: number
+  memberCount?: number
+  pinnedCastHash?: string
+  publicCasting?: boolean
+  externalLink?: {
+    title?: string
+    url?: string
+  }
+}
+
+export interface RawChannelResponse {
+  result?: {
+    channel?: RawChannel
+  }
+}
+
+export interface ChannelListResponse {
+  result?: {
+    channels?: RawChannel[]
+  }
+}
+
+export interface ChannelFollowStatus {
+  following?: boolean
+  followedAt?: number
+}
+
+export interface ChannelFollowStatusResponse {
+  result?: ChannelFollowStatus
+}
+
+export interface ChannelFollower {
+  fid?: number
+  followedAt?: number
+}
+
+export interface ChannelFollowersResponse {
+  result?: {
+    users?: ChannelFollower[]
+    next?: {
+      cursor?: string
+    }
+  }
+}
+
 /**
  * The user's FID (Farcaster ID)
  */
@@ -596,11 +949,7 @@ export interface GetUserFavoriteFramesResponses {
   /**
    * Successful retrieval of favorite frames
    */
-  200: {
-    result?: {
-      frames?: Record<string, unknown>[]
-    }
-  }
+  200: FavoriteFramesResponse
 }
 
 export type GetUserFavoriteFramesResponse =
@@ -638,9 +987,7 @@ export interface GetChannelStreaksForUserResponses {
   /**
    * Successful retrieval of channel streaks
    */
-  200: {
-    result?: Record<string, unknown>
-  }
+  200: ChannelStreaksResponse
 }
 
 export type GetChannelStreaksForUserResponse =
@@ -657,22 +1004,7 @@ export interface GetUnseenCountsResponses {
   /**
    * Successful retrieval of unseen feed and notification data
    */
-  200: {
-    result?: {
-      notificationsCount?: number
-      notificationTabs?: {
-        tab?: string
-        unseenCount?: number
-      }[]
-      inboxCount?: number
-      channelFeeds?: {
-        channelKey?: string
-        feedType?: string
-        hasNewItems?: boolean
-      }[]
-      warpTransactionCount?: number
-    }
-  }
+  200: UnseenCountsResponse
 }
 
 export type GetUnseenCountsResponse =
@@ -693,11 +1025,7 @@ export interface GetUserThreadCastsResponses {
   /**
    * Successful retrieval of user thread casts
    */
-  200: {
-    result?: {
-      casts?: Record<string, unknown>[]
-    }
-  }
+  200: UserThreadCastsResponse
 }
 
 export type GetUserThreadCastsResponse =
@@ -717,12 +1045,7 @@ export interface GetChannelFollowersYouKnowResponses {
   /**
    * Successful retrieval of known channel followers
    */
-  200: {
-    result?: {
-      users?: Record<string, unknown>[]
-      totalCount?: number
-    }
-  }
+  200: ChannelFollowersYouKnowResponse
 }
 
 export type GetChannelFollowersYouKnowResponse =
@@ -739,11 +1062,7 @@ export interface MarkAllNotificationsReadResponses {
   /**
    * Successful mark-all-read operation
    */
-  200: {
-    result?: {
-      success?: boolean
-    }
-  }
+  200: SuccessResponse
 }
 
 export type MarkAllNotificationsReadResponse =
@@ -780,11 +1099,7 @@ export interface GetNotificationsResponses {
   /**
    * A list of notifications
    */
-  200: {
-    result?: {
-      notifications?: Record<string, unknown>[]
-    }
-  }
+  200: NotificationsResponse
 }
 
 export type GetNotificationsResponse =
@@ -815,11 +1130,7 @@ export interface SetLastCheckedTimestampResponses {
   /**
    * Success
    */
-  200: {
-    result?: {
-      success?: boolean
-    }
-  }
+  200: SuccessResponse
 }
 
 export type SetLastCheckedTimestampResponse =
@@ -852,14 +1163,7 @@ export interface GetDirectCastConversationResponses {
   /**
    * A direct cast conversation object
    */
-  200: {
-    result?: {
-      /**
-       * Conversation details (schema omitted for brevity)
-       */
-      conversation?: Record<string, unknown>
-    }
-  }
+  200: DirectCastConversationResponse
 }
 
 export type GetDirectCastConversationResponse =
@@ -892,14 +1196,10 @@ export interface DiscoverChannelsResponses {
   /**
    * A list of channels
    */
-  200: {
-    result?: {
-      channels?: Record<string, unknown>[]
-    }
-  }
+  200: DiscoverChannelsResponse
 }
 
-export type DiscoverChannelsResponse =
+export type DiscoverChannelsResponse2 =
   DiscoverChannelsResponses[keyof DiscoverChannelsResponses]
 
 export interface GetAvailableInvitesData {
@@ -924,18 +1224,7 @@ export interface GetAvailableInvitesResponses {
   /**
    * Invite count information
    */
-  200: {
-    result?: {
-      /**
-       * Total number of invites allocated to the user
-       */
-      allocatedInvitesCount?: number
-      /**
-       * Number of invites currently available to send
-       */
-      availableInvitesCount?: number
-    }
-  }
+  200: InvitesAvailableResponse
 }
 
 export type GetAvailableInvitesResponse =
@@ -963,11 +1252,7 @@ export interface GetSponsoredInvitesResponses {
   /**
    * List of sponsored invites
    */
-  200: {
-    result?: {
-      invites?: Record<string, unknown>[]
-    }
-  }
+  200: SponsoredInvitesResponse
 }
 
 export type GetSponsoredInvitesResponse =
@@ -999,18 +1284,7 @@ export interface GetRewardsLeaderboardResponses {
   /**
    * Rewards leaderboard
    */
-  200: {
-    result?: {
-      leaderboard?: {
-        type?: string
-        users?: {
-          user?: Record<string, unknown>
-          score?: number
-          rank?: number
-        }[]
-      }
-    }
-  }
+  200: RewardsLeaderboardResponse
 }
 
 export type GetRewardsLeaderboardResponse =
@@ -1041,17 +1315,7 @@ export interface GetUserRewardsScoresResponses {
   /**
    * User rewards scores
    */
-  200: {
-    result?: {
-      scores?: {
-        type?: string
-        user?: Record<string, unknown>
-        allTimeScore?: number
-        currentPeriodScore?: number
-        previousPeriodScore?: number
-      }[]
-    }
-  }
+  200: RewardsScoresResponse
 }
 
 export type GetUserRewardsScoresResponse =
@@ -1081,21 +1345,7 @@ export interface GetRewardsMetadataResponses {
   /**
    * Invite rewards metadata
    */
-  200: {
-    result?: {
-      metadata?: {
-        type?: string
-        lastUpdateTimestamp?: number
-        currentPeriodStartTimestamp?: number
-        currentPeriodEndTimestamp?: number
-        tiers?: unknown[]
-        proportionalPayout?: {
-          numWinners?: number
-          totalRewardCents?: number
-        }
-      }
-    }
-  }
+  200: RewardsMetadataResponse
 }
 
 export type GetRewardsMetadataResponse =
@@ -1114,11 +1364,7 @@ export interface GetBookmarkedCastsResponses {
   /**
    * A list of bookmarked casts
    */
-  200: {
-    result?: {
-      bookmarks?: Record<string, unknown>[]
-    }
-  }
+  200: BookmarkedCastsResponse
 }
 
 export type GetBookmarkedCastsResponse =
@@ -1138,11 +1384,7 @@ export interface GetUserStarterPacksResponses {
   /**
    * A list of starter packs
    */
-  200: {
-    result?: {
-      starterPacks?: Record<string, unknown>[]
-    }
-  }
+  200: StarterPacksResponse
 }
 
 export type GetUserStarterPacksResponse =
@@ -1161,11 +1403,7 @@ export interface GetSuggestedStarterPacksResponses {
   /**
    * A list of suggested starter packs
    */
-  200: {
-    result?: {
-      starterPacks?: Record<string, unknown>[]
-    }
-  }
+  200: StarterPacksResponse
 }
 
 export type GetSuggestedStarterPacksResponse =
@@ -1184,11 +1422,7 @@ export interface GetStarterPackResponses {
   /**
    * A starter pack object
    */
-  200: {
-    result?: {
-      starterPack?: Record<string, unknown>
-    }
-  }
+  200: StarterPackResponse
 }
 
 export type GetStarterPackResponse =
@@ -1208,11 +1442,7 @@ export interface GetStarterPackUsersResponses {
   /**
    * List of users in the starter pack
    */
-  200: {
-    result?: {
-      users?: Record<string, unknown>[]
-    }
-  }
+  200: StarterPackUsersResponse
 }
 
 export type GetStarterPackUsersResponse =
@@ -1231,11 +1461,7 @@ export interface GetChannelResponses {
   /**
    * Channel metadata
    */
-  200: {
-    result?: {
-      channel?: Record<string, unknown>
-    }
-  }
+  200: ChannelResponse
 }
 
 export type GetChannelResponse = GetChannelResponses[keyof GetChannelResponses]
@@ -1256,11 +1482,7 @@ export interface GetChannelUsersResponses {
   /**
    * A list of users in the specified channel
    */
-  200: {
-    result?: {
-      users?: Record<string, unknown>[]
-    }
-  }
+  200: ChannelUsersResponse
 }
 
 export type GetChannelUsersResponse =
@@ -1280,11 +1502,7 @@ export interface GetFollowingResponses {
   /**
    * A list of followed users
    */
-  200: {
-    result?: {
-      users?: Record<string, unknown>[]
-    }
-  }
+  200: UsersResponse
 }
 
 export type GetFollowingResponse =
@@ -1304,11 +1522,7 @@ export interface GetFollowersResponses {
   /**
    * A list of followers
    */
-  200: {
-    result?: {
-      users?: Record<string, unknown>[]
-    }
-  }
+  200: UsersResponse
 }
 
 export type GetFollowersResponse =
@@ -1328,12 +1542,7 @@ export interface GetMutualFollowersResponses {
   /**
    * A list of mutual followers
    */
-  200: {
-    result?: {
-      users?: Record<string, unknown>[]
-      totalCount?: number
-    }
-  }
+  200: UsersWithCountResponse
 }
 
 export type GetMutualFollowersResponse =
@@ -1379,15 +1588,7 @@ export interface GetVerificationsResponses {
    */
   200: {
     result?: {
-      verifications?: {
-        fid?: number
-        address?: string
-        timestamp?: number
-        version?: string
-        protocol?: string
-        isPrimary?: boolean
-        labels?: string[]
-      }[]
+      verifications?: VerifiedAddress[]
     }
   }
 }
@@ -1406,13 +1607,7 @@ export interface GetMutedKeywordsResponses {
   /**
    * A list of muted keywords
    */
-  200: {
-    success?: boolean
-    result?: {
-      keywords?: string[]
-      mutedKeywords?: string[]
-    }
-  }
+  200: MutedKeywordsResponse
 }
 
 export type GetMutedKeywordsResponse =
@@ -1421,11 +1616,7 @@ export type GetMutedKeywordsResponse =
 export interface MuteKeywordData {
   body: {
     keyword?: string
-    properties?: {
-      channels?: boolean
-      frames?: boolean
-      notifications?: boolean
-    }
+    properties?: MutedKeywordProperties
   }
   path?: never
   query?: never
@@ -1436,20 +1627,7 @@ export interface MuteKeywordResponses {
   /**
    * The muted keyword and its settings
    */
-  200: {
-    success?: boolean
-    result?: {
-      keywords?: string[]
-      mutedKeywords?: {
-        keyword?: string
-        properties?: {
-          frames?: boolean
-          channels?: boolean
-          notifications?: boolean
-        }
-      }[]
-    }
-  }
+  200: MutedKeywordsResponse
 }
 
 export type MuteKeywordResponse =
@@ -1468,20 +1646,7 @@ export interface UnmuteKeywordResponses {
   /**
    * Keyword unmuted
    */
-  200: {
-    success?: boolean
-    result?: {
-      keywords?: string[]
-      mutedKeywords?: {
-        keyword?: string
-        properties?: {
-          channels?: boolean
-          frames?: boolean
-          notifications?: boolean
-        }
-      }[]
-    }
-  }
+  200: MutedKeywordsResponse
 }
 
 export type UnmuteKeywordResponse =
@@ -1580,11 +1745,7 @@ export interface UndoRecastResponses {
   /**
    * Undo recast response
    */
-  200: {
-    result?: {
-      success?: boolean
-    }
-  }
+  200: SuccessResponse
 }
 
 export type UndoRecastResponse = UndoRecastResponses[keyof UndoRecastResponses]
@@ -1602,11 +1763,7 @@ export interface RecastCastResponses {
   /**
    * Recast response
    */
-  200: {
-    result?: {
-      castHash?: string
-    }
-  }
+  200: CastHashResponse
 }
 
 export type RecastCastResponse = RecastCastResponses[keyof RecastCastResponses]
@@ -1625,12 +1782,10 @@ export interface AttachEmbedsResponses {
   /**
    * Attachment response
    */
-  200: {
-    result?: Record<string, unknown>
-  }
+  200: AttachEmbedsResponse
 }
 
-export type AttachEmbedsResponse =
+export type AttachEmbedsResponse2 =
   AttachEmbedsResponses[keyof AttachEmbedsResponses]
 
 export interface GetCastRecastersData {
@@ -1647,11 +1802,7 @@ export interface GetCastRecastersResponses {
   /**
    * A list of users who recasted the cast
    */
-  200: {
-    result?: {
-      users?: User[]
-    }
-  }
+  200: CastRecastersResponse
 }
 
 export type GetCastRecastersResponse =
@@ -1671,21 +1822,7 @@ export interface GetCastQuotesResponses {
   /**
    * A list of quote casts referencing the given cast
    */
-  200: {
-    result?: {
-      quotes?: {
-        hash?: string
-        threadHash?: string
-        parentSource?: {
-          type?: string
-          url?: string
-        }
-        author?: User
-        text?: string
-        timestamp?: number
-      }[]
-    }
-  }
+  200: CastQuotesResponse
 }
 
 export type GetCastQuotesResponse =
@@ -1702,7 +1839,20 @@ export interface GetCurrentUserResponses {
   /**
    * Successful retrieval of current user
    */
-  200: UserResponse
+  200: {
+    result?: {
+      user?: {
+        fid?: number
+        username?: string
+        displayName?: string
+        pfp?: ProfilePicture
+        profile?: Profile
+        followerCount?: number
+        followingCount?: number
+        viewerContext?: ViewerContext
+      }
+    }
+  }
 }
 
 export type GetCurrentUserResponse =
@@ -1726,7 +1876,7 @@ export interface SearchChannelsResponses {
    */
   200: {
     result?: {
-      channels?: unknown[]
+      channels?: Channel[]
     }
   }
 }
@@ -1747,11 +1897,7 @@ export interface GetDraftCastsResponses {
   /**
    * A list of draft cast storms
    */
-  200: {
-    result?: {
-      drafts?: unknown[]
-    }
-  }
+  200: DraftsResponse
 }
 
 export type GetDraftCastsResponse =
@@ -1760,10 +1906,7 @@ export type GetDraftCastsResponse =
 export interface CreateDraftCastsData {
   body: {
     caststorm?: {
-      casts?: {
-        text?: string
-        embeds?: unknown[]
-      }[]
+      casts?: DraftCast[]
     }
   }
   headers: {
@@ -1778,21 +1921,30 @@ export interface CreateDraftCastsResponses {
   /**
    * Created draft caststorm
    */
-  200: {
-    result?: {
-      draft?: {
-        draftId?: string
-        casts?: {
-          text?: string
-          embeds?: unknown[]
-        }[]
-      }
-    }
-  }
+  200: DraftCreatedResponse
 }
 
 export type CreateDraftCastsResponse =
   CreateDraftCastsResponses[keyof CreateDraftCastsResponses]
+
+export interface DeleteDraftCastData {
+  body: {
+    draftId?: string
+  }
+  path?: never
+  query?: never
+  url: '/v2/draft-casts'
+}
+
+export interface DeleteDraftCastResponses {
+  /**
+   * Draft cast deleted
+   */
+  200: SuccessResponse
+}
+
+export type DeleteDraftCastResponse =
+  DeleteDraftCastResponses[keyof DeleteDraftCastResponses]
 
 export interface DeleteCastData {
   body: {
@@ -1807,11 +1959,7 @@ export interface DeleteCastResponses {
   /**
    * Cast deleted successfully
    */
-  200: {
-    result?: {
-      success?: boolean
-    }
-  }
+  200: SuccessResponse
 }
 
 export type DeleteCastResponse = DeleteCastResponses[keyof DeleteCastResponses]
@@ -1834,46 +1982,10 @@ export interface CreateCastResponses {
   /**
    * Cast created successfully
    */
-  200: {
-    result?: {
-      cast?: {
-        hash?: string
-        threadHash?: string
-        text?: string
-        timestamp?: number
-        embeds?: {
-          images?: unknown[]
-          urls?: unknown[]
-          videos?: unknown[]
-          unknowns?: unknown[]
-        }
-      }
-    }
-  }
+  200: CastCreatedResponse
 }
 
 export type CreateCastResponse = CreateCastResponses[keyof CreateCastResponses]
-
-export interface DeleteDraftCastData {
-  body: {
-    draftId?: string
-  }
-  path?: never
-  query?: never
-  url: '/v2/draft-casts'
-}
-
-export interface DeleteDraftCastResponses {
-  /**
-   * Draft cast deleted
-   */
-  200: {
-    result?: Record<string, unknown>
-  }
-}
-
-export type DeleteDraftCastResponse =
-  DeleteDraftCastResponses[keyof DeleteDraftCastResponses]
 
 export interface GetAllChannelsData {
   body?: never
@@ -1886,31 +1998,7 @@ export interface GetAllChannelsResponses {
   /**
    * Successful response
    */
-  200: {
-    result?: {
-      channels?: {
-        id?: string
-        url?: string
-        name?: string
-        description?: string
-        descriptionMentions?: number[]
-        descriptionMentionsPositions?: number[]
-        imageUrl?: string
-        headerImageUrl?: string
-        leadFid?: number
-        moderatorFids?: number[]
-        createdAt?: number
-        followerCount?: number
-        memberCount?: number
-        pinnedCastHash?: string
-        publicCasting?: boolean
-        externalLink?: {
-          title?: string
-          url?: string
-        }
-      }[]
-    }
-  }
+  200: ChannelListResponse
 }
 
 export type GetAllChannelsResponse =
@@ -1929,11 +2017,7 @@ export interface GetChannelDetailsResponses {
   /**
    * Channel details
    */
-  200: {
-    result?: {
-      channel?: Channel
-    }
-  }
+  200: RawChannelResponse
 }
 
 export type GetChannelDetailsResponse =
@@ -1943,13 +2027,7 @@ export interface GetChannelFollowersData {
   body?: never
   path?: never
   query: {
-    /**
-     * The ID of the channel
-     */
     channelId: string
-    /**
-     * Cursor for pagination
-     */
     cursor?: string
   }
   url: '/v1/channel-followers'
@@ -1959,8 +2037,11 @@ export interface GetChannelFollowersResponses {
   /**
    * A list of channel followers
    */
-  200: unknown
+  200: ChannelFollowersResponse
 }
+
+export type GetChannelFollowersResponse =
+  GetChannelFollowersResponses[keyof GetChannelFollowersResponses]
 
 export interface GetUserFollowedChannelsData {
   body?: never
@@ -1973,10 +2054,13 @@ export interface GetUserFollowedChannelsData {
 
 export interface GetUserFollowedChannelsResponses {
   /**
-   * Successful response with list of channels followed by the user
+   * Successful response with list of followed channels
    */
-  200: unknown
+  200: ChannelListResponse
 }
+
+export type GetUserFollowedChannelsResponse =
+  GetUserFollowedChannelsResponses[keyof GetUserFollowedChannelsResponses]
 
 export interface CheckUserChannelFollowStatusData {
   body?: never
@@ -1992,8 +2076,11 @@ export interface CheckUserChannelFollowStatusResponses {
   /**
    * Successful response with follow status
    */
-  200: unknown
+  200: ChannelFollowStatusResponse
 }
+
+export type CheckUserChannelFollowStatusResponse =
+  CheckUserChannelFollowStatusResponses[keyof CheckUserChannelFollowStatusResponses]
 
 export interface GetChannelMembersData {
   body?: never
@@ -2008,8 +2095,30 @@ export interface GetChannelMembersResponses {
   /**
    * Successful response with list of members
    */
-  200: unknown
+  200: {
+    result: {
+      members: {
+        /**
+         * Farcaster ID of the member
+         */
+        fid: number
+        /**
+         * Timestamp when the user became a member
+         */
+        memberAt: number
+      }[]
+    }
+    next?: {
+      /**
+       * Cursor for pagination
+       */
+      cursor?: string
+    }
+  }
 }
+
+export type GetChannelMembersResponse =
+  GetChannelMembersResponses[keyof GetChannelMembersResponses]
 
 export interface RemoveChannelInviteData {
   body: {
@@ -2018,7 +2127,7 @@ export interface RemoveChannelInviteData {
      */
     channelId: string
     /**
-     * Farcaster ID (FID) of the user whose invite is being removed
+     * Farcaster ID of the user whose invite is being removed
      */
     removeFid: number
     /**
@@ -2035,14 +2144,7 @@ export interface RemoveChannelInviteResponses {
   /**
    * Successful removal of invite
    */
-  200: {
-    result: {
-      /**
-       * Indicates whether the removal of invite was successful
-       */
-      success: boolean
-    }
-  }
+  200: SuccessResponse
 }
 
 export type RemoveChannelInviteResponse =
@@ -2061,8 +2163,24 @@ export interface GetChannelInvitesResponses {
   /**
    * Successful response with list of channel invites
    */
-  200: unknown
+  200: {
+    result?: {
+      invites?: {
+        channelId: string
+        invitedFid: number
+        invitedAt: number
+        inviterFid: number
+        role: 'member' | 'admin'
+      }[]
+    }
+    next?: {
+      cursor?: string
+    }
+  }
 }
+
+export type GetChannelInvitesResponse =
+  GetChannelInvitesResponses[keyof GetChannelInvitesResponses]
 
 export interface AcceptChannelInviteData {
   body: {
@@ -2088,14 +2206,7 @@ export interface AcceptChannelInviteResponses {
   /**
    * Successful acceptance of invite
    */
-  200: {
-    result: {
-      /**
-       * Indicates whether the invite was successfully accepted
-       */
-      success: boolean
-    }
-  }
+  200: SuccessResponse
 }
 
 export type AcceptChannelInviteResponse =
@@ -2125,14 +2236,7 @@ export interface InviteUserToChannelResponses {
   /**
    * Successful invite operation
    */
-  200: {
-    result: {
-      /**
-       * Indicates if the invite was successful
-       */
-      success: boolean
-    }
-  }
+  200: SuccessResponse
 }
 
 export type InviteUserToChannelResponse =
@@ -2252,14 +2356,7 @@ export interface UnbanUserFromChannelResponses {
   /**
    * Successful unban operation
    */
-  200: {
-    result: {
-      /**
-       * Indicates whether the unban operation was successful
-       */
-      success: boolean
-    }
-  }
+  200: SuccessResponse
 }
 
 export type UnbanUserFromChannelResponse =
@@ -2330,14 +2427,7 @@ export interface BanUserFromChannelResponses {
   /**
    * Successful ban operation
    */
-  200: {
-    result: {
-      /**
-       * Indicates whether the ban operation was successful
-       */
-      success: boolean
-    }
-  }
+  200: SuccessResponse
 }
 
 export type BanUserFromChannelResponse =
@@ -2359,14 +2449,7 @@ export interface UnfollowChannelResponses {
   /**
    * Successful unfollow operation
    */
-  200: {
-    result: {
-      /**
-       * Indicates whether the unfollow operation was successful
-       */
-      success: boolean
-    }
-  }
+  200: SuccessResponse
 }
 
 export type UnfollowChannelResponse =
@@ -2388,14 +2471,7 @@ export interface FollowChannelResponses {
   /**
    * Successful follow operation
    */
-  200: {
-    result: {
-      /**
-       * Indicates whether the follow operation was successful
-       */
-      success: boolean
-    }
-  }
+  200: SuccessResponse
 }
 
 export type FollowChannelResponse =
@@ -2421,14 +2497,7 @@ export interface ModerateCastResponses {
   /**
    * Successful moderation action
    */
-  200: {
-    result: {
-      /**
-       * Indicates whether the moderation action was successful
-       */
-      success: boolean
-    }
-  }
+  200: SuccessResponse
 }
 
 export type ModerateCastResponse =
@@ -2450,14 +2519,7 @@ export interface UnpinCastFromChannelResponses {
   /**
    * Successful unpin operation
    */
-  200: {
-    result: {
-      /**
-       * Indicates whether the unpin operation was successful
-       */
-      success: boolean
-    }
-  }
+  200: SuccessResponse
 }
 
 export type UnpinCastFromChannelResponse =
@@ -2483,14 +2545,7 @@ export interface PinCastToChannelResponses {
   /**
    * Successful pin operation
    */
-  200: {
-    result: {
-      /**
-       * Indicates whether the pin operation was successful
-       */
-      success: boolean
-    }
-  }
+  200: SuccessResponse
 }
 
 export type PinCastToChannelResponse =
@@ -2510,8 +2565,18 @@ export interface GetDiscoverableActionsResponses {
   /**
    * Successful response with list of discoverable actions
    */
-  200: unknown
+  200: {
+    result?: {
+      actions?: Action[]
+      next?: {
+        cursor?: string
+      }
+    }
+  }
 }
+
+export type GetDiscoverableActionsResponse =
+  GetDiscoverableActionsResponses[keyof GetDiscoverableActionsResponses]
 
 export interface GetDiscoverableComposerActionsData {
   body?: never
@@ -2527,8 +2592,18 @@ export interface GetDiscoverableComposerActionsResponses {
   /**
    * Successful response with list of discoverable composer actions
    */
-  200: unknown
+  200: {
+    result?: {
+      actions?: Action[]
+      next?: {
+        cursor?: string
+      }
+    }
+  }
 }
+
+export type GetDiscoverableComposerActionsResponse =
+  GetDiscoverableComposerActionsResponses[keyof GetDiscoverableComposerActionsResponses]
 
 export interface UnblockUserData {
   body: {
@@ -2643,8 +2718,24 @@ export interface GetAccountVerificationsResponses {
   /**
    * Successful response with list of account verifications
    */
-  200: unknown
+  200: {
+    result?: {
+      verifications?: {
+        fid?: number
+        platform?: string
+        platformId?: string
+        platformUsername?: string
+        verifiedAt?: number
+      }[]
+    }
+    next?: {
+      cursor?: string
+    }
+  }
 }
+
+export type GetAccountVerificationsResponse =
+  GetAccountVerificationsResponses[keyof GetAccountVerificationsResponses]
 
 export interface GetCreatorRewardWinnersData {
   body?: never
@@ -2662,8 +2753,26 @@ export interface GetCreatorRewardWinnersResponses {
   /**
    * Successful response with creator reward winners history
    */
-  200: unknown
+  200: {
+    result?: {
+      periodStartTimestamp?: bigint
+      periodEndTimestamp?: bigint
+      winners?: {
+        fid?: number
+        score?: number
+        rank?: number
+        rewardCents?: number
+        walletAddress?: string
+      }[]
+    }
+    next?: {
+      cursor?: string
+    }
+  }
 }
+
+export type GetCreatorRewardWinnersResponse =
+  GetCreatorRewardWinnersResponses[keyof GetCreatorRewardWinnersResponses]
 
 export interface GetUserPrimaryAddressData {
   body?: never
@@ -2685,8 +2794,15 @@ export interface GetUserPrimaryAddressResponses {
   /**
    * Successful response with the user's primary address.
    */
-  200: unknown
+  200: {
+    result?: {
+      address?: VerifiedAddress
+    }
+  }
 }
+
+export type GetUserPrimaryAddressResponse =
+  GetUserPrimaryAddressResponses[keyof GetUserPrimaryAddressResponses]
 
 export interface GetUserPrimaryAddressesData {
   body?: never
@@ -2722,20 +2838,7 @@ export interface GetUserPrimaryAddressesResponses {
         /**
          * Present only if success is true
          */
-        address?: {
-          /**
-           * The Farcaster ID of the user
-           */
-          fid: number
-          /**
-           * The blockchain protocol of the address
-           */
-          protocol: 'ethereum' | 'solana'
-          /**
-           * The blockchain address string
-           */
-          address: string
-        }
+        address?: VerifiedAddress
       }[]
     }
   }

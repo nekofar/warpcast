@@ -1,0 +1,24 @@
+put:
+  operationId: setLastCheckedTimestamp
+  summary: Set last checked timestamp
+  description: Updates the last checked timestamp for notifications.
+  security:
+    - bearerAuth: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          description: Empty object for now
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '../../index.yaml#/components/schemas/SuccessResponse'
+    '401':
+      description: Unauthorized
+    '429':
+      description: Too many requests

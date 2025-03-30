@@ -766,3 +766,1016 @@ export const SuggestedUsersResponseSchema = {
     },
   },
 } as const
+
+export const ActionSchema = {
+  type: 'object',
+  properties: {
+    name: {
+      type: 'string',
+    },
+    icon: {
+      type: 'string',
+    },
+    description: {
+      type: 'string',
+    },
+    aboutUrl: {
+      type: 'string',
+      format: 'uri',
+    },
+    actionUrl: {
+      type: 'string',
+      format: 'uri',
+    },
+    action: {
+      type: 'object',
+      properties: {
+        actionType: {
+          type: 'string',
+          enum: ['post', 'get', 'put', 'delete'],
+        },
+        postUrl: {
+          type: 'string',
+          format: 'uri',
+        },
+      },
+    },
+  },
+} as const
+
+export const SuccessResponseSchema = {
+  type: 'object',
+  required: ['result'],
+  properties: {
+    result: {
+      type: 'object',
+      required: ['success'],
+      properties: {
+        success: {
+          type: 'boolean',
+          description: 'Indicates whether the operation was successful',
+        },
+      },
+    },
+  },
+} as const
+
+export const VerifiedAddressSchema = {
+  type: 'object',
+  properties: {
+    fid: {
+      type: 'integer',
+    },
+    address: {
+      type: 'string',
+    },
+    timestamp: {
+      type: 'integer',
+    },
+    version: {
+      type: 'string',
+    },
+    protocol: {
+      type: 'string',
+    },
+    isPrimary: {
+      type: 'boolean',
+    },
+    labels: {
+      type: 'array',
+      items: {
+        type: 'string',
+      },
+    },
+  },
+} as const
+
+export const FavoriteFramesResponseSchema = {
+  type: 'object',
+  required: ['result'],
+  properties: {
+    result: {
+      type: 'object',
+      required: ['frames'],
+      properties: {
+        frames: {
+          type: 'array',
+          items: {
+            type: 'object',
+            additionalProperties: true,
+          },
+        },
+      },
+    },
+  },
+} as const
+
+export const ChannelStreaksResponseSchema = {
+  type: 'object',
+  required: ['result'],
+  properties: {
+    result: {
+      type: 'object',
+      additionalProperties: true,
+    },
+  },
+} as const
+
+export const UnseenCountsResponseSchema = {
+  type: 'object',
+  required: ['result'],
+  properties: {
+    result: {
+      type: 'object',
+      properties: {
+        notificationsCount: {
+          type: 'integer',
+        },
+        notificationTabs: {
+          type: 'array',
+          items: {
+            type: 'object',
+            required: ['tab', 'unseenCount'],
+            properties: {
+              tab: {
+                type: 'string',
+              },
+              unseenCount: {
+                type: 'integer',
+              },
+            },
+          },
+        },
+        inboxCount: {
+          type: 'integer',
+        },
+        channelFeeds: {
+          type: 'array',
+          items: {
+            type: 'object',
+            required: ['channelKey', 'feedType', 'hasNewItems'],
+            properties: {
+              channelKey: {
+                type: 'string',
+              },
+              feedType: {
+                type: 'string',
+              },
+              hasNewItems: {
+                type: 'boolean',
+              },
+            },
+          },
+        },
+        warpTransactionCount: {
+          type: 'integer',
+        },
+      },
+    },
+  },
+} as const
+
+export const UserThreadCastsResponseSchema = {
+  type: 'object',
+  required: ['result'],
+  properties: {
+    result: {
+      type: 'object',
+      required: ['casts'],
+      properties: {
+        casts: {
+          type: 'array',
+          items: {
+            type: 'object',
+            additionalProperties: true,
+          },
+        },
+      },
+    },
+  },
+} as const
+
+export const ChannelFollowersYouKnowResponseSchema = {
+  type: 'object',
+  required: ['result'],
+  properties: {
+    result: {
+      type: 'object',
+      required: ['users', 'totalCount'],
+      properties: {
+        users: {
+          type: 'array',
+          items: {
+            type: 'object',
+            additionalProperties: true,
+          },
+        },
+        totalCount: {
+          type: 'integer',
+        },
+      },
+    },
+  },
+} as const
+
+export const NotificationsResponseSchema = {
+  type: 'object',
+  required: ['result'],
+  properties: {
+    result: {
+      type: 'object',
+      properties: {
+        notifications: {
+          type: 'array',
+          items: {
+            type: 'object',
+            additionalProperties: true,
+          },
+        },
+      },
+    },
+  },
+} as const
+
+export const DirectCastConversationResponseSchema = {
+  type: 'object',
+  required: ['result'],
+  properties: {
+    result: {
+      type: 'object',
+      properties: {
+        conversation: {
+          type: 'object',
+          additionalProperties: true,
+        },
+      },
+    },
+  },
+} as const
+
+export const DiscoverChannelsResponseSchema = {
+  type: 'object',
+  required: ['result'],
+  properties: {
+    result: {
+      type: 'object',
+      properties: {
+        channels: {
+          type: 'array',
+          items: {
+            type: 'object',
+            additionalProperties: true,
+          },
+        },
+      },
+    },
+  },
+} as const
+
+export const InvitesAvailableResponseSchema = {
+  type: 'object',
+  required: ['result'],
+  properties: {
+    result: {
+      type: 'object',
+      required: ['allocatedInvitesCount', 'availableInvitesCount'],
+      properties: {
+        allocatedInvitesCount: {
+          type: 'integer',
+          description: 'Total number of invites allocated to the user',
+        },
+        availableInvitesCount: {
+          type: 'integer',
+          description: 'Number of invites currently available to send',
+        },
+      },
+    },
+  },
+} as const
+
+export const SponsoredInvitesResponseSchema = {
+  type: 'object',
+  required: ['result'],
+  properties: {
+    result: {
+      type: 'object',
+      properties: {
+        invites: {
+          type: 'array',
+          items: {
+            type: 'object',
+          },
+        },
+      },
+    },
+    additionalProperties: true,
+  },
+} as const
+
+export const RewardsLeaderboardResponseSchema = {
+  type: 'object',
+  required: ['result'],
+  properties: {
+    result: {
+      type: 'object',
+      required: ['leaderboard'],
+      properties: {
+        leaderboard: {
+          type: 'object',
+          required: ['type', 'users'],
+          properties: {
+            type: {
+              type: 'string',
+            },
+            users: {
+              type: 'array',
+              items: {
+                type: 'object',
+                properties: {
+                  user: {
+                    type: 'object',
+                    additionalProperties: true,
+                  },
+                  score: {
+                    type: 'integer',
+                  },
+                  rank: {
+                    type: 'integer',
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  },
+} as const
+
+export const RewardsScoresResponseSchema = {
+  type: 'object',
+  required: ['result'],
+  properties: {
+    result: {
+      type: 'object',
+      required: ['scores'],
+      properties: {
+        scores: {
+          type: 'array',
+          items: {
+            type: 'object',
+            properties: {
+              type: {
+                type: 'string',
+              },
+              user: {
+                type: 'object',
+                additionalProperties: true,
+              },
+              allTimeScore: {
+                type: 'integer',
+              },
+              currentPeriodScore: {
+                type: 'integer',
+              },
+              previousPeriodScore: {
+                type: 'integer',
+              },
+            },
+          },
+        },
+      },
+    },
+  },
+} as const
+
+export const RewardsMetadataResponseSchema = {
+  type: 'object',
+  required: ['result'],
+  properties: {
+    result: {
+      type: 'object',
+      required: ['metadata'],
+      properties: {
+        metadata: {
+          type: 'object',
+          required: [
+            'type',
+            'lastUpdateTimestamp',
+            'currentPeriodStartTimestamp',
+            'currentPeriodEndTimestamp',
+          ],
+          properties: {
+            type: {
+              type: 'string',
+            },
+            lastUpdateTimestamp: {
+              type: 'integer',
+            },
+            currentPeriodStartTimestamp: {
+              type: 'integer',
+            },
+            currentPeriodEndTimestamp: {
+              type: 'integer',
+            },
+            tiers: {
+              type: 'array',
+              items: {
+                type: 'object',
+                additionalProperties: true,
+              },
+            },
+            proportionalPayout: {
+              type: 'object',
+              properties: {
+                numWinners: {
+                  type: 'integer',
+                },
+                totalRewardCents: {
+                  type: 'integer',
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  },
+} as const
+
+export const StarterPackSchema = {
+  type: 'object',
+  additionalProperties: true,
+} as const
+
+export const StarterPacksResponseSchema = {
+  type: 'object',
+  required: ['result'],
+  properties: {
+    result: {
+      type: 'object',
+      properties: {
+        starterPacks: {
+          type: 'array',
+          items: {
+            $ref: '#/components/schemas/StarterPack',
+          },
+        },
+      },
+    },
+  },
+} as const
+
+export const StarterPackResponseSchema = {
+  type: 'object',
+  required: ['result'],
+  properties: {
+    result: {
+      type: 'object',
+      properties: {
+        starterPack: {
+          $ref: '#/components/schemas/StarterPack',
+        },
+      },
+    },
+  },
+} as const
+
+export const StarterPackUsersResponseSchema = {
+  type: 'object',
+  required: ['result'],
+  properties: {
+    result: {
+      type: 'object',
+      properties: {
+        users: {
+          type: 'array',
+          items: {
+            $ref: '#/components/schemas/User',
+          },
+        },
+      },
+    },
+  },
+} as const
+
+export const BookmarkedCastSchema = {
+  type: 'object',
+  additionalProperties: true,
+} as const
+
+export const BookmarkedCastsResponseSchema = {
+  type: 'object',
+  required: ['result'],
+  properties: {
+    result: {
+      type: 'object',
+      properties: {
+        bookmarks: {
+          type: 'array',
+          items: null,
+        },
+      },
+      $ref: '#/components/schemas/BookmarkedCast',
+    },
+  },
+} as const
+
+export const ChannelResponseSchema = {
+  type: 'object',
+  required: ['result'],
+  properties: {
+    result: {
+      type: 'object',
+      properties: {
+        channel: {
+          $ref: '#/components/schemas/Channel',
+        },
+      },
+    },
+  },
+} as const
+
+export const ChannelUsersResponseSchema = {
+  type: 'object',
+  required: ['result'],
+  properties: {
+    result: {
+      type: 'object',
+      properties: {
+        users: {
+          type: 'array',
+          items: {
+            $ref: '#/components/schemas/User',
+          },
+        },
+      },
+    },
+  },
+} as const
+
+export const UsersResponseSchema = {
+  type: 'object',
+  required: ['result'],
+  properties: {
+    result: {
+      type: 'object',
+      required: ['users'],
+      properties: {
+        users: {
+          type: 'array',
+          items: {
+            $ref: '#/components/schemas/User',
+          },
+        },
+      },
+    },
+  },
+} as const
+
+export const UsersWithCountResponseSchema = {
+  type: 'object',
+  required: ['result'],
+  properties: {
+    result: {
+      type: 'object',
+      required: ['users', 'totalCount'],
+      properties: {
+        users: {
+          type: 'array',
+          items: {
+            $ref: '#/components/schemas/User',
+          },
+        },
+        totalCount: {
+          type: 'integer',
+        },
+      },
+    },
+  },
+} as const
+
+export const MutedKeywordPropertiesSchema = {
+  type: 'object',
+  properties: {
+    channels: {
+      type: 'boolean',
+    },
+    frames: {
+      type: 'boolean',
+    },
+    notifications: {
+      type: 'boolean',
+    },
+  },
+} as const
+
+export const MutedKeywordSchema = {
+  type: 'object',
+  required: ['keyword', 'properties'],
+  properties: {
+    keyword: {
+      type: 'string',
+    },
+    properties: {
+      $ref: '#/components/schemas/MutedKeywordProperties',
+    },
+  },
+} as const
+
+export const MutedKeywordsResponseSchema = {
+  type: 'object',
+  required: ['success', 'result'],
+  properties: {
+    success: {
+      type: 'boolean',
+    },
+    result: {
+      type: 'object',
+      required: ['keywords', 'mutedKeywords'],
+      properties: {
+        keywords: {
+          type: 'array',
+          items: {
+            type: 'string',
+          },
+        },
+        mutedKeywords: {
+          type: 'array',
+          items: {
+            $ref: '#/components/schemas/MutedKeyword',
+          },
+        },
+      },
+    },
+  },
+} as const
+
+export const CastHashResponseSchema = {
+  type: 'object',
+  required: ['result'],
+  properties: {
+    result: {
+      type: 'object',
+      properties: {
+        castHash: {
+          type: 'string',
+          example: '0x750a7269b4a3b70e28d3f450df33487047d4927f',
+        },
+      },
+    },
+  },
+} as const
+
+export const AttachEmbedsResponseSchema = {
+  type: 'object',
+  required: ['result'],
+  properties: {
+    result: {
+      type: 'object',
+      additionalProperties: true,
+    },
+  },
+} as const
+
+export const CastQuoteSchema = {
+  type: 'object',
+  properties: {
+    hash: {
+      type: 'string',
+    },
+    threadHash: {
+      type: 'string',
+    },
+    parentSource: {
+      type: 'object',
+      properties: {
+        type: {
+          type: 'string',
+        },
+        url: {
+          type: 'string',
+        },
+      },
+    },
+    author: {
+      $ref: '#/components/schemas/User',
+    },
+    text: {
+      type: 'string',
+    },
+    timestamp: {
+      type: 'integer',
+    },
+  },
+} as const
+
+export const CastQuotesResponseSchema = {
+  type: 'object',
+  required: ['result'],
+  properties: {
+    result: {
+      type: 'object',
+      properties: {
+        quotes: {
+          type: 'array',
+          items: {
+            $ref: '#/components/schemas/CastQuote',
+          },
+        },
+      },
+    },
+  },
+} as const
+
+export const CastRecastersResponseSchema = {
+  type: 'object',
+  required: ['result'],
+  properties: {
+    result: {
+      type: 'object',
+      properties: {
+        users: {
+          type: 'array',
+          items: {
+            $ref: '#/components/schemas/User',
+          },
+        },
+      },
+    },
+  },
+} as const
+
+export const EmbedGroupsSchema = {
+  type: 'object',
+  properties: {
+    images: {
+      type: 'array',
+      items: {},
+    },
+    urls: {
+      type: 'array',
+      items: {},
+    },
+    videos: {
+      type: 'array',
+      items: {},
+    },
+    unknowns: {
+      type: 'array',
+      items: {},
+    },
+  },
+} as const
+
+export const CastSchema = {
+  type: 'object',
+  properties: {
+    hash: {
+      type: 'string',
+    },
+    threadHash: {
+      type: 'string',
+    },
+    text: {
+      type: 'string',
+    },
+    timestamp: {
+      type: 'integer',
+    },
+    embeds: {
+      $ref: '#/components/schemas/EmbedGroups',
+    },
+  },
+} as const
+
+export const DraftCastSchema = {
+  type: 'object',
+  properties: {
+    text: {
+      type: 'string',
+    },
+    embeds: {
+      type: 'array',
+      items: {},
+    },
+  },
+} as const
+
+export const DraftSchema = {
+  type: 'object',
+  properties: {
+    draftId: {
+      type: 'string',
+    },
+    casts: {
+      type: 'array',
+      items: {
+        $ref: '#/components/schemas/DraftCast',
+      },
+    },
+  },
+} as const
+
+export const DraftsResponseSchema = {
+  type: 'object',
+  properties: {
+    result: {
+      type: 'object',
+      properties: {
+        drafts: {
+          type: 'array',
+          items: {},
+        },
+      },
+    },
+  },
+} as const
+
+export const DraftCreatedResponseSchema = {
+  type: 'object',
+  properties: {
+    result: {
+      type: 'object',
+      properties: {
+        draft: {
+          $ref: '#/components/schemas/Draft',
+        },
+      },
+    },
+  },
+} as const
+
+export const CastCreatedResponseSchema = {
+  type: 'object',
+  properties: {
+    result: {
+      type: 'object',
+      properties: {
+        cast: {
+          $ref: '#/components/schemas/Cast',
+        },
+      },
+    },
+  },
+} as const
+
+export const RawChannelSchema = {
+  type: 'object',
+  properties: {
+    id: {
+      type: 'string',
+    },
+    url: {
+      type: 'string',
+    },
+    name: {
+      type: 'string',
+    },
+    description: {
+      type: 'string',
+    },
+    descriptionMentions: {
+      type: 'array',
+      items: {
+        type: 'integer',
+      },
+    },
+    descriptionMentionsPositions: {
+      type: 'array',
+      items: {
+        type: 'integer',
+      },
+    },
+    imageUrl: {
+      type: 'string',
+    },
+    headerImageUrl: {
+      type: 'string',
+    },
+    leadFid: {
+      type: 'integer',
+    },
+    moderatorFids: {
+      type: 'array',
+      items: {
+        type: 'integer',
+      },
+    },
+    createdAt: {
+      type: 'integer',
+    },
+    followerCount: {
+      type: 'integer',
+    },
+    memberCount: {
+      type: 'integer',
+    },
+    pinnedCastHash: {
+      type: 'string',
+    },
+    publicCasting: {
+      type: 'boolean',
+    },
+    externalLink: {
+      type: 'object',
+      properties: {
+        title: {
+          type: 'string',
+        },
+        url: {
+          type: 'string',
+        },
+      },
+    },
+  },
+} as const
+
+export const RawChannelResponseSchema = {
+  type: 'object',
+  properties: {
+    result: {
+      type: 'object',
+      properties: {
+        channel: {
+          $ref: '#/components/schemas/RawChannel',
+        },
+      },
+    },
+  },
+} as const
+
+export const ChannelListResponseSchema = {
+  type: 'object',
+  properties: {
+    result: {
+      type: 'object',
+      properties: {
+        channels: {
+          type: 'array',
+          items: {
+            $ref: '#/components/schemas/RawChannel',
+          },
+        },
+      },
+    },
+  },
+} as const
+
+export const ChannelFollowStatusSchema = {
+  type: 'object',
+  properties: {
+    following: {
+      type: 'boolean',
+    },
+    followedAt: {
+      type: 'integer',
+    },
+  },
+} as const
+
+export const ChannelFollowStatusResponseSchema = {
+  type: 'object',
+  properties: {
+    result: {
+      $ref: '#/components/schemas/ChannelFollowStatus',
+    },
+  },
+} as const
+
+export const ChannelFollowerSchema = {
+  type: 'object',
+  properties: {
+    fid: {
+      type: 'integer',
+    },
+    followedAt: {
+      type: 'integer',
+    },
+  },
+} as const
+
+export const ChannelFollowersResponseSchema = {
+  type: 'object',
+  properties: {
+    result: {
+      type: 'object',
+      properties: {
+        users: {
+          type: 'array',
+          items: {
+            $ref: '#/components/schemas/ChannelFollower',
+          },
+        },
+        next: {
+          type: 'object',
+          properties: {
+            cursor: {
+              type: 'string',
+            },
+          },
+        },
+      },
+    },
+  },
+} as const

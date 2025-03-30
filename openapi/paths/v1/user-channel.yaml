@@ -1,0 +1,21 @@
+get:
+  operationId: checkUserChannelFollowStatus
+  summary: Check if a user is following a channel
+  parameters:
+    - name: fid
+      in: query
+      required: true
+      schema:
+        type: integer
+    - name: channelId
+      in: query
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: Successful response with follow status
+      content:
+        application/json:
+          schema:
+            $ref: '../../index.yaml#/components/schemas/ChannelFollowStatusResponse'

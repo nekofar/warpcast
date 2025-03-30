@@ -6,17 +6,21 @@ import type {
   TDataShape,
 } from '@hey-api/client-fetch'
 import { client as _heyApiClient } from './client.gen'
-import { getStarterPackMembersResponseTransformer } from './transformers.gen'
+import {
+  getCreatorRewardWinnersResponseTransformer,
+  getStarterPackMembersResponseTransformer,
+} from './transformers.gen'
 import type {
   AcceptChannelInviteData,
   AcceptChannelInviteResponse,
   AttachEmbedsData,
-  AttachEmbedsResponse,
+  AttachEmbedsResponse2,
   BanUserFromChannelData,
   BanUserFromChannelResponse,
   BlockUserData,
   BlockUserResponse,
   CheckUserChannelFollowStatusData,
+  CheckUserChannelFollowStatusResponse,
   CreateCastData,
   CreateCastResponse,
   CreateDraftCastsData,
@@ -26,10 +30,11 @@ import type {
   DeleteDraftCastData,
   DeleteDraftCastResponse,
   DiscoverChannelsData,
-  DiscoverChannelsResponse,
+  DiscoverChannelsResponse2,
   FollowChannelData,
   FollowChannelResponse,
   GetAccountVerificationsData,
+  GetAccountVerificationsResponse,
   GetAllChannelsData,
   GetAllChannelsResponse,
   GetAvailableInvitesData,
@@ -50,10 +55,13 @@ import type {
   GetChannelDetailsData,
   GetChannelDetailsResponse,
   GetChannelFollowersData,
+  GetChannelFollowersResponse,
   GetChannelFollowersYouKnowData,
   GetChannelFollowersYouKnowResponse,
   GetChannelInvitesData,
+  GetChannelInvitesResponse,
   GetChannelMembersData,
+  GetChannelMembersResponse,
   GetChannelModeratedCastsData,
   GetChannelModeratedCastsResponse,
   GetChannelResponse,
@@ -64,6 +72,7 @@ import type {
   GetChannelUsersData,
   GetChannelUsersResponse,
   GetCreatorRewardWinnersData,
+  GetCreatorRewardWinnersResponse,
   GetCurrentUserData,
   GetCurrentUserResponse,
   GetDirectCastConversationData,
@@ -72,7 +81,9 @@ import type {
   GetDirectCastInboxError,
   GetDirectCastInboxResponse,
   GetDiscoverableActionsData,
+  GetDiscoverableActionsResponse,
   GetDiscoverableComposerActionsData,
+  GetDiscoverableComposerActionsResponse,
   GetDraftCastsData,
   GetDraftCastsResponse,
   GetFeedItemsData,
@@ -124,6 +135,7 @@ import type {
   GetUserFavoriteFramesData,
   GetUserFavoriteFramesResponse,
   GetUserFollowedChannelsData,
+  GetUserFollowedChannelsResponse,
   GetUserFollowingChannelsData,
   GetUserFollowingChannelsError,
   GetUserFollowingChannelsResponse,
@@ -134,6 +146,7 @@ import type {
   GetUserPreferencesError,
   GetUserPreferencesResponse,
   GetUserPrimaryAddressData,
+  GetUserPrimaryAddressResponse,
   GetUserPrimaryAddressesData,
   GetUserPrimaryAddressesResponse,
   GetUserResponse,
@@ -695,7 +708,7 @@ export const discoverChannels = <ThrowOnError extends boolean = false>(
   options?: Options<DiscoverChannelsData, ThrowOnError>,
 ) => {
   return (options?.client ?? _heyApiClient).get<
-    DiscoverChannelsResponse,
+    DiscoverChannelsResponse2,
     unknown,
     ThrowOnError
   >({
@@ -1258,7 +1271,7 @@ export const attachEmbeds = <ThrowOnError extends boolean = false>(
   options: Options<AttachEmbedsData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).put<
-    AttachEmbedsResponse,
+    AttachEmbedsResponse2,
     unknown,
     ThrowOnError
   >({
@@ -1420,6 +1433,33 @@ export const createDraftCasts = <ThrowOnError extends boolean = false>(
 }
 
 /**
+ * Delete a draft cast
+ * @param options
+ */
+export const deleteDraftCast = <ThrowOnError extends boolean = false>(
+  options: Options<DeleteDraftCastData, ThrowOnError>,
+) => {
+  return (options.client ?? _heyApiClient).delete<
+    DeleteDraftCastResponse,
+    unknown,
+    ThrowOnError
+  >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
+    url: '/v2/draft-casts',
+    ...options,
+    headers: {
+      'Content-Type': 'application/json',
+      ...options.headers,
+    },
+  })
+}
+
+/**
  * Delete a cast
  * @param options
  */
@@ -1474,33 +1514,6 @@ export const createCast = <ThrowOnError extends boolean = false>(
 }
 
 /**
- * Delete a draft cast
- * @param options
- */
-export const deleteDraftCast = <ThrowOnError extends boolean = false>(
-  options: Options<DeleteDraftCastData, ThrowOnError>,
-) => {
-  return (options.client ?? _heyApiClient).delete<
-    DeleteDraftCastResponse,
-    unknown,
-    ThrowOnError
-  >({
-    security: [
-      {
-        scheme: 'bearer',
-        type: 'http',
-      },
-    ],
-    url: '/v2/draft-casts',
-    ...options,
-    headers: {
-      'Content-Type': 'application/json',
-      ...options.headers,
-    },
-  })
-}
-
-/**
  * Get all channels
  * Returns a list of all channels on Warpcast
  * @param options
@@ -1542,7 +1555,11 @@ export const getChannelDetails = <ThrowOnError extends boolean = false>(
 export const getChannelFollowers = <ThrowOnError extends boolean = false>(
   options: Options<GetChannelFollowersData, ThrowOnError>,
 ) => {
-  return (options.client ?? _heyApiClient).get<unknown, unknown, ThrowOnError>({
+  return (options.client ?? _heyApiClient).get<
+    GetChannelFollowersResponse,
+    unknown,
+    ThrowOnError
+  >({
     url: '/v1/channel-followers',
     ...options,
   })
@@ -1555,7 +1572,11 @@ export const getChannelFollowers = <ThrowOnError extends boolean = false>(
 export const getUserFollowedChannels = <ThrowOnError extends boolean = false>(
   options: Options<GetUserFollowedChannelsData, ThrowOnError>,
 ) => {
-  return (options.client ?? _heyApiClient).get<unknown, unknown, ThrowOnError>({
+  return (options.client ?? _heyApiClient).get<
+    GetUserFollowedChannelsResponse,
+    unknown,
+    ThrowOnError
+  >({
     url: '/v1/user-following-channels',
     ...options,
   })
@@ -1570,7 +1591,11 @@ export const checkUserChannelFollowStatus = <
 >(
   options: Options<CheckUserChannelFollowStatusData, ThrowOnError>,
 ) => {
-  return (options.client ?? _heyApiClient).get<unknown, unknown, ThrowOnError>({
+  return (options.client ?? _heyApiClient).get<
+    CheckUserChannelFollowStatusResponse,
+    unknown,
+    ThrowOnError
+  >({
     url: '/v1/user-channel',
     ...options,
   })
@@ -1583,7 +1608,11 @@ export const checkUserChannelFollowStatus = <
 export const getChannelMembers = <ThrowOnError extends boolean = false>(
   options: Options<GetChannelMembersData, ThrowOnError>,
 ) => {
-  return (options.client ?? _heyApiClient).get<unknown, unknown, ThrowOnError>({
+  return (options.client ?? _heyApiClient).get<
+    GetChannelMembersResponse,
+    unknown,
+    ThrowOnError
+  >({
     url: '/fc/channel-members',
     ...options,
   })
@@ -1623,7 +1652,11 @@ export const removeChannelInvite = <ThrowOnError extends boolean = false>(
 export const getChannelInvites = <ThrowOnError extends boolean = false>(
   options: Options<GetChannelInvitesData, ThrowOnError>,
 ) => {
-  return (options.client ?? _heyApiClient).get<unknown, unknown, ThrowOnError>({
+  return (options.client ?? _heyApiClient).get<
+    GetChannelInvitesResponse,
+    unknown,
+    ThrowOnError
+  >({
     url: '/fc/channel-invites',
     ...options,
   })
@@ -1930,7 +1963,11 @@ export const pinCastToChannel = <ThrowOnError extends boolean = false>(
 export const getDiscoverableActions = <ThrowOnError extends boolean = false>(
   options: Options<GetDiscoverableActionsData, ThrowOnError>,
 ) => {
-  return (options.client ?? _heyApiClient).get<unknown, unknown, ThrowOnError>({
+  return (options.client ?? _heyApiClient).get<
+    GetDiscoverableActionsResponse,
+    unknown,
+    ThrowOnError
+  >({
     security: [
       {
         scheme: 'bearer',
@@ -1951,7 +1988,11 @@ export const getDiscoverableComposerActions = <
 >(
   options: Options<GetDiscoverableComposerActionsData, ThrowOnError>,
 ) => {
-  return (options.client ?? _heyApiClient).get<unknown, unknown, ThrowOnError>({
+  return (options.client ?? _heyApiClient).get<
+    GetDiscoverableComposerActionsResponse,
+    unknown,
+    ThrowOnError
+  >({
     security: [
       {
         scheme: 'bearer',
@@ -2047,12 +2088,14 @@ export const blockUser = <ThrowOnError extends boolean = false>(
 export const getAccountVerifications = <ThrowOnError extends boolean = false>(
   options?: Options<GetAccountVerificationsData, ThrowOnError>,
 ) => {
-  return (options?.client ?? _heyApiClient).get<unknown, unknown, ThrowOnError>(
-    {
-      url: '/fc/account-verifications',
-      ...options,
-    },
-  )
+  return (options?.client ?? _heyApiClient).get<
+    GetAccountVerificationsResponse,
+    unknown,
+    ThrowOnError
+  >({
+    url: '/fc/account-verifications',
+    ...options,
+  })
 }
 
 /**
@@ -2062,12 +2105,15 @@ export const getAccountVerifications = <ThrowOnError extends boolean = false>(
 export const getCreatorRewardWinners = <ThrowOnError extends boolean = false>(
   options?: Options<GetCreatorRewardWinnersData, ThrowOnError>,
 ) => {
-  return (options?.client ?? _heyApiClient).get<unknown, unknown, ThrowOnError>(
-    {
-      url: '/v1/creator-rewards-winner-history',
-      ...options,
-    },
-  )
+  return (options?.client ?? _heyApiClient).get<
+    GetCreatorRewardWinnersResponse,
+    unknown,
+    ThrowOnError
+  >({
+    responseTransformer: getCreatorRewardWinnersResponseTransformer,
+    url: '/v1/creator-rewards-winner-history',
+    ...options,
+  })
 }
 
 /**
@@ -2077,7 +2123,11 @@ export const getCreatorRewardWinners = <ThrowOnError extends boolean = false>(
 export const getUserPrimaryAddress = <ThrowOnError extends boolean = false>(
   options: Options<GetUserPrimaryAddressData, ThrowOnError>,
 ) => {
-  return (options.client ?? _heyApiClient).get<unknown, unknown, ThrowOnError>({
+  return (options.client ?? _heyApiClient).get<
+    GetUserPrimaryAddressResponse,
+    unknown,
+    ThrowOnError
+  >({
     url: '/fc/primary-address',
     ...options,
   })

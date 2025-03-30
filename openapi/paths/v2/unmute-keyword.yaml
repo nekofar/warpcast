@@ -1,0 +1,21 @@
+post:
+  operationId: unmuteKeyword
+  summary: Unmute a keyword
+  security:
+    - bearerAuth: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            keyword:
+              type: string
+  responses:
+    '200':
+      description: Keyword unmuted
+      content:
+        application/json:
+          schema:
+            $ref: '../../index.yaml#/components/schemas/MutedKeywordsResponse'

@@ -1,0 +1,17 @@
+get:
+  operationId: getUserFavoriteFrames
+  summary: Get user's favorite frames
+  parameters:
+    - name: limit
+      in: query
+      schema:
+        type: integer
+  security:
+    - bearerAuth: []
+  responses:
+    '200':
+      description: Successful retrieval of favorite frames
+      content:
+        application/json:
+          schema:
+            $ref: '../../index.yaml#/components/schemas/FavoriteFramesResponse'

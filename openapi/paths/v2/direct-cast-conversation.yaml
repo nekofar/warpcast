@@ -1,0 +1,24 @@
+get:
+  operationId: getDirectCastConversation
+  summary: Get direct cast conversation
+  description: Fetches a direct cast conversation by conversationId.
+  parameters:
+    - in: query
+      name: conversationId
+      required: true
+      schema:
+        type: string
+      description: Conversation ID in the format fid1-fid2
+  security:
+    - bearerAuth: []
+  responses:
+    '200':
+      description: A direct cast conversation object
+      content:
+        application/json:
+          schema:
+            $ref: '../../index.yaml#/components/schemas/DirectCastConversationResponse'
+    '401':
+      description: Unauthorized
+    '429':
+      description: Too many requests

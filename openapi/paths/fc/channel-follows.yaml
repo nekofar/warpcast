@@ -1,0 +1,59 @@
+post:
+  operationId: followChannel
+  summary: Follow a channel
+  security:
+    - bearerAuth: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - channelId
+          properties:
+            channelId:
+              type: string
+              description: ID of the channel to follow
+        example:
+          channelId: 'evm'
+  responses:
+    '200':
+      description: Successful follow operation
+      content:
+        application/json:
+          schema:
+            $ref: '../../index.yaml#/components/schemas/SuccessResponse'
+          example:
+            result:
+              success: true
+
+delete:
+  operationId: unfollowChannel
+  summary: Unfollow a channel
+  security:
+    - bearerAuth: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - channelId
+          properties:
+            channelId:
+              type: string
+              description: ID of the channel to unfollow
+        example:
+          channelId: 'evm'
+  responses:
+    '200':
+      description: Successful unfollow operation
+      content:
+        application/json:
+          schema:
+            $ref: '../../index.yaml#/components/schemas/SuccessResponse'
+          example:
+            result:
+              success: true

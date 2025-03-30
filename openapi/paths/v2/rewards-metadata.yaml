@@ -1,0 +1,24 @@
+get:
+  operationId: getRewardsMetadata
+  summary: Get invite rewards metadata
+  description: Returns metadata for the invite rewards program including the reward period and reward distribution details.
+  parameters:
+    - name: rewardsType
+      in: query
+      required: true
+      schema:
+        type: string
+        enum: [invite]
+  security:
+    - bearerAuth: []
+  responses:
+    '200':
+      description: Invite rewards metadata
+      content:
+        application/json:
+          schema:
+            $ref: '../../index.yaml#/components/schemas/RewardsMetadataResponse'
+    '401':
+      description: Unauthorized
+    '429':
+      description: Too many requests
