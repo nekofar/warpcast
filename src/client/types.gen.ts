@@ -1839,7 +1839,20 @@ export interface GetCurrentUserResponses {
   /**
    * Successful retrieval of current user
    */
-  200: UserResponse
+  200: {
+    result?: {
+      user?: {
+        fid?: number
+        username?: string
+        displayName?: string
+        pfp?: ProfilePicture
+        profile?: Profile
+        followerCount?: number
+        followingCount?: number
+        viewerContext?: ViewerContext
+      }
+    }
+  }
 }
 
 export type GetCurrentUserResponse =

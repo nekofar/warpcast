@@ -1362,18 +1362,7 @@ paths:
     $ref: './paths/v2/cast-quotes.yaml'
 
   /v2/me:
-    get:
-      operationId: getCurrentUser
-      summary: Get current user
-      security:
-        - bearerAuth: []
-      responses:
-        '200':
-          description: Successful retrieval of current user
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UserResponse'
+    $ref: './paths/v2/me.yaml'
 
   /v2/search-channels:
     get:
