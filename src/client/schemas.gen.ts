@@ -1619,3 +1619,163 @@ export const CastCreatedResponseSchema = {
     },
   },
 } as const
+
+export const RawChannelSchema = {
+  type: 'object',
+  properties: {
+    id: {
+      type: 'string',
+    },
+    url: {
+      type: 'string',
+    },
+    name: {
+      type: 'string',
+    },
+    description: {
+      type: 'string',
+    },
+    descriptionMentions: {
+      type: 'array',
+      items: {
+        type: 'integer',
+      },
+    },
+    descriptionMentionsPositions: {
+      type: 'array',
+      items: {
+        type: 'integer',
+      },
+    },
+    imageUrl: {
+      type: 'string',
+    },
+    headerImageUrl: {
+      type: 'string',
+    },
+    leadFid: {
+      type: 'integer',
+    },
+    moderatorFids: {
+      type: 'array',
+      items: {
+        type: 'integer',
+      },
+    },
+    createdAt: {
+      type: 'integer',
+    },
+    followerCount: {
+      type: 'integer',
+    },
+    memberCount: {
+      type: 'integer',
+    },
+    pinnedCastHash: {
+      type: 'string',
+    },
+    publicCasting: {
+      type: 'boolean',
+    },
+    externalLink: {
+      type: 'object',
+      properties: {
+        title: {
+          type: 'string',
+        },
+        url: {
+          type: 'string',
+        },
+      },
+    },
+  },
+} as const
+
+export const RawChannelResponseSchema = {
+  type: 'object',
+  properties: {
+    result: {
+      type: 'object',
+      properties: {
+        channel: {
+          $ref: '#/components/schemas/RawChannel',
+        },
+      },
+    },
+  },
+} as const
+
+export const ChannelListResponseSchema = {
+  type: 'object',
+  properties: {
+    result: {
+      type: 'object',
+      properties: {
+        channels: {
+          type: 'array',
+          items: {
+            $ref: '#/components/schemas/RawChannel',
+          },
+        },
+      },
+    },
+  },
+} as const
+
+export const ChannelFollowStatusSchema = {
+  type: 'object',
+  properties: {
+    following: {
+      type: 'boolean',
+    },
+    followedAt: {
+      type: 'integer',
+    },
+  },
+} as const
+
+export const ChannelFollowStatusResponseSchema = {
+  type: 'object',
+  properties: {
+    result: {
+      $ref: '#/components/schemas/ChannelFollowStatus',
+    },
+  },
+} as const
+
+export const ChannelFollowerSchema = {
+  type: 'object',
+  properties: {
+    fid: {
+      type: 'integer',
+    },
+    followedAt: {
+      type: 'integer',
+    },
+  },
+} as const
+
+export const ChannelFollowersResponseSchema = {
+  type: 'object',
+  properties: {
+    result: {
+      type: 'object',
+      properties: {
+        users: {
+          type: 'array',
+          items: {
+            $ref: '#/components/schemas/ChannelFollower',
+          },
+        },
+        next: {
+          type: 'object',
+          properties: {
+            cursor: {
+              type: 'string',
+            },
+          },
+        },
+      },
+    },
+  },
+} as const

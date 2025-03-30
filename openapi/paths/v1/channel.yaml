@@ -1,0 +1,16 @@
+get:
+  operationId: getChannelDetails
+  summary: Get details of a specific channel
+  parameters:
+    - name: channelId
+      in: query
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: Channel details
+      content:
+        application/json:
+          schema:
+            $ref: '../../index.yaml#/components/schemas/RawChannelResponse'

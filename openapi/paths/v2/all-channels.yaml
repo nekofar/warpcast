@@ -1,0 +1,11 @@
+get:
+  operationId: getAllChannels
+  summary: Get all channels
+  description: Returns a list of all channels on Warpcast
+  responses:
+    '200':
+      description: Successful response
+      content:
+        application/json:
+          schema:
+            $ref: '../../index.yaml#/components/schemas/ChannelListResponse'

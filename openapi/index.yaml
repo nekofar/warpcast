@@ -1117,6 +1117,111 @@ components:
             cast:
               $ref: '#/components/schemas/Cast'
 
+    RawChannel:
+      type: object
+      properties:
+        id:
+          type: string
+        url:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        descriptionMentions:
+          type: array
+          items:
+            type: integer
+        descriptionMentionsPositions:
+          type: array
+          items:
+            type: integer
+        imageUrl:
+          type: string
+        headerImageUrl:
+          type: string
+        leadFid:
+          type: integer
+        moderatorFids:
+          type: array
+          items:
+            type: integer
+        createdAt:
+          type: integer
+        followerCount:
+          type: integer
+        memberCount:
+          type: integer
+        pinnedCastHash:
+          type: string
+        publicCasting:
+          type: boolean
+        externalLink:
+          type: object
+          properties:
+            title:
+              type: string
+            url:
+              type: string
+
+    RawChannelResponse:
+      type: object
+      properties:
+        result:
+          type: object
+          properties:
+            channel:
+              $ref: '#/components/schemas/RawChannel'
+
+    ChannelListResponse:
+      type: object
+      properties:
+        result:
+          type: object
+          properties:
+            channels:
+              type: array
+              items:
+                $ref: '#/components/schemas/RawChannel'
+
+    ChannelFollowStatus:
+      type: object
+      properties:
+        following:
+          type: boolean
+        followedAt:
+          type: integer
+
+    ChannelFollowStatusResponse:
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/ChannelFollowStatus'
+
+    ChannelFollower:
+      type: object
+      properties:
+        fid:
+          type: integer
+        followedAt:
+          type: integer
+
+    ChannelFollowersResponse:
+      type: object
+      properties:
+        result:
+          type: object
+          properties:
+            users:
+              type: array
+              items:
+                $ref: '#/components/schemas/ChannelFollower'
+            next:
+              type: object
+              properties:
+                cursor:
+                  type: string
+
 paths:
   /v2/onboarding-state:
     $ref: './paths/v2/onboarding-state.yaml'
@@ -1354,184 +1459,19 @@ paths:
     $ref: './paths/v2/casts.yaml'
 
   /v2/all-channels:
-    get:
-      operationId: getAllChannels
-      summary: Get all channels
-      description: Returns a list of all channels on Warpcast
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  result:
-                    type: object
-                    properties:
-                      channels:
-                        type: array
-                        items:
-                          type: object
-                          properties:
-                            id:
-                              type: string
-                            url:
-                              type: string
-                            name:
-                              type: string
-                            description:
-                              type: string
-                            descriptionMentions:
-                              type: array
-                              items:
-                                type: integer
-                            descriptionMentionsPositions:
-                              type: array
-                              items:
-                                type: integer
-                            imageUrl:
-                              type: string
-                            headerImageUrl:
-                              type: string
-                            leadFid:
-                              type: integer
-                            moderatorFids:
-                              type: array
-                              items:
-                                type: integer
-                            createdAt:
-                              type: integer
-                            followerCount:
-                              type: integer
-                            memberCount:
-                              type: integer
-                            pinnedCastHash:
-                              type: string
-                            publicCasting:
-                              type: boolean
-                            externalLink:
-                              type: object
-                              properties:
-                                title:
-                                  type: string
-                                url:
-                                  type: string
+    $ref: './paths/v2/all-channels.yaml'
 
   /v1/channel:
-    get:
-      operationId: getChannelDetails
-      summary: Get details of a specific channel
-      parameters:
-        - name: channelId
-          in: query
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Channel details
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  result:
-                    type: object
-                    properties:
-                      channel:
-                        $ref: '#/components/schemas/Channel'
+    $ref: './paths/v1/channel.yaml'
 
   /v1/channel-followers:
-    get:
-      operationId: getChannelFollowers
-      summary: Get followers of a channel
-      parameters:
-        - name: channelId
-          in: query
-          required: true
-          schema:
-            type: string
-          description: The ID of the channel
-        - name: cursor
-          in: query
-          required: false
-          schema:
-            type: string
-          description: Cursor for pagination
-      responses:
-        '200':
-          description: A list of channel followers
-          content:
-            application/json:
-              example:
-                result:
-                  users:
-                    - fid: 466624
-                      followedAt: 1712685183
-                    - fid: 469283
-                      followedAt: 1712685067
-                next:
-                  cursor: 'eyJwYWdlIjoxfQ=='
+    $ref: './paths/v1/channel-followers.yaml'
 
   /v1/user-following-channels:
-    get:
-      operationId: getUserFollowedChannels
-      summary: Get list of channels followed by a user
-      parameters:
-        - in: query
-          name: fid
-          schema:
-            type: integer
-          required: true
-      responses:
-        '200':
-          description: Successful response with list of channels followed by the user
-          content:
-            application/json:
-              example:
-                result:
-                  channels:
-                    - id: fc-updates
-                      url: https://warpcast.com/~/channel/fc-updates
-                      name: fc-updates
-                      description: Important updates about things happening in Farcaster
-                      imageUrl: https://i.imgur.com/YnnrPaH.png
-                      leadFid: 2
-                      moderatorFid: 5448
-                      moderatorFids:
-                        - 5448
-                        - 3
-                      createdAt: 1712162074
-                      followerCount: 17034
-                      followedAt: 1712162620
-                next:
-                  cursor: '...'
+    $ref: './paths/v1/user-following-channels.yaml'
 
   /v1/user-channel:
-    get:
-      operationId: checkUserChannelFollowStatus
-      summary: Check if a user is following a channel
-      parameters:
-        - in: query
-          name: fid
-          schema:
-            type: integer
-          required: true
-        - in: query
-          name: channelId
-          schema:
-            type: string
-          required: true
-      responses:
-        '200':
-          description: Successful response with follow status
-          content:
-            application/json:
-              example:
-                result:
-                  following: true
-                  followedAt: 1687943747
+    $ref: './paths/v1/user-channel.yaml'
 
   /fc/channel-members:
     $ref: './paths/fc/channel-members.yaml'

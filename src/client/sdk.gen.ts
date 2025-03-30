@@ -20,6 +20,7 @@ import type {
   BlockUserData,
   BlockUserResponse,
   CheckUserChannelFollowStatusData,
+  CheckUserChannelFollowStatusResponse,
   CreateCastData,
   CreateCastResponse,
   CreateDraftCastsData,
@@ -54,6 +55,7 @@ import type {
   GetChannelDetailsData,
   GetChannelDetailsResponse,
   GetChannelFollowersData,
+  GetChannelFollowersResponse,
   GetChannelFollowersYouKnowData,
   GetChannelFollowersYouKnowResponse,
   GetChannelInvitesData,
@@ -133,6 +135,7 @@ import type {
   GetUserFavoriteFramesData,
   GetUserFavoriteFramesResponse,
   GetUserFollowedChannelsData,
+  GetUserFollowedChannelsResponse,
   GetUserFollowingChannelsData,
   GetUserFollowingChannelsError,
   GetUserFollowingChannelsResponse,
@@ -1552,7 +1555,11 @@ export const getChannelDetails = <ThrowOnError extends boolean = false>(
 export const getChannelFollowers = <ThrowOnError extends boolean = false>(
   options: Options<GetChannelFollowersData, ThrowOnError>,
 ) => {
-  return (options.client ?? _heyApiClient).get<unknown, unknown, ThrowOnError>({
+  return (options.client ?? _heyApiClient).get<
+    GetChannelFollowersResponse,
+    unknown,
+    ThrowOnError
+  >({
     url: '/v1/channel-followers',
     ...options,
   })
@@ -1565,7 +1572,11 @@ export const getChannelFollowers = <ThrowOnError extends boolean = false>(
 export const getUserFollowedChannels = <ThrowOnError extends boolean = false>(
   options: Options<GetUserFollowedChannelsData, ThrowOnError>,
 ) => {
-  return (options.client ?? _heyApiClient).get<unknown, unknown, ThrowOnError>({
+  return (options.client ?? _heyApiClient).get<
+    GetUserFollowedChannelsResponse,
+    unknown,
+    ThrowOnError
+  >({
     url: '/v1/user-following-channels',
     ...options,
   })
@@ -1580,7 +1591,11 @@ export const checkUserChannelFollowStatus = <
 >(
   options: Options<CheckUserChannelFollowStatusData, ThrowOnError>,
 ) => {
-  return (options.client ?? _heyApiClient).get<unknown, unknown, ThrowOnError>({
+  return (options.client ?? _heyApiClient).get<
+    CheckUserChannelFollowStatusResponse,
+    unknown,
+    ThrowOnError
+  >({
     url: '/v1/user-channel',
     ...options,
   })

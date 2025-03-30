@@ -557,6 +557,63 @@ export interface CastCreatedResponse {
   }
 }
 
+export interface RawChannel {
+  id?: string
+  url?: string
+  name?: string
+  description?: string
+  descriptionMentions?: number[]
+  descriptionMentionsPositions?: number[]
+  imageUrl?: string
+  headerImageUrl?: string
+  leadFid?: number
+  moderatorFids?: number[]
+  createdAt?: number
+  followerCount?: number
+  memberCount?: number
+  pinnedCastHash?: string
+  publicCasting?: boolean
+  externalLink?: {
+    title?: string
+    url?: string
+  }
+}
+
+export interface RawChannelResponse {
+  result?: {
+    channel?: RawChannel
+  }
+}
+
+export interface ChannelListResponse {
+  result?: {
+    channels?: RawChannel[]
+  }
+}
+
+export interface ChannelFollowStatus {
+  following?: boolean
+  followedAt?: number
+}
+
+export interface ChannelFollowStatusResponse {
+  result?: ChannelFollowStatus
+}
+
+export interface ChannelFollower {
+  fid?: number
+  followedAt?: number
+}
+
+export interface ChannelFollowersResponse {
+  result?: {
+    users?: ChannelFollower[]
+    next?: {
+      cursor?: string
+    }
+  }
+}
+
 /**
  * The user's FID (Farcaster ID)
  */
@@ -1928,31 +1985,7 @@ export interface GetAllChannelsResponses {
   /**
    * Successful response
    */
-  200: {
-    result?: {
-      channels?: {
-        id?: string
-        url?: string
-        name?: string
-        description?: string
-        descriptionMentions?: number[]
-        descriptionMentionsPositions?: number[]
-        imageUrl?: string
-        headerImageUrl?: string
-        leadFid?: number
-        moderatorFids?: number[]
-        createdAt?: number
-        followerCount?: number
-        memberCount?: number
-        pinnedCastHash?: string
-        publicCasting?: boolean
-        externalLink?: {
-          title?: string
-          url?: string
-        }
-      }[]
-    }
-  }
+  200: ChannelListResponse
 }
 
 export type GetAllChannelsResponse =
@@ -1971,11 +2004,7 @@ export interface GetChannelDetailsResponses {
   /**
    * Channel details
    */
-  200: {
-    result?: {
-      channel?: Channel
-    }
-  }
+  200: RawChannelResponse
 }
 
 export type GetChannelDetailsResponse =
@@ -1985,13 +2014,7 @@ export interface GetChannelFollowersData {
   body?: never
   path?: never
   query: {
-    /**
-     * The ID of the channel
-     */
     channelId: string
-    /**
-     * Cursor for pagination
-     */
     cursor?: string
   }
   url: '/v1/channel-followers'
@@ -2001,8 +2024,11 @@ export interface GetChannelFollowersResponses {
   /**
    * A list of channel followers
    */
-  200: unknown
+  200: ChannelFollowersResponse
 }
+
+export type GetChannelFollowersResponse =
+  GetChannelFollowersResponses[keyof GetChannelFollowersResponses]
 
 export interface GetUserFollowedChannelsData {
   body?: never
@@ -2015,10 +2041,13 @@ export interface GetUserFollowedChannelsData {
 
 export interface GetUserFollowedChannelsResponses {
   /**
-   * Successful response with list of channels followed by the user
+   * Successful response with list of followed channels
    */
-  200: unknown
+  200: ChannelListResponse
 }
+
+export type GetUserFollowedChannelsResponse =
+  GetUserFollowedChannelsResponses[keyof GetUserFollowedChannelsResponses]
 
 export interface CheckUserChannelFollowStatusData {
   body?: never
@@ -2034,8 +2063,11 @@ export interface CheckUserChannelFollowStatusResponses {
   /**
    * Successful response with follow status
    */
-  200: unknown
+  200: ChannelFollowStatusResponse
 }
+
+export type CheckUserChannelFollowStatusResponse =
+  CheckUserChannelFollowStatusResponses[keyof CheckUserChannelFollowStatusResponses]
 
 export interface GetChannelMembersData {
   body?: never
