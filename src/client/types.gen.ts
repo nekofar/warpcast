@@ -1841,16 +1841,7 @@ export interface GetCurrentUserResponses {
    */
   200: {
     result?: {
-      user?: {
-        fid?: number
-        username?: string
-        displayName?: string
-        pfp?: ProfilePicture
-        profile?: Profile
-        followerCount?: number
-        followingCount?: number
-        viewerContext?: ViewerContext
-      }
+      user?: User
     }
   }
 }

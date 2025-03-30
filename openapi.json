@@ -3910,33 +3910,7 @@
                       "type": "object",
                       "properties": {
                         "user": {
-                          "type": "object",
-                          "properties": {
-                            "fid": {
-                              "type": "integer"
-                            },
-                            "username": {
-                              "type": "string"
-                            },
-                            "displayName": {
-                              "type": "string"
-                            },
-                            "pfp": {
-                              "$ref": "#/components/schemas/ProfilePicture"
-                            },
-                            "profile": {
-                              "$ref": "#/components/schemas/Profile"
-                            },
-                            "followerCount": {
-                              "type": "integer"
-                            },
-                            "followingCount": {
-                              "type": "integer"
-                            },
-                            "viewerContext": {
-                              "$ref": "#/components/schemas/ViewerContext"
-                            }
-                          }
+                          "$ref": "#/components/schemas/User"
                         }
                       }
                     }
