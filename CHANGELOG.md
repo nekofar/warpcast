@@ -2,6 +2,88 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.11] - 2025-03-30
+
+### 🚀 Features
+
+- *(api)* Add OpenAPI 3.1 schema for Warpcast API
+- *(openapi)* Extract `channel-restricted-users` path to file
+- *(openapi)* Extract `favorite-frames` path to a separate file
+- *(openapi)* Add schema for unseen counts endpoint
+- *(openapi)* Add schemas and endpoints for invite handling
+- *(api)* Add rewards scores response schema and endpoint
+- *(openapi)* Add rewards metadata response and refactor schemas
+- *(openapi)* Update `starter-pack-users` endpoint ref
+- *(api)* Add schemas for starter packs
+- *(openapi)* Add support for bookmarked casts
+- *(openapi)* Add schema and endpoints for channels and users
+- *(openapi)* Add follower-related API endpoints
+- *(api)* Add muted keywords endpoints
+- *(openapi)* Add endpoints for cast interactions
+- *(api)* Add support for cast and draft-cast operations
+- *(openapi)* Add schemas and endpoints for channel features
+- *(openapi)* Enhance `top-frameapps` endpoint with ref schema
+
+### 🚜 Refactor
+
+- *(api)* Modularize `fc/account-verifications` endpoint
+- *(api)* Modularize `v1/creator-rewards-winner-history` endpoint
+- *(api)* Modularize `fc/primary-address` endpoint
+- *(api)* Modularize `fc/primary-addresses` endpoint
+- *(api)* Modularize `fc/starter-pack-members` endpoint
+- *(api)* Modularize `v2/ext-send-direct-cast` endpoint
+- *(api)* Modularize `fc/blocked-users` endpoint
+- *(api)* Modularize `v2/discover-composer-actions` endpoint
+- *(api)* Modularize `v2/discover-actions` endpoint
+- *(openapi)* Extract and reuse `Action` schema
+- *(api)* Modularize `fc/pinned-casts` endpoint
+- *(openapi)* Use reusable `SuccessResponse` schema
+- *(openapi)* Extract `/v2/onboarding-state` to a separate file
+- *(openapi)* Extract `/fc/channel-bans` paths to a new file
+- *(openapi)* Move `channel-follows` to separate file
+- *(openapi)* Extract `moderate-cast` path to a separate file
+- *(openapi)* Extract `moderated-casts` to a separate file
+- *(openapi)* Extract `channel-invites` to a separate file
+- *(openapi)* Extract `fc/channel-members` to a separate file
+- *(openapi)* Extract `cast-likes` paths into a separate file
+- *(openapi)* Move `/v2/verifications` to a separate file
+- *(openapi)* Reuse `VerifiedAddress` schema in paths
+- *(client)* Use `VerifiedAddress` schema for consistency
+- *(openapi)* Extract `user-by-fid` path to separate file
+- *(openapi)* Extract `direct-cast-inbox` path to its own file
+- *(openapi)* Extract `user-app-context` path to a file
+- *(openapi)* Extract `user-preferences` path to a separate file
+- *(openapi)* Move `highlighted-channels` to a separate file
+- *(openapi)* Move `feed-items` path to a dedicated file
+- *(openapi)* Extract user path into separate file
+- *(openapi)* Extract `user-following-channels` path
+- *(openapi)* Extract `suggested-users` path into its own file
+- *(openapi)* Extract `user-by-username` path to a new file
+- *(openapi)* Extract `channel-streaks` path to a new file
+- *(openapi)* Extract `user-thread-casts` to a separate file
+- *(openapi)* Extract channel followers path schema
+- *(openapi)* Extract `mark-all-notifications-read` path
+- *(openapi)* Move `notifications-for-tab` path to its file
+- *(openapi)* Extract direct cast conversation path
+- *(openapi)* Extract `discover-channels` path schema
+- *(openapi)* Extract v2 endpoint to separate file
+- *(openapi)* Modularize `invites-available` schema
+- *(openapi)* Extract rewards leaderboard path
+- *(openapi)* Extract `/v2/starter-packs` path to a new file
+- *(openapi)* Extract `/v2/starter-packs` path to a new file
+- *(openapi)* Extract `starter-packs-suggested` to separate file
+- *(openapi)* Extract and modularize user schema
+- *(openapi)* Extract `search-channels` schema to a file
+
+### 🎨 Styling
+
+- *(openapi)* Fix spacing in `required` array definitions
+
+### ⚙️ Miscellaneous Tasks
+
+- *(config)* Update `input` path to use JSON file
+- *(scripts)* Update and expand npm scripts
+
 ## [2.0.0-alpha.10] - 2025-03-29
 
 ### 💼 Other
