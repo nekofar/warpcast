@@ -1424,3 +1424,6 @@ paths:
 
   /v2/ext-send-direct-cast:
     $ref: './paths/v2/ext-send-direct-cast.yaml'
+
+  /v2/user-by-verification:
+    $ref: './paths/v2/user-by-verification.yaml'

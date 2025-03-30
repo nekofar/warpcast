@@ -2917,6 +2917,43 @@ export interface SendDirectCastResponses {
 export type SendDirectCastResponse =
   SendDirectCastResponses[keyof SendDirectCastResponses]
 
+export interface GetUserByVerificationAddressData {
+  body?: never
+  path?: never
+  query: {
+    /**
+     * Ethereum address used for user verification
+     */
+    address: string
+  }
+  url: '/v2/user-by-verification'
+}
+
+export interface GetUserByVerificationAddressErrors {
+  /**
+   * Invalid address format
+   */
+  400: unknown
+  /**
+   * Unauthorized - Authentication required
+   */
+  401: unknown
+  /**
+   * No user found for the provided address
+   */
+  404: unknown
+}
+
+export interface GetUserByVerificationAddressResponses {
+  /**
+   * User data successfully retrieved
+   */
+  200: UserResponse
+}
+
+export type GetUserByVerificationAddressResponse =
+  GetUserByVerificationAddressResponses[keyof GetUserByVerificationAddressResponses]
+
 export interface ClientOptions {
   baseUrl:
     | 'https://api.warpcast.com'
