@@ -848,7 +848,7 @@ components:
       additionalProperties: true
     StarterPacksResponse:
       type: object
-      required: [ result ]
+      required: [result]
       properties:
         result:
           type: object
@@ -859,7 +859,7 @@ components:
                 $ref: '#/components/schemas/StarterPack'
     StarterPackResponse:
       type: object
-      required: [ result ]
+      required: [result]
       properties:
         result:
           type: object
@@ -869,7 +869,7 @@ components:
 
     StarterPackUsersResponse:
       type: object
-      required: [ result ]
+      required: [result]
       properties:
         result:
           type: object
@@ -878,6 +878,7 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/User'
+
 paths:
   /v2/onboarding-state:
     $ref: './paths/v2/onboarding-state.yaml'
