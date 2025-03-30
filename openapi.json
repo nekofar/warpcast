@@ -4007,7 +4007,9 @@
                       "properties": {
                         "channels": {
                           "type": "array",
-                          "items": {}
+                          "items": {
+                            "$ref": "#/components/schemas/Channel"
+                          }
                         }
                       }
                     }

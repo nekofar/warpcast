@@ -1876,7 +1876,7 @@ export interface SearchChannelsResponses {
    */
   200: {
     result?: {
-      channels?: unknown[]
+      channels?: Channel[]
     }
   }
 }

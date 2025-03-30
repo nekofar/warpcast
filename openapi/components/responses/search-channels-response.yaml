@@ -1,0 +1,10 @@
+SearchChannelsResponse:
+  type: object
+  properties:
+    result:
+      type: object
+      properties:
+        channels:
+          type: array
+          items:
+            $ref: '../../index.yaml#/components/schemas/Channel'
