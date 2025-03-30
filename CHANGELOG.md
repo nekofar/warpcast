@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.12] - 2025-03-30
+
+### 🚀 Features
+
+- *(api)* Add `getUserByVerificationAddress` endpoint
+
+### 🚜 Refactor
+
+- *(openapi)* Centralize `User` schema definition
+
 ## [2.0.0-alpha.11] - 2025-03-30
 
 ### 🚀 Features

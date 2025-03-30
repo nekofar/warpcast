@@ -307,24 +307,7 @@ components:
             postUrl:
               type: string
     User:
-      type: object
-      properties:
-        fid:
-          type: integer
-        username:
-          type: string
-        displayName:
-          type: string
-        pfp:
-          $ref: '#/components/schemas/ProfilePicture'
-        profile:
-          $ref: '#/components/schemas/Profile'
-        followerCount:
-          type: integer
-        followingCount:
-          type: integer
-        viewerContext:
-          $ref: '#/components/schemas/ViewerContext'
+      $ref: './components/schemas/user.yaml'
     UserWithExtras:
       allOf:
         - $ref: '#/components/schemas/User'
@@ -1441,3 +1424,6 @@ paths:
 
   /v2/ext-send-direct-cast:
     $ref: './paths/v2/ext-send-direct-cast.yaml'
+
+  /v2/user-by-verification:
+    $ref: './paths/v2/user-by-verification.yaml'

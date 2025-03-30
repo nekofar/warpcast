@@ -3910,33 +3910,7 @@
                       "type": "object",
                       "properties": {
                         "user": {
-                          "type": "object",
-                          "properties": {
-                            "fid": {
-                              "type": "integer"
-                            },
-                            "username": {
-                              "type": "string"
-                            },
-                            "displayName": {
-                              "type": "string"
-                            },
-                            "pfp": {
-                              "$ref": "#/components/schemas/ProfilePicture"
-                            },
-                            "profile": {
-                              "$ref": "#/components/schemas/Profile"
-                            },
-                            "followerCount": {
-                              "type": "integer"
-                            },
-                            "followingCount": {
-                              "type": "integer"
-                            },
-                            "viewerContext": {
-                              "$ref": "#/components/schemas/ViewerContext"
-                            }
-                          }
+                          "$ref": "#/components/schemas/User"
                         }
                       }
                     }
@@ -6298,6 +6272,55 @@
                 }
               }
             }
+          }
+        }
+      }
+    },
+    "/v2/user-by-verification": {
+      "get": {
+        "summary": "Get user by verification address",
+        "description": "Retrieves user information associated with the provided Ethereum verification address",
+        "tags": [
+          "Users"
+        ],
+        "operationId": "getUserByVerificationAddress",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "address",
+            "in": "query",
+            "required": true,
+            "description": "Ethereum address used for user verification",
+            "schema": {
+              "type": "string",
+              "format": "ethereum-address"
+            },
+            "example": "0x742d35Cc6634C0532925a3b844Bc454e4438f44e"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User data successfully retrieved",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid address format"
+          },
+          "401": {
+            "description": "Unauthorized - Authentication required"
+          },
+          "404": {
+            "description": "No user found for the provided address"
           }
         }
       }

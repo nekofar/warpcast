@@ -130,6 +130,8 @@ import type {
   GetUserByFidResponse,
   GetUserByUsernameData,
   GetUserByUsernameResponse,
+  GetUserByVerificationAddressData,
+  GetUserByVerificationAddressResponse,
   GetUserData,
   GetUserError,
   GetUserFavoriteFramesData,
@@ -2193,5 +2195,31 @@ export const sendDirectCast = <ThrowOnError extends boolean = false>(
       'Content-Type': 'application/json',
       ...options.headers,
     },
+  })
+}
+
+/**
+ * Get user by verification address
+ * Retrieves user information associated with the provided Ethereum verification address
+ * @param options
+ */
+export const getUserByVerificationAddress = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<GetUserByVerificationAddressData, ThrowOnError>,
+) => {
+  return (options.client ?? _heyApiClient).get<
+    GetUserByVerificationAddressResponse,
+    unknown,
+    ThrowOnError
+  >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
+    url: '/v2/user-by-verification',
+    ...options,
   })
 }
