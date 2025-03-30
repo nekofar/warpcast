@@ -1,0 +1,22 @@
+get:
+  operationId: getFollowing
+  summary: Get users a given user is following
+  description: Returns a list of users followed by a specified FID.
+  parameters:
+    - name: fid
+      in: query
+      required: true
+      schema:
+        type: integer
+    - name: limit
+      in: query
+      required: false
+      schema:
+        type: integer
+  responses:
+    '200':
+      description: A list of followed users
+      content:
+        application/json:
+          schema:
+            $ref: '../../index.yaml#/components/schemas/UsersResponse'

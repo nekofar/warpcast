@@ -1313,3 +1313,44 @@ export const ChannelUsersResponseSchema = {
     },
   },
 } as const
+
+export const UsersResponseSchema = {
+  type: 'object',
+  required: ['result'],
+  properties: {
+    result: {
+      type: 'object',
+      required: ['users'],
+      properties: {
+        users: {
+          type: 'array',
+          items: {
+            $ref: '#/components/schemas/User',
+          },
+        },
+      },
+    },
+  },
+} as const
+
+export const UsersWithCountResponseSchema = {
+  type: 'object',
+  required: ['result'],
+  properties: {
+    result: {
+      type: 'object',
+      required: ['users', 'totalCount'],
+      properties: {
+        users: {
+          type: 'array',
+          items: {
+            $ref: '#/components/schemas/User',
+          },
+        },
+        totalCount: {
+          type: 'integer',
+        },
+      },
+    },
+  },
+} as const

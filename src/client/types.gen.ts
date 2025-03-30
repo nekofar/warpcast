@@ -448,6 +448,19 @@ export interface ChannelUsersResponse {
   }
 }
 
+export interface UsersResponse {
+  result: {
+    users: User[]
+  }
+}
+
+export interface UsersWithCountResponse {
+  result: {
+    users: User[]
+    totalCount: number
+  }
+}
+
 /**
  * The user's FID (Farcaster ID)
  */
@@ -1336,11 +1349,7 @@ export interface GetFollowingResponses {
   /**
    * A list of followed users
    */
-  200: {
-    result?: {
-      users?: Record<string, unknown>[]
-    }
-  }
+  200: UsersResponse
 }
 
 export type GetFollowingResponse =
@@ -1360,11 +1369,7 @@ export interface GetFollowersResponses {
   /**
    * A list of followers
    */
-  200: {
-    result?: {
-      users?: Record<string, unknown>[]
-    }
-  }
+  200: UsersResponse
 }
 
 export type GetFollowersResponse =
@@ -1384,12 +1389,7 @@ export interface GetMutualFollowersResponses {
   /**
    * A list of mutual followers
    */
-  200: {
-    result?: {
-      users?: Record<string, unknown>[]
-      totalCount?: number
-    }
-  }
+  200: UsersWithCountResponse
 }
 
 export type GetMutualFollowersResponse =

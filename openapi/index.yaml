@@ -913,6 +913,33 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/User'
+    UsersResponse:
+      type: object
+      required: [ result ]
+      properties:
+        result:
+          type: object
+          required: [ users ]
+          properties:
+            users:
+              type: array
+              items:
+                $ref: '#/components/schemas/User'
+
+    UsersWithCountResponse:
+      type: object
+      required: [ result ]
+      properties:
+        result:
+          type: object
+          required: [ users, totalCount ]
+          properties:
+            users:
+              type: array
+              items:
+                $ref: '#/components/schemas/User'
+            totalCount:
+              type: integer
 
 paths:
   /v2/onboarding-state:
@@ -1015,102 +1042,13 @@ paths:
     $ref: './paths/v1/channel-users.yaml'
 
   /v2/following:
-    get:
-      operationId: getFollowing
-      summary: Get users a given user is following
-      description: Returns a list of users followed by a specified FID.
-      parameters:
-        - name: fid
-          in: query
-          required: true
-          schema:
-            type: integer
-        - name: limit
-          in: query
-          required: false
-          schema:
-            type: integer
-      responses:
-        '200':
-          description: A list of followed users
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  result:
-                    type: object
-                    properties:
-                      users:
-                        type: array
-                        items:
-                          type: object
+    $ref: './paths/v2/following.yaml'
 
   /v2/followers:
-    get:
-      operationId: getFollowers
-      summary: Get users following a given user
-      description: Returns a list of users who follow the specified FID.
-      parameters:
-        - name: fid
-          in: query
-          required: true
-          schema:
-            type: integer
-        - name: limit
-          in: query
-          required: false
-          schema:
-            type: integer
-      responses:
-        '200':
-          description: A list of followers
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  result:
-                    type: object
-                    properties:
-                      users:
-                        type: array
-                        items:
-                          type: object
+    $ref: './paths/v2/followers.yaml'
 
   /v2/followers-you-know:
-    get:
-      operationId: getMutualFollowers
-      summary: Get mutual followers of a given user
-      description: Returns a list of users who follow the given FID and are followed by the viewer.
-      parameters:
-        - name: fid
-          in: query
-          required: true
-          schema:
-            type: integer
-        - name: limit
-          in: query
-          required: false
-          schema:
-            type: integer
-      responses:
-        '200':
-          description: A list of mutual followers
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  result:
-                    type: object
-                    properties:
-                      users:
-                        type: array
-                        items:
-                          type: object
-                      totalCount:
-                        type: integer
+    $ref: './paths/v2/followers-you-know.yaml'
 
   /v1/top-frameapps:
     get:
