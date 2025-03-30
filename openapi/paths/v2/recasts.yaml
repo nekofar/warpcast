@@ -1,0 +1,49 @@
+put:
+  summary: Recast a cast
+  operationId: recastCast
+  security:
+    - bearerAuth: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - castHash
+          properties:
+            castHash:
+              type: string
+              example: '0x0bb901f364673e86adfc0ed4c14ececb8d9b9d27'
+  responses:
+    '200':
+      description: Recast response
+      content:
+        application/json:
+          schema:
+            $ref: '../../index.yaml#/components/schemas/CastHashResponse'
+
+delete:
+  summary: Undo recast
+  operationId: undoRecast
+  security:
+    - bearerAuth: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - castHash
+          properties:
+            castHash:
+              type: string
+              example: '0x0bb901f364673e86adfc0ed4c14ececb8d9b9d27'
+  responses:
+    '200':
+      description: Undo recast response
+      content:
+        application/json:
+          schema:
+            $ref: '../../index.yaml#/components/schemas/SuccessResponse'

@@ -14,7 +14,7 @@ import type {
   AcceptChannelInviteData,
   AcceptChannelInviteResponse,
   AttachEmbedsData,
-  AttachEmbedsResponse,
+  AttachEmbedsResponse2,
   BanUserFromChannelData,
   BanUserFromChannelResponse,
   BlockUserData,
@@ -1268,7 +1268,7 @@ export const attachEmbeds = <ThrowOnError extends boolean = false>(
   options: Options<AttachEmbedsData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).put<
-    AttachEmbedsResponse,
+    AttachEmbedsResponse2,
     unknown,
     ThrowOnError
   >({

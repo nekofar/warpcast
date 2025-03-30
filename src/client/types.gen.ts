@@ -480,6 +480,40 @@ export interface MutedKeywordsResponse {
   }
 }
 
+export interface CastHashResponse {
+  result: {
+    castHash?: string
+  }
+}
+
+export interface AttachEmbedsResponse {
+  result: Record<string, unknown>
+}
+
+export interface CastQuote {
+  hash?: string
+  threadHash?: string
+  parentSource?: {
+    type?: string
+    url?: string
+  }
+  author?: User
+  text?: string
+  timestamp?: number
+}
+
+export interface CastQuotesResponse {
+  result: {
+    quotes?: CastQuote[]
+  }
+}
+
+export interface CastRecastersResponse {
+  result: {
+    users?: User[]
+  }
+}
+
 /**
  * The user's FID (Farcaster ID)
  */
@@ -1611,11 +1645,7 @@ export interface UndoRecastResponses {
   /**
    * Undo recast response
    */
-  200: {
-    result?: {
-      success?: boolean
-    }
-  }
+  200: SuccessResponse
 }
 
 export type UndoRecastResponse = UndoRecastResponses[keyof UndoRecastResponses]
@@ -1633,11 +1663,7 @@ export interface RecastCastResponses {
   /**
    * Recast response
    */
-  200: {
-    result?: {
-      castHash?: string
-    }
-  }
+  200: CastHashResponse
 }
 
 export type RecastCastResponse = RecastCastResponses[keyof RecastCastResponses]
@@ -1656,12 +1682,10 @@ export interface AttachEmbedsResponses {
   /**
    * Attachment response
    */
-  200: {
-    result?: Record<string, unknown>
-  }
+  200: AttachEmbedsResponse
 }
 
-export type AttachEmbedsResponse =
+export type AttachEmbedsResponse2 =
   AttachEmbedsResponses[keyof AttachEmbedsResponses]
 
 export interface GetCastRecastersData {
@@ -1678,11 +1702,7 @@ export interface GetCastRecastersResponses {
   /**
    * A list of users who recasted the cast
    */
-  200: {
-    result?: {
-      users?: User[]
-    }
-  }
+  200: CastRecastersResponse
 }
 
 export type GetCastRecastersResponse =
@@ -1702,21 +1722,7 @@ export interface GetCastQuotesResponses {
   /**
    * A list of quote casts referencing the given cast
    */
-  200: {
-    result?: {
-      quotes?: {
-        hash?: string
-        threadHash?: string
-        parentSource?: {
-          type?: string
-          url?: string
-        }
-        author?: User
-        text?: string
-        timestamp?: number
-      }[]
-    }
-  }
+  200: CastQuotesResponse
 }
 
 export type GetCastQuotesResponse =

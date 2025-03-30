@@ -1410,3 +1410,98 @@ export const MutedKeywordsResponseSchema = {
     },
   },
 } as const
+
+export const CastHashResponseSchema = {
+  type: 'object',
+  required: ['result'],
+  properties: {
+    result: {
+      type: 'object',
+      properties: {
+        castHash: {
+          type: 'string',
+          example: '0x750a7269b4a3b70e28d3f450df33487047d4927f',
+        },
+      },
+    },
+  },
+} as const
+
+export const AttachEmbedsResponseSchema = {
+  type: 'object',
+  required: ['result'],
+  properties: {
+    result: {
+      type: 'object',
+      additionalProperties: true,
+    },
+  },
+} as const
+
+export const CastQuoteSchema = {
+  type: 'object',
+  properties: {
+    hash: {
+      type: 'string',
+    },
+    threadHash: {
+      type: 'string',
+    },
+    parentSource: {
+      type: 'object',
+      properties: {
+        type: {
+          type: 'string',
+        },
+        url: {
+          type: 'string',
+        },
+      },
+    },
+    author: {
+      $ref: '#/components/schemas/User',
+    },
+    text: {
+      type: 'string',
+    },
+    timestamp: {
+      type: 'integer',
+    },
+  },
+} as const
+
+export const CastQuotesResponseSchema = {
+  type: 'object',
+  required: ['result'],
+  properties: {
+    result: {
+      type: 'object',
+      properties: {
+        quotes: {
+          type: 'array',
+          items: {
+            $ref: '#/components/schemas/CastQuote',
+          },
+        },
+      },
+    },
+  },
+} as const
+
+export const CastRecastersResponseSchema = {
+  type: 'object',
+  required: ['result'],
+  properties: {
+    result: {
+      type: 'object',
+      properties: {
+        users: {
+          type: 'array',
+          items: {
+            $ref: '#/components/schemas/User',
+          },
+        },
+      },
+    },
+  },
+} as const

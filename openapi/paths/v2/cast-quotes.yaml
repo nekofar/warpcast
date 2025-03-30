@@ -1,0 +1,24 @@
+get:
+  summary: Get quotes of a cast
+  operationId: getCastQuotes
+  security:
+    - bearerAuth: []
+  parameters:
+    - name: castHash
+      in: query
+      required: true
+      schema:
+        type: string
+    - name: limit
+      in: query
+      required: false
+      schema:
+        type: integer
+        default: 15
+  responses:
+    '200':
+      description: A list of quote casts referencing the given cast
+      content:
+        application/json:
+          schema:
+            $ref: '../../index.yaml#/components/schemas/CastQuotesResponse'

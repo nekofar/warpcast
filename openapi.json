@@ -1534,6 +1534,104 @@
             }
           }
         }
+      },
+      "CastHashResponse": {
+        "type": "object",
+        "required": [
+          "result"
+        ],
+        "properties": {
+          "result": {
+            "type": "object",
+            "properties": {
+              "castHash": {
+                "type": "string",
+                "example": "0x750a7269b4a3b70e28d3f450df33487047d4927f"
+              }
+            }
+          }
+        }
+      },
+      "AttachEmbedsResponse": {
+        "type": "object",
+        "required": [
+          "result"
+        ],
+        "properties": {
+          "result": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        }
+      },
+      "CastQuote": {
+        "type": "object",
+        "properties": {
+          "hash": {
+            "type": "string"
+          },
+          "threadHash": {
+            "type": "string"
+          },
+          "parentSource": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string"
+              }
+            }
+          },
+          "author": {
+            "$ref": "#/components/schemas/User"
+          },
+          "text": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "integer"
+          }
+        }
+      },
+      "CastQuotesResponse": {
+        "type": "object",
+        "required": [
+          "result"
+        ],
+        "properties": {
+          "result": {
+            "type": "object",
+            "properties": {
+              "quotes": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/CastQuote"
+                }
+              }
+            }
+          }
+        }
+      },
+      "CastRecastersResponse": {
+        "type": "object",
+        "required": [
+          "result"
+        ],
+        "properties": {
+          "result": {
+            "type": "object",
+            "properties": {
+              "users": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          }
+        }
       }
     }
   },
@@ -3353,18 +3451,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "result": {
-                      "type": "object",
-                      "properties": {
-                        "castHash": {
-                          "type": "string",
-                          "example": "0x750a7269b4a3b70e28d3f450df33487047d4927f"
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/CastHashResponse"
                 }
               }
             }
@@ -3404,18 +3491,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "result": {
-                      "type": "object",
-                      "properties": {
-                        "success": {
-                          "type": "boolean",
-                          "example": true
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/SuccessResponse"
                 }
               }
             }
@@ -3460,12 +3536,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "result": {
-                      "type": "object"
-                    }
-                  }
+                  "$ref": "#/components/schemas/AttachEmbedsResponse"
                 }
               }
             }
@@ -3507,20 +3578,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "result": {
-                      "type": "object",
-                      "properties": {
-                        "users": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/components/schemas/User"
-                          }
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/CastRecastersResponse"
                 }
               }
             }
@@ -3562,48 +3620,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "result": {
-                      "type": "object",
-                      "properties": {
-                        "quotes": {
-                          "type": "array",
-                          "items": {
-                            "type": "object",
-                            "properties": {
-                              "hash": {
-                                "type": "string"
-                              },
-                              "threadHash": {
-                                "type": "string"
-                              },
-                              "parentSource": {
-                                "type": "object",
-                                "properties": {
-                                  "type": {
-                                    "type": "string"
-                                  },
-                                  "url": {
-                                    "type": "string"
-                                  }
-                                }
-                              },
-                              "author": {
-                                "$ref": "#/components/schemas/User"
-                              },
-                              "text": {
-                                "type": "string"
-                              },
-                              "timestamp": {
-                                "type": "integer"
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/CastQuotesResponse"
                 }
               }
             }

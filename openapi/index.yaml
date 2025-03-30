@@ -883,7 +883,7 @@ components:
       additionalProperties: true
     BookmarkedCastsResponse:
       type: object
-      required: [ result ]
+      required: [result]
       properties:
         result:
           type: object
@@ -915,11 +915,11 @@ components:
                 $ref: '#/components/schemas/User'
     UsersResponse:
       type: object
-      required: [ result ]
+      required: [result]
       properties:
         result:
           type: object
-          required: [ users ]
+          required: [users]
           properties:
             users:
               type: array
@@ -928,11 +928,11 @@ components:
 
     UsersWithCountResponse:
       type: object
-      required: [ result ]
+      required: [result]
       properties:
         result:
           type: object
-          required: [ users, totalCount ]
+          required: [users, totalCount]
           properties:
             users:
               type: array
@@ -952,7 +952,7 @@ components:
 
     MutedKeyword:
       type: object
-      required: [ keyword, properties ]
+      required: [keyword, properties]
       properties:
         keyword:
           type: string
@@ -961,13 +961,13 @@ components:
 
     MutedKeywordsResponse:
       type: object
-      required: [ success, result ]
+      required: [success, result]
       properties:
         success:
           type: boolean
         result:
           type: object
-          required: [ keywords, mutedKeywords ]
+          required: [keywords, mutedKeywords]
           properties:
             keywords:
               type: array
@@ -977,6 +977,69 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/MutedKeyword'
+    CastHashResponse:
+      type: object
+      required: [result]
+      properties:
+        result:
+          type: object
+          properties:
+            castHash:
+              type: string
+              example: '0x750a7269b4a3b70e28d3f450df33487047d4927f'
+
+    AttachEmbedsResponse:
+      type: object
+      required: [result]
+      properties:
+        result:
+          type: object
+          additionalProperties: true
+
+    CastQuote:
+      type: object
+      properties:
+        hash:
+          type: string
+        threadHash:
+          type: string
+        parentSource:
+          type: object
+          properties:
+            type:
+              type: string
+            url:
+              type: string
+        author:
+          $ref: '#/components/schemas/User'
+        text:
+          type: string
+        timestamp:
+          type: integer
+
+    CastQuotesResponse:
+      type: object
+      required: [result]
+      properties:
+        result:
+          type: object
+          properties:
+            quotes:
+              type: array
+              items:
+                $ref: '#/components/schemas/CastQuote'
+
+    CastRecastersResponse:
+      type: object
+      required: [result]
+      properties:
+        result:
+          type: object
+          properties:
+            users:
+              type: array
+              items:
+                $ref: '#/components/schemas/User'
 
 paths:
   /v2/onboarding-state:
@@ -1135,188 +1198,16 @@ paths:
     $ref: './paths/v2/cast-likes.yaml'
 
   /v2/recasts:
-    put:
-      summary: Recast a cast
-      operationId: recastCast
-      security:
-        - bearerAuth: []
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              required:
-                - castHash
-              properties:
-                castHash:
-                  type: string
-                  example: '0x0bb901f364673e86adfc0ed4c14ececb8d9b9d27'
-
-      responses:
-        '200':
-          description: Recast response
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  result:
-                    type: object
-                    properties:
-                      castHash:
-                        type: string
-                        example: '0x750a7269b4a3b70e28d3f450df33487047d4927f'
-    delete:
-      summary: Undo recast
-      operationId: undoRecast
-      security:
-        - bearerAuth: []
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              required:
-                - castHash
-              properties:
-                castHash:
-                  type: string
-                  example: '0x0bb901f364673e86adfc0ed4c14ececb8d9b9d27'
-
-      responses:
-        '200':
-          description: Undo recast response
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  result:
-                    type: object
-                    properties:
-                      success:
-                        type: boolean
-                        example: true
+    $ref: './paths/v2/recasts.yaml'
 
   /v2/cast-attachments:
-    put:
-      summary: Attach embeds to a cast
-      operationId: attachEmbeds
-      security:
-        - bearerAuth: []
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                text:
-                  type: string
-                embeds:
-                  type: array
-                  items:
-                    type: string
-                    format: uri
-
-      responses:
-        '200':
-          description: Attachment response
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  result:
-                    type: object
+    $ref: './paths/v2/cast-attachments.yaml'
 
   /v2/cast-recasters:
-    get:
-      summary: Get cast recasters
-      operationId: getCastRecasters
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: castHash
-          in: query
-          required: true
-          schema:
-            type: string
-        - name: limit
-          in: query
-          required: false
-          schema:
-            type: integer
-            default: 15
-      responses:
-        '200':
-          description: A list of users who recasted the cast
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  result:
-                    type: object
-                    properties:
-                      users:
-                        type: array
-                        items:
-                          $ref: '#/components/schemas/User'
+    $ref: './paths/v2/cast-recasters.yaml'
 
   /v2/cast-quotes:
-    get:
-      summary: Get quotes of a cast
-      operationId: getCastQuotes
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: castHash
-          in: query
-          required: true
-          schema:
-            type: string
-        - name: limit
-          in: query
-          required: false
-          schema:
-            type: integer
-            default: 15
-      responses:
-        '200':
-          description: A list of quote casts referencing the given cast
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  result:
-                    type: object
-                    properties:
-                      quotes:
-                        type: array
-                        items:
-                          type: object
-                          properties:
-                            hash:
-                              type: string
-                            threadHash:
-                              type: string
-                            parentSource:
-                              type: object
-                              properties:
-                                type:
-                                  type: string
-                                url:
-                                  type: string
-                            author:
-                              $ref: '#/components/schemas/User'
-                            text:
-                              type: string
-                            timestamp:
-                              type: integer
+    $ref: './paths/v2/cast-quotes.yaml'
 
   /v2/me:
     get:

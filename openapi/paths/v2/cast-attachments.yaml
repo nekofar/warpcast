@@ -1,0 +1,26 @@
+put:
+  summary: Attach embeds to a cast
+  operationId: attachEmbeds
+  security:
+    - bearerAuth: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            text:
+              type: string
+            embeds:
+              type: array
+              items:
+                type: string
+                format: uri
+  responses:
+    '200':
+      description: Attachment response
+      content:
+        application/json:
+          schema:
+            $ref: '../../index.yaml#/components/schemas/AttachEmbedsResponse'
