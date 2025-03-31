@@ -69,65 +69,7 @@ components:
           type: string
         status:
           type: integer
-    OnboardingStateResponse:
-      type: object
-      properties:
-        result:
-          type: object
-          properties:
-            state:
-              $ref: '#/components/schemas/OnboardingState'
-    OnboardingState:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        email:
-          type: string
-          format: email
-        user:
-          $ref: '#/components/schemas/User'
-        hasOnboarding:
-          type: boolean
-        hasConfirmedEmail:
-          type: boolean
-        handledConnectAddress:
-          type: boolean
-        canRegisterUsername:
-          type: boolean
-        needsRegistrationPayment:
-          type: boolean
-        hasFid:
-          type: boolean
-        hasFname:
-          type: boolean
-        hasDelegatedSigner:
-          type: boolean
-        hasSetupProfile:
-          type: boolean
-        hasCompletedRegistration:
-          type: boolean
-        hasStorage:
-          type: boolean
-        handledPushNotificationsNudge:
-          type: boolean
-        handledContactsNudge:
-          type: boolean
-        handledInterestsNudge:
-          type: boolean
-        hasValidPaidInvite:
-          type: boolean
-        hasWarpcastWalletAddress:
-          type: boolean
-        hasPhone:
-          type: boolean
-        needsPhone:
-          type: boolean
-        sponsoredRegisterEligible:
-          type: boolean
-        geoRestricted:
-          type: boolean
+
     UserByFidResponse:
       type: object
       properties:
@@ -402,72 +344,7 @@ components:
                 defaultFeed:
                   type: string
     Channel:
-      type: object
-      properties:
-        type:
-          type: string
-        key:
-          type: string
-        name:
-          type: string
-        imageUrl:
-          type: string
-        fastImageUrl:
-          type: string
-        feeds:
-          type: array
-          items:
-            type: object
-            properties:
-              name:
-                type: string
-              type:
-                type: string
-        description:
-          type: string
-        followerCount:
-          type: integer
-        memberCount:
-          type: integer
-        showCastSourceLabels:
-          type: boolean
-        showCastTags:
-          type: boolean
-        sectionRank:
-          type: integer
-        subscribable:
-          type: boolean
-        publicCasting:
-          type: boolean
-        inviteCode:
-          type: string
-        headerImageUrl:
-          type: string
-        headerAction:
-          type: object
-          properties:
-            title:
-              type: string
-            target:
-              type: string
-        headerActionMetadata:
-          type: object
-          additionalProperties: true
-        viewerContext:
-          type: object
-          properties:
-            following:
-              type: boolean
-            isMember:
-              type: boolean
-            hasUnseenItems:
-              type: boolean
-            favoritePosition:
-              type: integer
-            activityRank:
-              type: integer
-            canCast:
-              type: boolean
+      $ref: './components/schemas/channel.yaml'
     FeedItemsResponse:
       type: object
       properties:
@@ -1028,16 +905,16 @@ components:
       properties:
         images:
           type: array
-          items: { }
+          items: {}
         urls:
           type: array
-          items: { }
+          items: {}
         videos:
           type: array
-          items: { }
+          items: {}
         unknowns:
           type: array
-          items: { }
+          items: {}
 
     Cast:
       type: object
@@ -1060,7 +937,7 @@ components:
           type: string
         embeds:
           type: array
-          items: { }
+          items: {}
 
     Draft:
       type: object
@@ -1080,7 +957,7 @@ components:
           properties:
             drafts:
               type: array
-              items: { }
+              items: {}
 
     DraftCreatedResponse:
       type: object
@@ -1427,3 +1304,6 @@ paths:
 
   /v2/user-by-verification:
     $ref: './paths/v2/user-by-verification.yaml'
+
+  /v1/developer-rewards-winner-history:
+    $ref: './paths/v1/developer-rewards-winner-history.yaml'

@@ -9,7 +9,7 @@ put:
       application/json:
         schema:
           type: object
-          additionalProperties: false  # empty request body
+          additionalProperties: false # empty request body
   responses:
     '200':
       description: Successful mark-all-read operation

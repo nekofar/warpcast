@@ -97,95 +97,6 @@
           }
         }
       },
-      "OnboardingStateResponse": {
-        "type": "object",
-        "properties": {
-          "result": {
-            "type": "object",
-            "properties": {
-              "state": {
-                "$ref": "#/components/schemas/OnboardingState"
-              }
-            }
-          }
-        }
-      },
-      "OnboardingState": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "email": {
-            "type": "string",
-            "format": "email"
-          },
-          "user": {
-            "$ref": "#/components/schemas/User"
-          },
-          "hasOnboarding": {
-            "type": "boolean"
-          },
-          "hasConfirmedEmail": {
-            "type": "boolean"
-          },
-          "handledConnectAddress": {
-            "type": "boolean"
-          },
-          "canRegisterUsername": {
-            "type": "boolean"
-          },
-          "needsRegistrationPayment": {
-            "type": "boolean"
-          },
-          "hasFid": {
-            "type": "boolean"
-          },
-          "hasFname": {
-            "type": "boolean"
-          },
-          "hasDelegatedSigner": {
-            "type": "boolean"
-          },
-          "hasSetupProfile": {
-            "type": "boolean"
-          },
-          "hasCompletedRegistration": {
-            "type": "boolean"
-          },
-          "hasStorage": {
-            "type": "boolean"
-          },
-          "handledPushNotificationsNudge": {
-            "type": "boolean"
-          },
-          "handledContactsNudge": {
-            "type": "boolean"
-          },
-          "handledInterestsNudge": {
-            "type": "boolean"
-          },
-          "hasValidPaidInvite": {
-            "type": "boolean"
-          },
-          "hasWarpcastWalletAddress": {
-            "type": "boolean"
-          },
-          "hasPhone": {
-            "type": "boolean"
-          },
-          "needsPhone": {
-            "type": "boolean"
-          },
-          "sponsoredRegisterEligible": {
-            "type": "boolean"
-          },
-          "geoRestricted": {
-            "type": "boolean"
-          }
-        }
-      },
       "UserByFidResponse": {
         "type": "object",
         "properties": {
@@ -1915,7 +1826,90 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/OnboardingStateResponse"
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "state": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "format": "uuid"
+                            },
+                            "email": {
+                              "type": "string",
+                              "format": "email"
+                            },
+                            "user": {
+                              "$ref": "#/components/schemas/User"
+                            },
+                            "hasOnboarding": {
+                              "type": "boolean"
+                            },
+                            "hasConfirmedEmail": {
+                              "type": "boolean"
+                            },
+                            "handledConnectAddress": {
+                              "type": "boolean"
+                            },
+                            "canRegisterUsername": {
+                              "type": "boolean"
+                            },
+                            "needsRegistrationPayment": {
+                              "type": "boolean"
+                            },
+                            "hasFid": {
+                              "type": "boolean"
+                            },
+                            "hasFname": {
+                              "type": "boolean"
+                            },
+                            "hasDelegatedSigner": {
+                              "type": "boolean"
+                            },
+                            "hasSetupProfile": {
+                              "type": "boolean"
+                            },
+                            "hasCompletedRegistration": {
+                              "type": "boolean"
+                            },
+                            "hasStorage": {
+                              "type": "boolean"
+                            },
+                            "handledPushNotificationsNudge": {
+                              "type": "boolean"
+                            },
+                            "handledContactsNudge": {
+                              "type": "boolean"
+                            },
+                            "handledInterestsNudge": {
+                              "type": "boolean"
+                            },
+                            "hasValidPaidInvite": {
+                              "type": "boolean"
+                            },
+                            "hasWarpcastWalletAddress": {
+                              "type": "boolean"
+                            },
+                            "hasPhone": {
+                              "type": "boolean"
+                            },
+                            "needsPhone": {
+                              "type": "boolean"
+                            },
+                            "sponsoredRegisterEligible": {
+                              "type": "boolean"
+                            },
+                            "geoRestricted": {
+                              "type": "boolean"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -6321,6 +6315,96 @@
           },
           "404": {
             "description": "No user found for the provided address"
+          }
+        }
+      }
+    },
+    "/v1/developer-rewards-winner-history": {
+      "get": {
+        "operationId": "getDeveloperRewardWinners",
+        "summary": "Get developer reward winners",
+        "description": "Provides access to all winners for a given period (week). Paginated, with the list of winners in rank order. Not authenticated.",
+        "parameters": [
+          {
+            "name": "periodsAgo",
+            "in": "query",
+            "description": "How many periods ago to fetch the results for. 0 or undefined returns results for the most recent period.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A paginated list of developer reward winners",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "periodStartTimestamp": {
+                          "type": "integer",
+                          "description": "Unix time in milliseconds when rewards period began"
+                        },
+                        "periodEndTimestamp": {
+                          "type": "integer",
+                          "description": "Unix time in milliseconds when rewards period ended"
+                        },
+                        "winners": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "fid": {
+                                "type": "integer",
+                                "description": "The fid of the winner"
+                              },
+                              "domain": {
+                                "type": "string",
+                                "description": "The domain of the winner"
+                              },
+                              "frameName": {
+                                "type": "string",
+                                "description": "The name of the frame (mini app)"
+                              },
+                              "score": {
+                                "type": "integer",
+                                "description": "The score of the winner"
+                              },
+                              "rank": {
+                                "type": "integer",
+                                "description": "The rank of the winner"
+                              },
+                              "rewardCents": {
+                                "type": "integer",
+                                "description": "The reward amount in cents"
+                              },
+                              "walletAddress": {
+                                "type": "string",
+                                "description": "The wallet address of the winner (optional)"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "next": {
+                      "type": "object",
+                      "properties": {
+                        "cursor": {
+                          "type": "string",
+                          "description": "Pagination cursor for the next set of results"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }

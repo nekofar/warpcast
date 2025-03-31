@@ -75,6 +75,8 @@ import type {
   GetCreatorRewardWinnersResponse,
   GetCurrentUserData,
   GetCurrentUserResponse,
+  GetDeveloperRewardWinnersData,
+  GetDeveloperRewardWinnersResponse,
   GetDirectCastConversationData,
   GetDirectCastConversationResponse,
   GetDirectCastInboxData,
@@ -2220,6 +2222,24 @@ export const getUserByVerificationAddress = <
       },
     ],
     url: '/v2/user-by-verification',
+    ...options,
+  })
+}
+
+/**
+ * Get developer reward winners
+ * Provides access to all winners for a given period (week). Paginated, with the list of winners in rank order. Not authenticated.
+ * @param options
+ */
+export const getDeveloperRewardWinners = <ThrowOnError extends boolean = false>(
+  options?: Options<GetDeveloperRewardWinnersData, ThrowOnError>,
+) => {
+  return (options?.client ?? _heyApiClient).get<
+    GetDeveloperRewardWinnersResponse,
+    unknown,
+    ThrowOnError
+  >({
+    url: '/v1/developer-rewards-winner-history',
     ...options,
   })
 }

@@ -6,38 +6,6 @@ export interface ErrorResponse {
   status?: number
 }
 
-export interface OnboardingStateResponse {
-  result?: {
-    state?: OnboardingState
-  }
-}
-
-export interface OnboardingState {
-  id?: string
-  email?: string
-  user?: User
-  hasOnboarding?: boolean
-  hasConfirmedEmail?: boolean
-  handledConnectAddress?: boolean
-  canRegisterUsername?: boolean
-  needsRegistrationPayment?: boolean
-  hasFid?: boolean
-  hasFname?: boolean
-  hasDelegatedSigner?: boolean
-  hasSetupProfile?: boolean
-  hasCompletedRegistration?: boolean
-  hasStorage?: boolean
-  handledPushNotificationsNudge?: boolean
-  handledContactsNudge?: boolean
-  handledInterestsNudge?: boolean
-  hasValidPaidInvite?: boolean
-  hasWarpcastWalletAddress?: boolean
-  hasPhone?: boolean
-  needsPhone?: boolean
-  sponsoredRegisterEligible?: boolean
-  geoRestricted?: boolean
-}
-
 export interface UserByFidResponse {
   result?: {
     user?: UserWithExtras
@@ -645,7 +613,35 @@ export interface GetUserOnboardingStateResponses {
   /**
    * Successful retrieval of onboarding state
    */
-  200: OnboardingStateResponse
+  200: {
+    result?: {
+      state?: {
+        id?: string
+        email?: string
+        user?: User
+        hasOnboarding?: boolean
+        hasConfirmedEmail?: boolean
+        handledConnectAddress?: boolean
+        canRegisterUsername?: boolean
+        needsRegistrationPayment?: boolean
+        hasFid?: boolean
+        hasFname?: boolean
+        hasDelegatedSigner?: boolean
+        hasSetupProfile?: boolean
+        hasCompletedRegistration?: boolean
+        hasStorage?: boolean
+        handledPushNotificationsNudge?: boolean
+        handledContactsNudge?: boolean
+        handledInterestsNudge?: boolean
+        hasValidPaidInvite?: boolean
+        hasWarpcastWalletAddress?: boolean
+        hasPhone?: boolean
+        needsPhone?: boolean
+        sponsoredRegisterEligible?: boolean
+        geoRestricted?: boolean
+      }
+    }
+  }
 }
 
 export type GetUserOnboardingStateResponse =
@@ -2953,6 +2949,75 @@ export interface GetUserByVerificationAddressResponses {
 
 export type GetUserByVerificationAddressResponse =
   GetUserByVerificationAddressResponses[keyof GetUserByVerificationAddressResponses]
+
+export interface GetDeveloperRewardWinnersData {
+  body?: never
+  path?: never
+  query?: {
+    /**
+     * How many periods ago to fetch the results for. 0 or undefined returns results for the most recent period.
+     */
+    periodsAgo?: number
+  }
+  url: '/v1/developer-rewards-winner-history'
+}
+
+export interface GetDeveloperRewardWinnersResponses {
+  /**
+   * A paginated list of developer reward winners
+   */
+  200: {
+    result?: {
+      /**
+       * Unix time in milliseconds when rewards period began
+       */
+      periodStartTimestamp?: number
+      /**
+       * Unix time in milliseconds when rewards period ended
+       */
+      periodEndTimestamp?: number
+      winners?: {
+        /**
+         * The fid of the winner
+         */
+        fid?: number
+        /**
+         * The domain of the winner
+         */
+        domain?: string
+        /**
+         * The name of the frame (mini app)
+         */
+        frameName?: string
+        /**
+         * The score of the winner
+         */
+        score?: number
+        /**
+         * The rank of the winner
+         */
+        rank?: number
+        /**
+         * The reward amount in cents
+         */
+        rewardCents?: number
+        /**
+         * The wallet address of the winner (optional)
+         */
+        walletAddress?: string
+      }[]
+    }
+    next?: {
+      /**
+       * Pagination cursor for the next set of results
+       */
+      cursor?: string
+    }
+  }
+}
+
+export type GetDeveloperRewardWinnersResponse =
+  GetDeveloperRewardWinnersResponses[keyof GetDeveloperRewardWinnersResponses]
 
 export interface ClientOptions {
   baseUrl:
