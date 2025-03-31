@@ -344,72 +344,7 @@ components:
                 defaultFeed:
                   type: string
     Channel:
-      type: object
-      properties:
-        type:
-          type: string
-        key:
-          type: string
-        name:
-          type: string
-        imageUrl:
-          type: string
-        fastImageUrl:
-          type: string
-        feeds:
-          type: array
-          items:
-            type: object
-            properties:
-              name:
-                type: string
-              type:
-                type: string
-        description:
-          type: string
-        followerCount:
-          type: integer
-        memberCount:
-          type: integer
-        showCastSourceLabels:
-          type: boolean
-        showCastTags:
-          type: boolean
-        sectionRank:
-          type: integer
-        subscribable:
-          type: boolean
-        publicCasting:
-          type: boolean
-        inviteCode:
-          type: string
-        headerImageUrl:
-          type: string
-        headerAction:
-          type: object
-          properties:
-            title:
-              type: string
-            target:
-              type: string
-        headerActionMetadata:
-          type: object
-          additionalProperties: true
-        viewerContext:
-          type: object
-          properties:
-            following:
-              type: boolean
-            isMember:
-              type: boolean
-            hasUnseenItems:
-              type: boolean
-            favoritePosition:
-              type: integer
-            activityRank:
-              type: integer
-            canCast:
-              type: boolean
+      $ref: './components/schemas/channel.yaml'
     FeedItemsResponse:
       type: object
       properties:
