@@ -970,16 +970,16 @@ components:
       properties:
         images:
           type: array
-          items: { }
+          items: {}
         urls:
           type: array
-          items: { }
+          items: {}
         videos:
           type: array
-          items: { }
+          items: {}
         unknowns:
           type: array
-          items: { }
+          items: {}
 
     Cast:
       type: object
@@ -1002,7 +1002,7 @@ components:
           type: string
         embeds:
           type: array
-          items: { }
+          items: {}
 
     Draft:
       type: object
@@ -1022,7 +1022,7 @@ components:
           properties:
             drafts:
               type: array
-              items: { }
+              items: {}
 
     DraftCreatedResponse:
       type: object

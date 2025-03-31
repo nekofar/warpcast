@@ -1,27 +1,27 @@
 Winner:
-  type: "object"
+  type: 'object'
   properties:
     fid:
-      type: "integer"
-      description: "The fid of the winner"
+      type: 'integer'
+      description: 'The fid of the winner'
     domain:
-      type: "string"
-      description: "The domain of the winner"
+      type: 'string'
+      description: 'The domain of the winner'
     frameName:
-      type: "string"
-      description: "The name of the frame (mini app)"
+      type: 'string'
+      description: 'The name of the frame (mini app)'
     score:
-      type: "integer"
-      description: "The score of the winner"
+      type: 'integer'
+      description: 'The score of the winner'
     rank:
-      type: "integer"
-      description: "The rank of the winner"
+      type: 'integer'
+      description: 'The rank of the winner'
     rewardCents:
-      type: "integer"
-      description: "The reward amount in cents"
+      type: 'integer'
+      description: 'The reward amount in cents'
     walletAddress:
-      type: "string"
-      description: "The wallet address of the winner (optional)"
+      type: 'string'
+      description: 'The wallet address of the winner (optional)'
 
 OnboardingStateResponse:
   type: object

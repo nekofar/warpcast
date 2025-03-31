@@ -14,7 +14,7 @@ get:
       schema:
         type: string
         format: ethereum-address
-      example: "0x742d35Cc6634C0532925a3b844Bc454e4438f44e"
+      example: '0x742d35Cc6634C0532925a3b844Bc454e4438f44e'
   responses:
     '200':
       description: User data successfully retrieved
