@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.13] - 2025-03-31
+
+### 🚀 Features
+
+- *(api)* Add endpoint for developer reward winners
+
+### 🚜 Refactor
+
+- *(openapi)* Centralize `OnboardingState` schema
+- *(openapi)* Extract `Channel` schema into a separate file
+
+### ⚙️ Miscellaneous Tasks
+
+- *(openapi)* Update string quotes to align with style guide
+
 ## [2.0.0-alpha.12] - 2025-03-30
 
 ### 🚀 Features
