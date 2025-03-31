@@ -6,38 +6,6 @@ export interface ErrorResponse {
   status?: number
 }
 
-export interface OnboardingStateResponse {
-  result?: {
-    state?: OnboardingState
-  }
-}
-
-export interface OnboardingState {
-  id?: string
-  email?: string
-  user?: User
-  hasOnboarding?: boolean
-  hasConfirmedEmail?: boolean
-  handledConnectAddress?: boolean
-  canRegisterUsername?: boolean
-  needsRegistrationPayment?: boolean
-  hasFid?: boolean
-  hasFname?: boolean
-  hasDelegatedSigner?: boolean
-  hasSetupProfile?: boolean
-  hasCompletedRegistration?: boolean
-  hasStorage?: boolean
-  handledPushNotificationsNudge?: boolean
-  handledContactsNudge?: boolean
-  handledInterestsNudge?: boolean
-  hasValidPaidInvite?: boolean
-  hasWarpcastWalletAddress?: boolean
-  hasPhone?: boolean
-  needsPhone?: boolean
-  sponsoredRegisterEligible?: boolean
-  geoRestricted?: boolean
-}
-
 export interface UserByFidResponse {
   result?: {
     user?: UserWithExtras
@@ -645,7 +613,35 @@ export interface GetUserOnboardingStateResponses {
   /**
    * Successful retrieval of onboarding state
    */
-  200: OnboardingStateResponse
+  200: {
+    result?: {
+      state?: {
+        id?: string
+        email?: string
+        user?: User
+        hasOnboarding?: boolean
+        hasConfirmedEmail?: boolean
+        handledConnectAddress?: boolean
+        canRegisterUsername?: boolean
+        needsRegistrationPayment?: boolean
+        hasFid?: boolean
+        hasFname?: boolean
+        hasDelegatedSigner?: boolean
+        hasSetupProfile?: boolean
+        hasCompletedRegistration?: boolean
+        hasStorage?: boolean
+        handledPushNotificationsNudge?: boolean
+        handledContactsNudge?: boolean
+        handledInterestsNudge?: boolean
+        hasValidPaidInvite?: boolean
+        hasWarpcastWalletAddress?: boolean
+        hasPhone?: boolean
+        needsPhone?: boolean
+        sponsoredRegisterEligible?: boolean
+        geoRestricted?: boolean
+      }
+    }
+  }
 }
 
 export type GetUserOnboardingStateResponse =
