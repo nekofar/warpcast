@@ -1427,3 +1427,6 @@ paths:
 
   /v2/user-by-verification:
     $ref: './paths/v2/user-by-verification.yaml'
+
+  /v1/developer-rewards-winner-history:
+    $ref: './paths/v1/developer-rewards-winner-history.yaml'

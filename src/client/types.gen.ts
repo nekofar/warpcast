@@ -2954,6 +2954,75 @@ export interface GetUserByVerificationAddressResponses {
 export type GetUserByVerificationAddressResponse =
   GetUserByVerificationAddressResponses[keyof GetUserByVerificationAddressResponses]
 
+export interface GetDeveloperRewardWinnersData {
+  body?: never
+  path?: never
+  query?: {
+    /**
+     * How many periods ago to fetch the results for. 0 or undefined returns results for the most recent period.
+     */
+    periodsAgo?: number
+  }
+  url: '/v1/developer-rewards-winner-history'
+}
+
+export interface GetDeveloperRewardWinnersResponses {
+  /**
+   * A paginated list of developer reward winners
+   */
+  200: {
+    result?: {
+      /**
+       * Unix time in milliseconds when rewards period began
+       */
+      periodStartTimestamp?: number
+      /**
+       * Unix time in milliseconds when rewards period ended
+       */
+      periodEndTimestamp?: number
+      winners?: {
+        /**
+         * The fid of the winner
+         */
+        fid?: number
+        /**
+         * The domain of the winner
+         */
+        domain?: string
+        /**
+         * The name of the frame (mini app)
+         */
+        frameName?: string
+        /**
+         * The score of the winner
+         */
+        score?: number
+        /**
+         * The rank of the winner
+         */
+        rank?: number
+        /**
+         * The reward amount in cents
+         */
+        rewardCents?: number
+        /**
+         * The wallet address of the winner (optional)
+         */
+        walletAddress?: string
+      }[]
+    }
+    next?: {
+      /**
+       * Pagination cursor for the next set of results
+       */
+      cursor?: string
+    }
+  }
+}
+
+export type GetDeveloperRewardWinnersResponse =
+  GetDeveloperRewardWinnersResponses[keyof GetDeveloperRewardWinnersResponses]
+
 export interface ClientOptions {
   baseUrl:
     | 'https://api.warpcast.com'

@@ -1,0 +1,38 @@
+get:
+  operationId: "getDeveloperRewardWinners"
+  summary: "Get developer reward winners"
+  description: "Provides access to all winners for a given period (week). Paginated, with the list of winners in rank order. Not authenticated."
+  parameters:
+    - name: "periodsAgo"
+      in: "query"
+      description: "How many periods ago to fetch the results for. 0 or undefined returns results for the most recent period."
+      required: false
+      schema:
+        type: "integer"
+  responses:
+    "200":
+      description: "A paginated list of developer reward winners"
+      content:
+        application/json:
+          schema:
+            type: "object"
+            properties:
+              result:
+                type: "object"
+                properties:
+                  periodStartTimestamp:
+                    type: "integer"
+                    description: "Unix time in milliseconds when rewards period began"
+                  periodEndTimestamp:
+                    type: "integer"
+                    description: "Unix time in milliseconds when rewards period ended"
+                  winners:
+                    type: "array"
+                    items:
+                      $ref: '../../components/schemas.yaml#/Winner'
+              next:
+                type: "object"
+                properties:
+                  cursor:
+                    type: "string"
+                    description: "Pagination cursor for the next set of results"
