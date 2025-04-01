@@ -1,10 +1,10 @@
-SearchChannelsResponse:
+FrameAppsResponse:
   type: object
   properties:
     result:
       type: object
       properties:
-        channels:
+        frames:
           type: array
           items:
-            $ref: '../schemas/channel.yaml'
+            $ref: './frame-app.yaml#/FrameApp'
