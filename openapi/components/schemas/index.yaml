@@ -42,7 +42,7 @@ OnboardingState:
       type: string
       format: email
     user:
-      $ref: './schemas/user.yaml'
+      $ref: './user.yaml'
     hasOnboarding:
       type: boolean
     hasConfirmedEmail:
@@ -273,7 +273,7 @@ CastAction:
         postUrl:
           type: string
 User:
-  $ref: './schemas/user.yaml'
+  $ref: './user.yaml'
 UserWithExtras:
   allOf:
     - $ref: '#/User'
@@ -368,7 +368,7 @@ HighlightedChannelsResponse:
             defaultFeed:
               type: string
 Channel:
-  $ref: './schemas/channel.yaml'
+  $ref: './channel.yaml'
 FeedItemsResponse:
   type: object
   properties:

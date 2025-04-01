@@ -37,10 +37,10 @@ components:
       $ref: './components/parameters.yaml#/limitParam'
 
   responses:
-    $ref: './components/responses.yaml'
+    $ref: './components/responses/index.yaml'
 
   schemas:
-    $ref: './components/schemas.yaml'
+    $ref: './components/schemas/index.yaml'
 
 paths:
   $ref: ./paths/index.yaml

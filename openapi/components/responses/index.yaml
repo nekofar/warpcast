@@ -3,11 +3,11 @@ NotFound:
   content:
     application/json:
       schema:
-        $ref: './schemas.yaml#/ErrorResponse'
+        $ref: '../schemas/index.yaml#/ErrorResponse'
 
 Unauthorized:
   description: Authentication is required or failed
   content:
     application/json:
       schema:
-        $ref: './schemas.yaml#/ErrorResponse'
+        $ref: '../schemas/index.yaml#/ErrorResponse'

@@ -7,12 +7,12 @@ properties:
   displayName:
     type: string
   pfp:
-    $ref: '../../index.yaml#/components/schemas/ProfilePicture'
+    $ref: './index.yaml#/ProfilePicture'
   profile:
-    $ref: '../../index.yaml#/components/schemas/Profile'
+    $ref: './index.yaml#/Profile'
   followerCount:
     type: integer
   followingCount:
     type: integer
   viewerContext:
-    $ref: '../../index.yaml#/components/schemas/ViewerContext'
+    $ref: './index.yaml#/ViewerContext'
