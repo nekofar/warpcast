@@ -1,0 +1,95 @@
+get:
+  operationId: getMetaTags
+  summary: Fetch meta tags from a URL
+  description: Retrieves metadata and Open Graph information from a specified URL
+  tags:
+    - DevTools
+  parameters:
+    - in: query
+      name: url
+      required: true
+      schema:
+        type: string
+        format: uri
+      description: The URL to fetch metadata from
+  security:
+    - bearerAuth: [ ]
+  responses:
+    '200':
+      description: Successfully retrieved metadata
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              viewport:
+                type: string
+                description: Viewport meta tag content
+              theme-color:
+                type: array
+                items:
+                  type: string
+                description: Theme color values
+              color-scheme:
+                type: string
+                description: Color scheme preference
+              description:
+                type: string
+                description: Page description
+              apple-mobile-web-app-capable:
+                type: string
+                description: Apple mobile web app capability setting
+              apple-mobile-web-app-title:
+                type: string
+                description: Apple mobile web app title
+              apple-mobile-web-app-status-bar-style:
+                type: string
+                description: Apple mobile status bar style
+              og:title:
+                type: string
+                description: Open Graph title
+              og:description:
+                type: string
+                description: Open Graph description
+              og:url:
+                type: string
+                description: Open Graph URL
+              og:site_name:
+                type: string
+                description: Open Graph site name
+              og:image:type:
+                type: string
+                description: Open Graph image MIME type
+              og:image:width:
+                type: string
+                description: Open Graph image width
+              og:image:height:
+                type: string
+                description: Open Graph image height
+              og:image:
+                type: string
+                description: Open Graph image URL
+              og:type:
+                type: string
+                description: Open Graph content type
+              twitter:card:
+                type: string
+                description: Twitter card type
+              twitter:title:
+                type: string
+                description: Twitter card title
+              twitter:description:
+                type: string
+                description: Twitter card description
+              twitter:image:type:
+                type: string
+                description: Twitter image MIME type
+              twitter:image:width:
+                type: string
+                description: Twitter image width
+              twitter:image:height:
+                type: string
+                description: Twitter image height
+              twitter:image:
+                type: string
+                description: Twitter image URL

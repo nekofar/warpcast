@@ -102,6 +102,8 @@ import type {
   GetHighlightedChannelsData,
   GetHighlightedChannelsError,
   GetHighlightedChannelsResponse,
+  GetMetaTagsData,
+  GetMetaTagsResponse,
   GetMutedKeywordsData,
   GetMutedKeywordsResponse,
   GetMutualFollowersData,
@@ -2287,6 +2289,30 @@ export const getDomainManifest = <ThrowOnError extends boolean = false>(
     ThrowOnError
   >({
     url: '/v1/domain-manifest',
+    ...options,
+  })
+}
+
+/**
+ * Fetch meta tags from a URL
+ * Retrieves metadata and Open Graph information from a specified URL
+ * @param options
+ */
+export const getMetaTags = <ThrowOnError extends boolean = false>(
+  options: Options<GetMetaTagsData, ThrowOnError>,
+) => {
+  return (options.client ?? _heyApiClient).get<
+    GetMetaTagsResponse,
+    unknown,
+    ThrowOnError
+  >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
+    url: '/v1/dev-tools/meta-tags',
     ...options,
   })
 }

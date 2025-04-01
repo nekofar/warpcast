@@ -3171,6 +3171,121 @@ export interface GetDomainManifestResponses {
 export type GetDomainManifestResponse =
   GetDomainManifestResponses[keyof GetDomainManifestResponses]
 
+export interface GetMetaTagsData {
+  body?: never
+  path?: never
+  query: {
+    /**
+     * The URL to fetch metadata from
+     */
+    url: string
+  }
+  url: '/v1/dev-tools/meta-tags'
+}
+
+export interface GetMetaTagsResponses {
+  /**
+   * Successfully retrieved metadata
+   */
+  200: {
+    /**
+     * Viewport meta tag content
+     */
+    viewport?: string
+    /**
+     * Theme color values
+     */
+    'theme-color'?: string[]
+    /**
+     * Color scheme preference
+     */
+    'color-scheme'?: string
+    /**
+     * Page description
+     */
+    description?: string
+    /**
+     * Apple mobile web app capability setting
+     */
+    'apple-mobile-web-app-capable'?: string
+    /**
+     * Apple mobile web app title
+     */
+    'apple-mobile-web-app-title'?: string
+    /**
+     * Apple mobile status bar style
+     */
+    'apple-mobile-web-app-status-bar-style'?: string
+    /**
+     * Open Graph title
+     */
+    'og:title'?: string
+    /**
+     * Open Graph description
+     */
+    'og:description'?: string
+    /**
+     * Open Graph URL
+     */
+    'og:url'?: string
+    /**
+     * Open Graph site name
+     */
+    'og:site_name'?: string
+    /**
+     * Open Graph image MIME type
+     */
+    'og:image:type'?: string
+    /**
+     * Open Graph image width
+     */
+    'og:image:width'?: string
+    /**
+     * Open Graph image height
+     */
+    'og:image:height'?: string
+    /**
+     * Open Graph image URL
+     */
+    'og:image'?: string
+    /**
+     * Open Graph content type
+     */
+    'og:type'?: string
+    /**
+     * Twitter card type
+     */
+    'twitter:card'?: string
+    /**
+     * Twitter card title
+     */
+    'twitter:title'?: string
+    /**
+     * Twitter card description
+     */
+    'twitter:description'?: string
+    /**
+     * Twitter image MIME type
+     */
+    'twitter:image:type'?: string
+    /**
+     * Twitter image width
+     */
+    'twitter:image:width'?: string
+    /**
+     * Twitter image height
+     */
+    'twitter:image:height'?: string
+    /**
+     * Twitter image URL
+     */
+    'twitter:image'?: string
+  }
+}
+
+export type GetMetaTagsResponse =
+  GetMetaTagsResponses[keyof GetMetaTagsResponses]
+
 export interface ClientOptions {
   baseUrl:
     | 'https://api.warpcast.com'
