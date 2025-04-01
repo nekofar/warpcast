@@ -14,33 +14,24 @@ servers:
 tags:
   - name: User
     description: Operations related to user information and preferences
-
   - name: Feed
     description: Operations related to content feeds
-
   - name: Channels
     description: Operations related to channel management
-
   - name: Messaging
     description: Operations related to direct messages and casts
 
+paths:
+  $ref: ./paths/index.yaml
+
 components:
+  schemas:
+    $ref: ./components/schemas/index.yaml
+  parameters:
+    $ref: ./components/parameters/index.yaml
+  responses:
+    $ref: ./components/responses/index.yaml
   securitySchemes:
     bearerAuth:
       type: http
       scheme: bearer
-
-  parameters:
-    fidParam:
-      $ref: './components/parameters.yaml#/fidParam'
-    limitParam:
-      $ref: './components/parameters.yaml#/limitParam'
-
-  responses:
-    $ref: './components/responses/index.yaml'
-
-  schemas:
-    $ref: './components/schemas/index.yaml'
-
-paths:
-  $ref: ./paths/index.yaml
