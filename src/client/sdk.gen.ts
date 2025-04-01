@@ -7,7 +7,9 @@ import type {
 } from '@hey-api/client-fetch'
 import { client as _heyApiClient } from './client.gen'
 import {
+  createCastResponseTransformer,
   getApiKeysResponseTransformer,
+  getCastsByFidResponseTransformer,
   getCreatorRewardWinnersResponseTransformer,
   getStarterPackMembersResponseTransformer,
 } from './transformers.gen'
@@ -1526,6 +1528,7 @@ export const getCastsByFid = <ThrowOnError extends boolean = false>(
         type: 'http',
       },
     ],
+    responseTransformer: getCastsByFidResponseTransformer,
     url: '/v2/casts',
     ...options,
   })
@@ -1549,6 +1552,7 @@ export const createCast = <ThrowOnError extends boolean = false>(
         type: 'http',
       },
     ],
+    responseTransformer: createCastResponseTransformer,
     url: '/v2/casts',
     ...options,
     headers: {

@@ -553,11 +553,78 @@ export interface EmbedGroups {
 }
 
 export interface Cast {
+  /**
+   * Unique hash identifier for the cast
+   */
   hash?: string
+  /**
+   * Hash identifier for the thread this cast belongs to
+   */
   threadHash?: string
+  /**
+   * Hash identifier of the parent cast (if this is a reply)
+   */
+  parentHash?: string
+  parentSource?: {
+    type?: 'url'
+    url?: string
+  }
+  author?: User
+  /**
+   * The text content of the cast
+   */
   text?: string
-  timestamp?: number
-  embeds?: EmbedGroups
+  /**
+   * Unix timestamp in milliseconds
+   */
+  timestamp?: bigint
+  mentions?: User[]
+  embeds?: {
+    images?: ImageEmbed[]
+    urls?: UrlEmbed[]
+    videos?: VideoEmbed[]
+    unknowns?: Record<string, unknown>[]
+    processedCastText?: string
+    groupInvites?: Record<string, unknown>[]
+  }
+  replies?: {
+    count?: number
+  }
+  reactions?: {
+    count?: number
+  }
+  recasts?: {
+    count?: number
+    recasters?: Recaster[]
+  }
+  watches?: {
+    count?: number
+  }
+  recast?: boolean
+  tags?: {
+    type?: string
+    id?: string
+    name?: string
+    imageUrl?: string
+  }[]
+  quoteCount?: number
+  combinedRecastCount?: number
+  channel?: {
+    key?: string
+    name?: string
+    imageUrl?: string
+    authorContext?: {
+      role?: string
+      restricted?: boolean
+      banned?: boolean
+    }
+    authorRole?: string
+  }
+  viewerContext?: {
+    reacted?: boolean
+    recast?: boolean
+    bookmarked?: boolean
+  }
 }
 
 export interface DraftCast {
@@ -690,6 +757,44 @@ export interface ApiKey {
    * User-provided description of the API key's purpose
    */
   description: string
+}
+
+export interface Recaster {
+  fid?: number
+  username?: string
+  displayName?: string
+  recastHash?: string
+}
+
+export interface ImageEmbed {
+  type?: 'image'
+  url?: string
+  sourceUrl?: string
+  media?: {
+    version?: string
+    width?: number
+    height?: number
+    staticRaster?: string
+    mimeType?: string
+  }
+  alt?: string
+}
+
+export interface UrlEmbed {
+  type?: 'url'
+  openGraph?: {
+    url?: string
+    sourceUrl?: string
+    title?: string
+    description?: string
+    domain?: string
+    image?: string
+    useLargeImage?: boolean
+  }
+}
+
+export interface VideoEmbed {
+  type?: 'video'
 }
 
 /**
