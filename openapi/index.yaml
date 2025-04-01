@@ -31,7 +31,10 @@ components:
       scheme: bearer
 
   parameters:
-    $ref: './components/parameters.yaml'
+    fidParam:
+      $ref: './components/parameters.yaml#/fidParam'
+    limitParam:
+      $ref: './components/parameters.yaml#/limitParam'
 
   responses:
     $ref: './components/responses.yaml'
