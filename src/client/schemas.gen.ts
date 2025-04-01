@@ -1688,3 +1688,62 @@ export const ChannelFollowersResponseSchema = {
     },
   },
 } as const
+
+export const AppsByAuthorResponseSchema = {
+  type: 'object',
+  properties: {
+    result: {
+      type: 'object',
+      properties: {
+        frames: {
+          type: 'array',
+          items: {
+            $ref: '#/components/schemas/Frame',
+          },
+        },
+      },
+    },
+  },
+} as const
+
+export const FrameSchema = {
+  type: 'object',
+  properties: {
+    domain: {
+      type: 'string',
+    },
+    name: {
+      type: 'string',
+    },
+    iconUrl: {
+      type: 'string',
+    },
+    homeUrl: {
+      type: 'string',
+    },
+    splashImageUrl: {
+      type: 'string',
+    },
+    splashBackgroundColor: {
+      type: 'string',
+    },
+    buttonTitle: {
+      type: 'string',
+      nullable: true,
+    },
+    imageUrl: {
+      type: 'string',
+      nullable: true,
+    },
+    supportsNotifications: {
+      type: 'boolean',
+    },
+    viewerContext: {
+      type: 'object',
+      additionalProperties: true,
+    },
+    author: {
+      $ref: '#/components/schemas/User',
+    },
+  },
+} as const

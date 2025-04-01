@@ -582,6 +582,26 @@ export interface ChannelFollowersResponse {
   }
 }
 
+export interface AppsByAuthorResponse {
+  result?: {
+    frames?: Frame[]
+  }
+}
+
+export interface Frame {
+  domain?: string
+  name?: string
+  iconUrl?: string
+  homeUrl?: string
+  splashImageUrl?: string
+  splashBackgroundColor?: string
+  buttonTitle?: string
+  imageUrl?: string
+  supportsNotifications?: boolean
+  viewerContext?: Record<string, unknown>
+  author?: User
+}
+
 /**
  * The user's FID (Farcaster ID)
  */
@@ -3018,6 +3038,32 @@ export interface GetDeveloperRewardWinnersResponses {
 
 export type GetDeveloperRewardWinnersResponse =
   GetDeveloperRewardWinnersResponses[keyof GetDeveloperRewardWinnersResponses]
+
+export interface GetAppsByAuthorData {
+  body?: never
+  path?: never
+  query: {
+    /**
+     * Farcaster ID of the author
+     */
+    fid: number
+    /**
+     * Number of results to return (default 25)
+     */
+    limit?: number
+  }
+  url: '/v1/apps-by-author'
+}
+
+export interface GetAppsByAuthorResponses {
+  /**
+   * A list of frames by the author
+   */
+  200: AppsByAuthorResponse
+}
+
+export type GetAppsByAuthorResponse =
+  GetAppsByAuthorResponses[keyof GetAppsByAuthorResponses]
 
 export interface ClientOptions {
   baseUrl:

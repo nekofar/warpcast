@@ -37,6 +37,8 @@ import type {
   GetAccountVerificationsResponse,
   GetAllChannelsData,
   GetAllChannelsResponse,
+  GetAppsByAuthorData,
+  GetAppsByAuthorResponse,
   GetAvailableInvitesData,
   GetAvailableInvitesResponse,
   GetBlockedUsersData,
@@ -2240,6 +2242,31 @@ export const getDeveloperRewardWinners = <ThrowOnError extends boolean = false>(
     ThrowOnError
   >({
     url: '/v1/developer-rewards-winner-history',
+    ...options,
+  })
+}
+
+/**
+ * Get apps (frames) by author
+ * Retrieves a list of apps (aka "frames") created by a specific author on Warpcast, using their FID (Farcaster ID).
+ * The response includes metadata for each app, including icons, URLs, and author profile details.
+ * @param options
+ */
+export const getAppsByAuthor = <ThrowOnError extends boolean = false>(
+  options: Options<GetAppsByAuthorData, ThrowOnError>,
+) => {
+  return (options.client ?? _heyApiClient).get<
+    GetAppsByAuthorResponse,
+    unknown,
+    ThrowOnError
+  >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
+    url: '/v1/apps-by-author',
     ...options,
   })
 }

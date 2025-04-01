@@ -1803,6 +1803,63 @@
             }
           }
         }
+      },
+      "AppsByAuthorResponse": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "type": "object",
+            "properties": {
+              "frames": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Frame"
+                }
+              }
+            }
+          }
+        }
+      },
+      "Frame": {
+        "type": "object",
+        "properties": {
+          "domain": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "iconUrl": {
+            "type": "string"
+          },
+          "homeUrl": {
+            "type": "string"
+          },
+          "splashImageUrl": {
+            "type": "string"
+          },
+          "splashBackgroundColor": {
+            "type": "string"
+          },
+          "buttonTitle": {
+            "type": "string",
+            "nullable": true
+          },
+          "imageUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "supportsNotifications": {
+            "type": "boolean"
+          },
+          "viewerContext": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "author": {
+            "$ref": "#/components/schemas/User"
+          }
+        }
       }
     }
   },
@@ -6407,6 +6464,51 @@
             }
           }
         }
+      }
+    },
+    "/v1/apps-by-author": {
+      "get": {
+        "operationId": "getAppsByAuthor",
+        "summary": "Get apps (frames) by author",
+        "description": "Retrieves a list of apps (aka \"frames\") created by a specific author on Warpcast, using their FID (Farcaster ID).\nThe response includes metadata for each app, including icons, URLs, and author profile details.\n",
+        "parameters": [
+          {
+            "name": "fid",
+            "in": "query",
+            "required": true,
+            "description": "Farcaster ID of the author",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "Number of results to return (default 25)",
+            "schema": {
+              "type": "integer",
+              "default": 25
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of frames by the author",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppsByAuthorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       }
     }
   }

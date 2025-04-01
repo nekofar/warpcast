@@ -1081,6 +1081,45 @@ components:
               properties:
                 cursor:
                   type: string
+    AppsByAuthorResponse:
+      type: object
+      properties:
+        result:
+          type: object
+          properties:
+            frames:
+              type: array
+              items:
+                $ref: '#/components/schemas/Frame'
+
+    Frame:
+      type: object
+      properties:
+        domain:
+          type: string
+        name:
+          type: string
+        iconUrl:
+          type: string
+        homeUrl:
+          type: string
+        splashImageUrl:
+          type: string
+        splashBackgroundColor:
+          type: string
+        buttonTitle:
+          type: string
+          nullable: true
+        imageUrl:
+          type: string
+          nullable: true
+        supportsNotifications:
+          type: boolean
+        viewerContext:
+          type: object
+          additionalProperties: true
+        author:
+          $ref: '#/components/schemas/User'
 
 paths:
   /v2/onboarding-state:
@@ -1307,3 +1346,6 @@ paths:
 
   /v1/developer-rewards-winner-history:
     $ref: './paths/v1/developer-rewards-winner-history.yaml'
+
+  /v1/apps-by-author:
+    $ref: './paths/v1/apps-by-author.yaml'
