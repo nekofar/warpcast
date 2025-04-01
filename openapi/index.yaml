@@ -22,7 +22,233 @@ tags:
     description: Operations related to direct messages and casts
 
 paths:
-  $ref: ./paths/index.yaml
+  /v2/onboarding-state:
+    $ref: ./paths/v2/onboarding-state.yaml
+
+  /v2/user-by-fid:
+    $ref: ./paths/v2/user-by-fid.yaml
+
+  /v2/direct-cast-inbox:
+    $ref: ./paths/v2/direct-cast-inbox.yaml
+
+  /v2/user-app-context:
+    $ref: ./paths/v2/user-app-context.yaml
+
+  /v2/user-preferences:
+    $ref: ./paths/v2/user-preferences.yaml
+
+  /v2/highlighted-channels:
+    $ref: ./paths/v2/highlighted-channels.yaml
+
+  /v2/feed-items:
+    $ref: ./paths/v2/feed-items.yaml
+
+  /v2/user:
+    $ref: ./paths/v2/user.yaml
+
+  /v2/user-following-channels:
+    $ref: ./paths/v2/user-following-channels.yaml
+
+  /v2/suggested-users:
+    $ref: ./paths/v2/suggested-users.yaml
+
+  /v1/favorite-frames:
+    $ref: ./paths/v1/favorite-frames.yaml
+
+  /v2/user-by-username:
+    $ref: ./paths/v2/user-by-username.yaml
+
+  /v2/channel-streaks:
+    $ref: ./paths/v2/channel-streaks.yaml
+
+  /v2/unseen:
+    $ref: ./paths/v2/unseen.yaml
+
+  /v2/user-thread-casts:
+    $ref: ./paths/v2/user-thread-casts.yaml
+
+  /v2/channel-followers-you-know:
+    $ref: ./paths/v2/channel-followers-you-know.yaml
+
+  /v2/mark-all-notifications-read:
+    $ref: ./paths/v2/mark-all-notifications-read.yaml
+
+  /v1/notifications-for-tab:
+    $ref: ./paths/v1/notifications-for-tab.yaml
+
+  /v2/set-last-checked-timestamp:
+    $ref: ./paths/v2/set-last-checked-timestamp.yaml
+
+  /v2/direct-cast-conversation:
+    $ref: ./paths/v2/direct-cast-conversation.yaml
+
+  /v2/discover-channels:
+    $ref: ./paths/v2/discover-channels.yaml
+
+  /v2/invites-available:
+    $ref: ./paths/v2/invites-available.yaml
+
+  /v2/warpcast-sponsored-invites:
+    $ref: ./paths/v2/warpcast-sponsored-invites.yaml
+
+  /v2/rewards-leaderboard:
+    $ref: ./paths/v2/rewards-leaderboard.yaml
+
+  /v2/rewards-scores-for-user:
+    $ref: ./paths/v2/rewards-scores-for-user.yaml
+
+  /v2/rewards-metadata:
+    $ref: ./paths/v2/rewards-metadata.yaml
+
+  /v2/bookmarked-casts:
+    $ref: ./paths/v2/bookmarked-casts.yaml
+
+  /v2/starter-packs:
+    $ref: ./paths/v2/starter-packs.yaml
+
+  /v2/starter-packs/suggested:
+    $ref: ./paths/v2/starter-packs-suggested.yaml
+
+  /v2/starter-pack:
+    $ref: ./paths/v2/starter-pack.yaml
+
+  /v2/starter-pack-users:
+    $ref: ./paths/v2/starter-pack-users.yaml
+
+  /v2/channel:
+    $ref: ./paths/v2/channel.yaml
+
+  /v1/channel-users:
+    $ref: ./paths/v1/channel-users.yaml
+
+  /v2/following:
+    $ref: ./paths/v2/following.yaml
+
+  /v2/followers:
+    $ref: ./paths/v2/followers.yaml
+
+  /v2/followers-you-know:
+    $ref: ./paths/v2/followers-you-know.yaml
+
+  /v1/top-frameapps:
+    $ref: ./paths/v1/top-frameapps.yaml
+
+  /v2/verifications:
+    $ref: ./paths/v2/verifications.yaml
+
+  /v2/get-muted-keywords:
+    $ref: ./paths/v2/get-muted-keywords.yaml
+
+  /v2/mute-keyword:
+    $ref: ./paths/v2/mute-keyword.yaml
+
+  /v2/unmute-keyword:
+    $ref: ./paths/v2/unmute-keyword.yaml
+
+  /v2/cast-likes:
+    $ref: ./paths/v2/cast-likes.yaml
+
+  /v2/recasts:
+    $ref: ./paths/v2/recasts.yaml
+
+  /v2/cast-attachments:
+    $ref: ./paths/v2/cast-attachments.yaml
+
+  /v2/cast-recasters:
+    $ref: ./paths/v2/cast-recasters.yaml
+
+  /v2/cast-quotes:
+    $ref: ./paths/v2/cast-quotes.yaml
+
+  /v2/me:
+    $ref: ./paths/v2/me.yaml
+
+  /v2/search-channels:
+    $ref: ./paths/v2/search-channels.yaml
+
+  /v2/draft-caststorms:
+    $ref: ./paths/v2/draft-caststorms.yaml
+
+  /v2/draft-casts:
+    $ref: ./paths/v2/draft-casts.yaml
+
+  /v2/casts:
+    $ref: ./paths/v2/casts.yaml
+
+  /v2/all-channels:
+    $ref: ./paths/v2/all-channels.yaml
+
+  /v1/channel:
+    $ref: ./paths/v1/channel.yaml
+
+  /v1/channel-followers:
+    $ref: ./paths/v1/channel-followers.yaml
+
+  /v1/user-following-channels:
+    $ref: ./paths/v1/user-following-channels.yaml
+
+  /v1/user-channel:
+    $ref: ./paths/v1/user-channel.yaml
+
+  /fc/channel-members:
+    $ref: ./paths/fc/channel-members.yaml
+
+  /fc/channel-invites:
+    $ref: ./paths/fc/channel-invites.yaml
+
+  /fc/moderated-casts:
+    $ref: ./paths/fc/moderated-casts.yaml
+
+  /fc/channel-restricted-users:
+    $ref: ./paths/fc/channel-restricted-users.yaml
+
+  /fc/channel-bans:
+    $ref: ./paths/fc/channel-bans.yaml
+
+  /fc/channel-follows:
+    $ref: ./paths/fc/channel-follows.yaml
+
+  /fc/moderate-cast:
+    $ref: ./paths/fc/moderate-cast.yaml
+
+  /fc/pinned-casts:
+    $ref: ./paths/fc/pinned-casts.yaml
+
+  /v2/discover-actions:
+    $ref: ./paths/v2/discover-actions.yaml
+
+  /v2/discover-composer-actions:
+    $ref: ./paths/v2/discover-composer-actions.yaml
+
+  /fc/blocked-users:
+    $ref: ./paths/fc/blocked-users.yaml
+
+  /fc/account-verifications:
+    $ref: ./paths/fc/account-verifications.yaml
+
+  /v1/creator-rewards-winner-history:
+    $ref: ./paths/v1/creator-rewards-winner-history.yaml
+
+  /fc/primary-address:
+    $ref: ./paths/fc/primary-address.yaml
+
+  /fc/primary-addresses:
+    $ref: ./paths/fc/primary-addresses.yaml
+
+  /fc/starter-pack-members:
+    $ref: ./paths/fc/starter-pack-members.yaml
+
+  /v2/ext-send-direct-cast:
+    $ref: ./paths/v2/ext-send-direct-cast.yaml
+
+  /v2/user-by-verification:
+    $ref: ./paths/v2/user-by-verification.yaml
+
+  /v1/developer-rewards-winner-history:
+    $ref: ./paths/v1/developer-rewards-winner-history.yaml
+
+  /v1/apps-by-author:
+    $ref: ./paths/v1/apps-by-author.yaml
 
 components:
   schemas:
