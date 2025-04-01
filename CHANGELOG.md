@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.14] - 2025-04-01
+
+### 🚀 Features
+
+- *(client)* Add support for `getAppsByAuthor` API
+- *(openapi)* Add `fidParam` and `limitParam` references
+
+### 🚜 Refactor
+
+- *(openapi)* Centralize common query parameters
+- *(openapi)* Reuse shared parameters for query params
+- *(schemas)* Deduplicate schemas and reorganize structure
+- *(openapi)* Modularize tags and parameters
+- *(openapi)* Inline `tags.yaml` content into `index.yaml`
+
 ## [2.0.0-alpha.13] - 2025-03-31
 
 ### 🚀 Features
