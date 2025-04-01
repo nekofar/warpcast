@@ -3713,6 +3713,57 @@ export interface GetConnectedAccountsResponses {
 export type GetConnectedAccountsResponse =
   GetConnectedAccountsResponses[keyof GetConnectedAccountsResponses]
 
+export interface GetProfileCastsData {
+  body?: never
+  path?: never
+  query: {
+    /**
+     * Farcaster ID of the user
+     */
+    fid: number
+    /**
+     * Maximum number of casts to return
+     */
+    limit?: number
+    /**
+     * Cursor for pagination
+     */
+    cursor?: string
+  }
+  url: '/v2/profile-casts'
+}
+
+export interface GetProfileCastsErrors {
+  /**
+   * Unauthorized - Authentication token is missing or invalid
+   */
+  401: unknown
+  /**
+   * User not found
+   */
+  404: unknown
+}
+
+export interface GetProfileCastsResponses {
+  /**
+   * Successfully retrieved user's casts
+   */
+  200: {
+    result: {
+      casts: Cast[]
+    }
+    next?: {
+      /**
+       * Cursor for fetching the next page of results
+       */
+      cursor?: string
+    }
+  }
+}
+
+export type GetProfileCastsResponse =
+  GetProfileCastsResponses[keyof GetProfileCastsResponses]
+
 export interface ClientOptions {
   baseUrl:
     | 'https://api.warpcast.com'

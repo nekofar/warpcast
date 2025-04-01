@@ -281,3 +281,6 @@ paths:
 
   /v2/connected-accounts:
     $ref: ./paths/v2/connected-accounts.yaml
+
+  /v2/profile-casts:
+    $ref: ./paths/v2/profile-casts.yaml

@@ -11,6 +11,7 @@ import {
   getApiKeysResponseTransformer,
   getCastsByFidResponseTransformer,
   getCreatorRewardWinnersResponseTransformer,
+  getProfileCastsResponseTransformer,
   getStarterPackMembersResponseTransformer,
 } from './transformers.gen'
 import type {
@@ -124,6 +125,8 @@ import type {
   GetMutualFollowersResponse,
   GetNotificationsData,
   GetNotificationsResponse,
+  GetProfileCastsData,
+  GetProfileCastsResponse,
   GetRewardsLeaderboardData,
   GetRewardsLeaderboardResponse,
   GetRewardsMetadataData,
@@ -2483,6 +2486,31 @@ export const getConnectedAccounts = <ThrowOnError extends boolean = false>(
       },
     ],
     url: '/v2/connected-accounts',
+    ...options,
+  })
+}
+
+/**
+ * Get casts from a user's profile
+ * Retrieves a list of casts published by a specific user identified by their Farcaster ID (FID).
+ * @param options
+ */
+export const getProfileCasts = <ThrowOnError extends boolean = false>(
+  options: Options<GetProfileCastsData, ThrowOnError>,
+) => {
+  return (options.client ?? _heyApiClient).get<
+    GetProfileCastsResponse,
+    unknown,
+    ThrowOnError
+  >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
+    responseTransformer: getProfileCastsResponseTransformer,
+    url: '/v2/profile-casts',
     ...options,
   })
 }

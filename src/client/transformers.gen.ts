@@ -5,6 +5,7 @@ import type {
   GetApiKeysResponse,
   GetCastsByFidResponse,
   GetCreatorRewardWinnersResponse,
+  GetProfileCastsResponse,
   GetStarterPackMembersResponse,
 } from './types.gen'
 
@@ -90,6 +91,15 @@ export const getApiKeysResponseTransformer = async (
 ): Promise<GetApiKeysResponse> => {
   data.result.apiKeys = data.result.apiKeys.map((item: any) => {
     return apiKeySchemaResponseTransformer(item)
+  })
+  return data
+}
+
+export const getProfileCastsResponseTransformer = async (
+  data: any,
+): Promise<GetProfileCastsResponse> => {
+  data.result.casts = data.result.casts.map((item: any) => {
+    return castSchemaResponseTransformer(item)
   })
   return data
 }
