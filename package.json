@@ -42,7 +42,7 @@
     "@hey-api/client-fetch": "^0.8.4"
   },
   "devDependencies": {
-    "@hey-api/openapi-ts": "^0.64.15",
+    "@hey-api/openapi-ts": "^0.65.0",
     "@types/node": "^22.13.14",
     "@typescript-eslint/utils": "^8.28.0",
     "eslint": "^9.23.0",
