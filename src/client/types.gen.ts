@@ -2072,6 +2072,49 @@ export interface DeleteCastResponses {
 
 export type DeleteCastResponse = DeleteCastResponses[keyof DeleteCastResponses]
 
+export interface GetCastsByFidData {
+  body?: never
+  path?: never
+  query: {
+    /**
+     * The FID (Farcaster ID) of the user whose casts to retrieve
+     */
+    fid: number
+    /**
+     * Maximum number of casts to return
+     */
+    limit?: number
+  }
+  url: '/v2/casts'
+}
+
+export interface GetCastsByFidErrors {
+  /**
+   * Bad request
+   */
+  400: ErrorResponse
+  /**
+   * Unauthorized
+   */
+  401: ErrorResponse
+}
+
+export type GetCastsByFidError = GetCastsByFidErrors[keyof GetCastsByFidErrors]
+
+export interface GetCastsByFidResponses {
+  /**
+   * Successfully retrieved casts
+   */
+  200: {
+    result?: {
+      casts?: Cast[]
+    }
+  }
+}
+
+export type GetCastsByFidResponse =
+  GetCastsByFidResponses[keyof GetCastsByFidResponses]
+
 export interface CreateCastData {
   body: {
     text: string

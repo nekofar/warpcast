@@ -4193,6 +4193,81 @@
       }
     },
     "/v2/casts": {
+      "get": {
+        "summary": "Retrieve casts for a specific user",
+        "operationId": "getCastsByFid",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "fid",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "description": "The FID (Farcaster ID) of the user whose casts to retrieve"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "description": "Maximum number of casts to return",
+              "default": 15
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved casts",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "casts": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/Cast"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
       "post": {
         "summary": "Create a new cast",
         "operationId": "createCast",

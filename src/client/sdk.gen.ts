@@ -56,6 +56,9 @@ import type {
   GetCastQuotesResponse,
   GetCastRecastersData,
   GetCastRecastersResponse,
+  GetCastsByFidData,
+  GetCastsByFidError,
+  GetCastsByFidResponse,
   GetChannelBannedUsersData,
   GetChannelBannedUsersResponse,
   GetChannelData,
@@ -1502,6 +1505,29 @@ export const deleteCast = <ThrowOnError extends boolean = false>(
       'Content-Type': 'application/json',
       ...options.headers,
     },
+  })
+}
+
+/**
+ * Retrieve casts for a specific user
+ * @param options
+ */
+export const getCastsByFid = <ThrowOnError extends boolean = false>(
+  options: Options<GetCastsByFidData, ThrowOnError>,
+) => {
+  return (options.client ?? _heyApiClient).get<
+    GetCastsByFidResponse,
+    GetCastsByFidError,
+    ThrowOnError
+  >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
+    url: '/v2/casts',
+    ...options,
   })
 }
 
