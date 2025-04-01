@@ -2,11 +2,7 @@ get:
   operationId: getUserFollowedChannels
   summary: Get list of channels followed by a user
   parameters:
-    - name: fid
-      in: query
-      required: true
-      schema:
-        type: integer
+    - $ref: '../../index.yaml#/components/parameters/fidParam'
   responses:
     '200':
       description: Successful response with list of followed channels

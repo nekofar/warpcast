@@ -83,6 +83,128 @@
       }
     },
     "schemas": {
+      "Winner": {
+        "type": "object",
+        "properties": {
+          "fid": {
+            "type": "integer",
+            "description": "The fid of the winner"
+          },
+          "domain": {
+            "type": "string",
+            "description": "The domain of the winner"
+          },
+          "frameName": {
+            "type": "string",
+            "description": "The name of the frame (mini app)"
+          },
+          "score": {
+            "type": "integer",
+            "description": "The score of the winner"
+          },
+          "rank": {
+            "type": "integer",
+            "description": "The rank of the winner"
+          },
+          "rewardCents": {
+            "type": "integer",
+            "description": "The reward amount in cents"
+          },
+          "walletAddress": {
+            "type": "string",
+            "description": "The wallet address of the winner (optional)"
+          }
+        }
+      },
+      "OnboardingStateResponse": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "type": "object",
+            "properties": {
+              "state": {
+                "$ref": "#/components/schemas/OnboardingState"
+              }
+            }
+          }
+        }
+      },
+      "OnboardingState": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "email": {
+            "type": "string",
+            "format": "email"
+          },
+          "user": {
+            "$ref": "#/components/schemas/User"
+          },
+          "hasOnboarding": {
+            "type": "boolean"
+          },
+          "hasConfirmedEmail": {
+            "type": "boolean"
+          },
+          "handledConnectAddress": {
+            "type": "boolean"
+          },
+          "canRegisterUsername": {
+            "type": "boolean"
+          },
+          "needsRegistrationPayment": {
+            "type": "boolean"
+          },
+          "hasFid": {
+            "type": "boolean"
+          },
+          "hasFname": {
+            "type": "boolean"
+          },
+          "hasDelegatedSigner": {
+            "type": "boolean"
+          },
+          "hasSetupProfile": {
+            "type": "boolean"
+          },
+          "hasCompletedRegistration": {
+            "type": "boolean"
+          },
+          "hasStorage": {
+            "type": "boolean"
+          },
+          "handledPushNotificationsNudge": {
+            "type": "boolean"
+          },
+          "handledContactsNudge": {
+            "type": "boolean"
+          },
+          "handledInterestsNudge": {
+            "type": "boolean"
+          },
+          "hasValidPaidInvite": {
+            "type": "boolean"
+          },
+          "hasWarpcastWalletAddress": {
+            "type": "boolean"
+          },
+          "hasPhone": {
+            "type": "boolean"
+          },
+          "needsPhone": {
+            "type": "boolean"
+          },
+          "sponsoredRegisterEligible": {
+            "type": "boolean"
+          },
+          "geoRestricted": {
+            "type": "boolean"
+          }
+        }
+      },
       "ErrorResponse": {
         "type": "object",
         "properties": {
@@ -1803,6 +1925,63 @@
             }
           }
         }
+      },
+      "AppsByAuthorResponse": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "type": "object",
+            "properties": {
+              "frames": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Frame"
+                }
+              }
+            }
+          }
+        }
+      },
+      "Frame": {
+        "type": "object",
+        "properties": {
+          "domain": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "iconUrl": {
+            "type": "string"
+          },
+          "homeUrl": {
+            "type": "string"
+          },
+          "splashImageUrl": {
+            "type": "string"
+          },
+          "splashBackgroundColor": {
+            "type": "string"
+          },
+          "buttonTitle": {
+            "type": "string",
+            "nullable": true
+          },
+          "imageUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "supportsNotifications": {
+            "type": "boolean"
+          },
+          "viewerContext": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "author": {
+            "$ref": "#/components/schemas/User"
+          }
+        }
       }
     }
   },
@@ -1826,90 +2005,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "result": {
-                      "type": "object",
-                      "properties": {
-                        "state": {
-                          "type": "object",
-                          "properties": {
-                            "id": {
-                              "type": "string",
-                              "format": "uuid"
-                            },
-                            "email": {
-                              "type": "string",
-                              "format": "email"
-                            },
-                            "user": {
-                              "$ref": "#/components/schemas/User"
-                            },
-                            "hasOnboarding": {
-                              "type": "boolean"
-                            },
-                            "hasConfirmedEmail": {
-                              "type": "boolean"
-                            },
-                            "handledConnectAddress": {
-                              "type": "boolean"
-                            },
-                            "canRegisterUsername": {
-                              "type": "boolean"
-                            },
-                            "needsRegistrationPayment": {
-                              "type": "boolean"
-                            },
-                            "hasFid": {
-                              "type": "boolean"
-                            },
-                            "hasFname": {
-                              "type": "boolean"
-                            },
-                            "hasDelegatedSigner": {
-                              "type": "boolean"
-                            },
-                            "hasSetupProfile": {
-                              "type": "boolean"
-                            },
-                            "hasCompletedRegistration": {
-                              "type": "boolean"
-                            },
-                            "hasStorage": {
-                              "type": "boolean"
-                            },
-                            "handledPushNotificationsNudge": {
-                              "type": "boolean"
-                            },
-                            "handledContactsNudge": {
-                              "type": "boolean"
-                            },
-                            "handledInterestsNudge": {
-                              "type": "boolean"
-                            },
-                            "hasValidPaidInvite": {
-                              "type": "boolean"
-                            },
-                            "hasWarpcastWalletAddress": {
-                              "type": "boolean"
-                            },
-                            "hasPhone": {
-                              "type": "boolean"
-                            },
-                            "needsPhone": {
-                              "type": "boolean"
-                            },
-                            "sponsoredRegisterEligible": {
-                              "type": "boolean"
-                            },
-                            "geoRestricted": {
-                              "type": "boolean"
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/OnboardingStateResponse"
                 }
               }
             }
@@ -2250,11 +2346,7 @@
         "summary": "Get suggested users",
         "parameters": [
           {
-            "name": "limit",
-            "in": "query",
-            "schema": {
-              "type": "integer"
-            }
+            "$ref": "#/components/parameters/limitParam"
           },
           {
             "name": "randomized",
@@ -2289,11 +2381,7 @@
         "summary": "Get user's favorite frames",
         "parameters": [
           {
-            "name": "limit",
-            "in": "query",
-            "schema": {
-              "type": "integer"
-            }
+            "$ref": "#/components/parameters/limitParam"
           }
         ],
         "security": [
@@ -2410,6 +2498,9 @@
         "summary": "Get casts from a user thread",
         "parameters": [
           {
+            "$ref": "#/components/parameters/limitParam"
+          },
+          {
             "name": "castHashPrefix",
             "in": "query",
             "required": true,
@@ -2423,13 +2514,6 @@
             "required": true,
             "schema": {
               "type": "string"
-            }
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "schema": {
-              "type": "integer"
             }
           }
         ],
@@ -2779,6 +2863,9 @@
         "description": "Returns a list of users in the rewards leaderboard based on invite activity.",
         "parameters": [
           {
+            "$ref": "#/components/parameters/limitParam"
+          },
+          {
             "name": "rewardsType",
             "in": "query",
             "required": true,
@@ -2787,13 +2874,6 @@
               "enum": [
                 "invite"
               ]
-            }
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "schema": {
-              "type": "integer"
             }
           },
           {
@@ -2836,6 +2916,9 @@
         "description": "Returns current, previous, and all-time invite rewards scores for the specified user.",
         "parameters": [
           {
+            "$ref": "#/components/parameters/fidParam"
+          },
+          {
             "name": "rewardsType",
             "in": "query",
             "required": true,
@@ -2844,14 +2927,6 @@
               "enum": [
                 "invite"
               ]
-            }
-          },
-          {
-            "name": "fid",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "integer"
             }
           }
         ],
@@ -2930,13 +3005,7 @@
         "description": "Returns the most recent casts bookmarked by the user.",
         "parameters": [
           {
-            "name": "limit",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "default": 15
-            }
+            "$ref": "#/components/parameters/limitParam"
           }
         ],
         "security": [
@@ -3062,19 +3131,14 @@
         "description": "Returns a list of users associated with a given starter pack.",
         "parameters": [
           {
+            "$ref": "#/components/parameters/limitParam"
+          },
+          {
             "name": "id",
             "in": "query",
             "required": true,
             "schema": {
               "type": "string"
-            }
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "integer"
             }
           }
         ],
@@ -3128,12 +3192,7 @@
         "description": "Returns users who are members of a specific channel.",
         "parameters": [
           {
-            "name": "limit",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
+            "$ref": "#/components/parameters/limitParam"
           },
           {
             "name": "channelKey",
@@ -3292,12 +3351,7 @@
         "description": "Returns a list of top FrameApps with optional pagination.",
         "parameters": [
           {
-            "name": "limit",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
+            "$ref": "#/components/parameters/limitParam"
           },
           {
             "name": "cursor",
@@ -3343,20 +3397,10 @@
         "description": "Returns verified Ethereum addresses associated with a specific FID.",
         "parameters": [
           {
-            "name": "fid",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
+            "$ref": "#/components/parameters/fidParam"
           },
           {
-            "name": "limit",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
+            "$ref": "#/components/parameters/limitParam"
           }
         ],
         "responses": {
@@ -3810,20 +3854,14 @@
         ],
         "parameters": [
           {
+            "$ref": "#/components/parameters/limitParam"
+          },
+          {
             "name": "castHash",
             "in": "query",
             "required": true,
             "schema": {
               "type": "string"
-            }
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "default": 15
             }
           }
         ],
@@ -3927,6 +3965,9 @@
         ],
         "parameters": [
           {
+            "$ref": "#/components/parameters/limitParam"
+          },
+          {
             "name": "q",
             "in": "query",
             "required": false,
@@ -3950,15 +3991,6 @@
             "schema": {
               "type": "boolean",
               "default": false
-            }
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "default": 40
             }
           }
         ],
@@ -4289,12 +4321,7 @@
         "summary": "Get list of channels followed by a user",
         "parameters": [
           {
-            "name": "fid",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
+            "$ref": "#/components/parameters/fidParam"
           }
         ],
         "responses": {
@@ -4317,12 +4344,7 @@
         "summary": "Check if a user is following a channel",
         "parameters": [
           {
-            "name": "fid",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
+            "$ref": "#/components/parameters/fidParam"
           },
           {
             "name": "channelId",
@@ -5758,13 +5780,7 @@
         "summary": "Get account verifications",
         "parameters": [
           {
-            "in": "query",
-            "name": "fid",
-            "schema": {
-              "type": "integer"
-            },
-            "required": false,
-            "description": "Limit the response to a specific user."
+            "$ref": "#/components/parameters/fidParam"
           }
         ],
         "responses": {
@@ -5941,13 +5957,7 @@
         "summary": "Get User Primary Address",
         "parameters": [
           {
-            "in": "query",
-            "name": "fid",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            },
-            "description": "The fid of the user."
+            "$ref": "#/components/parameters/fidParam"
           },
           {
             "in": "query",
@@ -6357,37 +6367,7 @@
                         "winners": {
                           "type": "array",
                           "items": {
-                            "type": "object",
-                            "properties": {
-                              "fid": {
-                                "type": "integer",
-                                "description": "The fid of the winner"
-                              },
-                              "domain": {
-                                "type": "string",
-                                "description": "The domain of the winner"
-                              },
-                              "frameName": {
-                                "type": "string",
-                                "description": "The name of the frame (mini app)"
-                              },
-                              "score": {
-                                "type": "integer",
-                                "description": "The score of the winner"
-                              },
-                              "rank": {
-                                "type": "integer",
-                                "description": "The rank of the winner"
-                              },
-                              "rewardCents": {
-                                "type": "integer",
-                                "description": "The reward amount in cents"
-                              },
-                              "walletAddress": {
-                                "type": "string",
-                                "description": "The wallet address of the winner (optional)"
-                              }
-                            }
+                            "$ref": "#/components/schemas/Winner"
                           }
                         }
                       }
@@ -6407,6 +6387,38 @@
             }
           }
         }
+      }
+    },
+    "/v1/apps-by-author": {
+      "get": {
+        "operationId": "getAppsByAuthor",
+        "summary": "Get apps (frames) by author",
+        "description": "Retrieves a list of apps (aka \"frames\") created by a specific author on Warpcast, using their FID (Farcaster ID).\nThe response includes metadata for each app, including icons, URLs, and author profile details.\n",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/fidParam"
+          },
+          {
+            "$ref": "#/components/parameters/limitParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of frames by the author",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppsByAuthorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       }
     }
   }

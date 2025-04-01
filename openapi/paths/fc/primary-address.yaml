@@ -2,12 +2,7 @@ get:
   operationId: getUserPrimaryAddress
   summary: Get User Primary Address
   parameters:
-    - in: query
-      name: fid
-      required: true
-      schema:
-        type: integer
-      description: The fid of the user.
+    - $ref: '../../index.yaml#/components/parameters/fidParam'
     - in: query
       name: protocol
       required: true

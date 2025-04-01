@@ -3,11 +3,7 @@ get:
   summary: Get members of a specific channel
   description: Returns users who are members of a specific channel.
   parameters:
-    - name: limit
-      in: query
-      required: false
-      schema:
-        type: integer
+    - $ref: '../../index.yaml#/components/parameters/limitParam'
     - name: channelKey
       in: query
       required: true

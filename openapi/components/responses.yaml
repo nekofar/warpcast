@@ -1,0 +1,13 @@
+NotFound:
+  description: The specified resource was not found
+  content:
+    application/json:
+      schema:
+        $ref: './schemas.yaml#/ErrorResponse'
+
+Unauthorized:
+  description: Authentication is required or failed
+  content:
+    application/json:
+      schema:
+        $ref: './schemas.yaml#/ErrorResponse'

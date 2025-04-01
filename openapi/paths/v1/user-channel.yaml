@@ -2,11 +2,7 @@ get:
   operationId: checkUserChannelFollowStatus
   summary: Check if a user is following a channel
   parameters:
-    - name: fid
-      in: query
-      required: true
-      schema:
-        type: integer
+    - $ref: '../../index.yaml#/components/parameters/fidParam'
     - name: channelId
       in: query
       required: true

@@ -3,16 +3,13 @@ get:
   summary: Get rewards leaderboard
   description: Returns a list of users in the rewards leaderboard based on invite activity.
   parameters:
+    - $ref: '../../index.yaml#/components/parameters/limitParam'
     - name: rewardsType
       in: query
       required: true
       schema:
         type: string
         enum: [invite]
-    - name: limit
-      in: query
-      schema:
-        type: integer
     - name: cursor
       in: query
       schema:

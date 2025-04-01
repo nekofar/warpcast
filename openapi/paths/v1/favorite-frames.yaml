@@ -2,10 +2,7 @@ get:
   operationId: getUserFavoriteFrames
   summary: Get user's favorite frames
   parameters:
-    - name: limit
-      in: query
-      schema:
-        type: integer
+    - $ref: '../../index.yaml#/components/parameters/limitParam'
   security:
     - bearerAuth: []
   responses:

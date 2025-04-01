@@ -1,0 +1,15 @@
+fidParam:
+  name: fid
+  in: query
+  required: true
+  schema:
+    type: integer
+  description: The user's FID (Farcaster ID)
+
+limitParam:
+  name: limit
+  in: query
+  required: false
+  schema:
+    type: integer
+  description: Maximum number of items to return

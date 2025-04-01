@@ -3,17 +3,13 @@ get:
   summary: Get invite rewards scores for a user
   description: Returns current, previous, and all-time invite rewards scores for the specified user.
   parameters:
+    - $ref: '../../index.yaml#/components/parameters/fidParam'
     - name: rewardsType
       in: query
       required: true
       schema:
         type: string
         enum: [invite]
-    - name: fid
-      in: query
-      required: true
-      schema:
-        type: integer
   security:
     - bearerAuth: []
   responses:

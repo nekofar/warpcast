@@ -2,10 +2,7 @@ get:
   operationId: getSuggestedUsers
   summary: Get suggested users
   parameters:
-    - name: limit
-      in: query
-      schema:
-        type: integer
+    - $ref: '../../index.yaml#/components/parameters/limitParam'
     - name: randomized
       in: query
       schema:

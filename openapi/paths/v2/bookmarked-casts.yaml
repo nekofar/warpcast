@@ -3,12 +3,7 @@ get:
   summary: Get bookmarked casts
   description: Returns the most recent casts bookmarked by the user.
   parameters:
-    - name: limit
-      in: query
-      required: false
-      schema:
-        type: integer
-        default: 15
+    - $ref: '../../index.yaml#/components/parameters/limitParam'
   security:
     - bearerAuth: []
   responses:
