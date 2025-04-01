@@ -7,6 +7,7 @@ import type {
 } from '@hey-api/client-fetch'
 import { client as _heyApiClient } from './client.gen'
 import {
+  getApiKeysResponseTransformer,
   getCreatorRewardWinnersResponseTransformer,
   getStarterPackMembersResponseTransformer,
 } from './transformers.gen'
@@ -37,6 +38,8 @@ import type {
   GetAccountVerificationsResponse,
   GetAllChannelsData,
   GetAllChannelsResponse,
+  GetApiKeysData,
+  GetApiKeysResponse,
   GetAppsByAuthorData,
   GetAppsByAuthorResponse,
   GetAvailableInvitesData,
@@ -2339,6 +2342,31 @@ export const getFarcasterJson = <ThrowOnError extends boolean = false>(
       },
     ],
     url: '/v1/dev-tools/farcaster-json',
+    ...options,
+  })
+}
+
+/**
+ * Retrieve API keys for the authenticated user
+ * Returns a list of API keys associated with the user's account, including active and revoked keys
+ * @param options
+ */
+export const getApiKeys = <ThrowOnError extends boolean = false>(
+  options?: Options<GetApiKeysData, ThrowOnError>,
+) => {
+  return (options?.client ?? _heyApiClient).get<
+    GetApiKeysResponse,
+    unknown,
+    ThrowOnError
+  >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
+    responseTransformer: getApiKeysResponseTransformer,
+    url: '/v2/api-keys',
     ...options,
   })
 }

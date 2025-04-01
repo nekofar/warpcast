@@ -1938,6 +1938,47 @@
             "$ref": "#/components/schemas/User"
           }
         }
+      },
+      "ApiKey": {
+        "type": "object",
+        "required": [
+          "id",
+          "createdAt",
+          "expiresAt",
+          "tag",
+          "description"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Unique identifier for the API key"
+          },
+          "createdAt": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Timestamp when the API key was created (in milliseconds since epoch)"
+          },
+          "expiresAt": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Timestamp when the API key expires (in milliseconds since epoch)"
+          },
+          "revokedAt": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Timestamp when the API key was revoked, if applicable (in milliseconds since epoch)",
+            "nullable": true
+          },
+          "tag": {
+            "type": "string",
+            "description": "Short identifier tag for the API key"
+          },
+          "description": {
+            "type": "string",
+            "description": "User-provided description of the API key's purpose"
+          }
+        }
       }
     },
     "parameters": {
@@ -6732,6 +6773,58 @@
                 }
               }
             }
+          }
+        }
+      }
+    },
+    "/v2/api-keys": {
+      "get": {
+        "tags": [
+          "DevTools"
+        ],
+        "summary": "Retrieve API keys for the authenticated user",
+        "description": "Returns a list of API keys associated with the user's account, including active and revoked keys",
+        "operationId": "getApiKeys",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved API keys",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "result"
+                  ],
+                  "properties": {
+                    "result": {
+                      "type": "object",
+                      "required": [
+                        "apiKeys"
+                      ],
+                      "properties": {
+                        "apiKeys": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/ApiKey"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Authentication token is missing or invalid"
+          },
+          "403": {
+            "description": "Forbidden - User doesn't have permission to access API keys"
           }
         }
       }

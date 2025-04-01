@@ -665,6 +665,33 @@ export interface Frame {
   author?: User
 }
 
+export interface ApiKey {
+  /**
+   * Unique identifier for the API key
+   */
+  id: string
+  /**
+   * Timestamp when the API key was created (in milliseconds since epoch)
+   */
+  createdAt: bigint
+  /**
+   * Timestamp when the API key expires (in milliseconds since epoch)
+   */
+  expiresAt: bigint
+  /**
+   * Timestamp when the API key was revoked, if applicable (in milliseconds since epoch)
+   */
+  revokedAt?: bigint
+  /**
+   * Short identifier tag for the API key
+   */
+  tag: string
+  /**
+   * User-provided description of the API key's purpose
+   */
+  description: string
+}
+
 /**
  * The user's FID (Farcaster ID)
  */
@@ -3358,6 +3385,37 @@ export interface GetFarcasterJsonResponses {
 
 export type GetFarcasterJsonResponse =
   GetFarcasterJsonResponses[keyof GetFarcasterJsonResponses]
+
+export interface GetApiKeysData {
+  body?: never
+  path?: never
+  query?: never
+  url: '/v2/api-keys'
+}
+
+export interface GetApiKeysErrors {
+  /**
+   * Unauthorized - Authentication token is missing or invalid
+   */
+  401: unknown
+  /**
+   * Forbidden - User doesn't have permission to access API keys
+   */
+  403: unknown
+}
+
+export interface GetApiKeysResponses {
+  /**
+   * Successfully retrieved API keys
+   */
+  200: {
+    result: {
+      apiKeys: ApiKey[]
+    }
+  }
+}
+
+export type GetApiKeysResponse = GetApiKeysResponses[keyof GetApiKeysResponses]
 
 export interface ClientOptions {
   baseUrl:

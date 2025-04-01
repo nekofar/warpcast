@@ -1872,3 +1872,42 @@ export const FrameSchema = {
     },
   },
 } as const
+
+export const ApiKeySchema = {
+  type: 'object',
+  required: ['id', 'createdAt', 'expiresAt', 'tag', 'description'],
+  properties: {
+    id: {
+      type: 'string',
+      format: 'uuid',
+      description: 'Unique identifier for the API key',
+    },
+    createdAt: {
+      type: 'integer',
+      format: 'int64',
+      description:
+        'Timestamp when the API key was created (in milliseconds since epoch)',
+    },
+    expiresAt: {
+      type: 'integer',
+      format: 'int64',
+      description:
+        'Timestamp when the API key expires (in milliseconds since epoch)',
+    },
+    revokedAt: {
+      type: 'integer',
+      format: 'int64',
+      description:
+        'Timestamp when the API key was revoked, if applicable (in milliseconds since epoch)',
+      nullable: true,
+    },
+    tag: {
+      type: 'string',
+      description: 'Short identifier tag for the API key',
+    },
+    description: {
+      type: 'string',
+      description: "User-provided description of the API key's purpose",
+    },
+  },
+} as const

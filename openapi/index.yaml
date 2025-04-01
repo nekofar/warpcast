@@ -272,3 +272,6 @@ paths:
 
   /v1/dev-tools/farcaster-json:
     $ref: ./paths/v1/dev-tools/farcaster-json.yaml
+
+  /v2/api-keys:
+    $ref: ./paths/v2/api-keys.yaml
