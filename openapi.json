@@ -7366,6 +7366,85 @@
           }
         }
       }
+    },
+    "/v2/connected-accounts": {
+      "get": {
+        "summary": "Get connected social accounts",
+        "description": "Retrieves a list of external social accounts connected to the user's Warpcast profile",
+        "operationId": "getConnectedAccounts",
+        "tags": [
+          "User"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Maximum number of connected accounts to return",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 15
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of connected accounts",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "accounts": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "connectedAccountId": {
+                                "type": "string",
+                                "description": "Unique identifier for the connected account"
+                              },
+                              "platform": {
+                                "type": "string",
+                                "description": "Social platform name (e.g., x, github, lens)",
+                                "enum": [
+                                  "x",
+                                  "github",
+                                  "lens",
+                                  "ethereum"
+                                ]
+                              },
+                              "username": {
+                                "type": "string",
+                                "description": "Username on the connected platform"
+                              },
+                              "expired": {
+                                "type": "boolean",
+                                "description": "Whether the connection has expired"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "result"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

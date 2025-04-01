@@ -3670,6 +3670,49 @@ export interface RevokeApiKeyResponses {
 export type RevokeApiKeyResponse =
   RevokeApiKeyResponses[keyof RevokeApiKeyResponses]
 
+export interface GetConnectedAccountsData {
+  body?: never
+  path?: never
+  query?: {
+    /**
+     * Maximum number of connected accounts to return
+     */
+    limit?: number
+  }
+  url: '/v2/connected-accounts'
+}
+
+export interface GetConnectedAccountsResponses {
+  /**
+   * List of connected accounts
+   */
+  200: {
+    result: {
+      accounts?: {
+        /**
+         * Unique identifier for the connected account
+         */
+        connectedAccountId?: string
+        /**
+         * Social platform name (e.g., x, github, lens)
+         */
+        platform?: 'x' | 'github' | 'lens' | 'ethereum'
+        /**
+         * Username on the connected platform
+         */
+        username?: string
+        /**
+         * Whether the connection has expired
+         */
+        expired?: boolean
+      }[]
+    }
+  }
+}
+
+export type GetConnectedAccountsResponse =
+  GetConnectedAccountsResponses[keyof GetConnectedAccountsResponses]
+
 export interface ClientOptions {
   baseUrl:
     | 'https://api.warpcast.com'

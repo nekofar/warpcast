@@ -278,3 +278,6 @@ paths:
 
   /v2/revoke-api-key:
     $ref: ./paths/v2/revoke-api-key.yaml
+
+  /v2/connected-accounts:
+    $ref: ./paths/v2/connected-accounts.yaml

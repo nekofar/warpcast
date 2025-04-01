@@ -83,6 +83,8 @@ import type {
   GetChannelStreaksForUserResponse,
   GetChannelUsersData,
   GetChannelUsersResponse,
+  GetConnectedAccountsData,
+  GetConnectedAccountsResponse,
   GetCreatorRewardWinnersData,
   GetCreatorRewardWinnersResponse,
   GetCurrentUserData,
@@ -2458,5 +2460,29 @@ export const revokeApiKey = <ThrowOnError extends boolean = false>(
       'Content-Type': 'application/json',
       ...options.headers,
     },
+  })
+}
+
+/**
+ * Get connected social accounts
+ * Retrieves a list of external social accounts connected to the user's Warpcast profile
+ * @param options
+ */
+export const getConnectedAccounts = <ThrowOnError extends boolean = false>(
+  options?: Options<GetConnectedAccountsData, ThrowOnError>,
+) => {
+  return (options?.client ?? _heyApiClient).get<
+    GetConnectedAccountsResponse,
+    unknown,
+    ThrowOnError
+  >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
+    url: '/v2/connected-accounts',
+    ...options,
   })
 }
