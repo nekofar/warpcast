@@ -5,4 +5,4 @@ UserResponse:
       type: object
       properties:
         user:
-          $ref: './user.yaml'
+          $ref: './user.yaml#/User'

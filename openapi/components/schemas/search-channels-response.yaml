@@ -7,4 +7,4 @@ SearchChannelsResponse:
         channels:
           type: array
           items:
-            $ref: './channel.yaml'
+            $ref: '././channel.yaml#/Channel'
