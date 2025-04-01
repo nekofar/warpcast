@@ -12,14 +12,7 @@ servers:
     description: Client-side interface
 
 tags:
-  - name: User
-    description: Operations related to user information and preferences
-  - name: Feed
-    description: Operations related to content feeds
-  - name: Channels
-    description: Operations related to channel management
-  - name: Messaging
-    description: Operations related to direct messages and casts
+  $ref: './tags.yaml'
 
 components:
   securitySchemes:
@@ -28,21 +21,7 @@ components:
       scheme: bearer
 
   parameters:
-    fidParam:
-      name: fid
-      in: query
-      required: true
-      schema:
-        type: integer
-      description: The user's FID (Farcaster ID)
-
-    limitParam:
-      name: limit
-      in: query
-      required: false
-      schema:
-        type: integer
-      description: Maximum number of items to return
+    $ref: './components/parameters.yaml'
 
   responses:
     $ref: './components/responses.yaml'

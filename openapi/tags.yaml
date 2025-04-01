@@ -1,0 +1,11 @@
+- name: User
+  description: Operations related to user information and preferences
+
+- name: Feed
+  description: Operations related to content feeds
+
+- name: Channels
+  description: Operations related to channel management
+
+- name: Messaging
+  description: Operations related to direct messages and casts
