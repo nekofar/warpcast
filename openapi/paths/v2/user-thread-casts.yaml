@@ -1,18 +1,25 @@
 get:
   operationId: getUserThreadCasts
   summary: Get casts from a user thread
+  description: Retrieves casts from a specific thread by a user
+  tags:
+    - Messaging
   parameters:
     - $ref: '../../index.yaml#/components/parameters/limitParam'
     - name: castHashPrefix
       in: query
       required: true
+      description: The hash prefix of the cast
       schema:
         type: string
+        example: "0xcb2f2dbe"
     - name: username
       in: query
       required: true
+      description: The username of the user
       schema:
         type: string
+        example: "nekofar.eth"
   security:
     - bearerAuth: []
   responses:

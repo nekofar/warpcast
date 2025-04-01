@@ -582,6 +582,7 @@ export const getUnseenCounts = <ThrowOnError extends boolean = false>(
 
 /**
  * Get casts from a user thread
+ * Retrieves casts from a specific thread by a user
  * @param options
  */
 export const getUserThreadCasts = <ThrowOnError extends boolean = false>(

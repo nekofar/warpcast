@@ -1207,7 +1207,13 @@ export interface GetUserThreadCastsData {
      * Maximum number of items to return
      */
     limit?: number
+    /**
+     * The hash prefix of the cast
+     */
     castHashPrefix: string
+    /**
+     * The username of the user
+     */
     username: string
   }
   url: '/v2/user-thread-casts'
