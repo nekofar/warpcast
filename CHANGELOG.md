@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.16] - 2025-04-01
+
+### ⚙️ Miscellaneous Tasks
+
+- *(package)* Add author metadata
+- *(package)* Add repository and bugs metadata
+
 ## [2.0.0-alpha.15] - 2025-04-01
 
 ### 🚀 Features
