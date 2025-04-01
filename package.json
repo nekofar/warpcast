@@ -7,6 +7,10 @@
     "farcaster"
   ],
   "license": "Apache-2.0",
+  "author": {
+    "name": "Milad Nekofar",
+    "email": "milad@nekofar.com"
+  },
   "sideEffects": false,
   "type": "module",
   "exports": {
