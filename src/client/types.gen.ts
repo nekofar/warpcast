@@ -3475,6 +3475,53 @@ export interface CreateApiKeyResponses {
 export type CreateApiKeyResponse =
   CreateApiKeyResponses[keyof CreateApiKeyResponses]
 
+export interface RevokeApiKeyData {
+  body: {
+    /**
+     * ID of the API key to revoke
+     */
+    id: string
+  }
+  headers?: {
+    /**
+     * A unique key to ensure idempotency of the request
+     */
+    'idempotency-key'?: string
+  }
+  path?: never
+  query?: never
+  url: '/v2/revoke-api-key'
+}
+
+export interface RevokeApiKeyErrors {
+  /**
+   * Unauthorized - Authentication token is missing or invalid
+   */
+  401: unknown
+  /**
+   * Forbidden - User doesn't have permission to revoke API keys
+   */
+  403: unknown
+  /**
+   * Not Found - API key with specified ID does not exist
+   */
+  404: unknown
+}
+
+export interface RevokeApiKeyResponses {
+  /**
+   * Successfully revoked the API key
+   */
+  200: {
+    result: {
+      success: boolean
+    }
+  }
+}
+
+export type RevokeApiKeyResponse =
+  RevokeApiKeyResponses[keyof RevokeApiKeyResponses]
+
 export interface ClientOptions {
   baseUrl:
     | 'https://api.warpcast.com'

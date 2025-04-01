@@ -191,6 +191,8 @@ import type {
   RecastCastResponse,
   RemoveChannelInviteData,
   RemoveChannelInviteResponse,
+  RevokeApiKeyData,
+  RevokeApiKeyResponse,
   SearchChannelsData,
   SearchChannelsResponse,
   SendDirectCastData,
@@ -2393,6 +2395,34 @@ export const createApiKey = <ThrowOnError extends boolean = false>(
       },
     ],
     url: '/v2/api-keys',
+    ...options,
+    headers: {
+      'Content-Type': 'application/json',
+      ...options.headers,
+    },
+  })
+}
+
+/**
+ * Revoke an API key
+ * Revokes an existing API key making it no longer valid for authentication
+ * @param options
+ */
+export const revokeApiKey = <ThrowOnError extends boolean = false>(
+  options: Options<RevokeApiKeyData, ThrowOnError>,
+) => {
+  return (options.client ?? _heyApiClient).patch<
+    RevokeApiKeyResponse,
+    unknown,
+    ThrowOnError
+  >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
+    url: '/v2/revoke-api-key',
     ...options,
     headers: {
       'Content-Type': 'application/json',
