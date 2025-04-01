@@ -31,57 +31,13 @@
     {
       "name": "Messaging",
       "description": "Operations related to direct messages and casts"
+    },
+    {
+      "name": "DevTools",
+      "description": "Development tools and utilities for Farcaster integration"
     }
   ],
   "components": {
-    "securitySchemes": {
-      "bearerAuth": {
-        "type": "http",
-        "scheme": "bearer"
-      }
-    },
-    "parameters": {
-      "fidParam": {
-        "name": "fid",
-        "in": "query",
-        "required": true,
-        "schema": {
-          "type": "integer"
-        },
-        "description": "The user's FID (Farcaster ID)"
-      },
-      "limitParam": {
-        "name": "limit",
-        "in": "query",
-        "required": false,
-        "schema": {
-          "type": "integer"
-        },
-        "description": "Maximum number of items to return"
-      }
-    },
-    "responses": {
-      "NotFound": {
-        "description": "The specified resource was not found",
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/ErrorResponse"
-            }
-          }
-        }
-      },
-      "Unauthorized": {
-        "description": "Authentication is required or failed",
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/ErrorResponse"
-            }
-          }
-        }
-      }
-    },
     "schemas": {
       "Winner": {
         "type": "object",
@@ -1691,19 +1647,198 @@
         "type": "object",
         "properties": {
           "hash": {
-            "type": "string"
+            "type": "string",
+            "description": "Unique hash identifier for the cast"
           },
           "threadHash": {
-            "type": "string"
+            "type": "string",
+            "description": "Hash identifier for the thread this cast belongs to"
+          },
+          "parentHash": {
+            "type": "string",
+            "description": "Hash identifier of the parent cast (if this is a reply)"
+          },
+          "parentSource": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "url"
+                ]
+              },
+              "url": {
+                "type": "string"
+              }
+            }
+          },
+          "author": {
+            "$ref": "#/components/schemas/User"
           },
           "text": {
-            "type": "string"
+            "type": "string",
+            "description": "The text content of the cast"
           },
           "timestamp": {
-            "type": "integer"
+            "type": "integer",
+            "format": "int64",
+            "description": "Unix timestamp in milliseconds"
+          },
+          "mentions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/User"
+            }
           },
           "embeds": {
-            "$ref": "#/components/schemas/EmbedGroups"
+            "type": "object",
+            "properties": {
+              "images": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ImageEmbed"
+                }
+              },
+              "urls": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/UrlEmbed"
+                }
+              },
+              "videos": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/VideoEmbed"
+                }
+              },
+              "unknowns": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "processedCastText": {
+                "type": "string"
+              },
+              "groupInvites": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "replies": {
+            "type": "object",
+            "properties": {
+              "count": {
+                "type": "integer"
+              }
+            }
+          },
+          "reactions": {
+            "type": "object",
+            "properties": {
+              "count": {
+                "type": "integer"
+              }
+            }
+          },
+          "recasts": {
+            "type": "object",
+            "properties": {
+              "count": {
+                "type": "integer"
+              },
+              "recasters": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Recaster"
+                }
+              }
+            }
+          },
+          "watches": {
+            "type": "object",
+            "properties": {
+              "count": {
+                "type": "integer"
+              }
+            }
+          },
+          "recast": {
+            "type": "boolean"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "imageUrl": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "quoteCount": {
+            "type": "integer"
+          },
+          "combinedRecastCount": {
+            "type": "integer"
+          },
+          "channel": {
+            "type": "object",
+            "properties": {
+              "key": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "imageUrl": {
+                "type": "string"
+              },
+              "authorContext": {
+                "type": "object",
+                "properties": {
+                  "role": {
+                    "type": "string"
+                  },
+                  "restricted": {
+                    "type": "boolean"
+                  },
+                  "banned": {
+                    "type": "boolean"
+                  }
+                }
+              },
+              "authorRole": {
+                "type": "string"
+              }
+            }
+          },
+          "viewerContext": {
+            "type": "object",
+            "properties": {
+              "reacted": {
+                "type": "boolean"
+              },
+              "recast": {
+                "type": "boolean"
+              },
+              "bookmarked": {
+                "type": "boolean"
+              }
+            }
           }
         }
       },
@@ -1982,6 +2117,200 @@
             "$ref": "#/components/schemas/User"
           }
         }
+      },
+      "ApiKey": {
+        "type": "object",
+        "required": [
+          "id",
+          "createdAt",
+          "expiresAt",
+          "tag",
+          "description"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Unique identifier for the API key"
+          },
+          "createdAt": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Timestamp when the API key was created (in milliseconds since epoch)"
+          },
+          "expiresAt": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Timestamp when the API key expires (in milliseconds since epoch)"
+          },
+          "revokedAt": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Timestamp when the API key was revoked, if applicable (in milliseconds since epoch)",
+            "nullable": true
+          },
+          "tag": {
+            "type": "string",
+            "description": "Short identifier tag for the API key"
+          },
+          "description": {
+            "type": "string",
+            "description": "User-provided description of the API key's purpose"
+          }
+        }
+      },
+      "Recaster": {
+        "type": "object",
+        "properties": {
+          "fid": {
+            "type": "integer"
+          },
+          "username": {
+            "type": "string"
+          },
+          "displayName": {
+            "type": "string"
+          },
+          "recastHash": {
+            "type": "string"
+          }
+        }
+      },
+      "ImageEmbed": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "image"
+            ]
+          },
+          "url": {
+            "type": "string"
+          },
+          "sourceUrl": {
+            "type": "string"
+          },
+          "media": {
+            "type": "object",
+            "properties": {
+              "version": {
+                "type": "string"
+              },
+              "width": {
+                "type": "integer"
+              },
+              "height": {
+                "type": "integer"
+              },
+              "staticRaster": {
+                "type": "string"
+              },
+              "mimeType": {
+                "type": "string"
+              }
+            }
+          },
+          "alt": {
+            "type": "string"
+          }
+        }
+      },
+      "UrlEmbed": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "url"
+            ]
+          },
+          "openGraph": {
+            "type": "object",
+            "properties": {
+              "url": {
+                "type": "string"
+              },
+              "sourceUrl": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "domain": {
+                "type": "string"
+              },
+              "image": {
+                "type": "string"
+              },
+              "useLargeImage": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      },
+      "VideoEmbed": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "video"
+            ]
+          }
+        }
+      }
+    },
+    "parameters": {
+      "fidParam": {
+        "name": "fid",
+        "in": "query",
+        "required": true,
+        "schema": {
+          "type": "integer"
+        },
+        "description": "The user's FID (Farcaster ID)"
+      },
+      "limitParam": {
+        "name": "limit",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "integer"
+        },
+        "description": "Maximum number of items to return"
+      }
+    },
+    "responses": {
+      "NotFound": {
+        "description": "The specified resource was not found",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      },
+      "Unauthorized": {
+        "description": "Authentication is required or failed",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
       }
     }
   },
@@ -2496,6 +2825,10 @@
       "get": {
         "operationId": "getUserThreadCasts",
         "summary": "Get casts from a user thread",
+        "description": "Retrieves casts from a specific thread by a user",
+        "tags": [
+          "Messaging"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/limitParam"
@@ -2504,16 +2837,20 @@
             "name": "castHashPrefix",
             "in": "query",
             "required": true,
+            "description": "The hash prefix of the cast",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "0xcb2f2dbe"
             }
           },
           {
             "name": "username",
             "in": "query",
             "required": true,
+            "description": "The username of the user",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "nekofar.eth"
             }
           }
         ],
@@ -4148,6 +4485,81 @@
       }
     },
     "/v2/casts": {
+      "get": {
+        "summary": "Retrieve casts for a specific user",
+        "operationId": "getCastsByFid",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "fid",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "description": "The FID (Farcaster ID) of the user whose casts to retrieve"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "description": "Maximum number of casts to return",
+              "default": 15
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved casts",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "casts": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/Cast"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
       "post": {
         "summary": "Create a new cast",
         "operationId": "createCast",
@@ -6419,6 +6831,797 @@
             "bearerAuth": []
           }
         ]
+      }
+    },
+    "/v1/domain-manifest": {
+      "get": {
+        "operationId": "getDomainManifest",
+        "summary": "Retrieve domain manifest information",
+        "description": "Fetches verification and manifest information for a Farcaster domain",
+        "tags": [
+          "Frames"
+        ],
+        "parameters": [
+          {
+            "name": "domain",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "The domain to retrieve manifest information for"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved domain manifest",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "state": {
+                          "type": "object",
+                          "properties": {
+                            "verified": {
+                              "type": "boolean",
+                              "description": "Indicates if the domain is verified"
+                            },
+                            "manifest": {
+                              "type": "string",
+                              "description": "JSON string containing the raw manifest data"
+                            },
+                            "decodedManifest": {
+                              "type": "object",
+                              "properties": {
+                                "accountAssociation": {
+                                  "type": "object",
+                                  "properties": {
+                                    "fid": {
+                                      "type": "integer",
+                                      "description": "Farcaster ID associated with the domain"
+                                    },
+                                    "key": {
+                                      "type": "string",
+                                      "description": "Public key associated with the domain"
+                                    },
+                                    "domain": {
+                                      "type": "string",
+                                      "description": "The domain name"
+                                    },
+                                    "signature": {
+                                      "type": "string",
+                                      "description": "Signature proving domain ownership"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/dev-tools/meta-tags": {
+      "get": {
+        "operationId": "getMetaTags",
+        "summary": "Fetch meta tags from a URL",
+        "description": "Retrieves metadata and Open Graph information from a specified URL",
+        "tags": [
+          "DevTools"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "url",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uri"
+            },
+            "description": "The URL to fetch metadata from"
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved metadata",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "viewport": {
+                      "type": "string",
+                      "description": "Viewport meta tag content"
+                    },
+                    "theme-color": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "description": "Theme color values"
+                    },
+                    "color-scheme": {
+                      "type": "string",
+                      "description": "Color scheme preference"
+                    },
+                    "description": {
+                      "type": "string",
+                      "description": "Page description"
+                    },
+                    "apple-mobile-web-app-capable": {
+                      "type": "string",
+                      "description": "Apple mobile web app capability setting"
+                    },
+                    "apple-mobile-web-app-title": {
+                      "type": "string",
+                      "description": "Apple mobile web app title"
+                    },
+                    "apple-mobile-web-app-status-bar-style": {
+                      "type": "string",
+                      "description": "Apple mobile status bar style"
+                    },
+                    "og:title": {
+                      "type": "string",
+                      "description": "Open Graph title"
+                    },
+                    "og:description": {
+                      "type": "string",
+                      "description": "Open Graph description"
+                    },
+                    "og:url": {
+                      "type": "string",
+                      "description": "Open Graph URL"
+                    },
+                    "og:site_name": {
+                      "type": "string",
+                      "description": "Open Graph site name"
+                    },
+                    "og:image:type": {
+                      "type": "string",
+                      "description": "Open Graph image MIME type"
+                    },
+                    "og:image:width": {
+                      "type": "string",
+                      "description": "Open Graph image width"
+                    },
+                    "og:image:height": {
+                      "type": "string",
+                      "description": "Open Graph image height"
+                    },
+                    "og:image": {
+                      "type": "string",
+                      "description": "Open Graph image URL"
+                    },
+                    "og:type": {
+                      "type": "string",
+                      "description": "Open Graph content type"
+                    },
+                    "twitter:card": {
+                      "type": "string",
+                      "description": "Twitter card type"
+                    },
+                    "twitter:title": {
+                      "type": "string",
+                      "description": "Twitter card title"
+                    },
+                    "twitter:description": {
+                      "type": "string",
+                      "description": "Twitter card description"
+                    },
+                    "twitter:image:type": {
+                      "type": "string",
+                      "description": "Twitter image MIME type"
+                    },
+                    "twitter:image:width": {
+                      "type": "string",
+                      "description": "Twitter image width"
+                    },
+                    "twitter:image:height": {
+                      "type": "string",
+                      "description": "Twitter image height"
+                    },
+                    "twitter:image": {
+                      "type": "string",
+                      "description": "Twitter image URL"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/dev-tools/farcaster-json": {
+      "get": {
+        "operationId": "getFarcasterJson",
+        "summary": "Fetch Farcaster JSON data from a domain",
+        "description": "Retrieves Farcaster account association and frame information for a specified domain",
+        "tags": [
+          "DevTools"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "domain",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "The domain to fetch Farcaster JSON data from"
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved Farcaster JSON data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "accountAssociation": {
+                      "type": "object",
+                      "description": "Farcaster account association information",
+                      "properties": {
+                        "header": {
+                          "type": "string",
+                          "description": "Base64 encoded header containing FID, type, and key information"
+                        },
+                        "payload": {
+                          "type": "string",
+                          "description": "Base64 encoded payload containing domain information"
+                        },
+                        "signature": {
+                          "type": "string",
+                          "description": "Cryptographic signature for verification"
+                        }
+                      }
+                    },
+                    "frame": {
+                      "type": "object",
+                      "description": "Farcaster frame configuration",
+                      "properties": {
+                        "homeUrl": {
+                          "type": "string",
+                          "format": "uri",
+                          "description": "URL of the frame's home page"
+                        },
+                        "iconUrl": {
+                          "type": "string",
+                          "format": "uri",
+                          "description": "URL of the frame's icon"
+                        },
+                        "name": {
+                          "type": "string",
+                          "description": "Name of the frame"
+                        },
+                        "splashBackgroundColor": {
+                          "type": "string",
+                          "description": "Background color for the splash screen in hex format"
+                        },
+                        "splashImageUrl": {
+                          "type": "string",
+                          "format": "uri",
+                          "description": "URL of the splash image"
+                        },
+                        "version": {
+                          "type": "string",
+                          "description": "Version of the frame"
+                        },
+                        "webhookUrl": {
+                          "type": "string",
+                          "format": "uri",
+                          "description": "URL of the frame's webhook"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v2/api-keys": {
+      "get": {
+        "tags": [
+          "DevTools"
+        ],
+        "summary": "Retrieve API keys for the authenticated user",
+        "description": "Returns a list of API keys associated with the user's account, including active and revoked keys",
+        "operationId": "getApiKeys",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved API keys",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "result"
+                  ],
+                  "properties": {
+                    "result": {
+                      "type": "object",
+                      "required": [
+                        "apiKeys"
+                      ],
+                      "properties": {
+                        "apiKeys": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/ApiKey"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Authentication token is missing or invalid"
+          },
+          "403": {
+            "description": "Forbidden - User doesn't have permission to access API keys"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "DevTools"
+        ],
+        "summary": "Create a new API key",
+        "description": "Creates a new API key with the specified description and expiration date",
+        "operationId": "createApiKey",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "idempotency-key",
+            "in": "header",
+            "description": "A unique key to ensure idempotency of the request",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "description",
+                  "expiresAt"
+                ],
+                "properties": {
+                  "description": {
+                    "type": "string",
+                    "description": "User-provided description of the API key's purpose"
+                  },
+                  "expiresAt": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "Timestamp when the API key should expire (in milliseconds since epoch)"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully created API key",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "result"
+                  ],
+                  "properties": {
+                    "result": {
+                      "type": "object",
+                      "required": [
+                        "id",
+                        "secretKey"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "format": "uuid",
+                          "description": "Unique identifier for the created API key"
+                        },
+                        "secretKey": {
+                          "type": "string",
+                          "description": "The secret key value that should be used for authentication (only returned once at creation)"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request - Invalid input parameters"
+          },
+          "401": {
+            "description": "Unauthorized - Authentication token is missing or invalid"
+          },
+          "403": {
+            "description": "Forbidden - User doesn't have permission to create API keys"
+          }
+        }
+      }
+    },
+    "/v2/revoke-api-key": {
+      "patch": {
+        "tags": [
+          "DevTools"
+        ],
+        "summary": "Revoke an API key",
+        "description": "Revokes an existing API key making it no longer valid for authentication",
+        "operationId": "revokeApiKey",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "idempotency-key",
+            "in": "header",
+            "description": "A unique key to ensure idempotency of the request",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "id"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "ID of the API key to revoke"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully revoked the API key",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "result"
+                  ],
+                  "properties": {
+                    "result": {
+                      "type": "object",
+                      "required": [
+                        "success"
+                      ],
+                      "properties": {
+                        "success": {
+                          "type": "boolean",
+                          "example": true
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Authentication token is missing or invalid"
+          },
+          "403": {
+            "description": "Forbidden - User doesn't have permission to revoke API keys"
+          },
+          "404": {
+            "description": "Not Found - API key with specified ID does not exist"
+          }
+        }
+      }
+    },
+    "/v2/connected-accounts": {
+      "get": {
+        "summary": "Get connected social accounts",
+        "description": "Retrieves a list of external social accounts connected to the user's Warpcast profile",
+        "operationId": "getConnectedAccounts",
+        "tags": [
+          "User"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Maximum number of connected accounts to return",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 15
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of connected accounts",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "accounts": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "connectedAccountId": {
+                                "type": "string",
+                                "description": "Unique identifier for the connected account"
+                              },
+                              "platform": {
+                                "type": "string",
+                                "description": "Social platform name (e.g., x, github, lens)",
+                                "enum": [
+                                  "x",
+                                  "github",
+                                  "lens",
+                                  "ethereum"
+                                ]
+                              },
+                              "username": {
+                                "type": "string",
+                                "description": "Username on the connected platform"
+                              },
+                              "expired": {
+                                "type": "boolean",
+                                "description": "Whether the connection has expired"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "result"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v2/profile-casts": {
+      "get": {
+        "tags": [
+          "User",
+          "Feed"
+        ],
+        "operationId": "getProfileCasts",
+        "summary": "Get casts from a user's profile",
+        "description": "Retrieves a list of casts published by a specific user identified by their Farcaster ID (FID).",
+        "parameters": [
+          {
+            "name": "fid",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Farcaster ID of the user"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 15
+            },
+            "description": "Maximum number of casts to return"
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Cursor for pagination"
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved user's casts",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "result"
+                  ],
+                  "properties": {
+                    "result": {
+                      "type": "object",
+                      "required": [
+                        "casts"
+                      ],
+                      "properties": {
+                        "casts": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/Cast"
+                          }
+                        }
+                      }
+                    },
+                    "next": {
+                      "type": "object",
+                      "properties": {
+                        "cursor": {
+                          "type": "string",
+                          "description": "Cursor for fetching the next page of results"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Authentication token is missing or invalid"
+          },
+          "404": {
+            "description": "User not found"
+          }
+        }
+      }
+    },
+    "/v2/user-liked-casts": {
+      "get": {
+        "summary": "Retrieve liked casts by user FID",
+        "operationId": "getUserLikedCasts",
+        "parameters": [
+          {
+            "name": "fid",
+            "in": "query",
+            "description": "The user's fid (user id) whose liked casts are to be retrieved.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "example": 17838
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of results to limit per request.",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 15
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved liked casts.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "casts": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/Cast"
+                          }
+                        },
+                        "next": {
+                          "type": "object",
+                          "properties": {
+                            "cursor": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "result"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request (e.g., missing required parameters)"
+          },
+          "401": {
+            "description": "Unauthorized access - invalid or missing token"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
       }
     }
   }

@@ -12,6 +12,6 @@ get:
       content:
         application/json:
           schema:
-            $ref: '../../components/schemas.yaml#/OnboardingStateResponse'
+            $ref: '../../components/schemas/index.yaml#/OnboardingStateResponse'
     '401':
       $ref: '../../index.yaml#/components/responses/Unauthorized'

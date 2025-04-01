@@ -7,8 +7,13 @@ import type {
 } from '@hey-api/client-fetch'
 import { client as _heyApiClient } from './client.gen'
 import {
+  createCastResponseTransformer,
+  getApiKeysResponseTransformer,
+  getCastsByFidResponseTransformer,
   getCreatorRewardWinnersResponseTransformer,
+  getProfileCastsResponseTransformer,
   getStarterPackMembersResponseTransformer,
+  getUserLikedCastsResponseTransformer,
 } from './transformers.gen'
 import type {
   AcceptChannelInviteData,
@@ -21,6 +26,8 @@ import type {
   BlockUserResponse,
   CheckUserChannelFollowStatusData,
   CheckUserChannelFollowStatusResponse,
+  CreateApiKeyData,
+  CreateApiKeyResponse,
   CreateCastData,
   CreateCastResponse,
   CreateDraftCastsData,
@@ -37,6 +44,8 @@ import type {
   GetAccountVerificationsResponse,
   GetAllChannelsData,
   GetAllChannelsResponse,
+  GetApiKeysData,
+  GetApiKeysResponse,
   GetAppsByAuthorData,
   GetAppsByAuthorResponse,
   GetAvailableInvitesData,
@@ -51,6 +60,9 @@ import type {
   GetCastQuotesResponse,
   GetCastRecastersData,
   GetCastRecastersResponse,
+  GetCastsByFidData,
+  GetCastsByFidError,
+  GetCastsByFidResponse,
   GetChannelBannedUsersData,
   GetChannelBannedUsersResponse,
   GetChannelData,
@@ -73,6 +85,8 @@ import type {
   GetChannelStreaksForUserResponse,
   GetChannelUsersData,
   GetChannelUsersResponse,
+  GetConnectedAccountsData,
+  GetConnectedAccountsResponse,
   GetCreatorRewardWinnersData,
   GetCreatorRewardWinnersResponse,
   GetCurrentUserData,
@@ -88,8 +102,12 @@ import type {
   GetDiscoverableActionsResponse,
   GetDiscoverableComposerActionsData,
   GetDiscoverableComposerActionsResponse,
+  GetDomainManifestData,
+  GetDomainManifestResponse,
   GetDraftCastsData,
   GetDraftCastsResponse,
+  GetFarcasterJsonData,
+  GetFarcasterJsonResponse,
   GetFeedItemsData,
   GetFeedItemsError,
   GetFeedItemsResponse,
@@ -100,12 +118,16 @@ import type {
   GetHighlightedChannelsData,
   GetHighlightedChannelsError,
   GetHighlightedChannelsResponse,
+  GetMetaTagsData,
+  GetMetaTagsResponse,
   GetMutedKeywordsData,
   GetMutedKeywordsResponse,
   GetMutualFollowersData,
   GetMutualFollowersResponse,
   GetNotificationsData,
   GetNotificationsResponse,
+  GetProfileCastsData,
+  GetProfileCastsResponse,
   GetRewardsLeaderboardData,
   GetRewardsLeaderboardResponse,
   GetRewardsMetadataData,
@@ -145,6 +167,8 @@ import type {
   GetUserFollowingChannelsData,
   GetUserFollowingChannelsError,
   GetUserFollowingChannelsResponse,
+  GetUserLikedCastsData,
+  GetUserLikedCastsResponse,
   GetUserOnboardingStateData,
   GetUserOnboardingStateError,
   GetUserOnboardingStateResponse,
@@ -180,6 +204,8 @@ import type {
   RecastCastResponse,
   RemoveChannelInviteData,
   RemoveChannelInviteResponse,
+  RevokeApiKeyData,
+  RevokeApiKeyResponse,
   SearchChannelsData,
   SearchChannelsResponse,
   SendDirectCastData,
@@ -556,6 +582,7 @@ export const getUnseenCounts = <ThrowOnError extends boolean = false>(
 
 /**
  * Get casts from a user thread
+ * Retrieves casts from a specific thread by a user
  * @param options
  */
 export const getUserThreadCasts = <ThrowOnError extends boolean = false>(
@@ -1493,6 +1520,30 @@ export const deleteCast = <ThrowOnError extends boolean = false>(
 }
 
 /**
+ * Retrieve casts for a specific user
+ * @param options
+ */
+export const getCastsByFid = <ThrowOnError extends boolean = false>(
+  options: Options<GetCastsByFidData, ThrowOnError>,
+) => {
+  return (options.client ?? _heyApiClient).get<
+    GetCastsByFidResponse,
+    GetCastsByFidError,
+    ThrowOnError
+  >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
+    responseTransformer: getCastsByFidResponseTransformer,
+    url: '/v2/casts',
+    ...options,
+  })
+}
+
+/**
  * Create a new cast
  * @param options
  */
@@ -1510,6 +1561,7 @@ export const createCast = <ThrowOnError extends boolean = false>(
         type: 'http',
       },
     ],
+    responseTransformer: createCastResponseTransformer,
     url: '/v2/casts',
     ...options,
     headers: {
@@ -2267,6 +2319,226 @@ export const getAppsByAuthor = <ThrowOnError extends boolean = false>(
       },
     ],
     url: '/v1/apps-by-author',
+    ...options,
+  })
+}
+
+/**
+ * Retrieve domain manifest information
+ * Fetches verification and manifest information for a Farcaster domain
+ * @param options
+ */
+export const getDomainManifest = <ThrowOnError extends boolean = false>(
+  options: Options<GetDomainManifestData, ThrowOnError>,
+) => {
+  return (options.client ?? _heyApiClient).get<
+    GetDomainManifestResponse,
+    unknown,
+    ThrowOnError
+  >({
+    url: '/v1/domain-manifest',
+    ...options,
+  })
+}
+
+/**
+ * Fetch meta tags from a URL
+ * Retrieves metadata and Open Graph information from a specified URL
+ * @param options
+ */
+export const getMetaTags = <ThrowOnError extends boolean = false>(
+  options: Options<GetMetaTagsData, ThrowOnError>,
+) => {
+  return (options.client ?? _heyApiClient).get<
+    GetMetaTagsResponse,
+    unknown,
+    ThrowOnError
+  >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
+    url: '/v1/dev-tools/meta-tags',
+    ...options,
+  })
+}
+
+/**
+ * Fetch Farcaster JSON data from a domain
+ * Retrieves Farcaster account association and frame information for a specified domain
+ * @param options
+ */
+export const getFarcasterJson = <ThrowOnError extends boolean = false>(
+  options: Options<GetFarcasterJsonData, ThrowOnError>,
+) => {
+  return (options.client ?? _heyApiClient).get<
+    GetFarcasterJsonResponse,
+    unknown,
+    ThrowOnError
+  >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
+    url: '/v1/dev-tools/farcaster-json',
+    ...options,
+  })
+}
+
+/**
+ * Retrieve API keys for the authenticated user
+ * Returns a list of API keys associated with the user's account, including active and revoked keys
+ * @param options
+ */
+export const getApiKeys = <ThrowOnError extends boolean = false>(
+  options?: Options<GetApiKeysData, ThrowOnError>,
+) => {
+  return (options?.client ?? _heyApiClient).get<
+    GetApiKeysResponse,
+    unknown,
+    ThrowOnError
+  >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
+    responseTransformer: getApiKeysResponseTransformer,
+    url: '/v2/api-keys',
+    ...options,
+  })
+}
+
+/**
+ * Create a new API key
+ * Creates a new API key with the specified description and expiration date
+ * @param options
+ */
+export const createApiKey = <ThrowOnError extends boolean = false>(
+  options: Options<CreateApiKeyData, ThrowOnError>,
+) => {
+  return (options.client ?? _heyApiClient).put<
+    CreateApiKeyResponse,
+    unknown,
+    ThrowOnError
+  >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
+    url: '/v2/api-keys',
+    ...options,
+    headers: {
+      'Content-Type': 'application/json',
+      ...options.headers,
+    },
+  })
+}
+
+/**
+ * Revoke an API key
+ * Revokes an existing API key making it no longer valid for authentication
+ * @param options
+ */
+export const revokeApiKey = <ThrowOnError extends boolean = false>(
+  options: Options<RevokeApiKeyData, ThrowOnError>,
+) => {
+  return (options.client ?? _heyApiClient).patch<
+    RevokeApiKeyResponse,
+    unknown,
+    ThrowOnError
+  >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
+    url: '/v2/revoke-api-key',
+    ...options,
+    headers: {
+      'Content-Type': 'application/json',
+      ...options.headers,
+    },
+  })
+}
+
+/**
+ * Get connected social accounts
+ * Retrieves a list of external social accounts connected to the user's Warpcast profile
+ * @param options
+ */
+export const getConnectedAccounts = <ThrowOnError extends boolean = false>(
+  options?: Options<GetConnectedAccountsData, ThrowOnError>,
+) => {
+  return (options?.client ?? _heyApiClient).get<
+    GetConnectedAccountsResponse,
+    unknown,
+    ThrowOnError
+  >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
+    url: '/v2/connected-accounts',
+    ...options,
+  })
+}
+
+/**
+ * Get casts from a user's profile
+ * Retrieves a list of casts published by a specific user identified by their Farcaster ID (FID).
+ * @param options
+ */
+export const getProfileCasts = <ThrowOnError extends boolean = false>(
+  options: Options<GetProfileCastsData, ThrowOnError>,
+) => {
+  return (options.client ?? _heyApiClient).get<
+    GetProfileCastsResponse,
+    unknown,
+    ThrowOnError
+  >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
+    responseTransformer: getProfileCastsResponseTransformer,
+    url: '/v2/profile-casts',
+    ...options,
+  })
+}
+
+/**
+ * Retrieve liked casts by user FID
+ * @param options
+ */
+export const getUserLikedCasts = <ThrowOnError extends boolean = false>(
+  options: Options<GetUserLikedCastsData, ThrowOnError>,
+) => {
+  return (options.client ?? _heyApiClient).get<
+    GetUserLikedCastsResponse,
+    unknown,
+    ThrowOnError
+  >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
+    responseTransformer: getUserLikedCastsResponseTransformer,
+    url: '/v2/user-liked-casts',
     ...options,
   })
 }

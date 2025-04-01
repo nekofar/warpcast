@@ -553,11 +553,78 @@ export interface EmbedGroups {
 }
 
 export interface Cast {
+  /**
+   * Unique hash identifier for the cast
+   */
   hash?: string
+  /**
+   * Hash identifier for the thread this cast belongs to
+   */
   threadHash?: string
+  /**
+   * Hash identifier of the parent cast (if this is a reply)
+   */
+  parentHash?: string
+  parentSource?: {
+    type?: 'url'
+    url?: string
+  }
+  author?: User
+  /**
+   * The text content of the cast
+   */
   text?: string
-  timestamp?: number
-  embeds?: EmbedGroups
+  /**
+   * Unix timestamp in milliseconds
+   */
+  timestamp?: bigint
+  mentions?: User[]
+  embeds?: {
+    images?: ImageEmbed[]
+    urls?: UrlEmbed[]
+    videos?: VideoEmbed[]
+    unknowns?: Record<string, unknown>[]
+    processedCastText?: string
+    groupInvites?: Record<string, unknown>[]
+  }
+  replies?: {
+    count?: number
+  }
+  reactions?: {
+    count?: number
+  }
+  recasts?: {
+    count?: number
+    recasters?: Recaster[]
+  }
+  watches?: {
+    count?: number
+  }
+  recast?: boolean
+  tags?: {
+    type?: string
+    id?: string
+    name?: string
+    imageUrl?: string
+  }[]
+  quoteCount?: number
+  combinedRecastCount?: number
+  channel?: {
+    key?: string
+    name?: string
+    imageUrl?: string
+    authorContext?: {
+      role?: string
+      restricted?: boolean
+      banned?: boolean
+    }
+    authorRole?: string
+  }
+  viewerContext?: {
+    reacted?: boolean
+    recast?: boolean
+    bookmarked?: boolean
+  }
 }
 
 export interface DraftCast {
@@ -663,6 +730,71 @@ export interface Frame {
   supportsNotifications?: boolean
   viewerContext?: Record<string, unknown>
   author?: User
+}
+
+export interface ApiKey {
+  /**
+   * Unique identifier for the API key
+   */
+  id: string
+  /**
+   * Timestamp when the API key was created (in milliseconds since epoch)
+   */
+  createdAt: bigint
+  /**
+   * Timestamp when the API key expires (in milliseconds since epoch)
+   */
+  expiresAt: bigint
+  /**
+   * Timestamp when the API key was revoked, if applicable (in milliseconds since epoch)
+   */
+  revokedAt?: bigint
+  /**
+   * Short identifier tag for the API key
+   */
+  tag: string
+  /**
+   * User-provided description of the API key's purpose
+   */
+  description: string
+}
+
+export interface Recaster {
+  fid?: number
+  username?: string
+  displayName?: string
+  recastHash?: string
+}
+
+export interface ImageEmbed {
+  type?: 'image'
+  url?: string
+  sourceUrl?: string
+  media?: {
+    version?: string
+    width?: number
+    height?: number
+    staticRaster?: string
+    mimeType?: string
+  }
+  alt?: string
+}
+
+export interface UrlEmbed {
+  type?: 'url'
+  openGraph?: {
+    url?: string
+    sourceUrl?: string
+    title?: string
+    description?: string
+    domain?: string
+    image?: string
+    useLargeImage?: boolean
+  }
+}
+
+export interface VideoEmbed {
+  type?: 'video'
 }
 
 /**
@@ -1075,7 +1207,13 @@ export interface GetUserThreadCastsData {
      * Maximum number of items to return
      */
     limit?: number
+    /**
+     * The hash prefix of the cast
+     */
     castHashPrefix: string
+    /**
+     * The username of the user
+     */
     username: string
   }
   url: '/v2/user-thread-casts'
@@ -2044,6 +2182,49 @@ export interface DeleteCastResponses {
 }
 
 export type DeleteCastResponse = DeleteCastResponses[keyof DeleteCastResponses]
+
+export interface GetCastsByFidData {
+  body?: never
+  path?: never
+  query: {
+    /**
+     * The FID (Farcaster ID) of the user whose casts to retrieve
+     */
+    fid: number
+    /**
+     * Maximum number of casts to return
+     */
+    limit?: number
+  }
+  url: '/v2/casts'
+}
+
+export interface GetCastsByFidErrors {
+  /**
+   * Bad request
+   */
+  400: ErrorResponse
+  /**
+   * Unauthorized
+   */
+  401: ErrorResponse
+}
+
+export type GetCastsByFidError = GetCastsByFidErrors[keyof GetCastsByFidErrors]
+
+export interface GetCastsByFidResponses {
+  /**
+   * Successfully retrieved casts
+   */
+  200: {
+    result?: {
+      casts?: Cast[]
+    }
+  }
+}
+
+export type GetCastsByFidResponse =
+  GetCastsByFidResponses[keyof GetCastsByFidResponses]
 
 export interface CreateCastData {
   body: {
@@ -3115,6 +3296,527 @@ export interface GetAppsByAuthorResponses {
 
 export type GetAppsByAuthorResponse =
   GetAppsByAuthorResponses[keyof GetAppsByAuthorResponses]
+
+export interface GetDomainManifestData {
+  body?: never
+  path?: never
+  query: {
+    /**
+     * The domain to retrieve manifest information for
+     */
+    domain: string
+  }
+  url: '/v1/domain-manifest'
+}
+
+export interface GetDomainManifestResponses {
+  /**
+   * Successfully retrieved domain manifest
+   */
+  200: {
+    result?: {
+      state?: {
+        /**
+         * Indicates if the domain is verified
+         */
+        verified?: boolean
+        /**
+         * JSON string containing the raw manifest data
+         */
+        manifest?: string
+        decodedManifest?: {
+          accountAssociation?: {
+            /**
+             * Farcaster ID associated with the domain
+             */
+            fid?: number
+            /**
+             * Public key associated with the domain
+             */
+            key?: string
+            /**
+             * The domain name
+             */
+            domain?: string
+            /**
+             * Signature proving domain ownership
+             */
+            signature?: string
+          }
+        }
+      }
+    }
+  }
+}
+
+export type GetDomainManifestResponse =
+  GetDomainManifestResponses[keyof GetDomainManifestResponses]
+
+export interface GetMetaTagsData {
+  body?: never
+  path?: never
+  query: {
+    /**
+     * The URL to fetch metadata from
+     */
+    url: string
+  }
+  url: '/v1/dev-tools/meta-tags'
+}
+
+export interface GetMetaTagsResponses {
+  /**
+   * Successfully retrieved metadata
+   */
+  200: {
+    /**
+     * Viewport meta tag content
+     */
+    viewport?: string
+    /**
+     * Theme color values
+     */
+    'theme-color'?: string[]
+    /**
+     * Color scheme preference
+     */
+    'color-scheme'?: string
+    /**
+     * Page description
+     */
+    description?: string
+    /**
+     * Apple mobile web app capability setting
+     */
+    'apple-mobile-web-app-capable'?: string
+    /**
+     * Apple mobile web app title
+     */
+    'apple-mobile-web-app-title'?: string
+    /**
+     * Apple mobile status bar style
+     */
+    'apple-mobile-web-app-status-bar-style'?: string
+    /**
+     * Open Graph title
+     */
+    'og:title'?: string
+    /**
+     * Open Graph description
+     */
+    'og:description'?: string
+    /**
+     * Open Graph URL
+     */
+    'og:url'?: string
+    /**
+     * Open Graph site name
+     */
+    'og:site_name'?: string
+    /**
+     * Open Graph image MIME type
+     */
+    'og:image:type'?: string
+    /**
+     * Open Graph image width
+     */
+    'og:image:width'?: string
+    /**
+     * Open Graph image height
+     */
+    'og:image:height'?: string
+    /**
+     * Open Graph image URL
+     */
+    'og:image'?: string
+    /**
+     * Open Graph content type
+     */
+    'og:type'?: string
+    /**
+     * Twitter card type
+     */
+    'twitter:card'?: string
+    /**
+     * Twitter card title
+     */
+    'twitter:title'?: string
+    /**
+     * Twitter card description
+     */
+    'twitter:description'?: string
+    /**
+     * Twitter image MIME type
+     */
+    'twitter:image:type'?: string
+    /**
+     * Twitter image width
+     */
+    'twitter:image:width'?: string
+    /**
+     * Twitter image height
+     */
+    'twitter:image:height'?: string
+    /**
+     * Twitter image URL
+     */
+    'twitter:image'?: string
+  }
+}
+
+export type GetMetaTagsResponse =
+  GetMetaTagsResponses[keyof GetMetaTagsResponses]
+
+export interface GetFarcasterJsonData {
+  body?: never
+  path?: never
+  query: {
+    /**
+     * The domain to fetch Farcaster JSON data from
+     */
+    domain: string
+  }
+  url: '/v1/dev-tools/farcaster-json'
+}
+
+export interface GetFarcasterJsonResponses {
+  /**
+   * Successfully retrieved Farcaster JSON data
+   */
+  200: {
+    /**
+     * Farcaster account association information
+     */
+    accountAssociation?: {
+      /**
+       * Base64 encoded header containing FID, type, and key information
+       */
+      header?: string
+      /**
+       * Base64 encoded payload containing domain information
+       */
+      payload?: string
+      /**
+       * Cryptographic signature for verification
+       */
+      signature?: string
+    }
+    /**
+     * Farcaster frame configuration
+     */
+    frame?: {
+      /**
+       * URL of the frame's home page
+       */
+      homeUrl?: string
+      /**
+       * URL of the frame's icon
+       */
+      iconUrl?: string
+      /**
+       * Name of the frame
+       */
+      name?: string
+      /**
+       * Background color for the splash screen in hex format
+       */
+      splashBackgroundColor?: string
+      /**
+       * URL of the splash image
+       */
+      splashImageUrl?: string
+      /**
+       * Version of the frame
+       */
+      version?: string
+      /**
+       * URL of the frame's webhook
+       */
+      webhookUrl?: string
+    }
+  }
+}
+
+export type GetFarcasterJsonResponse =
+  GetFarcasterJsonResponses[keyof GetFarcasterJsonResponses]
+
+export interface GetApiKeysData {
+  body?: never
+  path?: never
+  query?: never
+  url: '/v2/api-keys'
+}
+
+export interface GetApiKeysErrors {
+  /**
+   * Unauthorized - Authentication token is missing or invalid
+   */
+  401: unknown
+  /**
+   * Forbidden - User doesn't have permission to access API keys
+   */
+  403: unknown
+}
+
+export interface GetApiKeysResponses {
+  /**
+   * Successfully retrieved API keys
+   */
+  200: {
+    result: {
+      apiKeys: ApiKey[]
+    }
+  }
+}
+
+export type GetApiKeysResponse = GetApiKeysResponses[keyof GetApiKeysResponses]
+
+export interface CreateApiKeyData {
+  body: {
+    /**
+     * User-provided description of the API key's purpose
+     */
+    description: string
+    /**
+     * Timestamp when the API key should expire (in milliseconds since epoch)
+     */
+    expiresAt: bigint
+  }
+  headers?: {
+    /**
+     * A unique key to ensure idempotency of the request
+     */
+    'idempotency-key'?: string
+  }
+  path?: never
+  query?: never
+  url: '/v2/api-keys'
+}
+
+export interface CreateApiKeyErrors {
+  /**
+   * Bad Request - Invalid input parameters
+   */
+  400: unknown
+  /**
+   * Unauthorized - Authentication token is missing or invalid
+   */
+  401: unknown
+  /**
+   * Forbidden - User doesn't have permission to create API keys
+   */
+  403: unknown
+}
+
+export interface CreateApiKeyResponses {
+  /**
+   * Successfully created API key
+   */
+  200: {
+    result: {
+      /**
+       * Unique identifier for the created API key
+       */
+      id: string
+      /**
+       * The secret key value that should be used for authentication (only returned once at creation)
+       */
+      secretKey: string
+    }
+  }
+}
+
+export type CreateApiKeyResponse =
+  CreateApiKeyResponses[keyof CreateApiKeyResponses]
+
+export interface RevokeApiKeyData {
+  body: {
+    /**
+     * ID of the API key to revoke
+     */
+    id: string
+  }
+  headers?: {
+    /**
+     * A unique key to ensure idempotency of the request
+     */
+    'idempotency-key'?: string
+  }
+  path?: never
+  query?: never
+  url: '/v2/revoke-api-key'
+}
+
+export interface RevokeApiKeyErrors {
+  /**
+   * Unauthorized - Authentication token is missing or invalid
+   */
+  401: unknown
+  /**
+   * Forbidden - User doesn't have permission to revoke API keys
+   */
+  403: unknown
+  /**
+   * Not Found - API key with specified ID does not exist
+   */
+  404: unknown
+}
+
+export interface RevokeApiKeyResponses {
+  /**
+   * Successfully revoked the API key
+   */
+  200: {
+    result: {
+      success: boolean
+    }
+  }
+}
+
+export type RevokeApiKeyResponse =
+  RevokeApiKeyResponses[keyof RevokeApiKeyResponses]
+
+export interface GetConnectedAccountsData {
+  body?: never
+  path?: never
+  query?: {
+    /**
+     * Maximum number of connected accounts to return
+     */
+    limit?: number
+  }
+  url: '/v2/connected-accounts'
+}
+
+export interface GetConnectedAccountsResponses {
+  /**
+   * List of connected accounts
+   */
+  200: {
+    result: {
+      accounts?: {
+        /**
+         * Unique identifier for the connected account
+         */
+        connectedAccountId?: string
+        /**
+         * Social platform name (e.g., x, github, lens)
+         */
+        platform?: 'x' | 'github' | 'lens' | 'ethereum'
+        /**
+         * Username on the connected platform
+         */
+        username?: string
+        /**
+         * Whether the connection has expired
+         */
+        expired?: boolean
+      }[]
+    }
+  }
+}
+
+export type GetConnectedAccountsResponse =
+  GetConnectedAccountsResponses[keyof GetConnectedAccountsResponses]
+
+export interface GetProfileCastsData {
+  body?: never
+  path?: never
+  query: {
+    /**
+     * Farcaster ID of the user
+     */
+    fid: number
+    /**
+     * Maximum number of casts to return
+     */
+    limit?: number
+    /**
+     * Cursor for pagination
+     */
+    cursor?: string
+  }
+  url: '/v2/profile-casts'
+}
+
+export interface GetProfileCastsErrors {
+  /**
+   * Unauthorized - Authentication token is missing or invalid
+   */
+  401: unknown
+  /**
+   * User not found
+   */
+  404: unknown
+}
+
+export interface GetProfileCastsResponses {
+  /**
+   * Successfully retrieved user's casts
+   */
+  200: {
+    result: {
+      casts: Cast[]
+    }
+    next?: {
+      /**
+       * Cursor for fetching the next page of results
+       */
+      cursor?: string
+    }
+  }
+}
+
+export type GetProfileCastsResponse =
+  GetProfileCastsResponses[keyof GetProfileCastsResponses]
+
+export interface GetUserLikedCastsData {
+  body?: never
+  path?: never
+  query: {
+    /**
+     * The user's fid (user id) whose liked casts are to be retrieved.
+     */
+    fid: number
+    /**
+     * Number of results to limit per request.
+     */
+    limit?: number
+  }
+  url: '/v2/user-liked-casts'
+}
+
+export interface GetUserLikedCastsErrors {
+  /**
+   * Bad request (e.g., missing required parameters)
+   */
+  400: unknown
+  /**
+   * Unauthorized access - invalid or missing token
+   */
+  401: unknown
+  /**
+   * Internal Server Error
+   */
+  500: unknown
+}
+
+export interface GetUserLikedCastsResponses {
+  /**
+   * Successfully retrieved liked casts.
+   */
+  200: {
+    result: {
+      casts?: Cast[]
+      next?: {
+        cursor?: string
+      }
+    }
+  }
+}
+
+export type GetUserLikedCastsResponse =
+  GetUserLikedCastsResponses[keyof GetUserLikedCastsResponses]
 
 export interface ClientOptions {
   baseUrl:

@@ -29,7 +29,7 @@ get:
                   winners:
                     type: 'array'
                     items:
-                      $ref: '../../components/schemas.yaml#/Winner'
+                      $ref: '../../components/schemas/index.yaml#/Winner'
               next:
                 type: 'object'
                 properties:

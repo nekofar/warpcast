@@ -42,7 +42,7 @@ OnboardingState:
       type: string
       format: email
     user:
-      $ref: './schemas/user.yaml'
+      $ref: './user.yaml#/User'
     hasOnboarding:
       type: boolean
     hasConfirmedEmail:
@@ -273,7 +273,7 @@ CastAction:
         postUrl:
           type: string
 User:
-  $ref: './schemas/user.yaml'
+  $ref: './user.yaml#/User'
 UserWithExtras:
   allOf:
     - $ref: '#/User'
@@ -368,7 +368,7 @@ HighlightedChannelsResponse:
             defaultFeed:
               type: string
 Channel:
-  $ref: './schemas/channel.yaml'
+  $ref: '././channel.yaml#/Channel'
 FeedItemsResponse:
   type: object
   properties:
@@ -945,14 +945,135 @@ Cast:
   properties:
     hash:
       type: string
+      description: Unique hash identifier for the cast
     threadHash:
       type: string
+      description: Hash identifier for the thread this cast belongs to
+    parentHash:
+      type: string
+      description: Hash identifier of the parent cast (if this is a reply)
+    parentSource:
+      type: object
+      properties:
+        type:
+          type: string
+          enum: [url]
+        url:
+          type: string
+    author:
+      $ref: './user.yaml#/User'
     text:
       type: string
+      description: The text content of the cast
     timestamp:
       type: integer
+      format: int64
+      description: Unix timestamp in milliseconds
+    mentions:
+      type: array
+      items:
+        $ref: './user.yaml#/User'
     embeds:
-      $ref: '#/EmbedGroups'
+      type: object
+      properties:
+        images:
+          type: array
+          items:
+            $ref: '#/ImageEmbed'
+        urls:
+          type: array
+          items:
+            $ref: '#/UrlEmbed'
+        videos:
+          type: array
+          items:
+            $ref: '#/VideoEmbed'
+#        casts:
+#          type: array
+#          items:
+#            $ref: '#/Cast'
+        unknowns:
+          type: array
+          items:
+            type: object
+        processedCastText:
+          type: string
+        groupInvites:
+          type: array
+          items:
+            type: object
+    replies:
+      type: object
+      properties:
+        count:
+          type: integer
+    reactions:
+      type: object
+      properties:
+        count:
+          type: integer
+    recasts:
+      type: object
+      properties:
+        count:
+          type: integer
+        recasters:
+          type: array
+          items:
+            $ref: '#/Recaster'
+    watches:
+      type: object
+      properties:
+        count:
+          type: integer
+    recast:
+      type: boolean
+    tags:
+      type: array
+      items:
+        type: object
+        properties:
+          type:
+            type: string
+          id:
+            type: string
+          name:
+            type: string
+          imageUrl:
+            type: string
+    quoteCount:
+      type: integer
+    combinedRecastCount:
+      type: integer
+    channel:
+      type: object
+      properties:
+        key:
+          type: string
+        name:
+          type: string
+        imageUrl:
+          type: string
+        authorContext:
+          type: object
+          properties:
+            role:
+              type: string
+            restricted:
+              type: boolean
+            banned:
+              type: boolean
+        authorRole:
+          type: string
+    viewerContext:
+      type: object
+      properties:
+        reacted:
+          type: boolean
+        recast:
+          type: boolean
+        bookmarked:
+          type: boolean
 
 DraftCast:
   type: object
@@ -1144,3 +1265,105 @@ Frame:
       additionalProperties: true
     author:
       $ref: '#/User'
+
+ApiKey:
+  type: object
+  required:
+    - id
+    - createdAt
+    - expiresAt
+    - tag
+    - description
+  properties:
+    id:
+      type: string
+      format: uuid
+      description: Unique identifier for the API key
+    createdAt:
+      type: integer
+      format: int64
+      description: Timestamp when the API key was created (in milliseconds since epoch)
+    expiresAt:
+      type: integer
+      format: int64
+      description: Timestamp when the API key expires (in milliseconds since epoch)
+    revokedAt:
+      type: integer
+      format: int64
+      description: Timestamp when the API key was revoked, if applicable (in milliseconds since epoch)
+      nullable: true
+    tag:
+      type: string
+      description: Short identifier tag for the API key
+    description:
+      type: string
+      description: User-provided description of the API key's purpose
+
+Recaster:
+  type: object
+  properties:
+    fid:
+      type: integer
+    username:
+      type: string
+    displayName:
+      type: string
+    recastHash:
+      type: string
+
+ImageEmbed:
+  type: object
+  properties:
+    type:
+      type: string
+      enum: [image]
+    url:
+      type: string
+    sourceUrl:
+      type: string
+    media:
+      type: object
+      properties:
+        version:
+          type: string
+        width:
+          type: integer
+        height:
+          type: integer
+        staticRaster:
+          type: string
+        mimeType:
+          type: string
+    alt:
+      type: string
+
+UrlEmbed:
+  type: object
+  properties:
+    type:
+      type: string
+      enum: [url]
+    openGraph:
+      type: object
+      properties:
+        url:
+          type: string
+        sourceUrl:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        domain:
+          type: string
+        image:
+          type: string
+        useLargeImage:
+          type: boolean
+
+VideoEmbed:
+  type: object
+  properties:
+    type:
+      type: string
+      enum: [video]

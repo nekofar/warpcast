@@ -28,4 +28,4 @@ get:
       content:
         application/json:
           schema:
-            $ref: '../../components/responses/search-channels-response.yaml#/SearchChannelsResponse'
+            $ref: '../../components/schemas/search-channels-response.yaml#/SearchChannelsResponse'

@@ -2,6 +2,40 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.15] - 2025-04-01
+
+### 🚀 Features
+
+- *(client)* Add support for domain manifest retrieval
+- *(client)* Add `getMetaTags` endpoint support
+- *(client)* Add `getFarcasterJson` for Farcaster integration
+- *(api-keys)* Add support for retrieving user API keys
+- *(client)* Add support for creating API keys
+- *(client)* Add `revokeApiKey` function to revoke API keys
+- *(api)* Add `getCastsByFid` endpoint support
+- *(openapi)* Expand cast schema with additional properties
+- *(client)* Add `getConnectedAccounts` API integration
+- *(client)* Add `getProfileCasts` for fetching user casts
+- *(client)* Add `getUserLikedCasts` API integration
+- *(client)* Enhance `getUserThreadCasts` with query params
+
+### 🐛 Bug Fixes
+
+- *(openapi)* Update channel schema reference
+- *(openapi)* Update user schema reference
+
+### 🚜 Refactor
+
+- *(openapi)* Centralize `paths` references
+- *(openapi)* Restructure parameters and component refs
+- *(openapi)* Remove nested paths index and inline refs
+- *(openapi)* Update `$ref` paths for consistency
+- *(schemas)* Update references to use inline fragments
+
+### ⚙️ Miscellaneous Tasks
+
+- *(openapi)* Update schema and response references
+
 ## [2.0.0-alpha.14] - 2025-04-01
 
 ### 🚀 Features

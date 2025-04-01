@@ -1,0 +1,53 @@
+patch:
+  tags:
+    - DevTools
+  summary: Revoke an API key
+  description: Revokes an existing API key making it no longer valid for authentication
+  operationId: revokeApiKey
+  security:
+    - bearerAuth: []
+  parameters:
+    - name: idempotency-key
+      in: header
+      description: A unique key to ensure idempotency of the request
+      required: false
+      schema:
+        type: string
+        format: uuid
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - id
+          properties:
+            id:
+              type: string
+              format: uuid
+              description: ID of the API key to revoke
+  responses:
+    '200':
+      description: Successfully revoked the API key
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - result
+            properties:
+              result:
+                type: object
+                required:
+                  - success
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+    '401':
+      description: Unauthorized - Authentication token is missing or invalid
+    '403':
+      description: Forbidden - User doesn't have permission to revoke API keys
+    '404':
+      description: Not Found - API key with specified ID does not exist

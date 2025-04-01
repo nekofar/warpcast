@@ -15,4 +15,4 @@ get:
       content:
         application/json:
           schema:
-            $ref: '../../components/responses/frame-apps-response.yaml#/FrameAppsResponse'
+            $ref: '../../components/schemas/frame-apps-response.yaml#/FrameAppsResponse'

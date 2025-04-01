@@ -7,4 +7,4 @@ FrameAppsResponse:
         frames:
           type: array
           items:
-            $ref: '../schemas/frame-app.yaml#/FrameApp'
+            $ref: './frame-app.yaml#/FrameApp'
