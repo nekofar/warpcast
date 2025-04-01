@@ -20,6 +20,8 @@ tags:
     description: Operations related to channel management
   - name: Messaging
     description: Operations related to direct messages and casts
+  - name: DevTools
+    description: Development tools and utilities for Farcaster integration
 
 components:
   schemas:
@@ -267,3 +269,6 @@ paths:
 
   /v1/dev-tools/meta-tags:
     $ref: ./paths/v1/dev-tools/meta-tags.yaml
+
+  /v1/dev-tools/farcaster-json:
+    $ref: ./paths/v1/dev-tools/farcaster-json.yaml

@@ -3286,6 +3286,79 @@ export interface GetMetaTagsResponses {
 export type GetMetaTagsResponse =
   GetMetaTagsResponses[keyof GetMetaTagsResponses]
 
+export interface GetFarcasterJsonData {
+  body?: never
+  path?: never
+  query: {
+    /**
+     * The domain to fetch Farcaster JSON data from
+     */
+    domain: string
+  }
+  url: '/v1/dev-tools/farcaster-json'
+}
+
+export interface GetFarcasterJsonResponses {
+  /**
+   * Successfully retrieved Farcaster JSON data
+   */
+  200: {
+    /**
+     * Farcaster account association information
+     */
+    accountAssociation?: {
+      /**
+       * Base64 encoded header containing FID, type, and key information
+       */
+      header?: string
+      /**
+       * Base64 encoded payload containing domain information
+       */
+      payload?: string
+      /**
+       * Cryptographic signature for verification
+       */
+      signature?: string
+    }
+    /**
+     * Farcaster frame configuration
+     */
+    frame?: {
+      /**
+       * URL of the frame's home page
+       */
+      homeUrl?: string
+      /**
+       * URL of the frame's icon
+       */
+      iconUrl?: string
+      /**
+       * Name of the frame
+       */
+      name?: string
+      /**
+       * Background color for the splash screen in hex format
+       */
+      splashBackgroundColor?: string
+      /**
+       * URL of the splash image
+       */
+      splashImageUrl?: string
+      /**
+       * Version of the frame
+       */
+      version?: string
+      /**
+       * URL of the frame's webhook
+       */
+      webhookUrl?: string
+    }
+  }
+}
+
+export type GetFarcasterJsonResponse =
+  GetFarcasterJsonResponses[keyof GetFarcasterJsonResponses]
+
 export interface ClientOptions {
   baseUrl:
     | 'https://api.warpcast.com'

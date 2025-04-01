@@ -92,6 +92,8 @@ import type {
   GetDomainManifestResponse,
   GetDraftCastsData,
   GetDraftCastsResponse,
+  GetFarcasterJsonData,
+  GetFarcasterJsonResponse,
   GetFeedItemsData,
   GetFeedItemsError,
   GetFeedItemsResponse,
@@ -2313,6 +2315,30 @@ export const getMetaTags = <ThrowOnError extends boolean = false>(
       },
     ],
     url: '/v1/dev-tools/meta-tags',
+    ...options,
+  })
+}
+
+/**
+ * Fetch Farcaster JSON data from a domain
+ * Retrieves Farcaster account association and frame information for a specified domain
+ * @param options
+ */
+export const getFarcasterJson = <ThrowOnError extends boolean = false>(
+  options: Options<GetFarcasterJsonData, ThrowOnError>,
+) => {
+  return (options.client ?? _heyApiClient).get<
+    GetFarcasterJsonResponse,
+    unknown,
+    ThrowOnError
+  >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
+    url: '/v1/dev-tools/farcaster-json',
     ...options,
   })
 }
