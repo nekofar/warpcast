@@ -6827,6 +6827,100 @@
             "description": "Forbidden - User doesn't have permission to access API keys"
           }
         }
+      },
+      "put": {
+        "tags": [
+          "DevTools"
+        ],
+        "summary": "Create a new API key",
+        "description": "Creates a new API key with the specified description and expiration date",
+        "operationId": "createApiKey",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "idempotency-key",
+            "in": "header",
+            "description": "A unique key to ensure idempotency of the request",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "description",
+                  "expiresAt"
+                ],
+                "properties": {
+                  "description": {
+                    "type": "string",
+                    "description": "User-provided description of the API key's purpose"
+                  },
+                  "expiresAt": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "Timestamp when the API key should expire (in milliseconds since epoch)"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully created API key",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "result"
+                  ],
+                  "properties": {
+                    "result": {
+                      "type": "object",
+                      "required": [
+                        "id",
+                        "secretKey"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "format": "uuid",
+                          "description": "Unique identifier for the created API key"
+                        },
+                        "secretKey": {
+                          "type": "string",
+                          "description": "The secret key value that should be used for authentication (only returned once at creation)"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request - Invalid input parameters"
+          },
+          "401": {
+            "description": "Unauthorized - Authentication token is missing or invalid"
+          },
+          "403": {
+            "description": "Forbidden - User doesn't have permission to create API keys"
+          }
+        }
       }
     }
   }

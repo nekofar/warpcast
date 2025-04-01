@@ -22,6 +22,8 @@ import type {
   BlockUserResponse,
   CheckUserChannelFollowStatusData,
   CheckUserChannelFollowStatusResponse,
+  CreateApiKeyData,
+  CreateApiKeyResponse,
   CreateCastData,
   CreateCastResponse,
   CreateDraftCastsData,
@@ -2368,5 +2370,33 @@ export const getApiKeys = <ThrowOnError extends boolean = false>(
     responseTransformer: getApiKeysResponseTransformer,
     url: '/v2/api-keys',
     ...options,
+  })
+}
+
+/**
+ * Create a new API key
+ * Creates a new API key with the specified description and expiration date
+ * @param options
+ */
+export const createApiKey = <ThrowOnError extends boolean = false>(
+  options: Options<CreateApiKeyData, ThrowOnError>,
+) => {
+  return (options.client ?? _heyApiClient).put<
+    CreateApiKeyResponse,
+    unknown,
+    ThrowOnError
+  >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
+    url: '/v2/api-keys',
+    ...options,
+    headers: {
+      'Content-Type': 'application/json',
+      ...options.headers,
+    },
   })
 }

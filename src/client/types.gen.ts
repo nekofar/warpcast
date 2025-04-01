@@ -3417,6 +3417,64 @@ export interface GetApiKeysResponses {
 
 export type GetApiKeysResponse = GetApiKeysResponses[keyof GetApiKeysResponses]
 
+export interface CreateApiKeyData {
+  body: {
+    /**
+     * User-provided description of the API key's purpose
+     */
+    description: string
+    /**
+     * Timestamp when the API key should expire (in milliseconds since epoch)
+     */
+    expiresAt: bigint
+  }
+  headers?: {
+    /**
+     * A unique key to ensure idempotency of the request
+     */
+    'idempotency-key'?: string
+  }
+  path?: never
+  query?: never
+  url: '/v2/api-keys'
+}
+
+export interface CreateApiKeyErrors {
+  /**
+   * Bad Request - Invalid input parameters
+   */
+  400: unknown
+  /**
+   * Unauthorized - Authentication token is missing or invalid
+   */
+  401: unknown
+  /**
+   * Forbidden - User doesn't have permission to create API keys
+   */
+  403: unknown
+}
+
+export interface CreateApiKeyResponses {
+  /**
+   * Successfully created API key
+   */
+  200: {
+    result: {
+      /**
+       * Unique identifier for the created API key
+       */
+      id: string
+      /**
+       * The secret key value that should be used for authentication (only returned once at creation)
+       */
+      secretKey: string
+    }
+  }
+}
+
+export type CreateApiKeyResponse =
+  CreateApiKeyResponses[keyof CreateApiKeyResponses]
+
 export interface ClientOptions {
   baseUrl:
     | 'https://api.warpcast.com'
