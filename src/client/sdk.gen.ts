@@ -13,6 +13,7 @@ import {
   getCreatorRewardWinnersResponseTransformer,
   getProfileCastsResponseTransformer,
   getStarterPackMembersResponseTransformer,
+  getUserLikedCastsResponseTransformer,
 } from './transformers.gen'
 import type {
   AcceptChannelInviteData,
@@ -166,6 +167,8 @@ import type {
   GetUserFollowingChannelsData,
   GetUserFollowingChannelsError,
   GetUserFollowingChannelsResponse,
+  GetUserLikedCastsData,
+  GetUserLikedCastsResponse,
   GetUserOnboardingStateData,
   GetUserOnboardingStateError,
   GetUserOnboardingStateResponse,
@@ -2511,6 +2514,30 @@ export const getProfileCasts = <ThrowOnError extends boolean = false>(
     ],
     responseTransformer: getProfileCastsResponseTransformer,
     url: '/v2/profile-casts',
+    ...options,
+  })
+}
+
+/**
+ * Retrieve liked casts by user FID
+ * @param options
+ */
+export const getUserLikedCasts = <ThrowOnError extends boolean = false>(
+  options: Options<GetUserLikedCastsData, ThrowOnError>,
+) => {
+  return (options.client ?? _heyApiClient).get<
+    GetUserLikedCastsResponse,
+    unknown,
+    ThrowOnError
+  >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
+    responseTransformer: getUserLikedCastsResponseTransformer,
+    url: '/v2/user-liked-casts',
     ...options,
   })
 }

@@ -284,3 +284,7 @@ paths:
 
   /v2/profile-casts:
     $ref: ./paths/v2/profile-casts.yaml
+
+  /v2/user-liked-casts:
+    $ref: ./paths/v2/user-liked-casts.yaml
+

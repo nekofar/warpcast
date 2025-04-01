@@ -7,6 +7,7 @@ import type {
   GetCreatorRewardWinnersResponse,
   GetProfileCastsResponse,
   GetStarterPackMembersResponse,
+  GetUserLikedCastsResponse,
 } from './types.gen'
 
 const castSchemaResponseTransformer = (data: any) => {
@@ -101,5 +102,16 @@ export const getProfileCastsResponseTransformer = async (
   data.result.casts = data.result.casts.map((item: any) => {
     return castSchemaResponseTransformer(item)
   })
+  return data
+}
+
+export const getUserLikedCastsResponseTransformer = async (
+  data: any,
+): Promise<GetUserLikedCastsResponse> => {
+  if (data.result.casts) {
+    data.result.casts = data.result.casts.map((item: any) => {
+      return castSchemaResponseTransformer(item)
+    })
+  }
   return data
 }

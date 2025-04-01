@@ -7537,6 +7537,84 @@
           }
         }
       }
+    },
+    "/v2/user-liked-casts": {
+      "get": {
+        "summary": "Retrieve liked casts by user FID",
+        "operationId": "getUserLikedCasts",
+        "parameters": [
+          {
+            "name": "fid",
+            "in": "query",
+            "description": "The user's fid (user id) whose liked casts are to be retrieved.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "example": 17838
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of results to limit per request.",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 15
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved liked casts.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "casts": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/Cast"
+                          }
+                        },
+                        "next": {
+                          "type": "object",
+                          "properties": {
+                            "cursor": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "result"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request (e.g., missing required parameters)"
+          },
+          "401": {
+            "description": "Unauthorized access - invalid or missing token"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
     }
   }
 }

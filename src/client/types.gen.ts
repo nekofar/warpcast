@@ -3764,6 +3764,54 @@ export interface GetProfileCastsResponses {
 export type GetProfileCastsResponse =
   GetProfileCastsResponses[keyof GetProfileCastsResponses]
 
+export interface GetUserLikedCastsData {
+  body?: never
+  path?: never
+  query: {
+    /**
+     * The user's fid (user id) whose liked casts are to be retrieved.
+     */
+    fid: number
+    /**
+     * Number of results to limit per request.
+     */
+    limit?: number
+  }
+  url: '/v2/user-liked-casts'
+}
+
+export interface GetUserLikedCastsErrors {
+  /**
+   * Bad request (e.g., missing required parameters)
+   */
+  400: unknown
+  /**
+   * Unauthorized access - invalid or missing token
+   */
+  401: unknown
+  /**
+   * Internal Server Error
+   */
+  500: unknown
+}
+
+export interface GetUserLikedCastsResponses {
+  /**
+   * Successfully retrieved liked casts.
+   */
+  200: {
+    result: {
+      casts?: Cast[]
+      next?: {
+        cursor?: string
+      }
+    }
+  }
+}
+
+export type GetUserLikedCastsResponse =
+  GetUserLikedCastsResponses[keyof GetUserLikedCastsResponses]
+
 export interface ClientOptions {
   baseUrl:
     | 'https://api.warpcast.com'
