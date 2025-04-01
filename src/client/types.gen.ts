@@ -956,6 +956,9 @@ export interface GetUserFavoriteFramesData {
   body?: never
   path?: never
   query?: {
+    /**
+     * Maximum number of items to return
+     */
     limit?: number
   }
   url: '/v1/favorite-frames'
@@ -1371,6 +1374,9 @@ export interface GetBookmarkedCastsData {
   body?: never
   path?: never
   query?: {
+    /**
+     * Maximum number of items to return
+     */
     limit?: number
   }
   url: '/v2/bookmarked-casts'
@@ -1568,6 +1574,9 @@ export interface GetTopFrameAppsData {
   body?: never
   path?: never
   query?: {
+    /**
+     * Maximum number of items to return
+     */
     limit?: number
     cursor?: string
   }
@@ -1808,8 +1817,11 @@ export interface GetCastRecastersData {
   body?: never
   path?: never
   query: {
-    castHash: string
+    /**
+     * Maximum number of items to return
+     */
     limit?: number
+    castHash: string
   }
   url: '/v2/cast-recasters'
 }
@@ -2054,6 +2066,9 @@ export interface GetUserFollowedChannelsData {
   body?: never
   path?: never
   query: {
+    /**
+     * The user's FID (Farcaster ID)
+     */
     fid: number
   }
   url: '/v1/user-following-channels'
@@ -2073,6 +2088,9 @@ export interface CheckUserChannelFollowStatusData {
   body?: never
   path?: never
   query: {
+    /**
+     * The user's FID (Farcaster ID)
+     */
     fid: number
     channelId: string
   }
@@ -3044,11 +3062,11 @@ export interface GetAppsByAuthorData {
   path?: never
   query: {
     /**
-     * Farcaster ID of the author
+     * The user's FID (Farcaster ID)
      */
     fid: number
     /**
-     * Number of results to return (default 25)
+     * Maximum number of items to return
      */
     limit?: number
   }

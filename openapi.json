@@ -2346,11 +2346,7 @@
         "summary": "Get user's favorite frames",
         "parameters": [
           {
-            "name": "limit",
-            "in": "query",
-            "schema": {
-              "type": "integer"
-            }
+            "$ref": "#/components/parameters/limitParam"
           }
         ],
         "security": [
@@ -2987,13 +2983,7 @@
         "description": "Returns the most recent casts bookmarked by the user.",
         "parameters": [
           {
-            "name": "limit",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "default": 15
-            }
+            "$ref": "#/components/parameters/limitParam"
           }
         ],
         "security": [
@@ -3349,12 +3339,7 @@
         "description": "Returns a list of top FrameApps with optional pagination.",
         "parameters": [
           {
-            "name": "limit",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
+            "$ref": "#/components/parameters/limitParam"
           },
           {
             "name": "cursor",
@@ -3867,20 +3852,14 @@
         ],
         "parameters": [
           {
+            "$ref": "#/components/parameters/limitParam"
+          },
+          {
             "name": "castHash",
             "in": "query",
             "required": true,
             "schema": {
               "type": "string"
-            }
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "default": 15
             }
           }
         ],
@@ -4346,12 +4325,7 @@
         "summary": "Get list of channels followed by a user",
         "parameters": [
           {
-            "name": "fid",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
+            "$ref": "#/components/parameters/fidParam"
           }
         ],
         "responses": {
@@ -4374,12 +4348,7 @@
         "summary": "Check if a user is following a channel",
         "parameters": [
           {
-            "name": "fid",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
+            "$ref": "#/components/parameters/fidParam"
           },
           {
             "name": "channelId",
@@ -6473,23 +6442,10 @@
         "description": "Retrieves a list of apps (aka \"frames\") created by a specific author on Warpcast, using their FID (Farcaster ID).\nThe response includes metadata for each app, including icons, URLs, and author profile details.\n",
         "parameters": [
           {
-            "name": "fid",
-            "in": "query",
-            "required": true,
-            "description": "Farcaster ID of the author",
-            "schema": {
-              "type": "integer"
-            }
+            "$ref": "#/components/parameters/fidParam"
           },
           {
-            "name": "limit",
-            "in": "query",
-            "required": false,
-            "description": "Number of results to return (default 25)",
-            "schema": {
-              "type": "integer",
-              "default": 25
-            }
+            "$ref": "#/components/parameters/limitParam"
           }
         ],
         "responses": {

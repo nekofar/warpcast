@@ -4,17 +4,12 @@ get:
   security:
     - bearerAuth: []
   parameters:
+    - $ref: '../../index.yaml#/components/parameters/limitParam'
     - name: castHash
       in: query
       required: true
       schema:
         type: string
-    - name: limit
-      in: query
-      required: false
-      schema:
-        type: integer
-        default: 15
   responses:
     '200':
       description: A list of users who recasted the cast

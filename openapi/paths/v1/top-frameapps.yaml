@@ -3,11 +3,7 @@ get:
   summary: Get top FrameApps
   description: Returns a list of top FrameApps with optional pagination.
   parameters:
-    - name: limit
-      in: query
-      required: false
-      schema:
-        type: integer
+    - $ref: '../../index.yaml#/components/parameters/limitParam'
     - name: cursor
       in: query
       required: false
