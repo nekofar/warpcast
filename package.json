@@ -1,12 +1,24 @@
 {
   "name": "@nekofar/warpcast",
-  "version": "2.0.0-alpha.15",
+  "version": "2.0.0-alpha.16",
   "description": "TypeScript client for interacting with Warpcast APIs",
   "keywords": [
     "warpcast",
     "farcaster"
   ],
+  "homepage": "https://github.com/nekofar/warpcast#readme",
+  "bugs": {
+    "url": "https://github.com/nekofar/warpcast/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nekofar/warpcast.git"
+  },
   "license": "Apache-2.0",
+  "author": {
+    "name": "Milad Nekofar",
+    "email": "milad@nekofar.com"
+  },
   "sideEffects": false,
   "type": "module",
   "exports": {
