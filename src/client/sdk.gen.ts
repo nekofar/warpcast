@@ -2092,9 +2092,9 @@ export const blockUser = <ThrowOnError extends boolean = false>(
  * @param options
  */
 export const getAccountVerifications = <ThrowOnError extends boolean = false>(
-  options?: Options<GetAccountVerificationsData, ThrowOnError>,
+  options: Options<GetAccountVerificationsData, ThrowOnError>,
 ) => {
-  return (options?.client ?? _heyApiClient).get<
+  return (options.client ?? _heyApiClient).get<
     GetAccountVerificationsResponse,
     unknown,
     ThrowOnError

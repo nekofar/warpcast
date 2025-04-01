@@ -936,6 +936,9 @@ export interface GetSuggestedUsersData {
   body?: never
   path?: never
   query?: {
+    /**
+     * Maximum number of items to return
+     */
     limit?: number
     randomized?: boolean
   }
@@ -1033,9 +1036,12 @@ export interface GetUserThreadCastsData {
   body?: never
   path?: never
   query: {
+    /**
+     * Maximum number of items to return
+     */
+    limit?: number
     castHashPrefix: string
     username: string
-    limit?: number
   }
   url: '/v2/user-thread-casts'
 }
@@ -1281,8 +1287,11 @@ export interface GetRewardsLeaderboardData {
   body?: never
   path?: never
   query: {
-    rewardsType: 'invite'
+    /**
+     * Maximum number of items to return
+     */
     limit?: number
+    rewardsType: 'invite'
     cursor?: string
   }
   url: '/v2/rewards-leaderboard'
@@ -1313,8 +1322,11 @@ export interface GetUserRewardsScoresData {
   body?: never
   path?: never
   query: {
-    rewardsType: 'invite'
+    /**
+     * The user's FID (Farcaster ID)
+     */
     fid: number
+    rewardsType: 'invite'
   }
   url: '/v2/rewards-scores-for-user'
 }
@@ -1454,8 +1466,11 @@ export interface GetStarterPackUsersData {
   body?: never
   path?: never
   query: {
-    id: string
+    /**
+     * Maximum number of items to return
+     */
     limit?: number
+    id: string
   }
   url: '/v2/starter-pack-users'
 }
@@ -1492,6 +1507,9 @@ export interface GetChannelUsersData {
   body?: never
   path?: never
   query: {
+    /**
+     * Maximum number of items to return
+     */
     limit?: number
     channelKey: string
     filterToMembers?: boolean
@@ -1601,7 +1619,13 @@ export interface GetVerificationsData {
   body?: never
   path?: never
   query: {
+    /**
+     * The user's FID (Farcaster ID)
+     */
     fid: number
+    /**
+     * Maximum number of items to return
+     */
     limit?: number
   }
   url: '/v2/verifications'
@@ -1881,10 +1905,13 @@ export interface SearchChannelsData {
   body?: never
   path?: never
   query?: {
+    /**
+     * Maximum number of items to return
+     */
+    limit?: number
     q?: string
     prioritizeFollowed?: boolean
     forComposer?: boolean
-    limit?: number
   }
   url: '/v2/search-channels'
 }
@@ -2730,11 +2757,11 @@ export type BlockUserResponse = BlockUserResponses[keyof BlockUserResponses]
 export interface GetAccountVerificationsData {
   body?: never
   path?: never
-  query?: {
+  query: {
     /**
-     * Limit the response to a specific user.
+     * The user's FID (Farcaster ID)
      */
-    fid?: number
+    fid: number
   }
   url: '/fc/account-verifications'
 }
@@ -2804,7 +2831,7 @@ export interface GetUserPrimaryAddressData {
   path?: never
   query: {
     /**
-     * The fid of the user.
+     * The user's FID (Farcaster ID)
      */
     fid: number
     /**

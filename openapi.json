@@ -2307,11 +2307,7 @@
         "summary": "Get suggested users",
         "parameters": [
           {
-            "name": "limit",
-            "in": "query",
-            "schema": {
-              "type": "integer"
-            }
+            "$ref": "#/components/parameters/limitParam"
           },
           {
             "name": "randomized",
@@ -2463,6 +2459,9 @@
         "summary": "Get casts from a user thread",
         "parameters": [
           {
+            "$ref": "#/components/parameters/limitParam"
+          },
+          {
             "name": "castHashPrefix",
             "in": "query",
             "required": true,
@@ -2476,13 +2475,6 @@
             "required": true,
             "schema": {
               "type": "string"
-            }
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "schema": {
-              "type": "integer"
             }
           }
         ],
@@ -2832,6 +2824,9 @@
         "description": "Returns a list of users in the rewards leaderboard based on invite activity.",
         "parameters": [
           {
+            "$ref": "#/components/parameters/limitParam"
+          },
+          {
             "name": "rewardsType",
             "in": "query",
             "required": true,
@@ -2840,13 +2835,6 @@
               "enum": [
                 "invite"
               ]
-            }
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "schema": {
-              "type": "integer"
             }
           },
           {
@@ -2889,6 +2877,9 @@
         "description": "Returns current, previous, and all-time invite rewards scores for the specified user.",
         "parameters": [
           {
+            "$ref": "#/components/parameters/fidParam"
+          },
+          {
             "name": "rewardsType",
             "in": "query",
             "required": true,
@@ -2897,14 +2888,6 @@
               "enum": [
                 "invite"
               ]
-            }
-          },
-          {
-            "name": "fid",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "integer"
             }
           }
         ],
@@ -3109,19 +3092,14 @@
         "description": "Returns a list of users associated with a given starter pack.",
         "parameters": [
           {
+            "$ref": "#/components/parameters/limitParam"
+          },
+          {
             "name": "id",
             "in": "query",
             "required": true,
             "schema": {
               "type": "string"
-            }
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "integer"
             }
           }
         ],
@@ -3175,12 +3153,7 @@
         "description": "Returns users who are members of a specific channel.",
         "parameters": [
           {
-            "name": "limit",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
+            "$ref": "#/components/parameters/limitParam"
           },
           {
             "name": "channelKey",
@@ -3385,20 +3358,10 @@
         "description": "Returns verified Ethereum addresses associated with a specific FID.",
         "parameters": [
           {
-            "name": "fid",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
+            "$ref": "#/components/parameters/fidParam"
           },
           {
-            "name": "limit",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
+            "$ref": "#/components/parameters/limitParam"
           }
         ],
         "responses": {
@@ -3963,6 +3926,9 @@
         ],
         "parameters": [
           {
+            "$ref": "#/components/parameters/limitParam"
+          },
+          {
             "name": "q",
             "in": "query",
             "required": false,
@@ -3986,15 +3952,6 @@
             "schema": {
               "type": "boolean",
               "default": false
-            }
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "default": 40
             }
           }
         ],
@@ -5784,13 +5741,7 @@
         "summary": "Get account verifications",
         "parameters": [
           {
-            "in": "query",
-            "name": "fid",
-            "schema": {
-              "type": "integer"
-            },
-            "required": false,
-            "description": "Limit the response to a specific user."
+            "$ref": "#/components/parameters/fidParam"
           }
         ],
         "responses": {
@@ -5967,13 +5918,7 @@
         "summary": "Get User Primary Address",
         "parameters": [
           {
-            "in": "query",
-            "name": "fid",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            },
-            "description": "The fid of the user."
+            "$ref": "#/components/parameters/fidParam"
           },
           {
             "in": "query",

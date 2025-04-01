@@ -4,6 +4,7 @@ get:
   security:
     - bearerAuth: []
   parameters:
+    - $ref: '../../index.yaml#/components/parameters/limitParam'
     - name: q
       in: query
       required: false
@@ -21,12 +22,6 @@ get:
       schema:
         type: boolean
         default: false
-    - name: limit
-      in: query
-      required: false
-      schema:
-        type: integer
-        default: 40
   responses:
     '200':
       description: A list of matched channels
