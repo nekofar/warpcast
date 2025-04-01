@@ -3116,6 +3116,61 @@ export interface GetAppsByAuthorResponses {
 export type GetAppsByAuthorResponse =
   GetAppsByAuthorResponses[keyof GetAppsByAuthorResponses]
 
+export interface GetDomainManifestData {
+  body?: never
+  path?: never
+  query: {
+    /**
+     * The domain to retrieve manifest information for
+     */
+    domain: string
+  }
+  url: '/v1/domain-manifest'
+}
+
+export interface GetDomainManifestResponses {
+  /**
+   * Successfully retrieved domain manifest
+   */
+  200: {
+    result?: {
+      state?: {
+        /**
+         * Indicates if the domain is verified
+         */
+        verified?: boolean
+        /**
+         * JSON string containing the raw manifest data
+         */
+        manifest?: string
+        decodedManifest?: {
+          accountAssociation?: {
+            /**
+             * Farcaster ID associated with the domain
+             */
+            fid?: number
+            /**
+             * Public key associated with the domain
+             */
+            key?: string
+            /**
+             * The domain name
+             */
+            domain?: string
+            /**
+             * Signature proving domain ownership
+             */
+            signature?: string
+          }
+        }
+      }
+    }
+  }
+}
+
+export type GetDomainManifestResponse =
+  GetDomainManifestResponses[keyof GetDomainManifestResponses]
+
 export interface ClientOptions {
   baseUrl:
     | 'https://api.warpcast.com'

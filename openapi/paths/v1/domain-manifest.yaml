@@ -1,0 +1,51 @@
+get:
+  operationId: getDomainManifest
+  summary: Retrieve domain manifest information
+  description: Fetches verification and manifest information for a Farcaster domain
+  tags:
+    - Frames
+  parameters:
+    - name: domain
+      in: query
+      required: true
+      schema:
+        type: string
+      description: The domain to retrieve manifest information for
+  responses:
+    '200':
+      description: Successfully retrieved domain manifest
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              result:
+                type: object
+                properties:
+                  state:
+                    type: object
+                    properties:
+                      verified:
+                        type: boolean
+                        description: Indicates if the domain is verified
+                      manifest:
+                        type: string
+                        description: JSON string containing the raw manifest data
+                      decodedManifest:
+                        type: object
+                        properties:
+                          accountAssociation:
+                            type: object
+                            properties:
+                              fid:
+                                type: integer
+                                description: Farcaster ID associated with the domain
+                              key:
+                                type: string
+                                description: Public key associated with the domain
+                              domain:
+                                type: string
+                                description: The domain name
+                              signature:
+                                type: string
+                                description: Signature proving domain ownership

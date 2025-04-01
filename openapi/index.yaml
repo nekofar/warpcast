@@ -21,6 +21,18 @@ tags:
   - name: Messaging
     description: Operations related to direct messages and casts
 
+components:
+  schemas:
+    $ref: ./components/schemas/index.yaml
+  parameters:
+    $ref: ./components/parameters/index.yaml
+  responses:
+    $ref: ./components/responses/index.yaml
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+
 paths:
   /v2/onboarding-state:
     $ref: ./paths/v2/onboarding-state.yaml
@@ -250,14 +262,5 @@ paths:
   /v1/apps-by-author:
     $ref: ./paths/v1/apps-by-author.yaml
 
-components:
-  schemas:
-    $ref: ./components/schemas/index.yaml
-  parameters:
-    $ref: ./components/parameters/index.yaml
-  responses:
-    $ref: ./components/responses/index.yaml
-  securitySchemes:
-    bearerAuth:
-      type: http
-      scheme: bearer
+  /v1/domain-manifest:
+    $ref: ./paths/v1/domain-manifest.yaml

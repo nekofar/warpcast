@@ -88,6 +88,8 @@ import type {
   GetDiscoverableActionsResponse,
   GetDiscoverableComposerActionsData,
   GetDiscoverableComposerActionsResponse,
+  GetDomainManifestData,
+  GetDomainManifestResponse,
   GetDraftCastsData,
   GetDraftCastsResponse,
   GetFeedItemsData,
@@ -2267,6 +2269,24 @@ export const getAppsByAuthor = <ThrowOnError extends boolean = false>(
       },
     ],
     url: '/v1/apps-by-author',
+    ...options,
+  })
+}
+
+/**
+ * Retrieve domain manifest information
+ * Fetches verification and manifest information for a Farcaster domain
+ * @param options
+ */
+export const getDomainManifest = <ThrowOnError extends boolean = false>(
+  options: Options<GetDomainManifestData, ThrowOnError>,
+) => {
+  return (options.client ?? _heyApiClient).get<
+    GetDomainManifestResponse,
+    unknown,
+    ThrowOnError
+  >({
+    url: '/v1/domain-manifest',
     ...options,
   })
 }
