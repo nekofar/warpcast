@@ -14,7 +14,6 @@ on:
   workflow_dispatch: # Allows you to run this workflow manually from the Actions tab.
 
 jobs:
-
   build: # Job named 'build'
     name: Build & Test
     runs-on: ubuntu-latest # The type of machine to run the job on.
