@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.17] - 2025-04-02
+
+### ⚙️ Miscellaneous Tasks
+
+- *(build)* Remove `guard` job from workflow
+
 ## [2.0.0-alpha.16] - 2025-04-01
 
 ### ⚙️ Miscellaneous Tasks

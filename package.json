@@ -1,6 +1,6 @@
 {
   "name": "@nekofar/warpcast",
-  "version": "2.0.0-alpha.16",
+  "version": "2.0.0-alpha.17",
   "description": "TypeScript client for interacting with Warpcast APIs",
   "keywords": [
     "warpcast",
@@ -54,7 +54,7 @@
     "@hey-api/client-fetch": "^0.9.0"
   },
   "devDependencies": {
-    "@hey-api/openapi-ts": "^0.65.0",
+    "@hey-api/openapi-ts": "^0.66.0",
     "@types/node": "^22.13.14",
     "@typescript-eslint/utils": "^8.28.0",
     "eslint": "^9.23.0",
