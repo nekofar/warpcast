@@ -441,7 +441,7 @@ export interface RewardsMetadataResponse {
   }
 }
 
-export type StarterPack = Record<string, unknown>;
+export type StarterPack = Record<string, unknown>
 
 export interface StarterPacksResponse {
   result: {
@@ -461,7 +461,7 @@ export interface StarterPackUsersResponse {
   }
 }
 
-export type BookmarkedCast = Record<string, unknown>;
+export type BookmarkedCast = Record<string, unknown>
 
 export interface BookmarkedCastsResponse {
   result: BookmarkedCast
