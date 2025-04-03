@@ -5,10 +5,10 @@ name: Git Flow
 on:
   push:
     branches:
-      - 'feature/*'  # Trigger for pushes to feature branches
-      - 'bugfix/*'   # Trigger for pushes to bugfix branches
-      - 'release/*'  # Trigger for pushes to release branches
-      - 'hotfix/*'   # Trigger for pushes to hotfix branches
+      - 'feature/*' # Trigger for pushes to feature branches
+      - 'bugfix/*' # Trigger for pushes to bugfix branches
+      - 'release/*' # Trigger for pushes to release branches
+      - 'hotfix/*' # Trigger for pushes to hotfix branches
 
 # Jobs are a set of steps that execute on the same runner
 jobs:
@@ -26,7 +26,7 @@ jobs:
 
       # This step uses the Git Flow Action to create PRs based on branch types
       - name: Execute Git Flow Action
-        uses: nekofar/git-flow-action@develop  # Specifies the Git Flow Action to use and the branch
+        uses: nekofar/git-flow-action@develop # Specifies the Git Flow Action to use and the branch
         with:
           # The GitHub Token for authentication with GitHub API
           github-token: ${{ secrets.GITHUB_TOKEN }}

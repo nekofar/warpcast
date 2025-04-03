@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.18] - 2025-04-03
+
+### 🎨 Styling
+
+- *(client)* Remove unnecessary semicolons in type definitions
+- *(openapi)* Standardize array and enum formatting
+
+### ⚙️ Miscellaneous Tasks
+
+- *(ci)* Update workflow formatting and dependencies
+- *(docs)* Update changelog formatting and remove extra line
+
 ## [2.0.0-alpha.17] - 2025-04-02
 
 ### ⚙️ Miscellaneous Tasks

@@ -12,14 +12,14 @@ get:
       description: The hash prefix of the cast
       schema:
         type: string
-        example: "0xcb2f2dbe"
+        example: '0xcb2f2dbe'
     - name: username
       in: query
       required: true
       description: The username of the user
       schema:
         type: string
-        example: "nekofar.eth"
+        example: 'nekofar.eth'
   security:
     - bearerAuth: []
   responses:

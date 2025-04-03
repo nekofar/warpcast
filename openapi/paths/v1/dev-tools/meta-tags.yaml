@@ -13,7 +13,7 @@ get:
         format: uri
       description: The URL to fetch metadata from
   security:
-    - bearerAuth: [ ]
+    - bearerAuth: []
   responses:
     '200':
       description: Successfully retrieved metadata

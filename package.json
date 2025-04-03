@@ -1,6 +1,6 @@
 {
   "name": "@nekofar/warpcast",
-  "version": "2.0.0-alpha.17",
+  "version": "2.0.0-alpha.18",
   "description": "TypeScript client for interacting with Warpcast APIs",
   "keywords": [
     "warpcast",
@@ -46,21 +46,20 @@
     "openapi:bundle": "swagger-cli bundle openapi/index.yaml --outfile openapi.json --type json",
     "openapi:generate": "openapi-ts",
     "openapi:validate": "swagger-cli validate openapi/index.yaml",
-    "prepare": "pnpm build",
     "prepublishOnly": "pnpm build",
     "test": "echo 'No tests available.' && exit 0"
   },
   "dependencies": {
-    "@hey-api/client-fetch": "^0.9.0"
+    "@hey-api/client-fetch": "^0.10.0"
   },
   "devDependencies": {
     "@hey-api/openapi-ts": "^0.66.0",
-    "@types/node": "^22.13.14",
-    "@typescript-eslint/utils": "^8.28.0",
+    "@types/node": "^22.14.0",
+    "@typescript-eslint/utils": "^8.29.0",
     "eslint": "^9.23.0",
     "eslint-config-prettier": "^10.1.1",
     "eslint-plugin-jsdoc": "^50.6.9",
-    "eslint-plugin-prettier": "^5.2.5",
+    "eslint-plugin-prettier": "^5.2.6",
     "eslint-plugin-regexp": "^2.7.0",
     "eslint-plugin-unicorn": "^58.0.0",
     "eslint-plugin-vitest": "^0.5.4",
@@ -73,7 +72,7 @@
     "swagger-cli": "^4.0.4",
     "tsup": "^8.4.0",
     "typescript": "^5.8.2",
-    "typescript-eslint": "^8.28.0"
+    "typescript-eslint": "^8.29.0"
   },
   "packageManager": "pnpm@10.0.0",
   "publishConfig": {
