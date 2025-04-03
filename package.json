@@ -50,7 +50,7 @@
     "test": "echo 'No tests available.' && exit 0"
   },
   "dependencies": {
-    "@hey-api/client-fetch": "^0.9.0"
+    "@hey-api/client-fetch": "^0.10.0"
   },
   "devDependencies": {
     "@hey-api/openapi-ts": "^0.66.0",
