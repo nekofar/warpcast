@@ -54,7 +54,7 @@
   },
   "devDependencies": {
     "@hey-api/openapi-ts": "^0.66.0",
-    "@types/node": "^22.13.14",
+    "@types/node": "^22.14.0",
     "@typescript-eslint/utils": "^8.29.0",
     "eslint": "^9.23.0",
     "eslint-config-prettier": "^10.1.1",
