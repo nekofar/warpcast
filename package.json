@@ -43,7 +43,7 @@
     "format:check": "prettier --check .",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "openapi:bundle": "swagger-cli bundle openapi/index.yaml --outfile openapi.json --type json",
+    "openapi:bundle": "redocly bundle openapi/index.yaml --output openapi.json",
     "openapi:generate": "openapi-ts",
     "openapi:validate": "swagger-cli validate openapi/index.yaml",
     "prepublishOnly": "pnpm build",
