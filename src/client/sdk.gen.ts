@@ -207,7 +207,7 @@ import type {
   RevokeApiKeyData,
   RevokeApiKeyResponse,
   SearchChannelsData,
-  SearchChannelsResponse,
+  SearchChannelsResponse2,
   SendDirectCastData,
   SendDirectCastResponse,
   SetLastCheckedTimestampData,
@@ -1400,7 +1400,7 @@ export const searchChannels = <ThrowOnError extends boolean = false>(
   options?: Options<SearchChannelsData, ThrowOnError>,
 ) => {
   return (options?.client ?? _heyApiClient).get<
-    SearchChannelsResponse,
+    SearchChannelsResponse2,
     unknown,
     ThrowOnError
   >({
