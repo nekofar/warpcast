@@ -19,3 +19,5 @@ get:
         application/json:
           schema:
             $ref: '../../index.yaml#/components/schemas/ChannelFollowersResponse'
+    '401':
+      $ref: ../../components/responses/index.yaml#/Unauthorized

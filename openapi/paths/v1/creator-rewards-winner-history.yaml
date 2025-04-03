@@ -62,3 +62,5 @@ get:
                   walletAddress: '0x0000000000000000000000000000000000000001'
             next:
               cursor: '...'
+    '401':
+      $ref: ../../components/responses/index.yaml#/Unauthorized

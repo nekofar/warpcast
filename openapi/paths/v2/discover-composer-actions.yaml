@@ -48,3 +48,5 @@ get:
                     postUrl: https://poll.ecample.com/api/action/
               next:
                 cursor: '...'
+    '401':
+      $ref: ../../components/responses/index.yaml#/Unauthorized

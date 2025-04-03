@@ -53,6 +53,6 @@ get:
                     type: string
                     description: Cursor for fetching the next page of results
     '401':
-      description: Unauthorized - Authentication token is missing or invalid
+      $ref: ../../components/responses/index.yaml#/Unauthorized
     '404':
       description: User not found

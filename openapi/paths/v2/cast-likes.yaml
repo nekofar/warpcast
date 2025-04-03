@@ -42,6 +42,8 @@ get:
                           type: integer
                         reactor:
                           $ref: '../../index.yaml#/components/schemas/User'
+    '401':
+      $ref: ../../components/responses/index.yaml#/Unauthorized
 
 put:
   summary: Like a cast
@@ -85,6 +87,8 @@ put:
                         type: integer
                       reactor:
                         $ref: '../../index.yaml#/components/schemas/User'
+    '401':
+      $ref: ../../components/responses/index.yaml#/Unauthorized
 
 delete:
   summary: Unlike a cast
@@ -117,3 +121,5 @@ delete:
                   success:
                     type: boolean
                     example: true
+    '401':
+      $ref: ../../components/responses/index.yaml#/Unauthorized

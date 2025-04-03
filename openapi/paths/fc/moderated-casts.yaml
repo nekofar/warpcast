@@ -61,3 +61,5 @@ get:
                   moderatedAt: 1727767637
               next:
                 cursor: '...'
+    '401':
+      $ref: ../../components/responses/index.yaml#/Unauthorized

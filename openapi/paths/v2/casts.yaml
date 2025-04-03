@@ -39,11 +39,7 @@ get:
           schema:
             $ref: '../../index.yaml#/components/schemas/ErrorResponse'
     '401':
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '../../index.yaml#/components/schemas/ErrorResponse'
+      $ref: ../../components/responses/index.yaml#/Unauthorized
 
 post:
   summary: Create a new cast

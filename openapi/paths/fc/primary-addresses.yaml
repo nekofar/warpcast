@@ -66,3 +66,5 @@ get:
                     address: '0x0450a8545028547Df4129Aa5b4EC5794D5aF2409'
                 - fid: 39939393939
                   success: false
+    '401':
+      $ref: ../../components/responses/index.yaml#/Unauthorized

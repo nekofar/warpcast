@@ -19,3 +19,5 @@ delete:
         application/json:
           schema:
             $ref: '../../index.yaml#/components/schemas/SuccessResponse'
+    '401':
+      $ref: ../../components/responses/index.yaml#/Unauthorized

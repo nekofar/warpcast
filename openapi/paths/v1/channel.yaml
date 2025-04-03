@@ -14,3 +14,5 @@ get:
         application/json:
           schema:
             $ref: '../../index.yaml#/components/schemas/RawChannelResponse'
+    '401':
+      $ref: ../../components/responses/index.yaml#/Unauthorized

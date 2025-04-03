@@ -60,6 +60,8 @@ get:
                   role: member
               next:
                 cursor: '...'
+    '401':
+      $ref: ../../components/responses/index.yaml#/Unauthorized
 
 post:
   operationId: inviteUserToChannel
@@ -101,6 +103,8 @@ post:
           example:
             result:
               success: true
+    '401':
+      $ref: ../../components/responses/index.yaml#/Unauthorized
 
 delete:
   operationId: removeChannelInvite
@@ -142,6 +146,8 @@ delete:
           example:
             result:
               success: true
+    '401':
+      $ref: ../../components/responses/index.yaml#/Unauthorized
 
 patch:
   operationId: acceptChannelInvite
@@ -183,3 +189,5 @@ patch:
           example:
             result:
               success: true
+    '401':
+      $ref: ../../components/responses/index.yaml#/Unauthorized

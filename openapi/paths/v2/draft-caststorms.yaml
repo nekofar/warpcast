@@ -16,6 +16,8 @@ get:
         application/json:
           schema:
             $ref: '../../index.yaml#/components/schemas/DraftsResponse'
+    '401':
+      $ref: ../../components/responses/index.yaml#/Unauthorized
 
 post:
   summary: Create a new draft casts
@@ -50,3 +52,5 @@ post:
         application/json:
           schema:
             $ref: '../../index.yaml#/components/schemas/DraftCreatedResponse'
+    '401':
+      $ref: ../../components/responses/index.yaml#/Unauthorized

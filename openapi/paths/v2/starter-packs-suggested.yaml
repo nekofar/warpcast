@@ -16,3 +16,5 @@ get:
         application/json:
           schema:
             $ref: '../../index.yaml#/components/schemas/StarterPacksResponse'
+    '401':
+      $ref: ../../components/responses/index.yaml#/Unauthorized

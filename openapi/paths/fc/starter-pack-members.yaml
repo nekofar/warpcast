@@ -50,3 +50,5 @@ get:
                   memberAt: 1740172669691
             next:
               cursor: '...'
+    '401':
+      $ref: ../../components/responses/index.yaml#/Unauthorized

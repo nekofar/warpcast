@@ -13,3 +13,5 @@ get:
         application/json:
           schema:
             $ref: '../../index.yaml#/components/schemas/BookmarkedCastsResponse'
+    '401':
+      $ref: ../../components/responses/index.yaml#/Unauthorized

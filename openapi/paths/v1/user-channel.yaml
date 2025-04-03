@@ -15,3 +15,5 @@ get:
         application/json:
           schema:
             $ref: '../../index.yaml#/components/schemas/ChannelFollowStatusResponse'
+    '401':
+      $ref: ../../components/responses/index.yaml#/Unauthorized

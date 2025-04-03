@@ -49,3 +49,5 @@ get:
                               signature:
                                 type: string
                                 description: Signature proving domain ownership
+    '401':
+      $ref: ../../components/responses/index.yaml#/Unauthorized

@@ -47,3 +47,5 @@ get:
                     postUrl: https://upthumbs.app/api/upthumb
               next:
                 cursor: '...'
+    '401':
+      $ref: ../../components/responses/index.yaml#/Unauthorized

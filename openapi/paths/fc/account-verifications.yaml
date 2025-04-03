@@ -44,3 +44,5 @@ get:
                   verifiedAt: 1728505748
             next:
               cursor: '...'
+    '401':
+      $ref: ../../components/responses/index.yaml#/Unauthorized
