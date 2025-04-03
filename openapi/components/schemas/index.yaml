@@ -441,6 +441,9 @@ Action:
     aboutUrl:
       type: string
       format: uri
+    imageUrl:
+      type: string
+      format: uri
     actionUrl:
       type: string
       format: uri
@@ -775,7 +778,7 @@ BookmarkedCastsResponse:
         bookmarks:
           type: array
           items:
-      $ref: '#/BookmarkedCast'
+            $ref: '#/BookmarkedCast'
 ChannelResponse:
   type: object
   required: [result]
