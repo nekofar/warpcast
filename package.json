@@ -36,7 +36,7 @@
     "LICENSE"
   ],
   "scripts": {
-    "prebuild": "pnpm clean && pnpm openapi:validate && pnpm openapi:bundle && pnpm openapi:generate",
+    "prebuild": "pnpm clean && pnpm openapi:lint && pnpm openapi:bundle && pnpm openapi:generate",
     "build": "tsup",
     "clean": "rimraf dist openapi.json",
     "format": "prettier --write .",
@@ -45,7 +45,7 @@
     "lint:fix": "eslint . --fix",
     "openapi:bundle": "redocly bundle openapi/index.yaml --output openapi.json",
     "openapi:generate": "openapi-ts",
-    "openapi:validate": "swagger-cli validate openapi/index.yaml",
+    "openapi:lint": "redocly lint openapi/index.yaml",
     "prepublishOnly": "pnpm build",
     "test": "echo 'No tests available.' && exit 0"
   },
