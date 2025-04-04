@@ -19,6 +19,8 @@ get:
       required: false
       schema:
         type: string
+  security:
+    - bearerAuth: [ ]
   responses:
     '200':
       description: A list of users in the specified channel
@@ -26,3 +28,5 @@ get:
         application/json:
           schema:
             $ref: '../../index.yaml#/components/schemas/ChannelUsersResponse'
+    '401':
+      $ref: ../../components/responses/index.yaml#/Unauthorized

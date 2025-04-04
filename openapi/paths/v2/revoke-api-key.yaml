@@ -46,7 +46,7 @@ patch:
                     type: boolean
                     example: true
     '401':
-      description: Unauthorized - Authentication token is missing or invalid
+      $ref: ../../components/responses/index.yaml#/Unauthorized
     '403':
       description: Forbidden - User doesn't have permission to revoke API keys
     '404':

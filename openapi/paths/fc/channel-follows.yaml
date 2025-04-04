@@ -27,6 +27,8 @@ post:
           example:
             result:
               success: true
+    '401':
+      $ref: ../../components/responses/index.yaml#/Unauthorized
 
 delete:
   operationId: unfollowChannel
@@ -57,3 +59,5 @@ delete:
           example:
             result:
               success: true
+    '401':
+      $ref: ../../components/responses/index.yaml#/Unauthorized

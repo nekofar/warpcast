@@ -29,3 +29,5 @@ get:
         application/json:
           schema:
             $ref: '../../index.yaml#/components/schemas/UserThreadCastsResponse'
+    '401':
+      $ref: ../../components/responses/index.yaml#/Unauthorized

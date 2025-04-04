@@ -19,6 +19,6 @@ put:
           schema:
             $ref: '../../index.yaml#/components/schemas/SuccessResponse'
     '401':
-      description: Unauthorized
+      $ref: ../../components/responses/index.yaml#/Unauthorized
     '429':
       description: Too many requests

@@ -8,6 +8,8 @@ get:
       required: true
       schema:
         type: string
+  security:
+    - bearerAuth: [ ]
   responses:
     '200':
       description: A starter pack object
@@ -15,3 +17,5 @@ get:
         application/json:
           schema:
             $ref: '../../index.yaml#/components/schemas/StarterPackResponse'
+    '401':
+      $ref: ../../components/responses/index.yaml#/Unauthorized

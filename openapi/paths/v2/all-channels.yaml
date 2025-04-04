@@ -2,6 +2,8 @@ get:
   operationId: getAllChannels
   summary: Get all channels
   description: Returns a list of all channels on Warpcast
+  security:
+    - bearerAuth: [ ]
   responses:
     '200':
       description: Successful response
@@ -9,3 +11,5 @@ get:
         application/json:
           schema:
             $ref: '../../index.yaml#/components/schemas/ChannelListResponse'
+    '401':
+      $ref: ../../components/responses/index.yaml#/Unauthorized

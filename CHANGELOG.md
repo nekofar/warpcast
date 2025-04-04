@@ -2,6 +2,33 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.19] - 2025-04-04
+
+### 🚀 Features
+
+- *(openapi)* Add `imageUrl` property to schema
+- *(openapi)* Add `401 Unauthorized` response to endpoints
+- *(openapi)* Update schema and paths for API responses
+- *(openapi)* Add `bearerAuth` security to all endpoints
+- *(openapi)* Add `401` responses and `bearerAuth` security
+
+### 🐛 Bug Fixes
+
+- *(openapi)* Update schema reference for `Action`
+- *(openapi)* Update schema to allow nullable fields
+
+### 🚜 Refactor
+
+- *(client)* Restructure `User` and response interfaces
+- *(openapi)* Remove unused schema and fix $ref paths
+- *(client)* Add typed error responses to API methods
+
+### ⚙️ Miscellaneous Tasks
+
+- *(scripts)* Update `openapi:bundle` command
+- *(scripts)* Replace `openapi:validate` with `openapi:lint`
+- *(docs)* Update changelog formatting for clarity
+
 ## [2.0.0-alpha.18] - 2025-04-03
 
 ### 🎨 Styling

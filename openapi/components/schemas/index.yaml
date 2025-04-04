@@ -441,6 +441,9 @@ Action:
     aboutUrl:
       type: string
       format: uri
+    imageUrl:
+      type: string
+      format: uri
     actionUrl:
       type: string
       format: uri
@@ -775,7 +778,7 @@ BookmarkedCastsResponse:
         bookmarks:
           type: array
           items:
-      $ref: '#/BookmarkedCast'
+            $ref: '#/BookmarkedCast'
 ChannelResponse:
   type: object
   required: [result]
@@ -924,21 +927,6 @@ CastRecastersResponse:
           type: array
           items:
             $ref: '#/User'
-EmbedGroups:
-  type: object
-  properties:
-    images:
-      type: array
-      items: {}
-    urls:
-      type: array
-      items: {}
-    videos:
-      type: array
-      items: {}
-    unknowns:
-      type: array
-      items: {}
 
 Cast:
   type: object
@@ -1253,11 +1241,9 @@ Frame:
     splashBackgroundColor:
       type: string
     buttonTitle:
-      type: string
-      nullable: true
+      type: ['string', 'null']
     imageUrl:
-      type: string
-      nullable: true
+      type: [ 'string', 'null' ]
     supportsNotifications:
       type: boolean
     viewerContext:
@@ -1288,10 +1274,9 @@ ApiKey:
       format: int64
       description: Timestamp when the API key expires (in milliseconds since epoch)
     revokedAt:
-      type: integer
+      type: ['string', 'null']
       format: int64
       description: Timestamp when the API key was revoked, if applicable (in milliseconds since epoch)
-      nullable: true
     tag:
       type: string
       description: Short identifier tag for the API key

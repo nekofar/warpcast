@@ -1,6 +1,8 @@
 get:
   operationId: getChannelBannedUsers
   summary: Get banned users in a channel
+  security:
+    - bearerAuth: [ ]
   parameters:
     - in: query
       name: channelId
@@ -55,6 +57,8 @@ get:
                   bannedAt: 1727767637
               next:
                 cursor: '...'
+    '401':
+      $ref: ../../components/responses/index.yaml#/Unauthorized
 
 post:
   operationId: banUserFromChannel
@@ -90,6 +94,8 @@ post:
           example:
             result:
               success: true
+    '401':
+      $ref: ../../components/responses/index.yaml#/Unauthorized
 
 delete:
   operationId: unbanUserFromChannel
@@ -125,3 +131,5 @@ delete:
           example:
             result:
               success: true
+    '401':
+      $ref: ../../components/responses/index.yaml#/Unauthorized

@@ -1,6 +1,8 @@
 get:
   operationId: 'getDeveloperRewardWinners'
   summary: 'Get developer reward winners'
+  security:
+    - bearerAuth: [ ]
   description: 'Provides access to all winners for a given period (week). Paginated, with the list of winners in rank order. Not authenticated.'
   parameters:
     - name: 'periodsAgo'
@@ -36,3 +38,5 @@ get:
                   cursor:
                     type: 'string'
                     description: 'Pagination cursor for the next set of results'
+    '401':
+      $ref: ../../components/responses/index.yaml#/Unauthorized

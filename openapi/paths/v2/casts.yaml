@@ -39,11 +39,7 @@ get:
           schema:
             $ref: '../../index.yaml#/components/schemas/ErrorResponse'
     '401':
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '../../index.yaml#/components/schemas/ErrorResponse'
+      $ref: ../../components/responses/index.yaml#/Unauthorized
 
 post:
   summary: Create a new cast
@@ -74,6 +70,8 @@ post:
         application/json:
           schema:
             $ref: '../../index.yaml#/components/schemas/CastCreatedResponse'
+    '401':
+      $ref: ../../components/responses/index.yaml#/Unauthorized
 
 delete:
   summary: Delete a cast
@@ -96,3 +94,5 @@ delete:
         application/json:
           schema:
             $ref: '../../index.yaml#/components/schemas/SuccessResponse'
+    '401':
+      $ref: ../../components/responses/index.yaml#/Unauthorized

@@ -1,6 +1,8 @@
 get:
   operationId: getUserPrimaryAddress
   summary: Get User Primary Address
+  security:
+    - bearerAuth: [ ]
   parameters:
     - $ref: '../../index.yaml#/components/parameters/fidParam'
     - in: query
@@ -29,3 +31,5 @@ get:
                 fid: 12152
                 protocol: ethereum
                 address: '0x0BD6b1DFE1eA61C2b487806ECd06b5A95383a4e3'
+    '401':
+      $ref: ../../components/responses/index.yaml#/Unauthorized

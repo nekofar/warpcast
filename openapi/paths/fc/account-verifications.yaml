@@ -1,6 +1,8 @@
 get:
   operationId: getAccountVerifications
   summary: Get account verifications
+  security:
+    - bearerAuth: [ ]
   parameters:
     - $ref: '../../index.yaml#/components/parameters/fidParam'
   responses:
@@ -44,3 +46,5 @@ get:
                   verifiedAt: 1728505748
             next:
               cursor: '...'
+    '401':
+      $ref: ../../components/responses/index.yaml#/Unauthorized

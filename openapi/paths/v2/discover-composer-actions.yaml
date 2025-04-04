@@ -28,7 +28,7 @@ get:
                   actions:
                     type: array
                     items:
-                      $ref: '../../index.yaml#/components/schemas/Action'
+                      $ref: '../../components/schemas/index.yaml#/Action'
                   next:
                     type: object
                     properties:
@@ -48,3 +48,5 @@ get:
                     postUrl: https://poll.ecample.com/api/action/
               next:
                 cursor: '...'
+    '401':
+      $ref: ../../components/responses/index.yaml#/Unauthorized

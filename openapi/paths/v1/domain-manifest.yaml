@@ -1,6 +1,8 @@
 get:
   operationId: getDomainManifest
   summary: Retrieve domain manifest information
+  security:
+    - bearerAuth: [ ]
   description: Fetches verification and manifest information for a Farcaster domain
   tags:
     - Frames
@@ -49,3 +51,5 @@ get:
                               signature:
                                 type: string
                                 description: Signature proving domain ownership
+    '401':
+      $ref: ../../components/responses/index.yaml#/Unauthorized

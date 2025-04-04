@@ -40,7 +40,7 @@ get:
                         type: string
             required: [result]
     '401':
-      description: Unauthorized access - invalid or missing token
+      $ref: ../../components/responses/index.yaml#/Unauthorized
     '400':
       description: Bad request (e.g., missing required parameters)
     '500':

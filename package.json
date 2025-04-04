@@ -1,6 +1,6 @@
 {
   "name": "@nekofar/warpcast",
-  "version": "2.0.0-alpha.18",
+  "version": "2.0.0-alpha.19",
   "description": "TypeScript client for interacting with Warpcast APIs",
   "keywords": [
     "warpcast",
@@ -36,16 +36,16 @@
     "LICENSE"
   ],
   "scripts": {
-    "prebuild": "pnpm clean && pnpm openapi:validate && pnpm openapi:bundle && pnpm openapi:generate",
+    "prebuild": "pnpm clean && pnpm openapi:lint && pnpm openapi:bundle && pnpm openapi:generate",
     "build": "tsup",
     "clean": "rimraf dist openapi.json",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "openapi:bundle": "swagger-cli bundle openapi/index.yaml --outfile openapi.json --type json",
+    "openapi:bundle": "redocly bundle openapi/index.yaml --output openapi.json",
     "openapi:generate": "openapi-ts",
-    "openapi:validate": "swagger-cli validate openapi/index.yaml",
+    "openapi:lint": "redocly lint openapi/index.yaml",
     "prepublishOnly": "pnpm build",
     "test": "echo 'No tests available.' && exit 0"
   },
@@ -54,6 +54,7 @@
   },
   "devDependencies": {
     "@hey-api/openapi-ts": "^0.66.0",
+    "@redocly/cli": "^1.34.1",
     "@types/node": "^22.14.0",
     "@typescript-eslint/utils": "^8.29.0",
     "eslint": "^9.23.0",
@@ -69,7 +70,6 @@
     "prettier-plugin-organize-imports": "^4.1.0",
     "prettier-plugin-packagejson": "^2.5.10",
     "rimraf": "^6.0.1",
-    "swagger-cli": "^4.0.4",
     "tsup": "^8.4.0",
     "typescript": "^5.8.2",
     "typescript-eslint": "^8.29.0"

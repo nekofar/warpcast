@@ -7,11 +7,11 @@ get:
   security:
     - bearerAuth: []
   responses:
-    '200':
+    200:
       description: Successful retrieval of onboarding state
       content:
         application/json:
           schema:
-            $ref: '../../components/schemas/index.yaml#/OnboardingStateResponse'
+            $ref: ../../components/schemas/index.yaml#/OnboardingStateResponse
     '401':
-      $ref: '../../index.yaml#/components/responses/Unauthorized'
+      $ref: ../../components/responses/index.yaml#/Unauthorized

@@ -9,6 +9,8 @@ get:
       required: true
       schema:
         type: string
+  security:
+    - bearerAuth: [ ]
   responses:
     '200':
       description: List of users in the starter pack
@@ -16,3 +18,5 @@ get:
         application/json:
           schema:
             $ref: '../../index.yaml#/components/schemas/StarterPackUsersResponse'
+    '401':
+      $ref: ../../components/responses/index.yaml#/Unauthorized

@@ -8,6 +8,8 @@ get:
       schema:
         type: string
       description: ID of the channel to get moderation actions for
+  security:
+    - bearerAuth: [ ]
   responses:
     '200':
       description: Successful response with list of moderation actions
@@ -61,3 +63,5 @@ get:
                   moderatedAt: 1727767637
               next:
                 cursor: '...'
+    '401':
+      $ref: ../../components/responses/index.yaml#/Unauthorized

@@ -50,6 +50,8 @@ get:
                   createdAt: 1724854521
               next:
                 cursor: '...'
+    '401':
+      $ref: ../../components/responses/index.yaml#/Unauthorized
 
 post:
   operationId: blockUser
@@ -91,6 +93,8 @@ post:
           example:
             result:
               success: true
+    '401':
+      $ref: ../../components/responses/index.yaml#/Unauthorized
 
 delete:
   operationId: unblockUser
@@ -132,3 +136,5 @@ delete:
           example:
             result:
               success: true
+    '401':
+      $ref: ../../components/responses/index.yaml#/Unauthorized

@@ -45,3 +45,5 @@ get:
                           description: Whether the connection has expired
             required:
               - result
+    '401':
+      $ref: ../../components/responses/index.yaml#/Unauthorized

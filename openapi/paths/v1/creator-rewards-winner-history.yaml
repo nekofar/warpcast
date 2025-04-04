@@ -1,6 +1,8 @@
 get:
   operationId: getCreatorRewardWinners
   summary: Get creator reward winners
+  security:
+    - bearerAuth: [ ]
   parameters:
     - in: query
       name: periodsAgo
@@ -62,3 +64,5 @@ get:
                   walletAddress: '0x0000000000000000000000000000000000000001'
             next:
               cursor: '...'
+    '401':
+      $ref: ../../components/responses/index.yaml#/Unauthorized

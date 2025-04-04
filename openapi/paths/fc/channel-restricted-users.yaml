@@ -1,6 +1,8 @@
 get:
   operationId: getChannelRestrictedUsers
   summary: Get restricted users in a channel
+  security:
+    - bearerAuth: [ ]
   parameters:
     - in: query
       name: channelId
@@ -55,3 +57,5 @@ get:
                   restrictedAt: 1727767637
               next:
                 cursor: '...'
+    '401':
+      $ref: ../../components/responses/index.yaml#/Unauthorized
