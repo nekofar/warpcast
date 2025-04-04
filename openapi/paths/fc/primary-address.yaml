@@ -1,6 +1,8 @@
 get:
   operationId: getUserPrimaryAddress
   summary: Get User Primary Address
+  security:
+    - bearerAuth: [ ]
   parameters:
     - $ref: '../../index.yaml#/components/parameters/fidParam'
     - in: query

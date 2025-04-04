@@ -1,6 +1,8 @@
 get:
   operationId: getAccountVerifications
   summary: Get account verifications
+  security:
+    - bearerAuth: [ ]
   parameters:
     - $ref: '../../index.yaml#/components/parameters/fidParam'
   responses:

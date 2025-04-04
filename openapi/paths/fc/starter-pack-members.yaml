@@ -1,6 +1,8 @@
 get:
   operationId: getStarterPackMembers
   summary: Get Starter Pack Members
+  security:
+    - bearerAuth: [ ]
   parameters:
     - in: query
       name: id

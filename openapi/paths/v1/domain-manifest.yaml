@@ -1,6 +1,8 @@
 get:
   operationId: getDomainManifest
   summary: Retrieve domain manifest information
+  security:
+    - bearerAuth: [ ]
   description: Fetches verification and manifest information for a Farcaster domain
   tags:
     - Frames

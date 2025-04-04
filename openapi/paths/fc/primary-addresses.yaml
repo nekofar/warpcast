@@ -1,6 +1,8 @@
 get:
   operationId: getUserPrimaryAddresses
   summary: Get Multiple User Primary Addresses
+  security:
+    - bearerAuth: [ ]
   parameters:
     - in: query
       name: fids

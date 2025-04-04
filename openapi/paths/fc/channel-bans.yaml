@@ -1,6 +1,8 @@
 get:
   operationId: getChannelBannedUsers
   summary: Get banned users in a channel
+  security:
+    - bearerAuth: [ ]
   parameters:
     - in: query
       name: channelId

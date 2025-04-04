@@ -7,6 +7,8 @@ get:
       required: true
       schema:
         type: string
+  security:
+    - bearerAuth: [ ]
   responses:
     '200':
       description: Successful response with list of channel invites

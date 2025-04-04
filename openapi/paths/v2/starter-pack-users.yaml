@@ -9,6 +9,8 @@ get:
       required: true
       schema:
         type: string
+  security:
+    - bearerAuth: [ ]
   responses:
     '200':
       description: List of users in the starter pack

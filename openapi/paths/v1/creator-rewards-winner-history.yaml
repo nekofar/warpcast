@@ -1,6 +1,8 @@
 get:
   operationId: getCreatorRewardWinners
   summary: Get creator reward winners
+  security:
+    - bearerAuth: [ ]
   parameters:
     - in: query
       name: periodsAgo

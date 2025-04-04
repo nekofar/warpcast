@@ -1,6 +1,8 @@
 get:
   operationId: getChannelRestrictedUsers
   summary: Get restricted users in a channel
+  security:
+    - bearerAuth: [ ]
   parameters:
     - in: query
       name: channelId
