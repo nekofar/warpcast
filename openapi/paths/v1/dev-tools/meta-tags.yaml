@@ -94,4 +94,4 @@ get:
                 type: string
                 description: Twitter image URL
     '401':
-      $ref: ../../components/responses/index.yaml#/Unauthorized
+      $ref: ../../../components/responses/index.yaml#/Unauthorized

@@ -927,21 +927,6 @@ CastRecastersResponse:
           type: array
           items:
             $ref: '#/User'
-EmbedGroups:
-  type: object
-  properties:
-    images:
-      type: array
-      items: {}
-    urls:
-      type: array
-      items: {}
-    videos:
-      type: array
-      items: {}
-    unknowns:
-      type: array
-      items: {}
 
 Cast:
   type: object
@@ -1289,10 +1274,11 @@ ApiKey:
       format: int64
       description: Timestamp when the API key expires (in milliseconds since epoch)
     revokedAt:
-      type: integer
+      type:
+        - integer
+        - null
       format: int64
       description: Timestamp when the API key was revoked, if applicable (in milliseconds since epoch)
-      nullable: true
     tag:
       type: string
       description: Short identifier tag for the API key

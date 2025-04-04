@@ -64,4 +64,4 @@ get:
                     format: uri
                     description: URL of the frame's webhook
     '401':
-      $ref: ../../components/responses/index.yaml#/Unauthorized
+      $ref: ../../../components/responses/index.yaml#/Unauthorized
