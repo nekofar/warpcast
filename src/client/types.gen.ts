@@ -391,7 +391,9 @@ export interface RewardsMetadataResponse {
 export type BookmarkedCast = Record<string, unknown>;
 
 export interface BookmarkedCastsResponse {
-  result: BookmarkedCast
+  result: {
+    bookmarks?: BookmarkedCast[]
+  }
 }
 
 export type StarterPack = Record<string, unknown>;
@@ -725,6 +727,7 @@ export interface Action {
   icon?: string
   description?: string
   aboutUrl?: string
+  imageUrl?: string
   actionUrl?: string
   action?: {
     actionType?: 'post' | 'get' | 'put' | 'delete'
@@ -770,8 +773,8 @@ export interface Frame {
   homeUrl?: string
   splashImageUrl?: string
   splashBackgroundColor?: string
-  buttonTitle?: string
-  imageUrl?: string
+  buttonTitle?: string | null
+  imageUrl?: string | null
   supportsNotifications?: boolean
   viewerContext?: Record<string, unknown>
   author?: User
@@ -799,7 +802,7 @@ export interface ApiKey {
   /**
    * Timestamp when the API key was revoked, if applicable (in milliseconds since epoch)
    */
-  revokedAt?: bigint
+  revokedAt?: string | null
   /**
    * Short identifier tag for the API key
    */
@@ -808,13 +811,6 @@ export interface ApiKey {
    * User-provided description of the API key's purpose
    */
   description: string
-}
-
-export interface EmbedGroups {
-  images?: unknown[]
-  urls?: unknown[]
-  videos?: unknown[]
-  unknowns?: unknown[]
 }
 
 /**
@@ -1132,6 +1128,16 @@ export interface GetSuggestedUsersData {
   url: '/v2/suggested-users'
 }
 
+export interface GetSuggestedUsersErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type GetSuggestedUsersError =
+  GetSuggestedUsersErrors[keyof GetSuggestedUsersErrors]
+
 export interface GetSuggestedUsersResponses {
   /**
    * Successful retrieval of suggested users
@@ -1153,6 +1159,16 @@ export interface GetUserFavoriteFramesData {
   }
   url: '/v1/favorite-frames'
 }
+
+export interface GetUserFavoriteFramesErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type GetUserFavoriteFramesError =
+  GetUserFavoriteFramesErrors[keyof GetUserFavoriteFramesErrors]
 
 export interface GetUserFavoriteFramesResponses {
   /**
@@ -1192,6 +1208,16 @@ export interface GetChannelStreaksForUserData {
   url: '/v2/channel-streaks'
 }
 
+export interface GetChannelStreaksForUserErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type GetChannelStreaksForUserError =
+  GetChannelStreaksForUserErrors[keyof GetChannelStreaksForUserErrors]
+
 export interface GetChannelStreaksForUserResponses {
   /**
    * Successful retrieval of channel streaks
@@ -1208,6 +1234,16 @@ export interface GetUnseenCountsData {
   query?: never
   url: '/v2/unseen'
 }
+
+export interface GetUnseenCountsErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type GetUnseenCountsError =
+  GetUnseenCountsErrors[keyof GetUnseenCountsErrors]
 
 export interface GetUnseenCountsResponses {
   /**
@@ -1239,6 +1275,16 @@ export interface GetUserThreadCastsData {
   url: '/v2/user-thread-casts'
 }
 
+export interface GetUserThreadCastsErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type GetUserThreadCastsError =
+  GetUserThreadCastsErrors[keyof GetUserThreadCastsErrors]
+
 export interface GetUserThreadCastsResponses {
   /**
    * Successful retrieval of user thread casts
@@ -1259,6 +1305,16 @@ export interface GetChannelFollowersYouKnowData {
   url: '/v2/channel-followers-you-know'
 }
 
+export interface GetChannelFollowersYouKnowErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type GetChannelFollowersYouKnowError =
+  GetChannelFollowersYouKnowErrors[keyof GetChannelFollowersYouKnowErrors]
+
 export interface GetChannelFollowersYouKnowResponses {
   /**
    * Successful retrieval of known channel followers
@@ -1275,6 +1331,16 @@ export interface MarkAllNotificationsReadData {
   query?: never
   url: '/v2/mark-all-notifications-read'
 }
+
+export interface MarkAllNotificationsReadErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type MarkAllNotificationsReadError =
+  MarkAllNotificationsReadErrors[keyof MarkAllNotificationsReadErrors]
 
 export interface MarkAllNotificationsReadResponses {
   /**
@@ -1304,14 +1370,17 @@ export interface GetNotificationsData {
 
 export interface GetNotificationsErrors {
   /**
-   * Unauthorized
+   * Authentication is required or failed
    */
-  401: unknown
+  401: ErrorResponse
   /**
    * Too many requests
    */
   429: unknown
 }
+
+export type GetNotificationsError =
+  GetNotificationsErrors[keyof GetNotificationsErrors]
 
 export interface GetNotificationsResponses {
   /**
@@ -1335,14 +1404,17 @@ export interface SetLastCheckedTimestampData {
 
 export interface SetLastCheckedTimestampErrors {
   /**
-   * Unauthorized
+   * Authentication is required or failed
    */
-  401: unknown
+  401: ErrorResponse
   /**
    * Too many requests
    */
   429: unknown
 }
+
+export type SetLastCheckedTimestampError =
+  SetLastCheckedTimestampErrors[keyof SetLastCheckedTimestampErrors]
 
 export interface SetLastCheckedTimestampResponses {
   /**
@@ -1368,14 +1440,17 @@ export interface GetDirectCastConversationData {
 
 export interface GetDirectCastConversationErrors {
   /**
-   * Unauthorized
+   * Authentication is required or failed
    */
-  401: unknown
+  401: ErrorResponse
   /**
    * Too many requests
    */
   429: unknown
 }
+
+export type GetDirectCastConversationError =
+  GetDirectCastConversationErrors[keyof GetDirectCastConversationErrors]
 
 export interface GetDirectCastConversationResponses {
   /**
@@ -1401,14 +1476,17 @@ export interface DiscoverChannelsData {
 
 export interface DiscoverChannelsErrors {
   /**
-   * Unauthorized
+   * Authentication is required or failed
    */
-  401: unknown
+  401: ErrorResponse
   /**
    * Too many requests
    */
   429: unknown
 }
+
+export type DiscoverChannelsError =
+  DiscoverChannelsErrors[keyof DiscoverChannelsErrors]
 
 export interface DiscoverChannelsResponses {
   /**
@@ -1429,14 +1507,17 @@ export interface GetAvailableInvitesData {
 
 export interface GetAvailableInvitesErrors {
   /**
-   * Unauthorized
+   * Authentication is required or failed
    */
-  401: unknown
+  401: ErrorResponse
   /**
    * Too many requests
    */
   429: unknown
 }
+
+export type GetAvailableInvitesError =
+  GetAvailableInvitesErrors[keyof GetAvailableInvitesErrors]
 
 export interface GetAvailableInvitesResponses {
   /**
@@ -1457,14 +1538,17 @@ export interface GetSponsoredInvitesData {
 
 export interface GetSponsoredInvitesErrors {
   /**
-   * Unauthorized
+   * Authentication is required or failed
    */
-  401: unknown
+  401: ErrorResponse
   /**
    * Too many requests
    */
   429: unknown
 }
+
+export type GetSponsoredInvitesError =
+  GetSponsoredInvitesErrors[keyof GetSponsoredInvitesErrors]
 
 export interface GetSponsoredInvitesResponses {
   /**
@@ -1492,14 +1576,17 @@ export interface GetRewardsLeaderboardData {
 
 export interface GetRewardsLeaderboardErrors {
   /**
-   * Unauthorized
+   * Authentication is required or failed
    */
-  401: unknown
+  401: ErrorResponse
   /**
    * Too many requests
    */
   429: unknown
 }
+
+export type GetRewardsLeaderboardError =
+  GetRewardsLeaderboardErrors[keyof GetRewardsLeaderboardErrors]
 
 export interface GetRewardsLeaderboardResponses {
   /**
@@ -1526,14 +1613,17 @@ export interface GetUserRewardsScoresData {
 
 export interface GetUserRewardsScoresErrors {
   /**
-   * Unauthorized
+   * Authentication is required or failed
    */
-  401: unknown
+  401: ErrorResponse
   /**
    * Too many requests
    */
   429: unknown
 }
+
+export type GetUserRewardsScoresError =
+  GetUserRewardsScoresErrors[keyof GetUserRewardsScoresErrors]
 
 export interface GetUserRewardsScoresResponses {
   /**
@@ -1556,14 +1646,17 @@ export interface GetRewardsMetadataData {
 
 export interface GetRewardsMetadataErrors {
   /**
-   * Unauthorized
+   * Authentication is required or failed
    */
-  401: unknown
+  401: ErrorResponse
   /**
    * Too many requests
    */
   429: unknown
 }
+
+export type GetRewardsMetadataError =
+  GetRewardsMetadataErrors[keyof GetRewardsMetadataErrors]
 
 export interface GetRewardsMetadataResponses {
   /**
@@ -1587,6 +1680,16 @@ export interface GetBookmarkedCastsData {
   url: '/v2/bookmarked-casts'
 }
 
+export interface GetBookmarkedCastsErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type GetBookmarkedCastsError =
+  GetBookmarkedCastsErrors[keyof GetBookmarkedCastsErrors]
+
 export interface GetBookmarkedCastsResponses {
   /**
    * A list of bookmarked casts
@@ -1607,6 +1710,16 @@ export interface GetUserStarterPacksData {
   url: '/v2/starter-packs'
 }
 
+export interface GetUserStarterPacksErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type GetUserStarterPacksError =
+  GetUserStarterPacksErrors[keyof GetUserStarterPacksErrors]
+
 export interface GetUserStarterPacksResponses {
   /**
    * A list of starter packs
@@ -1626,6 +1739,16 @@ export interface GetSuggestedStarterPacksData {
   url: '/v2/starter-packs/suggested'
 }
 
+export interface GetSuggestedStarterPacksErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type GetSuggestedStarterPacksError =
+  GetSuggestedStarterPacksErrors[keyof GetSuggestedStarterPacksErrors]
+
 export interface GetSuggestedStarterPacksResponses {
   /**
    * A list of suggested starter packs
@@ -1644,6 +1767,16 @@ export interface GetStarterPackData {
   }
   url: '/v2/starter-pack'
 }
+
+export interface GetStarterPackErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type GetStarterPackError =
+  GetStarterPackErrors[keyof GetStarterPackErrors]
 
 export interface GetStarterPackResponses {
   /**
@@ -1668,6 +1801,16 @@ export interface GetStarterPackUsersData {
   url: '/v2/starter-pack-users'
 }
 
+export interface GetStarterPackUsersErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type GetStarterPackUsersError =
+  GetStarterPackUsersErrors[keyof GetStarterPackUsersErrors]
+
 export interface GetStarterPackUsersResponses {
   /**
    * List of users in the starter pack
@@ -1686,6 +1829,15 @@ export interface GetChannelData {
   }
   url: '/v2/channel'
 }
+
+export interface GetChannelErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type GetChannelError = GetChannelErrors[keyof GetChannelErrors]
 
 export interface GetChannelResponses {
   /**
@@ -1711,6 +1863,16 @@ export interface GetChannelUsersData {
   url: '/v1/channel-users'
 }
 
+export interface GetChannelUsersErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type GetChannelUsersError =
+  GetChannelUsersErrors[keyof GetChannelUsersErrors]
+
 export interface GetChannelUsersResponses {
   /**
    * A list of users in the specified channel
@@ -1730,6 +1892,15 @@ export interface GetFollowingData {
   }
   url: '/v2/following'
 }
+
+export interface GetFollowingErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type GetFollowingError = GetFollowingErrors[keyof GetFollowingErrors]
 
 export interface GetFollowingResponses {
   /**
@@ -1751,6 +1922,15 @@ export interface GetFollowersData {
   url: '/v2/followers'
 }
 
+export interface GetFollowersErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type GetFollowersError = GetFollowersErrors[keyof GetFollowersErrors]
+
 export interface GetFollowersResponses {
   /**
    * A list of followers
@@ -1770,6 +1950,16 @@ export interface GetMutualFollowersData {
   }
   url: '/v2/followers-you-know'
 }
+
+export interface GetMutualFollowersErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type GetMutualFollowersError =
+  GetMutualFollowersErrors[keyof GetMutualFollowersErrors]
 
 export interface GetMutualFollowersResponses {
   /**
@@ -1793,6 +1983,16 @@ export interface GetTopFrameAppsData {
   }
   url: '/v1/top-frameapps'
 }
+
+export interface GetTopFrameAppsErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type GetTopFrameAppsError =
+  GetTopFrameAppsErrors[keyof GetTopFrameAppsErrors]
 
 export interface GetTopFrameAppsResponses {
   /**
@@ -1820,6 +2020,16 @@ export interface GetVerificationsData {
   url: '/v2/verifications'
 }
 
+export interface GetVerificationsErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type GetVerificationsError =
+  GetVerificationsErrors[keyof GetVerificationsErrors]
+
 export interface GetVerificationsResponses {
   /**
    * A list of verifications
@@ -1841,6 +2051,16 @@ export interface GetMutedKeywordsData {
   url: '/v2/get-muted-keywords'
 }
 
+export interface GetMutedKeywordsErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type GetMutedKeywordsError =
+  GetMutedKeywordsErrors[keyof GetMutedKeywordsErrors]
+
 export interface GetMutedKeywordsResponses {
   /**
    * A list of muted keywords
@@ -1861,6 +2081,15 @@ export interface MuteKeywordData {
   url: '/v2/mute-keyword'
 }
 
+export interface MuteKeywordErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type MuteKeywordError = MuteKeywordErrors[keyof MuteKeywordErrors]
+
 export interface MuteKeywordResponses {
   /**
    * The muted keyword and its settings
@@ -1880,6 +2109,15 @@ export interface UnmuteKeywordData {
   url: '/v2/unmute-keyword'
 }
 
+export interface UnmuteKeywordErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type UnmuteKeywordError = UnmuteKeywordErrors[keyof UnmuteKeywordErrors]
+
 export interface UnmuteKeywordResponses {
   /**
    * Keyword unmuted
@@ -1898,6 +2136,15 @@ export interface UnlikeCastData {
   query?: never
   url: '/v2/cast-likes'
 }
+
+export interface UnlikeCastErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type UnlikeCastError = UnlikeCastErrors[keyof UnlikeCastErrors]
 
 export interface UnlikeCastResponses {
   /**
@@ -1921,6 +2168,15 @@ export interface GetCastLikesData {
   }
   url: '/v2/cast-likes'
 }
+
+export interface GetCastLikesErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type GetCastLikesError = GetCastLikesErrors[keyof GetCastLikesErrors]
 
 export interface GetCastLikesResponses {
   /**
@@ -1951,6 +2207,15 @@ export interface LikeCastData {
   url: '/v2/cast-likes'
 }
 
+export interface LikeCastErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type LikeCastError = LikeCastErrors[keyof LikeCastErrors]
+
 export interface LikeCastResponses {
   /**
    * Like response
@@ -1979,6 +2244,15 @@ export interface UndoRecastData {
   url: '/v2/recasts'
 }
 
+export interface UndoRecastErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type UndoRecastError = UndoRecastErrors[keyof UndoRecastErrors]
+
 export interface UndoRecastResponses {
   /**
    * Undo recast response
@@ -1996,6 +2270,15 @@ export interface RecastCastData {
   query?: never
   url: '/v2/recasts'
 }
+
+export interface RecastCastErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type RecastCastError = RecastCastErrors[keyof RecastCastErrors]
 
 export interface RecastCastResponses {
   /**
@@ -2015,6 +2298,15 @@ export interface AttachEmbedsData {
   query?: never
   url: '/v2/cast-attachments'
 }
+
+export interface AttachEmbedsErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type AttachEmbedsError = AttachEmbedsErrors[keyof AttachEmbedsErrors]
 
 export interface AttachEmbedsResponses {
   /**
@@ -2039,6 +2331,16 @@ export interface GetCastRecastersData {
   url: '/v2/cast-recasters'
 }
 
+export interface GetCastRecastersErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type GetCastRecastersError =
+  GetCastRecastersErrors[keyof GetCastRecastersErrors]
+
 export interface GetCastRecastersResponses {
   /**
    * A list of users who recasted the cast
@@ -2059,6 +2361,15 @@ export interface GetCastQuotesData {
   url: '/v2/cast-quotes'
 }
 
+export interface GetCastQuotesErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type GetCastQuotesError = GetCastQuotesErrors[keyof GetCastQuotesErrors]
+
 export interface GetCastQuotesResponses {
   /**
    * A list of quote casts referencing the given cast
@@ -2075,6 +2386,16 @@ export interface GetCurrentUserData {
   query?: never
   url: '/v2/me'
 }
+
+export interface GetCurrentUserErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type GetCurrentUserError =
+  GetCurrentUserErrors[keyof GetCurrentUserErrors]
 
 export interface GetCurrentUserResponses {
   /**
@@ -2101,6 +2422,16 @@ export interface SearchChannelsData {
   url: '/v2/search-channels'
 }
 
+export interface SearchChannelsErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type SearchChannelsError =
+  SearchChannelsErrors[keyof SearchChannelsErrors]
+
 export interface SearchChannelsResponses {
   /**
    * A list of matched channels
@@ -2119,6 +2450,15 @@ export interface GetDraftCastsData {
   }
   url: '/v2/draft-caststorms'
 }
+
+export interface GetDraftCastsErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type GetDraftCastsError = GetDraftCastsErrors[keyof GetDraftCastsErrors]
 
 export interface GetDraftCastsResponses {
   /**
@@ -2144,6 +2484,16 @@ export interface CreateDraftCastsData {
   url: '/v2/draft-caststorms'
 }
 
+export interface CreateDraftCastsErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type CreateDraftCastsError =
+  CreateDraftCastsErrors[keyof CreateDraftCastsErrors]
+
 export interface CreateDraftCastsResponses {
   /**
    * Created draft caststorm
@@ -2163,6 +2513,16 @@ export interface DeleteDraftCastData {
   url: '/v2/draft-casts'
 }
 
+export interface DeleteDraftCastErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type DeleteDraftCastError =
+  DeleteDraftCastErrors[keyof DeleteDraftCastErrors]
+
 export interface DeleteDraftCastResponses {
   /**
    * Draft cast deleted
@@ -2181,6 +2541,15 @@ export interface DeleteCastData {
   query?: never
   url: '/v2/casts'
 }
+
+export interface DeleteCastErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type DeleteCastError = DeleteCastErrors[keyof DeleteCastErrors]
 
 export interface DeleteCastResponses {
   /**
@@ -2213,7 +2582,7 @@ export interface GetCastsByFidErrors {
    */
   400: ErrorResponse
   /**
-   * Unauthorized
+   * Authentication is required or failed
    */
   401: ErrorResponse
 }
@@ -2248,6 +2617,15 @@ export interface CreateCastData {
   url: '/v2/casts'
 }
 
+export interface CreateCastErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type CreateCastError = CreateCastErrors[keyof CreateCastErrors]
+
 export interface CreateCastResponses {
   /**
    * Cast created successfully
@@ -2263,6 +2641,16 @@ export interface GetAllChannelsData {
   query?: never
   url: '/v2/all-channels'
 }
+
+export interface GetAllChannelsErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type GetAllChannelsError =
+  GetAllChannelsErrors[keyof GetAllChannelsErrors]
 
 export interface GetAllChannelsResponses {
   /**
@@ -2283,6 +2671,16 @@ export interface GetChannelDetailsData {
   url: '/v1/channel'
 }
 
+export interface GetChannelDetailsErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type GetChannelDetailsError =
+  GetChannelDetailsErrors[keyof GetChannelDetailsErrors]
+
 export interface GetChannelDetailsResponses {
   /**
    * Channel details
@@ -2302,6 +2700,16 @@ export interface GetChannelFollowersData {
   }
   url: '/v1/channel-followers'
 }
+
+export interface GetChannelFollowersErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type GetChannelFollowersError =
+  GetChannelFollowersErrors[keyof GetChannelFollowersErrors]
 
 export interface GetChannelFollowersResponses {
   /**
@@ -2324,6 +2732,16 @@ export interface GetUserFollowedChannelsData {
   }
   url: '/v1/user-following-channels'
 }
+
+export interface GetUserFollowedChannelsErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type GetUserFollowedChannelsError =
+  GetUserFollowedChannelsErrors[keyof GetUserFollowedChannelsErrors]
 
 export interface GetUserFollowedChannelsResponses {
   /**
@@ -2348,6 +2766,16 @@ export interface CheckUserChannelFollowStatusData {
   url: '/v1/user-channel'
 }
 
+export interface CheckUserChannelFollowStatusErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type CheckUserChannelFollowStatusError =
+  CheckUserChannelFollowStatusErrors[keyof CheckUserChannelFollowStatusErrors]
+
 export interface CheckUserChannelFollowStatusResponses {
   /**
    * Successful response with follow status
@@ -2366,6 +2794,16 @@ export interface GetChannelMembersData {
   }
   url: '/fc/channel-members'
 }
+
+export interface GetChannelMembersErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type GetChannelMembersError =
+  GetChannelMembersErrors[keyof GetChannelMembersErrors]
 
 export interface GetChannelMembersResponses {
   /**
@@ -2416,6 +2854,16 @@ export interface RemoveChannelInviteData {
   url: '/fc/channel-invites'
 }
 
+export interface RemoveChannelInviteErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type RemoveChannelInviteError =
+  RemoveChannelInviteErrors[keyof RemoveChannelInviteErrors]
+
 export interface RemoveChannelInviteResponses {
   /**
    * Successful removal of invite
@@ -2434,6 +2882,16 @@ export interface GetChannelInvitesData {
   }
   url: '/fc/channel-invites'
 }
+
+export interface GetChannelInvitesErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type GetChannelInvitesError =
+  GetChannelInvitesErrors[keyof GetChannelInvitesErrors]
 
 export interface GetChannelInvitesResponses {
   /**
@@ -2478,6 +2936,16 @@ export interface AcceptChannelInviteData {
   url: '/fc/channel-invites'
 }
 
+export interface AcceptChannelInviteErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type AcceptChannelInviteError =
+  AcceptChannelInviteErrors[keyof AcceptChannelInviteErrors]
+
 export interface AcceptChannelInviteResponses {
   /**
    * Successful acceptance of invite
@@ -2508,6 +2976,16 @@ export interface InviteUserToChannelData {
   url: '/fc/channel-invites'
 }
 
+export interface InviteUserToChannelErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type InviteUserToChannelError =
+  InviteUserToChannelErrors[keyof InviteUserToChannelErrors]
+
 export interface InviteUserToChannelResponses {
   /**
    * Successful invite operation
@@ -2529,6 +3007,16 @@ export interface GetChannelModeratedCastsData {
   }
   url: '/fc/moderated-casts'
 }
+
+export interface GetChannelModeratedCastsErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type GetChannelModeratedCastsError =
+  GetChannelModeratedCastsErrors[keyof GetChannelModeratedCastsErrors]
 
 export interface GetChannelModeratedCastsResponses {
   /**
@@ -2579,6 +3067,16 @@ export interface GetChannelRestrictedUsersData {
   url: '/fc/channel-restricted-users'
 }
 
+export interface GetChannelRestrictedUsersErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type GetChannelRestrictedUsersError =
+  GetChannelRestrictedUsersErrors[keyof GetChannelRestrictedUsersErrors]
+
 export interface GetChannelRestrictedUsersResponses {
   /**
    * Successful response with list of restricted users
@@ -2628,6 +3126,16 @@ export interface UnbanUserFromChannelData {
   url: '/fc/channel-bans'
 }
 
+export interface UnbanUserFromChannelErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type UnbanUserFromChannelError =
+  UnbanUserFromChannelErrors[keyof UnbanUserFromChannelErrors]
+
 export interface UnbanUserFromChannelResponses {
   /**
    * Successful unban operation
@@ -2649,6 +3157,16 @@ export interface GetChannelBannedUsersData {
   }
   url: '/fc/channel-bans'
 }
+
+export interface GetChannelBannedUsersErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type GetChannelBannedUsersError =
+  GetChannelBannedUsersErrors[keyof GetChannelBannedUsersErrors]
 
 export interface GetChannelBannedUsersResponses {
   /**
@@ -2699,6 +3217,16 @@ export interface BanUserFromChannelData {
   url: '/fc/channel-bans'
 }
 
+export interface BanUserFromChannelErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type BanUserFromChannelError =
+  BanUserFromChannelErrors[keyof BanUserFromChannelErrors]
+
 export interface BanUserFromChannelResponses {
   /**
    * Successful ban operation
@@ -2721,6 +3249,16 @@ export interface UnfollowChannelData {
   url: '/fc/channel-follows'
 }
 
+export interface UnfollowChannelErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type UnfollowChannelError =
+  UnfollowChannelErrors[keyof UnfollowChannelErrors]
+
 export interface UnfollowChannelResponses {
   /**
    * Successful unfollow operation
@@ -2742,6 +3280,15 @@ export interface FollowChannelData {
   query?: never
   url: '/fc/channel-follows'
 }
+
+export interface FollowChannelErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type FollowChannelError = FollowChannelErrors[keyof FollowChannelErrors]
 
 export interface FollowChannelResponses {
   /**
@@ -2769,6 +3316,15 @@ export interface ModerateCastData {
   url: '/fc/moderate-cast'
 }
 
+export interface ModerateCastErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type ModerateCastError = ModerateCastErrors[keyof ModerateCastErrors]
+
 export interface ModerateCastResponses {
   /**
    * Successful moderation action
@@ -2790,6 +3346,16 @@ export interface UnpinCastFromChannelData {
   query?: never
   url: '/fc/pinned-casts'
 }
+
+export interface UnpinCastFromChannelErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type UnpinCastFromChannelError =
+  UnpinCastFromChannelErrors[keyof UnpinCastFromChannelErrors]
 
 export interface UnpinCastFromChannelResponses {
   /**
@@ -2817,6 +3383,16 @@ export interface PinCastToChannelData {
   url: '/fc/pinned-casts'
 }
 
+export interface PinCastToChannelErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type PinCastToChannelError =
+  PinCastToChannelErrors[keyof PinCastToChannelErrors]
+
 export interface PinCastToChannelResponses {
   /**
    * Successful pin operation
@@ -2836,6 +3412,16 @@ export interface GetDiscoverableActionsData {
   }
   url: '/v2/discover-actions'
 }
+
+export interface GetDiscoverableActionsErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type GetDiscoverableActionsError =
+  GetDiscoverableActionsErrors[keyof GetDiscoverableActionsErrors]
 
 export interface GetDiscoverableActionsResponses {
   /**
@@ -2863,6 +3449,16 @@ export interface GetDiscoverableComposerActionsData {
   }
   url: '/v2/discover-composer-actions'
 }
+
+export interface GetDiscoverableComposerActionsErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type GetDiscoverableComposerActionsError =
+  GetDiscoverableComposerActionsErrors[keyof GetDiscoverableComposerActionsErrors]
 
 export interface GetDiscoverableComposerActionsResponses {
   /**
@@ -2893,6 +3489,15 @@ export interface UnblockUserData {
   url: '/fc/blocked-users'
 }
 
+export interface UnblockUserErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type UnblockUserError = UnblockUserErrors[keyof UnblockUserErrors]
+
 export interface UnblockUserResponses {
   /**
    * Successful unblock operation
@@ -2916,6 +3521,16 @@ export interface GetBlockedUsersData {
   query?: never
   url: '/fc/blocked-users'
 }
+
+export interface GetBlockedUsersErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type GetBlockedUsersError =
+  GetBlockedUsersErrors[keyof GetBlockedUsersErrors]
 
 export interface GetBlockedUsersResponses {
   /**
@@ -2962,6 +3577,15 @@ export interface BlockUserData {
   url: '/fc/blocked-users'
 }
 
+export interface BlockUserErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type BlockUserError = BlockUserErrors[keyof BlockUserErrors]
+
 export interface BlockUserResponses {
   /**
    * Successful block operation
@@ -2989,6 +3613,16 @@ export interface GetAccountVerificationsData {
   }
   url: '/fc/account-verifications'
 }
+
+export interface GetAccountVerificationsErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type GetAccountVerificationsError =
+  GetAccountVerificationsErrors[keyof GetAccountVerificationsErrors]
 
 export interface GetAccountVerificationsResponses {
   /**
@@ -3024,6 +3658,16 @@ export interface GetCreatorRewardWinnersData {
   }
   url: '/v1/creator-rewards-winner-history'
 }
+
+export interface GetCreatorRewardWinnersErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type GetCreatorRewardWinnersError =
+  GetCreatorRewardWinnersErrors[keyof GetCreatorRewardWinnersErrors]
 
 export interface GetCreatorRewardWinnersResponses {
   /**
@@ -3066,6 +3710,16 @@ export interface GetUserPrimaryAddressData {
   url: '/fc/primary-address'
 }
 
+export interface GetUserPrimaryAddressErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type GetUserPrimaryAddressError =
+  GetUserPrimaryAddressErrors[keyof GetUserPrimaryAddressErrors]
+
 export interface GetUserPrimaryAddressResponses {
   /**
    * Successful response with the user's primary address.
@@ -3095,6 +3749,16 @@ export interface GetUserPrimaryAddressesData {
   }
   url: '/fc/primary-addresses'
 }
+
+export interface GetUserPrimaryAddressesErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type GetUserPrimaryAddressesError =
+  GetUserPrimaryAddressesErrors[keyof GetUserPrimaryAddressesErrors]
 
 export interface GetUserPrimaryAddressesResponses {
   /**
@@ -3135,6 +3799,16 @@ export interface GetStarterPackMembersData {
   }
   url: '/fc/starter-pack-members'
 }
+
+export interface GetStarterPackMembersErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type GetStarterPackMembersError =
+  GetStarterPackMembersErrors[keyof GetStarterPackMembersErrors]
 
 export interface GetStarterPackMembersResponses {
   /**
@@ -3185,6 +3859,16 @@ export interface SendDirectCastData {
   url: '/v2/ext-send-direct-cast'
 }
 
+export interface SendDirectCastErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type SendDirectCastError =
+  SendDirectCastErrors[keyof SendDirectCastErrors]
+
 export interface SendDirectCastResponses {
   /**
    * Direct cast sent successfully
@@ -3220,14 +3904,17 @@ export interface GetUserByVerificationAddressErrors {
    */
   400: unknown
   /**
-   * Unauthorized - Authentication required
+   * Authentication is required or failed
    */
-  401: unknown
+  401: ErrorResponse
   /**
    * No user found for the provided address
    */
   404: unknown
 }
+
+export type GetUserByVerificationAddressError =
+  GetUserByVerificationAddressErrors[keyof GetUserByVerificationAddressErrors]
 
 export interface GetUserByVerificationAddressResponses {
   /**
@@ -3250,6 +3937,16 @@ export interface GetDeveloperRewardWinnersData {
   }
   url: '/v1/developer-rewards-winner-history'
 }
+
+export interface GetDeveloperRewardWinnersErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type GetDeveloperRewardWinnersError =
+  GetDeveloperRewardWinnersErrors[keyof GetDeveloperRewardWinnersErrors]
 
 export interface GetDeveloperRewardWinnersResponses {
   /**
@@ -3295,6 +3992,16 @@ export interface GetAppsByAuthorData {
   url: '/v1/apps-by-author'
 }
 
+export interface GetAppsByAuthorErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type GetAppsByAuthorError =
+  GetAppsByAuthorErrors[keyof GetAppsByAuthorErrors]
+
 export interface GetAppsByAuthorResponses {
   /**
    * A list of frames by the author
@@ -3316,6 +4023,16 @@ export interface GetDomainManifestData {
   }
   url: '/v1/domain-manifest'
 }
+
+export interface GetDomainManifestErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type GetDomainManifestError =
+  GetDomainManifestErrors[keyof GetDomainManifestErrors]
 
 export interface GetDomainManifestResponses {
   /**
@@ -3371,6 +4088,15 @@ export interface GetMetaTagsData {
   }
   url: '/v1/dev-tools/meta-tags'
 }
+
+export interface GetMetaTagsErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type GetMetaTagsError = GetMetaTagsErrors[keyof GetMetaTagsErrors]
 
 export interface GetMetaTagsResponses {
   /**
@@ -3487,6 +4213,16 @@ export interface GetFarcasterJsonData {
   url: '/v1/dev-tools/farcaster-json'
 }
 
+export interface GetFarcasterJsonErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type GetFarcasterJsonError =
+  GetFarcasterJsonErrors[keyof GetFarcasterJsonErrors]
+
 export interface GetFarcasterJsonResponses {
   /**
    * Successfully retrieved Farcaster JSON data
@@ -3557,14 +4293,16 @@ export interface GetApiKeysData {
 
 export interface GetApiKeysErrors {
   /**
-   * Unauthorized - Authentication token is missing or invalid
+   * Authentication is required or failed
    */
-  401: unknown
+  401: ErrorResponse
   /**
    * Forbidden - User doesn't have permission to access API keys
    */
   403: unknown
 }
+
+export type GetApiKeysError = GetApiKeysErrors[keyof GetApiKeysErrors]
 
 export interface GetApiKeysResponses {
   /**
@@ -3607,14 +4345,16 @@ export interface CreateApiKeyErrors {
    */
   400: unknown
   /**
-   * Unauthorized - Authentication token is missing or invalid
+   * Authentication is required or failed
    */
-  401: unknown
+  401: ErrorResponse
   /**
    * Forbidden - User doesn't have permission to create API keys
    */
   403: unknown
 }
+
+export type CreateApiKeyError = CreateApiKeyErrors[keyof CreateApiKeyErrors]
 
 export interface CreateApiKeyResponses {
   /**
@@ -3657,9 +4397,9 @@ export interface RevokeApiKeyData {
 
 export interface RevokeApiKeyErrors {
   /**
-   * Unauthorized - Authentication token is missing or invalid
+   * Authentication is required or failed
    */
-  401: unknown
+  401: ErrorResponse
   /**
    * Forbidden - User doesn't have permission to revoke API keys
    */
@@ -3669,6 +4409,8 @@ export interface RevokeApiKeyErrors {
    */
   404: unknown
 }
+
+export type RevokeApiKeyError = RevokeApiKeyErrors[keyof RevokeApiKeyErrors]
 
 export interface RevokeApiKeyResponses {
   /**
@@ -3695,6 +4437,16 @@ export interface GetConnectedAccountsData {
   }
   url: '/v2/connected-accounts'
 }
+
+export interface GetConnectedAccountsErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type GetConnectedAccountsError =
+  GetConnectedAccountsErrors[keyof GetConnectedAccountsErrors]
 
 export interface GetConnectedAccountsResponses {
   /**
@@ -3749,14 +4501,17 @@ export interface GetProfileCastsData {
 
 export interface GetProfileCastsErrors {
   /**
-   * Unauthorized - Authentication token is missing or invalid
+   * Authentication is required or failed
    */
-  401: unknown
+  401: ErrorResponse
   /**
    * User not found
    */
   404: unknown
 }
+
+export type GetProfileCastsError =
+  GetProfileCastsErrors[keyof GetProfileCastsErrors]
 
 export interface GetProfileCastsResponses {
   /**
@@ -3800,14 +4555,17 @@ export interface GetUserLikedCastsErrors {
    */
   400: unknown
   /**
-   * Unauthorized access - invalid or missing token
+   * Authentication is required or failed
    */
-  401: unknown
+  401: ErrorResponse
   /**
    * Internal Server Error
    */
   500: unknown
 }
+
+export type GetUserLikedCastsError =
+  GetUserLikedCastsErrors[keyof GetUserLikedCastsErrors]
 
 export interface GetUserLikedCastsResponses {
   /**

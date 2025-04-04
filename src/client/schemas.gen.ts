@@ -1151,10 +1151,11 @@ export const BookmarkedCastsResponseSchema = {
       properties: {
         bookmarks: {
           type: 'array',
-          items: null,
+          items: {
+            $ref: '#/components/schemas/BookmarkedCast',
+          },
         },
       },
-      $ref: '#/components/schemas/BookmarkedCast',
     },
   },
 } as const
@@ -2071,6 +2072,10 @@ export const ActionSchema = {
       type: 'string',
       format: 'uri',
     },
+    imageUrl: {
+      type: 'string',
+      format: 'uri',
+    },
     actionUrl: {
       type: 'string',
       format: 'uri',
@@ -2147,12 +2152,10 @@ export const FrameSchema = {
       type: 'string',
     },
     buttonTitle: {
-      type: 'string',
-      nullable: true,
+      type: ['string', 'null'],
     },
     imageUrl: {
-      type: 'string',
-      nullable: true,
+      type: ['string', 'null'],
     },
     supportsNotifications: {
       type: 'boolean',
@@ -2206,11 +2209,10 @@ export const ApiKeySchema = {
         'Timestamp when the API key expires (in milliseconds since epoch)',
     },
     revokedAt: {
-      type: 'integer',
+      type: ['string', 'null'],
       format: 'int64',
       description:
         'Timestamp when the API key was revoked, if applicable (in milliseconds since epoch)',
-      nullable: true,
     },
     tag: {
       type: 'string',
@@ -2219,28 +2221,6 @@ export const ApiKeySchema = {
     description: {
       type: 'string',
       description: "User-provided description of the API key's purpose",
-    },
-  },
-} as const
-
-export const EmbedGroupsSchema = {
-  type: 'object',
-  properties: {
-    images: {
-      type: 'array',
-      items: {},
-    },
-    urls: {
-      type: 'array',
-      items: {},
-    },
-    videos: {
-      type: 'array',
-      items: {},
-    },
-    unknowns: {
-      type: 'array',
-      items: {},
     },
   },
 } as const

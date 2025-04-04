@@ -17,136 +17,196 @@ import {
 } from './transformers.gen'
 import type {
   AcceptChannelInviteData,
+  AcceptChannelInviteError,
   AcceptChannelInviteResponse,
   AttachEmbedsData,
+  AttachEmbedsError,
   AttachEmbedsResponse2,
   BanUserFromChannelData,
+  BanUserFromChannelError,
   BanUserFromChannelResponse,
   BlockUserData,
+  BlockUserError,
   BlockUserResponse,
   CheckUserChannelFollowStatusData,
+  CheckUserChannelFollowStatusError,
   CheckUserChannelFollowStatusResponse,
   CreateApiKeyData,
+  CreateApiKeyError,
   CreateApiKeyResponse,
   CreateCastData,
+  CreateCastError,
   CreateCastResponse,
   CreateDraftCastsData,
+  CreateDraftCastsError,
   CreateDraftCastsResponse,
   DeleteCastData,
+  DeleteCastError,
   DeleteCastResponse,
   DeleteDraftCastData,
+  DeleteDraftCastError,
   DeleteDraftCastResponse,
   DiscoverChannelsData,
+  DiscoverChannelsError,
   DiscoverChannelsResponse2,
   FollowChannelData,
+  FollowChannelError,
   FollowChannelResponse,
   GetAccountVerificationsData,
+  GetAccountVerificationsError,
   GetAccountVerificationsResponse,
   GetAllChannelsData,
+  GetAllChannelsError,
   GetAllChannelsResponse,
   GetApiKeysData,
+  GetApiKeysError,
   GetApiKeysResponse,
   GetAppsByAuthorData,
+  GetAppsByAuthorError,
   GetAppsByAuthorResponse,
   GetAvailableInvitesData,
+  GetAvailableInvitesError,
   GetAvailableInvitesResponse,
   GetBlockedUsersData,
+  GetBlockedUsersError,
   GetBlockedUsersResponse,
   GetBookmarkedCastsData,
+  GetBookmarkedCastsError,
   GetBookmarkedCastsResponse,
   GetCastLikesData,
+  GetCastLikesError,
   GetCastLikesResponse,
   GetCastQuotesData,
+  GetCastQuotesError,
   GetCastQuotesResponse,
   GetCastRecastersData,
+  GetCastRecastersError,
   GetCastRecastersResponse,
   GetCastsByFidData,
   GetCastsByFidError,
   GetCastsByFidResponse,
   GetChannelBannedUsersData,
+  GetChannelBannedUsersError,
   GetChannelBannedUsersResponse,
   GetChannelData,
   GetChannelDetailsData,
+  GetChannelDetailsError,
   GetChannelDetailsResponse,
+  GetChannelError,
   GetChannelFollowersData,
+  GetChannelFollowersError,
   GetChannelFollowersResponse,
   GetChannelFollowersYouKnowData,
+  GetChannelFollowersYouKnowError,
   GetChannelFollowersYouKnowResponse,
   GetChannelInvitesData,
+  GetChannelInvitesError,
   GetChannelInvitesResponse,
   GetChannelMembersData,
+  GetChannelMembersError,
   GetChannelMembersResponse,
   GetChannelModeratedCastsData,
+  GetChannelModeratedCastsError,
   GetChannelModeratedCastsResponse,
   GetChannelResponse,
   GetChannelRestrictedUsersData,
+  GetChannelRestrictedUsersError,
   GetChannelRestrictedUsersResponse,
   GetChannelStreaksForUserData,
+  GetChannelStreaksForUserError,
   GetChannelStreaksForUserResponse,
   GetChannelUsersData,
+  GetChannelUsersError,
   GetChannelUsersResponse,
   GetConnectedAccountsData,
+  GetConnectedAccountsError,
   GetConnectedAccountsResponse,
   GetCreatorRewardWinnersData,
+  GetCreatorRewardWinnersError,
   GetCreatorRewardWinnersResponse,
   GetCurrentUserData,
+  GetCurrentUserError,
   GetCurrentUserResponse,
   GetDeveloperRewardWinnersData,
+  GetDeveloperRewardWinnersError,
   GetDeveloperRewardWinnersResponse,
   GetDirectCastConversationData,
+  GetDirectCastConversationError,
   GetDirectCastConversationResponse,
   GetDirectCastInboxData,
   GetDirectCastInboxError,
   GetDirectCastInboxResponse,
   GetDiscoverableActionsData,
+  GetDiscoverableActionsError,
   GetDiscoverableActionsResponse,
   GetDiscoverableComposerActionsData,
+  GetDiscoverableComposerActionsError,
   GetDiscoverableComposerActionsResponse,
   GetDomainManifestData,
+  GetDomainManifestError,
   GetDomainManifestResponse,
   GetDraftCastsData,
+  GetDraftCastsError,
   GetDraftCastsResponse,
   GetFarcasterJsonData,
+  GetFarcasterJsonError,
   GetFarcasterJsonResponse,
   GetFeedItemsData,
   GetFeedItemsError,
   GetFeedItemsResponse,
   GetFollowersData,
+  GetFollowersError,
   GetFollowersResponse,
   GetFollowingData,
+  GetFollowingError,
   GetFollowingResponse,
   GetHighlightedChannelsData,
   GetHighlightedChannelsError,
   GetHighlightedChannelsResponse,
   GetMetaTagsData,
+  GetMetaTagsError,
   GetMetaTagsResponse,
   GetMutedKeywordsData,
+  GetMutedKeywordsError,
   GetMutedKeywordsResponse,
   GetMutualFollowersData,
+  GetMutualFollowersError,
   GetMutualFollowersResponse,
   GetNotificationsData,
+  GetNotificationsError,
   GetNotificationsResponse,
   GetProfileCastsData,
+  GetProfileCastsError,
   GetProfileCastsResponse,
   GetRewardsLeaderboardData,
+  GetRewardsLeaderboardError,
   GetRewardsLeaderboardResponse,
   GetRewardsMetadataData,
+  GetRewardsMetadataError,
   GetRewardsMetadataResponse,
   GetSponsoredInvitesData,
+  GetSponsoredInvitesError,
   GetSponsoredInvitesResponse,
   GetStarterPackData,
+  GetStarterPackError,
   GetStarterPackMembersData,
+  GetStarterPackMembersError,
   GetStarterPackMembersResponse,
   GetStarterPackResponse,
   GetStarterPackUsersData,
+  GetStarterPackUsersError,
   GetStarterPackUsersResponse,
   GetSuggestedStarterPacksData,
+  GetSuggestedStarterPacksError,
   GetSuggestedStarterPacksResponse,
   GetSuggestedUsersData,
+  GetSuggestedUsersError,
   GetSuggestedUsersResponse,
   GetTopFrameAppsData,
+  GetTopFrameAppsError,
   GetTopFrameAppsResponse,
   GetUnseenCountsData,
+  GetUnseenCountsError,
   GetUnseenCountsResponse,
   GetUserAppContextData,
   GetUserAppContextError,
@@ -157,17 +217,21 @@ import type {
   GetUserByUsernameData,
   GetUserByUsernameResponse,
   GetUserByVerificationAddressData,
+  GetUserByVerificationAddressError,
   GetUserByVerificationAddressResponse,
   GetUserData,
   GetUserError,
   GetUserFavoriteFramesData,
+  GetUserFavoriteFramesError,
   GetUserFavoriteFramesResponse,
   GetUserFollowedChannelsData,
+  GetUserFollowedChannelsError,
   GetUserFollowedChannelsResponse,
   GetUserFollowingChannelsData,
   GetUserFollowingChannelsError,
   GetUserFollowingChannelsResponse,
   GetUserLikedCastsData,
+  GetUserLikedCastsError,
   GetUserLikedCastsResponse,
   GetUserOnboardingStateData,
   GetUserOnboardingStateError,
@@ -176,55 +240,80 @@ import type {
   GetUserPreferencesError,
   GetUserPreferencesResponse,
   GetUserPrimaryAddressData,
-  GetUserPrimaryAddressResponse,
+  GetUserPrimaryAddressError,
   GetUserPrimaryAddressesData,
+  GetUserPrimaryAddressesError,
   GetUserPrimaryAddressesResponse,
+  GetUserPrimaryAddressResponse,
   GetUserResponse,
   GetUserRewardsScoresData,
+  GetUserRewardsScoresError,
   GetUserRewardsScoresResponse,
   GetUserStarterPacksData,
+  GetUserStarterPacksError,
   GetUserStarterPacksResponse,
   GetUserThreadCastsData,
+  GetUserThreadCastsError,
   GetUserThreadCastsResponse,
   GetVerificationsData,
+  GetVerificationsError,
   GetVerificationsResponse,
   InviteUserToChannelData,
+  InviteUserToChannelError,
   InviteUserToChannelResponse,
   LikeCastData,
+  LikeCastError,
   LikeCastResponse,
   MarkAllNotificationsReadData,
+  MarkAllNotificationsReadError,
   MarkAllNotificationsReadResponse,
   ModerateCastData,
+  ModerateCastError,
   ModerateCastResponse,
   MuteKeywordData,
+  MuteKeywordError,
   MuteKeywordResponse,
   PinCastToChannelData,
+  PinCastToChannelError,
   PinCastToChannelResponse,
   RecastCastData,
+  RecastCastError,
   RecastCastResponse,
   RemoveChannelInviteData,
+  RemoveChannelInviteError,
   RemoveChannelInviteResponse,
   RevokeApiKeyData,
+  RevokeApiKeyError,
   RevokeApiKeyResponse,
   SearchChannelsData,
+  SearchChannelsError,
   SearchChannelsResponse2,
   SendDirectCastData,
+  SendDirectCastError,
   SendDirectCastResponse,
   SetLastCheckedTimestampData,
+  SetLastCheckedTimestampError,
   SetLastCheckedTimestampResponse,
   UnbanUserFromChannelData,
+  UnbanUserFromChannelError,
   UnbanUserFromChannelResponse,
   UnblockUserData,
+  UnblockUserError,
   UnblockUserResponse,
   UndoRecastData,
+  UndoRecastError,
   UndoRecastResponse,
   UnfollowChannelData,
+  UnfollowChannelError,
   UnfollowChannelResponse,
   UnlikeCastData,
+  UnlikeCastError,
   UnlikeCastResponse,
   UnmuteKeywordData,
+  UnmuteKeywordError,
   UnmuteKeywordResponse,
   UnpinCastFromChannelData,
+  UnpinCastFromChannelError,
   UnpinCastFromChannelResponse,
 } from './types.gen'
 
@@ -474,7 +563,7 @@ export const getSuggestedUsers = <ThrowOnError extends boolean = false>(
 ) => {
   return (options?.client ?? _heyApiClient).get<
     GetSuggestedUsersResponse,
-    unknown,
+    GetSuggestedUsersError,
     ThrowOnError
   >({
     security: [
@@ -497,7 +586,7 @@ export const getUserFavoriteFrames = <ThrowOnError extends boolean = false>(
 ) => {
   return (options?.client ?? _heyApiClient).get<
     GetUserFavoriteFramesResponse,
-    unknown,
+    GetUserFavoriteFramesError,
     ThrowOnError
   >({
     security: [
@@ -543,7 +632,7 @@ export const getChannelStreaksForUser = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).get<
     GetChannelStreaksForUserResponse,
-    unknown,
+    GetChannelStreaksForUserError,
     ThrowOnError
   >({
     security: [
@@ -566,7 +655,7 @@ export const getUnseenCounts = <ThrowOnError extends boolean = false>(
 ) => {
   return (options?.client ?? _heyApiClient).get<
     GetUnseenCountsResponse,
-    unknown,
+    GetUnseenCountsError,
     ThrowOnError
   >({
     security: [
@@ -590,7 +679,7 @@ export const getUserThreadCasts = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).get<
     GetUserThreadCastsResponse,
-    unknown,
+    GetUserThreadCastsError,
     ThrowOnError
   >({
     security: [
@@ -615,7 +704,7 @@ export const getChannelFollowersYouKnow = <
 ) => {
   return (options.client ?? _heyApiClient).get<
     GetChannelFollowersYouKnowResponse,
-    unknown,
+    GetChannelFollowersYouKnowError,
     ThrowOnError
   >({
     security: [
@@ -638,7 +727,7 @@ export const markAllNotificationsRead = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).put<
     MarkAllNotificationsReadResponse,
-    unknown,
+    MarkAllNotificationsReadError,
     ThrowOnError
   >({
     security: [
@@ -666,7 +755,7 @@ export const getNotifications = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).get<
     GetNotificationsResponse,
-    unknown,
+    GetNotificationsError,
     ThrowOnError
   >({
     security: [
@@ -690,7 +779,7 @@ export const setLastCheckedTimestamp = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).put<
     SetLastCheckedTimestampResponse,
-    unknown,
+    SetLastCheckedTimestampError,
     ThrowOnError
   >({
     security: [
@@ -718,7 +807,7 @@ export const getDirectCastConversation = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).get<
     GetDirectCastConversationResponse,
-    unknown,
+    GetDirectCastConversationError,
     ThrowOnError
   >({
     security: [
@@ -742,7 +831,7 @@ export const discoverChannels = <ThrowOnError extends boolean = false>(
 ) => {
   return (options?.client ?? _heyApiClient).get<
     DiscoverChannelsResponse2,
-    unknown,
+    DiscoverChannelsError,
     ThrowOnError
   >({
     security: [
@@ -766,7 +855,7 @@ export const getAvailableInvites = <ThrowOnError extends boolean = false>(
 ) => {
   return (options?.client ?? _heyApiClient).get<
     GetAvailableInvitesResponse,
-    unknown,
+    GetAvailableInvitesError,
     ThrowOnError
   >({
     security: [
@@ -790,7 +879,7 @@ export const getSponsoredInvites = <ThrowOnError extends boolean = false>(
 ) => {
   return (options?.client ?? _heyApiClient).get<
     GetSponsoredInvitesResponse,
-    unknown,
+    GetSponsoredInvitesError,
     ThrowOnError
   >({
     security: [
@@ -814,7 +903,7 @@ export const getRewardsLeaderboard = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).get<
     GetRewardsLeaderboardResponse,
-    unknown,
+    GetRewardsLeaderboardError,
     ThrowOnError
   >({
     security: [
@@ -838,7 +927,7 @@ export const getUserRewardsScores = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).get<
     GetUserRewardsScoresResponse,
-    unknown,
+    GetUserRewardsScoresError,
     ThrowOnError
   >({
     security: [
@@ -862,7 +951,7 @@ export const getRewardsMetadata = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).get<
     GetRewardsMetadataResponse,
-    unknown,
+    GetRewardsMetadataError,
     ThrowOnError
   >({
     security: [
@@ -886,7 +975,7 @@ export const getBookmarkedCasts = <ThrowOnError extends boolean = false>(
 ) => {
   return (options?.client ?? _heyApiClient).get<
     GetBookmarkedCastsResponse,
-    unknown,
+    GetBookmarkedCastsError,
     ThrowOnError
   >({
     security: [
@@ -910,9 +999,15 @@ export const getUserStarterPacks = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).get<
     GetUserStarterPacksResponse,
-    unknown,
+    GetUserStarterPacksError,
     ThrowOnError
   >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
     url: '/v2/starter-packs',
     ...options,
   })
@@ -928,9 +1023,15 @@ export const getSuggestedStarterPacks = <ThrowOnError extends boolean = false>(
 ) => {
   return (options?.client ?? _heyApiClient).get<
     GetSuggestedStarterPacksResponse,
-    unknown,
+    GetSuggestedStarterPacksError,
     ThrowOnError
   >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
     url: '/v2/starter-packs/suggested',
     ...options,
   })
@@ -946,9 +1047,15 @@ export const getStarterPack = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).get<
     GetStarterPackResponse,
-    unknown,
+    GetStarterPackError,
     ThrowOnError
   >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
     url: '/v2/starter-pack',
     ...options,
   })
@@ -964,9 +1071,15 @@ export const getStarterPackUsers = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).get<
     GetStarterPackUsersResponse,
-    unknown,
+    GetStarterPackUsersError,
     ThrowOnError
   >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
     url: '/v2/starter-pack-users',
     ...options,
   })
@@ -982,9 +1095,15 @@ export const getChannel = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).get<
     GetChannelResponse,
-    unknown,
+    GetChannelError,
     ThrowOnError
   >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
     url: '/v2/channel',
     ...options,
   })
@@ -1000,9 +1119,15 @@ export const getChannelUsers = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).get<
     GetChannelUsersResponse,
-    unknown,
+    GetChannelUsersError,
     ThrowOnError
   >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
     url: '/v1/channel-users',
     ...options,
   })
@@ -1018,9 +1143,15 @@ export const getFollowing = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).get<
     GetFollowingResponse,
-    unknown,
+    GetFollowingError,
     ThrowOnError
   >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
     url: '/v2/following',
     ...options,
   })
@@ -1036,9 +1167,15 @@ export const getFollowers = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).get<
     GetFollowersResponse,
-    unknown,
+    GetFollowersError,
     ThrowOnError
   >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
     url: '/v2/followers',
     ...options,
   })
@@ -1054,9 +1191,15 @@ export const getMutualFollowers = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).get<
     GetMutualFollowersResponse,
-    unknown,
+    GetMutualFollowersError,
     ThrowOnError
   >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
     url: '/v2/followers-you-know',
     ...options,
   })
@@ -1072,9 +1215,15 @@ export const getTopFrameApps = <ThrowOnError extends boolean = false>(
 ) => {
   return (options?.client ?? _heyApiClient).get<
     GetTopFrameAppsResponse,
-    unknown,
+    GetTopFrameAppsError,
     ThrowOnError
   >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
     url: '/v1/top-frameapps',
     ...options,
   })
@@ -1090,9 +1239,15 @@ export const getVerifications = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).get<
     GetVerificationsResponse,
-    unknown,
+    GetVerificationsError,
     ThrowOnError
   >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
     url: '/v2/verifications',
     ...options,
   })
@@ -1108,9 +1263,15 @@ export const getMutedKeywords = <ThrowOnError extends boolean = false>(
 ) => {
   return (options?.client ?? _heyApiClient).get<
     GetMutedKeywordsResponse,
-    unknown,
+    GetMutedKeywordsError,
     ThrowOnError
   >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
     url: '/v2/get-muted-keywords',
     ...options,
   })
@@ -1126,9 +1287,15 @@ export const muteKeyword = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).post<
     MuteKeywordResponse,
-    unknown,
+    MuteKeywordError,
     ThrowOnError
   >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
     url: '/v2/mute-keyword',
     ...options,
     headers: {
@@ -1147,7 +1314,7 @@ export const unmuteKeyword = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).post<
     UnmuteKeywordResponse,
-    unknown,
+    UnmuteKeywordError,
     ThrowOnError
   >({
     security: [
@@ -1174,7 +1341,7 @@ export const unlikeCast = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).delete<
     UnlikeCastResponse,
-    unknown,
+    UnlikeCastError,
     ThrowOnError
   >({
     security: [
@@ -1201,7 +1368,7 @@ export const getCastLikes = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).get<
     GetCastLikesResponse,
-    unknown,
+    GetCastLikesError,
     ThrowOnError
   >({
     security: [
@@ -1224,7 +1391,7 @@ export const likeCast = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).put<
     LikeCastResponse,
-    unknown,
+    LikeCastError,
     ThrowOnError
   >({
     security: [
@@ -1251,7 +1418,7 @@ export const undoRecast = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).delete<
     UndoRecastResponse,
-    unknown,
+    UndoRecastError,
     ThrowOnError
   >({
     security: [
@@ -1278,7 +1445,7 @@ export const recastCast = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).put<
     RecastCastResponse,
-    unknown,
+    RecastCastError,
     ThrowOnError
   >({
     security: [
@@ -1305,7 +1472,7 @@ export const attachEmbeds = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).put<
     AttachEmbedsResponse2,
-    unknown,
+    AttachEmbedsError,
     ThrowOnError
   >({
     security: [
@@ -1332,7 +1499,7 @@ export const getCastRecasters = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).get<
     GetCastRecastersResponse,
-    unknown,
+    GetCastRecastersError,
     ThrowOnError
   >({
     security: [
@@ -1355,7 +1522,7 @@ export const getCastQuotes = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).get<
     GetCastQuotesResponse,
-    unknown,
+    GetCastQuotesError,
     ThrowOnError
   >({
     security: [
@@ -1378,7 +1545,7 @@ export const getCurrentUser = <ThrowOnError extends boolean = false>(
 ) => {
   return (options?.client ?? _heyApiClient).get<
     GetCurrentUserResponse,
-    unknown,
+    GetCurrentUserError,
     ThrowOnError
   >({
     security: [
@@ -1401,7 +1568,7 @@ export const searchChannels = <ThrowOnError extends boolean = false>(
 ) => {
   return (options?.client ?? _heyApiClient).get<
     SearchChannelsResponse2,
-    unknown,
+    SearchChannelsError,
     ThrowOnError
   >({
     security: [
@@ -1424,7 +1591,7 @@ export const getDraftCasts = <ThrowOnError extends boolean = false>(
 ) => {
   return (options?.client ?? _heyApiClient).get<
     GetDraftCastsResponse,
-    unknown,
+    GetDraftCastsError,
     ThrowOnError
   >({
     security: [
@@ -1447,7 +1614,7 @@ export const createDraftCasts = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).post<
     CreateDraftCastsResponse,
-    unknown,
+    CreateDraftCastsError,
     ThrowOnError
   >({
     security: [
@@ -1474,7 +1641,7 @@ export const deleteDraftCast = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).delete<
     DeleteDraftCastResponse,
-    unknown,
+    DeleteDraftCastError,
     ThrowOnError
   >({
     security: [
@@ -1501,7 +1668,7 @@ export const deleteCast = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).delete<
     DeleteCastResponse,
-    unknown,
+    DeleteCastError,
     ThrowOnError
   >({
     security: [
@@ -1552,7 +1719,7 @@ export const createCast = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).post<
     CreateCastResponse,
-    unknown,
+    CreateCastError,
     ThrowOnError
   >({
     security: [
@@ -1581,9 +1748,15 @@ export const getAllChannels = <ThrowOnError extends boolean = false>(
 ) => {
   return (options?.client ?? _heyApiClient).get<
     GetAllChannelsResponse,
-    unknown,
+    GetAllChannelsError,
     ThrowOnError
   >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
     url: '/v2/all-channels',
     ...options,
   })
@@ -1598,9 +1771,15 @@ export const getChannelDetails = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).get<
     GetChannelDetailsResponse,
-    unknown,
+    GetChannelDetailsError,
     ThrowOnError
   >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
     url: '/v1/channel',
     ...options,
   })
@@ -1615,9 +1794,15 @@ export const getChannelFollowers = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).get<
     GetChannelFollowersResponse,
-    unknown,
+    GetChannelFollowersError,
     ThrowOnError
   >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
     url: '/v1/channel-followers',
     ...options,
   })
@@ -1632,9 +1817,15 @@ export const getUserFollowedChannels = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).get<
     GetUserFollowedChannelsResponse,
-    unknown,
+    GetUserFollowedChannelsError,
     ThrowOnError
   >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
     url: '/v1/user-following-channels',
     ...options,
   })
@@ -1651,9 +1842,15 @@ export const checkUserChannelFollowStatus = <
 ) => {
   return (options.client ?? _heyApiClient).get<
     CheckUserChannelFollowStatusResponse,
-    unknown,
+    CheckUserChannelFollowStatusError,
     ThrowOnError
   >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
     url: '/v1/user-channel',
     ...options,
   })
@@ -1668,9 +1865,15 @@ export const getChannelMembers = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).get<
     GetChannelMembersResponse,
-    unknown,
+    GetChannelMembersError,
     ThrowOnError
   >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
     url: '/fc/channel-members',
     ...options,
   })
@@ -1685,7 +1888,7 @@ export const removeChannelInvite = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).delete<
     RemoveChannelInviteResponse,
-    unknown,
+    RemoveChannelInviteError,
     ThrowOnError
   >({
     security: [
@@ -1712,9 +1915,15 @@ export const getChannelInvites = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).get<
     GetChannelInvitesResponse,
-    unknown,
+    GetChannelInvitesError,
     ThrowOnError
   >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
     url: '/fc/channel-invites',
     ...options,
   })
@@ -1729,7 +1938,7 @@ export const acceptChannelInvite = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).patch<
     AcceptChannelInviteResponse,
-    unknown,
+    AcceptChannelInviteError,
     ThrowOnError
   >({
     security: [
@@ -1756,7 +1965,7 @@ export const inviteUserToChannel = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).post<
     InviteUserToChannelResponse,
-    unknown,
+    InviteUserToChannelError,
     ThrowOnError
   >({
     security: [
@@ -1783,9 +1992,15 @@ export const getChannelModeratedCasts = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).get<
     GetChannelModeratedCastsResponse,
-    unknown,
+    GetChannelModeratedCastsError,
     ThrowOnError
   >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
     url: '/fc/moderated-casts',
     ...options,
   })
@@ -1800,9 +2015,15 @@ export const getChannelRestrictedUsers = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).get<
     GetChannelRestrictedUsersResponse,
-    unknown,
+    GetChannelRestrictedUsersError,
     ThrowOnError
   >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
     url: '/fc/channel-restricted-users',
     ...options,
   })
@@ -1817,7 +2038,7 @@ export const unbanUserFromChannel = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).delete<
     UnbanUserFromChannelResponse,
-    unknown,
+    UnbanUserFromChannelError,
     ThrowOnError
   >({
     security: [
@@ -1844,9 +2065,15 @@ export const getChannelBannedUsers = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).get<
     GetChannelBannedUsersResponse,
-    unknown,
+    GetChannelBannedUsersError,
     ThrowOnError
   >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
     url: '/fc/channel-bans',
     ...options,
   })
@@ -1861,7 +2088,7 @@ export const banUserFromChannel = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).post<
     BanUserFromChannelResponse,
-    unknown,
+    BanUserFromChannelError,
     ThrowOnError
   >({
     security: [
@@ -1888,7 +2115,7 @@ export const unfollowChannel = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).delete<
     UnfollowChannelResponse,
-    unknown,
+    UnfollowChannelError,
     ThrowOnError
   >({
     security: [
@@ -1915,7 +2142,7 @@ export const followChannel = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).post<
     FollowChannelResponse,
-    unknown,
+    FollowChannelError,
     ThrowOnError
   >({
     security: [
@@ -1942,7 +2169,7 @@ export const moderateCast = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).post<
     ModerateCastResponse,
-    unknown,
+    ModerateCastError,
     ThrowOnError
   >({
     security: [
@@ -1969,7 +2196,7 @@ export const unpinCastFromChannel = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).delete<
     UnpinCastFromChannelResponse,
-    unknown,
+    UnpinCastFromChannelError,
     ThrowOnError
   >({
     security: [
@@ -1996,7 +2223,7 @@ export const pinCastToChannel = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).put<
     PinCastToChannelResponse,
-    unknown,
+    PinCastToChannelError,
     ThrowOnError
   >({
     security: [
@@ -2023,7 +2250,7 @@ export const getDiscoverableActions = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).get<
     GetDiscoverableActionsResponse,
-    unknown,
+    GetDiscoverableActionsError,
     ThrowOnError
   >({
     security: [
@@ -2048,7 +2275,7 @@ export const getDiscoverableComposerActions = <
 ) => {
   return (options.client ?? _heyApiClient).get<
     GetDiscoverableComposerActionsResponse,
-    unknown,
+    GetDiscoverableComposerActionsError,
     ThrowOnError
   >({
     security: [
@@ -2071,7 +2298,7 @@ export const unblockUser = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).delete<
     UnblockUserResponse,
-    unknown,
+    UnblockUserError,
     ThrowOnError
   >({
     security: [
@@ -2098,7 +2325,7 @@ export const getBlockedUsers = <ThrowOnError extends boolean = false>(
 ) => {
   return (options?.client ?? _heyApiClient).get<
     GetBlockedUsersResponse,
-    unknown,
+    GetBlockedUsersError,
     ThrowOnError
   >({
     security: [
@@ -2121,7 +2348,7 @@ export const blockUser = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).post<
     BlockUserResponse,
-    unknown,
+    BlockUserError,
     ThrowOnError
   >({
     security: [
@@ -2148,9 +2375,15 @@ export const getAccountVerifications = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).get<
     GetAccountVerificationsResponse,
-    unknown,
+    GetAccountVerificationsError,
     ThrowOnError
   >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
     url: '/fc/account-verifications',
     ...options,
   })
@@ -2165,9 +2398,15 @@ export const getCreatorRewardWinners = <ThrowOnError extends boolean = false>(
 ) => {
   return (options?.client ?? _heyApiClient).get<
     GetCreatorRewardWinnersResponse,
-    unknown,
+    GetCreatorRewardWinnersError,
     ThrowOnError
   >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
     responseTransformer: getCreatorRewardWinnersResponseTransformer,
     url: '/v1/creator-rewards-winner-history',
     ...options,
@@ -2183,9 +2422,15 @@ export const getUserPrimaryAddress = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).get<
     GetUserPrimaryAddressResponse,
-    unknown,
+    GetUserPrimaryAddressError,
     ThrowOnError
   >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
     url: '/fc/primary-address',
     ...options,
   })
@@ -2200,9 +2445,15 @@ export const getUserPrimaryAddresses = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).get<
     GetUserPrimaryAddressesResponse,
-    unknown,
+    GetUserPrimaryAddressesError,
     ThrowOnError
   >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
     url: '/fc/primary-addresses',
     ...options,
   })
@@ -2217,9 +2468,15 @@ export const getStarterPackMembers = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).get<
     GetStarterPackMembersResponse,
-    unknown,
+    GetStarterPackMembersError,
     ThrowOnError
   >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
     responseTransformer: getStarterPackMembersResponseTransformer,
     url: '/fc/starter-pack-members',
     ...options,
@@ -2236,7 +2493,7 @@ export const sendDirectCast = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).put<
     SendDirectCastResponse,
-    unknown,
+    SendDirectCastError,
     ThrowOnError
   >({
     security: [
@@ -2266,7 +2523,7 @@ export const getUserByVerificationAddress = <
 ) => {
   return (options.client ?? _heyApiClient).get<
     GetUserByVerificationAddressResponse,
-    unknown,
+    GetUserByVerificationAddressError,
     ThrowOnError
   >({
     security: [
@@ -2290,9 +2547,15 @@ export const getDeveloperRewardWinners = <ThrowOnError extends boolean = false>(
 ) => {
   return (options?.client ?? _heyApiClient).get<
     GetDeveloperRewardWinnersResponse,
-    unknown,
+    GetDeveloperRewardWinnersError,
     ThrowOnError
   >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
     url: '/v1/developer-rewards-winner-history',
     ...options,
   })
@@ -2309,7 +2572,7 @@ export const getAppsByAuthor = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).get<
     GetAppsByAuthorResponse,
-    unknown,
+    GetAppsByAuthorError,
     ThrowOnError
   >({
     security: [
@@ -2333,9 +2596,15 @@ export const getDomainManifest = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).get<
     GetDomainManifestResponse,
-    unknown,
+    GetDomainManifestError,
     ThrowOnError
   >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
     url: '/v1/domain-manifest',
     ...options,
   })
@@ -2351,7 +2620,7 @@ export const getMetaTags = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).get<
     GetMetaTagsResponse,
-    unknown,
+    GetMetaTagsError,
     ThrowOnError
   >({
     security: [
@@ -2375,7 +2644,7 @@ export const getFarcasterJson = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).get<
     GetFarcasterJsonResponse,
-    unknown,
+    GetFarcasterJsonError,
     ThrowOnError
   >({
     security: [
@@ -2399,7 +2668,7 @@ export const getApiKeys = <ThrowOnError extends boolean = false>(
 ) => {
   return (options?.client ?? _heyApiClient).get<
     GetApiKeysResponse,
-    unknown,
+    GetApiKeysError,
     ThrowOnError
   >({
     security: [
@@ -2424,7 +2693,7 @@ export const createApiKey = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).put<
     CreateApiKeyResponse,
-    unknown,
+    CreateApiKeyError,
     ThrowOnError
   >({
     security: [
@@ -2452,7 +2721,7 @@ export const revokeApiKey = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).patch<
     RevokeApiKeyResponse,
-    unknown,
+    RevokeApiKeyError,
     ThrowOnError
   >({
     security: [
@@ -2480,7 +2749,7 @@ export const getConnectedAccounts = <ThrowOnError extends boolean = false>(
 ) => {
   return (options?.client ?? _heyApiClient).get<
     GetConnectedAccountsResponse,
-    unknown,
+    GetConnectedAccountsError,
     ThrowOnError
   >({
     security: [
@@ -2504,7 +2773,7 @@ export const getProfileCasts = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).get<
     GetProfileCastsResponse,
-    unknown,
+    GetProfileCastsError,
     ThrowOnError
   >({
     security: [
@@ -2528,7 +2797,7 @@ export const getUserLikedCasts = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).get<
     GetUserLikedCastsResponse,
-    unknown,
+    GetUserLikedCastsError,
     ThrowOnError
   >({
     security: [

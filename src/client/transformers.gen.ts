@@ -81,9 +81,6 @@ export const getStarterPackMembersResponseTransformer = async (
 const apiKeySchemaResponseTransformer = (data: any) => {
   data.createdAt = BigInt(data.createdAt.toString())
   data.expiresAt = BigInt(data.expiresAt.toString())
-  if (data.revokedAt) {
-    data.revokedAt = BigInt(data.revokedAt.toString())
-  }
   return data
 }
 
