@@ -423,6 +423,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
@@ -451,6 +454,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
@@ -517,6 +523,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
@@ -540,6 +549,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
@@ -592,6 +604,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
@@ -632,6 +647,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
@@ -666,6 +684,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
@@ -722,7 +743,7 @@
             }
           },
           "401": {
-            "description": "Unauthorized"
+            "$ref": "#/components/responses/Unauthorized"
           },
           "429": {
             "description": "Too many requests"
@@ -763,7 +784,7 @@
             }
           },
           "401": {
-            "description": "Unauthorized"
+            "$ref": "#/components/responses/Unauthorized"
           },
           "429": {
             "description": "Too many requests"
@@ -804,7 +825,7 @@
             }
           },
           "401": {
-            "description": "Unauthorized"
+            "$ref": "#/components/responses/Unauthorized"
           },
           "429": {
             "description": "Too many requests"
@@ -848,7 +869,7 @@
             }
           },
           "401": {
-            "description": "Unauthorized"
+            "$ref": "#/components/responses/Unauthorized"
           },
           "429": {
             "description": "Too many requests"
@@ -878,7 +899,7 @@
             }
           },
           "401": {
-            "description": "Unauthorized"
+            "$ref": "#/components/responses/Unauthorized"
           },
           "429": {
             "description": "Too many requests"
@@ -908,7 +929,7 @@
             }
           },
           "401": {
-            "description": "Unauthorized"
+            "$ref": "#/components/responses/Unauthorized"
           },
           "429": {
             "description": "Too many requests"
@@ -961,7 +982,7 @@
             }
           },
           "401": {
-            "description": "Unauthorized"
+            "$ref": "#/components/responses/Unauthorized"
           },
           "429": {
             "description": "Too many requests"
@@ -1007,7 +1028,7 @@
             }
           },
           "401": {
-            "description": "Unauthorized"
+            "$ref": "#/components/responses/Unauthorized"
           },
           "429": {
             "description": "Too many requests"
@@ -1050,7 +1071,7 @@
             }
           },
           "401": {
-            "description": "Unauthorized"
+            "$ref": "#/components/responses/Unauthorized"
           },
           "429": {
             "description": "Too many requests"
@@ -1083,6 +1104,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
@@ -1111,6 +1135,11 @@
             }
           }
         ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "responses": {
           "200": {
             "description": "A list of starter packs",
@@ -1121,6 +1150,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
@@ -1141,6 +1173,11 @@
             }
           }
         ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "responses": {
           "200": {
             "description": "A list of suggested starter packs",
@@ -1151,6 +1188,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
@@ -1170,6 +1210,11 @@
             }
           }
         ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "responses": {
           "200": {
             "description": "A starter pack object",
@@ -1180,6 +1225,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
@@ -1202,6 +1250,11 @@
             }
           }
         ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "responses": {
           "200": {
             "description": "List of users in the starter pack",
@@ -1212,6 +1265,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
@@ -1231,6 +1287,11 @@
             }
           }
         ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "responses": {
           "200": {
             "description": "Channel metadata",
@@ -1241,6 +1302,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
@@ -1279,6 +1343,11 @@
             }
           }
         ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "responses": {
           "200": {
             "description": "A list of users in the specified channel",
@@ -1289,6 +1358,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
@@ -1316,6 +1388,11 @@
             }
           }
         ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "responses": {
           "200": {
             "description": "A list of followed users",
@@ -1326,6 +1403,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
@@ -1353,6 +1433,11 @@
             }
           }
         ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "responses": {
           "200": {
             "description": "A list of followers",
@@ -1363,6 +1448,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
@@ -1390,6 +1478,11 @@
             }
           }
         ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "responses": {
           "200": {
             "description": "A list of mutual followers",
@@ -1400,6 +1493,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
@@ -1422,6 +1518,11 @@
             }
           }
         ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "responses": {
           "200": {
             "description": "A list of FrameApps",
@@ -1432,6 +1533,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
@@ -1447,6 +1551,11 @@
           },
           {
             "$ref": "#/components/parameters/limitParam"
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
           }
         ],
         "responses": {
@@ -1472,6 +1581,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
@@ -1481,6 +1593,11 @@
         "operationId": "getMutedKeywords",
         "summary": "Get muted keywords",
         "description": "Returns a list of muted keywords for the authenticated user.",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "responses": {
           "200": {
             "description": "A list of muted keywords",
@@ -1491,6 +1608,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
@@ -1518,6 +1638,11 @@
             }
           }
         },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "responses": {
           "200": {
             "description": "The muted keyword and its settings",
@@ -1528,6 +1653,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
@@ -1566,6 +1694,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
@@ -1639,6 +1770,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       },
@@ -1707,6 +1841,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       },
@@ -1758,6 +1895,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
@@ -1800,6 +1940,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       },
@@ -1840,6 +1983,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
@@ -1885,6 +2031,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
@@ -1921,6 +2070,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
@@ -1963,6 +2115,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
@@ -1986,6 +2141,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
@@ -2040,6 +2198,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
@@ -2073,6 +2234,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       },
@@ -2128,6 +2292,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
@@ -2166,6 +2333,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
@@ -2235,14 +2405,7 @@
             }
           },
           "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       },
@@ -2290,6 +2453,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       },
@@ -2326,6 +2492,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
@@ -2335,6 +2504,11 @@
         "operationId": "getAllChannels",
         "summary": "Get all channels",
         "description": "Returns a list of all channels on Warpcast",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "responses": {
           "200": {
             "description": "Successful response",
@@ -2345,6 +2519,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
@@ -2363,6 +2540,11 @@
             }
           }
         ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "responses": {
           "200": {
             "description": "Channel details",
@@ -2373,6 +2555,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
@@ -2399,6 +2584,11 @@
             }
           }
         ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "responses": {
           "200": {
             "description": "A list of channel followers",
@@ -2409,6 +2599,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
@@ -2422,6 +2615,11 @@
             "$ref": "#/components/parameters/fidParam"
           }
         ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "responses": {
           "200": {
             "description": "Successful response with list of followed channels",
@@ -2432,6 +2630,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
@@ -2453,6 +2654,11 @@
             }
           }
         ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "responses": {
           "200": {
             "description": "Successful response with follow status",
@@ -2463,6 +2669,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
@@ -2479,6 +2688,11 @@
             "schema": {
               "type": "string"
             }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
           }
         ],
         "responses": {
@@ -2550,6 +2764,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
@@ -2566,6 +2783,11 @@
             "schema": {
               "type": "string"
             }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
           }
         ],
         "responses": {
@@ -2650,6 +2872,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       },
@@ -2714,6 +2939,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       },
@@ -2778,6 +3006,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       },
@@ -2842,6 +3073,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
@@ -2859,6 +3093,11 @@
               "type": "string"
             },
             "description": "ID of the channel to get moderation actions for"
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
           }
         ],
         "responses": {
@@ -2941,6 +3180,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
@@ -2949,6 +3191,11 @@
       "get": {
         "operationId": "getChannelRestrictedUsers",
         "summary": "Get restricted users in a channel",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "parameters": [
           {
             "in": "query",
@@ -3031,6 +3278,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
@@ -3039,6 +3289,11 @@
       "get": {
         "operationId": "getChannelBannedUsers",
         "summary": "Get banned users in a channel",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "parameters": [
           {
             "in": "query",
@@ -3121,6 +3376,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       },
@@ -3175,6 +3433,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       },
@@ -3229,6 +3490,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
@@ -3279,6 +3543,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       },
@@ -3327,6 +3594,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
@@ -3386,6 +3656,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
@@ -3441,6 +3714,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       },
@@ -3489,6 +3765,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
@@ -3571,6 +3850,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
@@ -3654,6 +3936,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
@@ -3738,6 +4023,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       },
@@ -3803,6 +4091,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       },
@@ -3868,6 +4159,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
@@ -3876,6 +4170,11 @@
       "get": {
         "operationId": "getAccountVerifications",
         "summary": "Get account verifications",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/fidParam"
@@ -3945,6 +4244,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
@@ -3953,6 +4255,11 @@
       "get": {
         "operationId": "getCreatorRewardWinners",
         "summary": "Get creator reward winners",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "parameters": [
           {
             "in": "query",
@@ -4045,6 +4352,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
@@ -4053,6 +4363,11 @@
       "get": {
         "operationId": "getUserPrimaryAddress",
         "summary": "Get User Primary Address",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/fidParam"
@@ -4100,6 +4415,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
@@ -4108,6 +4426,11 @@
       "get": {
         "operationId": "getUserPrimaryAddresses",
         "summary": "Get Multiple User Primary Addresses",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "parameters": [
           {
             "in": "query",
@@ -4210,6 +4533,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
@@ -4218,6 +4544,11 @@
       "get": {
         "operationId": "getStarterPackMembers",
         "summary": "Get Starter Pack Members",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "parameters": [
           {
             "in": "query",
@@ -4293,6 +4624,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
@@ -4374,6 +4708,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
@@ -4419,7 +4756,7 @@
             "description": "Invalid address format"
           },
           "401": {
-            "description": "Unauthorized - Authentication required"
+            "$ref": "#/components/responses/Unauthorized"
           },
           "404": {
             "description": "No user found for the provided address"
@@ -4431,6 +4768,11 @@
       "get": {
         "operationId": "getDeveloperRewardWinners",
         "summary": "Get developer reward winners",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "description": "Provides access to all winners for a given period (week). Paginated, with the list of winners in rank order. Not authenticated.",
         "parameters": [
           {
@@ -4483,6 +4825,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
@@ -4510,6 +4855,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         },
         "security": [
@@ -4523,6 +4871,11 @@
       "get": {
         "operationId": "getDomainManifest",
         "summary": "Retrieve domain manifest information",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "description": "Fetches verification and manifest information for a Farcaster domain",
         "tags": [
           "Frames"
@@ -4594,6 +4947,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
@@ -4730,6 +5086,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
@@ -4826,6 +5185,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
@@ -4874,7 +5236,7 @@
             }
           },
           "401": {
-            "description": "Unauthorized - Authentication token is missing or invalid"
+            "$ref": "#/components/responses/Unauthorized"
           },
           "403": {
             "description": "Forbidden - User doesn't have permission to access API keys"
@@ -4968,7 +5330,7 @@
             "description": "Bad Request - Invalid input parameters"
           },
           "401": {
-            "description": "Unauthorized - Authentication token is missing or invalid"
+            "$ref": "#/components/responses/Unauthorized"
           },
           "403": {
             "description": "Forbidden - User doesn't have permission to create API keys"
@@ -5050,7 +5412,7 @@
             }
           },
           "401": {
-            "description": "Unauthorized - Authentication token is missing or invalid"
+            "$ref": "#/components/responses/Unauthorized"
           },
           "403": {
             "description": "Forbidden - User doesn't have permission to revoke API keys"
@@ -5136,6 +5498,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
@@ -5224,7 +5589,7 @@
             }
           },
           "401": {
-            "description": "Unauthorized - Authentication token is missing or invalid"
+            "$ref": "#/components/responses/Unauthorized"
           },
           "404": {
             "description": "User not found"
@@ -5302,7 +5667,7 @@
             "description": "Bad request (e.g., missing required parameters)"
           },
           "401": {
-            "description": "Unauthorized access - invalid or missing token"
+            "$ref": "#/components/responses/Unauthorized"
           },
           "500": {
             "description": "Internal Server Error"
@@ -6486,10 +6851,11 @@
             "properties": {
               "bookmarks": {
                 "type": "array",
-                "items": null
+                "items": {
+                  "$ref": "#/components/schemas/BookmarkedCast"
+                }
               }
-            },
-            "$ref": "#/components/schemas/BookmarkedCast"
+            }
           }
         }
       },
@@ -7411,6 +7777,10 @@
             "type": "string",
             "format": "uri"
           },
+          "imageUrl": {
+            "type": "string",
+            "format": "uri"
+          },
           "actionUrl": {
             "type": "string",
             "format": "uri"
@@ -7490,12 +7860,16 @@
             "type": "string"
           },
           "buttonTitle": {
-            "type": "string",
-            "nullable": true
+            "type": [
+              "string",
+              "null"
+            ]
           },
           "imageUrl": {
-            "type": "string",
-            "nullable": true
+            "type": [
+              "string",
+              "null"
+            ]
           },
           "supportsNotifications": {
             "type": "boolean"
@@ -7551,10 +7925,12 @@
             "description": "Timestamp when the API key expires (in milliseconds since epoch)"
           },
           "revokedAt": {
-            "type": "integer",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "int64",
-            "description": "Timestamp when the API key was revoked, if applicable (in milliseconds since epoch)",
-            "nullable": true
+            "description": "Timestamp when the API key was revoked, if applicable (in milliseconds since epoch)"
           },
           "tag": {
             "type": "string",
@@ -7563,27 +7939,6 @@
           "description": {
             "type": "string",
             "description": "User-provided description of the API key's purpose"
-          }
-        }
-      },
-      "EmbedGroups": {
-        "type": "object",
-        "properties": {
-          "images": {
-            "type": "array",
-            "items": {}
-          },
-          "urls": {
-            "type": "array",
-            "items": {}
-          },
-          "videos": {
-            "type": "array",
-            "items": {}
-          },
-          "unknowns": {
-            "type": "array",
-            "items": {}
           }
         }
       }
