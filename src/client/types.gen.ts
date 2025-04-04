@@ -73,9 +73,12 @@ export interface OnboardingStateResponse {
 }
 
 export interface ErrorResponse {
-  error?: string
-  message?: string
-  status?: number
+  errors?: {
+    /**
+     * Error message describing the issue
+     */
+    message?: string
+  }[]
 }
 
 export type UserWithExtras = User & {

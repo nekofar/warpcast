@@ -199,14 +199,17 @@ export const OnboardingStateResponseSchema = {
 export const ErrorResponseSchema = {
   type: 'object',
   properties: {
-    error: {
-      type: 'string',
-    },
-    message: {
-      type: 'string',
-    },
-    status: {
-      type: 'integer',
+    errors: {
+      type: 'array',
+      items: {
+        type: 'object',
+        properties: {
+          message: {
+            type: 'string',
+            description: 'Error message describing the issue',
+          },
+        },
+      },
     },
   },
 } as const

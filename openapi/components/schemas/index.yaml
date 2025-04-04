@@ -87,12 +87,14 @@ OnboardingState:
 ErrorResponse:
   type: object
   properties:
-    error:
-      type: string
-    message:
-      type: string
-    status:
-      type: integer
+    errors:
+      type: array
+      items:
+        type: object
+        properties:
+          message:
+            type: string
+            description: 'Error message describing the issue'
 
 UserByFidResponse:
   type: object
@@ -1243,7 +1245,7 @@ Frame:
     buttonTitle:
       type: ['string', 'null']
     imageUrl:
-      type: [ 'string', 'null' ]
+      type: ['string', 'null']
     supportsNotifications:
       type: boolean
     viewerContext:
