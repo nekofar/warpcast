@@ -70,6 +70,8 @@ post:
         application/json:
           schema:
             $ref: '../../index.yaml#/components/schemas/CastCreatedResponse'
+    '401':
+      $ref: ../../components/responses/index.yaml#/Unauthorized
 
 delete:
   summary: Delete a cast
@@ -92,3 +94,5 @@ delete:
         application/json:
           schema:
             $ref: '../../index.yaml#/components/schemas/SuccessResponse'
+    '401':
+      $ref: ../../components/responses/index.yaml#/Unauthorized

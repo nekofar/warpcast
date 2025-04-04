@@ -1274,9 +1274,7 @@ ApiKey:
       format: int64
       description: Timestamp when the API key expires (in milliseconds since epoch)
     revokedAt:
-      type:
-        - integer
-        - null
+      type: ['string', 'null']
       format: int64
       description: Timestamp when the API key was revoked, if applicable (in milliseconds since epoch)
     tag:
