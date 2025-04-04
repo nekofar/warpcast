@@ -1256,11 +1256,9 @@ Frame:
     splashBackgroundColor:
       type: string
     buttonTitle:
-      type: string
-      nullable: true
+      type: ['string', 'null']
     imageUrl:
-      type: string
-      nullable: true
+      type: [ 'string', 'null' ]
     supportsNotifications:
       type: boolean
     viewerContext:
