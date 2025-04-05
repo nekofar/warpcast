@@ -60,8 +60,8 @@ get:
                   invitedAt: 1726874566
                   inviterFid: 235128
                   role: member
-              next:
-                cursor: '...'
+            next:
+              cursor: '...'
     '401':
       $ref: '../../components/responses/index.yaml#/Unauthorized'
 
