@@ -13,4 +13,4 @@ get:
           schema:
             $ref: '../../index.yaml#/components/schemas/ChannelListResponse'
     '401':
-      $ref: ../../components/responses/index.yaml#/Unauthorized
+      $ref: '../../components/responses/index.yaml#/Unauthorized'

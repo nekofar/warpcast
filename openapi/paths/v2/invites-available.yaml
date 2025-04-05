@@ -12,6 +12,6 @@ get:
           schema:
             $ref: '../../index.yaml#/components/schemas/InvitesAvailableResponse'
     '401':
-      $ref: ../../components/responses/index.yaml#/Unauthorized
+      $ref: '../../components/responses/index.yaml#/Unauthorized'
     '429':
       description: Too many requests

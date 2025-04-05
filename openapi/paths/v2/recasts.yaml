@@ -23,7 +23,7 @@ put:
           schema:
             $ref: '../../index.yaml#/components/schemas/CastHashResponse'
     '401':
-      $ref: ../../components/responses/index.yaml#/Unauthorized
+      $ref: '../../components/responses/index.yaml#/Unauthorized'
 
 delete:
   summary: Undo recast
@@ -50,4 +50,4 @@ delete:
           schema:
             $ref: '../../index.yaml#/components/schemas/SuccessResponse'
     '401':
-      $ref: ../../components/responses/index.yaml#/Unauthorized
+      $ref: '../../components/responses/index.yaml#/Unauthorized'

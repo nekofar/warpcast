@@ -3,7 +3,7 @@ get:
   summary: Get bookmarked casts
   description: Returns the most recent casts bookmarked by the user.
   parameters:
-    - $ref: '../../index.yaml#/components/parameters/limitParam'
+    - $ref: '../../components/parameters/index.yaml#/limitParam'
   security:
     - bearerAuth: []
   responses:
@@ -12,6 +12,6 @@ get:
       content:
         application/json:
           schema:
-            $ref: '../../index.yaml#/components/schemas/BookmarkedCastsResponse'
+            $ref: '../../components/schemas/index.yaml#/BookmarkedCastsResponse'
     '401':
-      $ref: ../../components/responses/index.yaml#/Unauthorized
+      $ref: '../../components/responses/index.yaml#/Unauthorized'

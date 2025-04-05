@@ -39,4 +39,4 @@ get:
                     type: 'string'
                     description: 'Pagination cursor for the next set of results'
     '401':
-      $ref: ../../components/responses/index.yaml#/Unauthorized
+      $ref: '../../components/responses/index.yaml#/Unauthorized'

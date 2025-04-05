@@ -30,4 +30,4 @@ get:
           schema:
             $ref: '../../components/schemas/search-channels-response.yaml#/SearchChannelsResponse'
     '401':
-      $ref: ../../components/responses/index.yaml#/Unauthorized
+      $ref: '../../components/responses/index.yaml#/Unauthorized'

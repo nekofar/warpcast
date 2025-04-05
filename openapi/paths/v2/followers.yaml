@@ -23,4 +23,4 @@ get:
           schema:
             $ref: '../../index.yaml#/components/schemas/UsersResponse'
     '401':
-      $ref: ../../components/responses/index.yaml#/Unauthorized
+      $ref: '../../components/responses/index.yaml#/Unauthorized'

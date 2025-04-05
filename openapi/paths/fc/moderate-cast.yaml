@@ -34,4 +34,4 @@ post:
             result:
               success: true
     '401':
-      $ref: ../../components/responses/index.yaml#/Unauthorized
+      $ref: '../../components/responses/index.yaml#/Unauthorized'

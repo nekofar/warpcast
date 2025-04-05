@@ -14,4 +14,4 @@ get:
           schema:
             $ref: ../../components/schemas/index.yaml#/OnboardingStateResponse
     '401':
-      $ref: ../../components/responses/index.yaml#/Unauthorized
+      $ref: '../../components/responses/index.yaml#/Unauthorized'

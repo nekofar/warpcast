@@ -17,7 +17,7 @@ get:
           schema:
             $ref: '../../index.yaml#/components/schemas/DraftsResponse'
     '401':
-      $ref: ../../components/responses/index.yaml#/Unauthorized
+      $ref: '../../components/responses/index.yaml#/Unauthorized'
 
 post:
   summary: Create a new draft casts
@@ -53,4 +53,4 @@ post:
           schema:
             $ref: '../../index.yaml#/components/schemas/DraftCreatedResponse'
     '401':
-      $ref: ../../components/responses/index.yaml#/Unauthorized
+      $ref: '../../components/responses/index.yaml#/Unauthorized'
