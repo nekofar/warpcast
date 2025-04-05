@@ -10,8 +10,8 @@ get:
       content:
         application/json:
           schema:
-            $ref: '../../index.yaml#/components/schemas/InvitesAvailableResponse'
+            $ref: '../../components/schemas/index.yaml#/InvitesAvailableResponse'
     '401':
-      $ref: ../../components/responses/index.yaml#/Unauthorized
+      $ref: '../../components/responses/index.yaml#/Unauthorized'
     '429':
       description: Too many requests

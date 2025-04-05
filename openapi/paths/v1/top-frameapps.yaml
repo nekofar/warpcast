@@ -19,4 +19,4 @@ get:
           schema:
             $ref: '../../components/schemas/frame-apps-response.yaml#/FrameAppsResponse'
     '401':
-      $ref: ../../components/responses/index.yaml#/Unauthorized
+      $ref: '../../components/responses/index.yaml#/Unauthorized'

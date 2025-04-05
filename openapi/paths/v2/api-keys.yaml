@@ -26,7 +26,7 @@ get:
                     items:
                       $ref: '../../components/schemas/index.yaml#/ApiKey'
     '401':
-      $ref: ../../components/responses/index.yaml#/Unauthorized
+      $ref: '../../components/responses/index.yaml#/Unauthorized'
     '403':
       description: Forbidden - User doesn't have permission to access API keys
 
@@ -87,7 +87,7 @@ put:
                     type: string
                     description: The secret key value that should be used for authentication (only returned once at creation)
     '401':
-      $ref: ../../components/responses/index.yaml#/Unauthorized
+      $ref: '../../components/responses/index.yaml#/Unauthorized'
     '403':
       description: Forbidden - User doesn't have permission to create API keys
     '400':

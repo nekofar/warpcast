@@ -61,7 +61,7 @@ get:
                   channelId: 'welcome'
                   action: 'hide'
                   moderatedAt: 1727767637
-              next:
-                cursor: '...'
+            next:
+              cursor: '...'
     '401':
-      $ref: ../../components/responses/index.yaml#/Unauthorized
+      $ref: '../../components/responses/index.yaml#/Unauthorized'

@@ -51,7 +51,7 @@ get:
                   memberAt: 1712685183
                 - fid: 469283
                   memberAt: 1712685067
-              next:
-                cursor: '...'
+            next:
+              cursor: '...'
     '401':
-      $ref: ../../components/responses/index.yaml#/Unauthorized
+      $ref: '../../components/responses/index.yaml#/Unauthorized'

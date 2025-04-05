@@ -41,9 +41,9 @@ get:
                         timestamp:
                           type: integer
                         reactor:
-                          $ref: '../../index.yaml#/components/schemas/User'
+                          $ref: '../../components/schemas/index.yaml#/User'
     '401':
-      $ref: ../../components/responses/index.yaml#/Unauthorized
+      $ref: '../../components/responses/index.yaml#/Unauthorized'
 
 put:
   summary: Like a cast
@@ -86,9 +86,9 @@ put:
                       timestamp:
                         type: integer
                       reactor:
-                        $ref: '../../index.yaml#/components/schemas/User'
+                        $ref: '../../components/schemas/index.yaml#/User'
     '401':
-      $ref: ../../components/responses/index.yaml#/Unauthorized
+      $ref: '../../components/responses/index.yaml#/Unauthorized'
 
 delete:
   summary: Unlike a cast
@@ -122,4 +122,4 @@ delete:
                     type: boolean
                     example: true
     '401':
-      $ref: ../../components/responses/index.yaml#/Unauthorized
+      $ref: '../../components/responses/index.yaml#/Unauthorized'

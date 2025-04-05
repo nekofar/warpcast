@@ -55,10 +55,10 @@ get:
                 - fid: 1234
                   channelId: 'welcome'
                   bannedAt: 1727767637
-              next:
-                cursor: '...'
+            next:
+              cursor: '...'
     '401':
-      $ref: ../../components/responses/index.yaml#/Unauthorized
+      $ref: '../../components/responses/index.yaml#/Unauthorized'
 
 post:
   operationId: banUserFromChannel
@@ -90,12 +90,12 @@ post:
       content:
         application/json:
           schema:
-            $ref: '../../index.yaml#/components/schemas/SuccessResponse'
+            $ref: '../../components/schemas/index.yaml#/SuccessResponse'
           example:
             result:
               success: true
     '401':
-      $ref: ../../components/responses/index.yaml#/Unauthorized
+      $ref: '../../components/responses/index.yaml#/Unauthorized'
 
 delete:
   operationId: unbanUserFromChannel
@@ -127,9 +127,9 @@ delete:
       content:
         application/json:
           schema:
-            $ref: '../../index.yaml#/components/schemas/SuccessResponse'
+            $ref: '../../components/schemas/index.yaml#/SuccessResponse'
           example:
             result:
               success: true
     '401':
-      $ref: ../../components/responses/index.yaml#/Unauthorized
+      $ref: '../../components/responses/index.yaml#/Unauthorized'

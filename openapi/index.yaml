@@ -4,6 +4,9 @@ info:
   title: Warpcast API
   version: 1.0.0
   description: API for interacting with the Warpcast platform
+  license:
+    name: 'Apache License 2.0'
+    identifier: 'Apache-2.0'
 
 servers:
   - url: https://api.warpcast.com

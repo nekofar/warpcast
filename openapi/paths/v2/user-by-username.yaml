@@ -15,4 +15,8 @@ get:
       content:
         application/json:
           schema:
-            $ref: '../../index.yaml#/components/schemas/UserResponse'
+            $ref: '../../components/schemas/index.yaml#/UserResponse'
+    '401':
+      $ref: '../../components/responses/index.yaml#/Unauthorized'
+    '404':
+      $ref: '../../components/responses/index.yaml#/NotFound'

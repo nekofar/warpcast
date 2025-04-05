@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.20] - 2025-04-05
+
+### 🚀 Features
+
+- *(openapi)* Add error responses to user endpoint
+- *(client)* Add error handling for `GetUserByUsername`
+
+### 🐛 Bug Fixes
+
+- *(openapi)* Correct indentation in `next.cursor` responses
+
+### 🚜 Refactor
+
+- *(api)* Update `ErrorResponse` schema to use `errors` array
+- *(openapi)* Update all `$ref` paths for consistency
+- *(openapi)* Update schema and response references
+
+### 📚 Documentation
+
+- *(openapi)* Add API license information
+
+### ⚙️ Miscellaneous Tasks
+
+- *(gitignore)* Add `redoc-static.html` to ignore list
+
 ## [2.0.0-alpha.19] - 2025-04-04
 
 ### 🚀 Features

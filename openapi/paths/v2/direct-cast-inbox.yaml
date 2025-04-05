@@ -5,7 +5,7 @@ get:
   summary: Get user's direct cast inbox
   description: Retrieves direct casts sent to the authenticated user
   parameters:
-    - $ref: '../../index.yaml#/components/parameters/limitParam'
+    - $ref: '../../components/parameters/index.yaml#/limitParam'
     - name: category
       in: query
       required: false
@@ -20,6 +20,6 @@ get:
       content:
         application/json:
           schema:
-            $ref: '../../index.yaml#/components/schemas/DirectCastInboxResponse'
+            $ref: '../../components/schemas/index.yaml#/DirectCastInboxResponse'
     '401':
-      $ref: '../../index.yaml#/components/responses/Unauthorized'
+      $ref: '../../components/responses/index.yaml#/Unauthorized'

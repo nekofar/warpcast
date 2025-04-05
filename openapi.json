@@ -3,7 +3,11 @@
   "info": {
     "title": "Warpcast API",
     "version": "1.0.0",
-    "description": "API for interacting with the Warpcast platform"
+    "description": "API for interacting with the Warpcast platform",
+    "license": {
+      "name": "Apache License 2.0",
+      "identifier": "Apache-2.0"
+    }
   },
   "servers": [
     {
@@ -490,6 +494,12 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
           }
         }
       }
@@ -5869,14 +5879,17 @@
       "ErrorResponse": {
         "type": "object",
         "properties": {
-          "error": {
-            "type": "string"
-          },
-          "message": {
-            "type": "string"
-          },
-          "status": {
-            "type": "integer"
+          "errors": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "description": "Error message describing the issue"
+                }
+              }
+            }
           }
         }
       },

@@ -28,7 +28,7 @@ get:
                   actions:
                     type: array
                     items:
-                      $ref: '../../index.yaml#/components/schemas/Action'
+                      $ref: '../../components/schemas/index.yaml#/Action'
                   next:
                     type: object
                     properties:
@@ -48,4 +48,4 @@ get:
               next:
                 cursor: '...'
     '401':
-      $ref: ../../components/responses/index.yaml#/Unauthorized
+      $ref: '../../components/responses/index.yaml#/Unauthorized'

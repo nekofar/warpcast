@@ -40,6 +40,6 @@ post:
       content:
         application/json:
           schema:
-            $ref: '../../index.yaml#/components/schemas/FeedItemsResponse'
+            $ref: '../../components/schemas/index.yaml#/FeedItemsResponse'
     '401':
-      $ref: '../../index.yaml#/components/responses/Unauthorized'
+      $ref: '../../components/responses/index.yaml#/Unauthorized'

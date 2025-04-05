@@ -27,4 +27,4 @@ get:
     '404':
       description: No user found for the provided address
     '401':
-      $ref: ../../components/responses/index.yaml#/Unauthorized
+      $ref: '../../components/responses/index.yaml#/Unauthorized'

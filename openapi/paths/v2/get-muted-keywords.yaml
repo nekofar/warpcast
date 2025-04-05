@@ -10,6 +10,6 @@ get:
       content:
         application/json:
           schema:
-            $ref: '../../index.yaml#/components/schemas/MutedKeywordsResponse'
+            $ref: '../../components/schemas/index.yaml#/MutedKeywordsResponse'
     '401':
-      $ref: ../../components/responses/index.yaml#/Unauthorized
+      $ref: '../../components/responses/index.yaml#/Unauthorized'

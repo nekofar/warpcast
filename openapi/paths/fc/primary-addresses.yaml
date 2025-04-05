@@ -69,4 +69,4 @@ get:
                 - fid: 39939393939
                   success: false
     '401':
-      $ref: ../../components/responses/index.yaml#/Unauthorized
+      $ref: '../../components/responses/index.yaml#/Unauthorized'

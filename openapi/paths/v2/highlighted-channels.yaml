@@ -12,6 +12,6 @@ get:
       content:
         application/json:
           schema:
-            $ref: '../../index.yaml#/components/schemas/HighlightedChannelsResponse'
+            $ref: '../../components/schemas/index.yaml#/HighlightedChannelsResponse'
     '401':
-      $ref: '../../index.yaml#/components/responses/Unauthorized'
+      $ref: '../../components/responses/index.yaml#/Unauthorized'
