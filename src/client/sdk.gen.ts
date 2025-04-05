@@ -215,6 +215,7 @@ import type {
   GetUserByFidError,
   GetUserByFidResponse,
   GetUserByUsernameData,
+  GetUserByUsernameError,
   GetUserByUsernameResponse,
   GetUserByVerificationAddressData,
   GetUserByVerificationAddressError,
@@ -609,7 +610,7 @@ export const getUserByUsername = <ThrowOnError extends boolean = false>(
 ) => {
   return (options.client ?? _heyApiClient).get<
     GetUserByUsernameResponse,
-    unknown,
+    GetUserByUsernameError,
     ThrowOnError
   >({
     security: [

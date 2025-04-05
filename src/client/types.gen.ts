@@ -1192,6 +1192,20 @@ export interface GetUserByUsernameData {
   url: '/v2/user-by-username'
 }
 
+export interface GetUserByUsernameErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+  /**
+   * The specified resource was not found
+   */
+  404: ErrorResponse
+}
+
+export type GetUserByUsernameError =
+  GetUserByUsernameErrors[keyof GetUserByUsernameErrors]
+
 export interface GetUserByUsernameResponses {
   /**
    * Successful retrieval of user by username
