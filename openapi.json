@@ -2766,10 +2766,10 @@
                         "fid": 469283,
                         "memberAt": 1712685067
                       }
-                    ],
-                    "next": {
-                      "cursor": "..."
-                    }
+                    ]
+                  },
+                  "next": {
+                    "cursor": "..."
                   }
                 }
               }
@@ -2874,10 +2874,10 @@
                         "inviterFid": 235128,
                         "role": "member"
                       }
-                    ],
-                    "next": {
-                      "cursor": "..."
-                    }
+                    ]
+                  },
+                  "next": {
+                    "cursor": "..."
                   }
                 }
               }
@@ -3182,10 +3182,10 @@
                         "action": "hide",
                         "moderatedAt": 1727767637
                       }
-                    ],
-                    "next": {
-                      "cursor": "..."
-                    }
+                    ]
+                  },
+                  "next": {
+                    "cursor": "..."
                   }
                 }
               }
@@ -3280,10 +3280,10 @@
                         "channelId": "welcome",
                         "restrictedAt": 1727767637
                       }
-                    ],
-                    "next": {
-                      "cursor": "..."
-                    }
+                    ]
+                  },
+                  "next": {
+                    "cursor": "..."
                   }
                 }
               }
@@ -3378,10 +3378,10 @@
                         "channelId": "welcome",
                         "bannedAt": 1727767637
                       }
-                    ],
-                    "next": {
-                      "cursor": "..."
-                    }
+                    ]
+                  },
+                  "next": {
+                    "cursor": "..."
                   }
                 }
               }
