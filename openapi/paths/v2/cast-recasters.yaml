@@ -4,7 +4,7 @@ get:
   security:
     - bearerAuth: []
   parameters:
-    - $ref: '../../index.yaml#/components/parameters/limitParam'
+    - $ref: '../../components/parameters/index.yaml#/limitParam'
     - name: castHash
       in: query
       required: true
@@ -16,6 +16,6 @@ get:
       content:
         application/json:
           schema:
-            $ref: '../../index.yaml#/components/schemas/CastRecastersResponse'
+            $ref: '../../components/schemas/index.yaml#/CastRecastersResponse'
     '401':
       $ref: '../../components/responses/index.yaml#/Unauthorized'

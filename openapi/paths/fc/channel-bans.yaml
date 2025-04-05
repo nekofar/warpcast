@@ -90,7 +90,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: '../../index.yaml#/components/schemas/SuccessResponse'
+            $ref: '../../components/schemas/index.yaml#/SuccessResponse'
           example:
             result:
               success: true
@@ -127,7 +127,7 @@ delete:
       content:
         application/json:
           schema:
-            $ref: '../../index.yaml#/components/schemas/SuccessResponse'
+            $ref: '../../components/schemas/index.yaml#/SuccessResponse'
           example:
             result:
               success: true

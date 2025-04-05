@@ -41,7 +41,7 @@ get:
                         timestamp:
                           type: integer
                         reactor:
-                          $ref: '../../index.yaml#/components/schemas/User'
+                          $ref: '../../components/schemas/index.yaml#/User'
     '401':
       $ref: '../../components/responses/index.yaml#/Unauthorized'
 
@@ -86,7 +86,7 @@ put:
                       timestamp:
                         type: integer
                       reactor:
-                        $ref: '../../index.yaml#/components/schemas/User'
+                        $ref: '../../components/schemas/index.yaml#/User'
     '401':
       $ref: '../../components/responses/index.yaml#/Unauthorized'
 

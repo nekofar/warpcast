@@ -15,7 +15,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: '../../index.yaml#/components/schemas/DraftsResponse'
+            $ref: '../../components/schemas/index.yaml#/DraftsResponse'
     '401':
       $ref: '../../components/responses/index.yaml#/Unauthorized'
 
@@ -44,13 +44,13 @@ post:
                 casts:
                   type: array
                   items:
-                    $ref: '../../index.yaml#/components/schemas/DraftCast'
+                    $ref: '../../components/schemas/index.yaml#/DraftCast'
   responses:
     '200':
       description: Created draft caststorm
       content:
         application/json:
           schema:
-            $ref: '../../index.yaml#/components/schemas/DraftCreatedResponse'
+            $ref: '../../components/schemas/index.yaml#/DraftCreatedResponse'
     '401':
       $ref: '../../components/responses/index.yaml#/Unauthorized'

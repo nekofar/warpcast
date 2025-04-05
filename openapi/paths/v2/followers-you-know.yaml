@@ -21,6 +21,6 @@ get:
       content:
         application/json:
           schema:
-            $ref: '../../index.yaml#/components/schemas/UsersWithCountResponse'
+            $ref: '../../components/schemas/index.yaml#/UsersWithCountResponse'
     '401':
       $ref: '../../components/responses/index.yaml#/Unauthorized'

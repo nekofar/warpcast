@@ -23,6 +23,6 @@ put:
       content:
         application/json:
           schema:
-            $ref: '../../index.yaml#/components/schemas/AttachEmbedsResponse'
+            $ref: '../../components/schemas/index.yaml#/AttachEmbedsResponse'
     '401':
       $ref: '../../components/responses/index.yaml#/Unauthorized'

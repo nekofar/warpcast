@@ -20,7 +20,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: '../../index.yaml#/components/schemas/DiscoverChannelsResponse'
+            $ref: '../../components/schemas/index.yaml#/DiscoverChannelsResponse'
     '401':
       $ref: '../../components/responses/index.yaml#/Unauthorized'
     '429':

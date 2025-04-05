@@ -28,7 +28,7 @@ get:
                   actions:
                     type: array
                     items:
-                      $ref: '../../index.yaml#/components/schemas/Action'
+                      $ref: '../../components/schemas/index.yaml#/Action'
                   next:
                     type: object
                     properties:
