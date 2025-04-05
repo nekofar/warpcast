@@ -59,3 +59,4 @@ dist
 .pnp.*
 .env.*
 pnpm-lock.yaml
+redoc-static.html
