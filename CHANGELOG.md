@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.21] - 2025-04-15
+
+### 🐛 Bug Fixes
+
+- *(openapi)* Correct nesting of `next` objects in responses
+
 ## [2.0.0-alpha.20] - 2025-04-05
 
 ### 🚀 Features
