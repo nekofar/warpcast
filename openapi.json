@@ -5044,6 +5044,10 @@
                       "type": "string",
                       "description": "Open Graph site name"
                     },
+                    "og:image:alt": {
+                      "type": "string",
+                      "description": "Open Graph image alt text"
+                    },
                     "og:image:type": {
                       "type": "string",
                       "description": "Open Graph image MIME type"
@@ -5075,6 +5079,10 @@
                     "twitter:description": {
                       "type": "string",
                       "description": "Twitter card description"
+                    },
+                    "twitter:image:alt": {
+                      "type": "string",
+                      "description": "Twitter image alt text"
                     },
                     "twitter:image:type": {
                       "type": "string",

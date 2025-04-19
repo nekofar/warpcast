@@ -4165,6 +4165,10 @@ export interface GetMetaTagsResponses {
      */
     'og:site_name'?: string
     /**
+     * Open Graph image alt text
+     */
+    'og:image:alt'?: string
+    /**
      * Open Graph image MIME type
      */
     'og:image:type'?: string
@@ -4196,6 +4200,10 @@ export interface GetMetaTagsResponses {
      * Twitter card description
      */
     'twitter:description'?: string
+    /**
+     * Twitter image alt text
+     */
+    'twitter:image:alt'?: string
     /**
      * Twitter image MIME type
      */
