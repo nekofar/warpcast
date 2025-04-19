@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.23] - 2025-04-19
+
+### 🚀 Features
+
+- *(index)* Export `version` from package.json
+
+### 🚜 Refactor
+
+- *(client)* Convert types to interfaces
+
+### 📚 Documentation
+
+- *(sdk)* Add `@param options` annotations to methods
+
+### ⚙️ Miscellaneous Tasks
+
+- *(tsconfig)* Enable `resolveJsonModule` option
+
 ## [2.0.0-alpha.22] - 2025-04-19
 
 ### 🚀 Features
