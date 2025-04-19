@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.22] - 2025-04-19
+
+### 🚀 Features
+
+- *(openapi)* Add miniapps analytics rollup endpoint
+- *(openapi)* Add `inspectMiniAppUrl` endpoint
+- *(openapi)* Add alt text fields for Open Graph & Twitter
+- *(openapi)* Add `frameConfig` and `updatedAt` fields
+- *(openapi)* Add `inspectImageUrl` API endpoint
+- *(openapi)* Add endpoint to fetch owned domains
+- *(openapi)* Add `exportMiniAppUserData` endpoint
+
+### 🚜 Refactor
+
+- *(client)* Update naming for `Miniapp` to `MiniApp`
+- *(client)* Remove redundant `@param options` comments
+
+### ⚙️ Miscellaneous Tasks
+
+- *(deps)* Bump actions/setup-node from 4.3.0 to 4.4.0 (#173)
+
 ## [2.0.0-alpha.21] - 2025-04-15
 
 ### 🐛 Bug Fixes
