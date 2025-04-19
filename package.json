@@ -57,7 +57,7 @@
     "@redocly/cli": "^1.34.1",
     "@types/node": "^22.14.0",
     "@typescript-eslint/utils": "^8.29.0",
-    "eslint": "^9.23.0",
+    "eslint": "^9.25.0",
     "eslint-config-prettier": "^10.1.2",
     "eslint-plugin-jsdoc": "^50.6.9",
     "eslint-plugin-prettier": "^5.2.6",
