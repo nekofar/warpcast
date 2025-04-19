@@ -4601,6 +4601,126 @@ export interface GetUserLikedCastsResponses {
 export type GetUserLikedCastsResponse =
   GetUserLikedCastsResponses[keyof GetUserLikedCastsResponses]
 
+export interface GetMiniappAnalyticsRollupData {
+  body: {
+    dateRange: {
+      /**
+       * Start date in format 'YYYY-MM-DD' or relative like '28daysago'
+       */
+      startDate: string
+      /**
+       * End date in format 'YYYY-MM-DD' or relative like 'today'
+       */
+      endDate: string
+    }
+    /**
+     * Analytics metrics to retrieve
+     */
+    measures: (| 'miniapp_opens'
+      | 'miniapp_transactions'
+      | 'miniapp_users_w_transaction'
+      | 'miniapp_users_w_open'
+      | 'miniapp_users_w_notifications_enabled'
+      | 'miniapp_users_w_notifications_disabled'
+      | 'miniapp_users_w_app_favorited'
+      | 'miniapp_users_w_app_unfavorited')[]
+    /**
+     * Filtering restrictions for the data
+     */
+    restrictions: {
+      /**
+       * Dimension to filter on
+       */
+      dimension: string
+      /**
+       * Values to filter the dimension by
+       */
+      values: string[]
+    }[]
+    /**
+     * Configuration for data breakdown
+     */
+    breakdownSettings?: {
+      /**
+       * Dimensions to break down the data by
+       */
+      dimensions?: string[]
+      /**
+       * Sort order for the breakdown results
+       */
+      order?: 'asc' | 'desc'
+    }
+  }
+  path?: never
+  query?: never
+  url: '/v1/analytics/miniapps/rollup'
+}
+
+export interface GetMiniappAnalyticsRollupErrors {
+  /**
+   * Bad request - Invalid parameters
+   */
+  400: unknown
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+  /**
+   * Forbidden - Not authorized to access this data
+   */
+  403: unknown
+  /**
+   * Server error
+   */
+  500: unknown
+}
+
+export type GetMiniappAnalyticsRollupError =
+  GetMiniappAnalyticsRollupErrors[keyof GetMiniappAnalyticsRollupErrors]
+
+export interface GetMiniappAnalyticsRollupResponses {
+  /**
+   * Successful analytics rollup retrieval
+   */
+  200: {
+    result?: {
+      rollup?: {
+        dateRange?: {
+          startDate?: Date
+          endDate?: Date
+        }
+        restrictions?: {
+          dimension?: string
+          values?: string[]
+        }[]
+        /**
+         * Aggregate metric totals
+         */
+        totals?: {
+          name?: string
+          value?: number
+        }[]
+        /**
+         * Metrics broken down by dimensions
+         */
+        breakdown?: {
+          slices?: {
+            dimension?: string
+            values?: string[]
+          }[]
+          measures?: {
+            name?: string
+            value?: number
+          }[]
+        }[]
+      }
+    }
+  }
+}
+
+export type GetMiniappAnalyticsRollupResponse =
+  GetMiniappAnalyticsRollupResponses[keyof GetMiniappAnalyticsRollupResponses]
+
 export interface ClientOptions {
   baseUrl:
     | 'https://api.warpcast.com'

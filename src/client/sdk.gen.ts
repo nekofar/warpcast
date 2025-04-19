@@ -11,6 +11,7 @@ import {
   getApiKeysResponseTransformer,
   getCastsByFidResponseTransformer,
   getCreatorRewardWinnersResponseTransformer,
+  getMiniappAnalyticsRollupResponseTransformer,
   getProfileCastsResponseTransformer,
   getStarterPackMembersResponseTransformer,
   getUserLikedCastsResponseTransformer,
@@ -166,6 +167,9 @@ import type {
   GetMetaTagsData,
   GetMetaTagsError,
   GetMetaTagsResponse,
+  GetMiniappAnalyticsRollupData,
+  GetMiniappAnalyticsRollupError,
+  GetMiniappAnalyticsRollupResponse,
   GetMutedKeywordsData,
   GetMutedKeywordsError,
   GetMutedKeywordsResponse,
@@ -2810,5 +2814,35 @@ export const getUserLikedCasts = <ThrowOnError extends boolean = false>(
     responseTransformer: getUserLikedCastsResponseTransformer,
     url: '/v2/user-liked-casts',
     ...options,
+  })
+}
+
+/**
+ * Get analytics rollup for miniapps
+ * Retrieves analytics data for miniapps over a specified date range,
+ * providing various metrics broken down by configured dimensions.
+ * @param options
+ */
+export const getMiniappAnalyticsRollup = <ThrowOnError extends boolean = false>(
+  options: Options<GetMiniappAnalyticsRollupData, ThrowOnError>,
+) => {
+  return (options.client ?? _heyApiClient).post<
+    GetMiniappAnalyticsRollupResponse,
+    GetMiniappAnalyticsRollupError,
+    ThrowOnError
+  >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
+    responseTransformer: getMiniappAnalyticsRollupResponseTransformer,
+    url: '/v1/analytics/miniapps/rollup',
+    ...options,
+    headers: {
+      'Content-Type': 'application/json',
+      ...options.headers,
+    },
   })
 }

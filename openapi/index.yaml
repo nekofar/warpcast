@@ -290,3 +290,6 @@ paths:
 
   /v2/user-liked-casts:
     $ref: ./paths/v2/user-liked-casts.yaml
+
+  /v1/analytics/miniapps/rollup:
+    $ref: ./paths/v1/analytics/miniapps/rollup.yaml
