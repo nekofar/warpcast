@@ -11,7 +11,7 @@ import {
   getApiKeysResponseTransformer,
   getCastsByFidResponseTransformer,
   getCreatorRewardWinnersResponseTransformer,
-  getMiniappAnalyticsRollupResponseTransformer,
+  getMiniAppAnalyticsRollupResponseTransformer,
   getProfileCastsResponseTransformer,
   getStarterPackMembersResponseTransformer,
   getUserLikedCastsResponseTransformer,
@@ -170,9 +170,9 @@ import type {
   GetMetaTagsData,
   GetMetaTagsError,
   GetMetaTagsResponse,
-  GetMiniappAnalyticsRollupData,
-  GetMiniappAnalyticsRollupError,
-  GetMiniappAnalyticsRollupResponse,
+  GetMiniAppAnalyticsRollupData,
+  GetMiniAppAnalyticsRollupError,
+  GetMiniAppAnalyticsRollupResponse,
   GetMutedKeywordsData,
   GetMutedKeywordsError,
   GetMutedKeywordsResponse,
@@ -2859,12 +2859,12 @@ export const getUserLikedCasts = <ThrowOnError extends boolean = false>(
  * providing various metrics broken down by configured dimensions.
  * @param options
  */
-export const getMiniappAnalyticsRollup = <ThrowOnError extends boolean = false>(
-  options: Options<GetMiniappAnalyticsRollupData, ThrowOnError>,
+export const getMiniAppAnalyticsRollup = <ThrowOnError extends boolean = false>(
+  options: Options<GetMiniAppAnalyticsRollupData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).post<
-    GetMiniappAnalyticsRollupResponse,
-    GetMiniappAnalyticsRollupError,
+    GetMiniAppAnalyticsRollupResponse,
+    GetMiniAppAnalyticsRollupError,
     ThrowOnError
   >({
     security: [
@@ -2873,7 +2873,7 @@ export const getMiniappAnalyticsRollup = <ThrowOnError extends boolean = false>(
         type: 'http',
       },
     ],
-    responseTransformer: getMiniappAnalyticsRollupResponseTransformer,
+    responseTransformer: getMiniAppAnalyticsRollupResponseTransformer,
     url: '/v1/analytics/miniapps/rollup',
     ...options,
     headers: {

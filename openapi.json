@@ -5809,7 +5809,7 @@
         ],
         "summary": "Get analytics rollup for miniapps",
         "description": "Retrieves analytics data for miniapps over a specified date range,\nproviding various metrics broken down by configured dimensions.\n",
-        "operationId": "getMiniappAnalyticsRollup",
+        "operationId": "getMiniAppAnalyticsRollup",
         "security": [
           {
             "bearerAuth": []

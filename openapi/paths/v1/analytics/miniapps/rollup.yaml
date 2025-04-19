@@ -6,7 +6,7 @@ post:
   description: |
     Retrieves analytics data for miniapps over a specified date range,
     providing various metrics broken down by configured dimensions.
-  operationId: getMiniappAnalyticsRollup
+  operationId: getMiniAppAnalyticsRollup
   security:
     - bearerAuth: []
   requestBody:

@@ -4696,7 +4696,7 @@ export interface GetUserLikedCastsResponses {
 export type GetUserLikedCastsResponse =
   GetUserLikedCastsResponses[keyof GetUserLikedCastsResponses]
 
-export interface GetMiniappAnalyticsRollupData {
+export interface GetMiniAppAnalyticsRollupData {
   body: {
     dateRange: {
       /**
@@ -4751,7 +4751,7 @@ export interface GetMiniappAnalyticsRollupData {
   url: '/v1/analytics/miniapps/rollup'
 }
 
-export interface GetMiniappAnalyticsRollupErrors {
+export interface GetMiniAppAnalyticsRollupErrors {
   /**
    * Bad request - Invalid parameters
    */
@@ -4770,10 +4770,10 @@ export interface GetMiniappAnalyticsRollupErrors {
   500: unknown
 }
 
-export type GetMiniappAnalyticsRollupError =
-  GetMiniappAnalyticsRollupErrors[keyof GetMiniappAnalyticsRollupErrors]
+export type GetMiniAppAnalyticsRollupError =
+  GetMiniAppAnalyticsRollupErrors[keyof GetMiniAppAnalyticsRollupErrors]
 
-export interface GetMiniappAnalyticsRollupResponses {
+export interface GetMiniAppAnalyticsRollupResponses {
   /**
    * Successful analytics rollup retrieval
    */
@@ -4813,8 +4813,8 @@ export interface GetMiniappAnalyticsRollupResponses {
   }
 }
 
-export type GetMiniappAnalyticsRollupResponse =
-  GetMiniappAnalyticsRollupResponses[keyof GetMiniappAnalyticsRollupResponses]
+export type GetMiniAppAnalyticsRollupResponse =
+  GetMiniAppAnalyticsRollupResponses[keyof GetMiniAppAnalyticsRollupResponses]
 
 export interface InspectMiniAppUrlData {
   body?: never

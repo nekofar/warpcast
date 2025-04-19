@@ -5,7 +5,7 @@ import type {
   GetApiKeysResponse,
   GetCastsByFidResponse,
   GetCreatorRewardWinnersResponse,
-  GetMiniappAnalyticsRollupResponse,
+  GetMiniAppAnalyticsRollupResponse,
   GetProfileCastsResponse,
   GetStarterPackMembersResponse,
   GetUserLikedCastsResponse,
@@ -114,9 +114,9 @@ export const getUserLikedCastsResponseTransformer = async (
   return data
 }
 
-export const getMiniappAnalyticsRollupResponseTransformer = async (
+export const getMiniAppAnalyticsRollupResponseTransformer = async (
   data: any,
-): Promise<GetMiniappAnalyticsRollupResponse> => {
+): Promise<GetMiniAppAnalyticsRollupResponse> => {
   if (data.result) {
     if (data.result.rollup) {
       if (data.result.rollup.dateRange) {
