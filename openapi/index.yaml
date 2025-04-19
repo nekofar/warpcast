@@ -296,3 +296,6 @@ paths:
 
   /v1/dev-tools/inspect-miniapp-url:
     $ref: ./paths/v1/dev-tools/inspect-miniapp-url.yaml
+
+  /v1/dev-tools/inspect-image-url:
+    $ref: ./paths/v1/dev-tools/inspect-image-url.yaml

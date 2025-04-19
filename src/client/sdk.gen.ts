@@ -263,6 +263,9 @@ import type {
   GetVerificationsData,
   GetVerificationsError,
   GetVerificationsResponse,
+  InspectImageUrlData,
+  InspectImageUrlError,
+  InspectImageUrlResponse,
   InspectMiniAppUrlData,
   InspectMiniAppUrlError,
   InspectMiniAppUrlResponse,
@@ -2871,6 +2874,30 @@ export const inspectMiniAppUrl = <ThrowOnError extends boolean = false>(
       },
     ],
     url: '/v1/dev-tools/inspect-miniapp-url',
+    ...options,
+  })
+}
+
+/**
+ * Inspect an image URL
+ * Retrieves metadata and information about an image at a specified URL, including size, cache settings, and loading time.
+ * @param options
+ */
+export const inspectImageUrl = <ThrowOnError extends boolean = false>(
+  options: Options<InspectImageUrlData, ThrowOnError>,
+) => {
+  return (options.client ?? _heyApiClient).get<
+    InspectImageUrlResponse,
+    InspectImageUrlError,
+    ThrowOnError
+  >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
+    url: '/v1/dev-tools/inspect-image-url',
     ...options,
   })
 }

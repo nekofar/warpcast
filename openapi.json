@@ -4948,6 +4948,52 @@
                                   }
                                 }
                               }
+                            },
+                            "frameConfig": {
+                              "type": "object",
+                              "description": "Configuration for Farcaster Frames",
+                              "properties": {
+                                "name": {
+                                  "type": "string",
+                                  "description": "Name of the Frame"
+                                },
+                                "version": {
+                                  "type": "string",
+                                  "description": "Version of the Frame"
+                                },
+                                "iconUrl": {
+                                  "type": "string",
+                                  "description": "URL to the Frame's icon"
+                                },
+                                "homeUrl": {
+                                  "type": "string",
+                                  "description": "Home URL of the Frame"
+                                },
+                                "imageUrl": {
+                                  "type": "string",
+                                  "description": "Image URL for the Frame"
+                                },
+                                "buttonTitle": {
+                                  "type": "string",
+                                  "description": "Title for the Frame's button"
+                                },
+                                "splashImageUrl": {
+                                  "type": "string",
+                                  "description": "URL for the splash image"
+                                },
+                                "splashBackgroundColor": {
+                                  "type": "string",
+                                  "description": "Background color for splash screen"
+                                },
+                                "webhookUrl": {
+                                  "type": "string",
+                                  "description": "Webhook URL for the Frame"
+                                }
+                              }
+                            },
+                            "updatedAt": {
+                              "type": "integer",
+                              "description": "Timestamp of when the data was last updated"
                             }
                           }
                         }
@@ -6033,6 +6079,87 @@
           },
           "500": {
             "description": "Server error"
+          }
+        }
+      }
+    },
+    "/v1/dev-tools/inspect-image-url": {
+      "get": {
+        "tags": [
+          "DevTools"
+        ],
+        "summary": "Inspect an image URL",
+        "description": "Retrieves metadata and information about an image at a specified URL, including size, cache settings, and loading time.",
+        "operationId": "inspectImageUrl",
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uri"
+            },
+            "description": "The URL of the image to inspect"
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Image inspection successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "facts": {
+                          "type": "object",
+                          "properties": {
+                            "url": {
+                              "type": "string",
+                              "description": "The URL of the inspected image"
+                            },
+                            "statusCode": {
+                              "type": "integer",
+                              "description": "HTTP status code of the response"
+                            },
+                            "cacheHeader": {
+                              "type": "string",
+                              "description": "The cache header used by the image"
+                            },
+                            "cacheAge": {
+                              "type": "integer",
+                              "description": "Cache age in seconds"
+                            },
+                            "imageSizeBytes": {
+                              "type": "integer",
+                              "description": "Size of the image in bytes"
+                            },
+                            "imageLoadTimeMs": {
+                              "type": "integer",
+                              "description": "Time taken to load the image in milliseconds"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "result"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }

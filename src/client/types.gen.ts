@@ -4086,6 +4086,51 @@ export interface GetDomainManifestResponses {
             signature?: string
           }
         }
+        /**
+         * Configuration for Farcaster Frames
+         */
+        frameConfig?: {
+          /**
+           * Name of the Frame
+           */
+          name?: string
+          /**
+           * Version of the Frame
+           */
+          version?: string
+          /**
+           * URL to the Frame's icon
+           */
+          iconUrl?: string
+          /**
+           * Home URL of the Frame
+           */
+          homeUrl?: string
+          /**
+           * Image URL for the Frame
+           */
+          imageUrl?: string
+          /**
+           * Title for the Frame's button
+           */
+          buttonTitle?: string
+          /**
+           * URL for the splash image
+           */
+          splashImageUrl?: string
+          /**
+           * Background color for splash screen
+           */
+          splashBackgroundColor?: string
+          /**
+           * Webhook URL for the Frame
+           */
+          webhookUrl?: string
+        }
+        /**
+         * Timestamp of when the data was last updated
+         */
+        updatedAt?: number
       }
     }
   }
@@ -4801,6 +4846,67 @@ export interface InspectMiniAppUrlResponses {
 
 export type InspectMiniAppUrlResponse =
   InspectMiniAppUrlResponses[keyof InspectMiniAppUrlResponses]
+
+export interface InspectImageUrlData {
+  body?: never
+  path?: never
+  query: {
+    /**
+     * The URL of the image to inspect
+     */
+    url: string
+  }
+  url: '/v1/dev-tools/inspect-image-url'
+}
+
+export interface InspectImageUrlErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+}
+
+export type InspectImageUrlError =
+  InspectImageUrlErrors[keyof InspectImageUrlErrors]
+
+export interface InspectImageUrlResponses {
+  /**
+   * Image inspection successful
+   */
+  200: {
+    result: {
+      facts?: {
+        /**
+         * The URL of the inspected image
+         */
+        url?: string
+        /**
+         * HTTP status code of the response
+         */
+        statusCode?: number
+        /**
+         * The cache header used by the image
+         */
+        cacheHeader?: string
+        /**
+         * Cache age in seconds
+         */
+        cacheAge?: number
+        /**
+         * Size of the image in bytes
+         */
+        imageSizeBytes?: number
+        /**
+         * Time taken to load the image in milliseconds
+         */
+        imageLoadTimeMs?: number
+      }
+    }
+  }
+}
+
+export type InspectImageUrlResponse =
+  InspectImageUrlResponses[keyof InspectImageUrlResponses]
 
 export interface ClientOptions {
   baseUrl:
