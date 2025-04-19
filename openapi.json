@@ -5256,6 +5256,68 @@
         }
       }
     },
+    "/v1/dev-tools/domains-owned": {
+      "get": {
+        "operationId": "getOwnedDomains",
+        "summary": "Retrieve domains owned by the authenticated user",
+        "description": "Returns a list of domains that are owned by the currently authenticated user.",
+        "tags": [
+          "DevTools"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved owned domains",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "domains": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "description": "List of domains owned by the authenticated user"
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "result"
+                  ]
+                },
+                "example": {
+                  "result": {
+                    "domains": [
+                      "dev.lilnouns.click",
+                      "sepolia.lilnouns.auction",
+                      "lilnouns.auction"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden - insufficient permissions"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
     "/v2/api-keys": {
       "get": {
         "tags": [

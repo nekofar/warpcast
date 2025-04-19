@@ -179,6 +179,9 @@ import type {
   GetNotificationsData,
   GetNotificationsError,
   GetNotificationsResponse,
+  GetOwnedDomainsData,
+  GetOwnedDomainsError,
+  GetOwnedDomainsResponse,
   GetProfileCastsData,
   GetProfileCastsError,
   GetProfileCastsResponse,
@@ -2665,6 +2668,30 @@ export const getFarcasterJson = <ThrowOnError extends boolean = false>(
       },
     ],
     url: '/v1/dev-tools/farcaster-json',
+    ...options,
+  })
+}
+
+/**
+ * Retrieve domains owned by the authenticated user
+ * Returns a list of domains that are owned by the currently authenticated user.
+ * @param options
+ */
+export const getOwnedDomains = <ThrowOnError extends boolean = false>(
+  options?: Options<GetOwnedDomainsData, ThrowOnError>,
+) => {
+  return (options?.client ?? _heyApiClient).get<
+    GetOwnedDomainsResponse,
+    GetOwnedDomainsError,
+    ThrowOnError
+  >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
+    url: '/v1/dev-tools/domains-owned',
     ...options,
   })
 }

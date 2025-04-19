@@ -4354,6 +4354,48 @@ export interface GetFarcasterJsonResponses {
 export type GetFarcasterJsonResponse =
   GetFarcasterJsonResponses[keyof GetFarcasterJsonResponses]
 
+export interface GetOwnedDomainsData {
+  body?: never
+  path?: never
+  query?: never
+  url: '/v1/dev-tools/domains-owned'
+}
+
+export interface GetOwnedDomainsErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+  /**
+   * Forbidden - insufficient permissions
+   */
+  403: unknown
+  /**
+   * Internal server error
+   */
+  500: unknown
+}
+
+export type GetOwnedDomainsError =
+  GetOwnedDomainsErrors[keyof GetOwnedDomainsErrors]
+
+export interface GetOwnedDomainsResponses {
+  /**
+   * Successfully retrieved owned domains
+   */
+  200: {
+    result: {
+      /**
+       * List of domains owned by the authenticated user
+       */
+      domains?: string[]
+    }
+  }
+}
+
+export type GetOwnedDomainsResponse =
+  GetOwnedDomainsResponses[keyof GetOwnedDomainsResponses]
+
 export interface GetApiKeysData {
   body?: never
   path?: never
