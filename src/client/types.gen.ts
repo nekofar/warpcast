@@ -4950,6 +4950,50 @@ export interface InspectImageUrlResponses {
 export type InspectImageUrlResponse =
   InspectImageUrlResponses[keyof InspectImageUrlResponses]
 
+export interface ExportMiniAppUserDataData {
+  body?: never
+  path?: never
+  query: {
+    /**
+     * The domain name of the mini app to export user data for
+     */
+    domain: string
+  }
+  url: '/v1/dev-tools/export/miniapp-user-data'
+}
+
+export interface ExportMiniAppUserDataErrors {
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+  /**
+   * Forbidden - insufficient permissions or not the owner of the specified domain
+   */
+  403: unknown
+  /**
+   * Domain not found or not registered as a mini app
+   */
+  404: unknown
+  /**
+   * Internal server error
+   */
+  500: unknown
+}
+
+export type ExportMiniAppUserDataError =
+  ExportMiniAppUserDataErrors[keyof ExportMiniAppUserDataErrors]
+
+export interface ExportMiniAppUserDataResponses {
+  /**
+   * CSV formatted data with columns for fid, notificationToken, and added status
+   */
+  200: string
+}
+
+export type ExportMiniAppUserDataResponse =
+  ExportMiniAppUserDataResponses[keyof ExportMiniAppUserDataResponses]
+
 export interface ClientOptions {
   baseUrl:
     | 'https://api.warpcast.com'

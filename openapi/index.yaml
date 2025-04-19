@@ -302,3 +302,6 @@ paths:
 
   /v1/dev-tools/inspect-image-url:
     $ref: ./paths/v1/dev-tools/inspect-image-url.yaml
+
+  /v1/dev-tools/export/miniapp-user-data:
+    $ref: ./paths/v1/dev-tools/export/miniapp-user-data.yaml

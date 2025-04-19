@@ -6225,6 +6225,100 @@
           }
         }
       }
+    },
+    "/v1/dev-tools/export/miniapp-user-data": {
+      "get": {
+        "operationId": "exportMiniAppUserData",
+        "summary": "Export user data for a specific mini app domain",
+        "description": "Retrieves a list of users who have interacted with a specified mini app domain, including their Farcaster IDs and notification tokens.",
+        "tags": [
+          "DevTools"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "domain",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "The domain name of the mini app to export user data for"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved mini app user data",
+            "content": {
+              "text/csv": {
+                "schema": {
+                  "type": "string",
+                  "description": "CSV formatted data with columns for fid, notificationToken, and added status"
+                },
+                "example": "fid,notificationToken,added\n"
+              },
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "users": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "fid": {
+                                "type": "integer",
+                                "description": "Farcaster ID of the user"
+                              },
+                              "notificationToken": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ],
+                                "description": "Token used for sending notifications to the user"
+                              },
+                              "added": {
+                                "type": "boolean",
+                                "description": "Whether the user has been added/registered with the mini app"
+                              }
+                            },
+                            "required": [
+                              "fid",
+                              "added"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "result"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden - insufficient permissions or not the owner of the specified domain"
+          },
+          "404": {
+            "description": "Domain not found or not registered as a mini app"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
     }
   },
   "components": {

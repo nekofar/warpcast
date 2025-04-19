@@ -50,6 +50,9 @@ import type {
   DiscoverChannelsData,
   DiscoverChannelsError,
   DiscoverChannelsResponse2,
+  ExportMiniAppUserDataData,
+  ExportMiniAppUserDataError,
+  ExportMiniAppUserDataResponse,
   FollowChannelData,
   FollowChannelError,
   FollowChannelResponse,
@@ -2925,6 +2928,30 @@ export const inspectImageUrl = <ThrowOnError extends boolean = false>(
       },
     ],
     url: '/v1/dev-tools/inspect-image-url',
+    ...options,
+  })
+}
+
+/**
+ * Export user data for a specific mini app domain
+ * Retrieves a list of users who have interacted with a specified mini app domain, including their Farcaster IDs and notification tokens.
+ * @param options
+ */
+export const exportMiniAppUserData = <ThrowOnError extends boolean = false>(
+  options: Options<ExportMiniAppUserDataData, ThrowOnError>,
+) => {
+  return (options.client ?? _heyApiClient).get<
+    ExportMiniAppUserDataResponse,
+    ExportMiniAppUserDataError,
+    ThrowOnError
+  >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
+    url: '/v1/dev-tools/export/miniapp-user-data',
     ...options,
   })
 }
