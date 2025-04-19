@@ -11,6 +11,7 @@ import {
   getApiKeysResponseTransformer,
   getCastsByFidResponseTransformer,
   getCreatorRewardWinnersResponseTransformer,
+  getMiniAppAnalyticsRollupResponseTransformer,
   getProfileCastsResponseTransformer,
   getStarterPackMembersResponseTransformer,
   getUserLikedCastsResponseTransformer,
@@ -49,6 +50,9 @@ import type {
   DiscoverChannelsData,
   DiscoverChannelsError,
   DiscoverChannelsResponse2,
+  ExportMiniAppUserDataData,
+  ExportMiniAppUserDataError,
+  ExportMiniAppUserDataResponse,
   FollowChannelData,
   FollowChannelError,
   FollowChannelResponse,
@@ -166,6 +170,9 @@ import type {
   GetMetaTagsData,
   GetMetaTagsError,
   GetMetaTagsResponse,
+  GetMiniAppAnalyticsRollupData,
+  GetMiniAppAnalyticsRollupError,
+  GetMiniAppAnalyticsRollupResponse,
   GetMutedKeywordsData,
   GetMutedKeywordsError,
   GetMutedKeywordsResponse,
@@ -175,6 +182,9 @@ import type {
   GetNotificationsData,
   GetNotificationsError,
   GetNotificationsResponse,
+  GetOwnedDomainsData,
+  GetOwnedDomainsError,
+  GetOwnedDomainsResponse,
   GetProfileCastsData,
   GetProfileCastsError,
   GetProfileCastsResponse,
@@ -259,6 +269,12 @@ import type {
   GetVerificationsData,
   GetVerificationsError,
   GetVerificationsResponse,
+  InspectImageUrlData,
+  InspectImageUrlError,
+  InspectImageUrlResponse,
+  InspectMiniAppUrlData,
+  InspectMiniAppUrlError,
+  InspectMiniAppUrlResponse,
   InviteUserToChannelData,
   InviteUserToChannelError,
   InviteUserToChannelResponse,
@@ -338,7 +354,6 @@ export type Options<
 /**
  * Get onboarding state
  * Retrieves the current onboarding state for the authenticated user
- * @param options
  */
 export const getUserOnboardingState = <ThrowOnError extends boolean = false>(
   options?: Options<GetUserOnboardingStateData, ThrowOnError>,
@@ -362,7 +377,6 @@ export const getUserOnboardingState = <ThrowOnError extends boolean = false>(
 /**
  * Get user by fid
  * Retrieves user information based on FID
- * @param options
  */
 export const getUserByFid = <ThrowOnError extends boolean = false>(
   options: Options<GetUserByFidData, ThrowOnError>,
@@ -386,7 +400,6 @@ export const getUserByFid = <ThrowOnError extends boolean = false>(
 /**
  * Get user's direct cast inbox
  * Retrieves direct casts sent to the authenticated user
- * @param options
  */
 export const getDirectCastInbox = <ThrowOnError extends boolean = false>(
   options?: Options<GetDirectCastInboxData, ThrowOnError>,
@@ -410,7 +423,6 @@ export const getDirectCastInbox = <ThrowOnError extends boolean = false>(
 /**
  * Get user app context
  * Retrieves application context information for the authenticated user
- * @param options
  */
 export const getUserAppContext = <ThrowOnError extends boolean = false>(
   options?: Options<GetUserAppContextData, ThrowOnError>,
@@ -434,7 +446,6 @@ export const getUserAppContext = <ThrowOnError extends boolean = false>(
 /**
  * Get user preferences
  * Retrieves preference settings for the authenticated user
- * @param options
  */
 export const getUserPreferences = <ThrowOnError extends boolean = false>(
   options?: Options<GetUserPreferencesData, ThrowOnError>,
@@ -458,7 +469,6 @@ export const getUserPreferences = <ThrowOnError extends boolean = false>(
 /**
  * Get highlighted channels
  * Retrieves a list of featured or recommended channels
- * @param options
  */
 export const getHighlightedChannels = <ThrowOnError extends boolean = false>(
   options?: Options<GetHighlightedChannelsData, ThrowOnError>,
@@ -482,7 +492,6 @@ export const getHighlightedChannels = <ThrowOnError extends boolean = false>(
 /**
  * Get feed items
  * Retrieves feed content based on provided filters and parameters
- * @param options
  */
 export const getFeedItems = <ThrowOnError extends boolean = false>(
   options: Options<GetFeedItemsData, ThrowOnError>,
@@ -502,7 +511,7 @@ export const getFeedItems = <ThrowOnError extends boolean = false>(
     ...options,
     headers: {
       'Content-Type': 'application/json',
-      ...options.headers,
+      ...options?.headers,
     },
   })
 }
@@ -510,7 +519,6 @@ export const getFeedItems = <ThrowOnError extends boolean = false>(
 /**
  * Get user information
  * Retrieves detailed user information based on FID
- * @param options
  */
 export const getUser = <ThrowOnError extends boolean = false>(
   options: Options<GetUserData, ThrowOnError>,
@@ -534,7 +542,6 @@ export const getUser = <ThrowOnError extends boolean = false>(
 /**
  * Get user following channels
  * Retrieves channels that the authenticated user is following
- * @param options
  */
 export const getUserFollowingChannels = <ThrowOnError extends boolean = false>(
   options?: Options<GetUserFollowingChannelsData, ThrowOnError>,
@@ -557,7 +564,6 @@ export const getUserFollowingChannels = <ThrowOnError extends boolean = false>(
 
 /**
  * Get suggested users
- * @param options
  */
 export const getSuggestedUsers = <ThrowOnError extends boolean = false>(
   options?: Options<GetSuggestedUsersData, ThrowOnError>,
@@ -580,7 +586,6 @@ export const getSuggestedUsers = <ThrowOnError extends boolean = false>(
 
 /**
  * Get user's favorite frames
- * @param options
  */
 export const getUserFavoriteFrames = <ThrowOnError extends boolean = false>(
   options?: Options<GetUserFavoriteFramesData, ThrowOnError>,
@@ -603,7 +608,6 @@ export const getUserFavoriteFrames = <ThrowOnError extends boolean = false>(
 
 /**
  * Get user by username
- * @param options
  */
 export const getUserByUsername = <ThrowOnError extends boolean = false>(
   options: Options<GetUserByUsernameData, ThrowOnError>,
@@ -626,7 +630,6 @@ export const getUserByUsername = <ThrowOnError extends boolean = false>(
 
 /**
  * Get channel streaks for user
- * @param options
  */
 export const getChannelStreaksForUser = <ThrowOnError extends boolean = false>(
   options: Options<GetChannelStreaksForUserData, ThrowOnError>,
@@ -649,7 +652,6 @@ export const getChannelStreaksForUser = <ThrowOnError extends boolean = false>(
 
 /**
  * Get unseen counts and feed state
- * @param options
  */
 export const getUnseenCounts = <ThrowOnError extends boolean = false>(
   options?: Options<GetUnseenCountsData, ThrowOnError>,
@@ -673,7 +675,6 @@ export const getUnseenCounts = <ThrowOnError extends boolean = false>(
 /**
  * Get casts from a user thread
  * Retrieves casts from a specific thread by a user
- * @param options
  */
 export const getUserThreadCasts = <ThrowOnError extends boolean = false>(
   options: Options<GetUserThreadCastsData, ThrowOnError>,
@@ -696,7 +697,6 @@ export const getUserThreadCasts = <ThrowOnError extends boolean = false>(
 
 /**
  * Get mutual followers in a channel
- * @param options
  */
 export const getChannelFollowersYouKnow = <
   ThrowOnError extends boolean = false,
@@ -721,7 +721,6 @@ export const getChannelFollowersYouKnow = <
 
 /**
  * Mark all notifications as read
- * @param options
  */
 export const markAllNotificationsRead = <ThrowOnError extends boolean = false>(
   options: Options<MarkAllNotificationsReadData, ThrowOnError>,
@@ -741,7 +740,7 @@ export const markAllNotificationsRead = <ThrowOnError extends boolean = false>(
     ...options,
     headers: {
       'Content-Type': 'application/json',
-      ...options.headers,
+      ...options?.headers,
     },
   })
 }
@@ -749,7 +748,6 @@ export const markAllNotificationsRead = <ThrowOnError extends boolean = false>(
 /**
  * Get notifications for a specific tab
  * Returns a list of notifications for the specified tab.
- * @param options
  */
 export const getNotifications = <ThrowOnError extends boolean = false>(
   options: Options<GetNotificationsData, ThrowOnError>,
@@ -773,7 +771,6 @@ export const getNotifications = <ThrowOnError extends boolean = false>(
 /**
  * Set last checked timestamp
  * Updates the last checked timestamp for notifications.
- * @param options
  */
 export const setLastCheckedTimestamp = <ThrowOnError extends boolean = false>(
   options: Options<SetLastCheckedTimestampData, ThrowOnError>,
@@ -793,7 +790,7 @@ export const setLastCheckedTimestamp = <ThrowOnError extends boolean = false>(
     ...options,
     headers: {
       'Content-Type': 'application/json',
-      ...options.headers,
+      ...options?.headers,
     },
   })
 }
@@ -801,7 +798,6 @@ export const setLastCheckedTimestamp = <ThrowOnError extends boolean = false>(
 /**
  * Get direct cast conversation
  * Fetches a direct cast conversation by conversationId.
- * @param options
  */
 export const getDirectCastConversation = <ThrowOnError extends boolean = false>(
   options: Options<GetDirectCastConversationData, ThrowOnError>,
@@ -825,7 +821,6 @@ export const getDirectCastConversation = <ThrowOnError extends boolean = false>(
 /**
  * Discover channels
  * Retrieves a list of discoverable channels with optional limit.
- * @param options
  */
 export const discoverChannels = <ThrowOnError extends boolean = false>(
   options?: Options<DiscoverChannelsData, ThrowOnError>,
@@ -849,7 +844,6 @@ export const discoverChannels = <ThrowOnError extends boolean = false>(
 /**
  * Check available invites
  * Returns the number of allocated and currently available invites.
- * @param options
  */
 export const getAvailableInvites = <ThrowOnError extends boolean = false>(
   options?: Options<GetAvailableInvitesData, ThrowOnError>,
@@ -873,7 +867,6 @@ export const getAvailableInvites = <ThrowOnError extends boolean = false>(
 /**
  * Get sponsored invites
  * Returns a list of Warpcast-sponsored invites available to the user.
- * @param options
  */
 export const getSponsoredInvites = <ThrowOnError extends boolean = false>(
   options?: Options<GetSponsoredInvitesData, ThrowOnError>,
@@ -897,7 +890,6 @@ export const getSponsoredInvites = <ThrowOnError extends boolean = false>(
 /**
  * Get rewards leaderboard
  * Returns a list of users in the rewards leaderboard based on invite activity.
- * @param options
  */
 export const getRewardsLeaderboard = <ThrowOnError extends boolean = false>(
   options: Options<GetRewardsLeaderboardData, ThrowOnError>,
@@ -921,7 +913,6 @@ export const getRewardsLeaderboard = <ThrowOnError extends boolean = false>(
 /**
  * Get invite rewards scores for a user
  * Returns current, previous, and all-time invite rewards scores for the specified user.
- * @param options
  */
 export const getUserRewardsScores = <ThrowOnError extends boolean = false>(
   options: Options<GetUserRewardsScoresData, ThrowOnError>,
@@ -945,7 +936,6 @@ export const getUserRewardsScores = <ThrowOnError extends boolean = false>(
 /**
  * Get invite rewards metadata
  * Returns metadata for the invite rewards program including the reward period and reward distribution details.
- * @param options
  */
 export const getRewardsMetadata = <ThrowOnError extends boolean = false>(
   options: Options<GetRewardsMetadataData, ThrowOnError>,
@@ -969,7 +959,6 @@ export const getRewardsMetadata = <ThrowOnError extends boolean = false>(
 /**
  * Get bookmarked casts
  * Returns the most recent casts bookmarked by the user.
- * @param options
  */
 export const getBookmarkedCasts = <ThrowOnError extends boolean = false>(
   options?: Options<GetBookmarkedCastsData, ThrowOnError>,
@@ -993,7 +982,6 @@ export const getBookmarkedCasts = <ThrowOnError extends boolean = false>(
 /**
  * Get starter packs
  * Returns starter packs created by a specific user.
- * @param options
  */
 export const getUserStarterPacks = <ThrowOnError extends boolean = false>(
   options: Options<GetUserStarterPacksData, ThrowOnError>,
@@ -1017,7 +1005,6 @@ export const getUserStarterPacks = <ThrowOnError extends boolean = false>(
 /**
  * Get suggested starter packs
  * Returns a list of suggested starter packs.
- * @param options
  */
 export const getSuggestedStarterPacks = <ThrowOnError extends boolean = false>(
   options?: Options<GetSuggestedStarterPacksData, ThrowOnError>,
@@ -1041,7 +1028,6 @@ export const getSuggestedStarterPacks = <ThrowOnError extends boolean = false>(
 /**
  * Get a specific starter pack by ID
  * Returns a specific starter pack.
- * @param options
  */
 export const getStarterPack = <ThrowOnError extends boolean = false>(
   options: Options<GetStarterPackData, ThrowOnError>,
@@ -1065,7 +1051,6 @@ export const getStarterPack = <ThrowOnError extends boolean = false>(
 /**
  * Get users in a specific starter pack
  * Returns a list of users associated with a given starter pack.
- * @param options
  */
 export const getStarterPackUsers = <ThrowOnError extends boolean = false>(
   options: Options<GetStarterPackUsersData, ThrowOnError>,
@@ -1089,7 +1074,6 @@ export const getStarterPackUsers = <ThrowOnError extends boolean = false>(
 /**
  * Get channel details
  * Returns metadata about a channel.
- * @param options
  */
 export const getChannel = <ThrowOnError extends boolean = false>(
   options: Options<GetChannelData, ThrowOnError>,
@@ -1113,7 +1097,6 @@ export const getChannel = <ThrowOnError extends boolean = false>(
 /**
  * Get members of a specific channel
  * Returns users who are members of a specific channel.
- * @param options
  */
 export const getChannelUsers = <ThrowOnError extends boolean = false>(
   options: Options<GetChannelUsersData, ThrowOnError>,
@@ -1137,7 +1120,6 @@ export const getChannelUsers = <ThrowOnError extends boolean = false>(
 /**
  * Get users a given user is following
  * Returns a list of users followed by a specified FID.
- * @param options
  */
 export const getFollowing = <ThrowOnError extends boolean = false>(
   options: Options<GetFollowingData, ThrowOnError>,
@@ -1161,7 +1143,6 @@ export const getFollowing = <ThrowOnError extends boolean = false>(
 /**
  * Get users following a given user
  * Returns a list of users who follow the specified FID.
- * @param options
  */
 export const getFollowers = <ThrowOnError extends boolean = false>(
   options: Options<GetFollowersData, ThrowOnError>,
@@ -1185,7 +1166,6 @@ export const getFollowers = <ThrowOnError extends boolean = false>(
 /**
  * Get mutual followers of a given user
  * Returns a list of users who follow the given FID and are followed by the viewer.
- * @param options
  */
 export const getMutualFollowers = <ThrowOnError extends boolean = false>(
   options: Options<GetMutualFollowersData, ThrowOnError>,
@@ -1209,7 +1189,6 @@ export const getMutualFollowers = <ThrowOnError extends boolean = false>(
 /**
  * Get top FrameApps
  * Returns a list of top FrameApps with optional pagination.
- * @param options
  */
 export const getTopFrameApps = <ThrowOnError extends boolean = false>(
   options?: Options<GetTopFrameAppsData, ThrowOnError>,
@@ -1233,7 +1212,6 @@ export const getTopFrameApps = <ThrowOnError extends boolean = false>(
 /**
  * Get verified addresses for an FID
  * Returns verified Ethereum addresses associated with a specific FID.
- * @param options
  */
 export const getVerifications = <ThrowOnError extends boolean = false>(
   options: Options<GetVerificationsData, ThrowOnError>,
@@ -1257,7 +1235,6 @@ export const getVerifications = <ThrowOnError extends boolean = false>(
 /**
  * Get muted keywords
  * Returns a list of muted keywords for the authenticated user.
- * @param options
  */
 export const getMutedKeywords = <ThrowOnError extends boolean = false>(
   options?: Options<GetMutedKeywordsData, ThrowOnError>,
@@ -1281,7 +1258,6 @@ export const getMutedKeywords = <ThrowOnError extends boolean = false>(
 /**
  * Mute a keyword
  * Mutes a keyword for the authenticated user with specified properties.
- * @param options
  */
 export const muteKeyword = <ThrowOnError extends boolean = false>(
   options: Options<MuteKeywordData, ThrowOnError>,
@@ -1301,14 +1277,13 @@ export const muteKeyword = <ThrowOnError extends boolean = false>(
     ...options,
     headers: {
       'Content-Type': 'application/json',
-      ...options.headers,
+      ...options?.headers,
     },
   })
 }
 
 /**
  * Unmute a keyword
- * @param options
  */
 export const unmuteKeyword = <ThrowOnError extends boolean = false>(
   options: Options<UnmuteKeywordData, ThrowOnError>,
@@ -1328,14 +1303,13 @@ export const unmuteKeyword = <ThrowOnError extends boolean = false>(
     ...options,
     headers: {
       'Content-Type': 'application/json',
-      ...options.headers,
+      ...options?.headers,
     },
   })
 }
 
 /**
  * Unlike a cast
- * @param options
  */
 export const unlikeCast = <ThrowOnError extends boolean = false>(
   options: Options<UnlikeCastData, ThrowOnError>,
@@ -1355,14 +1329,13 @@ export const unlikeCast = <ThrowOnError extends boolean = false>(
     ...options,
     headers: {
       'Content-Type': 'application/json',
-      ...options.headers,
+      ...options?.headers,
     },
   })
 }
 
 /**
  * Get cast likes
- * @param options
  */
 export const getCastLikes = <ThrowOnError extends boolean = false>(
   options: Options<GetCastLikesData, ThrowOnError>,
@@ -1385,7 +1358,6 @@ export const getCastLikes = <ThrowOnError extends boolean = false>(
 
 /**
  * Like a cast
- * @param options
  */
 export const likeCast = <ThrowOnError extends boolean = false>(
   options: Options<LikeCastData, ThrowOnError>,
@@ -1405,14 +1377,13 @@ export const likeCast = <ThrowOnError extends boolean = false>(
     ...options,
     headers: {
       'Content-Type': 'application/json',
-      ...options.headers,
+      ...options?.headers,
     },
   })
 }
 
 /**
  * Undo recast
- * @param options
  */
 export const undoRecast = <ThrowOnError extends boolean = false>(
   options: Options<UndoRecastData, ThrowOnError>,
@@ -1432,14 +1403,13 @@ export const undoRecast = <ThrowOnError extends boolean = false>(
     ...options,
     headers: {
       'Content-Type': 'application/json',
-      ...options.headers,
+      ...options?.headers,
     },
   })
 }
 
 /**
  * Recast a cast
- * @param options
  */
 export const recastCast = <ThrowOnError extends boolean = false>(
   options: Options<RecastCastData, ThrowOnError>,
@@ -1459,14 +1429,13 @@ export const recastCast = <ThrowOnError extends boolean = false>(
     ...options,
     headers: {
       'Content-Type': 'application/json',
-      ...options.headers,
+      ...options?.headers,
     },
   })
 }
 
 /**
  * Attach embeds to a cast
- * @param options
  */
 export const attachEmbeds = <ThrowOnError extends boolean = false>(
   options: Options<AttachEmbedsData, ThrowOnError>,
@@ -1486,14 +1455,13 @@ export const attachEmbeds = <ThrowOnError extends boolean = false>(
     ...options,
     headers: {
       'Content-Type': 'application/json',
-      ...options.headers,
+      ...options?.headers,
     },
   })
 }
 
 /**
  * Get cast recasters
- * @param options
  */
 export const getCastRecasters = <ThrowOnError extends boolean = false>(
   options: Options<GetCastRecastersData, ThrowOnError>,
@@ -1516,7 +1484,6 @@ export const getCastRecasters = <ThrowOnError extends boolean = false>(
 
 /**
  * Get quotes of a cast
- * @param options
  */
 export const getCastQuotes = <ThrowOnError extends boolean = false>(
   options: Options<GetCastQuotesData, ThrowOnError>,
@@ -1539,7 +1506,6 @@ export const getCastQuotes = <ThrowOnError extends boolean = false>(
 
 /**
  * Get current user
- * @param options
  */
 export const getCurrentUser = <ThrowOnError extends boolean = false>(
   options?: Options<GetCurrentUserData, ThrowOnError>,
@@ -1562,7 +1528,6 @@ export const getCurrentUser = <ThrowOnError extends boolean = false>(
 
 /**
  * Search for channels
- * @param options
  */
 export const searchChannels = <ThrowOnError extends boolean = false>(
   options?: Options<SearchChannelsData, ThrowOnError>,
@@ -1585,7 +1550,6 @@ export const searchChannels = <ThrowOnError extends boolean = false>(
 
 /**
  * Get draft cast storms
- * @param options
  */
 export const getDraftCasts = <ThrowOnError extends boolean = false>(
   options?: Options<GetDraftCastsData, ThrowOnError>,
@@ -1608,7 +1572,6 @@ export const getDraftCasts = <ThrowOnError extends boolean = false>(
 
 /**
  * Create a new draft casts
- * @param options
  */
 export const createDraftCasts = <ThrowOnError extends boolean = false>(
   options: Options<CreateDraftCastsData, ThrowOnError>,
@@ -1628,14 +1591,13 @@ export const createDraftCasts = <ThrowOnError extends boolean = false>(
     ...options,
     headers: {
       'Content-Type': 'application/json',
-      ...options.headers,
+      ...options?.headers,
     },
   })
 }
 
 /**
  * Delete a draft cast
- * @param options
  */
 export const deleteDraftCast = <ThrowOnError extends boolean = false>(
   options: Options<DeleteDraftCastData, ThrowOnError>,
@@ -1655,14 +1617,13 @@ export const deleteDraftCast = <ThrowOnError extends boolean = false>(
     ...options,
     headers: {
       'Content-Type': 'application/json',
-      ...options.headers,
+      ...options?.headers,
     },
   })
 }
 
 /**
  * Delete a cast
- * @param options
  */
 export const deleteCast = <ThrowOnError extends boolean = false>(
   options: Options<DeleteCastData, ThrowOnError>,
@@ -1682,14 +1643,13 @@ export const deleteCast = <ThrowOnError extends boolean = false>(
     ...options,
     headers: {
       'Content-Type': 'application/json',
-      ...options.headers,
+      ...options?.headers,
     },
   })
 }
 
 /**
  * Retrieve casts for a specific user
- * @param options
  */
 export const getCastsByFid = <ThrowOnError extends boolean = false>(
   options: Options<GetCastsByFidData, ThrowOnError>,
@@ -1713,7 +1673,6 @@ export const getCastsByFid = <ThrowOnError extends boolean = false>(
 
 /**
  * Create a new cast
- * @param options
  */
 export const createCast = <ThrowOnError extends boolean = false>(
   options: Options<CreateCastData, ThrowOnError>,
@@ -1734,7 +1693,7 @@ export const createCast = <ThrowOnError extends boolean = false>(
     ...options,
     headers: {
       'Content-Type': 'application/json',
-      ...options.headers,
+      ...options?.headers,
     },
   })
 }
@@ -1742,7 +1701,6 @@ export const createCast = <ThrowOnError extends boolean = false>(
 /**
  * Get all channels
  * Returns a list of all channels on Warpcast
- * @param options
  */
 export const getAllChannels = <ThrowOnError extends boolean = false>(
   options?: Options<GetAllChannelsData, ThrowOnError>,
@@ -1765,7 +1723,6 @@ export const getAllChannels = <ThrowOnError extends boolean = false>(
 
 /**
  * Get details of a specific channel
- * @param options
  */
 export const getChannelDetails = <ThrowOnError extends boolean = false>(
   options: Options<GetChannelDetailsData, ThrowOnError>,
@@ -1788,7 +1745,6 @@ export const getChannelDetails = <ThrowOnError extends boolean = false>(
 
 /**
  * Get followers of a channel
- * @param options
  */
 export const getChannelFollowers = <ThrowOnError extends boolean = false>(
   options: Options<GetChannelFollowersData, ThrowOnError>,
@@ -1811,7 +1767,6 @@ export const getChannelFollowers = <ThrowOnError extends boolean = false>(
 
 /**
  * Get list of channels followed by a user
- * @param options
  */
 export const getUserFollowedChannels = <ThrowOnError extends boolean = false>(
   options: Options<GetUserFollowedChannelsData, ThrowOnError>,
@@ -1834,7 +1789,6 @@ export const getUserFollowedChannels = <ThrowOnError extends boolean = false>(
 
 /**
  * Check if a user is following a channel
- * @param options
  */
 export const checkUserChannelFollowStatus = <
   ThrowOnError extends boolean = false,
@@ -1859,7 +1813,6 @@ export const checkUserChannelFollowStatus = <
 
 /**
  * Get members of a channel
- * @param options
  */
 export const getChannelMembers = <ThrowOnError extends boolean = false>(
   options: Options<GetChannelMembersData, ThrowOnError>,
@@ -1882,7 +1835,6 @@ export const getChannelMembers = <ThrowOnError extends boolean = false>(
 
 /**
  * Remove a user's invite from a channel
- * @param options
  */
 export const removeChannelInvite = <ThrowOnError extends boolean = false>(
   options: Options<RemoveChannelInviteData, ThrowOnError>,
@@ -1902,14 +1854,13 @@ export const removeChannelInvite = <ThrowOnError extends boolean = false>(
     ...options,
     headers: {
       'Content-Type': 'application/json',
-      ...options.headers,
+      ...options?.headers,
     },
   })
 }
 
 /**
  * Get channel invites
- * @param options
  */
 export const getChannelInvites = <ThrowOnError extends boolean = false>(
   options: Options<GetChannelInvitesData, ThrowOnError>,
@@ -1932,7 +1883,6 @@ export const getChannelInvites = <ThrowOnError extends boolean = false>(
 
 /**
  * Accept a channel invite
- * @param options
  */
 export const acceptChannelInvite = <ThrowOnError extends boolean = false>(
   options: Options<AcceptChannelInviteData, ThrowOnError>,
@@ -1952,14 +1902,13 @@ export const acceptChannelInvite = <ThrowOnError extends boolean = false>(
     ...options,
     headers: {
       'Content-Type': 'application/json',
-      ...options.headers,
+      ...options?.headers,
     },
   })
 }
 
 /**
  * Invite a user to a channel
- * @param options
  */
 export const inviteUserToChannel = <ThrowOnError extends boolean = false>(
   options: Options<InviteUserToChannelData, ThrowOnError>,
@@ -1979,14 +1928,13 @@ export const inviteUserToChannel = <ThrowOnError extends boolean = false>(
     ...options,
     headers: {
       'Content-Type': 'application/json',
-      ...options.headers,
+      ...options?.headers,
     },
   })
 }
 
 /**
  * Get moderated casts for a channel
- * @param options
  */
 export const getChannelModeratedCasts = <ThrowOnError extends boolean = false>(
   options: Options<GetChannelModeratedCastsData, ThrowOnError>,
@@ -2009,7 +1957,6 @@ export const getChannelModeratedCasts = <ThrowOnError extends boolean = false>(
 
 /**
  * Get restricted users in a channel
- * @param options
  */
 export const getChannelRestrictedUsers = <ThrowOnError extends boolean = false>(
   options: Options<GetChannelRestrictedUsersData, ThrowOnError>,
@@ -2032,7 +1979,6 @@ export const getChannelRestrictedUsers = <ThrowOnError extends boolean = false>(
 
 /**
  * Unban a user from a channel
- * @param options
  */
 export const unbanUserFromChannel = <ThrowOnError extends boolean = false>(
   options: Options<UnbanUserFromChannelData, ThrowOnError>,
@@ -2052,14 +1998,13 @@ export const unbanUserFromChannel = <ThrowOnError extends boolean = false>(
     ...options,
     headers: {
       'Content-Type': 'application/json',
-      ...options.headers,
+      ...options?.headers,
     },
   })
 }
 
 /**
  * Get banned users in a channel
- * @param options
  */
 export const getChannelBannedUsers = <ThrowOnError extends boolean = false>(
   options: Options<GetChannelBannedUsersData, ThrowOnError>,
@@ -2082,7 +2027,6 @@ export const getChannelBannedUsers = <ThrowOnError extends boolean = false>(
 
 /**
  * Ban a user from a channel
- * @param options
  */
 export const banUserFromChannel = <ThrowOnError extends boolean = false>(
   options: Options<BanUserFromChannelData, ThrowOnError>,
@@ -2102,14 +2046,13 @@ export const banUserFromChannel = <ThrowOnError extends boolean = false>(
     ...options,
     headers: {
       'Content-Type': 'application/json',
-      ...options.headers,
+      ...options?.headers,
     },
   })
 }
 
 /**
  * Unfollow a channel
- * @param options
  */
 export const unfollowChannel = <ThrowOnError extends boolean = false>(
   options: Options<UnfollowChannelData, ThrowOnError>,
@@ -2129,14 +2072,13 @@ export const unfollowChannel = <ThrowOnError extends boolean = false>(
     ...options,
     headers: {
       'Content-Type': 'application/json',
-      ...options.headers,
+      ...options?.headers,
     },
   })
 }
 
 /**
  * Follow a channel
- * @param options
  */
 export const followChannel = <ThrowOnError extends boolean = false>(
   options: Options<FollowChannelData, ThrowOnError>,
@@ -2156,14 +2098,13 @@ export const followChannel = <ThrowOnError extends boolean = false>(
     ...options,
     headers: {
       'Content-Type': 'application/json',
-      ...options.headers,
+      ...options?.headers,
     },
   })
 }
 
 /**
  * Moderate a cast (e.g., hide it)
- * @param options
  */
 export const moderateCast = <ThrowOnError extends boolean = false>(
   options: Options<ModerateCastData, ThrowOnError>,
@@ -2183,14 +2124,13 @@ export const moderateCast = <ThrowOnError extends boolean = false>(
     ...options,
     headers: {
       'Content-Type': 'application/json',
-      ...options.headers,
+      ...options?.headers,
     },
   })
 }
 
 /**
  * Unpin a cast from a channel
- * @param options
  */
 export const unpinCastFromChannel = <ThrowOnError extends boolean = false>(
   options: Options<UnpinCastFromChannelData, ThrowOnError>,
@@ -2210,14 +2150,13 @@ export const unpinCastFromChannel = <ThrowOnError extends boolean = false>(
     ...options,
     headers: {
       'Content-Type': 'application/json',
-      ...options.headers,
+      ...options?.headers,
     },
   })
 }
 
 /**
  * Pin a cast to a channel
- * @param options
  */
 export const pinCastToChannel = <ThrowOnError extends boolean = false>(
   options: Options<PinCastToChannelData, ThrowOnError>,
@@ -2237,14 +2176,13 @@ export const pinCastToChannel = <ThrowOnError extends boolean = false>(
     ...options,
     headers: {
       'Content-Type': 'application/json',
-      ...options.headers,
+      ...options?.headers,
     },
   })
 }
 
 /**
  * Get discoverable actions
- * @param options
  */
 export const getDiscoverableActions = <ThrowOnError extends boolean = false>(
   options: Options<GetDiscoverableActionsData, ThrowOnError>,
@@ -2267,7 +2205,6 @@ export const getDiscoverableActions = <ThrowOnError extends boolean = false>(
 
 /**
  * Get top discoverable composer actions
- * @param options
  */
 export const getDiscoverableComposerActions = <
   ThrowOnError extends boolean = false,
@@ -2292,7 +2229,6 @@ export const getDiscoverableComposerActions = <
 
 /**
  * Unblock a user
- * @param options
  */
 export const unblockUser = <ThrowOnError extends boolean = false>(
   options: Options<UnblockUserData, ThrowOnError>,
@@ -2312,14 +2248,13 @@ export const unblockUser = <ThrowOnError extends boolean = false>(
     ...options,
     headers: {
       'Content-Type': 'application/json',
-      ...options.headers,
+      ...options?.headers,
     },
   })
 }
 
 /**
  * Get list of blocked users
- * @param options
  */
 export const getBlockedUsers = <ThrowOnError extends boolean = false>(
   options?: Options<GetBlockedUsersData, ThrowOnError>,
@@ -2342,7 +2277,6 @@ export const getBlockedUsers = <ThrowOnError extends boolean = false>(
 
 /**
  * Block a user
- * @param options
  */
 export const blockUser = <ThrowOnError extends boolean = false>(
   options: Options<BlockUserData, ThrowOnError>,
@@ -2362,14 +2296,13 @@ export const blockUser = <ThrowOnError extends boolean = false>(
     ...options,
     headers: {
       'Content-Type': 'application/json',
-      ...options.headers,
+      ...options?.headers,
     },
   })
 }
 
 /**
  * Get account verifications
- * @param options
  */
 export const getAccountVerifications = <ThrowOnError extends boolean = false>(
   options: Options<GetAccountVerificationsData, ThrowOnError>,
@@ -2392,7 +2325,6 @@ export const getAccountVerifications = <ThrowOnError extends boolean = false>(
 
 /**
  * Get creator reward winners
- * @param options
  */
 export const getCreatorRewardWinners = <ThrowOnError extends boolean = false>(
   options?: Options<GetCreatorRewardWinnersData, ThrowOnError>,
@@ -2416,7 +2348,6 @@ export const getCreatorRewardWinners = <ThrowOnError extends boolean = false>(
 
 /**
  * Get User Primary Address
- * @param options
  */
 export const getUserPrimaryAddress = <ThrowOnError extends boolean = false>(
   options: Options<GetUserPrimaryAddressData, ThrowOnError>,
@@ -2439,7 +2370,6 @@ export const getUserPrimaryAddress = <ThrowOnError extends boolean = false>(
 
 /**
  * Get Multiple User Primary Addresses
- * @param options
  */
 export const getUserPrimaryAddresses = <ThrowOnError extends boolean = false>(
   options: Options<GetUserPrimaryAddressesData, ThrowOnError>,
@@ -2462,7 +2392,6 @@ export const getUserPrimaryAddresses = <ThrowOnError extends boolean = false>(
 
 /**
  * Get Starter Pack Members
- * @param options
  */
 export const getStarterPackMembers = <ThrowOnError extends boolean = false>(
   options: Options<GetStarterPackMembersData, ThrowOnError>,
@@ -2487,7 +2416,7 @@ export const getStarterPackMembers = <ThrowOnError extends boolean = false>(
 /**
  * Send a Direct Cast via External API
  * Send a programmatic Direct Cast to a recipient. The request must include a unique idempotency key.
- * @param options
+ *
  */
 export const sendDirectCast = <ThrowOnError extends boolean = false>(
   options: Options<SendDirectCastData, ThrowOnError>,
@@ -2507,7 +2436,7 @@ export const sendDirectCast = <ThrowOnError extends boolean = false>(
     ...options,
     headers: {
       'Content-Type': 'application/json',
-      ...options.headers,
+      ...options?.headers,
     },
   })
 }
@@ -2515,7 +2444,6 @@ export const sendDirectCast = <ThrowOnError extends boolean = false>(
 /**
  * Get user by verification address
  * Retrieves user information associated with the provided Ethereum verification address
- * @param options
  */
 export const getUserByVerificationAddress = <
   ThrowOnError extends boolean = false,
@@ -2541,7 +2469,6 @@ export const getUserByVerificationAddress = <
 /**
  * Get developer reward winners
  * Provides access to all winners for a given period (week). Paginated, with the list of winners in rank order. Not authenticated.
- * @param options
  */
 export const getDeveloperRewardWinners = <ThrowOnError extends boolean = false>(
   options?: Options<GetDeveloperRewardWinnersData, ThrowOnError>,
@@ -2566,7 +2493,7 @@ export const getDeveloperRewardWinners = <ThrowOnError extends boolean = false>(
  * Get apps (frames) by author
  * Retrieves a list of apps (aka "frames") created by a specific author on Warpcast, using their FID (Farcaster ID).
  * The response includes metadata for each app, including icons, URLs, and author profile details.
- * @param options
+ *
  */
 export const getAppsByAuthor = <ThrowOnError extends boolean = false>(
   options: Options<GetAppsByAuthorData, ThrowOnError>,
@@ -2590,7 +2517,6 @@ export const getAppsByAuthor = <ThrowOnError extends boolean = false>(
 /**
  * Retrieve domain manifest information
  * Fetches verification and manifest information for a Farcaster domain
- * @param options
  */
 export const getDomainManifest = <ThrowOnError extends boolean = false>(
   options: Options<GetDomainManifestData, ThrowOnError>,
@@ -2614,7 +2540,6 @@ export const getDomainManifest = <ThrowOnError extends boolean = false>(
 /**
  * Fetch meta tags from a URL
  * Retrieves metadata and Open Graph information from a specified URL
- * @param options
  */
 export const getMetaTags = <ThrowOnError extends boolean = false>(
   options: Options<GetMetaTagsData, ThrowOnError>,
@@ -2638,7 +2563,6 @@ export const getMetaTags = <ThrowOnError extends boolean = false>(
 /**
  * Fetch Farcaster JSON data from a domain
  * Retrieves Farcaster account association and frame information for a specified domain
- * @param options
  */
 export const getFarcasterJson = <ThrowOnError extends boolean = false>(
   options: Options<GetFarcasterJsonData, ThrowOnError>,
@@ -2660,9 +2584,31 @@ export const getFarcasterJson = <ThrowOnError extends boolean = false>(
 }
 
 /**
+ * Retrieve domains owned by the authenticated user
+ * Returns a list of domains that are owned by the currently authenticated user.
+ */
+export const getOwnedDomains = <ThrowOnError extends boolean = false>(
+  options?: Options<GetOwnedDomainsData, ThrowOnError>,
+) => {
+  return (options?.client ?? _heyApiClient).get<
+    GetOwnedDomainsResponse,
+    GetOwnedDomainsError,
+    ThrowOnError
+  >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
+    url: '/v1/dev-tools/domains-owned',
+    ...options,
+  })
+}
+
+/**
  * Retrieve API keys for the authenticated user
  * Returns a list of API keys associated with the user's account, including active and revoked keys
- * @param options
  */
 export const getApiKeys = <ThrowOnError extends boolean = false>(
   options?: Options<GetApiKeysData, ThrowOnError>,
@@ -2687,7 +2633,6 @@ export const getApiKeys = <ThrowOnError extends boolean = false>(
 /**
  * Create a new API key
  * Creates a new API key with the specified description and expiration date
- * @param options
  */
 export const createApiKey = <ThrowOnError extends boolean = false>(
   options: Options<CreateApiKeyData, ThrowOnError>,
@@ -2707,7 +2652,7 @@ export const createApiKey = <ThrowOnError extends boolean = false>(
     ...options,
     headers: {
       'Content-Type': 'application/json',
-      ...options.headers,
+      ...options?.headers,
     },
   })
 }
@@ -2715,7 +2660,6 @@ export const createApiKey = <ThrowOnError extends boolean = false>(
 /**
  * Revoke an API key
  * Revokes an existing API key making it no longer valid for authentication
- * @param options
  */
 export const revokeApiKey = <ThrowOnError extends boolean = false>(
   options: Options<RevokeApiKeyData, ThrowOnError>,
@@ -2735,7 +2679,7 @@ export const revokeApiKey = <ThrowOnError extends boolean = false>(
     ...options,
     headers: {
       'Content-Type': 'application/json',
-      ...options.headers,
+      ...options?.headers,
     },
   })
 }
@@ -2743,7 +2687,6 @@ export const revokeApiKey = <ThrowOnError extends boolean = false>(
 /**
  * Get connected social accounts
  * Retrieves a list of external social accounts connected to the user's Warpcast profile
- * @param options
  */
 export const getConnectedAccounts = <ThrowOnError extends boolean = false>(
   options?: Options<GetConnectedAccountsData, ThrowOnError>,
@@ -2767,7 +2710,6 @@ export const getConnectedAccounts = <ThrowOnError extends boolean = false>(
 /**
  * Get casts from a user's profile
  * Retrieves a list of casts published by a specific user identified by their Farcaster ID (FID).
- * @param options
  */
 export const getProfileCasts = <ThrowOnError extends boolean = false>(
   options: Options<GetProfileCastsData, ThrowOnError>,
@@ -2791,7 +2733,6 @@ export const getProfileCasts = <ThrowOnError extends boolean = false>(
 
 /**
  * Retrieve liked casts by user FID
- * @param options
  */
 export const getUserLikedCasts = <ThrowOnError extends boolean = false>(
   options: Options<GetUserLikedCastsData, ThrowOnError>,
@@ -2809,6 +2750,107 @@ export const getUserLikedCasts = <ThrowOnError extends boolean = false>(
     ],
     responseTransformer: getUserLikedCastsResponseTransformer,
     url: '/v2/user-liked-casts',
+    ...options,
+  })
+}
+
+/**
+ * Get analytics rollup for miniapps
+ * Retrieves analytics data for miniapps over a specified date range,
+ * providing various metrics broken down by configured dimensions.
+ *
+ */
+export const getMiniAppAnalyticsRollup = <ThrowOnError extends boolean = false>(
+  options: Options<GetMiniAppAnalyticsRollupData, ThrowOnError>,
+) => {
+  return (options.client ?? _heyApiClient).post<
+    GetMiniAppAnalyticsRollupResponse,
+    GetMiniAppAnalyticsRollupError,
+    ThrowOnError
+  >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
+    responseTransformer: getMiniAppAnalyticsRollupResponseTransformer,
+    url: '/v1/analytics/miniapps/rollup',
+    ...options,
+    headers: {
+      'Content-Type': 'application/json',
+      ...options?.headers,
+    },
+  })
+}
+
+/**
+ * Inspect Mini App URL
+ * Validates a Mini App URL by checking for proper embedding code and manifest,
+ * returning information about its compatibility with the Warpcast platform.
+ *
+ */
+export const inspectMiniAppUrl = <ThrowOnError extends boolean = false>(
+  options: Options<InspectMiniAppUrlData, ThrowOnError>,
+) => {
+  return (options.client ?? _heyApiClient).get<
+    InspectMiniAppUrlResponse,
+    InspectMiniAppUrlError,
+    ThrowOnError
+  >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
+    url: '/v1/dev-tools/inspect-miniapp-url',
+    ...options,
+  })
+}
+
+/**
+ * Inspect an image URL
+ * Retrieves metadata and information about an image at a specified URL, including size, cache settings, and loading time.
+ */
+export const inspectImageUrl = <ThrowOnError extends boolean = false>(
+  options: Options<InspectImageUrlData, ThrowOnError>,
+) => {
+  return (options.client ?? _heyApiClient).get<
+    InspectImageUrlResponse,
+    InspectImageUrlError,
+    ThrowOnError
+  >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
+    url: '/v1/dev-tools/inspect-image-url',
+    ...options,
+  })
+}
+
+/**
+ * Export user data for a specific mini app domain
+ * Retrieves a list of users who have interacted with a specified mini app domain, including their Farcaster IDs and notification tokens.
+ */
+export const exportMiniAppUserData = <ThrowOnError extends boolean = false>(
+  options: Options<ExportMiniAppUserDataData, ThrowOnError>,
+) => {
+  return (options.client ?? _heyApiClient).get<
+    ExportMiniAppUserDataResponse,
+    ExportMiniAppUserDataError,
+    ThrowOnError
+  >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
+    url: '/v1/dev-tools/export/miniapp-user-data',
     ...options,
   })
 }

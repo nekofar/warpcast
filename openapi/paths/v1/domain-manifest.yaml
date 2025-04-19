@@ -51,5 +51,39 @@ get:
                               signature:
                                 type: string
                                 description: Signature proving domain ownership
+                      frameConfig:
+                        type: object
+                        description: Configuration for Farcaster Frames
+                        properties:
+                          name:
+                            type: string
+                            description: Name of the Frame
+                          version:
+                            type: string
+                            description: Version of the Frame
+                          iconUrl:
+                            type: string
+                            description: URL to the Frame's icon
+                          homeUrl:
+                            type: string
+                            description: Home URL of the Frame
+                          imageUrl:
+                            type: string
+                            description: Image URL for the Frame
+                          buttonTitle:
+                            type: string
+                            description: Title for the Frame's button
+                          splashImageUrl:
+                            type: string
+                            description: URL for the splash image
+                          splashBackgroundColor:
+                            type: string
+                            description: Background color for splash screen
+                          webhookUrl:
+                            type: string
+                            description: Webhook URL for the Frame
+                      updatedAt:
+                        type: integer
+                        description: Timestamp of when the data was last updated
     '401':
       $ref: '../../components/responses/index.yaml#/Unauthorized'

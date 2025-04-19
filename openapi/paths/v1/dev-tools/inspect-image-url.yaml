@@ -1,0 +1,52 @@
+get:
+  tags:
+    - DevTools
+  summary: Inspect an image URL
+  description: Retrieves metadata and information about an image at a specified URL, including size, cache settings, and loading time.
+  operationId: inspectImageUrl
+  parameters:
+    - name: url
+      in: query
+      required: true
+      schema:
+        type: string
+        format: uri
+      description: The URL of the image to inspect
+  security:
+    - bearerAuth: []
+  responses:
+    '200':
+      description: Image inspection successful
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              result:
+                type: object
+                properties:
+                  facts:
+                    type: object
+                    properties:
+                      url:
+                        type: string
+                        description: The URL of the inspected image
+                      statusCode:
+                        type: integer
+                        description: HTTP status code of the response
+                      cacheHeader:
+                        type: string
+                        description: The cache header used by the image
+                      cacheAge:
+                        type: integer
+                        description: Cache age in seconds
+                      imageSizeBytes:
+                        type: integer
+                        description: Size of the image in bytes
+                      imageLoadTimeMs:
+                        type: integer
+                        description: Time taken to load the image in milliseconds
+            required:
+              - result
+    '401':
+      $ref: '../../../components/responses/index.yaml#/Unauthorized'

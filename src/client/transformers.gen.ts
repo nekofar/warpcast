@@ -5,6 +5,7 @@ import type {
   GetApiKeysResponse,
   GetCastsByFidResponse,
   GetCreatorRewardWinnersResponse,
+  GetMiniAppAnalyticsRollupResponse,
   GetProfileCastsResponse,
   GetStarterPackMembersResponse,
   GetUserLikedCastsResponse,
@@ -109,6 +110,28 @@ export const getUserLikedCastsResponseTransformer = async (
     data.result.casts = data.result.casts.map((item: any) => {
       return castSchemaResponseTransformer(item)
     })
+  }
+  return data
+}
+
+export const getMiniAppAnalyticsRollupResponseTransformer = async (
+  data: any,
+): Promise<GetMiniAppAnalyticsRollupResponse> => {
+  if (data.result) {
+    if (data.result.rollup) {
+      if (data.result.rollup.dateRange) {
+        if (data.result.rollup.dateRange.startDate) {
+          data.result.rollup.dateRange.startDate = new Date(
+            data.result.rollup.dateRange.startDate,
+          )
+        }
+        if (data.result.rollup.dateRange.endDate) {
+          data.result.rollup.dateRange.endDate = new Date(
+            data.result.rollup.dateRange.endDate,
+          )
+        }
+      }
+    }
   }
   return data
 }

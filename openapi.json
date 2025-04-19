@@ -4948,6 +4948,52 @@
                                   }
                                 }
                               }
+                            },
+                            "frameConfig": {
+                              "type": "object",
+                              "description": "Configuration for Farcaster Frames",
+                              "properties": {
+                                "name": {
+                                  "type": "string",
+                                  "description": "Name of the Frame"
+                                },
+                                "version": {
+                                  "type": "string",
+                                  "description": "Version of the Frame"
+                                },
+                                "iconUrl": {
+                                  "type": "string",
+                                  "description": "URL to the Frame's icon"
+                                },
+                                "homeUrl": {
+                                  "type": "string",
+                                  "description": "Home URL of the Frame"
+                                },
+                                "imageUrl": {
+                                  "type": "string",
+                                  "description": "Image URL for the Frame"
+                                },
+                                "buttonTitle": {
+                                  "type": "string",
+                                  "description": "Title for the Frame's button"
+                                },
+                                "splashImageUrl": {
+                                  "type": "string",
+                                  "description": "URL for the splash image"
+                                },
+                                "splashBackgroundColor": {
+                                  "type": "string",
+                                  "description": "Background color for splash screen"
+                                },
+                                "webhookUrl": {
+                                  "type": "string",
+                                  "description": "Webhook URL for the Frame"
+                                }
+                              }
+                            },
+                            "updatedAt": {
+                              "type": "integer",
+                              "description": "Timestamp of when the data was last updated"
                             }
                           }
                         }
@@ -5044,6 +5090,10 @@
                       "type": "string",
                       "description": "Open Graph site name"
                     },
+                    "og:image:alt": {
+                      "type": "string",
+                      "description": "Open Graph image alt text"
+                    },
                     "og:image:type": {
                       "type": "string",
                       "description": "Open Graph image MIME type"
@@ -5075,6 +5125,10 @@
                     "twitter:description": {
                       "type": "string",
                       "description": "Twitter card description"
+                    },
+                    "twitter:image:alt": {
+                      "type": "string",
+                      "description": "Twitter image alt text"
                     },
                     "twitter:image:type": {
                       "type": "string",
@@ -5198,6 +5252,68 @@
           },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
+          }
+        }
+      }
+    },
+    "/v1/dev-tools/domains-owned": {
+      "get": {
+        "operationId": "getOwnedDomains",
+        "summary": "Retrieve domains owned by the authenticated user",
+        "description": "Returns a list of domains that are owned by the currently authenticated user.",
+        "tags": [
+          "DevTools"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved owned domains",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "domains": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "description": "List of domains owned by the authenticated user"
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "result"
+                  ]
+                },
+                "example": {
+                  "result": {
+                    "domains": [
+                      "dev.lilnouns.click",
+                      "sepolia.lilnouns.auction",
+                      "lilnouns.auction"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden - insufficient permissions"
+          },
+          "500": {
+            "description": "Internal server error"
           }
         }
       }
@@ -5681,6 +5797,525 @@
           },
           "500": {
             "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/v1/analytics/miniapps/rollup": {
+      "post": {
+        "tags": [
+          "DevTools",
+          "Analytics"
+        ],
+        "summary": "Get analytics rollup for miniapps",
+        "description": "Retrieves analytics data for miniapps over a specified date range,\nproviding various metrics broken down by configured dimensions.\n",
+        "operationId": "getMiniAppAnalyticsRollup",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "dateRange",
+                  "measures",
+                  "restrictions"
+                ],
+                "properties": {
+                  "dateRange": {
+                    "type": "object",
+                    "required": [
+                      "startDate",
+                      "endDate"
+                    ],
+                    "properties": {
+                      "startDate": {
+                        "type": "string",
+                        "description": "Start date in format 'YYYY-MM-DD' or relative like '28daysago'",
+                        "example": "28daysago"
+                      },
+                      "endDate": {
+                        "type": "string",
+                        "description": "End date in format 'YYYY-MM-DD' or relative like 'today'",
+                        "example": "today"
+                      }
+                    }
+                  },
+                  "measures": {
+                    "type": "array",
+                    "description": "Analytics metrics to retrieve",
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "miniapp_opens",
+                        "miniapp_transactions",
+                        "miniapp_users_w_transaction",
+                        "miniapp_users_w_open",
+                        "miniapp_users_w_notifications_enabled",
+                        "miniapp_users_w_notifications_disabled",
+                        "miniapp_users_w_app_favorited",
+                        "miniapp_users_w_app_unfavorited"
+                      ]
+                    }
+                  },
+                  "restrictions": {
+                    "type": "array",
+                    "description": "Filtering restrictions for the data",
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "dimension",
+                        "values"
+                      ],
+                      "properties": {
+                        "dimension": {
+                          "type": "string",
+                          "description": "Dimension to filter on",
+                          "example": "miniapp_domain"
+                        },
+                        "values": {
+                          "type": "array",
+                          "description": "Values to filter the dimension by",
+                          "items": {
+                            "type": "string",
+                            "example": "lilnouns.auction"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "breakdownSettings": {
+                    "type": "object",
+                    "description": "Configuration for data breakdown",
+                    "properties": {
+                      "dimensions": {
+                        "type": "array",
+                        "description": "Dimensions to break down the data by",
+                        "items": {
+                          "type": "string",
+                          "example": "date"
+                        }
+                      },
+                      "order": {
+                        "type": "string",
+                        "enum": [
+                          "asc",
+                          "desc"
+                        ],
+                        "description": "Sort order for the breakdown results",
+                        "example": "asc"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful analytics rollup retrieval",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "rollup": {
+                          "type": "object",
+                          "properties": {
+                            "dateRange": {
+                              "type": "object",
+                              "properties": {
+                                "startDate": {
+                                  "type": "string",
+                                  "format": "date",
+                                  "example": "2025-03-21"
+                                },
+                                "endDate": {
+                                  "type": "string",
+                                  "format": "date",
+                                  "example": "2025-04-18"
+                                }
+                              }
+                            },
+                            "restrictions": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "dimension": {
+                                    "type": "string",
+                                    "example": "miniapp_domain"
+                                  },
+                                  "values": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "string",
+                                      "example": "lilnouns.auction"
+                                    }
+                                  }
+                                }
+                              }
+                            },
+                            "totals": {
+                              "type": "array",
+                              "description": "Aggregate metric totals",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "name": {
+                                    "type": "string",
+                                    "example": "miniapp_opens"
+                                  },
+                                  "value": {
+                                    "type": "integer",
+                                    "example": 94
+                                  }
+                                }
+                              }
+                            },
+                            "breakdown": {
+                              "type": "array",
+                              "description": "Metrics broken down by dimensions",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "slices": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "object",
+                                      "properties": {
+                                        "dimension": {
+                                          "type": "string",
+                                          "example": "date"
+                                        },
+                                        "values": {
+                                          "type": "array",
+                                          "items": {
+                                            "type": "string",
+                                            "example": "2025-03-23"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "measures": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "object",
+                                      "properties": {
+                                        "name": {
+                                          "type": "string",
+                                          "example": "miniapp_opens"
+                                        },
+                                        "value": {
+                                          "type": "integer",
+                                          "example": 1
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - Invalid parameters"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden - Not authorized to access this data"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/v1/dev-tools/inspect-miniapp-url": {
+      "get": {
+        "tags": [
+          "DevTools"
+        ],
+        "summary": "Inspect Mini App URL",
+        "description": "Validates a Mini App URL by checking for proper embedding code and manifest,\nreturning information about its compatibility with the Warpcast platform.\n",
+        "operationId": "inspectMiniAppUrl",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
+            "required": true,
+            "description": "The URL of the Mini App to inspect",
+            "schema": {
+              "type": "string",
+              "format": "uri",
+              "example": "https://lilnouns.auction"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful inspection of the Mini App URL",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "facts": {
+                          "type": "object",
+                          "properties": {
+                            "url": {
+                              "type": "string",
+                              "format": "uri",
+                              "description": "The URL that was inspected",
+                              "example": "https://lilnouns.auction"
+                            },
+                            "statusCode": {
+                              "type": "integer",
+                              "description": "HTTP status code returned by the URL",
+                              "example": 200
+                            },
+                            "miniAppEmbedPresent": {
+                              "type": "boolean",
+                              "description": "Indicates if the Mini App embedding code is present",
+                              "example": true
+                            },
+                            "miniAppManifestPresent": {
+                              "type": "boolean",
+                              "description": "Indicates if the Mini App manifest is present",
+                              "example": true
+                            },
+                            "miniAppEmbedValid": {
+                              "type": "boolean",
+                              "description": "Indicates if the Mini App embedding code is valid",
+                              "example": true
+                            },
+                            "miniAppManifestValid": {
+                              "type": "boolean",
+                              "description": "Indicates if the Mini App manifest is valid",
+                              "example": true
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - Invalid URL format"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden - Not authorized to use this endpoint"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/v1/dev-tools/inspect-image-url": {
+      "get": {
+        "tags": [
+          "DevTools"
+        ],
+        "summary": "Inspect an image URL",
+        "description": "Retrieves metadata and information about an image at a specified URL, including size, cache settings, and loading time.",
+        "operationId": "inspectImageUrl",
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uri"
+            },
+            "description": "The URL of the image to inspect"
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Image inspection successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "facts": {
+                          "type": "object",
+                          "properties": {
+                            "url": {
+                              "type": "string",
+                              "description": "The URL of the inspected image"
+                            },
+                            "statusCode": {
+                              "type": "integer",
+                              "description": "HTTP status code of the response"
+                            },
+                            "cacheHeader": {
+                              "type": "string",
+                              "description": "The cache header used by the image"
+                            },
+                            "cacheAge": {
+                              "type": "integer",
+                              "description": "Cache age in seconds"
+                            },
+                            "imageSizeBytes": {
+                              "type": "integer",
+                              "description": "Size of the image in bytes"
+                            },
+                            "imageLoadTimeMs": {
+                              "type": "integer",
+                              "description": "Time taken to load the image in milliseconds"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "result"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        }
+      }
+    },
+    "/v1/dev-tools/export/miniapp-user-data": {
+      "get": {
+        "operationId": "exportMiniAppUserData",
+        "summary": "Export user data for a specific mini app domain",
+        "description": "Retrieves a list of users who have interacted with a specified mini app domain, including their Farcaster IDs and notification tokens.",
+        "tags": [
+          "DevTools"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "domain",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "The domain name of the mini app to export user data for"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved mini app user data",
+            "content": {
+              "text/csv": {
+                "schema": {
+                  "type": "string",
+                  "description": "CSV formatted data with columns for fid, notificationToken, and added status"
+                },
+                "example": "fid,notificationToken,added\n"
+              },
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "users": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "fid": {
+                                "type": "integer",
+                                "description": "Farcaster ID of the user"
+                              },
+                              "notificationToken": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ],
+                                "description": "Token used for sending notifications to the user"
+                              },
+                              "added": {
+                                "type": "boolean",
+                                "description": "Whether the user has been added/registered with the mini app"
+                              }
+                            },
+                            "required": [
+                              "fid",
+                              "added"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "result"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden - insufficient permissions or not the owner of the specified domain"
+          },
+          "404": {
+            "description": "Domain not found or not registered as a mini app"
+          },
+          "500": {
+            "description": "Internal server error"
           }
         }
       }

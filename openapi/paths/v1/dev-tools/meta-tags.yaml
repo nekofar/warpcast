@@ -57,6 +57,9 @@ get:
               og:site_name:
                 type: string
                 description: Open Graph site name
+              og:image:alt:
+                type: string
+                description: Open Graph image alt text
               og:image:type:
                 type: string
                 description: Open Graph image MIME type
@@ -81,6 +84,9 @@ get:
               twitter:description:
                 type: string
                 description: Twitter card description
+              twitter:image:alt:
+                type: string
+                description: Twitter image alt text
               twitter:image:type:
                 type: string
                 description: Twitter image MIME type
