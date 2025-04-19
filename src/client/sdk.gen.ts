@@ -263,6 +263,9 @@ import type {
   GetVerificationsData,
   GetVerificationsError,
   GetVerificationsResponse,
+  InspectMiniAppUrlData,
+  InspectMiniAppUrlError,
+  InspectMiniAppUrlResponse,
   InviteUserToChannelData,
   InviteUserToChannelError,
   InviteUserToChannelResponse,
@@ -2844,5 +2847,30 @@ export const getMiniappAnalyticsRollup = <ThrowOnError extends boolean = false>(
       'Content-Type': 'application/json',
       ...options.headers,
     },
+  })
+}
+
+/**
+ * Inspect Mini App URL
+ * Validates a Mini App URL by checking for proper embedding code and manifest,
+ * returning information about its compatibility with the Warpcast platform.
+ * @param options
+ */
+export const inspectMiniAppUrl = <ThrowOnError extends boolean = false>(
+  options: Options<InspectMiniAppUrlData, ThrowOnError>,
+) => {
+  return (options.client ?? _heyApiClient).get<
+    InspectMiniAppUrlResponse,
+    InspectMiniAppUrlError,
+    ThrowOnError
+  >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
+    url: '/v1/dev-tools/inspect-miniapp-url',
+    ...options,
   })
 }

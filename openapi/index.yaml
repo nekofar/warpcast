@@ -293,3 +293,6 @@ paths:
 
   /v1/analytics/miniapps/rollup:
     $ref: ./paths/v1/analytics/miniapps/rollup.yaml
+
+  /v1/dev-tools/inspect-miniapp-url:
+    $ref: ./paths/v1/dev-tools/inspect-miniapp-url.yaml

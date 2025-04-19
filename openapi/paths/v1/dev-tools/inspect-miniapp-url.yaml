@@ -1,0 +1,66 @@
+get:
+  tags:
+    - DevTools
+  summary: Inspect Mini App URL
+  description: |
+    Validates a Mini App URL by checking for proper embedding code and manifest,
+    returning information about its compatibility with the Warpcast platform.
+  operationId: inspectMiniAppUrl
+  security:
+    - bearerAuth: []
+  parameters:
+    - name: url
+      in: query
+      required: true
+      description: The URL of the Mini App to inspect
+      schema:
+        type: string
+        format: uri
+        example: 'https://lilnouns.auction'
+  responses:
+    '200':
+      description: Successful inspection of the Mini App URL
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              result:
+                type: object
+                properties:
+                  facts:
+                    type: object
+                    properties:
+                      url:
+                        type: string
+                        format: uri
+                        description: The URL that was inspected
+                        example: 'https://lilnouns.auction'
+                      statusCode:
+                        type: integer
+                        description: HTTP status code returned by the URL
+                        example: 200
+                      miniAppEmbedPresent:
+                        type: boolean
+                        description: Indicates if the Mini App embedding code is present
+                        example: true
+                      miniAppManifestPresent:
+                        type: boolean
+                        description: Indicates if the Mini App manifest is present
+                        example: true
+                      miniAppEmbedValid:
+                        type: boolean
+                        description: Indicates if the Mini App embedding code is valid
+                        example: true
+                      miniAppManifestValid:
+                        type: boolean
+                        description: Indicates if the Mini App manifest is valid
+                        example: true
+    '400':
+      description: Bad request - Invalid URL format
+    '401':
+      $ref: '../../../components/responses/index.yaml#/Unauthorized'
+    '403':
+      description: Forbidden - Not authorized to use this endpoint
+    '500':
+      description: Server error

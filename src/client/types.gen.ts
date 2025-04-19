@@ -4721,6 +4721,79 @@ export interface GetMiniappAnalyticsRollupResponses {
 export type GetMiniappAnalyticsRollupResponse =
   GetMiniappAnalyticsRollupResponses[keyof GetMiniappAnalyticsRollupResponses]
 
+export interface InspectMiniAppUrlData {
+  body?: never
+  path?: never
+  query: {
+    /**
+     * The URL of the Mini App to inspect
+     */
+    url: string
+  }
+  url: '/v1/dev-tools/inspect-miniapp-url'
+}
+
+export interface InspectMiniAppUrlErrors {
+  /**
+   * Bad request - Invalid URL format
+   */
+  400: unknown
+  /**
+   * Authentication is required or failed
+   */
+  401: ErrorResponse
+  /**
+   * Forbidden - Not authorized to use this endpoint
+   */
+  403: unknown
+  /**
+   * Server error
+   */
+  500: unknown
+}
+
+export type InspectMiniAppUrlError =
+  InspectMiniAppUrlErrors[keyof InspectMiniAppUrlErrors]
+
+export interface InspectMiniAppUrlResponses {
+  /**
+   * Successful inspection of the Mini App URL
+   */
+  200: {
+    result?: {
+      facts?: {
+        /**
+         * The URL that was inspected
+         */
+        url?: string
+        /**
+         * HTTP status code returned by the URL
+         */
+        statusCode?: number
+        /**
+         * Indicates if the Mini App embedding code is present
+         */
+        miniAppEmbedPresent?: boolean
+        /**
+         * Indicates if the Mini App manifest is present
+         */
+        miniAppManifestPresent?: boolean
+        /**
+         * Indicates if the Mini App embedding code is valid
+         */
+        miniAppEmbedValid?: boolean
+        /**
+         * Indicates if the Mini App manifest is valid
+         */
+        miniAppManifestValid?: boolean
+      }
+    }
+  }
+}
+
+export type InspectMiniAppUrlResponse =
+  InspectMiniAppUrlResponses[keyof InspectMiniAppUrlResponses]
+
 export interface ClientOptions {
   baseUrl:
     | 'https://api.warpcast.com'
