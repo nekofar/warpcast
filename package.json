@@ -47,7 +47,7 @@
     "openapi:generate": "openapi-ts",
     "openapi:lint": "redocly lint openapi/index.yaml",
     "prepublishOnly": "pnpm build",
-    "test": "echo 'No tests available.' && exit 0"
+    "test": "vitest run"
   },
   "dependencies": {
     "@hey-api/client-fetch": "^0.10.0"
