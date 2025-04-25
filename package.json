@@ -1,6 +1,6 @@
 {
   "name": "@nekofar/warpcast",
-  "version": "2.0.0-alpha.23",
+  "version": "2.0.0-alpha.24",
   "description": "TypeScript client for interacting with Warpcast APIs",
   "keywords": [
     "warpcast",
@@ -47,7 +47,7 @@
     "openapi:generate": "openapi-ts",
     "openapi:lint": "redocly lint openapi/index.yaml",
     "prepublishOnly": "pnpm build",
-    "test": "echo 'No tests available.' && exit 0"
+    "test": "vitest run"
   },
   "dependencies": {
     "@hey-api/client-fetch": "^0.10.0"
@@ -73,7 +73,8 @@
     "rimraf": "^6.0.1",
     "tsup": "^8.4.0",
     "typescript": "^5.8.3",
-    "typescript-eslint": "^8.30.1"
+    "typescript-eslint": "^8.30.1",
+    "vitest": "^3.1.1"
   },
   "packageManager": "pnpm@10.0.0",
   "publishConfig": {
