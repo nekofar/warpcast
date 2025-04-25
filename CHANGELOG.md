@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.24] - 2025-04-25
+
+### 💼 Other
+
+- *(tsup)* Update entry configuration to include all ts files
+
+### 🧪 Testing
+
+- *(index)* Add tests for `version`
+
 ## [2.0.0-alpha.23] - 2025-04-19
 
 ### 🚀 Features
