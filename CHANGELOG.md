@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.25] - 2025-06-12
+
+### 🐛 Bug Fixes
+
+- *(openapi)* Update main API server URL
+
+### 🚜 Refactor
+
+- *(client)* Standardize error and response types
+
 ## [2.0.0-alpha.24] - 2025-04-25
 
 ### 💼 Other
