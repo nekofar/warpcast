@@ -18,320 +18,320 @@ import {
 } from './transformers.gen'
 import type {
   AcceptChannelInviteData,
-  AcceptChannelInviteError,
-  AcceptChannelInviteResponse,
+  AcceptChannelInviteErrors,
+  AcceptChannelInviteResponses,
   AttachEmbedsData,
-  AttachEmbedsError,
-  AttachEmbedsResponse2,
+  AttachEmbedsErrors,
+  AttachEmbedsResponses,
   BanUserFromChannelData,
-  BanUserFromChannelError,
-  BanUserFromChannelResponse,
+  BanUserFromChannelErrors,
+  BanUserFromChannelResponses,
   BlockUserData,
-  BlockUserError,
-  BlockUserResponse,
+  BlockUserErrors,
+  BlockUserResponses,
   CheckUserChannelFollowStatusData,
-  CheckUserChannelFollowStatusError,
-  CheckUserChannelFollowStatusResponse,
+  CheckUserChannelFollowStatusErrors,
+  CheckUserChannelFollowStatusResponses,
   CreateApiKeyData,
-  CreateApiKeyError,
-  CreateApiKeyResponse,
+  CreateApiKeyErrors,
+  CreateApiKeyResponses,
   CreateCastData,
-  CreateCastError,
-  CreateCastResponse,
+  CreateCastErrors,
+  CreateCastResponses,
   CreateDraftCastsData,
-  CreateDraftCastsError,
-  CreateDraftCastsResponse,
+  CreateDraftCastsErrors,
+  CreateDraftCastsResponses,
   DeleteCastData,
-  DeleteCastError,
-  DeleteCastResponse,
+  DeleteCastErrors,
+  DeleteCastResponses,
   DeleteDraftCastData,
-  DeleteDraftCastError,
-  DeleteDraftCastResponse,
+  DeleteDraftCastErrors,
+  DeleteDraftCastResponses,
   DiscoverChannelsData,
-  DiscoverChannelsError,
-  DiscoverChannelsResponse2,
+  DiscoverChannelsErrors,
+  DiscoverChannelsResponses,
   ExportMiniAppUserDataData,
-  ExportMiniAppUserDataError,
-  ExportMiniAppUserDataResponse,
+  ExportMiniAppUserDataErrors,
+  ExportMiniAppUserDataResponses,
   FollowChannelData,
-  FollowChannelError,
-  FollowChannelResponse,
+  FollowChannelErrors,
+  FollowChannelResponses,
   GetAccountVerificationsData,
-  GetAccountVerificationsError,
-  GetAccountVerificationsResponse,
+  GetAccountVerificationsErrors,
+  GetAccountVerificationsResponses,
   GetAllChannelsData,
-  GetAllChannelsError,
-  GetAllChannelsResponse,
+  GetAllChannelsErrors,
+  GetAllChannelsResponses,
   GetApiKeysData,
-  GetApiKeysError,
-  GetApiKeysResponse,
+  GetApiKeysErrors,
+  GetApiKeysResponses,
   GetAppsByAuthorData,
-  GetAppsByAuthorError,
-  GetAppsByAuthorResponse,
+  GetAppsByAuthorErrors,
+  GetAppsByAuthorResponses,
   GetAvailableInvitesData,
-  GetAvailableInvitesError,
-  GetAvailableInvitesResponse,
+  GetAvailableInvitesErrors,
+  GetAvailableInvitesResponses,
   GetBlockedUsersData,
-  GetBlockedUsersError,
-  GetBlockedUsersResponse,
+  GetBlockedUsersErrors,
+  GetBlockedUsersResponses,
   GetBookmarkedCastsData,
-  GetBookmarkedCastsError,
-  GetBookmarkedCastsResponse,
+  GetBookmarkedCastsErrors,
+  GetBookmarkedCastsResponses,
   GetCastLikesData,
-  GetCastLikesError,
-  GetCastLikesResponse,
+  GetCastLikesErrors,
+  GetCastLikesResponses,
   GetCastQuotesData,
-  GetCastQuotesError,
-  GetCastQuotesResponse,
+  GetCastQuotesErrors,
+  GetCastQuotesResponses,
   GetCastRecastersData,
-  GetCastRecastersError,
-  GetCastRecastersResponse,
+  GetCastRecastersErrors,
+  GetCastRecastersResponses,
   GetCastsByFidData,
-  GetCastsByFidError,
-  GetCastsByFidResponse,
+  GetCastsByFidErrors,
+  GetCastsByFidResponses,
   GetChannelBannedUsersData,
-  GetChannelBannedUsersError,
-  GetChannelBannedUsersResponse,
+  GetChannelBannedUsersErrors,
+  GetChannelBannedUsersResponses,
   GetChannelData,
   GetChannelDetailsData,
-  GetChannelDetailsError,
-  GetChannelDetailsResponse,
-  GetChannelError,
+  GetChannelDetailsErrors,
+  GetChannelDetailsResponses,
+  GetChannelErrors,
   GetChannelFollowersData,
-  GetChannelFollowersError,
-  GetChannelFollowersResponse,
+  GetChannelFollowersErrors,
+  GetChannelFollowersResponses,
   GetChannelFollowersYouKnowData,
-  GetChannelFollowersYouKnowError,
-  GetChannelFollowersYouKnowResponse,
+  GetChannelFollowersYouKnowErrors,
+  GetChannelFollowersYouKnowResponses,
   GetChannelInvitesData,
-  GetChannelInvitesError,
-  GetChannelInvitesResponse,
+  GetChannelInvitesErrors,
+  GetChannelInvitesResponses,
   GetChannelMembersData,
-  GetChannelMembersError,
-  GetChannelMembersResponse,
+  GetChannelMembersErrors,
+  GetChannelMembersResponses,
   GetChannelModeratedCastsData,
-  GetChannelModeratedCastsError,
-  GetChannelModeratedCastsResponse,
-  GetChannelResponse,
+  GetChannelModeratedCastsErrors,
+  GetChannelModeratedCastsResponses,
+  GetChannelResponses,
   GetChannelRestrictedUsersData,
-  GetChannelRestrictedUsersError,
-  GetChannelRestrictedUsersResponse,
+  GetChannelRestrictedUsersErrors,
+  GetChannelRestrictedUsersResponses,
   GetChannelStreaksForUserData,
-  GetChannelStreaksForUserError,
-  GetChannelStreaksForUserResponse,
+  GetChannelStreaksForUserErrors,
+  GetChannelStreaksForUserResponses,
   GetChannelUsersData,
-  GetChannelUsersError,
-  GetChannelUsersResponse,
+  GetChannelUsersErrors,
+  GetChannelUsersResponses,
   GetConnectedAccountsData,
-  GetConnectedAccountsError,
-  GetConnectedAccountsResponse,
+  GetConnectedAccountsErrors,
+  GetConnectedAccountsResponses,
   GetCreatorRewardWinnersData,
-  GetCreatorRewardWinnersError,
-  GetCreatorRewardWinnersResponse,
+  GetCreatorRewardWinnersErrors,
+  GetCreatorRewardWinnersResponses,
   GetCurrentUserData,
-  GetCurrentUserError,
-  GetCurrentUserResponse,
+  GetCurrentUserErrors,
+  GetCurrentUserResponses,
   GetDeveloperRewardWinnersData,
-  GetDeveloperRewardWinnersError,
-  GetDeveloperRewardWinnersResponse,
+  GetDeveloperRewardWinnersErrors,
+  GetDeveloperRewardWinnersResponses,
   GetDirectCastConversationData,
-  GetDirectCastConversationError,
-  GetDirectCastConversationResponse,
+  GetDirectCastConversationErrors,
+  GetDirectCastConversationResponses,
   GetDirectCastInboxData,
-  GetDirectCastInboxError,
-  GetDirectCastInboxResponse,
+  GetDirectCastInboxErrors,
+  GetDirectCastInboxResponses,
   GetDiscoverableActionsData,
-  GetDiscoverableActionsError,
-  GetDiscoverableActionsResponse,
+  GetDiscoverableActionsErrors,
+  GetDiscoverableActionsResponses,
   GetDiscoverableComposerActionsData,
-  GetDiscoverableComposerActionsError,
-  GetDiscoverableComposerActionsResponse,
+  GetDiscoverableComposerActionsErrors,
+  GetDiscoverableComposerActionsResponses,
   GetDomainManifestData,
-  GetDomainManifestError,
-  GetDomainManifestResponse,
+  GetDomainManifestErrors,
+  GetDomainManifestResponses,
   GetDraftCastsData,
-  GetDraftCastsError,
-  GetDraftCastsResponse,
+  GetDraftCastsErrors,
+  GetDraftCastsResponses,
   GetFarcasterJsonData,
-  GetFarcasterJsonError,
-  GetFarcasterJsonResponse,
+  GetFarcasterJsonErrors,
+  GetFarcasterJsonResponses,
   GetFeedItemsData,
-  GetFeedItemsError,
-  GetFeedItemsResponse,
+  GetFeedItemsErrors,
+  GetFeedItemsResponses,
   GetFollowersData,
-  GetFollowersError,
-  GetFollowersResponse,
+  GetFollowersErrors,
+  GetFollowersResponses,
   GetFollowingData,
-  GetFollowingError,
-  GetFollowingResponse,
+  GetFollowingErrors,
+  GetFollowingResponses,
   GetHighlightedChannelsData,
-  GetHighlightedChannelsError,
-  GetHighlightedChannelsResponse,
+  GetHighlightedChannelsErrors,
+  GetHighlightedChannelsResponses,
   GetMetaTagsData,
-  GetMetaTagsError,
-  GetMetaTagsResponse,
+  GetMetaTagsErrors,
+  GetMetaTagsResponses,
   GetMiniAppAnalyticsRollupData,
-  GetMiniAppAnalyticsRollupError,
-  GetMiniAppAnalyticsRollupResponse,
+  GetMiniAppAnalyticsRollupErrors,
+  GetMiniAppAnalyticsRollupResponses,
   GetMutedKeywordsData,
-  GetMutedKeywordsError,
-  GetMutedKeywordsResponse,
+  GetMutedKeywordsErrors,
+  GetMutedKeywordsResponses,
   GetMutualFollowersData,
-  GetMutualFollowersError,
-  GetMutualFollowersResponse,
+  GetMutualFollowersErrors,
+  GetMutualFollowersResponses,
   GetNotificationsData,
-  GetNotificationsError,
-  GetNotificationsResponse,
+  GetNotificationsErrors,
+  GetNotificationsResponses,
   GetOwnedDomainsData,
-  GetOwnedDomainsError,
-  GetOwnedDomainsResponse,
+  GetOwnedDomainsErrors,
+  GetOwnedDomainsResponses,
   GetProfileCastsData,
-  GetProfileCastsError,
-  GetProfileCastsResponse,
+  GetProfileCastsErrors,
+  GetProfileCastsResponses,
   GetRewardsLeaderboardData,
-  GetRewardsLeaderboardError,
-  GetRewardsLeaderboardResponse,
+  GetRewardsLeaderboardErrors,
+  GetRewardsLeaderboardResponses,
   GetRewardsMetadataData,
-  GetRewardsMetadataError,
-  GetRewardsMetadataResponse,
+  GetRewardsMetadataErrors,
+  GetRewardsMetadataResponses,
   GetSponsoredInvitesData,
-  GetSponsoredInvitesError,
-  GetSponsoredInvitesResponse,
+  GetSponsoredInvitesErrors,
+  GetSponsoredInvitesResponses,
   GetStarterPackData,
-  GetStarterPackError,
+  GetStarterPackErrors,
   GetStarterPackMembersData,
-  GetStarterPackMembersError,
-  GetStarterPackMembersResponse,
-  GetStarterPackResponse,
+  GetStarterPackMembersErrors,
+  GetStarterPackMembersResponses,
+  GetStarterPackResponses,
   GetStarterPackUsersData,
-  GetStarterPackUsersError,
-  GetStarterPackUsersResponse,
+  GetStarterPackUsersErrors,
+  GetStarterPackUsersResponses,
   GetSuggestedStarterPacksData,
-  GetSuggestedStarterPacksError,
-  GetSuggestedStarterPacksResponse,
+  GetSuggestedStarterPacksErrors,
+  GetSuggestedStarterPacksResponses,
   GetSuggestedUsersData,
-  GetSuggestedUsersError,
-  GetSuggestedUsersResponse,
+  GetSuggestedUsersErrors,
+  GetSuggestedUsersResponses,
   GetTopFrameAppsData,
-  GetTopFrameAppsError,
-  GetTopFrameAppsResponse,
+  GetTopFrameAppsErrors,
+  GetTopFrameAppsResponses,
   GetUnseenCountsData,
-  GetUnseenCountsError,
-  GetUnseenCountsResponse,
+  GetUnseenCountsErrors,
+  GetUnseenCountsResponses,
   GetUserAppContextData,
-  GetUserAppContextError,
-  GetUserAppContextResponse,
+  GetUserAppContextErrors,
+  GetUserAppContextResponses,
   GetUserByFidData,
-  GetUserByFidError,
-  GetUserByFidResponse,
+  GetUserByFidErrors,
+  GetUserByFidResponses,
   GetUserByUsernameData,
-  GetUserByUsernameError,
-  GetUserByUsernameResponse,
+  GetUserByUsernameErrors,
+  GetUserByUsernameResponses,
   GetUserByVerificationAddressData,
-  GetUserByVerificationAddressError,
-  GetUserByVerificationAddressResponse,
+  GetUserByVerificationAddressErrors,
+  GetUserByVerificationAddressResponses,
   GetUserData,
-  GetUserError,
+  GetUserErrors,
   GetUserFavoriteFramesData,
-  GetUserFavoriteFramesError,
-  GetUserFavoriteFramesResponse,
+  GetUserFavoriteFramesErrors,
+  GetUserFavoriteFramesResponses,
   GetUserFollowedChannelsData,
-  GetUserFollowedChannelsError,
-  GetUserFollowedChannelsResponse,
+  GetUserFollowedChannelsErrors,
+  GetUserFollowedChannelsResponses,
   GetUserFollowingChannelsData,
-  GetUserFollowingChannelsError,
-  GetUserFollowingChannelsResponse,
+  GetUserFollowingChannelsErrors,
+  GetUserFollowingChannelsResponses,
   GetUserLikedCastsData,
-  GetUserLikedCastsError,
-  GetUserLikedCastsResponse,
+  GetUserLikedCastsErrors,
+  GetUserLikedCastsResponses,
   GetUserOnboardingStateData,
-  GetUserOnboardingStateError,
-  GetUserOnboardingStateResponse,
+  GetUserOnboardingStateErrors,
+  GetUserOnboardingStateResponses,
   GetUserPreferencesData,
-  GetUserPreferencesError,
-  GetUserPreferencesResponse,
+  GetUserPreferencesErrors,
+  GetUserPreferencesResponses,
   GetUserPrimaryAddressData,
-  GetUserPrimaryAddressError,
+  GetUserPrimaryAddressErrors,
   GetUserPrimaryAddressesData,
-  GetUserPrimaryAddressesError,
-  GetUserPrimaryAddressesResponse,
-  GetUserPrimaryAddressResponse,
-  GetUserResponse,
+  GetUserPrimaryAddressesErrors,
+  GetUserPrimaryAddressesResponses,
+  GetUserPrimaryAddressResponses,
+  GetUserResponses,
   GetUserRewardsScoresData,
-  GetUserRewardsScoresError,
-  GetUserRewardsScoresResponse,
+  GetUserRewardsScoresErrors,
+  GetUserRewardsScoresResponses,
   GetUserStarterPacksData,
-  GetUserStarterPacksError,
-  GetUserStarterPacksResponse,
+  GetUserStarterPacksErrors,
+  GetUserStarterPacksResponses,
   GetUserThreadCastsData,
-  GetUserThreadCastsError,
-  GetUserThreadCastsResponse,
+  GetUserThreadCastsErrors,
+  GetUserThreadCastsResponses,
   GetVerificationsData,
-  GetVerificationsError,
-  GetVerificationsResponse,
+  GetVerificationsErrors,
+  GetVerificationsResponses,
   InspectImageUrlData,
-  InspectImageUrlError,
-  InspectImageUrlResponse,
+  InspectImageUrlErrors,
+  InspectImageUrlResponses,
   InspectMiniAppUrlData,
-  InspectMiniAppUrlError,
-  InspectMiniAppUrlResponse,
+  InspectMiniAppUrlErrors,
+  InspectMiniAppUrlResponses,
   InviteUserToChannelData,
-  InviteUserToChannelError,
-  InviteUserToChannelResponse,
+  InviteUserToChannelErrors,
+  InviteUserToChannelResponses,
   LikeCastData,
-  LikeCastError,
-  LikeCastResponse,
+  LikeCastErrors,
+  LikeCastResponses,
   MarkAllNotificationsReadData,
-  MarkAllNotificationsReadError,
-  MarkAllNotificationsReadResponse,
+  MarkAllNotificationsReadErrors,
+  MarkAllNotificationsReadResponses,
   ModerateCastData,
-  ModerateCastError,
-  ModerateCastResponse,
+  ModerateCastErrors,
+  ModerateCastResponses,
   MuteKeywordData,
-  MuteKeywordError,
-  MuteKeywordResponse,
+  MuteKeywordErrors,
+  MuteKeywordResponses,
   PinCastToChannelData,
-  PinCastToChannelError,
-  PinCastToChannelResponse,
+  PinCastToChannelErrors,
+  PinCastToChannelResponses,
   RecastCastData,
-  RecastCastError,
-  RecastCastResponse,
+  RecastCastErrors,
+  RecastCastResponses,
   RemoveChannelInviteData,
-  RemoveChannelInviteError,
-  RemoveChannelInviteResponse,
+  RemoveChannelInviteErrors,
+  RemoveChannelInviteResponses,
   RevokeApiKeyData,
-  RevokeApiKeyError,
-  RevokeApiKeyResponse,
+  RevokeApiKeyErrors,
+  RevokeApiKeyResponses,
   SearchChannelsData,
-  SearchChannelsError,
-  SearchChannelsResponse2,
+  SearchChannelsErrors,
+  SearchChannelsResponses,
   SendDirectCastData,
-  SendDirectCastError,
-  SendDirectCastResponse,
+  SendDirectCastErrors,
+  SendDirectCastResponses,
   SetLastCheckedTimestampData,
-  SetLastCheckedTimestampError,
-  SetLastCheckedTimestampResponse,
+  SetLastCheckedTimestampErrors,
+  SetLastCheckedTimestampResponses,
   UnbanUserFromChannelData,
-  UnbanUserFromChannelError,
-  UnbanUserFromChannelResponse,
+  UnbanUserFromChannelErrors,
+  UnbanUserFromChannelResponses,
   UnblockUserData,
-  UnblockUserError,
-  UnblockUserResponse,
+  UnblockUserErrors,
+  UnblockUserResponses,
   UndoRecastData,
-  UndoRecastError,
-  UndoRecastResponse,
+  UndoRecastErrors,
+  UndoRecastResponses,
   UnfollowChannelData,
-  UnfollowChannelError,
-  UnfollowChannelResponse,
+  UnfollowChannelErrors,
+  UnfollowChannelResponses,
   UnlikeCastData,
-  UnlikeCastError,
-  UnlikeCastResponse,
+  UnlikeCastErrors,
+  UnlikeCastResponses,
   UnmuteKeywordData,
-  UnmuteKeywordError,
-  UnmuteKeywordResponse,
+  UnmuteKeywordErrors,
+  UnmuteKeywordResponses,
   UnpinCastFromChannelData,
-  UnpinCastFromChannelError,
-  UnpinCastFromChannelResponse,
+  UnpinCastFromChannelErrors,
+  UnpinCastFromChannelResponses,
 } from './types.gen'
 
 export type Options<
@@ -360,8 +360,8 @@ export const getUserOnboardingState = <ThrowOnError extends boolean = false>(
   options?: Options<GetUserOnboardingStateData, ThrowOnError>,
 ) => {
   return (options?.client ?? _heyApiClient).get<
-    GetUserOnboardingStateResponse,
-    GetUserOnboardingStateError,
+    GetUserOnboardingStateResponses,
+    GetUserOnboardingStateErrors,
     ThrowOnError
   >({
     security: [
@@ -384,8 +384,8 @@ export const getUserByFid = <ThrowOnError extends boolean = false>(
   options: Options<GetUserByFidData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).get<
-    GetUserByFidResponse,
-    GetUserByFidError,
+    GetUserByFidResponses,
+    GetUserByFidErrors,
     ThrowOnError
   >({
     security: [
@@ -408,8 +408,8 @@ export const getDirectCastInbox = <ThrowOnError extends boolean = false>(
   options?: Options<GetDirectCastInboxData, ThrowOnError>,
 ) => {
   return (options?.client ?? _heyApiClient).get<
-    GetDirectCastInboxResponse,
-    GetDirectCastInboxError,
+    GetDirectCastInboxResponses,
+    GetDirectCastInboxErrors,
     ThrowOnError
   >({
     security: [
@@ -432,8 +432,8 @@ export const getUserAppContext = <ThrowOnError extends boolean = false>(
   options?: Options<GetUserAppContextData, ThrowOnError>,
 ) => {
   return (options?.client ?? _heyApiClient).get<
-    GetUserAppContextResponse,
-    GetUserAppContextError,
+    GetUserAppContextResponses,
+    GetUserAppContextErrors,
     ThrowOnError
   >({
     security: [
@@ -456,8 +456,8 @@ export const getUserPreferences = <ThrowOnError extends boolean = false>(
   options?: Options<GetUserPreferencesData, ThrowOnError>,
 ) => {
   return (options?.client ?? _heyApiClient).get<
-    GetUserPreferencesResponse,
-    GetUserPreferencesError,
+    GetUserPreferencesResponses,
+    GetUserPreferencesErrors,
     ThrowOnError
   >({
     security: [
@@ -480,8 +480,8 @@ export const getHighlightedChannels = <ThrowOnError extends boolean = false>(
   options?: Options<GetHighlightedChannelsData, ThrowOnError>,
 ) => {
   return (options?.client ?? _heyApiClient).get<
-    GetHighlightedChannelsResponse,
-    GetHighlightedChannelsError,
+    GetHighlightedChannelsResponses,
+    GetHighlightedChannelsErrors,
     ThrowOnError
   >({
     security: [
@@ -504,8 +504,8 @@ export const getFeedItems = <ThrowOnError extends boolean = false>(
   options: Options<GetFeedItemsData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).post<
-    GetFeedItemsResponse,
-    GetFeedItemsError,
+    GetFeedItemsResponses,
+    GetFeedItemsErrors,
     ThrowOnError
   >({
     security: [
@@ -532,8 +532,8 @@ export const getUser = <ThrowOnError extends boolean = false>(
   options: Options<GetUserData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).get<
-    GetUserResponse,
-    GetUserError,
+    GetUserResponses,
+    GetUserErrors,
     ThrowOnError
   >({
     security: [
@@ -556,8 +556,8 @@ export const getUserFollowingChannels = <ThrowOnError extends boolean = false>(
   options?: Options<GetUserFollowingChannelsData, ThrowOnError>,
 ) => {
   return (options?.client ?? _heyApiClient).get<
-    GetUserFollowingChannelsResponse,
-    GetUserFollowingChannelsError,
+    GetUserFollowingChannelsResponses,
+    GetUserFollowingChannelsErrors,
     ThrowOnError
   >({
     security: [
@@ -579,8 +579,8 @@ export const getSuggestedUsers = <ThrowOnError extends boolean = false>(
   options?: Options<GetSuggestedUsersData, ThrowOnError>,
 ) => {
   return (options?.client ?? _heyApiClient).get<
-    GetSuggestedUsersResponse,
-    GetSuggestedUsersError,
+    GetSuggestedUsersResponses,
+    GetSuggestedUsersErrors,
     ThrowOnError
   >({
     security: [
@@ -602,8 +602,8 @@ export const getUserFavoriteFrames = <ThrowOnError extends boolean = false>(
   options?: Options<GetUserFavoriteFramesData, ThrowOnError>,
 ) => {
   return (options?.client ?? _heyApiClient).get<
-    GetUserFavoriteFramesResponse,
-    GetUserFavoriteFramesError,
+    GetUserFavoriteFramesResponses,
+    GetUserFavoriteFramesErrors,
     ThrowOnError
   >({
     security: [
@@ -625,8 +625,8 @@ export const getUserByUsername = <ThrowOnError extends boolean = false>(
   options: Options<GetUserByUsernameData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).get<
-    GetUserByUsernameResponse,
-    GetUserByUsernameError,
+    GetUserByUsernameResponses,
+    GetUserByUsernameErrors,
     ThrowOnError
   >({
     security: [
@@ -648,8 +648,8 @@ export const getChannelStreaksForUser = <ThrowOnError extends boolean = false>(
   options: Options<GetChannelStreaksForUserData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).get<
-    GetChannelStreaksForUserResponse,
-    GetChannelStreaksForUserError,
+    GetChannelStreaksForUserResponses,
+    GetChannelStreaksForUserErrors,
     ThrowOnError
   >({
     security: [
@@ -671,8 +671,8 @@ export const getUnseenCounts = <ThrowOnError extends boolean = false>(
   options?: Options<GetUnseenCountsData, ThrowOnError>,
 ) => {
   return (options?.client ?? _heyApiClient).get<
-    GetUnseenCountsResponse,
-    GetUnseenCountsError,
+    GetUnseenCountsResponses,
+    GetUnseenCountsErrors,
     ThrowOnError
   >({
     security: [
@@ -695,8 +695,8 @@ export const getUserThreadCasts = <ThrowOnError extends boolean = false>(
   options: Options<GetUserThreadCastsData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).get<
-    GetUserThreadCastsResponse,
-    GetUserThreadCastsError,
+    GetUserThreadCastsResponses,
+    GetUserThreadCastsErrors,
     ThrowOnError
   >({
     security: [
@@ -720,8 +720,8 @@ export const getChannelFollowersYouKnow = <
   options: Options<GetChannelFollowersYouKnowData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).get<
-    GetChannelFollowersYouKnowResponse,
-    GetChannelFollowersYouKnowError,
+    GetChannelFollowersYouKnowResponses,
+    GetChannelFollowersYouKnowErrors,
     ThrowOnError
   >({
     security: [
@@ -743,8 +743,8 @@ export const markAllNotificationsRead = <ThrowOnError extends boolean = false>(
   options: Options<MarkAllNotificationsReadData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).put<
-    MarkAllNotificationsReadResponse,
-    MarkAllNotificationsReadError,
+    MarkAllNotificationsReadResponses,
+    MarkAllNotificationsReadErrors,
     ThrowOnError
   >({
     security: [
@@ -771,8 +771,8 @@ export const getNotifications = <ThrowOnError extends boolean = false>(
   options: Options<GetNotificationsData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).get<
-    GetNotificationsResponse,
-    GetNotificationsError,
+    GetNotificationsResponses,
+    GetNotificationsErrors,
     ThrowOnError
   >({
     security: [
@@ -795,8 +795,8 @@ export const setLastCheckedTimestamp = <ThrowOnError extends boolean = false>(
   options: Options<SetLastCheckedTimestampData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).put<
-    SetLastCheckedTimestampResponse,
-    SetLastCheckedTimestampError,
+    SetLastCheckedTimestampResponses,
+    SetLastCheckedTimestampErrors,
     ThrowOnError
   >({
     security: [
@@ -823,8 +823,8 @@ export const getDirectCastConversation = <ThrowOnError extends boolean = false>(
   options: Options<GetDirectCastConversationData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).get<
-    GetDirectCastConversationResponse,
-    GetDirectCastConversationError,
+    GetDirectCastConversationResponses,
+    GetDirectCastConversationErrors,
     ThrowOnError
   >({
     security: [
@@ -847,8 +847,8 @@ export const discoverChannels = <ThrowOnError extends boolean = false>(
   options?: Options<DiscoverChannelsData, ThrowOnError>,
 ) => {
   return (options?.client ?? _heyApiClient).get<
-    DiscoverChannelsResponse2,
-    DiscoverChannelsError,
+    DiscoverChannelsResponses,
+    DiscoverChannelsErrors,
     ThrowOnError
   >({
     security: [
@@ -871,8 +871,8 @@ export const getAvailableInvites = <ThrowOnError extends boolean = false>(
   options?: Options<GetAvailableInvitesData, ThrowOnError>,
 ) => {
   return (options?.client ?? _heyApiClient).get<
-    GetAvailableInvitesResponse,
-    GetAvailableInvitesError,
+    GetAvailableInvitesResponses,
+    GetAvailableInvitesErrors,
     ThrowOnError
   >({
     security: [
@@ -895,8 +895,8 @@ export const getSponsoredInvites = <ThrowOnError extends boolean = false>(
   options?: Options<GetSponsoredInvitesData, ThrowOnError>,
 ) => {
   return (options?.client ?? _heyApiClient).get<
-    GetSponsoredInvitesResponse,
-    GetSponsoredInvitesError,
+    GetSponsoredInvitesResponses,
+    GetSponsoredInvitesErrors,
     ThrowOnError
   >({
     security: [
@@ -919,8 +919,8 @@ export const getRewardsLeaderboard = <ThrowOnError extends boolean = false>(
   options: Options<GetRewardsLeaderboardData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).get<
-    GetRewardsLeaderboardResponse,
-    GetRewardsLeaderboardError,
+    GetRewardsLeaderboardResponses,
+    GetRewardsLeaderboardErrors,
     ThrowOnError
   >({
     security: [
@@ -943,8 +943,8 @@ export const getUserRewardsScores = <ThrowOnError extends boolean = false>(
   options: Options<GetUserRewardsScoresData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).get<
-    GetUserRewardsScoresResponse,
-    GetUserRewardsScoresError,
+    GetUserRewardsScoresResponses,
+    GetUserRewardsScoresErrors,
     ThrowOnError
   >({
     security: [
@@ -967,8 +967,8 @@ export const getRewardsMetadata = <ThrowOnError extends boolean = false>(
   options: Options<GetRewardsMetadataData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).get<
-    GetRewardsMetadataResponse,
-    GetRewardsMetadataError,
+    GetRewardsMetadataResponses,
+    GetRewardsMetadataErrors,
     ThrowOnError
   >({
     security: [
@@ -991,8 +991,8 @@ export const getBookmarkedCasts = <ThrowOnError extends boolean = false>(
   options?: Options<GetBookmarkedCastsData, ThrowOnError>,
 ) => {
   return (options?.client ?? _heyApiClient).get<
-    GetBookmarkedCastsResponse,
-    GetBookmarkedCastsError,
+    GetBookmarkedCastsResponses,
+    GetBookmarkedCastsErrors,
     ThrowOnError
   >({
     security: [
@@ -1015,8 +1015,8 @@ export const getUserStarterPacks = <ThrowOnError extends boolean = false>(
   options: Options<GetUserStarterPacksData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).get<
-    GetUserStarterPacksResponse,
-    GetUserStarterPacksError,
+    GetUserStarterPacksResponses,
+    GetUserStarterPacksErrors,
     ThrowOnError
   >({
     security: [
@@ -1039,8 +1039,8 @@ export const getSuggestedStarterPacks = <ThrowOnError extends boolean = false>(
   options?: Options<GetSuggestedStarterPacksData, ThrowOnError>,
 ) => {
   return (options?.client ?? _heyApiClient).get<
-    GetSuggestedStarterPacksResponse,
-    GetSuggestedStarterPacksError,
+    GetSuggestedStarterPacksResponses,
+    GetSuggestedStarterPacksErrors,
     ThrowOnError
   >({
     security: [
@@ -1063,8 +1063,8 @@ export const getStarterPack = <ThrowOnError extends boolean = false>(
   options: Options<GetStarterPackData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).get<
-    GetStarterPackResponse,
-    GetStarterPackError,
+    GetStarterPackResponses,
+    GetStarterPackErrors,
     ThrowOnError
   >({
     security: [
@@ -1087,8 +1087,8 @@ export const getStarterPackUsers = <ThrowOnError extends boolean = false>(
   options: Options<GetStarterPackUsersData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).get<
-    GetStarterPackUsersResponse,
-    GetStarterPackUsersError,
+    GetStarterPackUsersResponses,
+    GetStarterPackUsersErrors,
     ThrowOnError
   >({
     security: [
@@ -1111,8 +1111,8 @@ export const getChannel = <ThrowOnError extends boolean = false>(
   options: Options<GetChannelData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).get<
-    GetChannelResponse,
-    GetChannelError,
+    GetChannelResponses,
+    GetChannelErrors,
     ThrowOnError
   >({
     security: [
@@ -1135,8 +1135,8 @@ export const getChannelUsers = <ThrowOnError extends boolean = false>(
   options: Options<GetChannelUsersData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).get<
-    GetChannelUsersResponse,
-    GetChannelUsersError,
+    GetChannelUsersResponses,
+    GetChannelUsersErrors,
     ThrowOnError
   >({
     security: [
@@ -1159,8 +1159,8 @@ export const getFollowing = <ThrowOnError extends boolean = false>(
   options: Options<GetFollowingData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).get<
-    GetFollowingResponse,
-    GetFollowingError,
+    GetFollowingResponses,
+    GetFollowingErrors,
     ThrowOnError
   >({
     security: [
@@ -1183,8 +1183,8 @@ export const getFollowers = <ThrowOnError extends boolean = false>(
   options: Options<GetFollowersData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).get<
-    GetFollowersResponse,
-    GetFollowersError,
+    GetFollowersResponses,
+    GetFollowersErrors,
     ThrowOnError
   >({
     security: [
@@ -1207,8 +1207,8 @@ export const getMutualFollowers = <ThrowOnError extends boolean = false>(
   options: Options<GetMutualFollowersData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).get<
-    GetMutualFollowersResponse,
-    GetMutualFollowersError,
+    GetMutualFollowersResponses,
+    GetMutualFollowersErrors,
     ThrowOnError
   >({
     security: [
@@ -1231,8 +1231,8 @@ export const getTopFrameApps = <ThrowOnError extends boolean = false>(
   options?: Options<GetTopFrameAppsData, ThrowOnError>,
 ) => {
   return (options?.client ?? _heyApiClient).get<
-    GetTopFrameAppsResponse,
-    GetTopFrameAppsError,
+    GetTopFrameAppsResponses,
+    GetTopFrameAppsErrors,
     ThrowOnError
   >({
     security: [
@@ -1255,8 +1255,8 @@ export const getVerifications = <ThrowOnError extends boolean = false>(
   options: Options<GetVerificationsData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).get<
-    GetVerificationsResponse,
-    GetVerificationsError,
+    GetVerificationsResponses,
+    GetVerificationsErrors,
     ThrowOnError
   >({
     security: [
@@ -1279,8 +1279,8 @@ export const getMutedKeywords = <ThrowOnError extends boolean = false>(
   options?: Options<GetMutedKeywordsData, ThrowOnError>,
 ) => {
   return (options?.client ?? _heyApiClient).get<
-    GetMutedKeywordsResponse,
-    GetMutedKeywordsError,
+    GetMutedKeywordsResponses,
+    GetMutedKeywordsErrors,
     ThrowOnError
   >({
     security: [
@@ -1303,8 +1303,8 @@ export const muteKeyword = <ThrowOnError extends boolean = false>(
   options: Options<MuteKeywordData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).post<
-    MuteKeywordResponse,
-    MuteKeywordError,
+    MuteKeywordResponses,
+    MuteKeywordErrors,
     ThrowOnError
   >({
     security: [
@@ -1330,8 +1330,8 @@ export const unmuteKeyword = <ThrowOnError extends boolean = false>(
   options: Options<UnmuteKeywordData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).post<
-    UnmuteKeywordResponse,
-    UnmuteKeywordError,
+    UnmuteKeywordResponses,
+    UnmuteKeywordErrors,
     ThrowOnError
   >({
     security: [
@@ -1357,8 +1357,8 @@ export const unlikeCast = <ThrowOnError extends boolean = false>(
   options: Options<UnlikeCastData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).delete<
-    UnlikeCastResponse,
-    UnlikeCastError,
+    UnlikeCastResponses,
+    UnlikeCastErrors,
     ThrowOnError
   >({
     security: [
@@ -1384,8 +1384,8 @@ export const getCastLikes = <ThrowOnError extends boolean = false>(
   options: Options<GetCastLikesData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).get<
-    GetCastLikesResponse,
-    GetCastLikesError,
+    GetCastLikesResponses,
+    GetCastLikesErrors,
     ThrowOnError
   >({
     security: [
@@ -1407,8 +1407,8 @@ export const likeCast = <ThrowOnError extends boolean = false>(
   options: Options<LikeCastData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).put<
-    LikeCastResponse,
-    LikeCastError,
+    LikeCastResponses,
+    LikeCastErrors,
     ThrowOnError
   >({
     security: [
@@ -1434,8 +1434,8 @@ export const undoRecast = <ThrowOnError extends boolean = false>(
   options: Options<UndoRecastData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).delete<
-    UndoRecastResponse,
-    UndoRecastError,
+    UndoRecastResponses,
+    UndoRecastErrors,
     ThrowOnError
   >({
     security: [
@@ -1461,8 +1461,8 @@ export const recastCast = <ThrowOnError extends boolean = false>(
   options: Options<RecastCastData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).put<
-    RecastCastResponse,
-    RecastCastError,
+    RecastCastResponses,
+    RecastCastErrors,
     ThrowOnError
   >({
     security: [
@@ -1488,8 +1488,8 @@ export const attachEmbeds = <ThrowOnError extends boolean = false>(
   options: Options<AttachEmbedsData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).put<
-    AttachEmbedsResponse2,
-    AttachEmbedsError,
+    AttachEmbedsResponses,
+    AttachEmbedsErrors,
     ThrowOnError
   >({
     security: [
@@ -1515,8 +1515,8 @@ export const getCastRecasters = <ThrowOnError extends boolean = false>(
   options: Options<GetCastRecastersData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).get<
-    GetCastRecastersResponse,
-    GetCastRecastersError,
+    GetCastRecastersResponses,
+    GetCastRecastersErrors,
     ThrowOnError
   >({
     security: [
@@ -1538,8 +1538,8 @@ export const getCastQuotes = <ThrowOnError extends boolean = false>(
   options: Options<GetCastQuotesData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).get<
-    GetCastQuotesResponse,
-    GetCastQuotesError,
+    GetCastQuotesResponses,
+    GetCastQuotesErrors,
     ThrowOnError
   >({
     security: [
@@ -1561,8 +1561,8 @@ export const getCurrentUser = <ThrowOnError extends boolean = false>(
   options?: Options<GetCurrentUserData, ThrowOnError>,
 ) => {
   return (options?.client ?? _heyApiClient).get<
-    GetCurrentUserResponse,
-    GetCurrentUserError,
+    GetCurrentUserResponses,
+    GetCurrentUserErrors,
     ThrowOnError
   >({
     security: [
@@ -1584,8 +1584,8 @@ export const searchChannels = <ThrowOnError extends boolean = false>(
   options?: Options<SearchChannelsData, ThrowOnError>,
 ) => {
   return (options?.client ?? _heyApiClient).get<
-    SearchChannelsResponse2,
-    SearchChannelsError,
+    SearchChannelsResponses,
+    SearchChannelsErrors,
     ThrowOnError
   >({
     security: [
@@ -1607,8 +1607,8 @@ export const getDraftCasts = <ThrowOnError extends boolean = false>(
   options?: Options<GetDraftCastsData, ThrowOnError>,
 ) => {
   return (options?.client ?? _heyApiClient).get<
-    GetDraftCastsResponse,
-    GetDraftCastsError,
+    GetDraftCastsResponses,
+    GetDraftCastsErrors,
     ThrowOnError
   >({
     security: [
@@ -1630,8 +1630,8 @@ export const createDraftCasts = <ThrowOnError extends boolean = false>(
   options: Options<CreateDraftCastsData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).post<
-    CreateDraftCastsResponse,
-    CreateDraftCastsError,
+    CreateDraftCastsResponses,
+    CreateDraftCastsErrors,
     ThrowOnError
   >({
     security: [
@@ -1657,8 +1657,8 @@ export const deleteDraftCast = <ThrowOnError extends boolean = false>(
   options: Options<DeleteDraftCastData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).delete<
-    DeleteDraftCastResponse,
-    DeleteDraftCastError,
+    DeleteDraftCastResponses,
+    DeleteDraftCastErrors,
     ThrowOnError
   >({
     security: [
@@ -1684,8 +1684,8 @@ export const deleteCast = <ThrowOnError extends boolean = false>(
   options: Options<DeleteCastData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).delete<
-    DeleteCastResponse,
-    DeleteCastError,
+    DeleteCastResponses,
+    DeleteCastErrors,
     ThrowOnError
   >({
     security: [
@@ -1711,8 +1711,8 @@ export const getCastsByFid = <ThrowOnError extends boolean = false>(
   options: Options<GetCastsByFidData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).get<
-    GetCastsByFidResponse,
-    GetCastsByFidError,
+    GetCastsByFidResponses,
+    GetCastsByFidErrors,
     ThrowOnError
   >({
     security: [
@@ -1735,8 +1735,8 @@ export const createCast = <ThrowOnError extends boolean = false>(
   options: Options<CreateCastData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).post<
-    CreateCastResponse,
-    CreateCastError,
+    CreateCastResponses,
+    CreateCastErrors,
     ThrowOnError
   >({
     security: [
@@ -1764,8 +1764,8 @@ export const getAllChannels = <ThrowOnError extends boolean = false>(
   options?: Options<GetAllChannelsData, ThrowOnError>,
 ) => {
   return (options?.client ?? _heyApiClient).get<
-    GetAllChannelsResponse,
-    GetAllChannelsError,
+    GetAllChannelsResponses,
+    GetAllChannelsErrors,
     ThrowOnError
   >({
     security: [
@@ -1787,8 +1787,8 @@ export const getChannelDetails = <ThrowOnError extends boolean = false>(
   options: Options<GetChannelDetailsData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).get<
-    GetChannelDetailsResponse,
-    GetChannelDetailsError,
+    GetChannelDetailsResponses,
+    GetChannelDetailsErrors,
     ThrowOnError
   >({
     security: [
@@ -1810,8 +1810,8 @@ export const getChannelFollowers = <ThrowOnError extends boolean = false>(
   options: Options<GetChannelFollowersData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).get<
-    GetChannelFollowersResponse,
-    GetChannelFollowersError,
+    GetChannelFollowersResponses,
+    GetChannelFollowersErrors,
     ThrowOnError
   >({
     security: [
@@ -1833,8 +1833,8 @@ export const getUserFollowedChannels = <ThrowOnError extends boolean = false>(
   options: Options<GetUserFollowedChannelsData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).get<
-    GetUserFollowedChannelsResponse,
-    GetUserFollowedChannelsError,
+    GetUserFollowedChannelsResponses,
+    GetUserFollowedChannelsErrors,
     ThrowOnError
   >({
     security: [
@@ -1858,8 +1858,8 @@ export const checkUserChannelFollowStatus = <
   options: Options<CheckUserChannelFollowStatusData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).get<
-    CheckUserChannelFollowStatusResponse,
-    CheckUserChannelFollowStatusError,
+    CheckUserChannelFollowStatusResponses,
+    CheckUserChannelFollowStatusErrors,
     ThrowOnError
   >({
     security: [
@@ -1881,8 +1881,8 @@ export const getChannelMembers = <ThrowOnError extends boolean = false>(
   options: Options<GetChannelMembersData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).get<
-    GetChannelMembersResponse,
-    GetChannelMembersError,
+    GetChannelMembersResponses,
+    GetChannelMembersErrors,
     ThrowOnError
   >({
     security: [
@@ -1904,8 +1904,8 @@ export const removeChannelInvite = <ThrowOnError extends boolean = false>(
   options: Options<RemoveChannelInviteData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).delete<
-    RemoveChannelInviteResponse,
-    RemoveChannelInviteError,
+    RemoveChannelInviteResponses,
+    RemoveChannelInviteErrors,
     ThrowOnError
   >({
     security: [
@@ -1931,8 +1931,8 @@ export const getChannelInvites = <ThrowOnError extends boolean = false>(
   options: Options<GetChannelInvitesData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).get<
-    GetChannelInvitesResponse,
-    GetChannelInvitesError,
+    GetChannelInvitesResponses,
+    GetChannelInvitesErrors,
     ThrowOnError
   >({
     security: [
@@ -1954,8 +1954,8 @@ export const acceptChannelInvite = <ThrowOnError extends boolean = false>(
   options: Options<AcceptChannelInviteData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).patch<
-    AcceptChannelInviteResponse,
-    AcceptChannelInviteError,
+    AcceptChannelInviteResponses,
+    AcceptChannelInviteErrors,
     ThrowOnError
   >({
     security: [
@@ -1981,8 +1981,8 @@ export const inviteUserToChannel = <ThrowOnError extends boolean = false>(
   options: Options<InviteUserToChannelData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).post<
-    InviteUserToChannelResponse,
-    InviteUserToChannelError,
+    InviteUserToChannelResponses,
+    InviteUserToChannelErrors,
     ThrowOnError
   >({
     security: [
@@ -2008,8 +2008,8 @@ export const getChannelModeratedCasts = <ThrowOnError extends boolean = false>(
   options: Options<GetChannelModeratedCastsData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).get<
-    GetChannelModeratedCastsResponse,
-    GetChannelModeratedCastsError,
+    GetChannelModeratedCastsResponses,
+    GetChannelModeratedCastsErrors,
     ThrowOnError
   >({
     security: [
@@ -2031,8 +2031,8 @@ export const getChannelRestrictedUsers = <ThrowOnError extends boolean = false>(
   options: Options<GetChannelRestrictedUsersData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).get<
-    GetChannelRestrictedUsersResponse,
-    GetChannelRestrictedUsersError,
+    GetChannelRestrictedUsersResponses,
+    GetChannelRestrictedUsersErrors,
     ThrowOnError
   >({
     security: [
@@ -2054,8 +2054,8 @@ export const unbanUserFromChannel = <ThrowOnError extends boolean = false>(
   options: Options<UnbanUserFromChannelData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).delete<
-    UnbanUserFromChannelResponse,
-    UnbanUserFromChannelError,
+    UnbanUserFromChannelResponses,
+    UnbanUserFromChannelErrors,
     ThrowOnError
   >({
     security: [
@@ -2081,8 +2081,8 @@ export const getChannelBannedUsers = <ThrowOnError extends boolean = false>(
   options: Options<GetChannelBannedUsersData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).get<
-    GetChannelBannedUsersResponse,
-    GetChannelBannedUsersError,
+    GetChannelBannedUsersResponses,
+    GetChannelBannedUsersErrors,
     ThrowOnError
   >({
     security: [
@@ -2104,8 +2104,8 @@ export const banUserFromChannel = <ThrowOnError extends boolean = false>(
   options: Options<BanUserFromChannelData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).post<
-    BanUserFromChannelResponse,
-    BanUserFromChannelError,
+    BanUserFromChannelResponses,
+    BanUserFromChannelErrors,
     ThrowOnError
   >({
     security: [
@@ -2131,8 +2131,8 @@ export const unfollowChannel = <ThrowOnError extends boolean = false>(
   options: Options<UnfollowChannelData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).delete<
-    UnfollowChannelResponse,
-    UnfollowChannelError,
+    UnfollowChannelResponses,
+    UnfollowChannelErrors,
     ThrowOnError
   >({
     security: [
@@ -2158,8 +2158,8 @@ export const followChannel = <ThrowOnError extends boolean = false>(
   options: Options<FollowChannelData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).post<
-    FollowChannelResponse,
-    FollowChannelError,
+    FollowChannelResponses,
+    FollowChannelErrors,
     ThrowOnError
   >({
     security: [
@@ -2185,8 +2185,8 @@ export const moderateCast = <ThrowOnError extends boolean = false>(
   options: Options<ModerateCastData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).post<
-    ModerateCastResponse,
-    ModerateCastError,
+    ModerateCastResponses,
+    ModerateCastErrors,
     ThrowOnError
   >({
     security: [
@@ -2212,8 +2212,8 @@ export const unpinCastFromChannel = <ThrowOnError extends boolean = false>(
   options: Options<UnpinCastFromChannelData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).delete<
-    UnpinCastFromChannelResponse,
-    UnpinCastFromChannelError,
+    UnpinCastFromChannelResponses,
+    UnpinCastFromChannelErrors,
     ThrowOnError
   >({
     security: [
@@ -2239,8 +2239,8 @@ export const pinCastToChannel = <ThrowOnError extends boolean = false>(
   options: Options<PinCastToChannelData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).put<
-    PinCastToChannelResponse,
-    PinCastToChannelError,
+    PinCastToChannelResponses,
+    PinCastToChannelErrors,
     ThrowOnError
   >({
     security: [
@@ -2266,8 +2266,8 @@ export const getDiscoverableActions = <ThrowOnError extends boolean = false>(
   options: Options<GetDiscoverableActionsData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).get<
-    GetDiscoverableActionsResponse,
-    GetDiscoverableActionsError,
+    GetDiscoverableActionsResponses,
+    GetDiscoverableActionsErrors,
     ThrowOnError
   >({
     security: [
@@ -2291,8 +2291,8 @@ export const getDiscoverableComposerActions = <
   options: Options<GetDiscoverableComposerActionsData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).get<
-    GetDiscoverableComposerActionsResponse,
-    GetDiscoverableComposerActionsError,
+    GetDiscoverableComposerActionsResponses,
+    GetDiscoverableComposerActionsErrors,
     ThrowOnError
   >({
     security: [
@@ -2314,8 +2314,8 @@ export const unblockUser = <ThrowOnError extends boolean = false>(
   options: Options<UnblockUserData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).delete<
-    UnblockUserResponse,
-    UnblockUserError,
+    UnblockUserResponses,
+    UnblockUserErrors,
     ThrowOnError
   >({
     security: [
@@ -2341,8 +2341,8 @@ export const getBlockedUsers = <ThrowOnError extends boolean = false>(
   options?: Options<GetBlockedUsersData, ThrowOnError>,
 ) => {
   return (options?.client ?? _heyApiClient).get<
-    GetBlockedUsersResponse,
-    GetBlockedUsersError,
+    GetBlockedUsersResponses,
+    GetBlockedUsersErrors,
     ThrowOnError
   >({
     security: [
@@ -2364,8 +2364,8 @@ export const blockUser = <ThrowOnError extends boolean = false>(
   options: Options<BlockUserData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).post<
-    BlockUserResponse,
-    BlockUserError,
+    BlockUserResponses,
+    BlockUserErrors,
     ThrowOnError
   >({
     security: [
@@ -2391,8 +2391,8 @@ export const getAccountVerifications = <ThrowOnError extends boolean = false>(
   options: Options<GetAccountVerificationsData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).get<
-    GetAccountVerificationsResponse,
-    GetAccountVerificationsError,
+    GetAccountVerificationsResponses,
+    GetAccountVerificationsErrors,
     ThrowOnError
   >({
     security: [
@@ -2414,8 +2414,8 @@ export const getCreatorRewardWinners = <ThrowOnError extends boolean = false>(
   options?: Options<GetCreatorRewardWinnersData, ThrowOnError>,
 ) => {
   return (options?.client ?? _heyApiClient).get<
-    GetCreatorRewardWinnersResponse,
-    GetCreatorRewardWinnersError,
+    GetCreatorRewardWinnersResponses,
+    GetCreatorRewardWinnersErrors,
     ThrowOnError
   >({
     security: [
@@ -2438,8 +2438,8 @@ export const getUserPrimaryAddress = <ThrowOnError extends boolean = false>(
   options: Options<GetUserPrimaryAddressData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).get<
-    GetUserPrimaryAddressResponse,
-    GetUserPrimaryAddressError,
+    GetUserPrimaryAddressResponses,
+    GetUserPrimaryAddressErrors,
     ThrowOnError
   >({
     security: [
@@ -2461,8 +2461,8 @@ export const getUserPrimaryAddresses = <ThrowOnError extends boolean = false>(
   options: Options<GetUserPrimaryAddressesData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).get<
-    GetUserPrimaryAddressesResponse,
-    GetUserPrimaryAddressesError,
+    GetUserPrimaryAddressesResponses,
+    GetUserPrimaryAddressesErrors,
     ThrowOnError
   >({
     security: [
@@ -2484,8 +2484,8 @@ export const getStarterPackMembers = <ThrowOnError extends boolean = false>(
   options: Options<GetStarterPackMembersData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).get<
-    GetStarterPackMembersResponse,
-    GetStarterPackMembersError,
+    GetStarterPackMembersResponses,
+    GetStarterPackMembersErrors,
     ThrowOnError
   >({
     security: [
@@ -2509,8 +2509,8 @@ export const sendDirectCast = <ThrowOnError extends boolean = false>(
   options: Options<SendDirectCastData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).put<
-    SendDirectCastResponse,
-    SendDirectCastError,
+    SendDirectCastResponses,
+    SendDirectCastErrors,
     ThrowOnError
   >({
     security: [
@@ -2539,8 +2539,8 @@ export const getUserByVerificationAddress = <
   options: Options<GetUserByVerificationAddressData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).get<
-    GetUserByVerificationAddressResponse,
-    GetUserByVerificationAddressError,
+    GetUserByVerificationAddressResponses,
+    GetUserByVerificationAddressErrors,
     ThrowOnError
   >({
     security: [
@@ -2563,8 +2563,8 @@ export const getDeveloperRewardWinners = <ThrowOnError extends boolean = false>(
   options?: Options<GetDeveloperRewardWinnersData, ThrowOnError>,
 ) => {
   return (options?.client ?? _heyApiClient).get<
-    GetDeveloperRewardWinnersResponse,
-    GetDeveloperRewardWinnersError,
+    GetDeveloperRewardWinnersResponses,
+    GetDeveloperRewardWinnersErrors,
     ThrowOnError
   >({
     security: [
@@ -2588,8 +2588,8 @@ export const getAppsByAuthor = <ThrowOnError extends boolean = false>(
   options: Options<GetAppsByAuthorData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).get<
-    GetAppsByAuthorResponse,
-    GetAppsByAuthorError,
+    GetAppsByAuthorResponses,
+    GetAppsByAuthorErrors,
     ThrowOnError
   >({
     security: [
@@ -2612,8 +2612,8 @@ export const getDomainManifest = <ThrowOnError extends boolean = false>(
   options: Options<GetDomainManifestData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).get<
-    GetDomainManifestResponse,
-    GetDomainManifestError,
+    GetDomainManifestResponses,
+    GetDomainManifestErrors,
     ThrowOnError
   >({
     security: [
@@ -2636,8 +2636,8 @@ export const getMetaTags = <ThrowOnError extends boolean = false>(
   options: Options<GetMetaTagsData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).get<
-    GetMetaTagsResponse,
-    GetMetaTagsError,
+    GetMetaTagsResponses,
+    GetMetaTagsErrors,
     ThrowOnError
   >({
     security: [
@@ -2660,8 +2660,8 @@ export const getFarcasterJson = <ThrowOnError extends boolean = false>(
   options: Options<GetFarcasterJsonData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).get<
-    GetFarcasterJsonResponse,
-    GetFarcasterJsonError,
+    GetFarcasterJsonResponses,
+    GetFarcasterJsonErrors,
     ThrowOnError
   >({
     security: [
@@ -2684,8 +2684,8 @@ export const getOwnedDomains = <ThrowOnError extends boolean = false>(
   options?: Options<GetOwnedDomainsData, ThrowOnError>,
 ) => {
   return (options?.client ?? _heyApiClient).get<
-    GetOwnedDomainsResponse,
-    GetOwnedDomainsError,
+    GetOwnedDomainsResponses,
+    GetOwnedDomainsErrors,
     ThrowOnError
   >({
     security: [
@@ -2708,8 +2708,8 @@ export const getApiKeys = <ThrowOnError extends boolean = false>(
   options?: Options<GetApiKeysData, ThrowOnError>,
 ) => {
   return (options?.client ?? _heyApiClient).get<
-    GetApiKeysResponse,
-    GetApiKeysError,
+    GetApiKeysResponses,
+    GetApiKeysErrors,
     ThrowOnError
   >({
     security: [
@@ -2733,8 +2733,8 @@ export const createApiKey = <ThrowOnError extends boolean = false>(
   options: Options<CreateApiKeyData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).put<
-    CreateApiKeyResponse,
-    CreateApiKeyError,
+    CreateApiKeyResponses,
+    CreateApiKeyErrors,
     ThrowOnError
   >({
     security: [
@@ -2761,8 +2761,8 @@ export const revokeApiKey = <ThrowOnError extends boolean = false>(
   options: Options<RevokeApiKeyData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).patch<
-    RevokeApiKeyResponse,
-    RevokeApiKeyError,
+    RevokeApiKeyResponses,
+    RevokeApiKeyErrors,
     ThrowOnError
   >({
     security: [
@@ -2789,8 +2789,8 @@ export const getConnectedAccounts = <ThrowOnError extends boolean = false>(
   options?: Options<GetConnectedAccountsData, ThrowOnError>,
 ) => {
   return (options?.client ?? _heyApiClient).get<
-    GetConnectedAccountsResponse,
-    GetConnectedAccountsError,
+    GetConnectedAccountsResponses,
+    GetConnectedAccountsErrors,
     ThrowOnError
   >({
     security: [
@@ -2813,8 +2813,8 @@ export const getProfileCasts = <ThrowOnError extends boolean = false>(
   options: Options<GetProfileCastsData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).get<
-    GetProfileCastsResponse,
-    GetProfileCastsError,
+    GetProfileCastsResponses,
+    GetProfileCastsErrors,
     ThrowOnError
   >({
     security: [
@@ -2837,8 +2837,8 @@ export const getUserLikedCasts = <ThrowOnError extends boolean = false>(
   options: Options<GetUserLikedCastsData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).get<
-    GetUserLikedCastsResponse,
-    GetUserLikedCastsError,
+    GetUserLikedCastsResponses,
+    GetUserLikedCastsErrors,
     ThrowOnError
   >({
     security: [
@@ -2863,8 +2863,8 @@ export const getMiniAppAnalyticsRollup = <ThrowOnError extends boolean = false>(
   options: Options<GetMiniAppAnalyticsRollupData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).post<
-    GetMiniAppAnalyticsRollupResponse,
-    GetMiniAppAnalyticsRollupError,
+    GetMiniAppAnalyticsRollupResponses,
+    GetMiniAppAnalyticsRollupErrors,
     ThrowOnError
   >({
     security: [
@@ -2893,8 +2893,8 @@ export const inspectMiniAppUrl = <ThrowOnError extends boolean = false>(
   options: Options<InspectMiniAppUrlData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).get<
-    InspectMiniAppUrlResponse,
-    InspectMiniAppUrlError,
+    InspectMiniAppUrlResponses,
+    InspectMiniAppUrlErrors,
     ThrowOnError
   >({
     security: [
@@ -2917,8 +2917,8 @@ export const inspectImageUrl = <ThrowOnError extends boolean = false>(
   options: Options<InspectImageUrlData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).get<
-    InspectImageUrlResponse,
-    InspectImageUrlError,
+    InspectImageUrlResponses,
+    InspectImageUrlErrors,
     ThrowOnError
   >({
     security: [
@@ -2941,8 +2941,8 @@ export const exportMiniAppUserData = <ThrowOnError extends boolean = false>(
   options: Options<ExportMiniAppUserDataData, ThrowOnError>,
 ) => {
   return (options.client ?? _heyApiClient).get<
-    ExportMiniAppUserDataResponse,
-    ExportMiniAppUserDataError,
+    ExportMiniAppUserDataResponses,
+    ExportMiniAppUserDataErrors,
     ThrowOnError
   >({
     security: [

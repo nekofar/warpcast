@@ -11,7 +11,7 @@
   },
   "servers": [
     {
-      "url": "https://api.warpcast.com",
+      "url": "https://api.farcaster.xyz",
       "description": "Main API server"
     },
     {

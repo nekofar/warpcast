@@ -23,6 +23,6 @@ export type CreateClientConfig<T extends DefaultClientOptions = ClientOptions> =
 
 export const client = createClient(
   createConfig<ClientOptions>({
-    baseUrl: 'https://api.warpcast.com',
+    baseUrl: 'https://api.farcaster.xyz',
   }),
 )

@@ -9,7 +9,7 @@ info:
     identifier: 'Apache-2.0'
 
 servers:
-  - url: https://api.warpcast.com
+  - url: https://api.farcaster.xyz
     description: Main API server
   - url: https://client.warpcccastt.com
     description: Client-side interface

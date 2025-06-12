@@ -4996,7 +4996,7 @@ export type ExportMiniAppUserDataResponse =
 
 export interface ClientOptions {
   baseUrl:
-    | 'https://api.warpcast.com'
+    | 'https://api.farcaster.xyz'
     | 'https://client.warpcccastt.com'
     | (string & {})
 }
