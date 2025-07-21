@@ -51,7 +51,6 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@hey-api/client-fetch": "^0.13.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.31.0",
