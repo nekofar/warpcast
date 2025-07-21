@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.30] - 2025-07-21
+
+### ⚙️ Miscellaneous Tasks
+
+- *(openapi)* Update config to use biome settings
+- *(client)* Apply biome formatting standards
+
 ## [2.0.0-alpha.29] - 2025-07-21
 
 ### 🚀 Features
