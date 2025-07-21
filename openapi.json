@@ -831,27 +831,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "Conversation ID. Format depends on conversation type:\n- 1:1 conversations: \"fid1-fid2\" (e.g., \"123-456\")\n- Group conversations: Hash format\n"
-          },
-          {
-            "in": "query",
-            "name": "cursor",
-            "required": false,
-            "schema": {
-              "type": "string"
-            },
-            "description": "Base64 encoded cursor for pagination"
-          },
-          {
-            "in": "query",
-            "name": "limit",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "default": 50,
-              "maximum": 100
-            },
-            "description": "Number of messages to return per page"
+            "description": "Conversation ID in the format fid1-fid2"
           }
         ],
         "security": [
@@ -7429,24 +7409,10 @@
         "properties": {
           "result": {
             "type": "object",
-            "required": [
-              "messages"
-            ],
             "properties": {
-              "messages": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/DirectCastMessage"
-                }
-              }
-            }
-          },
-          "next": {
-            "type": "object",
-            "properties": {
-              "cursor": {
-                "type": "string",
-                "description": "Base64 encoded cursor for pagination"
+              "conversation": {
+                "type": "object",
+                "additionalProperties": true
               }
             }
           }
