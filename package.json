@@ -39,6 +39,7 @@
     "prebuild": "pnpm clean && pnpm openapi:lint && pnpm openapi:bundle && pnpm openapi:generate",
     "build": "tsup",
     "clean": "rimraf dist openapi.json",
+    "docs": "typedoc",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "lint": "eslint .",
