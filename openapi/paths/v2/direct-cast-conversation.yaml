@@ -8,7 +8,24 @@ get:
       required: true
       schema:
         type: string
-      description: Conversation ID in the format fid1-fid2
+      description: |
+        Conversation ID. Format depends on conversation type:
+        - 1:1 conversations: "fid1-fid2" (e.g., "123-456")
+        - Group conversations: Hash format
+    - in: query
+      name: cursor
+      required: false
+      schema:
+        type: string
+      description: Base64 encoded cursor for pagination
+    - in: query
+      name: limit
+      required: false
+      schema:
+        type: integer
+        default: 50
+        maximum: 100
+      description: Number of messages to return per page
   security:
     - bearerAuth: []
   responses:

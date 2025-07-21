@@ -561,16 +561,26 @@ NotificationsResponse:
           items:
             type: object
             additionalProperties: true
+
 DirectCastConversationResponse:
   type: object
   required: [result]
   properties:
     result:
       type: object
+      required: [messages]
       properties:
-        conversation:
-          type: object
-          additionalProperties: true
+        messages:
+          type: array
+          items:
+            $ref: '../../components/schemas/index.yaml#/DirectCastMessage'
+    next:
+      type: object
+      properties:
+        cursor:
+          type: string
+          description: Base64 encoded cursor for pagination
+
 DiscoverChannelsResponse:
   type: object
   required: [result]
