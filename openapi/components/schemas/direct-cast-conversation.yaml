@@ -1,4 +1,4 @@
-Conversation:
+DirectCastConversation:
   type: object
   required:
     - conversationId
@@ -43,7 +43,7 @@ Conversation:
     lastMessage:
       $ref: '#/DirectCastMessage'
     viewerContext:
-      $ref: '#/ConversationViewerContext'
+      $ref: '#/DirectCastConversationViewerContext'
 
 DirectCastMessage:
   type: object
@@ -102,7 +102,7 @@ DirectCastMessage:
     senderContext:
       $ref: './user.yaml#/User'
 
-ConversationViewerContext:
+DirectCastConversationViewerContext:
   type: object
   properties:
     category:

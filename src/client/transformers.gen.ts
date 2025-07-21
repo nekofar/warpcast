@@ -17,7 +17,7 @@ const directCastMessageSchemaResponseTransformer = (data: any) => {
   return data
 }
 
-const conversationSchemaResponseTransformer = (data: any) => {
+const directCastConversationSchemaResponseTransformer = (data: any) => {
   data.lastReadTime = BigInt(data.lastReadTime.toString())
   data.createdAt = BigInt(data.createdAt.toString())
   if (data.lastMessage) {
@@ -30,7 +30,7 @@ const conversationSchemaResponseTransformer = (data: any) => {
 
 const directCastInboxResultSchemaResponseTransformer = (data: any) => {
   data.conversations = data.conversations.map((item: any) => {
-    return conversationSchemaResponseTransformer(item)
+    return directCastConversationSchemaResponseTransformer(item)
   })
   return data
 }

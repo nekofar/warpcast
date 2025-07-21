@@ -372,7 +372,7 @@ export const DirectCastMessageSchema = {
   },
 } as const
 
-export const ConversationViewerContextSchema = {
+export const DirectCastConversationViewerContextSchema = {
   type: 'object',
   properties: {
     category: {
@@ -399,7 +399,7 @@ export const ConversationViewerContextSchema = {
   },
 } as const
 
-export const ConversationSchema = {
+export const DirectCastConversationSchema = {
   type: 'object',
   required: [
     'conversationId',
@@ -456,7 +456,7 @@ export const ConversationSchema = {
       $ref: '#/components/schemas/DirectCastMessage',
     },
     viewerContext: {
-      $ref: '#/components/schemas/ConversationViewerContext',
+      $ref: '#/components/schemas/DirectCastConversationViewerContext',
     },
   },
 } as const
@@ -489,7 +489,7 @@ export const DirectCastInboxResultSchema = {
     conversations: {
       type: 'array',
       items: {
-        $ref: '#/components/schemas/Conversation',
+        $ref: '#/components/schemas/DirectCastConversation',
       },
     },
   },

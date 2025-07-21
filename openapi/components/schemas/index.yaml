@@ -150,7 +150,7 @@ DirectCastInboxResult:
     conversations:
       type: array
       items:
-        $ref: '#/Conversation'
+        $ref: '#/DirectCastConversation'
 
 UserAppContextResponse:
   type: object
@@ -1320,11 +1320,11 @@ VideoEmbed:
       type: string
       enum: [video]
 
-Conversation:
-  $ref: './conversation.yaml#/Conversation'
+DirectCastConversation:
+  $ref: './direct-cast-conversation.yaml#/DirectCastConversation'
 
 DirectCastMessage:
-  $ref: './conversation.yaml#/DirectCastMessage'
+  $ref: './direct-cast-conversation.yaml#/DirectCastMessage'
 
-ConversationViewerContext:
-  $ref: './conversation.yaml#/ConversationViewerContext'
+DirectCastConversationViewerContext:
+  $ref: './direct-cast-conversation.yaml#/DirectCastConversationViewerContext'

@@ -159,7 +159,7 @@ export interface DirectCastMessage {
   senderContext: User
 }
 
-export interface ConversationViewerContext {
+export interface DirectCastConversationViewerContext {
   category?: string
   lastReadAt?: number
   muted?: boolean
@@ -169,7 +169,7 @@ export interface ConversationViewerContext {
   unreadMentionsCount?: number
 }
 
-export interface Conversation {
+export interface DirectCastConversation {
   /**
    * Unique identifier for the conversation
    */
@@ -203,7 +203,7 @@ export interface Conversation {
    */
   createdAt: bigint
   lastMessage?: DirectCastMessage
-  viewerContext: ConversationViewerContext
+  viewerContext: DirectCastConversationViewerContext
 }
 
 export interface DirectCastInboxResult {
@@ -219,7 +219,7 @@ export interface DirectCastInboxResult {
    * Total number of conversation requests
    */
   requestsCount: number
-  conversations: Conversation[]
+  conversations: DirectCastConversation[]
 }
 
 export interface DirectCastInboxResponse {

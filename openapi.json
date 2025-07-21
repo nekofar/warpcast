@@ -6706,7 +6706,7 @@
           }
         }
       },
-      "ConversationViewerContext": {
+      "DirectCastConversationViewerContext": {
         "type": "object",
         "properties": {
           "category": {
@@ -6732,7 +6732,7 @@
           }
         }
       },
-      "Conversation": {
+      "DirectCastConversation": {
         "type": "object",
         "required": [
           "conversationId",
@@ -6788,7 +6788,7 @@
             "$ref": "#/components/schemas/DirectCastMessage"
           },
           "viewerContext": {
-            "$ref": "#/components/schemas/ConversationViewerContext"
+            "$ref": "#/components/schemas/DirectCastConversationViewerContext"
           }
         }
       },
@@ -6820,7 +6820,7 @@
           "conversations": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/Conversation"
+              "$ref": "#/components/schemas/DirectCastConversation"
             }
           }
         }
