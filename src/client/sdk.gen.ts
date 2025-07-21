@@ -1715,13 +1715,13 @@ export const getCastsByFid = <ThrowOnError extends boolean = false>(
     GetCastsByFidErrors,
     ThrowOnError
   >({
+    responseTransformer: getCastsByFidResponseTransformer,
     security: [
       {
         scheme: 'bearer',
         type: 'http',
       },
     ],
-    responseTransformer: getCastsByFidResponseTransformer,
     url: '/v2/casts',
     ...options,
   })
@@ -1739,13 +1739,13 @@ export const createCast = <ThrowOnError extends boolean = false>(
     CreateCastErrors,
     ThrowOnError
   >({
+    responseTransformer: createCastResponseTransformer,
     security: [
       {
         scheme: 'bearer',
         type: 'http',
       },
     ],
-    responseTransformer: createCastResponseTransformer,
     url: '/v2/casts',
     ...options,
     headers: {
@@ -2418,13 +2418,13 @@ export const getCreatorRewardWinners = <ThrowOnError extends boolean = false>(
     GetCreatorRewardWinnersErrors,
     ThrowOnError
   >({
+    responseTransformer: getCreatorRewardWinnersResponseTransformer,
     security: [
       {
         scheme: 'bearer',
         type: 'http',
       },
     ],
-    responseTransformer: getCreatorRewardWinnersResponseTransformer,
     url: '/v1/creator-rewards-winner-history',
     ...options,
   })
@@ -2488,13 +2488,13 @@ export const getStarterPackMembers = <ThrowOnError extends boolean = false>(
     GetStarterPackMembersErrors,
     ThrowOnError
   >({
+    responseTransformer: getStarterPackMembersResponseTransformer,
     security: [
       {
         scheme: 'bearer',
         type: 'http',
       },
     ],
-    responseTransformer: getStarterPackMembersResponseTransformer,
     url: '/fc/starter-pack-members',
     ...options,
   })
@@ -2712,13 +2712,13 @@ export const getApiKeys = <ThrowOnError extends boolean = false>(
     GetApiKeysErrors,
     ThrowOnError
   >({
+    responseTransformer: getApiKeysResponseTransformer,
     security: [
       {
         scheme: 'bearer',
         type: 'http',
       },
     ],
-    responseTransformer: getApiKeysResponseTransformer,
     url: '/v2/api-keys',
     ...options,
   })
@@ -2817,13 +2817,13 @@ export const getProfileCasts = <ThrowOnError extends boolean = false>(
     GetProfileCastsErrors,
     ThrowOnError
   >({
+    responseTransformer: getProfileCastsResponseTransformer,
     security: [
       {
         scheme: 'bearer',
         type: 'http',
       },
     ],
-    responseTransformer: getProfileCastsResponseTransformer,
     url: '/v2/profile-casts',
     ...options,
   })
@@ -2841,13 +2841,13 @@ export const getUserLikedCasts = <ThrowOnError extends boolean = false>(
     GetUserLikedCastsErrors,
     ThrowOnError
   >({
+    responseTransformer: getUserLikedCastsResponseTransformer,
     security: [
       {
         scheme: 'bearer',
         type: 'http',
       },
     ],
-    responseTransformer: getUserLikedCastsResponseTransformer,
     url: '/v2/user-liked-casts',
     ...options,
   })
@@ -2867,13 +2867,13 @@ export const getMiniAppAnalyticsRollup = <ThrowOnError extends boolean = false>(
     GetMiniAppAnalyticsRollupErrors,
     ThrowOnError
   >({
+    responseTransformer: getMiniAppAnalyticsRollupResponseTransformer,
     security: [
       {
         scheme: 'bearer',
         type: 'http',
       },
     ],
-    responseTransformer: getMiniAppAnalyticsRollupResponseTransformer,
     url: '/v1/analytics/miniapps/rollup',
     ...options,
     headers: {

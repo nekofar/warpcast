@@ -4986,9 +4986,26 @@ export type ExportMiniAppUserDataError =
 
 export interface ExportMiniAppUserDataResponses {
   /**
-   * CSV formatted data with columns for fid, notificationToken, and added status
+   * Successfully retrieved mini app user data
    */
-  200: string
+  200: {
+    result: {
+      users?: {
+        /**
+         * Farcaster ID of the user
+         */
+        fid: number
+        /**
+         * Token used for sending notifications to the user
+         */
+        notificationToken?: string | null
+        /**
+         * Whether the user has been added/registered with the mini app
+         */
+        added: boolean
+      }[]
+    }
+  }
 }
 
 export type ExportMiniAppUserDataResponse =
