@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.27] - 2025-07-21
+
+### 🚀 Features
+
+- *(openapi)* Extract `Conversation` schema into a dedicated file
+- *(openapi)* Refine `DirectCastInboxResponse` and extract schemas
+- *(openapi)* Modularize `DirectCastInboxResponse` components
+
 ## [2.0.0-alpha.26] - 2025-07-21
 
 ### 🚜 Refactor
