@@ -11,6 +11,7 @@ import {
   getApiKeysResponseTransformer,
   getCastsByFidResponseTransformer,
   getCreatorRewardWinnersResponseTransformer,
+  getDirectCastInboxResponseTransformer,
   getMiniAppAnalyticsRollupResponseTransformer,
   getProfileCastsResponseTransformer,
   getStarterPackMembersResponseTransformer,
@@ -412,6 +413,7 @@ export const getDirectCastInbox = <ThrowOnError extends boolean = false>(
     GetDirectCastInboxErrors,
     ThrowOnError
   >({
+    responseTransformer: getDirectCastInboxResponseTransformer,
     security: [
       {
         scheme: 'bearer',

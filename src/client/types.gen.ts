@@ -100,21 +100,66 @@ export interface UserByFidResponse {
   }
 }
 
-export interface DirectCastMessage {
-  conversationId?: string
-  senderFid?: number
-  messageId?: string
-  serverTimestamp?: number
-  type?: string
-  message?: string
-  hasMention?: boolean
-  reactions?: unknown[]
-  isPinned?: boolean
-  isDeleted?: boolean
-  senderContext?: User
+export interface DirectCastMessageReaction {
+  /**
+   * Emoji used for the reaction
+   */
+  emoji: string
+  /**
+   * Number of users who reacted with this emoji
+   */
+  count: number
+  /**
+   * List of Farcaster IDs who reacted
+   */
+  userFids: number[]
 }
 
-export interface ConversationViewerContext {
+export interface DirectCastMessage {
+  /**
+   * ID of the conversation this message belongs to
+   */
+  conversationId: string
+  /**
+   * Farcaster ID of the message sender
+   */
+  senderFid: number
+  /**
+   * Unique identifier for the message
+   */
+  messageId: string
+  /**
+   * Server timestamp when message was sent (Unix milliseconds)
+   */
+  serverTimestamp: bigint
+  /**
+   * Type of the message
+   */
+  type: 'text' | 'image' | 'reaction' | 'link'
+  /**
+   * Content of the message
+   */
+  message: string
+  /**
+   * Whether the message contains mentions
+   */
+  hasMention: boolean
+  /**
+   * List of reactions to the message
+   */
+  reactions: DirectCastMessageReaction[]
+  /**
+   * Whether the message is pinned
+   */
+  isPinned: boolean
+  /**
+   * Whether the message is deleted
+   */
+  isDeleted: boolean
+  senderContext: User
+}
+
+export interface DirectCastConversationViewerContext {
   category?: string
   lastReadAt?: number
   muted?: boolean
@@ -124,25 +169,66 @@ export interface ConversationViewerContext {
   unreadMentionsCount?: number
 }
 
-export interface Conversation {
-  conversationId?: string
+export interface DirectCastConversation {
+  /**
+   * Unique identifier for the conversation
+   */
+  conversationId: string
+  /**
+   * Name of the conversation (for group conversations)
+   */
   name?: string
+  /**
+   * Description of the conversation
+   */
   description?: string
+  /**
+   * URL of the conversation photo
+   */
   photoUrl?: string
-  adminFids?: number[]
-  lastReadTime?: number
+  /**
+   * List of admin Farcaster IDs
+   */
+  adminFids: number[]
+  /**
+   * Timestamp of last read time (Unix milliseconds)
+   */
+  lastReadTime: bigint
+  /**
+   * Whether this is a group conversation
+   */
+  isGroup: boolean
+  /**
+   * Timestamp when conversation was created (Unix milliseconds)
+   */
+  createdAt: bigint
   lastMessage?: DirectCastMessage
-  isGroup?: boolean
-  createdAt?: number
-  viewerContext?: ConversationViewerContext
+  viewerContext: DirectCastConversationViewerContext
+}
+
+export interface DirectCastInboxResult {
+  /**
+   * Whether user has archived conversations
+   */
+  hasArchived: boolean
+  /**
+   * Whether user has unread conversation requests
+   */
+  hasUnreadRequests: boolean
+  /**
+   * Total number of conversation requests
+   */
+  requestsCount: number
+  conversations: DirectCastConversation[]
 }
 
 export interface DirectCastInboxResponse {
-  result?: {
-    hasArchived?: boolean
-    hasUnreadRequests?: boolean
-    requestsCount?: number
-    conversations?: Conversation[]
+  result: DirectCastInboxResult
+  next?: {
+    /**
+     * Base64 encoded cursor for pagination
+     */
+    cursor: string
   }
 }
 
@@ -903,9 +989,13 @@ export interface GetDirectCastInboxData {
      */
     limit?: number
     /**
-     * Filter by category of direct casts
+     * Category of conversations to retrieve
      */
-    category?: string
+    category?: 'default' | 'requests' | 'spam'
+    /**
+     * Base64 encoded cursor from previous response
+     */
+    cursor?: string
   }
   url: '/v2/direct-cast-inbox'
 }
