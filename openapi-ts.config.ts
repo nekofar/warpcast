@@ -3,9 +3,14 @@ import { defaultPlugins, defineConfig } from '@hey-api/openapi-ts'
 export default defineConfig({
   input: './openapi.json',
   output: {
-    format: 'prettier',
-    lint: 'eslint',
+    format: 'biome',
+    lint: 'biome',
     path: './src/client',
+  },
+  parser: {
+    transforms: {
+      readWrite: false,
+    },
   },
   plugins: [
     ...defaultPlugins,
