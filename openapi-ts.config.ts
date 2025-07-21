@@ -9,11 +9,6 @@ export default defineConfig({
   },
   plugins: [
     {
-      name: '@hey-api/client-fetch',
-      bundle: false,
-      exportFromIndex: true,
-    },
-    {
       name: '@hey-api/schemas',
       exportFromIndex: true,
     },
