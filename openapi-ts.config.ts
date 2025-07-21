@@ -1,4 +1,4 @@
-import { defineConfig } from '@hey-api/openapi-ts'
+import { defaultPlugins, defineConfig } from '@hey-api/openapi-ts'
 
 export default defineConfig({
   input: './openapi.json',
@@ -8,6 +8,7 @@ export default defineConfig({
     path: './src/client',
   },
   plugins: [
+    ...defaultPlugins,
     {
       name: '@hey-api/schemas',
       exportFromIndex: true,
