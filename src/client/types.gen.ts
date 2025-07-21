@@ -100,43 +100,49 @@ export interface UserByFidResponse {
   }
 }
 
+export interface DirectCastMessage {
+  conversationId?: string
+  senderFid?: number
+  messageId?: string
+  serverTimestamp?: number
+  type?: string
+  message?: string
+  hasMention?: boolean
+  reactions?: unknown[]
+  isPinned?: boolean
+  isDeleted?: boolean
+  senderContext?: User
+}
+
+export interface ConversationViewerContext {
+  category?: string
+  lastReadAt?: number
+  muted?: boolean
+  manuallyMarkedUnread?: boolean
+  pinned?: boolean
+  unreadCount?: number
+  unreadMentionsCount?: number
+}
+
+export interface Conversation {
+  conversationId?: string
+  name?: string
+  description?: string
+  photoUrl?: string
+  adminFids?: number[]
+  lastReadTime?: number
+  lastMessage?: DirectCastMessage
+  isGroup?: boolean
+  createdAt?: number
+  viewerContext?: ConversationViewerContext
+}
+
 export interface DirectCastInboxResponse {
   result?: {
     hasArchived?: boolean
     hasUnreadRequests?: boolean
     requestsCount?: number
-    conversations?: {
-      conversationId?: string
-      name?: string
-      description?: string
-      photoUrl?: string
-      adminFids?: number[]
-      lastReadTime?: number
-      lastMessage?: {
-        conversationId?: string
-        senderFid?: number
-        messageId?: string
-        serverTimestamp?: number
-        type?: string
-        message?: string
-        hasMention?: boolean
-        reactions?: unknown[]
-        isPinned?: boolean
-        isDeleted?: boolean
-        senderContext?: User
-      }
-      isGroup?: boolean
-      createdAt?: number
-      viewerContext?: {
-        category?: string
-        lastReadAt?: number
-        muted?: boolean
-        manuallyMarkedUnread?: boolean
-        pinned?: boolean
-        unreadCount?: number
-        unreadMentionsCount?: number
-      }
-    }[]
+    conversations?: Conversation[]
   }
 }
 
