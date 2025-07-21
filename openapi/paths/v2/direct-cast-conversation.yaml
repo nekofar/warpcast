@@ -8,7 +8,10 @@ get:
       required: true
       schema:
         type: string
-      description: Conversation ID in the format fid1-fid2
+      description: |
+        Conversation ID. Format depends on conversation type:
+        - 1:1 conversations: "fid1-fid2" (e.g., "123-456")
+        - Group conversations: Hash format (e.g., "a1b2c3d4e5f6...")
   security:
     - bearerAuth: []
   responses:
