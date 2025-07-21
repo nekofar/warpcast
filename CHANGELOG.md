@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.31] - 2025-07-21
+
+### 🚀 Features
+
+- *(openapi)* Add pagination parameters to conversations
+- *(openapi)* Enhance pagination and response schema
+- *(client)* Enhance direct cast conversation responses
+
+### 📚 Documentation
+
+- *(openapi)* Refine conversation ID description
+
 ## [2.0.0-alpha.30] - 2025-07-21
 
 ### ⚙️ Miscellaneous Tasks
