@@ -278,11 +278,12 @@ export const UserByFidResponseSchema = {
 
 export const DirectCastMessageReactionSchema = {
 	type: "object",
-	required: ["emoji", "count", "userFids"],
+	required: ["reaction", "count"],
 	properties: {
-		emoji: {
+		reaction: {
 			type: "string",
 			description: "Emoji used for the reaction",
+			example: "🔥",
 		},
 		count: {
 			type: "integer",
@@ -290,12 +291,39 @@ export const DirectCastMessageReactionSchema = {
 			description: "Number of users who reacted with this emoji",
 			example: 3,
 		},
+		emoji: {
+			type: "string",
+			description: "Emoji used for the reaction (legacy field)",
+		},
 		userFids: {
 			type: "array",
 			items: {
 				type: "integer",
 			},
 			description: "List of Farcaster IDs who reacted",
+		},
+	},
+} as const;
+
+export const DirectCastMessageViewerContextSchema = {
+	type: "object",
+	properties: {
+		isLastReadMessage: {
+			type: "boolean",
+			description: "Whether this is the last read message",
+			example: false,
+		},
+		focused: {
+			type: "boolean",
+			description: "Whether the message is focused",
+			example: false,
+		},
+		reactions: {
+			type: "array",
+			items: {
+				type: "string",
+			},
+			description: "User's reactions to this message",
 		},
 	},
 } as const;
@@ -336,7 +364,14 @@ export const DirectCastMessageSchema = {
 		},
 		type: {
 			type: "string",
-			enum: ["text", "image", "reaction", "link"],
+			enum: [
+				"text",
+				"image",
+				"reaction",
+				"link",
+				"group_membership_addition",
+				"pin_message",
+			],
 			description: "Type of the message",
 			example: "text",
 		},
@@ -368,6 +403,80 @@ export const DirectCastMessageSchema = {
 		},
 		senderContext: {
 			$ref: "#/components/schemas/User",
+		},
+		viewerContext: {
+			$ref: "#/components/schemas/DirectCastMessageViewerContext",
+		},
+		inReplyTo: {
+			$ref: "#/components/schemas/DirectCastMessage",
+		},
+		metadata: {
+			$ref: "#/components/schemas/DirectCastMessageMetadata",
+		},
+		actionTargetUserContext: {
+			$ref: "#/components/schemas/User",
+		},
+		isProgrammatic: {
+			type: "boolean",
+			description: "Whether the message was sent programmatically",
+			example: false,
+		},
+		mentions: {
+			type: "array",
+			items: {
+				$ref: "#/components/schemas/DirectCastMessageMention",
+			},
+			description: "List of mentions in the message",
+		},
+	},
+} as const;
+
+export const DirectCastMessageMetadataSchema = {
+	type: "object",
+	properties: {
+		casts: {
+			type: "array",
+			items: {
+				type: "object",
+				additionalProperties: true,
+			},
+			description: "Cast metadata if message contains cast references",
+		},
+		urls: {
+			type: "array",
+			items: {
+				type: "object",
+				additionalProperties: true,
+			},
+			description: "URL metadata if message contains links",
+		},
+		medias: {
+			type: "array",
+			items: {
+				type: "object",
+				additionalProperties: true,
+			},
+			description: "Media metadata if message contains media",
+		},
+	},
+} as const;
+
+export const DirectCastMessageMentionSchema = {
+	type: "object",
+	required: ["user", "textIndex", "length"],
+	properties: {
+		user: {
+			$ref: "#/components/schemas/User",
+		},
+		textIndex: {
+			type: "integer",
+			description: "Starting index of the mention in the message text",
+			example: 19,
+		},
+		length: {
+			type: "integer",
+			description: "Length of the mention text",
+			example: 8,
 		},
 	},
 } as const;
@@ -1059,6 +1168,22 @@ export const DirectCastConversationResponseSchema = {
 	properties: {
 		result: {
 			type: "object",
+			properties: {
+				conversation: {
+					type: "object",
+					additionalProperties: true,
+				},
+			},
+		},
+	},
+} as const;
+
+export const DirectCastConversationMessagesResponseSchema = {
+	type: "object",
+	required: ["result"],
+	properties: {
+		result: {
+			type: "object",
 			required: ["messages"],
 			properties: {
 				messages: {
@@ -1067,14 +1192,16 @@ export const DirectCastConversationResponseSchema = {
 						$ref: "#/components/schemas/DirectCastMessage",
 					},
 				},
-			},
-		},
-		next: {
-			type: "object",
-			properties: {
-				cursor: {
-					type: "string",
-					description: "Base64 encoded cursor for pagination",
+				next: {
+					type: "object",
+					properties: {
+						cursor: {
+							type: "string",
+							description: "Cursor for pagination to get next set of messages",
+						},
+					},
+					additionalProperties: true,
+					description: "Pagination information for next page",
 				},
 			},
 		},

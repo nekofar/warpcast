@@ -2,7 +2,8 @@
 
 import type {
 	GetDirectCastInboxResponse,
-	GetDirectCastConversationResponse,
+	GetDirectCastConversationMessagesResponse,
+	GetDirectCastConversationRecentMessagesResponse,
 	GetCastsByFidResponse,
 	CreateCastResponse,
 	GetCreatorRewardWinnersResponse,
@@ -15,6 +16,9 @@ import type {
 
 const directCastMessageSchemaResponseTransformer = (data: any) => {
 	data.serverTimestamp = BigInt(data.serverTimestamp.toString());
+	if (data.inReplyTo) {
+		data.inReplyTo = directCastMessageSchemaResponseTransformer(data.inReplyTo);
+	}
 	return data;
 };
 
@@ -48,19 +52,30 @@ export const getDirectCastInboxResponseTransformer = async (
 	return data;
 };
 
-const directCastConversationResponseSchemaResponseTransformer = (data: any) => {
+const directCastConversationMessagesResponseSchemaResponseTransformer = (
+	data: any,
+) => {
 	data.result.messages = data.result.messages.map((item: any) => {
 		return directCastMessageSchemaResponseTransformer(item);
 	});
 	return data;
 };
 
-export const getDirectCastConversationResponseTransformer = async (
+export const getDirectCastConversationMessagesResponseTransformer = async (
 	data: any,
-): Promise<GetDirectCastConversationResponse> => {
-	data = directCastConversationResponseSchemaResponseTransformer(data);
+): Promise<GetDirectCastConversationMessagesResponse> => {
+	data = directCastConversationMessagesResponseSchemaResponseTransformer(data);
 	return data;
 };
+
+export const getDirectCastConversationRecentMessagesResponseTransformer =
+	async (
+		data: any,
+	): Promise<GetDirectCastConversationRecentMessagesResponse> => {
+		data =
+			directCastConversationMessagesResponseSchemaResponseTransformer(data);
+		return data;
+	};
 
 const castSchemaResponseTransformer = (data: any) => {
 	if (data.timestamp) {

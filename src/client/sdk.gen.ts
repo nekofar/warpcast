@@ -62,6 +62,12 @@ import type {
 	GetDirectCastConversationData,
 	GetDirectCastConversationResponses,
 	GetDirectCastConversationErrors,
+	GetDirectCastConversationMessagesData,
+	GetDirectCastConversationMessagesResponses,
+	GetDirectCastConversationMessagesErrors,
+	GetDirectCastConversationRecentMessagesData,
+	GetDirectCastConversationRecentMessagesResponses,
+	GetDirectCastConversationRecentMessagesErrors,
 	DiscoverChannelsData,
 	DiscoverChannelsResponses,
 	DiscoverChannelsErrors,
@@ -321,7 +327,8 @@ import type {
 import { client as _heyApiClient } from "./client.gen";
 import {
 	getDirectCastInboxResponseTransformer,
-	getDirectCastConversationResponseTransformer,
+	getDirectCastConversationMessagesResponseTransformer,
+	getDirectCastConversationRecentMessagesResponseTransformer,
 	getCastsByFidResponseTransformer,
 	createCastResponseTransformer,
 	getCreatorRewardWinnersResponseTransformer,
@@ -806,7 +813,6 @@ export const getDirectCastConversation = <ThrowOnError extends boolean = false>(
 		GetDirectCastConversationErrors,
 		ThrowOnError
 	>({
-		responseTransformer: getDirectCastConversationResponseTransformer,
 		security: [
 			{
 				scheme: "bearer",
@@ -814,6 +820,59 @@ export const getDirectCastConversation = <ThrowOnError extends boolean = false>(
 			},
 		],
 		url: "/v2/direct-cast-conversation",
+		...options,
+	});
+};
+
+/**
+ * Get direct cast conversation messages
+ * Fetches messages from a direct cast conversation by conversationId with pagination support.
+ */
+export const getDirectCastConversationMessages = <
+	ThrowOnError extends boolean = false,
+>(
+	options: Options<GetDirectCastConversationMessagesData, ThrowOnError>,
+) => {
+	return (options.client ?? _heyApiClient).get<
+		GetDirectCastConversationMessagesResponses,
+		GetDirectCastConversationMessagesErrors,
+		ThrowOnError
+	>({
+		responseTransformer: getDirectCastConversationMessagesResponseTransformer,
+		security: [
+			{
+				scheme: "bearer",
+				type: "http",
+			},
+		],
+		url: "/v2/direct-cast-conversation-messages",
+		...options,
+	});
+};
+
+/**
+ * Get recent messages from direct cast conversation
+ * Fetches recent messages from a direct cast conversation by conversationId.
+ */
+export const getDirectCastConversationRecentMessages = <
+	ThrowOnError extends boolean = false,
+>(
+	options: Options<GetDirectCastConversationRecentMessagesData, ThrowOnError>,
+) => {
+	return (options.client ?? _heyApiClient).get<
+		GetDirectCastConversationRecentMessagesResponses,
+		GetDirectCastConversationRecentMessagesErrors,
+		ThrowOnError
+	>({
+		responseTransformer:
+			getDirectCastConversationRecentMessagesResponseTransformer,
+		security: [
+			{
+				scheme: "bearer",
+				type: "http",
+			},
+		],
+		url: "/v2/direct-cast-conversation-recent-messages",
 		...options,
 	});
 };
