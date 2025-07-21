@@ -76,7 +76,7 @@ DirectCastMessage:
       example: 1753112479748
     type:
       type: string
-      enum: [ text, image, reaction, link ]
+      enum: [ text, image, reaction, link, group_membership_addition, pin_message ]
       description: Type of the message
       example: "text"
     message:
@@ -101,6 +101,23 @@ DirectCastMessage:
       example: false
     senderContext:
       $ref: './user.yaml#/User'
+    viewerContext:
+      $ref: '#/DirectCastMessageViewerContext'
+    inReplyTo:
+      $ref: '#/DirectCastMessage'
+    metadata:
+      $ref: '#/DirectCastMessageMetadata'
+    actionTargetUserContext:
+      $ref: './user.yaml#/User'
+    isProgrammatic:
+      type: boolean
+      description: Whether the message was sent programmatically
+      example: false
+    mentions:
+      type: array
+      items:
+        $ref: '#/DirectCastMessageMention'
+      description: List of mentions in the message
 
 DirectCastConversationViewerContext:
   type: object
@@ -123,20 +140,80 @@ DirectCastConversationViewerContext:
 DirectCastMessageReaction:
   type: object
   required:
-    - emoji
+    - reaction
     - count
-    - userFids
   properties:
-    emoji:
+    reaction:
       type: string
       description: Emoji used for the reaction
+      example: "🔥"
     count:
       type: integer
       minimum: 1
       description: Number of users who reacted with this emoji
       example: 3
+    emoji:
+      type: string
+      description: Emoji used for the reaction (legacy field)
     userFids:
       type: array
       items:
         type: integer
       description: List of Farcaster IDs who reacted
+
+DirectCastMessageViewerContext:
+  type: object
+  properties:
+    isLastReadMessage:
+      type: boolean
+      description: Whether this is the last read message
+      example: false
+    focused:
+      type: boolean
+      description: Whether the message is focused
+      example: false
+    reactions:
+      type: array
+      items:
+        type: string
+      description: User's reactions to this message
+
+DirectCastMessageMetadata:
+  type: object
+  properties:
+    casts:
+      type: array
+      items:
+        type: object
+        additionalProperties: true
+      description: Cast metadata if message contains cast references
+    urls:
+      type: array
+      items:
+        type: object
+        additionalProperties: true
+      description: URL metadata if message contains links
+    medias:
+      type: array
+      items:
+        type: object
+        additionalProperties: true
+      description: Media metadata if message contains media
+
+DirectCastMessageMention:
+  type: object
+  required:
+    - user
+    - textIndex
+    - length
+  properties:
+    user:
+      $ref: './user.yaml#/User'
+    textIndex:
+      type: integer
+      description: Starting index of the mention in the message text
+      example: 19
+    length:
+      type: integer
+      description: Length of the mention text
+      example: 8

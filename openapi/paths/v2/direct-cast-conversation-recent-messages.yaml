@@ -1,0 +1,29 @@
+get:
+  operationId: getDirectCastConversationRecentMessages
+  summary: Get recent messages from direct cast conversation
+  description: Fetches recent messages from a direct cast conversation by conversationId.
+  tags:
+    - Messaging
+  parameters:
+    - in: query
+      name: conversationId
+      required: true
+      schema:
+        type: string
+      description: |
+        Conversation ID. Format depends on conversation type:
+        - 1:1 conversations: "fid1-fid2" (e.g., "123-456")
+        - Group conversations: Hash format (e.g., "c9e139dcbc9423cf")
+  security:
+    - bearerAuth: []
+  responses:
+    '200':
+      description: A list of recent direct cast conversation messages
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/index.yaml#/DirectCastConversationMessagesResponse'
+    '401':
+      $ref: '../../components/responses/index.yaml#/Unauthorized'
+    '429':
+      description: Too many requests
