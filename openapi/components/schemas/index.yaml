@@ -112,20 +112,45 @@ UserByFidResponse:
 
 DirectCastInboxResponse:
   type: object
+  required:
+    - result
   properties:
     result:
+      $ref: '#/DirectCastInboxResult'
+    next:
       type: object
+      required:
+        - cursor
       properties:
-        hasArchived:
-          type: boolean
-        hasUnreadRequests:
-          type: boolean
-        requestsCount:
-          type: integer
-        conversations:
-          type: array
-          items:
-            $ref: '#/Conversation'
+        cursor:
+          type: string
+          description: Base64 encoded cursor for pagination
+
+DirectCastInboxResult:
+  type: object
+  required:
+    - hasArchived
+    - hasUnreadRequests
+    - requestsCount
+    - conversations
+  properties:
+    hasArchived:
+      type: boolean
+      description: Whether user has archived conversations
+      example: false
+    hasUnreadRequests:
+      type: boolean
+      description: Whether user has unread conversation requests
+      example: false
+    requestsCount:
+      type: integer
+      minimum: 0
+      description: Total number of conversation requests
+      example: 12
+    conversations:
+      type: array
+      items:
+        $ref: '#/Conversation'
 
 UserAppContextResponse:
   type: object

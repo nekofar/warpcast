@@ -5,11 +5,47 @@ import type {
   GetApiKeysResponse,
   GetCastsByFidResponse,
   GetCreatorRewardWinnersResponse,
+  GetDirectCastInboxResponse,
   GetMiniAppAnalyticsRollupResponse,
   GetProfileCastsResponse,
   GetStarterPackMembersResponse,
   GetUserLikedCastsResponse,
 } from './types.gen'
+
+const directCastMessageSchemaResponseTransformer = (data: any) => {
+  data.serverTimestamp = BigInt(data.serverTimestamp.toString())
+  return data
+}
+
+const conversationSchemaResponseTransformer = (data: any) => {
+  data.lastReadTime = BigInt(data.lastReadTime.toString())
+  data.createdAt = BigInt(data.createdAt.toString())
+  if (data.lastMessage) {
+    data.lastMessage = directCastMessageSchemaResponseTransformer(
+      data.lastMessage,
+    )
+  }
+  return data
+}
+
+const directCastInboxResultSchemaResponseTransformer = (data: any) => {
+  data.conversations = data.conversations.map((item: any) => {
+    return conversationSchemaResponseTransformer(item)
+  })
+  return data
+}
+
+const directCastInboxResponseSchemaResponseTransformer = (data: any) => {
+  data.result = directCastInboxResultSchemaResponseTransformer(data.result)
+  return data
+}
+
+export const getDirectCastInboxResponseTransformer = async (
+  data: any,
+): Promise<GetDirectCastInboxResponse> => {
+  data = directCastInboxResponseSchemaResponseTransformer(data)
+  return data
+}
 
 const castSchemaResponseTransformer = (data: any) => {
   if (data.timestamp) {

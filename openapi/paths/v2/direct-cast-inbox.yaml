@@ -8,10 +8,19 @@ get:
     - $ref: '../../components/parameters/index.yaml#/limitParam'
     - name: category
       in: query
+      description: Category of conversations to retrieve
       required: false
       schema:
         type: string
-      description: Filter by category of direct casts
+        enum: [ default, requests, spam ]
+        default: default
+    - name: cursor
+      in: query
+      description: Pagination cursor for retrieving next page
+      required: false
+      schema:
+        type: string
+        description: Base64 encoded cursor from previous response
   security:
     - bearerAuth: []
   responses:

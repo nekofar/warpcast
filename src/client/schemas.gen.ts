@@ -276,39 +276,95 @@ export const UserByFidResponseSchema = {
   },
 } as const
 
+export const DirectCastMessageReactionSchema = {
+  type: 'object',
+  required: ['emoji', 'count', 'userFids'],
+  properties: {
+    emoji: {
+      type: 'string',
+      description: 'Emoji used for the reaction',
+    },
+    count: {
+      type: 'integer',
+      minimum: 1,
+      description: 'Number of users who reacted with this emoji',
+      example: 3,
+    },
+    userFids: {
+      type: 'array',
+      items: {
+        type: 'integer',
+      },
+      description: 'List of Farcaster IDs who reacted',
+    },
+  },
+} as const
+
 export const DirectCastMessageSchema = {
   type: 'object',
+  required: [
+    'conversationId',
+    'senderFid',
+    'messageId',
+    'serverTimestamp',
+    'type',
+    'message',
+    'hasMention',
+    'reactions',
+    'isPinned',
+    'isDeleted',
+    'senderContext',
+  ],
   properties: {
     conversationId: {
       type: 'string',
+      description: 'ID of the conversation this message belongs to',
     },
     senderFid: {
       type: 'integer',
+      description: 'Farcaster ID of the message sender',
     },
     messageId: {
       type: 'string',
+      description: 'Unique identifier for the message',
     },
     serverTimestamp: {
       type: 'integer',
+      format: 'int64',
+      description: 'Server timestamp when message was sent (Unix milliseconds)',
+      example: 1753112479748,
     },
     type: {
       type: 'string',
+      enum: ['text', 'image', 'reaction', 'link'],
+      description: 'Type of the message',
+      example: 'text',
     },
     message: {
       type: 'string',
+      description: 'Content of the message',
     },
     hasMention: {
       type: 'boolean',
+      description: 'Whether the message contains mentions',
+      example: false,
     },
     reactions: {
       type: 'array',
-      items: {},
+      items: {
+        $ref: '#/components/schemas/DirectCastMessageReaction',
+      },
+      description: 'List of reactions to the message',
     },
     isPinned: {
       type: 'boolean',
+      description: 'Whether the message is pinned',
+      example: false,
     },
     isDeleted: {
       type: 'boolean',
+      description: 'Whether the message is deleted',
+      example: false,
     },
     senderContext: {
       $ref: '#/components/schemas/User',
@@ -345,36 +401,59 @@ export const ConversationViewerContextSchema = {
 
 export const ConversationSchema = {
   type: 'object',
+  required: [
+    'conversationId',
+    'isGroup',
+    'createdAt',
+    'viewerContext',
+    'adminFids',
+    'lastReadTime',
+  ],
   properties: {
     conversationId: {
       type: 'string',
+      description: 'Unique identifier for the conversation',
     },
     name: {
       type: 'string',
+      description: 'Name of the conversation (for group conversations)',
     },
     description: {
       type: 'string',
+      description: 'Description of the conversation',
     },
     photoUrl: {
       type: 'string',
+      format: 'uri',
+      description: 'URL of the conversation photo',
     },
     adminFids: {
       type: 'array',
       items: {
         type: 'integer',
       },
+      description: 'List of admin Farcaster IDs',
     },
     lastReadTime: {
       type: 'integer',
-    },
-    lastMessage: {
-      $ref: '#/components/schemas/DirectCastMessage',
+      format: 'int64',
+      description: 'Timestamp of last read time (Unix milliseconds)',
+      example: 1741871452933,
     },
     isGroup: {
       type: 'boolean',
+      description: 'Whether this is a group conversation',
+      example: true,
     },
     createdAt: {
       type: 'integer',
+      format: 'int64',
+      description:
+        'Timestamp when conversation was created (Unix milliseconds)',
+      example: 1709952982363,
+    },
+    lastMessage: {
+      $ref: '#/components/schemas/DirectCastMessage',
     },
     viewerContext: {
       $ref: '#/components/schemas/ConversationViewerContext',
@@ -382,26 +461,54 @@ export const ConversationSchema = {
   },
 } as const
 
+export const DirectCastInboxResultSchema = {
+  type: 'object',
+  required: [
+    'hasArchived',
+    'hasUnreadRequests',
+    'requestsCount',
+    'conversations',
+  ],
+  properties: {
+    hasArchived: {
+      type: 'boolean',
+      description: 'Whether user has archived conversations',
+      example: false,
+    },
+    hasUnreadRequests: {
+      type: 'boolean',
+      description: 'Whether user has unread conversation requests',
+      example: false,
+    },
+    requestsCount: {
+      type: 'integer',
+      minimum: 0,
+      description: 'Total number of conversation requests',
+      example: 12,
+    },
+    conversations: {
+      type: 'array',
+      items: {
+        $ref: '#/components/schemas/Conversation',
+      },
+    },
+  },
+} as const
+
 export const DirectCastInboxResponseSchema = {
   type: 'object',
+  required: ['result'],
   properties: {
     result: {
+      $ref: '#/components/schemas/DirectCastInboxResult',
+    },
+    next: {
       type: 'object',
+      required: ['cursor'],
       properties: {
-        hasArchived: {
-          type: 'boolean',
-        },
-        hasUnreadRequests: {
-          type: 'boolean',
-        },
-        requestsCount: {
-          type: 'integer',
-        },
-        conversations: {
-          type: 'array',
-          items: {
-            $ref: '#/components/schemas/Conversation',
-          },
+        cursor: {
+          type: 'string',
+          description: 'Base64 encoded cursor for pagination',
         },
       },
     },
