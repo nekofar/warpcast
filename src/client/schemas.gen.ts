@@ -276,6 +276,112 @@ export const UserByFidResponseSchema = {
   },
 } as const
 
+export const DirectCastMessageSchema = {
+  type: 'object',
+  properties: {
+    conversationId: {
+      type: 'string',
+    },
+    senderFid: {
+      type: 'integer',
+    },
+    messageId: {
+      type: 'string',
+    },
+    serverTimestamp: {
+      type: 'integer',
+    },
+    type: {
+      type: 'string',
+    },
+    message: {
+      type: 'string',
+    },
+    hasMention: {
+      type: 'boolean',
+    },
+    reactions: {
+      type: 'array',
+      items: {},
+    },
+    isPinned: {
+      type: 'boolean',
+    },
+    isDeleted: {
+      type: 'boolean',
+    },
+    senderContext: {
+      $ref: '#/components/schemas/User',
+    },
+  },
+} as const
+
+export const ConversationViewerContextSchema = {
+  type: 'object',
+  properties: {
+    category: {
+      type: 'string',
+    },
+    lastReadAt: {
+      type: 'integer',
+    },
+    muted: {
+      type: 'boolean',
+    },
+    manuallyMarkedUnread: {
+      type: 'boolean',
+    },
+    pinned: {
+      type: 'boolean',
+    },
+    unreadCount: {
+      type: 'integer',
+    },
+    unreadMentionsCount: {
+      type: 'integer',
+    },
+  },
+} as const
+
+export const ConversationSchema = {
+  type: 'object',
+  properties: {
+    conversationId: {
+      type: 'string',
+    },
+    name: {
+      type: 'string',
+    },
+    description: {
+      type: 'string',
+    },
+    photoUrl: {
+      type: 'string',
+    },
+    adminFids: {
+      type: 'array',
+      items: {
+        type: 'integer',
+      },
+    },
+    lastReadTime: {
+      type: 'integer',
+    },
+    lastMessage: {
+      $ref: '#/components/schemas/DirectCastMessage',
+    },
+    isGroup: {
+      type: 'boolean',
+    },
+    createdAt: {
+      type: 'integer',
+    },
+    viewerContext: {
+      $ref: '#/components/schemas/ConversationViewerContext',
+    },
+  },
+} as const
+
 export const DirectCastInboxResponseSchema = {
   type: 'object',
   properties: {
@@ -294,101 +400,7 @@ export const DirectCastInboxResponseSchema = {
         conversations: {
           type: 'array',
           items: {
-            type: 'object',
-            properties: {
-              conversationId: {
-                type: 'string',
-              },
-              name: {
-                type: 'string',
-              },
-              description: {
-                type: 'string',
-              },
-              photoUrl: {
-                type: 'string',
-              },
-              adminFids: {
-                type: 'array',
-                items: {
-                  type: 'integer',
-                },
-              },
-              lastReadTime: {
-                type: 'integer',
-              },
-              lastMessage: {
-                type: 'object',
-                properties: {
-                  conversationId: {
-                    type: 'string',
-                  },
-                  senderFid: {
-                    type: 'integer',
-                  },
-                  messageId: {
-                    type: 'string',
-                  },
-                  serverTimestamp: {
-                    type: 'integer',
-                  },
-                  type: {
-                    type: 'string',
-                  },
-                  message: {
-                    type: 'string',
-                  },
-                  hasMention: {
-                    type: 'boolean',
-                  },
-                  reactions: {
-                    type: 'array',
-                    items: {},
-                  },
-                  isPinned: {
-                    type: 'boolean',
-                  },
-                  isDeleted: {
-                    type: 'boolean',
-                  },
-                  senderContext: {
-                    $ref: '#/components/schemas/User',
-                  },
-                },
-              },
-              isGroup: {
-                type: 'boolean',
-              },
-              createdAt: {
-                type: 'integer',
-              },
-              viewerContext: {
-                type: 'object',
-                properties: {
-                  category: {
-                    type: 'string',
-                  },
-                  lastReadAt: {
-                    type: 'integer',
-                  },
-                  muted: {
-                    type: 'boolean',
-                  },
-                  manuallyMarkedUnread: {
-                    type: 'boolean',
-                  },
-                  pinned: {
-                    type: 'boolean',
-                  },
-                  unreadCount: {
-                    type: 'integer',
-                  },
-                  unreadMentionsCount: {
-                    type: 'integer',
-                  },
-                },
-              },
-            },
+            $ref: '#/components/schemas/Conversation',
           },
         },
       },
