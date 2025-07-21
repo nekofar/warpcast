@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.29] - 2025-07-21
+
+### 🚀 Features
+
+- *(client)* Implement `client-fetch` replacement
+- *(openapi)* Integrate `defaultPlugins` into config
+
+### ⚙️ Miscellaneous Tasks
+
+- *(openapi)* Remove unused `@hey-api/client-fetch` plugin
+- *(build)* Remove `noExternal` configuration
+
 ## [2.0.0-alpha.28] - 2025-07-21
 
 ### 🚀 Features
