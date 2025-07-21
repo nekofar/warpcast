@@ -60,3 +60,4 @@ dist
 .env.*
 pnpm-lock.yaml
 redoc-static.html
+/docs/

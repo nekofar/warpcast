@@ -1,6 +1,6 @@
 {
   "name": "@nekofar/warpcast",
-  "version": "2.0.0-alpha.25",
+  "version": "2.0.0-alpha.26",
   "description": "TypeScript client for interacting with Warpcast APIs",
   "keywords": [
     "warpcast",
@@ -39,6 +39,7 @@
     "prebuild": "pnpm clean && pnpm openapi:lint && pnpm openapi:bundle && pnpm openapi:generate",
     "build": "tsup",
     "clean": "rimraf dist openapi.json",
+    "docs": "typedoc",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "lint": "eslint .",
@@ -50,31 +51,33 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@hey-api/client-fetch": "^0.12.0"
+    "@hey-api/client-fetch": "^0.13.1"
   },
   "devDependencies": {
-    "@eslint/js": "^9.25.0",
-    "@hey-api/openapi-ts": "^0.71.0",
-    "@redocly/cli": "^1.34.2",
-    "@types/node": "^22.14.1",
-    "@typescript-eslint/utils": "^8.30.1",
-    "eslint": "^9.25.0",
-    "eslint-config-prettier": "^10.1.2",
-    "eslint-plugin-jsdoc": "^50.6.9",
-    "eslint-plugin-prettier": "^5.2.6",
-    "eslint-plugin-regexp": "^2.7.0",
+    "@eslint/js": "^9.31.0",
+    "@hey-api/openapi-ts": "^0.79.1",
+    "@redocly/cli": "^1.34.4",
+    "@types/node": "^24.0.15",
+    "@typescript-eslint/utils": "^8.37.0",
+    "eslint": "^9.31.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-jsdoc": "^51.4.1",
+    "eslint-plugin-prettier": "^5.5.3",
+    "eslint-plugin-regexp": "^2.9.0",
     "eslint-plugin-unicorn": "^59.0.1",
     "eslint-plugin-vitest": "^0.5.4",
-    "globals": "^16.0.0",
-    "prettier": "^3.5.3",
-    "prettier-plugin-jsdoc": "^1.3.2",
+    "globals": "^16.3.0",
+    "prettier": "^3.6.2",
+    "prettier-plugin-jsdoc": "^1.3.3",
     "prettier-plugin-organize-imports": "^4.1.0",
-    "prettier-plugin-packagejson": "^2.5.10",
+    "prettier-plugin-packagejson": "^2.5.19",
     "rimraf": "^6.0.1",
-    "tsup": "^8.4.0",
+    "tsup": "^8.5.0",
+    "typedoc": "^0.28.7",
+    "typedoc-plugin-markdown": "^4.7.1",
     "typescript": "^5.8.3",
-    "typescript-eslint": "^8.30.1",
-    "vitest": "^3.1.1"
+    "typescript-eslint": "^8.37.0",
+    "vitest": "^3.2.4"
   },
   "packageManager": "pnpm@10.0.0",
   "publishConfig": {
