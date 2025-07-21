@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.28] - 2025-07-21
+
+### 🚀 Features
+
+- *(openapi)* Extend `Conversation` and `DirectCastMessage` schemas
+
+### 🚜 Refactor
+
+- *(openapi)* Rename `Conversation` to `DirectCastConversation`
+
 ## [2.0.0-alpha.27] - 2025-07-21
 
 ### 🚀 Features
