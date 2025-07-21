@@ -435,13 +435,9 @@ export type NotificationsResponse = {
 
 export type DirectCastConversationResponse = {
 	result: {
-		messages: Array<DirectCastMessage>;
-	};
-	next?: {
-		/**
-		 * Base64 encoded cursor for pagination
-		 */
-		cursor?: string;
+		conversation?: {
+			[key: string]: unknown;
+		};
 	};
 };
 
@@ -1602,20 +1598,9 @@ export type GetDirectCastConversationData = {
 	path?: never;
 	query: {
 		/**
-		 * Conversation ID. Format depends on conversation type:
-		 * - 1:1 conversations: "fid1-fid2" (e.g., "123-456")
-		 * - Group conversations: Hash format
-		 *
+		 * Conversation ID in the format fid1-fid2
 		 */
 		conversationId: string;
-		/**
-		 * Base64 encoded cursor for pagination
-		 */
-		cursor?: string;
-		/**
-		 * Number of messages to return per page
-		 */
-		limit?: number;
 	};
 	url: "/v2/direct-cast-conversation";
 };

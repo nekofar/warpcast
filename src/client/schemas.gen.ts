@@ -1059,22 +1059,10 @@ export const DirectCastConversationResponseSchema = {
 	properties: {
 		result: {
 			type: "object",
-			required: ["messages"],
 			properties: {
-				messages: {
-					type: "array",
-					items: {
-						$ref: "#/components/schemas/DirectCastMessage",
-					},
-				},
-			},
-		},
-		next: {
-			type: "object",
-			properties: {
-				cursor: {
-					type: "string",
-					description: "Base64 encoded cursor for pagination",
+				conversation: {
+					type: "object",
+					additionalProperties: true,
 				},
 			},
 		},
