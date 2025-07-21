@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.26] - 2025-07-21
+
+### 🚜 Refactor
+
+- *(client)* Adjust response transformer placement
+
+### ⚙️ Miscellaneous Tasks
+
+- *(gitignore)* Add `/docs/` to ignored files
+- *(scripts)* Add `docs` script for typedoc generation
+- *(config)* Add `typedoc.json` for documentation settings
+
 ## [2.0.0-alpha.25] - 2025-06-12
 
 ### 🐛 Bug Fixes
