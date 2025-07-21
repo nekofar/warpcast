@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.32] - 2025-07-21
+
+### 🚀 Features
+
+- *(openapi)* Add `direct-cast-conversation-messages` endpoint
+- *(openapi)* Update conversation ID desc and add responses
+- *(client)* Add support for direct cast messages
+- *(openapi)* Add recent-direct-cast-messages endpoint
+- *(openapi)* Add recent-direct-cast-messages enhancements
+- *(openapi)* Enhance schemas and add recent messages support
+
+### ◀️ Revert
+
+- *(openapi)* Add pagination parameters to conversations
+- *(openapi)* Enhance pagination and response schema
+- *(client)* Enhance direct cast conversation responses
+
 ## [2.0.0-alpha.31] - 2025-07-21
 
 ### 🚀 Features
