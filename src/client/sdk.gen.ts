@@ -65,6 +65,9 @@ import type {
 	GetDirectCastConversationMessagesData,
 	GetDirectCastConversationMessagesResponses,
 	GetDirectCastConversationMessagesErrors,
+	GetDirectCastConversationRecentMessagesData,
+	GetDirectCastConversationRecentMessagesResponses,
+	GetDirectCastConversationRecentMessagesErrors,
 	DiscoverChannelsData,
 	DiscoverChannelsResponses,
 	DiscoverChannelsErrors,
@@ -325,6 +328,7 @@ import { client as _heyApiClient } from "./client.gen";
 import {
 	getDirectCastInboxResponseTransformer,
 	getDirectCastConversationMessagesResponseTransformer,
+	getDirectCastConversationRecentMessagesResponseTransformer,
 	getCastsByFidResponseTransformer,
 	createCastResponseTransformer,
 	getCreatorRewardWinnersResponseTransformer,
@@ -842,6 +846,33 @@ export const getDirectCastConversationMessages = <
 			},
 		],
 		url: "/v2/direct-cast-conversation-messages",
+		...options,
+	});
+};
+
+/**
+ * Get recent messages from direct cast conversation
+ * Fetches recent messages from a direct cast conversation by conversationId.
+ */
+export const getDirectCastConversationRecentMessages = <
+	ThrowOnError extends boolean = false,
+>(
+	options: Options<GetDirectCastConversationRecentMessagesData, ThrowOnError>,
+) => {
+	return (options.client ?? _heyApiClient).get<
+		GetDirectCastConversationRecentMessagesResponses,
+		GetDirectCastConversationRecentMessagesErrors,
+		ThrowOnError
+	>({
+		responseTransformer:
+			getDirectCastConversationRecentMessagesResponseTransformer,
+		security: [
+			{
+				scheme: "bearer",
+				type: "http",
+			},
+		],
+		url: "/v2/direct-cast-conversation-recent-messages",
 		...options,
 	});
 };

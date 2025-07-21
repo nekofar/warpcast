@@ -104,15 +104,34 @@ export type DirectCastMessageReaction = {
 	/**
 	 * Emoji used for the reaction
 	 */
-	emoji: string;
+	reaction: string;
 	/**
 	 * Number of users who reacted with this emoji
 	 */
 	count: number;
 	/**
+	 * Emoji used for the reaction (legacy field)
+	 */
+	emoji?: string;
+	/**
 	 * List of Farcaster IDs who reacted
 	 */
-	userFids: Array<number>;
+	userFids?: Array<number>;
+};
+
+export type DirectCastMessageViewerContext = {
+	/**
+	 * Whether this is the last read message
+	 */
+	isLastReadMessage?: boolean;
+	/**
+	 * Whether the message is focused
+	 */
+	focused?: boolean;
+	/**
+	 * User's reactions to this message
+	 */
+	reactions?: Array<string>;
 };
 
 export type DirectCastMessage = {
@@ -135,7 +154,13 @@ export type DirectCastMessage = {
 	/**
 	 * Type of the message
 	 */
-	type: "text" | "image" | "reaction" | "link";
+	type:
+		| "text"
+		| "image"
+		| "reaction"
+		| "link"
+		| "group_membership_addition"
+		| "pin_message";
 	/**
 	 * Content of the message
 	 */
@@ -157,6 +182,51 @@ export type DirectCastMessage = {
 	 */
 	isDeleted: boolean;
 	senderContext: User;
+	viewerContext?: DirectCastMessageViewerContext;
+	inReplyTo?: DirectCastMessage;
+	metadata?: DirectCastMessageMetadata;
+	actionTargetUserContext?: User;
+	/**
+	 * Whether the message was sent programmatically
+	 */
+	isProgrammatic?: boolean;
+	/**
+	 * List of mentions in the message
+	 */
+	mentions?: Array<DirectCastMessageMention>;
+};
+
+export type DirectCastMessageMetadata = {
+	/**
+	 * Cast metadata if message contains cast references
+	 */
+	casts?: Array<{
+		[key: string]: unknown;
+	}>;
+	/**
+	 * URL metadata if message contains links
+	 */
+	urls?: Array<{
+		[key: string]: unknown;
+	}>;
+	/**
+	 * Media metadata if message contains media
+	 */
+	medias?: Array<{
+		[key: string]: unknown;
+	}>;
+};
+
+export type DirectCastMessageMention = {
+	user: User;
+	/**
+	 * Starting index of the mention in the message text
+	 */
+	textIndex: number;
+	/**
+	 * Length of the mention text
+	 */
+	length: number;
 };
 
 export type DirectCastConversationViewerContext = {
@@ -1690,6 +1760,45 @@ export type GetDirectCastConversationMessagesResponses = {
 
 export type GetDirectCastConversationMessagesResponse =
 	GetDirectCastConversationMessagesResponses[keyof GetDirectCastConversationMessagesResponses];
+
+export type GetDirectCastConversationRecentMessagesData = {
+	body?: never;
+	path?: never;
+	query: {
+		/**
+		 * Conversation ID. Format depends on conversation type:
+		 * - 1:1 conversations: "fid1-fid2" (e.g., "123-456")
+		 * - Group conversations: Hash format (e.g., "c9e139dcbc9423cf")
+		 *
+		 */
+		conversationId: string;
+	};
+	url: "/v2/direct-cast-conversation-recent-messages";
+};
+
+export type GetDirectCastConversationRecentMessagesErrors = {
+	/**
+	 * Authentication is required or failed
+	 */
+	401: ErrorResponse;
+	/**
+	 * Too many requests
+	 */
+	429: unknown;
+};
+
+export type GetDirectCastConversationRecentMessagesError =
+	GetDirectCastConversationRecentMessagesErrors[keyof GetDirectCastConversationRecentMessagesErrors];
+
+export type GetDirectCastConversationRecentMessagesResponses = {
+	/**
+	 * A list of recent direct cast conversation messages
+	 */
+	200: DirectCastConversationMessagesResponse;
+};
+
+export type GetDirectCastConversationRecentMessagesResponse =
+	GetDirectCastConversationRecentMessagesResponses[keyof GetDirectCastConversationRecentMessagesResponses];
 
 export type DiscoverChannelsData = {
 	body?: never;

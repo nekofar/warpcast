@@ -3,6 +3,7 @@
 import type {
 	GetDirectCastInboxResponse,
 	GetDirectCastConversationMessagesResponse,
+	GetDirectCastConversationRecentMessagesResponse,
 	GetCastsByFidResponse,
 	CreateCastResponse,
 	GetCreatorRewardWinnersResponse,
@@ -15,6 +16,9 @@ import type {
 
 const directCastMessageSchemaResponseTransformer = (data: any) => {
 	data.serverTimestamp = BigInt(data.serverTimestamp.toString());
+	if (data.inReplyTo) {
+		data.inReplyTo = directCastMessageSchemaResponseTransformer(data.inReplyTo);
+	}
 	return data;
 };
 
@@ -63,6 +67,15 @@ export const getDirectCastConversationMessagesResponseTransformer = async (
 	data = directCastConversationMessagesResponseSchemaResponseTransformer(data);
 	return data;
 };
+
+export const getDirectCastConversationRecentMessagesResponseTransformer =
+	async (
+		data: any,
+	): Promise<GetDirectCastConversationRecentMessagesResponse> => {
+		data =
+			directCastConversationMessagesResponseSchemaResponseTransformer(data);
+		return data;
+	};
 
 const castSchemaResponseTransformer = (data: any) => {
 	if (data.timestamp) {
