@@ -10,5 +10,5 @@ export default defineConfig({
   },
   bundle: true,
   external: [],
-  noExternal: ['@hey-api/client-fetch'],
+  noExternal: [],
 })
