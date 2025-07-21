@@ -916,6 +916,50 @@
         }
       }
     },
+    "/v2/direct-cast-conversation-recent-messages": {
+      "get": {
+        "operationId": "getDirectCastConversationRecentMessages",
+        "summary": "Get recent messages from direct cast conversation",
+        "description": "Fetches recent messages from a direct cast conversation by conversationId.",
+        "tags": [
+          "Messaging"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "conversationId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Conversation ID. Format depends on conversation type:\n- 1:1 conversations: \"fid1-fid2\" (e.g., \"123-456\")\n- Group conversations: Hash format (e.g., \"c9e139dcbc9423cf\")\n"
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of recent direct cast conversation messages",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DirectCastConversationMessagesResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "429": {
+            "description": "Too many requests"
+          }
+        }
+      }
+    },
     "/v2/discover-channels": {
       "get": {
         "operationId": "discoverChannels",
@@ -6663,14 +6707,14 @@
       "DirectCastMessageReaction": {
         "type": "object",
         "required": [
-          "emoji",
-          "count",
-          "userFids"
+          "reaction",
+          "count"
         ],
         "properties": {
-          "emoji": {
+          "reaction": {
             "type": "string",
-            "description": "Emoji used for the reaction"
+            "description": "Emoji used for the reaction",
+            "example": "🔥"
           },
           "count": {
             "type": "integer",
@@ -6678,12 +6722,38 @@
             "description": "Number of users who reacted with this emoji",
             "example": 3
           },
+          "emoji": {
+            "type": "string",
+            "description": "Emoji used for the reaction (legacy field)"
+          },
           "userFids": {
             "type": "array",
             "items": {
               "type": "integer"
             },
             "description": "List of Farcaster IDs who reacted"
+          }
+        }
+      },
+      "DirectCastMessageViewerContext": {
+        "type": "object",
+        "properties": {
+          "isLastReadMessage": {
+            "type": "boolean",
+            "description": "Whether this is the last read message",
+            "example": false
+          },
+          "focused": {
+            "type": "boolean",
+            "description": "Whether the message is focused",
+            "example": false
+          },
+          "reactions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "User's reactions to this message"
           }
         }
       },
@@ -6727,7 +6797,9 @@
               "text",
               "image",
               "reaction",
-              "link"
+              "link",
+              "group_membership_addition",
+              "pin_message"
             ],
             "description": "Type of the message",
             "example": "text"
@@ -6760,6 +6832,82 @@
           },
           "senderContext": {
             "$ref": "#/components/schemas/User"
+          },
+          "viewerContext": {
+            "$ref": "#/components/schemas/DirectCastMessageViewerContext"
+          },
+          "inReplyTo": {
+            "$ref": "#/components/schemas/DirectCastMessage"
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/DirectCastMessageMetadata"
+          },
+          "actionTargetUserContext": {
+            "$ref": "#/components/schemas/User"
+          },
+          "isProgrammatic": {
+            "type": "boolean",
+            "description": "Whether the message was sent programmatically",
+            "example": false
+          },
+          "mentions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DirectCastMessageMention"
+            },
+            "description": "List of mentions in the message"
+          }
+        }
+      },
+      "DirectCastMessageMetadata": {
+        "type": "object",
+        "properties": {
+          "casts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": true
+            },
+            "description": "Cast metadata if message contains cast references"
+          },
+          "urls": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": true
+            },
+            "description": "URL metadata if message contains links"
+          },
+          "medias": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": true
+            },
+            "description": "Media metadata if message contains media"
+          }
+        }
+      },
+      "DirectCastMessageMention": {
+        "type": "object",
+        "required": [
+          "user",
+          "textIndex",
+          "length"
+        ],
+        "properties": {
+          "user": {
+            "$ref": "#/components/schemas/User"
+          },
+          "textIndex": {
+            "type": "integer",
+            "description": "Starting index of the mention in the message text",
+            "example": 19
+          },
+          "length": {
+            "type": "integer",
+            "description": "Length of the mention text",
+            "example": 8
           }
         }
       },
