@@ -1069,6 +1069,36 @@ export const DirectCastConversationResponseSchema = {
 	},
 } as const;
 
+export const DirectCastConversationMessagesResponseSchema = {
+	type: "object",
+	required: ["result"],
+	properties: {
+		result: {
+			type: "object",
+			required: ["messages"],
+			properties: {
+				messages: {
+					type: "array",
+					items: {
+						$ref: "#/components/schemas/DirectCastMessage",
+					},
+				},
+				next: {
+					type: "object",
+					properties: {
+						cursor: {
+							type: "string",
+							description: "Cursor for pagination to get next set of messages",
+						},
+					},
+					additionalProperties: true,
+					description: "Pagination information for next page",
+				},
+			},
+		},
+	},
+} as const;
+
 export const DiscoverChannelsResponseSchema = {
 	type: "object",
 	required: ["result"],

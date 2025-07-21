@@ -441,6 +441,22 @@ export type DirectCastConversationResponse = {
 	};
 };
 
+export type DirectCastConversationMessagesResponse = {
+	result: {
+		messages: Array<DirectCastMessage>;
+		/**
+		 * Pagination information for next page
+		 */
+		next?: {
+			/**
+			 * Cursor for pagination to get next set of messages
+			 */
+			cursor?: string;
+			[key: string]: unknown | string | undefined;
+		};
+	};
+};
+
 export type DiscoverChannelsResponse = {
 	result: {
 		channels?: Array<{
@@ -1598,7 +1614,10 @@ export type GetDirectCastConversationData = {
 	path?: never;
 	query: {
 		/**
-		 * Conversation ID in the format fid1-fid2
+		 * Conversation ID. Format depends on conversation type:
+		 * - 1:1 conversations: "fid1-fid2" (e.g., "123-456")
+		 * - Group conversations: Hash format (e.g., "a1b2c3d4e5f6...")
+		 *
 		 */
 		conversationId: string;
 	};
@@ -1628,6 +1647,49 @@ export type GetDirectCastConversationResponses = {
 
 export type GetDirectCastConversationResponse =
 	GetDirectCastConversationResponses[keyof GetDirectCastConversationResponses];
+
+export type GetDirectCastConversationMessagesData = {
+	body?: never;
+	path?: never;
+	query: {
+		/**
+		 * Conversation ID. Format depends on conversation type:
+		 * - 1:1 conversations: "fid1-fid2" (e.g., "123-456")
+		 * - Group conversations: Hash format (e.g., "c9e139dcbc9423cf")
+		 *
+		 */
+		conversationId: string;
+		/**
+		 * Maximum number of messages to return
+		 */
+		limit?: number;
+	};
+	url: "/v2/direct-cast-conversation-messages";
+};
+
+export type GetDirectCastConversationMessagesErrors = {
+	/**
+	 * Authentication is required or failed
+	 */
+	401: ErrorResponse;
+	/**
+	 * Too many requests
+	 */
+	429: unknown;
+};
+
+export type GetDirectCastConversationMessagesError =
+	GetDirectCastConversationMessagesErrors[keyof GetDirectCastConversationMessagesErrors];
+
+export type GetDirectCastConversationMessagesResponses = {
+	/**
+	 * A list of direct cast conversation messages with pagination
+	 */
+	200: DirectCastConversationMessagesResponse;
+};
+
+export type GetDirectCastConversationMessagesResponse =
+	GetDirectCastConversationMessagesResponses[keyof GetDirectCastConversationMessagesResponses];
 
 export type DiscoverChannelsData = {
 	body?: never;

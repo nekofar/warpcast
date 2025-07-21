@@ -2,6 +2,7 @@
 
 import type {
 	GetDirectCastInboxResponse,
+	GetDirectCastConversationMessagesResponse,
 	GetCastsByFidResponse,
 	CreateCastResponse,
 	GetCreatorRewardWinnersResponse,
@@ -44,6 +45,22 @@ export const getDirectCastInboxResponseTransformer = async (
 	data: any,
 ): Promise<GetDirectCastInboxResponse> => {
 	data = directCastInboxResponseSchemaResponseTransformer(data);
+	return data;
+};
+
+const directCastConversationMessagesResponseSchemaResponseTransformer = (
+	data: any,
+) => {
+	data.result.messages = data.result.messages.map((item: any) => {
+		return directCastMessageSchemaResponseTransformer(item);
+	});
+	return data;
+};
+
+export const getDirectCastConversationMessagesResponseTransformer = async (
+	data: any,
+): Promise<GetDirectCastConversationMessagesResponse> => {
+	data = directCastConversationMessagesResponseSchemaResponseTransformer(data);
 	return data;
 };
 

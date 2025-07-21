@@ -62,6 +62,9 @@ import type {
 	GetDirectCastConversationData,
 	GetDirectCastConversationResponses,
 	GetDirectCastConversationErrors,
+	GetDirectCastConversationMessagesData,
+	GetDirectCastConversationMessagesResponses,
+	GetDirectCastConversationMessagesErrors,
 	DiscoverChannelsData,
 	DiscoverChannelsResponses,
 	DiscoverChannelsErrors,
@@ -321,6 +324,7 @@ import type {
 import { client as _heyApiClient } from "./client.gen";
 import {
 	getDirectCastInboxResponseTransformer,
+	getDirectCastConversationMessagesResponseTransformer,
 	getCastsByFidResponseTransformer,
 	createCastResponseTransformer,
 	getCreatorRewardWinnersResponseTransformer,
@@ -812,6 +816,32 @@ export const getDirectCastConversation = <ThrowOnError extends boolean = false>(
 			},
 		],
 		url: "/v2/direct-cast-conversation",
+		...options,
+	});
+};
+
+/**
+ * Get direct cast conversation messages
+ * Fetches messages from a direct cast conversation by conversationId with pagination support.
+ */
+export const getDirectCastConversationMessages = <
+	ThrowOnError extends boolean = false,
+>(
+	options: Options<GetDirectCastConversationMessagesData, ThrowOnError>,
+) => {
+	return (options.client ?? _heyApiClient).get<
+		GetDirectCastConversationMessagesResponses,
+		GetDirectCastConversationMessagesErrors,
+		ThrowOnError
+	>({
+		responseTransformer: getDirectCastConversationMessagesResponseTransformer,
+		security: [
+			{
+				scheme: "bearer",
+				type: "http",
+			},
+		],
+		url: "/v2/direct-cast-conversation-messages",
 		...options,
 	});
 };
