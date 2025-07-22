@@ -1,0 +1,25 @@
+post:
+  operationId: pinDirectCastConversation
+  summary: Pin direct cast conversation
+  description: Pins a direct cast conversation by conversationId.
+  tags:
+    - Messaging
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/index.yaml#/DirectCastPinConversationRequest'
+  security:
+    - bearerAuth: []
+  responses:
+    '200':
+      description: Direct cast conversation pinned successfully
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common.yaml#/SuccessResponse'
+    '401':
+      $ref: '../../components/responses/index.yaml#/Unauthorized'
+    '429':
+      description: Too many requests

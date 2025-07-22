@@ -617,6 +617,15 @@ DirectCastManuallyMarkUnreadRequest:
     conversationId:
       type: string
       description: ID of the conversation to mark as unread
+
+DirectCastPinConversationRequest:
+  type: object
+  required:
+    - conversationId
+  properties:
+    conversationId:
+      type: string
+      description: ID of the conversation to pin
 DiscoverChannelsResponse:
   allOf:
     - $ref: './common.yaml#/GenericResponse'
