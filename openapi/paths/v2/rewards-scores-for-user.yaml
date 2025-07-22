@@ -1,4 +1,6 @@
 get:
+  tags:
+    - Rewards
   operationId: getUserRewardsScores
   summary: Get invite rewards scores for a user
   description: Returns current, previous, and all-time invite rewards scores for the specified user.

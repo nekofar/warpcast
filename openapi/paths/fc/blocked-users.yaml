@@ -1,4 +1,6 @@
 get:
+  tags:
+    - Moderation
   operationId: getBlockedUsers
   summary: Get list of blocked users
   security:

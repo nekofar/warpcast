@@ -25,6 +25,30 @@ tags:
     description: Operations related to direct messages and casts
   - name: DevTools
     description: Development tools and utilities for Farcaster integration
+  - name: Rewards
+    description: Operations related to creator and developer rewards systems
+  - name: Moderation
+    description: Operations related to content moderation and user management
+  - name: Authentication
+    description: Operations related to API keys, verifications, and account security
+  - name: Bookmarks
+    description: Operations related to bookmarked content
+  - name: Invites
+    description: Operations related to platform invitations and onboarding
+  - name: Starter Packs
+    description: Operations related to starter pack creation and management
+  - name: Notifications
+    description: Operations related to notifications and activity tracking
+  - name: Discovery
+    description: Operations related to content and user discovery
+  - name: Frames
+    description: Operations related to frames, mini-apps, and external applications
+  - name: Casts
+    description: Operations related to cast creation, interaction, and management
+  - name: Analytics
+    description: Operations related to analytics and usage metrics
+  - name: Follows
+    description: Operations related to following and follower relationships
 
 components:
   schemas:

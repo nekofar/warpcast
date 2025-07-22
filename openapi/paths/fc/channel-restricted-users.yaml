@@ -1,4 +1,6 @@
 get:
+  tags:
+    - Moderation
   operationId: getChannelRestrictedUsers
   summary: Get restricted users in a channel
   security:

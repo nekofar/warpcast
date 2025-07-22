@@ -1,4 +1,6 @@
 get:
+  tags:
+    - Starter Packs
   operationId: getStarterPack
   summary: Get a specific starter pack by ID
   description: Returns a specific starter pack.

@@ -1,4 +1,6 @@
 get:
+  tags:
+    - Bookmarks
   operationId: getBookmarkedCasts
   summary: Get bookmarked casts
   description: Returns the most recent casts bookmarked by the user.

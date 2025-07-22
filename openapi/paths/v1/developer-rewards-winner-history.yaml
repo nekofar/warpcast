@@ -1,4 +1,6 @@
 get:
+  tags:
+    - Rewards
   operationId: 'getDeveloperRewardWinners'
   summary: 'Get developer reward winners'
   security:

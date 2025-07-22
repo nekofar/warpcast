@@ -1,4 +1,6 @@
 get:
+  tags:
+    - Moderation
   operationId: getChannelBannedUsers
   summary: Get banned users in a channel
   security:

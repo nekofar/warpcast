@@ -1,4 +1,6 @@
 get:
+  tags:
+    - Rewards
   operationId: getRewardsMetadata
   summary: Get invite rewards metadata
   description: Returns metadata for the invite rewards program including the reward period and reward distribution details.

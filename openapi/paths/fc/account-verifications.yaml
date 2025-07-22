@@ -1,4 +1,6 @@
 get:
+  tags:
+    - Authentication
   operationId: getAccountVerifications
   summary: Get account verifications
   security:
