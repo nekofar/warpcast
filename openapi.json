@@ -1012,6 +1012,49 @@
         }
       }
     },
+    "/v2/direct-cast-conversation-message-ttl": {
+      "post": {
+        "operationId": "setDirectCastConversationMessageTtl",
+        "summary": "Set direct cast conversation message TTL",
+        "description": "Sets the time-to-live (TTL) for messages in a direct cast conversation.",
+        "tags": [
+          "Messaging"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DirectCastConversationMessageTtlRequest"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Message TTL set successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/common_SuccessResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "429": {
+            "description": "Too many requests"
+          }
+        }
+      }
+    },
     "/v2/direct-cast-conversation-notifications": {
       "post": {
         "operationId": "updateDirectCastConversationNotifications",
@@ -8100,6 +8143,25 @@
           }
         ]
       },
+      "DirectCastConversationMessageTtlRequest": {
+        "type": "object",
+        "required": [
+          "conversationId",
+          "ttl"
+        ],
+        "properties": {
+          "conversationId": {
+            "type": "string",
+            "description": "ID of the conversation to set message TTL for",
+            "example": "12590-20146"
+          },
+          "ttl": {
+            "type": "integer",
+            "description": "Time to live for messages in days",
+            "example": 365
+          }
+        }
+      },
       "DirectCastConversationNotificationsRequest": {
         "type": "object",
         "required": [
@@ -9697,6 +9759,9 @@
         "$ref": "#/components/schemas/common_SuccessResponse"
       },
       "DirectCastConversationNotificationsResponse": {
+        "$ref": "#/components/schemas/common_SuccessResponse"
+      },
+      "DirectCastConversationMessageTtlResponse": {
         "$ref": "#/components/schemas/common_SuccessResponse"
       }
     },
