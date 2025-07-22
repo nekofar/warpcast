@@ -1051,6 +1051,49 @@
         }
       }
     },
+    "/v2/direct-cast-manually-mark-unread": {
+      "put": {
+        "operationId": "directCastManuallyMarkUnread",
+        "summary": "Manually mark direct cast conversation as unread",
+        "description": "Marks a direct cast conversation as unread for the authenticated user.",
+        "tags": [
+          "Messaging"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DirectCastManuallyMarkUnreadRequest"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Direct cast conversation marked as unread successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/common_SuccessResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "429": {
+            "description": "Too many requests"
+          }
+        }
+      }
+    },
     "/v2/discover-channels": {
       "get": {
         "operationId": "discoverChannels",
@@ -7886,6 +7929,18 @@
             }
           }
         ]
+      },
+      "DirectCastManuallyMarkUnreadRequest": {
+        "type": "object",
+        "required": [
+          "conversationId"
+        ],
+        "properties": {
+          "conversationId": {
+            "type": "string",
+            "description": "ID of the conversation to mark as unread"
+          }
+        }
       },
       "DiscoverChannelsResponse": {
         "allOf": [
