@@ -907,6 +907,49 @@
         }
       }
     },
+    "/v2/direct-cast-conversation-categorization": {
+      "post": {
+        "operationId": "categorizeDirectCastConversation",
+        "summary": "Categorize direct cast conversation",
+        "description": "Categorizes a direct cast conversation by setting its category (e.g., archived).",
+        "tags": [
+          "Messaging"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DirectCastConversationCategorizationRequest"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Conversation categorized successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/common_SuccessResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "429": {
+            "description": "Too many requests"
+          }
+        }
+      }
+    },
     "/v2/direct-cast-conversation-messages": {
       "get": {
         "operationId": "getDirectCastConversationMessages",
@@ -7917,6 +7960,49 @@
           }
         ]
       },
+      "DirectCastConversationCategorizationRequest": {
+        "type": "object",
+        "required": [
+          "conversationId",
+          "category"
+        ],
+        "properties": {
+          "conversationId": {
+            "type": "string",
+            "description": "ID of the conversation to categorize",
+            "example": "17838-20146"
+          },
+          "category": {
+            "type": "string",
+            "description": "Category to assign to the conversation",
+            "example": "archived"
+          }
+        }
+      },
+      "common_SuccessResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/GenericResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "result": {
+                "type": "object",
+                "required": [
+                  "success"
+                ],
+                "properties": {
+                  "success": {
+                    "type": "boolean",
+                    "description": "Whether the operation was successful"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
       "DirectCastConversationMessagesResponse": {
         "allOf": [
           {
@@ -7992,30 +8078,6 @@
             "description": "ID of the message this is replying to (optional)"
           }
         }
-      },
-      "common_SuccessResponse": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/GenericResponse"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "result": {
-                "type": "object",
-                "required": [
-                  "success"
-                ],
-                "properties": {
-                  "success": {
-                    "type": "boolean",
-                    "description": "Whether the operation was successful"
-                  }
-                }
-              }
-            }
-          }
-        ]
       },
       "DirectCastManuallyMarkUnreadRequest": {
         "type": "object",
@@ -9539,6 +9601,9 @@
         }
       },
       "DirectCastSendResponse": {
+        "$ref": "#/components/schemas/common_SuccessResponse"
+      },
+      "DirectCastConversationCategorizationResponse": {
         "$ref": "#/components/schemas/common_SuccessResponse"
       }
     },
