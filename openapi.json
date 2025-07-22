@@ -39,6 +39,54 @@
     {
       "name": "DevTools",
       "description": "Development tools and utilities for Farcaster integration"
+    },
+    {
+      "name": "Rewards",
+      "description": "Operations related to creator and developer rewards systems"
+    },
+    {
+      "name": "Moderation",
+      "description": "Operations related to content moderation and user management"
+    },
+    {
+      "name": "Authentication",
+      "description": "Operations related to API keys, verifications, and account security"
+    },
+    {
+      "name": "Bookmarks",
+      "description": "Operations related to bookmarked content"
+    },
+    {
+      "name": "Invites",
+      "description": "Operations related to platform invitations and onboarding"
+    },
+    {
+      "name": "Starter Packs",
+      "description": "Operations related to starter pack creation and management"
+    },
+    {
+      "name": "Notifications",
+      "description": "Operations related to notifications and activity tracking"
+    },
+    {
+      "name": "Discovery",
+      "description": "Operations related to content and user discovery"
+    },
+    {
+      "name": "Frames",
+      "description": "Operations related to frames, mini-apps, and external applications"
+    },
+    {
+      "name": "Casts",
+      "description": "Operations related to cast creation, interaction, and management"
+    },
+    {
+      "name": "Analytics",
+      "description": "Operations related to analytics and usage metrics"
+    },
+    {
+      "name": "Follows",
+      "description": "Operations related to following and follower relationships"
     }
   ],
   "paths": {
@@ -989,7 +1037,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DirectCastSendResponse"
+                  "$ref": "#/components/schemas/common_SuccessResponse"
                 }
               }
             }
@@ -1109,6 +1157,9 @@
     },
     "/v2/rewards-leaderboard": {
       "get": {
+        "tags": [
+          "Rewards"
+        ],
         "operationId": "getRewardsLeaderboard",
         "summary": "Get rewards leaderboard",
         "description": "Returns a list of users in the rewards leaderboard based on invite activity.",
@@ -1162,6 +1213,9 @@
     },
     "/v2/rewards-scores-for-user": {
       "get": {
+        "tags": [
+          "Rewards"
+        ],
         "operationId": "getUserRewardsScores",
         "summary": "Get invite rewards scores for a user",
         "description": "Returns current, previous, and all-time invite rewards scores for the specified user.",
@@ -1208,6 +1262,9 @@
     },
     "/v2/rewards-metadata": {
       "get": {
+        "tags": [
+          "Rewards"
+        ],
         "operationId": "getRewardsMetadata",
         "summary": "Get invite rewards metadata",
         "description": "Returns metadata for the invite rewards program including the reward period and reward distribution details.",
@@ -1251,6 +1308,9 @@
     },
     "/v2/bookmarked-casts": {
       "get": {
+        "tags": [
+          "Bookmarks"
+        ],
         "operationId": "getBookmarkedCasts",
         "summary": "Get bookmarked casts",
         "description": "Returns the most recent casts bookmarked by the user.",
@@ -1367,6 +1427,9 @@
     },
     "/v2/starter-pack": {
       "get": {
+        "tags": [
+          "Starter Packs"
+        ],
         "operationId": "getStarterPack",
         "summary": "Get a specific starter pack by ID",
         "description": "Returns a specific starter pack.",
@@ -1712,6 +1775,9 @@
     },
     "/v2/verifications": {
       "get": {
+        "tags": [
+          "Authentication"
+        ],
         "operationId": "getVerifications",
         "summary": "Get verified addresses for an FID",
         "description": "Returns verified Ethereum addresses associated with a specific FID.",
@@ -3252,6 +3318,9 @@
     },
     "/fc/moderated-casts": {
       "get": {
+        "tags": [
+          "Moderation"
+        ],
         "operationId": "getChannelModeratedCasts",
         "summary": "Get moderated casts for a channel",
         "parameters": [
@@ -3359,6 +3428,9 @@
     },
     "/fc/channel-restricted-users": {
       "get": {
+        "tags": [
+          "Moderation"
+        ],
         "operationId": "getChannelRestrictedUsers",
         "summary": "Get restricted users in a channel",
         "security": [
@@ -3457,6 +3529,9 @@
     },
     "/fc/channel-bans": {
       "get": {
+        "tags": [
+          "Moderation"
+        ],
         "operationId": "getChannelBannedUsers",
         "summary": "Get banned users in a channel",
         "security": [
@@ -3773,6 +3848,9 @@
     },
     "/fc/moderate-cast": {
       "post": {
+        "tags": [
+          "Moderation"
+        ],
         "operationId": "moderateCast",
         "summary": "Moderate a cast (e.g., hide it)",
         "security": [
@@ -4115,6 +4193,9 @@
     },
     "/fc/blocked-users": {
       "get": {
+        "tags": [
+          "Moderation"
+        ],
         "operationId": "getBlockedUsers",
         "summary": "Get list of blocked users",
         "security": [
@@ -4338,6 +4419,9 @@
     },
     "/fc/account-verifications": {
       "get": {
+        "tags": [
+          "Authentication"
+        ],
         "operationId": "getAccountVerifications",
         "summary": "Get account verifications",
         "security": [
@@ -4423,6 +4507,9 @@
     },
     "/v1/creator-rewards-winner-history": {
       "get": {
+        "tags": [
+          "Rewards"
+        ],
         "operationId": "getCreatorRewardWinners",
         "summary": "Get creator reward winners",
         "security": [
@@ -4936,6 +5023,9 @@
     },
     "/v1/developer-rewards-winner-history": {
       "get": {
+        "tags": [
+          "Rewards"
+        ],
         "operationId": "getDeveloperRewardWinners",
         "summary": "Get developer reward winners",
         "security": [
@@ -5481,6 +5571,7 @@
     "/v2/api-keys": {
       "get": {
         "tags": [
+          "Authentication",
           "DevTools"
         ],
         "summary": "Retrieve API keys for the authenticated user",
@@ -5531,6 +5622,7 @@
       },
       "put": {
         "tags": [
+          "Authentication",
           "DevTools"
         ],
         "summary": "Create a new API key",
@@ -5627,6 +5719,7 @@
     "/v2/revoke-api-key": {
       "patch": {
         "tags": [
+          "Authentication",
           "DevTools"
         ],
         "summary": "Revoke an API key",
@@ -5715,6 +5808,7 @@
         "description": "Retrieves a list of external social accounts connected to the user's Warpcast profile",
         "operationId": "getConnectedAccounts",
         "tags": [
+          "Authentication",
           "User"
         ],
         "security": [
@@ -7395,72 +7489,95 @@
           }
         }
       },
-      "UserResponse": {
+      "GenericResponse": {
         "type": "object",
+        "required": [
+          "result"
+        ],
         "properties": {
           "result": {
             "type": "object",
+            "additionalProperties": true
+          }
+        }
+      },
+      "UserResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/GenericResponse"
+          },
+          {
+            "type": "object",
             "properties": {
-              "user": {
-                "$ref": "#/components/schemas/UserWithExtras"
-              },
-              "collectionsOwned": {
-                "type": "array",
-                "items": {
-                  "type": "object"
-                }
-              },
-              "extras": {
+              "result": {
                 "type": "object",
                 "properties": {
-                  "fid": {
-                    "type": "integer"
+                  "user": {
+                    "$ref": "#/components/schemas/UserWithExtras"
                   },
-                  "custodyAddress": {
-                    "type": "string"
-                  },
-                  "ethWallets": {
+                  "collectionsOwned": {
                     "type": "array",
                     "items": {
-                      "type": "string"
+                      "type": "object"
                     }
                   },
-                  "solanaWallets": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    }
+                  "extras": {
+                    "$ref": "#/components/schemas/UserExtras"
                   }
                 }
               }
             }
+          }
+        ]
+      },
+      "PaginationCursor": {
+        "type": "object",
+        "properties": {
+          "cursor": {
+            "type": "string",
+            "description": "Base64 encoded cursor for pagination"
+          }
+        },
+        "additionalProperties": true
+      },
+      "PaginatedResponse": {
+        "type": "object",
+        "required": [
+          "result"
+        ],
+        "properties": {
+          "result": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "next": {
+            "$ref": "#/components/schemas/PaginationCursor"
           }
         }
       },
       "SuggestedUsersResponse": {
-        "type": "object",
-        "properties": {
-          "result": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/PaginatedResponse"
+          },
+          {
             "type": "object",
             "properties": {
-              "users": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "additionalProperties": true
-                }
-              },
-              "next": {
+              "result": {
                 "type": "object",
                 "properties": {
-                  "cursor": {
-                    "type": "string"
+                  "users": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
                   }
                 }
               }
             }
           }
-        }
+        ]
       },
       "FavoriteFramesResponse": {
         "type": "object",
@@ -7650,54 +7767,51 @@
         }
       },
       "DirectCastConversationResponse": {
-        "type": "object",
-        "required": [
-          "result"
-        ],
-        "properties": {
-          "result": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/GenericResponse"
+          },
+          {
             "type": "object",
             "properties": {
-              "conversation": {
-                "type": "object",
-                "additionalProperties": true
-              }
-            }
-          }
-        }
-      },
-      "DirectCastConversationMessagesResponse": {
-        "type": "object",
-        "required": [
-          "result"
-        ],
-        "properties": {
-          "result": {
-            "type": "object",
-            "required": [
-              "messages"
-            ],
-            "properties": {
-              "messages": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/DirectCastMessage"
-                }
-              },
-              "next": {
+              "result": {
                 "type": "object",
                 "properties": {
-                  "cursor": {
-                    "type": "string",
-                    "description": "Cursor for pagination to get next set of messages"
+                  "conversation": {
+                    "type": "object",
+                    "additionalProperties": true
                   }
-                },
-                "additionalProperties": true,
-                "description": "Pagination information for next page"
+                }
               }
             }
           }
-        }
+        ]
+      },
+      "DirectCastConversationMessagesResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/PaginatedResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "result": {
+                "type": "object",
+                "required": [
+                  "messages"
+                ],
+                "properties": {
+                  "messages": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/DirectCastMessage"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ]
       },
       "DirectCastSendRequest": {
         "type": "object",
@@ -7711,8 +7825,7 @@
         "properties": {
           "conversationId": {
             "type": "string",
-            "description": "ID of the conversation to send the message to",
-            "example": "908811244217b112fcf727baf0975fc65fb65687fb3e562c3d16d4a457e05efd"
+            "description": "ID of the conversation to send the message to"
           },
           "recipientFids": {
             "type": "array",
@@ -7727,8 +7840,7 @@
           },
           "messageId": {
             "type": "string",
-            "description": "Unique identifier for the message",
-            "example": "199b59f9c76097ba3a902625a1989870"
+            "description": "Unique identifier for the message"
           },
           "type": {
             "type": "string",
@@ -7743,101 +7855,114 @@
           },
           "message": {
             "type": "string",
-            "description": "Content of the message",
-            "example": "sup"
+            "description": "Content of the message"
           },
           "inReplyToId": {
             "type": "string",
-            "description": "ID of the message this is replying to (optional)",
-            "example": "2554cd70feb9365ff96996be5132ce77"
+            "description": "ID of the message this is replying to (optional)"
           }
         }
       },
-      "DirectCastSendResponse": {
-        "type": "object",
-        "required": [
-          "result"
-        ],
-        "properties": {
-          "result": {
+      "common_SuccessResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/GenericResponse"
+          },
+          {
             "type": "object",
-            "required": [
-              "success"
-            ],
             "properties": {
-              "success": {
-                "type": "boolean",
-                "description": "Whether the message was sent successfully",
-                "example": true
+              "result": {
+                "type": "object",
+                "required": [
+                  "success"
+                ],
+                "properties": {
+                  "success": {
+                    "type": "boolean",
+                    "description": "Whether the operation was successful"
+                  }
+                }
               }
             }
           }
-        }
+        ]
       },
       "DiscoverChannelsResponse": {
-        "type": "object",
-        "required": [
-          "result"
-        ],
-        "properties": {
-          "result": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/GenericResponse"
+          },
+          {
             "type": "object",
             "properties": {
-              "channels": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "additionalProperties": true
+              "result": {
+                "type": "object",
+                "properties": {
+                  "channels": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  }
                 }
               }
             }
           }
-        }
+        ]
       },
       "InvitesAvailableResponse": {
-        "type": "object",
-        "required": [
-          "result"
-        ],
-        "properties": {
-          "result": {
-            "type": "object",
-            "required": [
-              "allocatedInvitesCount",
-              "availableInvitesCount"
-            ],
-            "properties": {
-              "allocatedInvitesCount": {
-                "type": "integer",
-                "description": "Total number of invites allocated to the user"
-              },
-              "availableInvitesCount": {
-                "type": "integer",
-                "description": "Number of invites currently available to send"
-              }
-            }
-          }
-        }
-      },
-      "SponsoredInvitesResponse": {
-        "type": "object",
-        "required": [
-          "result"
-        ],
-        "properties": {
-          "result": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/GenericResponse"
+          },
+          {
             "type": "object",
             "properties": {
-              "invites": {
-                "type": "array",
-                "items": {
-                  "type": "object"
+              "result": {
+                "type": "object",
+                "required": [
+                  "allocatedInvitesCount",
+                  "availableInvitesCount"
+                ],
+                "properties": {
+                  "allocatedInvitesCount": {
+                    "type": "integer",
+                    "description": "Total number of invites allocated to the user"
+                  },
+                  "availableInvitesCount": {
+                    "type": "integer",
+                    "description": "Number of invites currently available to send"
+                  }
                 }
               }
             }
+          }
+        ]
+      },
+      "SponsoredInvitesResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/GenericResponse"
           },
-          "additionalProperties": true
-        }
+          {
+            "type": "object",
+            "properties": {
+              "result": {
+                "type": "object",
+                "properties": {
+                  "invites": {
+                    "type": "array",
+                    "items": {
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            },
+            "additionalProperties": true
+          }
+        ]
       },
       "RewardsLeaderboardResponse": {
         "type": "object",
@@ -8865,28 +8990,27 @@
         }
       },
       "ChannelFollowersResponse": {
-        "type": "object",
-        "properties": {
-          "result": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/PaginatedResponse"
+          },
+          {
             "type": "object",
             "properties": {
-              "users": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/ChannelFollower"
-                }
-              },
-              "next": {
+              "result": {
                 "type": "object",
                 "properties": {
-                  "cursor": {
-                    "type": "string"
+                  "users": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ChannelFollower"
+                    }
                   }
                 }
               }
             }
           }
-        }
+        ]
       },
       "ChannelFollowStatus": {
         "type": "object",
@@ -9087,6 +9211,9 @@
             "description": "User-provided description of the API key's purpose"
           }
         }
+      },
+      "DirectCastSendResponse": {
+        "$ref": "#/components/schemas/common_SuccessResponse"
       }
     },
     "parameters": {
@@ -9104,9 +9231,22 @@
         "in": "query",
         "required": false,
         "schema": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100,
+          "default": 50
         },
-        "description": "Maximum number of items to return"
+        "description": "Maximum number of items to return",
+        "example": 50
+      },
+      "cursorParam": {
+        "name": "cursor",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string"
+        },
+        "description": "Base64 encoded cursor for pagination"
       }
     },
     "responses": {
