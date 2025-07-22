@@ -1228,6 +1228,90 @@
         }
       }
     },
+    "/v2/direct-cast-message-reaction": {
+      "put": {
+        "operationId": "addDirectCastMessageReaction",
+        "summary": "Add reaction to direct cast message",
+        "description": "Adds an emoji reaction to a specific message in a direct cast conversation.",
+        "tags": [
+          "Messaging"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DirectCastMessageReactionRequest"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Reaction added successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/common_SuccessResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "429": {
+            "description": "Too many requests"
+          }
+        }
+      },
+      "delete": {
+        "operationId": "removeDirectCastMessageReaction",
+        "summary": "Remove reaction from direct cast message",
+        "description": "Removes an emoji reaction from a specific message in a direct cast conversation.",
+        "tags": [
+          "Messaging"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DirectCastMessageReactionRequest"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Reaction removed successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/common_SuccessResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "429": {
+            "description": "Too many requests"
+          }
+        }
+      }
+    },
     "/v2/direct-cast-pin-conversation": {
       "post": {
         "operationId": "pinDirectCastConversation",
@@ -8284,6 +8368,31 @@
           }
         }
       },
+      "DirectCastMessageReactionRequest": {
+        "type": "object",
+        "required": [
+          "conversationId",
+          "messageId",
+          "reaction"
+        ],
+        "properties": {
+          "conversationId": {
+            "type": "string",
+            "description": "ID of the conversation containing the message",
+            "example": "12590-20146"
+          },
+          "messageId": {
+            "type": "string",
+            "description": "ID of the message to react to",
+            "example": "17c7f0b459ff8f625fc35bba6a89c817"
+          },
+          "reaction": {
+            "type": "string",
+            "description": "Emoji reaction to add or remove",
+            "example": "👍"
+          }
+        }
+      },
       "DirectCastPinConversationRequest": {
         "type": "object",
         "required": [
@@ -9803,6 +9912,9 @@
         "$ref": "#/components/schemas/common_SuccessResponse"
       },
       "DirectCastConversationMessageTtlResponse": {
+        "$ref": "#/components/schemas/common_SuccessResponse"
+      },
+      "DirectCastMessageReactionResponse": {
         "$ref": "#/components/schemas/common_SuccessResponse"
       }
     },
