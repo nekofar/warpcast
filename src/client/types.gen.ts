@@ -566,6 +566,13 @@ export type CommonSuccessResponse = GenericResponse & {
 	};
 };
 
+export type DirectCastManuallyMarkUnreadRequest = {
+	/**
+	 * ID of the conversation to mark as unread
+	 */
+	conversationId: string;
+};
+
 export type DiscoverChannelsResponse = GenericResponse & {
 	result?: {
 		channels?: Array<{
@@ -1881,6 +1888,37 @@ export type SendDirectCastMessageResponses = {
 
 export type SendDirectCastMessageResponse =
 	SendDirectCastMessageResponses[keyof SendDirectCastMessageResponses];
+
+export type DirectCastManuallyMarkUnreadData = {
+	body: DirectCastManuallyMarkUnreadRequest;
+	path?: never;
+	query?: never;
+	url: "/v2/direct-cast-manually-mark-unread";
+};
+
+export type DirectCastManuallyMarkUnreadErrors = {
+	/**
+	 * Authentication is required or failed
+	 */
+	401: ErrorResponse;
+	/**
+	 * Too many requests
+	 */
+	429: unknown;
+};
+
+export type DirectCastManuallyMarkUnreadError =
+	DirectCastManuallyMarkUnreadErrors[keyof DirectCastManuallyMarkUnreadErrors];
+
+export type DirectCastManuallyMarkUnreadResponses = {
+	/**
+	 * Direct cast conversation marked as unread successfully
+	 */
+	200: CommonSuccessResponse;
+};
+
+export type DirectCastManuallyMarkUnreadResponse =
+	DirectCastManuallyMarkUnreadResponses[keyof DirectCastManuallyMarkUnreadResponses];
 
 export type DiscoverChannelsData = {
 	body?: never;

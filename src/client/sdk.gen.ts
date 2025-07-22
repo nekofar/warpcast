@@ -71,6 +71,9 @@ import type {
 	SendDirectCastMessageData,
 	SendDirectCastMessageResponses,
 	SendDirectCastMessageErrors,
+	DirectCastManuallyMarkUnreadData,
+	DirectCastManuallyMarkUnreadResponses,
+	DirectCastManuallyMarkUnreadErrors,
 	DiscoverChannelsData,
 	DiscoverChannelsResponses,
 	DiscoverChannelsErrors,
@@ -899,6 +902,35 @@ export const sendDirectCastMessage = <ThrowOnError extends boolean = false>(
 			},
 		],
 		url: "/v2/direct-cast-send",
+		...options,
+		headers: {
+			"Content-Type": "application/json",
+			...options.headers,
+		},
+	});
+};
+
+/**
+ * Manually mark direct cast conversation as unread
+ * Marks a direct cast conversation as unread for the authenticated user.
+ */
+export const directCastManuallyMarkUnread = <
+	ThrowOnError extends boolean = false,
+>(
+	options: Options<DirectCastManuallyMarkUnreadData, ThrowOnError>,
+) => {
+	return (options.client ?? _heyApiClient).put<
+		DirectCastManuallyMarkUnreadResponses,
+		DirectCastManuallyMarkUnreadErrors,
+		ThrowOnError
+	>({
+		security: [
+			{
+				scheme: "bearer",
+				type: "http",
+			},
+		],
+		url: "/v2/direct-cast-manually-mark-unread",
 		...options,
 		headers: {
 			"Content-Type": "application/json",

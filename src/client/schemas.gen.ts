@@ -1291,6 +1291,17 @@ export const common_SuccessResponseSchema = {
 	],
 } as const;
 
+export const DirectCastManuallyMarkUnreadRequestSchema = {
+	type: "object",
+	required: ["conversationId"],
+	properties: {
+		conversationId: {
+			type: "string",
+			description: "ID of the conversation to mark as unread",
+		},
+	},
+} as const;
+
 export const DiscoverChannelsResponseSchema = {
 	allOf: [
 		{
