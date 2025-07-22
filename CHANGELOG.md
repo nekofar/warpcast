@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.33] - 2025-07-22
+
+### 🚀 Features
+
+- *(openapi)* Add `sendDirectCastMessage` endpoint
+- *(openapi)* Add `sendDirectCastMessage` request/response schemas
+- *(client)* Add `sendDirectCastMessage` support
+- *(openapi)* Add descriptive tags for operations
+- *(openapi)* Refactor schemas with reusable components
+- *(openapi)* Add new tags, refactor, and enhance schemas
+- *(openapi)* Refactor schemas with reusable components
+
 ## [2.0.0-alpha.32] - 2025-07-21
 
 ### 🚀 Features
