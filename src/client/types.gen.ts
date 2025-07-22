@@ -527,6 +527,42 @@ export type DirectCastConversationMessagesResponse = {
 	};
 };
 
+export type DirectCastSendRequest = {
+	/**
+	 * ID of the conversation to send the message to
+	 */
+	conversationId: string;
+	/**
+	 * Array of Farcaster IDs of message recipients
+	 */
+	recipientFids: Array<number>;
+	/**
+	 * Unique identifier for the message
+	 */
+	messageId: string;
+	/**
+	 * Type of the message
+	 */
+	type: "text" | "image" | "reaction" | "link";
+	/**
+	 * Content of the message
+	 */
+	message: string;
+	/**
+	 * ID of the message this is replying to (optional)
+	 */
+	inReplyToId?: string;
+};
+
+export type DirectCastSendResponse = {
+	result: {
+		/**
+		 * Whether the message was sent successfully
+		 */
+		success: boolean;
+	};
+};
+
 export type DiscoverChannelsResponse = {
 	result: {
 		channels?: Array<{
@@ -1799,6 +1835,37 @@ export type GetDirectCastConversationRecentMessagesResponses = {
 
 export type GetDirectCastConversationRecentMessagesResponse =
 	GetDirectCastConversationRecentMessagesResponses[keyof GetDirectCastConversationRecentMessagesResponses];
+
+export type SendDirectCastMessageData = {
+	body: DirectCastSendRequest;
+	path?: never;
+	query?: never;
+	url: "/v2/direct-cast-send";
+};
+
+export type SendDirectCastMessageErrors = {
+	/**
+	 * Authentication is required or failed
+	 */
+	401: ErrorResponse;
+	/**
+	 * Too many requests
+	 */
+	429: unknown;
+};
+
+export type SendDirectCastMessageError =
+	SendDirectCastMessageErrors[keyof SendDirectCastMessageErrors];
+
+export type SendDirectCastMessageResponses = {
+	/**
+	 * Direct cast message sent successfully
+	 */
+	200: DirectCastSendResponse;
+};
+
+export type SendDirectCastMessageResponse =
+	SendDirectCastMessageResponses[keyof SendDirectCastMessageResponses];
 
 export type DiscoverChannelsData = {
 	body?: never;

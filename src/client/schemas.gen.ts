@@ -1208,6 +1208,66 @@ export const DirectCastConversationMessagesResponseSchema = {
 	},
 } as const;
 
+export const DirectCastSendRequestSchema = {
+	type: "object",
+	required: ["conversationId", "recipientFids", "messageId", "type", "message"],
+	properties: {
+		conversationId: {
+			type: "string",
+			description: "ID of the conversation to send the message to",
+			example:
+				"908811244217b112fcf727baf0975fc65fb65687fb3e562c3d16d4a457e05efd",
+		},
+		recipientFids: {
+			type: "array",
+			items: {
+				type: "integer",
+			},
+			description: "Array of Farcaster IDs of message recipients",
+			example: [17838, 861305],
+		},
+		messageId: {
+			type: "string",
+			description: "Unique identifier for the message",
+			example: "199b59f9c76097ba3a902625a1989870",
+		},
+		type: {
+			type: "string",
+			enum: ["text", "image", "reaction", "link"],
+			description: "Type of the message",
+			example: "text",
+		},
+		message: {
+			type: "string",
+			description: "Content of the message",
+			example: "sup",
+		},
+		inReplyToId: {
+			type: "string",
+			description: "ID of the message this is replying to (optional)",
+			example: "2554cd70feb9365ff96996be5132ce77",
+		},
+	},
+} as const;
+
+export const DirectCastSendResponseSchema = {
+	type: "object",
+	required: ["result"],
+	properties: {
+		result: {
+			type: "object",
+			required: ["success"],
+			properties: {
+				success: {
+					type: "boolean",
+					description: "Whether the message was sent successfully",
+					example: true,
+				},
+			},
+		},
+	},
+} as const;
+
 export const DiscoverChannelsResponseSchema = {
 	type: "object",
 	required: ["result"],
