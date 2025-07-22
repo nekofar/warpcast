@@ -550,6 +550,17 @@ export type DirectCastConversationMessagesResponse = PaginatedResponse & {
 	};
 };
 
+export type DirectCastConversationNotificationsRequest = {
+	/**
+	 * ID of the conversation to update notification settings for
+	 */
+	conversationId: string;
+	/**
+	 * Whether to mute notifications for this conversation
+	 */
+	muted: boolean;
+};
+
 export type DirectCastSendRequest = {
 	/**
 	 * ID of the conversation to send the message to
@@ -1253,6 +1264,8 @@ export type DirectCastSendResponse = CommonSuccessResponse;
 
 export type DirectCastConversationCategorizationResponse =
 	CommonSuccessResponse;
+
+export type DirectCastConversationNotificationsResponse = CommonSuccessResponse;
 
 /**
  * The user's FID (Farcaster ID)
@@ -2008,6 +2021,37 @@ export type GetDirectCastConversationMessagesResponses = {
 
 export type GetDirectCastConversationMessagesResponse =
 	GetDirectCastConversationMessagesResponses[keyof GetDirectCastConversationMessagesResponses];
+
+export type UpdateDirectCastConversationNotificationsData = {
+	body: DirectCastConversationNotificationsRequest;
+	path?: never;
+	query?: never;
+	url: "/v2/direct-cast-conversation-notifications";
+};
+
+export type UpdateDirectCastConversationNotificationsErrors = {
+	/**
+	 * Authentication is required or failed
+	 */
+	401: ErrorResponse;
+	/**
+	 * Too many requests
+	 */
+	429: unknown;
+};
+
+export type UpdateDirectCastConversationNotificationsError =
+	UpdateDirectCastConversationNotificationsErrors[keyof UpdateDirectCastConversationNotificationsErrors];
+
+export type UpdateDirectCastConversationNotificationsResponses = {
+	/**
+	 * Notification settings updated successfully
+	 */
+	200: CommonSuccessResponse;
+};
+
+export type UpdateDirectCastConversationNotificationsResponse =
+	UpdateDirectCastConversationNotificationsResponses[keyof UpdateDirectCastConversationNotificationsResponses];
 
 export type GetDirectCastConversationRecentMessagesData = {
 	body?: never;

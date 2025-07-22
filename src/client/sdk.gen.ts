@@ -68,6 +68,9 @@ import type {
 	GetDirectCastConversationMessagesData,
 	GetDirectCastConversationMessagesResponses,
 	GetDirectCastConversationMessagesErrors,
+	UpdateDirectCastConversationNotificationsData,
+	UpdateDirectCastConversationNotificationsResponses,
+	UpdateDirectCastConversationNotificationsErrors,
 	GetDirectCastConversationRecentMessagesData,
 	GetDirectCastConversationRecentMessagesResponses,
 	GetDirectCastConversationRecentMessagesErrors,
@@ -891,6 +894,35 @@ export const getDirectCastConversationMessages = <
 		],
 		url: "/v2/direct-cast-conversation-messages",
 		...options,
+	});
+};
+
+/**
+ * Update direct cast conversation notifications
+ * Updates notification settings for a direct cast conversation.
+ */
+export const updateDirectCastConversationNotifications = <
+	ThrowOnError extends boolean = false,
+>(
+	options: Options<UpdateDirectCastConversationNotificationsData, ThrowOnError>,
+) => {
+	return (options.client ?? _heyApiClient).post<
+		UpdateDirectCastConversationNotificationsResponses,
+		UpdateDirectCastConversationNotificationsErrors,
+		ThrowOnError
+	>({
+		security: [
+			{
+				scheme: "bearer",
+				type: "http",
+			},
+		],
+		url: "/v2/direct-cast-conversation-notifications",
+		...options,
+		headers: {
+			"Content-Type": "application/json",
+			...options.headers,
+		},
 	});
 };
 

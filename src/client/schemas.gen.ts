@@ -1271,6 +1271,23 @@ export const DirectCastConversationMessagesResponseSchema = {
 	],
 } as const;
 
+export const DirectCastConversationNotificationsRequestSchema = {
+	type: "object",
+	required: ["conversationId", "muted"],
+	properties: {
+		conversationId: {
+			type: "string",
+			description: "ID of the conversation to update notification settings for",
+			example: "17838-20146",
+		},
+		muted: {
+			type: "boolean",
+			description: "Whether to mute notifications for this conversation",
+			example: false,
+		},
+	},
+} as const;
+
 export const DirectCastSendRequestSchema = {
 	type: "object",
 	required: ["conversationId", "recipientFids", "messageId", "type", "message"],
@@ -2807,5 +2824,9 @@ export const DirectCastSendResponseSchema = {
 } as const;
 
 export const DirectCastConversationCategorizationResponseSchema = {
+	$ref: "#/components/schemas/common_SuccessResponse",
+} as const;
+
+export const DirectCastConversationNotificationsResponseSchema = {
 	$ref: "#/components/schemas/common_SuccessResponse",
 } as const;
