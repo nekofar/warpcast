@@ -608,6 +608,15 @@ DirectCastSendRequest:
 
 DirectCastSendResponse:
   $ref: './common.yaml#/SuccessResponse'
+
+DirectCastManuallyMarkUnreadRequest:
+  type: object
+  required:
+    - conversationId
+  properties:
+    conversationId:
+      type: string
+      description: ID of the conversation to mark as unread
 DiscoverChannelsResponse:
   allOf:
     - $ref: './common.yaml#/GenericResponse'
