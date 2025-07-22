@@ -731,6 +731,144 @@ export type FrameAppsResponse = {
 	};
 };
 
+/**
+ * Context information for the viewer
+ */
+export type MiniAppViewerContext = {
+	[key: string]: unknown;
+};
+
+export type MiniApp = {
+	/**
+	 * The domain of the mini app
+	 */
+	domain?: string;
+	/**
+	 * The name of the mini app
+	 */
+	name?: string;
+	/**
+	 * URL to the mini app's icon
+	 */
+	iconUrl?: string;
+	/**
+	 * The home URL of the mini app
+	 */
+	homeUrl?: string;
+	author?: User;
+	/**
+	 * Whether the mini app supports notifications
+	 */
+	supportsNotifications?: boolean;
+	/**
+	 * Unique identifier for the mini app
+	 */
+	id?: string;
+	/**
+	 * Short identifier for the mini app
+	 */
+	shortId?: string;
+	/**
+	 * URL to the mini app's main image
+	 */
+	imageUrl?: string;
+	/**
+	 * Title for the action button
+	 */
+	buttonTitle?: string;
+	/**
+	 * URL to the splash screen image
+	 */
+	splashImageUrl?: string;
+	/**
+	 * Background color for the splash screen
+	 */
+	splashBackgroundColor?: string;
+	/**
+	 * URL for sharing casts
+	 */
+	castShareUrl?: string;
+	/**
+	 * Subtitle of the mini app
+	 */
+	subtitle?: string;
+	/**
+	 * Description of the mini app
+	 */
+	description?: string;
+	/**
+	 * Tagline of the mini app
+	 */
+	tagline?: string;
+	/**
+	 * URL to the hero image
+	 */
+	heroImageUrl?: string;
+	/**
+	 * Primary category of the mini app
+	 */
+	primaryCategory?: string;
+	/**
+	 * Tags associated with the mini app
+	 */
+	tags?: Array<string>;
+	/**
+	 * URLs to screenshot images
+	 */
+	screenshotUrls?: Array<string>;
+	/**
+	 * Whether the mini app should be indexed
+	 */
+	noindex?: boolean;
+	/**
+	 * Open Graph title
+	 */
+	ogTitle?: string;
+	/**
+	 * Open Graph description
+	 */
+	ogDescription?: string;
+	/**
+	 * Open Graph image URL
+	 */
+	ogImageUrl?: string;
+	/**
+	 * Required capabilities for the mini app
+	 */
+	requiredCapabilities?: Array<string>;
+	/**
+	 * Required blockchain chains
+	 */
+	requiredChains?: Array<string>;
+	viewerContext?: MiniAppViewerContext;
+};
+
+export type RankedMiniApp = {
+	/**
+	 * Current rank of the mini app
+	 */
+	rank?: number;
+	miniApp?: MiniApp;
+	/**
+	 * Change in rank over the last 72 hours
+	 */
+	rank72hChange?: number;
+};
+
+export type TopMiniAppsResponsePaginationCursor = {
+	/**
+	 * Base64 encoded cursor for pagination
+	 */
+	cursor?: string;
+};
+
+export type TopMiniAppsResponse = {
+	result?: {
+		miniApps?: Array<RankedMiniApp>;
+		next?: TopMiniAppsResponsePaginationCursor;
+	};
+};
+
 export type VerifiedAddress = {
 	fid?: number;
 	address?: string;
@@ -2499,6 +2637,42 @@ export type GetTopFrameAppsResponses = {
 
 export type GetTopFrameAppsResponse =
 	GetTopFrameAppsResponses[keyof GetTopFrameAppsResponses];
+
+export type GetTopMiniAppsData = {
+	body?: never;
+	path?: never;
+	query?: {
+		/**
+		 * Maximum number of items to return
+		 */
+		limit?: number;
+		/**
+		 * Base64 encoded cursor for pagination
+		 */
+		cursor?: string;
+	};
+	url: "/v1/top-mini-apps";
+};
+
+export type GetTopMiniAppsErrors = {
+	/**
+	 * Authentication is required or failed
+	 */
+	401: ErrorResponse;
+};
+
+export type GetTopMiniAppsError =
+	GetTopMiniAppsErrors[keyof GetTopMiniAppsErrors];
+
+export type GetTopMiniAppsResponses = {
+	/**
+	 * A list of top mini apps
+	 */
+	200: TopMiniAppsResponse;
+};
+
+export type GetTopMiniAppsResponse =
+	GetTopMiniAppsResponses[keyof GetTopMiniAppsResponses];
 
 export type GetVerificationsData = {
 	body?: never;

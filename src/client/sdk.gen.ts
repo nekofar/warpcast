@@ -128,6 +128,9 @@ import type {
 	GetTopFrameAppsData,
 	GetTopFrameAppsResponses,
 	GetTopFrameAppsErrors,
+	GetTopMiniAppsData,
+	GetTopMiniAppsResponses,
+	GetTopMiniAppsErrors,
 	GetVerificationsData,
 	GetVerificationsResponses,
 	GetVerificationsErrors,
@@ -1356,6 +1359,29 @@ export const getTopFrameApps = <ThrowOnError extends boolean = false>(
 			},
 		],
 		url: "/v1/top-frameapps",
+		...options,
+	});
+};
+
+/**
+ * Get top mini apps
+ * Returns a list of top mini apps with optional pagination.
+ */
+export const getTopMiniApps = <ThrowOnError extends boolean = false>(
+	options?: Options<GetTopMiniAppsData, ThrowOnError>,
+) => {
+	return (options?.client ?? _heyApiClient).get<
+		GetTopMiniAppsResponses,
+		GetTopMiniAppsErrors,
+		ThrowOnError
+	>({
+		security: [
+			{
+				scheme: "bearer",
+				type: "http",
+			},
+		],
+		url: "/v1/top-mini-apps",
 		...options,
 	});
 };
