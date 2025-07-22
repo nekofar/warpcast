@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.35] - 2025-07-22
+
+### 🚀 Features
+
+- *(openapi)* Add schemas for cast and channel features
+
+### 🚜 Refactor
+
+- *(openapi)* Simplify metadata schema requirements
+- *(client)* Update `metadata` requirements in schema
+
 ## [2.0.0-alpha.34] - 2025-07-22
 
 ### 🚀 Features

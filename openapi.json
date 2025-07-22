@@ -8577,17 +8577,14 @@
           "result": {
             "type": "object",
             "required": [
-              "metadata"
+              "type",
+              "lastUpdateTimestamp",
+              "currentPeriodStartTimestamp",
+              "currentPeriodEndTimestamp"
             ],
             "properties": {
               "metadata": {
                 "type": "object",
-                "required": [
-                  "type",
-                  "lastUpdateTimestamp",
-                  "currentPeriodStartTimestamp",
-                  "currentPeriodEndTimestamp"
-                ],
                 "properties": {
                   "type": {
                     "type": "string"

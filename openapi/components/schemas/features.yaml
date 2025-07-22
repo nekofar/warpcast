@@ -1,0 +1,418 @@
+# Feature-specific schemas for various Warpcast features
+
+# Rewards-related schemas
+Winner:
+  type: 'object'
+  properties:
+    fid:
+      type: 'integer'
+      description: 'The fid of the winner'
+    domain:
+      type: 'string'
+      description: 'The domain of the winner'
+    frameName:
+      type: 'string'
+      description: 'The name of the frame (mini app)'
+    score:
+      type: 'integer'
+      description: 'The score of the winner'
+    rank:
+      type: 'integer'
+      description: 'The rank of the winner'
+    rewardCents:
+      type: 'integer'
+      description: 'The reward amount in cents'
+    walletAddress:
+      type: 'string'
+      description: 'The wallet address of the winner (optional)'
+
+RewardsLeaderboardResponse:
+  type: object
+  required: [result]
+  properties:
+    result:
+      type: object
+      required: [leaderboard]
+      properties:
+        leaderboard:
+          type: object
+          required: [type, users]
+          properties:
+            type:
+              type: string
+            users:
+              type: array
+              items:
+                type: object
+                properties:
+                  user:
+                    type: object
+                    additionalProperties: true
+                  score:
+                    type: integer
+                  rank:
+                    type: integer
+
+RewardsScoresResponse:
+  type: object
+  required: [result]
+  properties:
+    result:
+      type: object
+      required: [scores]
+      properties:
+        scores:
+          type: array
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+              user:
+                type: object
+                additionalProperties: true
+              allTimeScore:
+                type: integer
+              currentPeriodScore:
+                type: integer
+              previousPeriodScore:
+                type: integer
+
+RewardsMetadataResponse:
+  type: object
+  required: [result]
+  properties:
+    result:
+      type: object
+      required:
+        - type
+        - lastUpdateTimestamp
+        - currentPeriodStartTimestamp
+        - currentPeriodEndTimestamp
+      properties:
+        metadata:
+          type: object
+          properties:
+            type:
+              type: string
+            lastUpdateTimestamp:
+              type: integer
+            currentPeriodStartTimestamp:
+              type: integer
+            currentPeriodEndTimestamp:
+              type: integer
+            tiers:
+              type: array
+              items:
+                type: object
+                additionalProperties: true
+            proportionalPayout:
+              type: object
+              properties:
+                numWinners:
+                  type: integer
+                totalRewardCents:
+                  type: integer
+
+# Starter Pack schemas
+StarterPack:
+  type: object
+  additionalProperties: true
+
+StarterPacksResponse:
+  type: object
+  required: [result]
+  properties:
+    result:
+      type: object
+      properties:
+        starterPacks:
+          type: array
+          items:
+            $ref: '#/StarterPack'
+
+StarterPackResponse:
+  type: object
+  required: [result]
+  properties:
+    result:
+      type: object
+      properties:
+        starterPack:
+          $ref: '#/StarterPack'
+
+StarterPackUsersResponse:
+  type: object
+  required: [result]
+  properties:
+    result:
+      type: object
+      properties:
+        users:
+          type: array
+          items:
+            $ref: './user.yaml#/User'
+
+# Frame/App schemas
+Frame:
+  type: object
+  properties:
+    domain:
+      type: string
+    name:
+      type: string
+    iconUrl:
+      type: string
+    homeUrl:
+      type: string
+    splashImageUrl:
+      type: string
+    splashBackgroundColor:
+      type: string
+    buttonTitle:
+      type: ['string', 'null']
+    imageUrl:
+      type: ['string', 'null']
+    supportsNotifications:
+      type: boolean
+    viewerContext:
+      type: object
+      additionalProperties: true
+    author:
+      $ref: './user.yaml#/User'
+
+AppsByAuthorResponse:
+  type: object
+  properties:
+    result:
+      type: object
+      properties:
+        frames:
+          type: array
+          items:
+            $ref: '#/Frame'
+
+FavoriteFramesResponse:
+  type: object
+  required:
+    - result
+  properties:
+    result:
+      type: object
+      required:
+        - frames
+      properties:
+        frames:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+
+# Invite schemas
+InvitesAvailableResponse:
+  allOf:
+    - $ref: './common.yaml#/GenericResponse'
+    - type: object
+      properties:
+        result:
+          type: object
+          required:
+            - allocatedInvitesCount
+            - availableInvitesCount
+          properties:
+            allocatedInvitesCount:
+              type: integer
+              description: Total number of invites allocated to the user
+            availableInvitesCount:
+              type: integer
+              description: Number of invites currently available to send
+
+SponsoredInvitesResponse:
+  allOf:
+    - $ref: './common.yaml#/GenericResponse'
+    - type: object
+      properties:
+        result:
+          type: object
+          properties:
+            invites:
+              type: array
+              items:
+                type: object
+      additionalProperties: true
+
+# Notification schemas
+NotificationsResponse:
+  type: object
+  required: [result]
+  properties:
+    result:
+      type: object
+      properties:
+        notifications:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+
+UnseenCountsResponse:
+  type: object
+  required:
+    - result
+  properties:
+    result:
+      type: object
+      properties:
+        notificationsCount:
+          type: integer
+        notificationTabs:
+          type: array
+          items:
+            type: object
+            required:
+              - tab
+              - unseenCount
+            properties:
+              tab:
+                type: string
+              unseenCount:
+                type: integer
+        inboxCount:
+          type: integer
+        channelFeeds:
+          type: array
+          items:
+            type: object
+            required:
+              - channelKey
+              - feedType
+              - hasNewItems
+            properties:
+              channelKey:
+                type: string
+              feedType:
+                type: string
+              hasNewItems:
+                type: boolean
+        warpTransactionCount:
+          type: integer
+
+# Muted keywords schemas
+MutedKeywordProperties:
+  type: object
+  properties:
+    channels:
+      type: boolean
+    frames:
+      type: boolean
+    notifications:
+      type: boolean
+
+MutedKeyword:
+  type: object
+  required: [keyword, properties]
+  properties:
+    keyword:
+      type: string
+    properties:
+      $ref: '#/MutedKeywordProperties'
+
+MutedKeywordsResponse:
+  type: object
+  required: [success, result]
+  properties:
+    success:
+      type: boolean
+    result:
+      type: object
+      required: [keywords, mutedKeywords]
+      properties:
+        keywords:
+          type: array
+          items:
+            type: string
+        mutedKeywords:
+          type: array
+          items:
+            $ref: '#/MutedKeyword'
+
+# API Key schema
+ApiKey:
+  type: object
+  required:
+    - id
+    - createdAt
+    - expiresAt
+    - tag
+    - description
+  properties:
+    id:
+      type: string
+      format: uuid
+      description: Unique identifier for the API key
+    createdAt:
+      type: integer
+      format: int64
+      description: Timestamp when the API key was created (in milliseconds since epoch)
+    expiresAt:
+      type: integer
+      format: int64
+      description: Timestamp when the API key expires (in milliseconds since epoch)
+    revokedAt:
+      type: ['string', 'null']
+      format: int64
+      description: Timestamp when the API key was revoked, if applicable (in milliseconds since epoch)
+    tag:
+      type: string
+      description: Short identifier tag for the API key
+    description:
+      type: string
+      description: User-provided description of the API key's purpose
+
+# Action schema
+Action:
+  type: object
+  properties:
+    name:
+      type: string
+    icon:
+      type: string
+    description:
+      type: string
+    aboutUrl:
+      type: string
+      format: uri
+    imageUrl:
+      type: string
+      format: uri
+    actionUrl:
+      type: string
+      format: uri
+    action:
+      type: object
+      properties:
+        actionType:
+          type: string
+          enum: [post, get, put, delete]
+        postUrl:
+          type: string
+          format: uri
+
+# Feed schemas
+FeedItemsResponse:
+  type: object
+  properties:
+    result:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+        latestMainCastTimestamp:
+          type: integer
+        feedTopSeenAtTimestamp:
+          type: integer
+        replaceFeed:
+          type: boolean

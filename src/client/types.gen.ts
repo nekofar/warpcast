@@ -702,11 +702,11 @@ export type RewardsScoresResponse = {
 
 export type RewardsMetadataResponse = {
 	result: {
-		metadata: {
-			type: string;
-			lastUpdateTimestamp: number;
-			currentPeriodStartTimestamp: number;
-			currentPeriodEndTimestamp: number;
+		metadata?: {
+			type?: string;
+			lastUpdateTimestamp?: number;
+			currentPeriodStartTimestamp?: number;
+			currentPeriodEndTimestamp?: number;
 			tiers?: Array<{
 				[key: string]: unknown;
 			}>;
