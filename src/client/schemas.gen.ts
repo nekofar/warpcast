@@ -1206,6 +1206,46 @@ export const DirectCastConversationResponseSchema = {
 	],
 } as const;
 
+export const DirectCastConversationCategorizationRequestSchema = {
+	type: "object",
+	required: ["conversationId", "category"],
+	properties: {
+		conversationId: {
+			type: "string",
+			description: "ID of the conversation to categorize",
+			example: "17838-20146",
+		},
+		category: {
+			type: "string",
+			description: "Category to assign to the conversation",
+			example: "archived",
+		},
+	},
+} as const;
+
+export const common_SuccessResponseSchema = {
+	allOf: [
+		{
+			$ref: "#/components/schemas/GenericResponse",
+		},
+		{
+			type: "object",
+			properties: {
+				result: {
+					type: "object",
+					required: ["success"],
+					properties: {
+						success: {
+							type: "boolean",
+							description: "Whether the operation was successful",
+						},
+					},
+				},
+			},
+		},
+	],
+} as const;
+
 export const DirectCastConversationMessagesResponseSchema = {
 	allOf: [
 		{
@@ -1266,29 +1306,6 @@ export const DirectCastSendRequestSchema = {
 			description: "ID of the message this is replying to (optional)",
 		},
 	},
-} as const;
-
-export const common_SuccessResponseSchema = {
-	allOf: [
-		{
-			$ref: "#/components/schemas/GenericResponse",
-		},
-		{
-			type: "object",
-			properties: {
-				result: {
-					type: "object",
-					required: ["success"],
-					properties: {
-						success: {
-							type: "boolean",
-							description: "Whether the operation was successful",
-						},
-					},
-				},
-			},
-		},
-	],
 } as const;
 
 export const DirectCastManuallyMarkUnreadRequestSchema = {
@@ -2786,5 +2803,9 @@ export const ApiKeySchema = {
 } as const;
 
 export const DirectCastSendResponseSchema = {
+	$ref: "#/components/schemas/common_SuccessResponse",
+} as const;
+
+export const DirectCastConversationCategorizationResponseSchema = {
 	$ref: "#/components/schemas/common_SuccessResponse",
 } as const;

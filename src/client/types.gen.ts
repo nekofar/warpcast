@@ -524,6 +524,26 @@ export type DirectCastConversationResponse = GenericResponse & {
 	};
 };
 
+export type DirectCastConversationCategorizationRequest = {
+	/**
+	 * ID of the conversation to categorize
+	 */
+	conversationId: string;
+	/**
+	 * Category to assign to the conversation
+	 */
+	category: string;
+};
+
+export type CommonSuccessResponse = GenericResponse & {
+	result?: {
+		/**
+		 * Whether the operation was successful
+		 */
+		success: boolean;
+	};
+};
+
 export type DirectCastConversationMessagesResponse = PaginatedResponse & {
 	result?: {
 		messages: Array<DirectCastMessage>;
@@ -555,15 +575,6 @@ export type DirectCastSendRequest = {
 	 * ID of the message this is replying to (optional)
 	 */
 	inReplyToId?: string;
-};
-
-export type CommonSuccessResponse = GenericResponse & {
-	result?: {
-		/**
-		 * Whether the operation was successful
-		 */
-		success: boolean;
-	};
 };
 
 export type DirectCastManuallyMarkUnreadRequest = {
@@ -1239,6 +1250,9 @@ export type ApiKey = {
 };
 
 export type DirectCastSendResponse = CommonSuccessResponse;
+
+export type DirectCastConversationCategorizationResponse =
+	CommonSuccessResponse;
 
 /**
  * The user's FID (Farcaster ID)
@@ -1920,6 +1934,37 @@ export type GetDirectCastConversationResponses = {
 
 export type GetDirectCastConversationResponse =
 	GetDirectCastConversationResponses[keyof GetDirectCastConversationResponses];
+
+export type CategorizeDirectCastConversationData = {
+	body: DirectCastConversationCategorizationRequest;
+	path?: never;
+	query?: never;
+	url: "/v2/direct-cast-conversation-categorization";
+};
+
+export type CategorizeDirectCastConversationErrors = {
+	/**
+	 * Authentication is required or failed
+	 */
+	401: ErrorResponse;
+	/**
+	 * Too many requests
+	 */
+	429: unknown;
+};
+
+export type CategorizeDirectCastConversationError =
+	CategorizeDirectCastConversationErrors[keyof CategorizeDirectCastConversationErrors];
+
+export type CategorizeDirectCastConversationResponses = {
+	/**
+	 * Conversation categorized successfully
+	 */
+	200: CommonSuccessResponse;
+};
+
+export type CategorizeDirectCastConversationResponse =
+	CategorizeDirectCastConversationResponses[keyof CategorizeDirectCastConversationResponses];
 
 export type GetDirectCastConversationMessagesData = {
 	body?: never;

@@ -62,6 +62,9 @@ import type {
 	GetDirectCastConversationData,
 	GetDirectCastConversationResponses,
 	GetDirectCastConversationErrors,
+	CategorizeDirectCastConversationData,
+	CategorizeDirectCastConversationResponses,
+	CategorizeDirectCastConversationErrors,
 	GetDirectCastConversationMessagesData,
 	GetDirectCastConversationMessagesResponses,
 	GetDirectCastConversationMessagesErrors,
@@ -833,6 +836,35 @@ export const getDirectCastConversation = <ThrowOnError extends boolean = false>(
 		],
 		url: "/v2/direct-cast-conversation",
 		...options,
+	});
+};
+
+/**
+ * Categorize direct cast conversation
+ * Categorizes a direct cast conversation by setting its category (e.g., archived).
+ */
+export const categorizeDirectCastConversation = <
+	ThrowOnError extends boolean = false,
+>(
+	options: Options<CategorizeDirectCastConversationData, ThrowOnError>,
+) => {
+	return (options.client ?? _heyApiClient).post<
+		CategorizeDirectCastConversationResponses,
+		CategorizeDirectCastConversationErrors,
+		ThrowOnError
+	>({
+		security: [
+			{
+				scheme: "bearer",
+				type: "http",
+			},
+		],
+		url: "/v2/direct-cast-conversation-categorization",
+		...options,
+		headers: {
+			"Content-Type": "application/json",
+			...options.headers,
+		},
 	});
 };
 
