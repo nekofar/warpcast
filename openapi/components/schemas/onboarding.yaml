@@ -1,0 +1,89 @@
+# Onboarding and authentication-related schemas
+
+OnboardingState:
+  type: object
+  properties:
+    id:
+      type: string
+      format: uuid
+    email:
+      type: string
+      format: email
+    user:
+      $ref: './user.yaml#/User'
+    hasOnboarding:
+      type: boolean
+    hasConfirmedEmail:
+      type: boolean
+    handledConnectAddress:
+      type: boolean
+    canRegisterUsername:
+      type: boolean
+    needsRegistrationPayment:
+      type: boolean
+    hasFid:
+      type: boolean
+    hasFname:
+      type: boolean
+    hasDelegatedSigner:
+      type: boolean
+    hasSetupProfile:
+      type: boolean
+    hasCompletedRegistration:
+      type: boolean
+    hasStorage:
+      type: boolean
+    handledPushNotificationsNudge:
+      type: boolean
+    handledContactsNudge:
+      type: boolean
+    handledInterestsNudge:
+      type: boolean
+    hasValidPaidInvite:
+      type: boolean
+    hasWarpcastWalletAddress:
+      type: boolean
+    hasPhone:
+      type: boolean
+    needsPhone:
+      type: boolean
+    sponsoredRegisterEligible:
+      type: boolean
+    geoRestricted:
+      type: boolean
+
+OnboardingStateResponse:
+  type: object
+  properties:
+    result:
+      type: object
+      properties:
+        state:
+          $ref: '#/OnboardingState'
+
+# Common response schemas
+ErrorResponse:
+  type: object
+  properties:
+    errors:
+      type: array
+      items:
+        type: object
+        properties:
+          message:
+            type: string
+            description: 'Error message describing the issue'
+
+SuccessResponse:
+  type: object
+  required:
+    - result
+  properties:
+    result:
+      type: object
+      required:
+        - success
+      properties:
+        success:
+          type: boolean
+          description: Indicates whether the operation was successful

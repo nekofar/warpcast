@@ -1,0 +1,296 @@
+# Cast-related schemas
+Cast:
+  type: object
+  properties:
+    hash:
+      type: string
+      description: Unique hash identifier for the cast
+    threadHash:
+      type: string
+      description: Hash identifier for the thread this cast belongs to
+    parentHash:
+      type: string
+      description: Hash identifier of the parent cast (if this is a reply)
+    parentSource:
+      type: object
+      properties:
+        type:
+          type: string
+          enum: [url]
+        url:
+          type: string
+    author:
+      $ref: './user.yaml#/User'
+    text:
+      type: string
+      description: The text content of the cast
+    timestamp:
+      type: integer
+      format: int64
+      description: Unix timestamp in milliseconds
+    mentions:
+      type: array
+      items:
+        $ref: './user.yaml#/User'
+    embeds:
+      type: object
+      properties:
+        images:
+          type: array
+          items:
+            $ref: './embeds.yaml#/ImageEmbed'
+        urls:
+          type: array
+          items:
+            $ref: './embeds.yaml#/UrlEmbed'
+        videos:
+          type: array
+          items:
+            $ref: './embeds.yaml#/VideoEmbed'
+        #        casts:
+        #          type: array
+        #          items:
+        #            $ref: '#/Cast'
+        unknowns:
+          type: array
+          items:
+            type: object
+        processedCastText:
+          type: string
+        groupInvites:
+          type: array
+          items:
+            type: object
+    replies:
+      type: object
+      properties:
+        count:
+          type: integer
+    reactions:
+      type: object
+      properties:
+        count:
+          type: integer
+    recasts:
+      type: object
+      properties:
+        count:
+          type: integer
+        recasters:
+          type: array
+          items:
+            $ref: '#/Recaster'
+    watches:
+      type: object
+      properties:
+        count:
+          type: integer
+    recast:
+      type: boolean
+    tags:
+      type: array
+      items:
+        type: object
+        properties:
+          type:
+            type: string
+          id:
+            type: string
+          name:
+            type: string
+          imageUrl:
+            type: string
+    quoteCount:
+      type: integer
+    combinedRecastCount:
+      type: integer
+    channel:
+      type: object
+      properties:
+        key:
+          type: string
+        name:
+          type: string
+        imageUrl:
+          type: string
+        authorContext:
+          type: object
+          properties:
+            role:
+              type: string
+            restricted:
+              type: boolean
+            banned:
+              type: boolean
+        authorRole:
+          type: string
+    viewerContext:
+      type: object
+      properties:
+        reacted:
+          type: boolean
+        recast:
+          type: boolean
+        bookmarked:
+          type: boolean
+
+CastAction:
+  type: object
+  properties:
+    id:
+      type: string
+    name:
+      type: string
+    octicon:
+      type: string
+    actionUrl:
+      type: string
+    action:
+      type: object
+      properties:
+        actionType:
+          type: string
+        postUrl:
+          type: string
+
+CastQuote:
+  type: object
+  properties:
+    hash:
+      type: string
+    threadHash:
+      type: string
+    parentSource:
+      type: object
+      properties:
+        type:
+          type: string
+        url:
+          type: string
+    author:
+      $ref: './user.yaml#/User'
+    text:
+      type: string
+    timestamp:
+      type: integer
+
+Recaster:
+  type: object
+  properties:
+    fid:
+      type: integer
+    username:
+      type: string
+    displayName:
+      type: string
+    recastHash:
+      type: string
+
+# Cast-related response schemas
+CastQuotesResponse:
+  type: object
+  required: [result]
+  properties:
+    result:
+      type: object
+      properties:
+        quotes:
+          type: array
+          items:
+            $ref: '#/CastQuote'
+
+CastRecastersResponse:
+  type: object
+  required: [result]
+  properties:
+    result:
+      type: object
+      properties:
+        users:
+          type: array
+          items:
+            $ref: './user.yaml#/User'
+
+CastHashResponse:
+  type: object
+  required: [result]
+  properties:
+    result:
+      type: object
+      properties:
+        castHash:
+          type: string
+          example: '0x750a7269b4a3b70e28d3f450df33487047d4927f'
+
+CastCreatedResponse:
+  type: object
+  properties:
+    result:
+      type: object
+      properties:
+        cast:
+          $ref: '#/Cast'
+
+AttachEmbedsResponse:
+  type: object
+  required: [result]
+  properties:
+    result:
+      type: object
+      additionalProperties: true
+
+# Draft-related schemas
+DraftCast:
+  type: object
+  properties:
+    text:
+      type: string
+    embeds:
+      type: array
+      items: {}
+
+Draft:
+  type: object
+  properties:
+    draftId:
+      type: string
+    casts:
+      type: array
+      items:
+        $ref: '#/DraftCast'
+
+DraftsResponse:
+  type: object
+  properties:
+    result:
+      type: object
+      properties:
+        drafts:
+          type: array
+          items: {}
+
+DraftCreatedResponse:
+  type: object
+  properties:
+    result:
+      type: object
+      properties:
+        draft:
+          $ref: '#/Draft'
+
+# Bookmark-related schemas
+BookmarkedCast:
+  type: object
+  additionalProperties: true
+
+BookmarkedCastsResponse:
+  type: object
+  required: [result]
+  properties:
+    result:
+      type: object
+      properties:
+        bookmarks:
+          type: array
+          items:
+            $ref: '#/BookmarkedCast'

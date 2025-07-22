@@ -1,0 +1,184 @@
+# Channel-related schemas
+
+# Enhanced channel schema with more details
+RawChannel:
+  type: object
+  properties:
+    id:
+      type: string
+    url:
+      type: string
+    name:
+      type: string
+    description:
+      type: string
+    descriptionMentions:
+      type: array
+      items:
+        type: integer
+    descriptionMentionsPositions:
+      type: array
+      items:
+        type: integer
+    imageUrl:
+      type: string
+    headerImageUrl:
+      type: string
+    leadFid:
+      type: integer
+    moderatorFids:
+      type: array
+      items:
+        type: integer
+    createdAt:
+      type: integer
+    followerCount:
+      type: integer
+    memberCount:
+      type: integer
+    pinnedCastHash:
+      type: string
+    publicCasting:
+      type: boolean
+    externalLink:
+      type: object
+      properties:
+        title:
+          type: string
+        url:
+          type: string
+
+# Channel follow status
+ChannelFollowStatus:
+  type: object
+  properties:
+    following:
+      type: boolean
+    followedAt:
+      type: integer
+
+# Channel follower information
+ChannelFollower:
+  type: object
+  properties:
+    fid:
+      type: integer
+    followedAt:
+      type: integer
+
+# Channel-related response schemas
+ChannelResponse:
+  type: object
+  required: [result]
+  properties:
+    result:
+      type: object
+      properties:
+        channel:
+          $ref: './channel.yaml#/Channel'
+
+RawChannelResponse:
+  type: object
+  properties:
+    result:
+      type: object
+      properties:
+        channel:
+          $ref: '#/RawChannel'
+
+ChannelListResponse:
+  type: object
+  properties:
+    result:
+      type: object
+      properties:
+        channels:
+          type: array
+          items:
+            $ref: '#/RawChannel'
+
+ChannelFollowStatusResponse:
+  type: object
+  properties:
+    result:
+      $ref: '#/ChannelFollowStatus'
+
+ChannelFollowersResponse:
+  allOf:
+    - $ref: './common.yaml#/PaginatedResponse'
+    - type: object
+      properties:
+        result:
+          type: object
+          properties:
+            users:
+              type: array
+              items:
+                $ref: '#/ChannelFollower'
+
+ChannelUsersResponse:
+  type: object
+  required: [result]
+  properties:
+    result:
+      type: object
+      properties:
+        users:
+          type: array
+          items:
+            $ref: './user.yaml#/User'
+
+ChannelFollowersYouKnowResponse:
+  type: object
+  required: [result]
+  properties:
+    result:
+      type: object
+      required: [users, totalCount]
+      properties:
+        users:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+        totalCount:
+          type: integer
+
+HighlightedChannelsResponse:
+  type: object
+  properties:
+    result:
+      type: object
+      properties:
+        channels:
+          type: array
+          items:
+            $ref: './channel.yaml#/Channel'
+        viewerContext:
+          type: object
+          properties:
+            defaultFeed:
+              type: string
+
+DiscoverChannelsResponse:
+  allOf:
+    - $ref: './common.yaml#/GenericResponse'
+    - type: object
+      properties:
+        result:
+          type: object
+          properties:
+            channels:
+              type: array
+              items:
+                type: object
+                additionalProperties: true
+
+ChannelStreaksResponse:
+  type: object
+  required:
+    - result
+  properties:
+    result:
+      type: object
+      additionalProperties: true

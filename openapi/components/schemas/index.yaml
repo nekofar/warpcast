@@ -1,115 +1,121 @@
-Winner:
-  type: 'object'
-  properties:
-    fid:
-      type: 'integer'
-      description: 'The fid of the winner'
-    domain:
-      type: 'string'
-      description: 'The domain of the winner'
-    frameName:
-      type: 'string'
-      description: 'The name of the frame (mini app)'
-    score:
-      type: 'integer'
-      description: 'The score of the winner'
-    rank:
-      type: 'integer'
-      description: 'The rank of the winner'
-    rewardCents:
-      type: 'integer'
-      description: 'The reward amount in cents'
-    walletAddress:
-      type: 'string'
-      description: 'The wallet address of the winner (optional)'
+# Main schema index file - references to organized schema files
+# This file serves as the central reference point for all schemas
 
-OnboardingStateResponse:
-  type: object
-  properties:
-    result:
-      type: object
-      properties:
-        state:
-          $ref: '#/OnboardingState'
-
-OnboardingState:
-  type: object
-  properties:
-    id:
-      type: string
-      format: uuid
-    email:
-      type: string
-      format: email
-    user:
-      $ref: './user.yaml#/User'
-    hasOnboarding:
-      type: boolean
-    hasConfirmedEmail:
-      type: boolean
-    handledConnectAddress:
-      type: boolean
-    canRegisterUsername:
-      type: boolean
-    needsRegistrationPayment:
-      type: boolean
-    hasFid:
-      type: boolean
-    hasFname:
-      type: boolean
-    hasDelegatedSigner:
-      type: boolean
-    hasSetupProfile:
-      type: boolean
-    hasCompletedRegistration:
-      type: boolean
-    hasStorage:
-      type: boolean
-    handledPushNotificationsNudge:
-      type: boolean
-    handledContactsNudge:
-      type: boolean
-    handledInterestsNudge:
-      type: boolean
-    hasValidPaidInvite:
-      type: boolean
-    hasWarpcastWalletAddress:
-      type: boolean
-    hasPhone:
-      type: boolean
-    needsPhone:
-      type: boolean
-    sponsoredRegisterEligible:
-      type: boolean
-    geoRestricted:
-      type: boolean
-
-ErrorResponse:
-  type: object
-  properties:
-    errors:
-      type: array
-      items:
-        type: object
-        properties:
-          message:
-            type: string
-            description: 'Error message describing the issue'
-
+# User-related schemas
+User:
+  $ref: './user.yaml#/User'
+UserWithExtras:
+  $ref: './user.yaml#/UserWithExtras'
+ProfilePicture:
+  $ref: './user.yaml#/ProfilePicture'
+Profile:
+  $ref: './user.yaml#/Profile'
+Bio:
+  $ref: './user.yaml#/Bio'
+Location:
+  $ref: './user.yaml#/Location'
+ViewerContext:
+  $ref: './user.yaml#/ViewerContext'
+UserExtras:
+  $ref: './user.yaml#/UserExtras'
+VerifiedAddress:
+  $ref: './user.yaml#/VerifiedAddress'
 UserByFidResponse:
-  type: object
-  properties:
-    result:
-      type: object
-      properties:
-        user:
-          $ref: '#/UserWithExtras'
-        collectionsOwned:
-          type: array
-          items: {}
-        extras:
-          $ref: '#/UserExtras'
+  $ref: './user.yaml#/UserByFidResponse'
+UserResponse:
+  $ref: './user.yaml#/UserResponse'
+SuggestedUsersResponse:
+  $ref: './user.yaml#/SuggestedUsersResponse'
+UsersResponse:
+  $ref: './user.yaml#/UsersResponse'
+UsersWithCountResponse:
+  $ref: './user.yaml#/UsersWithCountResponse'
+UserPreferencesResponse:
+  $ref: './user.yaml#/UserPreferencesResponse'
+UserAppContextResponse:
+  $ref: './user.yaml#/UserAppContextResponse'
+UserThreadCastsResponse:
+  $ref: './user.yaml#/UserThreadCastsResponse'
 
+# Cast-related schemas
+Cast:
+  $ref: './casts.yaml#/Cast'
+CastAction:
+  $ref: './casts.yaml#/CastAction'
+CastQuote:
+  $ref: './casts.yaml#/CastQuote'
+Recaster:
+  $ref: './casts.yaml#/Recaster'
+CastQuotesResponse:
+  $ref: './casts.yaml#/CastQuotesResponse'
+CastRecastersResponse:
+  $ref: './casts.yaml#/CastRecastersResponse'
+CastHashResponse:
+  $ref: './casts.yaml#/CastHashResponse'
+CastCreatedResponse:
+  $ref: './casts.yaml#/CastCreatedResponse'
+AttachEmbedsResponse:
+  $ref: './casts.yaml#/AttachEmbedsResponse'
+DraftCast:
+  $ref: './casts.yaml#/DraftCast'
+Draft:
+  $ref: './casts.yaml#/Draft'
+DraftsResponse:
+  $ref: './casts.yaml#/DraftsResponse'
+DraftCreatedResponse:
+  $ref: './casts.yaml#/DraftCreatedResponse'
+BookmarkedCast:
+  $ref: './casts.yaml#/BookmarkedCast'
+BookmarkedCastsResponse:
+  $ref: './casts.yaml#/BookmarkedCastsResponse'
+
+# Embed-related schemas
+ImageEmbed:
+  $ref: './embeds.yaml#/ImageEmbed'
+UrlEmbed:
+  $ref: './embeds.yaml#/UrlEmbed'
+VideoEmbed:
+  $ref: './embeds.yaml#/VideoEmbed'
+
+# Channel-related schemas
+Channel:
+  $ref: './channel.yaml#/Channel'
+RawChannel:
+  $ref: './channels.yaml#/RawChannel'
+ChannelFollowStatus:
+  $ref: './channels.yaml#/ChannelFollowStatus'
+ChannelFollower:
+  $ref: './channels.yaml#/ChannelFollower'
+ChannelResponse:
+  $ref: './channels.yaml#/ChannelResponse'
+RawChannelResponse:
+  $ref: './channels.yaml#/RawChannelResponse'
+ChannelListResponse:
+  $ref: './channels.yaml#/ChannelListResponse'
+ChannelFollowStatusResponse:
+  $ref: './channels.yaml#/ChannelFollowStatusResponse'
+ChannelFollowersResponse:
+  $ref: './channels.yaml#/ChannelFollowersResponse'
+ChannelUsersResponse:
+  $ref: './channels.yaml#/ChannelUsersResponse'
+ChannelFollowersYouKnowResponse:
+  $ref: './channels.yaml#/ChannelFollowersYouKnowResponse'
+HighlightedChannelsResponse:
+  $ref: './channels.yaml#/HighlightedChannelsResponse'
+DiscoverChannelsResponse:
+  $ref: './channels.yaml#/DiscoverChannelsResponse'
+ChannelStreaksResponse:
+  $ref: './channels.yaml#/ChannelStreaksResponse'
+
+# DirectCast-related schemas (already organized)
+DirectCastConversation:
+  $ref: './direct-cast-conversation.yaml#/DirectCastConversation'
+DirectCastMessage:
+  $ref: './direct-cast-conversation.yaml#/DirectCastMessage'
+DirectCastConversationViewerContext:
+  $ref: './direct-cast-conversation.yaml#/DirectCastConversationViewerContext'
+
+# DirectCast request/response schemas that need to be added to the organized files
 DirectCastInboxResponse:
   type: object
   required:
@@ -152,416 +158,6 @@ DirectCastInboxResult:
       items:
         $ref: '#/DirectCastConversation'
 
-UserAppContextResponse:
-  type: object
-  properties:
-    result:
-      type: object
-      properties:
-        context:
-          type: object
-          properties:
-            canAddLinks:
-              type: boolean
-            showConnectedApps:
-              type: boolean
-            signerRequestsEnabled:
-              type: boolean
-            prompts:
-              type: array
-              items: {}
-            adminForChannelKeys:
-              type: array
-              items:
-                type: string
-            modOfChannelKeys:
-              type: array
-              items:
-                type: string
-            memberOfChannelKeys:
-              type: array
-              items:
-                type: string
-            canEditAllChannels:
-              type: boolean
-            canUploadVideo:
-              type: boolean
-            statsigEnabled:
-              type: boolean
-            shouldPromptForPushNotifications:
-              type: boolean
-            shouldPromptForUserFollowsSyncContacts:
-              type: boolean
-            castActions:
-              type: array
-              items:
-                $ref: '#/CastAction'
-            canAddCastAction:
-              type: boolean
-            enabledCastAction:
-              $ref: '#/CastAction'
-            notificationTabsV2:
-              type: array
-              items:
-                type: object
-                properties:
-                  id:
-                    type: string
-                  name:
-                    type: string
-            enabledVideoAutoplay:
-              type: boolean
-            regularCastByteLimit:
-              type: integer
-            longCastByteLimit:
-              type: integer
-            newUserStatus:
-              type: object
-            country:
-              type: string
-            higherClientEventSamplingRateEnabled:
-              type: boolean
-CastAction:
-  type: object
-  properties:
-    id:
-      type: string
-    name:
-      type: string
-    octicon:
-      type: string
-    actionUrl:
-      type: string
-    action:
-      type: object
-      properties:
-        actionType:
-          type: string
-        postUrl:
-          type: string
-User:
-  $ref: './user.yaml#/User'
-UserWithExtras:
-  allOf:
-    - $ref: '#/User'
-    - type: object
-      properties:
-        connectedAccounts:
-          type: array
-          items: {}
-ProfilePicture:
-  type: object
-  properties:
-    url:
-      type: string
-      format: uri
-    verified:
-      type: boolean
-Profile:
-  type: object
-  properties:
-    bio:
-      $ref: '#/Bio'
-    location:
-      $ref: '#/Location'
-Bio:
-  type: object
-  properties:
-    text:
-      type: string
-    mentions:
-      type: array
-      items: {}
-    channelMentions:
-      type: array
-      items: {}
-Location:
-  type: object
-  properties:
-    placeId:
-      type: string
-    description:
-      type: string
-ViewerContext:
-  type: object
-  properties:
-    following:
-      type: boolean
-    followedBy:
-      type: boolean
-    enableNotifications:
-      type: boolean
-    canSendDirectCasts:
-      type: boolean
-    hasUploadedInboxKeys:
-      type: boolean
-UserExtras:
-  type: object
-  properties:
-    fid:
-      type: integer
-    custodyAddress:
-      type: string
-    ethWallets:
-      type: array
-      items:
-        type: string
-    solanaWallets:
-      type: array
-      items:
-        type: string
-    walletLabels:
-      type: array
-      items:
-        type: object
-        properties:
-          address:
-            type: string
-          labels:
-            type: array
-            items:
-              type: string
-    v2:
-      type: boolean
-    publicSpamLabel:
-      type: string
-UserPreferencesResponse:
-  type: object
-  properties:
-    result:
-      type: object
-      properties:
-        preferences:
-          type: object
-          additionalProperties: true
-HighlightedChannelsResponse:
-  type: object
-  properties:
-    result:
-      type: object
-      properties:
-        channels:
-          type: array
-          items:
-            $ref: '#/Channel'
-        viewerContext:
-          type: object
-          properties:
-            defaultFeed:
-              type: string
-Channel:
-  $ref: '././channel.yaml#/Channel'
-FeedItemsResponse:
-  type: object
-  properties:
-    result:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            type: object
-            additionalProperties: true
-        latestMainCastTimestamp:
-          type: integer
-        feedTopSeenAtTimestamp:
-          type: integer
-        replaceFeed:
-          type: boolean
-UserResponse:
-  allOf:
-    - $ref: './common.yaml#/GenericResponse'
-    - type: object
-      properties:
-        result:
-          type: object
-          properties:
-            user:
-              $ref: '#/UserWithExtras'
-            collectionsOwned:
-              type: array
-              items:
-                type: object
-            extras:
-              $ref: '#/UserExtras'
-SuggestedUsersResponse:
-  allOf:
-    - $ref: './common.yaml#/PaginatedResponse'
-    - type: object
-      properties:
-        result:
-          type: object
-          properties:
-            users:
-              type: array
-              items:
-                type: object
-                additionalProperties: true
-Action:
-  type: object
-  properties:
-    name:
-      type: string
-    icon:
-      type: string
-    description:
-      type: string
-    aboutUrl:
-      type: string
-      format: uri
-    imageUrl:
-      type: string
-      format: uri
-    actionUrl:
-      type: string
-      format: uri
-    action:
-      type: object
-      properties:
-        actionType:
-          type: string
-          enum: [post, get, put, delete]
-        postUrl:
-          type: string
-          format: uri
-SuccessResponse:
-  type: object
-  required:
-    - result
-  properties:
-    result:
-      type: object
-      required:
-        - success
-      properties:
-        success:
-          type: boolean
-          description: Indicates whether the operation was successful
-VerifiedAddress:
-  type: object
-  properties:
-    fid:
-      type: integer
-    address:
-      type: string
-    timestamp:
-      type: integer
-    version:
-      type: string
-    protocol:
-      type: string
-    isPrimary:
-      type: boolean
-    labels:
-      type: array
-      items:
-        type: string
-FavoriteFramesResponse:
-  type: object
-  required:
-    - result
-  properties:
-    result:
-      type: object
-      required:
-        - frames
-      properties:
-        frames:
-          type: array
-          items:
-            type: object
-            additionalProperties: true
-ChannelStreaksResponse:
-  type: object
-  required:
-    - result
-  properties:
-    result:
-      type: object
-      additionalProperties: true
-UnseenCountsResponse:
-  type: object
-  required:
-    - result
-  properties:
-    result:
-      type: object
-      properties:
-        notificationsCount:
-          type: integer
-        notificationTabs:
-          type: array
-          items:
-            type: object
-            required:
-              - tab
-              - unseenCount
-            properties:
-              tab:
-                type: string
-              unseenCount:
-                type: integer
-        inboxCount:
-          type: integer
-        channelFeeds:
-          type: array
-          items:
-            type: object
-            required:
-              - channelKey
-              - feedType
-              - hasNewItems
-            properties:
-              channelKey:
-                type: string
-              feedType:
-                type: string
-              hasNewItems:
-                type: boolean
-        warpTransactionCount:
-          type: integer
-UserThreadCastsResponse:
-  type: object
-  required:
-    - result
-  properties:
-    result:
-      type: object
-      required:
-        - casts
-      properties:
-        casts:
-          type: array
-          items:
-            type: object
-            additionalProperties: true
-ChannelFollowersYouKnowResponse:
-  type: object
-  required: [result]
-  properties:
-    result:
-      type: object
-      required: [users, totalCount]
-      properties:
-        users:
-          type: array
-          items:
-            type: object
-            additionalProperties: true
-        totalCount:
-          type: integer
-NotificationsResponse:
-  type: object
-  required: [result]
-  properties:
-    result:
-      type: object
-      properties:
-        notifications:
-          type: array
-          items:
-            type: object
-            additionalProperties: true
 DirectCastConversationResponse:
   allOf:
     - $ref: './common.yaml#/GenericResponse'
@@ -586,7 +182,7 @@ DirectCastConversationMessagesResponse:
             messages:
               type: array
               items:
-                $ref: '../../components/schemas/index.yaml#/DirectCastMessage'
+                $ref: '#/DirectCastMessage'
 
 DirectCastSendRequest:
   type: object
@@ -718,760 +314,57 @@ DirectCastMessageReactionRequest:
 
 DirectCastMessageReactionResponse:
   $ref: './common.yaml#/SuccessResponse'
-DiscoverChannelsResponse:
-  allOf:
-    - $ref: './common.yaml#/GenericResponse'
-    - type: object
-      properties:
-        result:
-          type: object
-          properties:
-            channels:
-              type: array
-              items:
-                type: object
-                additionalProperties: true
-InvitesAvailableResponse:
-  allOf:
-    - $ref: './common.yaml#/GenericResponse'
-    - type: object
-      properties:
-        result:
-          type: object
-          required:
-            - allocatedInvitesCount
-            - availableInvitesCount
-          properties:
-            allocatedInvitesCount:
-              type: integer
-              description: Total number of invites allocated to the user
-            availableInvitesCount:
-              type: integer
-              description: Number of invites currently available to send
-SponsoredInvitesResponse:
-  allOf:
-    - $ref: './common.yaml#/GenericResponse'
-    - type: object
-      properties:
-        result:
-          type: object
-          properties:
-            invites:
-              type: array
-              items:
-                type: object
-      additionalProperties: true
+
+# Feature-specific schemas
+Winner:
+  $ref: './features.yaml#/Winner'
 RewardsLeaderboardResponse:
-  type: object
-  required: [result]
-  properties:
-    result:
-      type: object
-      required: [leaderboard]
-      properties:
-        leaderboard:
-          type: object
-          required: [type, users]
-          properties:
-            type:
-              type: string
-            users:
-              type: array
-              items:
-                type: object
-                properties:
-                  user:
-                    type: object
-                    additionalProperties: true
-                  score:
-                    type: integer
-                  rank:
-                    type: integer
+  $ref: './features.yaml#/RewardsLeaderboardResponse'
 RewardsScoresResponse:
-  type: object
-  required: [result]
-  properties:
-    result:
-      type: object
-      required: [scores]
-      properties:
-        scores:
-          type: array
-          items:
-            type: object
-            properties:
-              type:
-                type: string
-              user:
-                type: object
-                additionalProperties: true
-              allTimeScore:
-                type: integer
-              currentPeriodScore:
-                type: integer
-              previousPeriodScore:
-                type: integer
+  $ref: './features.yaml#/RewardsScoresResponse'
 RewardsMetadataResponse:
-  type: object
-  required: [result]
-  properties:
-    result:
-      type: object
-      required: [metadata]
-      properties:
-        metadata:
-          type: object
-          required:
-            - type
-            - lastUpdateTimestamp
-            - currentPeriodStartTimestamp
-            - currentPeriodEndTimestamp
-          properties:
-            type:
-              type: string
-            lastUpdateTimestamp:
-              type: integer
-            currentPeriodStartTimestamp:
-              type: integer
-            currentPeriodEndTimestamp:
-              type: integer
-            tiers:
-              type: array
-              items:
-                type: object
-                additionalProperties: true
-            proportionalPayout:
-              type: object
-              properties:
-                numWinners:
-                  type: integer
-                totalRewardCents:
-                  type: integer
+  $ref: './features.yaml#/RewardsMetadataResponse'
 StarterPack:
-  type: object
-  additionalProperties: true
+  $ref: './features.yaml#/StarterPack'
 StarterPacksResponse:
-  type: object
-  required: [result]
-  properties:
-    result:
-      type: object
-      properties:
-        starterPacks:
-          type: array
-          items:
-            $ref: '#/StarterPack'
+  $ref: './features.yaml#/StarterPacksResponse'
 StarterPackResponse:
-  type: object
-  required: [result]
-  properties:
-    result:
-      type: object
-      properties:
-        starterPack:
-          $ref: '#/StarterPack'
-
+  $ref: './features.yaml#/StarterPackResponse'
 StarterPackUsersResponse:
-  type: object
-  required: [result]
-  properties:
-    result:
-      type: object
-      properties:
-        users:
-          type: array
-          items:
-            $ref: '#/User'
-BookmarkedCast:
-  type: object
-  additionalProperties: true
-BookmarkedCastsResponse:
-  type: object
-  required: [result]
-  properties:
-    result:
-      type: object
-      properties:
-        bookmarks:
-          type: array
-          items:
-            $ref: '#/BookmarkedCast'
-ChannelResponse:
-  type: object
-  required: [result]
-  properties:
-    result:
-      type: object
-      properties:
-        channel:
-          $ref: '#/Channel'
-
-ChannelUsersResponse:
-  type: object
-  required: [result]
-  properties:
-    result:
-      type: object
-      properties:
-        users:
-          type: array
-          items:
-            $ref: '#/User'
-UsersResponse:
-  type: object
-  required: [result]
-  properties:
-    result:
-      type: object
-      required: [users]
-      properties:
-        users:
-          type: array
-          items:
-            $ref: '#/User'
-
-UsersWithCountResponse:
-  type: object
-  required: [result]
-  properties:
-    result:
-      type: object
-      required: [users, totalCount]
-      properties:
-        users:
-          type: array
-          items:
-            $ref: '#/User'
-        totalCount:
-          type: integer
-MutedKeywordProperties:
-  type: object
-  properties:
-    channels:
-      type: boolean
-    frames:
-      type: boolean
-    notifications:
-      type: boolean
-
-MutedKeyword:
-  type: object
-  required: [keyword, properties]
-  properties:
-    keyword:
-      type: string
-    properties:
-      $ref: '#/MutedKeywordProperties'
-
-MutedKeywordsResponse:
-  type: object
-  required: [success, result]
-  properties:
-    success:
-      type: boolean
-    result:
-      type: object
-      required: [keywords, mutedKeywords]
-      properties:
-        keywords:
-          type: array
-          items:
-            type: string
-        mutedKeywords:
-          type: array
-          items:
-            $ref: '#/MutedKeyword'
-CastHashResponse:
-  type: object
-  required: [result]
-  properties:
-    result:
-      type: object
-      properties:
-        castHash:
-          type: string
-          example: '0x750a7269b4a3b70e28d3f450df33487047d4927f'
-
-AttachEmbedsResponse:
-  type: object
-  required: [result]
-  properties:
-    result:
-      type: object
-      additionalProperties: true
-
-CastQuote:
-  type: object
-  properties:
-    hash:
-      type: string
-    threadHash:
-      type: string
-    parentSource:
-      type: object
-      properties:
-        type:
-          type: string
-        url:
-          type: string
-    author:
-      $ref: '#/User'
-    text:
-      type: string
-    timestamp:
-      type: integer
-
-CastQuotesResponse:
-  type: object
-  required: [result]
-  properties:
-    result:
-      type: object
-      properties:
-        quotes:
-          type: array
-          items:
-            $ref: '#/CastQuote'
-
-CastRecastersResponse:
-  type: object
-  required: [result]
-  properties:
-    result:
-      type: object
-      properties:
-        users:
-          type: array
-          items:
-            $ref: '#/User'
-
-Cast:
-  type: object
-  properties:
-    hash:
-      type: string
-      description: Unique hash identifier for the cast
-    threadHash:
-      type: string
-      description: Hash identifier for the thread this cast belongs to
-    parentHash:
-      type: string
-      description: Hash identifier of the parent cast (if this is a reply)
-    parentSource:
-      type: object
-      properties:
-        type:
-          type: string
-          enum: [url]
-        url:
-          type: string
-    author:
-      $ref: './user.yaml#/User'
-    text:
-      type: string
-      description: The text content of the cast
-    timestamp:
-      type: integer
-      format: int64
-      description: Unix timestamp in milliseconds
-    mentions:
-      type: array
-      items:
-        $ref: './user.yaml#/User'
-    embeds:
-      type: object
-      properties:
-        images:
-          type: array
-          items:
-            $ref: '#/ImageEmbed'
-        urls:
-          type: array
-          items:
-            $ref: '#/UrlEmbed'
-        videos:
-          type: array
-          items:
-            $ref: '#/VideoEmbed'
-        #        casts:
-        #          type: array
-        #          items:
-        #            $ref: '#/Cast'
-        unknowns:
-          type: array
-          items:
-            type: object
-        processedCastText:
-          type: string
-        groupInvites:
-          type: array
-          items:
-            type: object
-    replies:
-      type: object
-      properties:
-        count:
-          type: integer
-    reactions:
-      type: object
-      properties:
-        count:
-          type: integer
-    recasts:
-      type: object
-      properties:
-        count:
-          type: integer
-        recasters:
-          type: array
-          items:
-            $ref: '#/Recaster'
-    watches:
-      type: object
-      properties:
-        count:
-          type: integer
-    recast:
-      type: boolean
-    tags:
-      type: array
-      items:
-        type: object
-        properties:
-          type:
-            type: string
-          id:
-            type: string
-          name:
-            type: string
-          imageUrl:
-            type: string
-    quoteCount:
-      type: integer
-    combinedRecastCount:
-      type: integer
-    channel:
-      type: object
-      properties:
-        key:
-          type: string
-        name:
-          type: string
-        imageUrl:
-          type: string
-        authorContext:
-          type: object
-          properties:
-            role:
-              type: string
-            restricted:
-              type: boolean
-            banned:
-              type: boolean
-        authorRole:
-          type: string
-    viewerContext:
-      type: object
-      properties:
-        reacted:
-          type: boolean
-        recast:
-          type: boolean
-        bookmarked:
-          type: boolean
-
-DraftCast:
-  type: object
-  properties:
-    text:
-      type: string
-    embeds:
-      type: array
-      items: {}
-
-Draft:
-  type: object
-  properties:
-    draftId:
-      type: string
-    casts:
-      type: array
-      items:
-        $ref: '#/DraftCast'
-
-DraftsResponse:
-  type: object
-  properties:
-    result:
-      type: object
-      properties:
-        drafts:
-          type: array
-          items: {}
-
-DraftCreatedResponse:
-  type: object
-  properties:
-    result:
-      type: object
-      properties:
-        draft:
-          $ref: '#/Draft'
-
-CastCreatedResponse:
-  type: object
-  properties:
-    result:
-      type: object
-      properties:
-        cast:
-          $ref: '#/Cast'
-
-RawChannel:
-  type: object
-  properties:
-    id:
-      type: string
-    url:
-      type: string
-    name:
-      type: string
-    description:
-      type: string
-    descriptionMentions:
-      type: array
-      items:
-        type: integer
-    descriptionMentionsPositions:
-      type: array
-      items:
-        type: integer
-    imageUrl:
-      type: string
-    headerImageUrl:
-      type: string
-    leadFid:
-      type: integer
-    moderatorFids:
-      type: array
-      items:
-        type: integer
-    createdAt:
-      type: integer
-    followerCount:
-      type: integer
-    memberCount:
-      type: integer
-    pinnedCastHash:
-      type: string
-    publicCasting:
-      type: boolean
-    externalLink:
-      type: object
-      properties:
-        title:
-          type: string
-        url:
-          type: string
-
-RawChannelResponse:
-  type: object
-  properties:
-    result:
-      type: object
-      properties:
-        channel:
-          $ref: '#/RawChannel'
-
-ChannelListResponse:
-  type: object
-  properties:
-    result:
-      type: object
-      properties:
-        channels:
-          type: array
-          items:
-            $ref: '#/RawChannel'
-
-ChannelFollowStatus:
-  type: object
-  properties:
-    following:
-      type: boolean
-    followedAt:
-      type: integer
-
-ChannelFollowStatusResponse:
-  type: object
-  properties:
-    result:
-      $ref: '#/ChannelFollowStatus'
-
-ChannelFollower:
-  type: object
-  properties:
-    fid:
-      type: integer
-    followedAt:
-      type: integer
-
-ChannelFollowersResponse:
-  allOf:
-    - $ref: './common.yaml#/PaginatedResponse'
-    - type: object
-      properties:
-        result:
-          type: object
-          properties:
-            users:
-              type: array
-              items:
-                $ref: '#/ChannelFollower'
-AppsByAuthorResponse:
-  type: object
-  properties:
-    result:
-      type: object
-      properties:
-        frames:
-          type: array
-          items:
-            $ref: '#/Frame'
-
+  $ref: './features.yaml#/StarterPackUsersResponse'
 Frame:
-  type: object
-  properties:
-    domain:
-      type: string
-    name:
-      type: string
-    iconUrl:
-      type: string
-    homeUrl:
-      type: string
-    splashImageUrl:
-      type: string
-    splashBackgroundColor:
-      type: string
-    buttonTitle:
-      type: ['string', 'null']
-    imageUrl:
-      type: ['string', 'null']
-    supportsNotifications:
-      type: boolean
-    viewerContext:
-      type: object
-      additionalProperties: true
-    author:
-      $ref: '#/User'
-
+  $ref: './features.yaml#/Frame'
+AppsByAuthorResponse:
+  $ref: './features.yaml#/AppsByAuthorResponse'
+FavoriteFramesResponse:
+  $ref: './features.yaml#/FavoriteFramesResponse'
+InvitesAvailableResponse:
+  $ref: './features.yaml#/InvitesAvailableResponse'
+SponsoredInvitesResponse:
+  $ref: './features.yaml#/SponsoredInvitesResponse'
+NotificationsResponse:
+  $ref: './features.yaml#/NotificationsResponse'
+UnseenCountsResponse:
+  $ref: './features.yaml#/UnseenCountsResponse'
+MutedKeywordProperties:
+  $ref: './features.yaml#/MutedKeywordProperties'
+MutedKeyword:
+  $ref: './features.yaml#/MutedKeyword'
+MutedKeywordsResponse:
+  $ref: './features.yaml#/MutedKeywordsResponse'
 ApiKey:
-  type: object
-  required:
-    - id
-    - createdAt
-    - expiresAt
-    - tag
-    - description
-  properties:
-    id:
-      type: string
-      format: uuid
-      description: Unique identifier for the API key
-    createdAt:
-      type: integer
-      format: int64
-      description: Timestamp when the API key was created (in milliseconds since epoch)
-    expiresAt:
-      type: integer
-      format: int64
-      description: Timestamp when the API key expires (in milliseconds since epoch)
-    revokedAt:
-      type: ['string', 'null']
-      format: int64
-      description: Timestamp when the API key was revoked, if applicable (in milliseconds since epoch)
-    tag:
-      type: string
-      description: Short identifier tag for the API key
-    description:
-      type: string
-      description: User-provided description of the API key's purpose
+  $ref: './features.yaml#/ApiKey'
+Action:
+  $ref: './features.yaml#/Action'
+FeedItemsResponse:
+  $ref: './features.yaml#/FeedItemsResponse'
 
-Recaster:
-  type: object
-  properties:
-    fid:
-      type: integer
-    username:
-      type: string
-    displayName:
-      type: string
-    recastHash:
-      type: string
-
-ImageEmbed:
-  type: object
-  properties:
-    type:
-      type: string
-      enum: [image]
-    url:
-      type: string
-    sourceUrl:
-      type: string
-    media:
-      type: object
-      properties:
-        version:
-          type: string
-        width:
-          type: integer
-        height:
-          type: integer
-        staticRaster:
-          type: string
-        mimeType:
-          type: string
-    alt:
-      type: string
-
-UrlEmbed:
-  type: object
-  properties:
-    type:
-      type: string
-      enum: [url]
-    openGraph:
-      type: object
-      properties:
-        url:
-          type: string
-        sourceUrl:
-          type: string
-        title:
-          type: string
-        description:
-          type: string
-        domain:
-          type: string
-        image:
-          type: string
-        useLargeImage:
-          type: boolean
-
-VideoEmbed:
-  type: object
-  properties:
-    type:
-      type: string
-      enum: [video]
-
-DirectCastConversation:
-  $ref: './direct-cast-conversation.yaml#/DirectCastConversation'
-
-DirectCastMessage:
-  $ref: './direct-cast-conversation.yaml#/DirectCastMessage'
-
-DirectCastConversationViewerContext:
-  $ref: './direct-cast-conversation.yaml#/DirectCastConversationViewerContext'
+# Onboarding schemas
+OnboardingState:
+  $ref: './onboarding.yaml#/OnboardingState'
+OnboardingStateResponse:
+  $ref: './onboarding.yaml#/OnboardingStateResponse'
+ErrorResponse:
+  $ref: './onboarding.yaml#/ErrorResponse'
+SuccessResponse:
+  $ref: './onboarding.yaml#/SuccessResponse'

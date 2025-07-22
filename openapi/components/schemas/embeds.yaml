@@ -1,0 +1,58 @@
+# Embed-related schemas for casts and other content
+
+ImageEmbed:
+  type: object
+  properties:
+    type:
+      type: string
+      enum: [image]
+    url:
+      type: string
+    sourceUrl:
+      type: string
+    media:
+      type: object
+      properties:
+        version:
+          type: string
+        width:
+          type: integer
+        height:
+          type: integer
+        staticRaster:
+          type: string
+        mimeType:
+          type: string
+    alt:
+      type: string
+
+UrlEmbed:
+  type: object
+  properties:
+    type:
+      type: string
+      enum: [url]
+    openGraph:
+      type: object
+      properties:
+        url:
+          type: string
+        sourceUrl:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        domain:
+          type: string
+        image:
+          type: string
+        useLargeImage:
+          type: boolean
+
+VideoEmbed:
+  type: object
+  properties:
+    type:
+      type: string
+      enum: [video]

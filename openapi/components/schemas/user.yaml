@@ -1,3 +1,5 @@
+# User-related schemas
+
 User:
   type: object
   properties:
@@ -8,12 +10,293 @@ User:
     displayName:
       type: string
     pfp:
-      $ref: './index.yaml#/ProfilePicture'
+      $ref: '#/ProfilePicture'
     profile:
-      $ref: './index.yaml#/Profile'
+      $ref: '#/Profile'
     followerCount:
       type: integer
     followingCount:
       type: integer
     viewerContext:
-      $ref: './index.yaml#/ViewerContext'
+      $ref: '#/ViewerContext'
+
+UserWithExtras:
+  allOf:
+    - $ref: '#/User'
+    - type: object
+      properties:
+        connectedAccounts:
+          type: array
+          items: {}
+
+ProfilePicture:
+  type: object
+  properties:
+    url:
+      type: string
+      format: uri
+    verified:
+      type: boolean
+
+Profile:
+  type: object
+  properties:
+    bio:
+      $ref: '#/Bio'
+    location:
+      $ref: '#/Location'
+
+Bio:
+  type: object
+  properties:
+    text:
+      type: string
+    mentions:
+      type: array
+      items: {}
+    channelMentions:
+      type: array
+      items: {}
+
+Location:
+  type: object
+  properties:
+    placeId:
+      type: string
+    description:
+      type: string
+
+ViewerContext:
+  type: object
+  properties:
+    following:
+      type: boolean
+    followedBy:
+      type: boolean
+    enableNotifications:
+      type: boolean
+    canSendDirectCasts:
+      type: boolean
+    hasUploadedInboxKeys:
+      type: boolean
+
+UserExtras:
+  type: object
+  properties:
+    fid:
+      type: integer
+    custodyAddress:
+      type: string
+    ethWallets:
+      type: array
+      items:
+        type: string
+    solanaWallets:
+      type: array
+      items:
+        type: string
+    walletLabels:
+      type: array
+      items:
+        type: object
+        properties:
+          address:
+            type: string
+          labels:
+            type: array
+            items:
+              type: string
+    v2:
+      type: boolean
+    publicSpamLabel:
+      type: string
+
+VerifiedAddress:
+  type: object
+  properties:
+    fid:
+      type: integer
+    address:
+      type: string
+    timestamp:
+      type: integer
+    version:
+      type: string
+    protocol:
+      type: string
+    isPrimary:
+      type: boolean
+    labels:
+      type: array
+      items:
+        type: string
+
+# User-related response schemas
+UserByFidResponse:
+  type: object
+  properties:
+    result:
+      type: object
+      properties:
+        user:
+          $ref: '#/UserWithExtras'
+        collectionsOwned:
+          type: array
+          items: {}
+        extras:
+          $ref: '#/UserExtras'
+
+UserResponse:
+  allOf:
+    - $ref: './common.yaml#/GenericResponse'
+    - type: object
+      properties:
+        result:
+          type: object
+          properties:
+            user:
+              $ref: '#/UserWithExtras'
+            collectionsOwned:
+              type: array
+              items:
+                type: object
+            extras:
+              $ref: '#/UserExtras'
+
+SuggestedUsersResponse:
+  allOf:
+    - $ref: './common.yaml#/PaginatedResponse'
+    - type: object
+      properties:
+        result:
+          type: object
+          properties:
+            users:
+              type: array
+              items:
+                type: object
+                additionalProperties: true
+
+UsersResponse:
+  type: object
+  required: [result]
+  properties:
+    result:
+      type: object
+      required: [users]
+      properties:
+        users:
+          type: array
+          items:
+            $ref: '#/User'
+
+UsersWithCountResponse:
+  type: object
+  required: [result]
+  properties:
+    result:
+      type: object
+      required: [users, totalCount]
+      properties:
+        users:
+          type: array
+          items:
+            $ref: '#/User'
+        totalCount:
+          type: integer
+
+UserPreferencesResponse:
+  type: object
+  properties:
+    result:
+      type: object
+      properties:
+        preferences:
+          type: object
+          additionalProperties: true
+
+UserAppContextResponse:
+  type: object
+  properties:
+    result:
+      type: object
+      properties:
+        context:
+          type: object
+          properties:
+            canAddLinks:
+              type: boolean
+            showConnectedApps:
+              type: boolean
+            signerRequestsEnabled:
+              type: boolean
+            prompts:
+              type: array
+              items: {}
+            adminForChannelKeys:
+              type: array
+              items:
+                type: string
+            modOfChannelKeys:
+              type: array
+              items:
+                type: string
+            memberOfChannelKeys:
+              type: array
+              items:
+                type: string
+            canEditAllChannels:
+              type: boolean
+            canUploadVideo:
+              type: boolean
+            statsigEnabled:
+              type: boolean
+            shouldPromptForPushNotifications:
+              type: boolean
+            shouldPromptForUserFollowsSyncContacts:
+              type: boolean
+            castActions:
+              type: array
+              items:
+                $ref: './casts.yaml#/CastAction'
+            canAddCastAction:
+              type: boolean
+            enabledCastAction:
+              $ref: './casts.yaml#/CastAction'
+            notificationTabsV2:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  name:
+                    type: string
+            enabledVideoAutoplay:
+              type: boolean
+            regularCastByteLimit:
+              type: integer
+            longCastByteLimit:
+              type: integer
+            newUserStatus:
+              type: object
+            country:
+              type: string
+            higherClientEventSamplingRateEnabled:
+              type: boolean
+
+UserThreadCastsResponse:
+  type: object
+  required:
+    - result
+  properties:
+    result:
+      type: object
+      required:
+        - casts
+      properties:
+        casts:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
