@@ -1302,6 +1302,17 @@ export const DirectCastManuallyMarkUnreadRequestSchema = {
 	},
 } as const;
 
+export const DirectCastPinConversationRequestSchema = {
+	type: "object",
+	required: ["conversationId"],
+	properties: {
+		conversationId: {
+			type: "string",
+			description: "ID of the conversation to pin",
+		},
+	},
+} as const;
+
 export const DiscoverChannelsResponseSchema = {
 	allOf: [
 		{

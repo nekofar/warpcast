@@ -573,6 +573,13 @@ export type DirectCastManuallyMarkUnreadRequest = {
 	conversationId: string;
 };
 
+export type DirectCastPinConversationRequest = {
+	/**
+	 * ID of the conversation to pin
+	 */
+	conversationId: string;
+};
+
 export type DiscoverChannelsResponse = GenericResponse & {
 	result?: {
 		channels?: Array<{
@@ -1919,6 +1926,37 @@ export type DirectCastManuallyMarkUnreadResponses = {
 
 export type DirectCastManuallyMarkUnreadResponse =
 	DirectCastManuallyMarkUnreadResponses[keyof DirectCastManuallyMarkUnreadResponses];
+
+export type PinDirectCastConversationData = {
+	body: DirectCastPinConversationRequest;
+	path?: never;
+	query?: never;
+	url: "/v2/direct-cast-pin-conversation";
+};
+
+export type PinDirectCastConversationErrors = {
+	/**
+	 * Authentication is required or failed
+	 */
+	401: ErrorResponse;
+	/**
+	 * Too many requests
+	 */
+	429: unknown;
+};
+
+export type PinDirectCastConversationError =
+	PinDirectCastConversationErrors[keyof PinDirectCastConversationErrors];
+
+export type PinDirectCastConversationResponses = {
+	/**
+	 * Direct cast conversation pinned successfully
+	 */
+	200: CommonSuccessResponse;
+};
+
+export type PinDirectCastConversationResponse =
+	PinDirectCastConversationResponses[keyof PinDirectCastConversationResponses];
 
 export type DiscoverChannelsData = {
 	body?: never;

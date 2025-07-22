@@ -74,6 +74,9 @@ import type {
 	DirectCastManuallyMarkUnreadData,
 	DirectCastManuallyMarkUnreadResponses,
 	DirectCastManuallyMarkUnreadErrors,
+	PinDirectCastConversationData,
+	PinDirectCastConversationResponses,
+	PinDirectCastConversationErrors,
 	DiscoverChannelsData,
 	DiscoverChannelsResponses,
 	DiscoverChannelsErrors,
@@ -931,6 +934,33 @@ export const directCastManuallyMarkUnread = <
 			},
 		],
 		url: "/v2/direct-cast-manually-mark-unread",
+		...options,
+		headers: {
+			"Content-Type": "application/json",
+			...options.headers,
+		},
+	});
+};
+
+/**
+ * Pin direct cast conversation
+ * Pins a direct cast conversation by conversationId.
+ */
+export const pinDirectCastConversation = <ThrowOnError extends boolean = false>(
+	options: Options<PinDirectCastConversationData, ThrowOnError>,
+) => {
+	return (options.client ?? _heyApiClient).post<
+		PinDirectCastConversationResponses,
+		PinDirectCastConversationErrors,
+		ThrowOnError
+	>({
+		security: [
+			{
+				scheme: "bearer",
+				type: "http",
+			},
+		],
+		url: "/v2/direct-cast-pin-conversation",
 		...options,
 		headers: {
 			"Content-Type": "application/json",
