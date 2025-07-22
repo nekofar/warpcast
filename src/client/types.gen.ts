@@ -412,29 +412,42 @@ export type FeedItemsResponse = {
 	};
 };
 
-export type UserResponse = {
+export type GenericResponse = {
+	result: {
+		[key: string]: unknown;
+	};
+};
+
+export type UserResponse = GenericResponse & {
 	result?: {
 		user?: UserWithExtras;
 		collectionsOwned?: Array<{
 			[key: string]: unknown;
 		}>;
-		extras?: {
-			fid?: number;
-			custodyAddress?: string;
-			ethWallets?: Array<string>;
-			solanaWallets?: Array<string>;
-		};
+		extras?: UserExtras;
 	};
 };
 
-export type SuggestedUsersResponse = {
+export type PaginationCursor = {
+	/**
+	 * Base64 encoded cursor for pagination
+	 */
+	cursor?: string;
+	[key: string]: unknown | string | undefined;
+};
+
+export type PaginatedResponse = {
+	result: {
+		[key: string]: unknown;
+	};
+	next?: PaginationCursor;
+};
+
+export type SuggestedUsersResponse = PaginatedResponse & {
 	result?: {
 		users?: Array<{
 			[key: string]: unknown;
 		}>;
-		next?: {
-			cursor?: string;
-		};
 	};
 };
 
@@ -503,27 +516,17 @@ export type NotificationsResponse = {
 	};
 };
 
-export type DirectCastConversationResponse = {
-	result: {
+export type DirectCastConversationResponse = GenericResponse & {
+	result?: {
 		conversation?: {
 			[key: string]: unknown;
 		};
 	};
 };
 
-export type DirectCastConversationMessagesResponse = {
-	result: {
+export type DirectCastConversationMessagesResponse = PaginatedResponse & {
+	result?: {
 		messages: Array<DirectCastMessage>;
-		/**
-		 * Pagination information for next page
-		 */
-		next?: {
-			/**
-			 * Cursor for pagination to get next set of messages
-			 */
-			cursor?: string;
-			[key: string]: unknown | string | undefined;
-		};
 	};
 };
 
@@ -554,25 +557,25 @@ export type DirectCastSendRequest = {
 	inReplyToId?: string;
 };
 
-export type DirectCastSendResponse = {
-	result: {
+export type CommonSuccessResponse = GenericResponse & {
+	result?: {
 		/**
-		 * Whether the message was sent successfully
+		 * Whether the operation was successful
 		 */
 		success: boolean;
 	};
 };
 
-export type DiscoverChannelsResponse = {
-	result: {
+export type DiscoverChannelsResponse = GenericResponse & {
+	result?: {
 		channels?: Array<{
 			[key: string]: unknown;
 		}>;
 	};
 };
 
-export type InvitesAvailableResponse = {
-	result: {
+export type InvitesAvailableResponse = GenericResponse & {
+	result?: {
 		/**
 		 * Total number of invites allocated to the user
 		 */
@@ -584,12 +587,20 @@ export type InvitesAvailableResponse = {
 	};
 };
 
-export type SponsoredInvitesResponse = {
-	result: {
+export type SponsoredInvitesResponse = GenericResponse & {
+	result?: {
 		invites?: Array<{
 			[key: string]: unknown;
 		}>;
 	};
+	[key: string]:
+		| unknown
+		| {
+				invites?: Array<{
+					[key: string]: unknown;
+				}>;
+		  }
+		| undefined;
 };
 
 export type RewardsLeaderboardResponse = {
@@ -967,12 +978,9 @@ export type ChannelFollower = {
 	followedAt?: number;
 };
 
-export type ChannelFollowersResponse = {
+export type ChannelFollowersResponse = PaginatedResponse & {
 	result?: {
 		users?: Array<ChannelFollower>;
-		next?: {
-			cursor?: string;
-		};
 	};
 };
 
@@ -1078,6 +1086,8 @@ export type ApiKey = {
 	description: string;
 };
 
+export type DirectCastSendResponse = CommonSuccessResponse;
+
 /**
  * The user's FID (Farcaster ID)
  */
@@ -1087,6 +1097,11 @@ export type FidParam = number;
  * Maximum number of items to return
  */
 export type LimitParam = number;
+
+/**
+ * Base64 encoded cursor for pagination
+ */
+export type CursorParam = string;
 
 export type GetUserOnboardingStateData = {
 	body?: never;
@@ -1861,7 +1876,7 @@ export type SendDirectCastMessageResponses = {
 	/**
 	 * Direct cast message sent successfully
 	 */
-	200: DirectCastSendResponse;
+	200: CommonSuccessResponse;
 };
 
 export type SendDirectCastMessageResponse =

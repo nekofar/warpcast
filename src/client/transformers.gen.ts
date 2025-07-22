@@ -55,9 +55,11 @@ export const getDirectCastInboxResponseTransformer = async (
 const directCastConversationMessagesResponseSchemaResponseTransformer = (
 	data: any,
 ) => {
-	data.result.messages = data.result.messages.map((item: any) => {
-		return directCastMessageSchemaResponseTransformer(item);
-	});
+	if (data.result) {
+		data.result.messages = data.result.messages.map((item: any) => {
+			return directCastMessageSchemaResponseTransformer(item);
+		});
+	}
 	return data;
 };
 
