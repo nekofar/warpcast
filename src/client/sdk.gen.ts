@@ -62,15 +62,39 @@ import type {
 	GetDirectCastConversationData,
 	GetDirectCastConversationResponses,
 	GetDirectCastConversationErrors,
+	CategorizeDirectCastConversationData,
+	CategorizeDirectCastConversationResponses,
+	CategorizeDirectCastConversationErrors,
 	GetDirectCastConversationMessagesData,
 	GetDirectCastConversationMessagesResponses,
 	GetDirectCastConversationMessagesErrors,
+	SetDirectCastConversationMessageTtlData,
+	SetDirectCastConversationMessageTtlResponses,
+	SetDirectCastConversationMessageTtlErrors,
+	UpdateDirectCastConversationNotificationsData,
+	UpdateDirectCastConversationNotificationsResponses,
+	UpdateDirectCastConversationNotificationsErrors,
 	GetDirectCastConversationRecentMessagesData,
 	GetDirectCastConversationRecentMessagesResponses,
 	GetDirectCastConversationRecentMessagesErrors,
 	SendDirectCastMessageData,
 	SendDirectCastMessageResponses,
 	SendDirectCastMessageErrors,
+	DirectCastManuallyMarkUnreadData,
+	DirectCastManuallyMarkUnreadResponses,
+	DirectCastManuallyMarkUnreadErrors,
+	RemoveDirectCastMessageReactionData,
+	RemoveDirectCastMessageReactionResponses,
+	RemoveDirectCastMessageReactionErrors,
+	AddDirectCastMessageReactionData,
+	AddDirectCastMessageReactionResponses,
+	AddDirectCastMessageReactionErrors,
+	UnpinDirectCastConversationData,
+	UnpinDirectCastConversationResponses,
+	UnpinDirectCastConversationErrors,
+	PinDirectCastConversationData,
+	PinDirectCastConversationResponses,
+	PinDirectCastConversationErrors,
 	DiscoverChannelsData,
 	DiscoverChannelsResponses,
 	DiscoverChannelsErrors,
@@ -122,6 +146,9 @@ import type {
 	GetTopFrameAppsData,
 	GetTopFrameAppsResponses,
 	GetTopFrameAppsErrors,
+	GetTopMiniAppsData,
+	GetTopMiniAppsResponses,
+	GetTopMiniAppsErrors,
 	GetVerificationsData,
 	GetVerificationsResponses,
 	GetVerificationsErrors,
@@ -617,6 +644,7 @@ export const getUserFavoriteFrames = <ThrowOnError extends boolean = false>(
 
 /**
  * Get user by username
+ * Retrieves user information based on username
  */
 export const getUserByUsername = <ThrowOnError extends boolean = false>(
 	options: Options<GetUserByUsernameData, ThrowOnError>,
@@ -828,6 +856,35 @@ export const getDirectCastConversation = <ThrowOnError extends boolean = false>(
 };
 
 /**
+ * Categorize direct cast conversation
+ * Categorizes a direct cast conversation by setting its category (e.g., archived).
+ */
+export const categorizeDirectCastConversation = <
+	ThrowOnError extends boolean = false,
+>(
+	options: Options<CategorizeDirectCastConversationData, ThrowOnError>,
+) => {
+	return (options.client ?? _heyApiClient).post<
+		CategorizeDirectCastConversationResponses,
+		CategorizeDirectCastConversationErrors,
+		ThrowOnError
+	>({
+		security: [
+			{
+				scheme: "bearer",
+				type: "http",
+			},
+		],
+		url: "/v2/direct-cast-conversation-categorization",
+		...options,
+		headers: {
+			"Content-Type": "application/json",
+			...options.headers,
+		},
+	});
+};
+
+/**
  * Get direct cast conversation messages
  * Fetches messages from a direct cast conversation by conversationId with pagination support.
  */
@@ -850,6 +907,64 @@ export const getDirectCastConversationMessages = <
 		],
 		url: "/v2/direct-cast-conversation-messages",
 		...options,
+	});
+};
+
+/**
+ * Set direct cast conversation message TTL
+ * Sets the time-to-live (TTL) for messages in a direct cast conversation.
+ */
+export const setDirectCastConversationMessageTtl = <
+	ThrowOnError extends boolean = false,
+>(
+	options: Options<SetDirectCastConversationMessageTtlData, ThrowOnError>,
+) => {
+	return (options.client ?? _heyApiClient).post<
+		SetDirectCastConversationMessageTtlResponses,
+		SetDirectCastConversationMessageTtlErrors,
+		ThrowOnError
+	>({
+		security: [
+			{
+				scheme: "bearer",
+				type: "http",
+			},
+		],
+		url: "/v2/direct-cast-conversation-message-ttl",
+		...options,
+		headers: {
+			"Content-Type": "application/json",
+			...options.headers,
+		},
+	});
+};
+
+/**
+ * Update direct cast conversation notifications
+ * Updates notification settings for a direct cast conversation.
+ */
+export const updateDirectCastConversationNotifications = <
+	ThrowOnError extends boolean = false,
+>(
+	options: Options<UpdateDirectCastConversationNotificationsData, ThrowOnError>,
+) => {
+	return (options.client ?? _heyApiClient).post<
+		UpdateDirectCastConversationNotificationsResponses,
+		UpdateDirectCastConversationNotificationsErrors,
+		ThrowOnError
+	>({
+		security: [
+			{
+				scheme: "bearer",
+				type: "http",
+			},
+		],
+		url: "/v2/direct-cast-conversation-notifications",
+		...options,
+		headers: {
+			"Content-Type": "application/json",
+			...options.headers,
+		},
 	});
 };
 
@@ -899,6 +1014,149 @@ export const sendDirectCastMessage = <ThrowOnError extends boolean = false>(
 			},
 		],
 		url: "/v2/direct-cast-send",
+		...options,
+		headers: {
+			"Content-Type": "application/json",
+			...options.headers,
+		},
+	});
+};
+
+/**
+ * Manually mark direct cast conversation as unread
+ * Marks a direct cast conversation as unread for the authenticated user.
+ */
+export const directCastManuallyMarkUnread = <
+	ThrowOnError extends boolean = false,
+>(
+	options: Options<DirectCastManuallyMarkUnreadData, ThrowOnError>,
+) => {
+	return (options.client ?? _heyApiClient).put<
+		DirectCastManuallyMarkUnreadResponses,
+		DirectCastManuallyMarkUnreadErrors,
+		ThrowOnError
+	>({
+		security: [
+			{
+				scheme: "bearer",
+				type: "http",
+			},
+		],
+		url: "/v2/direct-cast-manually-mark-unread",
+		...options,
+		headers: {
+			"Content-Type": "application/json",
+			...options.headers,
+		},
+	});
+};
+
+/**
+ * Remove reaction from direct cast message
+ * Removes an emoji reaction from a specific message in a direct cast conversation.
+ */
+export const removeDirectCastMessageReaction = <
+	ThrowOnError extends boolean = false,
+>(
+	options: Options<RemoveDirectCastMessageReactionData, ThrowOnError>,
+) => {
+	return (options.client ?? _heyApiClient).delete<
+		RemoveDirectCastMessageReactionResponses,
+		RemoveDirectCastMessageReactionErrors,
+		ThrowOnError
+	>({
+		security: [
+			{
+				scheme: "bearer",
+				type: "http",
+			},
+		],
+		url: "/v2/direct-cast-message-reaction",
+		...options,
+		headers: {
+			"Content-Type": "application/json",
+			...options.headers,
+		},
+	});
+};
+
+/**
+ * Add reaction to direct cast message
+ * Adds an emoji reaction to a specific message in a direct cast conversation.
+ */
+export const addDirectCastMessageReaction = <
+	ThrowOnError extends boolean = false,
+>(
+	options: Options<AddDirectCastMessageReactionData, ThrowOnError>,
+) => {
+	return (options.client ?? _heyApiClient).put<
+		AddDirectCastMessageReactionResponses,
+		AddDirectCastMessageReactionErrors,
+		ThrowOnError
+	>({
+		security: [
+			{
+				scheme: "bearer",
+				type: "http",
+			},
+		],
+		url: "/v2/direct-cast-message-reaction",
+		...options,
+		headers: {
+			"Content-Type": "application/json",
+			...options.headers,
+		},
+	});
+};
+
+/**
+ * Unpin direct cast conversation
+ * Unpins a direct cast conversation by conversationId.
+ */
+export const unpinDirectCastConversation = <
+	ThrowOnError extends boolean = false,
+>(
+	options: Options<UnpinDirectCastConversationData, ThrowOnError>,
+) => {
+	return (options.client ?? _heyApiClient).delete<
+		UnpinDirectCastConversationResponses,
+		UnpinDirectCastConversationErrors,
+		ThrowOnError
+	>({
+		security: [
+			{
+				scheme: "bearer",
+				type: "http",
+			},
+		],
+		url: "/v2/direct-cast-pin-conversation",
+		...options,
+		headers: {
+			"Content-Type": "application/json",
+			...options.headers,
+		},
+	});
+};
+
+/**
+ * Pin direct cast conversation
+ * Pins a direct cast conversation by conversationId.
+ */
+export const pinDirectCastConversation = <ThrowOnError extends boolean = false>(
+	options: Options<PinDirectCastConversationData, ThrowOnError>,
+) => {
+	return (options.client ?? _heyApiClient).post<
+		PinDirectCastConversationResponses,
+		PinDirectCastConversationErrors,
+		ThrowOnError
+	>({
+		security: [
+			{
+				scheme: "bearer",
+				type: "http",
+			},
+		],
+		url: "/v2/direct-cast-pin-conversation",
 		...options,
 		headers: {
 			"Content-Type": "application/json",
@@ -1294,6 +1552,29 @@ export const getTopFrameApps = <ThrowOnError extends boolean = false>(
 			},
 		],
 		url: "/v1/top-frameapps",
+		...options,
+	});
+};
+
+/**
+ * Get top mini apps
+ * Returns a list of top mini apps with optional pagination.
+ */
+export const getTopMiniApps = <ThrowOnError extends boolean = false>(
+	options?: Options<GetTopMiniAppsData, ThrowOnError>,
+) => {
+	return (options?.client ?? _heyApiClient).get<
+		GetTopMiniAppsResponses,
+		GetTopMiniAppsErrors,
+		ThrowOnError
+	>({
+		security: [
+			{
+				scheme: "bearer",
+				type: "http",
+			},
+		],
+		url: "/v1/top-mini-apps",
 		...options,
 	});
 };

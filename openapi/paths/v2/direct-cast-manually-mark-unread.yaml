@@ -1,0 +1,25 @@
+put:
+  operationId: directCastManuallyMarkUnread
+  summary: Manually mark direct cast conversation as unread
+  description: Marks a direct cast conversation as unread for the authenticated user.
+  tags:
+    - Messaging
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/index.yaml#/DirectCastManuallyMarkUnreadRequest'
+  security:
+    - bearerAuth: []
+  responses:
+    '200':
+      description: Direct cast conversation marked as unread successfully
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common.yaml#/SuccessResponse'
+    '401':
+      $ref: '../../components/responses/index.yaml#/Unauthorized'
+    '429':
+      description: Too many requests

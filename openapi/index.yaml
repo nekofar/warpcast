@@ -123,14 +123,32 @@ paths:
   /v2/direct-cast-conversation:
     $ref: ./paths/v2/direct-cast-conversation.yaml
 
+  /v2/direct-cast-conversation-categorization:
+    $ref: ./paths/v2/direct-cast-conversation-categorization.yaml
+
   /v2/direct-cast-conversation-messages:
     $ref: ./paths/v2/direct-cast-conversation-messages.yaml
+
+  /v2/direct-cast-conversation-message-ttl:
+    $ref: ./paths/v2/direct-cast-conversation-message-ttl.yaml
+
+  /v2/direct-cast-conversation-notifications:
+    $ref: ./paths/v2/direct-cast-conversation-notifications.yaml
 
   /v2/direct-cast-conversation-recent-messages:
     $ref: ./paths/v2/direct-cast-conversation-recent-messages.yaml
 
   /v2/direct-cast-send:
     $ref: ./paths/v2/direct-cast-send.yaml
+
+  /v2/direct-cast-manually-mark-unread:
+    $ref: ./paths/v2/direct-cast-manually-mark-unread.yaml
+
+  /v2/direct-cast-message-reaction:
+    $ref: ./paths/v2/direct-cast-message-reaction.yaml
+
+  /v2/direct-cast-pin-conversation:
+    $ref: ./paths/v2/direct-cast-pin-conversation.yaml
 
   /v2/discover-channels:
     $ref: ./paths/v2/discover-channels.yaml
@@ -182,6 +200,9 @@ paths:
 
   /v1/top-frameapps:
     $ref: ./paths/v1/top-frameapps.yaml
+
+  /v1/top-mini-apps:
+    $ref: ./paths/v1/top-mini-apps.yaml
 
   /v2/verifications:
     $ref: ./paths/v2/verifications.yaml

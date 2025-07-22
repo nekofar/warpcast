@@ -90,6 +90,12 @@ export type UserExtras = {
 	custodyAddress?: string;
 	ethWallets?: Array<string>;
 	solanaWallets?: Array<string>;
+	walletLabels?: Array<{
+		address?: string;
+		labels?: Array<string>;
+	}>;
+	v2?: boolean;
+	publicSpamLabel?: string;
 };
 
 export type UserByFidResponse = {
@@ -524,10 +530,52 @@ export type DirectCastConversationResponse = GenericResponse & {
 	};
 };
 
+export type DirectCastConversationCategorizationRequest = {
+	/**
+	 * ID of the conversation to categorize
+	 */
+	conversationId: string;
+	/**
+	 * Category to assign to the conversation
+	 */
+	category: string;
+};
+
+export type CommonSuccessResponse = GenericResponse & {
+	result?: {
+		/**
+		 * Whether the operation was successful
+		 */
+		success: boolean;
+	};
+};
+
 export type DirectCastConversationMessagesResponse = PaginatedResponse & {
 	result?: {
 		messages: Array<DirectCastMessage>;
 	};
+};
+
+export type DirectCastConversationMessageTtlRequest = {
+	/**
+	 * ID of the conversation to set message TTL for
+	 */
+	conversationId: string;
+	/**
+	 * Time to live for messages in days
+	 */
+	ttl: number;
+};
+
+export type DirectCastConversationNotificationsRequest = {
+	/**
+	 * ID of the conversation to update notification settings for
+	 */
+	conversationId: string;
+	/**
+	 * Whether to mute notifications for this conversation
+	 */
+	muted: boolean;
 };
 
 export type DirectCastSendRequest = {
@@ -557,13 +605,33 @@ export type DirectCastSendRequest = {
 	inReplyToId?: string;
 };
 
-export type CommonSuccessResponse = GenericResponse & {
-	result?: {
-		/**
-		 * Whether the operation was successful
-		 */
-		success: boolean;
-	};
+export type DirectCastManuallyMarkUnreadRequest = {
+	/**
+	 * ID of the conversation to mark as unread
+	 */
+	conversationId: string;
+};
+
+export type DirectCastMessageReactionRequest = {
+	/**
+	 * ID of the conversation containing the message
+	 */
+	conversationId: string;
+	/**
+	 * ID of the message to react to
+	 */
+	messageId: string;
+	/**
+	 * Emoji reaction to add or remove
+	 */
+	reaction: string;
+};
+
+export type DirectCastPinConversationRequest = {
+	/**
+	 * ID of the conversation to pin
+	 */
+	conversationId: string;
 };
 
 export type DiscoverChannelsResponse = GenericResponse & {
@@ -714,6 +782,144 @@ export type FrameApp = {
 export type FrameAppsResponse = {
 	result?: {
 		frames?: Array<FrameApp>;
+	};
+};
+
+/**
+ * Context information for the viewer
+ */
+export type MiniAppViewerContext = {
+	[key: string]: unknown;
+};
+
+export type MiniApp = {
+	/**
+	 * The domain of the mini app
+	 */
+	domain?: string;
+	/**
+	 * The name of the mini app
+	 */
+	name?: string;
+	/**
+	 * URL to the mini app's icon
+	 */
+	iconUrl?: string;
+	/**
+	 * The home URL of the mini app
+	 */
+	homeUrl?: string;
+	author?: User;
+	/**
+	 * Whether the mini app supports notifications
+	 */
+	supportsNotifications?: boolean;
+	/**
+	 * Unique identifier for the mini app
+	 */
+	id?: string;
+	/**
+	 * Short identifier for the mini app
+	 */
+	shortId?: string;
+	/**
+	 * URL to the mini app's main image
+	 */
+	imageUrl?: string;
+	/**
+	 * Title for the action button
+	 */
+	buttonTitle?: string;
+	/**
+	 * URL to the splash screen image
+	 */
+	splashImageUrl?: string;
+	/**
+	 * Background color for the splash screen
+	 */
+	splashBackgroundColor?: string;
+	/**
+	 * URL for sharing casts
+	 */
+	castShareUrl?: string;
+	/**
+	 * Subtitle of the mini app
+	 */
+	subtitle?: string;
+	/**
+	 * Description of the mini app
+	 */
+	description?: string;
+	/**
+	 * Tagline of the mini app
+	 */
+	tagline?: string;
+	/**
+	 * URL to the hero image
+	 */
+	heroImageUrl?: string;
+	/**
+	 * Primary category of the mini app
+	 */
+	primaryCategory?: string;
+	/**
+	 * Tags associated with the mini app
+	 */
+	tags?: Array<string>;
+	/**
+	 * URLs to screenshot images
+	 */
+	screenshotUrls?: Array<string>;
+	/**
+	 * Whether the mini app should be indexed
+	 */
+	noindex?: boolean;
+	/**
+	 * Open Graph title
+	 */
+	ogTitle?: string;
+	/**
+	 * Open Graph description
+	 */
+	ogDescription?: string;
+	/**
+	 * Open Graph image URL
+	 */
+	ogImageUrl?: string;
+	/**
+	 * Required capabilities for the mini app
+	 */
+	requiredCapabilities?: Array<string>;
+	/**
+	 * Required blockchain chains
+	 */
+	requiredChains?: Array<string>;
+	viewerContext?: MiniAppViewerContext;
+};
+
+export type RankedMiniApp = {
+	/**
+	 * Current rank of the mini app
+	 */
+	rank?: number;
+	miniApp?: MiniApp;
+	/**
+	 * Change in rank over the last 72 hours
+	 */
+	rank72hChange?: number;
+};
+
+export type TopMiniAppsResponsePaginationCursor = {
+	/**
+	 * Base64 encoded cursor for pagination
+	 */
+	cursor?: string;
+};
+
+export type TopMiniAppsResponse = {
+	result?: {
+		miniApps?: Array<RankedMiniApp>;
+		next?: TopMiniAppsResponsePaginationCursor;
 	};
 };
 
@@ -1087,6 +1293,15 @@ export type ApiKey = {
 };
 
 export type DirectCastSendResponse = CommonSuccessResponse;
+
+export type DirectCastConversationCategorizationResponse =
+	CommonSuccessResponse;
+
+export type DirectCastConversationNotificationsResponse = CommonSuccessResponse;
+
+export type DirectCastConversationMessageTtlResponse = CommonSuccessResponse;
+
+export type DirectCastMessageReactionResponse = CommonSuccessResponse;
 
 /**
  * The user's FID (Farcaster ID)
@@ -1470,6 +1685,9 @@ export type GetUserByUsernameData = {
 	body?: never;
 	path?: never;
 	query: {
+		/**
+		 * The username to look up
+		 */
 		username: string;
 	};
 	url: "/v2/user-by-username";
@@ -1493,7 +1711,7 @@ export type GetUserByUsernameResponses = {
 	/**
 	 * Successful retrieval of user by username
 	 */
-	200: UserResponse;
+	200: UserByFidResponse;
 };
 
 export type GetUserByUsernameResponse =
@@ -1769,6 +1987,37 @@ export type GetDirectCastConversationResponses = {
 export type GetDirectCastConversationResponse =
 	GetDirectCastConversationResponses[keyof GetDirectCastConversationResponses];
 
+export type CategorizeDirectCastConversationData = {
+	body: DirectCastConversationCategorizationRequest;
+	path?: never;
+	query?: never;
+	url: "/v2/direct-cast-conversation-categorization";
+};
+
+export type CategorizeDirectCastConversationErrors = {
+	/**
+	 * Authentication is required or failed
+	 */
+	401: ErrorResponse;
+	/**
+	 * Too many requests
+	 */
+	429: unknown;
+};
+
+export type CategorizeDirectCastConversationError =
+	CategorizeDirectCastConversationErrors[keyof CategorizeDirectCastConversationErrors];
+
+export type CategorizeDirectCastConversationResponses = {
+	/**
+	 * Conversation categorized successfully
+	 */
+	200: CommonSuccessResponse;
+};
+
+export type CategorizeDirectCastConversationResponse =
+	CategorizeDirectCastConversationResponses[keyof CategorizeDirectCastConversationResponses];
+
 export type GetDirectCastConversationMessagesData = {
 	body?: never;
 	path?: never;
@@ -1811,6 +2060,68 @@ export type GetDirectCastConversationMessagesResponses = {
 
 export type GetDirectCastConversationMessagesResponse =
 	GetDirectCastConversationMessagesResponses[keyof GetDirectCastConversationMessagesResponses];
+
+export type SetDirectCastConversationMessageTtlData = {
+	body: DirectCastConversationMessageTtlRequest;
+	path?: never;
+	query?: never;
+	url: "/v2/direct-cast-conversation-message-ttl";
+};
+
+export type SetDirectCastConversationMessageTtlErrors = {
+	/**
+	 * Authentication is required or failed
+	 */
+	401: ErrorResponse;
+	/**
+	 * Too many requests
+	 */
+	429: unknown;
+};
+
+export type SetDirectCastConversationMessageTtlError =
+	SetDirectCastConversationMessageTtlErrors[keyof SetDirectCastConversationMessageTtlErrors];
+
+export type SetDirectCastConversationMessageTtlResponses = {
+	/**
+	 * Message TTL set successfully
+	 */
+	200: CommonSuccessResponse;
+};
+
+export type SetDirectCastConversationMessageTtlResponse =
+	SetDirectCastConversationMessageTtlResponses[keyof SetDirectCastConversationMessageTtlResponses];
+
+export type UpdateDirectCastConversationNotificationsData = {
+	body: DirectCastConversationNotificationsRequest;
+	path?: never;
+	query?: never;
+	url: "/v2/direct-cast-conversation-notifications";
+};
+
+export type UpdateDirectCastConversationNotificationsErrors = {
+	/**
+	 * Authentication is required or failed
+	 */
+	401: ErrorResponse;
+	/**
+	 * Too many requests
+	 */
+	429: unknown;
+};
+
+export type UpdateDirectCastConversationNotificationsError =
+	UpdateDirectCastConversationNotificationsErrors[keyof UpdateDirectCastConversationNotificationsErrors];
+
+export type UpdateDirectCastConversationNotificationsResponses = {
+	/**
+	 * Notification settings updated successfully
+	 */
+	200: CommonSuccessResponse;
+};
+
+export type UpdateDirectCastConversationNotificationsResponse =
+	UpdateDirectCastConversationNotificationsResponses[keyof UpdateDirectCastConversationNotificationsResponses];
 
 export type GetDirectCastConversationRecentMessagesData = {
 	body?: never;
@@ -1881,6 +2192,161 @@ export type SendDirectCastMessageResponses = {
 
 export type SendDirectCastMessageResponse =
 	SendDirectCastMessageResponses[keyof SendDirectCastMessageResponses];
+
+export type DirectCastManuallyMarkUnreadData = {
+	body: DirectCastManuallyMarkUnreadRequest;
+	path?: never;
+	query?: never;
+	url: "/v2/direct-cast-manually-mark-unread";
+};
+
+export type DirectCastManuallyMarkUnreadErrors = {
+	/**
+	 * Authentication is required or failed
+	 */
+	401: ErrorResponse;
+	/**
+	 * Too many requests
+	 */
+	429: unknown;
+};
+
+export type DirectCastManuallyMarkUnreadError =
+	DirectCastManuallyMarkUnreadErrors[keyof DirectCastManuallyMarkUnreadErrors];
+
+export type DirectCastManuallyMarkUnreadResponses = {
+	/**
+	 * Direct cast conversation marked as unread successfully
+	 */
+	200: CommonSuccessResponse;
+};
+
+export type DirectCastManuallyMarkUnreadResponse =
+	DirectCastManuallyMarkUnreadResponses[keyof DirectCastManuallyMarkUnreadResponses];
+
+export type RemoveDirectCastMessageReactionData = {
+	body: DirectCastMessageReactionRequest;
+	path?: never;
+	query?: never;
+	url: "/v2/direct-cast-message-reaction";
+};
+
+export type RemoveDirectCastMessageReactionErrors = {
+	/**
+	 * Authentication is required or failed
+	 */
+	401: ErrorResponse;
+	/**
+	 * Too many requests
+	 */
+	429: unknown;
+};
+
+export type RemoveDirectCastMessageReactionError =
+	RemoveDirectCastMessageReactionErrors[keyof RemoveDirectCastMessageReactionErrors];
+
+export type RemoveDirectCastMessageReactionResponses = {
+	/**
+	 * Reaction removed successfully
+	 */
+	200: CommonSuccessResponse;
+};
+
+export type RemoveDirectCastMessageReactionResponse =
+	RemoveDirectCastMessageReactionResponses[keyof RemoveDirectCastMessageReactionResponses];
+
+export type AddDirectCastMessageReactionData = {
+	body: DirectCastMessageReactionRequest;
+	path?: never;
+	query?: never;
+	url: "/v2/direct-cast-message-reaction";
+};
+
+export type AddDirectCastMessageReactionErrors = {
+	/**
+	 * Authentication is required or failed
+	 */
+	401: ErrorResponse;
+	/**
+	 * Too many requests
+	 */
+	429: unknown;
+};
+
+export type AddDirectCastMessageReactionError =
+	AddDirectCastMessageReactionErrors[keyof AddDirectCastMessageReactionErrors];
+
+export type AddDirectCastMessageReactionResponses = {
+	/**
+	 * Reaction added successfully
+	 */
+	200: CommonSuccessResponse;
+};
+
+export type AddDirectCastMessageReactionResponse =
+	AddDirectCastMessageReactionResponses[keyof AddDirectCastMessageReactionResponses];
+
+export type UnpinDirectCastConversationData = {
+	body: DirectCastPinConversationRequest;
+	path?: never;
+	query?: never;
+	url: "/v2/direct-cast-pin-conversation";
+};
+
+export type UnpinDirectCastConversationErrors = {
+	/**
+	 * Authentication is required or failed
+	 */
+	401: ErrorResponse;
+	/**
+	 * Too many requests
+	 */
+	429: unknown;
+};
+
+export type UnpinDirectCastConversationError =
+	UnpinDirectCastConversationErrors[keyof UnpinDirectCastConversationErrors];
+
+export type UnpinDirectCastConversationResponses = {
+	/**
+	 * Direct cast conversation unpinned successfully
+	 */
+	200: CommonSuccessResponse;
+};
+
+export type UnpinDirectCastConversationResponse =
+	UnpinDirectCastConversationResponses[keyof UnpinDirectCastConversationResponses];
+
+export type PinDirectCastConversationData = {
+	body: DirectCastPinConversationRequest;
+	path?: never;
+	query?: never;
+	url: "/v2/direct-cast-pin-conversation";
+};
+
+export type PinDirectCastConversationErrors = {
+	/**
+	 * Authentication is required or failed
+	 */
+	401: ErrorResponse;
+	/**
+	 * Too many requests
+	 */
+	429: unknown;
+};
+
+export type PinDirectCastConversationError =
+	PinDirectCastConversationErrors[keyof PinDirectCastConversationErrors];
+
+export type PinDirectCastConversationResponses = {
+	/**
+	 * Direct cast conversation pinned successfully
+	 */
+	200: CommonSuccessResponse;
+};
+
+export type PinDirectCastConversationResponse =
+	PinDirectCastConversationResponses[keyof PinDirectCastConversationResponses];
 
 export type DiscoverChannelsData = {
 	body?: never;
@@ -2423,6 +2889,42 @@ export type GetTopFrameAppsResponses = {
 
 export type GetTopFrameAppsResponse =
 	GetTopFrameAppsResponses[keyof GetTopFrameAppsResponses];
+
+export type GetTopMiniAppsData = {
+	body?: never;
+	path?: never;
+	query?: {
+		/**
+		 * Maximum number of items to return
+		 */
+		limit?: number;
+		/**
+		 * Base64 encoded cursor for pagination
+		 */
+		cursor?: string;
+	};
+	url: "/v1/top-mini-apps";
+};
+
+export type GetTopMiniAppsErrors = {
+	/**
+	 * Authentication is required or failed
+	 */
+	401: ErrorResponse;
+};
+
+export type GetTopMiniAppsError =
+	GetTopMiniAppsErrors[keyof GetTopMiniAppsErrors];
+
+export type GetTopMiniAppsResponses = {
+	/**
+	 * A list of top mini apps
+	 */
+	200: TopMiniAppsResponse;
+};
+
+export type GetTopMiniAppsResponse =
+	GetTopMiniAppsResponses[keyof GetTopMiniAppsResponses];
 
 export type GetVerificationsData = {
 	body?: never;

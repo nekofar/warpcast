@@ -1,0 +1,51 @@
+put:
+  operationId: addDirectCastMessageReaction
+  summary: Add reaction to direct cast message
+  description: Adds an emoji reaction to a specific message in a direct cast conversation.
+  tags:
+    - Messaging
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/index.yaml#/DirectCastMessageReactionRequest'
+  security:
+    - bearerAuth: []
+  responses:
+    '200':
+      description: Reaction added successfully
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/index.yaml#/DirectCastMessageReactionResponse'
+    '401':
+      $ref: '../../components/responses/index.yaml#/Unauthorized'
+    '429':
+      description: Too many requests
+
+delete:
+  operationId: removeDirectCastMessageReaction
+  summary: Remove reaction from direct cast message
+  description: Removes an emoji reaction from a specific message in a direct cast conversation.
+  tags:
+    - Messaging
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/index.yaml#/DirectCastMessageReactionRequest'
+  security:
+    - bearerAuth: []
+  responses:
+    '200':
+      description: Reaction removed successfully
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/index.yaml#/DirectCastMessageReactionResponse'
+    '401':
+      $ref: '../../components/responses/index.yaml#/Unauthorized'
+    '429':
+      description: Too many requests

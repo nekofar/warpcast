@@ -252,6 +252,29 @@ export const UserExtrasSchema = {
 				type: "string",
 			},
 		},
+		walletLabels: {
+			type: "array",
+			items: {
+				type: "object",
+				properties: {
+					address: {
+						type: "string",
+					},
+					labels: {
+						type: "array",
+						items: {
+							type: "string",
+						},
+					},
+				},
+			},
+		},
+		v2: {
+			type: "boolean",
+		},
+		publicSpamLabel: {
+			type: "string",
+		},
 	},
 } as const;
 
@@ -1206,6 +1229,46 @@ export const DirectCastConversationResponseSchema = {
 	],
 } as const;
 
+export const DirectCastConversationCategorizationRequestSchema = {
+	type: "object",
+	required: ["conversationId", "category"],
+	properties: {
+		conversationId: {
+			type: "string",
+			description: "ID of the conversation to categorize",
+			example: "17838-20146",
+		},
+		category: {
+			type: "string",
+			description: "Category to assign to the conversation",
+			example: "archived",
+		},
+	},
+} as const;
+
+export const common_SuccessResponseSchema = {
+	allOf: [
+		{
+			$ref: "#/components/schemas/GenericResponse",
+		},
+		{
+			type: "object",
+			properties: {
+				result: {
+					type: "object",
+					required: ["success"],
+					properties: {
+						success: {
+							type: "boolean",
+							description: "Whether the operation was successful",
+						},
+					},
+				},
+			},
+		},
+	],
+} as const;
+
 export const DirectCastConversationMessagesResponseSchema = {
 	allOf: [
 		{
@@ -1229,6 +1292,40 @@ export const DirectCastConversationMessagesResponseSchema = {
 			},
 		},
 	],
+} as const;
+
+export const DirectCastConversationMessageTtlRequestSchema = {
+	type: "object",
+	required: ["conversationId", "ttl"],
+	properties: {
+		conversationId: {
+			type: "string",
+			description: "ID of the conversation to set message TTL for",
+			example: "12590-20146",
+		},
+		ttl: {
+			type: "integer",
+			description: "Time to live for messages in days",
+			example: 365,
+		},
+	},
+} as const;
+
+export const DirectCastConversationNotificationsRequestSchema = {
+	type: "object",
+	required: ["conversationId", "muted"],
+	properties: {
+		conversationId: {
+			type: "string",
+			description: "ID of the conversation to update notification settings for",
+			example: "17838-20146",
+		},
+		muted: {
+			type: "boolean",
+			description: "Whether to mute notifications for this conversation",
+			example: false,
+		},
+	},
 } as const;
 
 export const DirectCastSendRequestSchema = {
@@ -1268,27 +1365,48 @@ export const DirectCastSendRequestSchema = {
 	},
 } as const;
 
-export const common_SuccessResponseSchema = {
-	allOf: [
-		{
-			$ref: "#/components/schemas/GenericResponse",
+export const DirectCastManuallyMarkUnreadRequestSchema = {
+	type: "object",
+	required: ["conversationId"],
+	properties: {
+		conversationId: {
+			type: "string",
+			description: "ID of the conversation to mark as unread",
 		},
-		{
-			type: "object",
-			properties: {
-				result: {
-					type: "object",
-					required: ["success"],
-					properties: {
-						success: {
-							type: "boolean",
-							description: "Whether the operation was successful",
-						},
-					},
-				},
-			},
+	},
+} as const;
+
+export const DirectCastMessageReactionRequestSchema = {
+	type: "object",
+	required: ["conversationId", "messageId", "reaction"],
+	properties: {
+		conversationId: {
+			type: "string",
+			description: "ID of the conversation containing the message",
+			example: "12590-20146",
 		},
-	],
+		messageId: {
+			type: "string",
+			description: "ID of the message to react to",
+			example: "17c7f0b459ff8f625fc35bba6a89c817",
+		},
+		reaction: {
+			type: "string",
+			description: "Emoji reaction to add or remove",
+			example: "👍",
+		},
+	},
+} as const;
+
+export const DirectCastPinConversationRequestSchema = {
+	type: "object",
+	required: ["conversationId"],
+	properties: {
+		conversationId: {
+			type: "string",
+			description: "ID of the conversation to pin",
+		},
+	},
 } as const;
 
 export const DiscoverChannelsResponseSchema = {
@@ -1668,6 +1786,183 @@ export const FrameAppsResponseSchema = {
 					items: {
 						$ref: "#/components/schemas/FrameApp",
 					},
+				},
+			},
+		},
+	},
+} as const;
+
+export const mini_app_ViewerContextSchema = {
+	type: "object",
+	properties: {},
+	description: "Context information for the viewer",
+} as const;
+
+export const MiniAppSchema = {
+	type: "object",
+	properties: {
+		domain: {
+			type: "string",
+			description: "The domain of the mini app",
+		},
+		name: {
+			type: "string",
+			description: "The name of the mini app",
+		},
+		iconUrl: {
+			type: "string",
+			description: "URL to the mini app's icon",
+		},
+		homeUrl: {
+			type: "string",
+			description: "The home URL of the mini app",
+		},
+		author: {
+			$ref: "#/components/schemas/User",
+		},
+		supportsNotifications: {
+			type: "boolean",
+			description: "Whether the mini app supports notifications",
+		},
+		id: {
+			type: "string",
+			description: "Unique identifier for the mini app",
+		},
+		shortId: {
+			type: "string",
+			description: "Short identifier for the mini app",
+		},
+		imageUrl: {
+			type: "string",
+			description: "URL to the mini app's main image",
+		},
+		buttonTitle: {
+			type: "string",
+			description: "Title for the action button",
+		},
+		splashImageUrl: {
+			type: "string",
+			description: "URL to the splash screen image",
+		},
+		splashBackgroundColor: {
+			type: "string",
+			description: "Background color for the splash screen",
+		},
+		castShareUrl: {
+			type: "string",
+			description: "URL for sharing casts",
+		},
+		subtitle: {
+			type: "string",
+			description: "Subtitle of the mini app",
+		},
+		description: {
+			type: "string",
+			description: "Description of the mini app",
+		},
+		tagline: {
+			type: "string",
+			description: "Tagline of the mini app",
+		},
+		heroImageUrl: {
+			type: "string",
+			description: "URL to the hero image",
+		},
+		primaryCategory: {
+			type: "string",
+			description: "Primary category of the mini app",
+		},
+		tags: {
+			type: "array",
+			items: {
+				type: "string",
+			},
+			description: "Tags associated with the mini app",
+		},
+		screenshotUrls: {
+			type: "array",
+			items: {
+				type: "string",
+			},
+			description: "URLs to screenshot images",
+		},
+		noindex: {
+			type: "boolean",
+			description: "Whether the mini app should be indexed",
+		},
+		ogTitle: {
+			type: "string",
+			description: "Open Graph title",
+		},
+		ogDescription: {
+			type: "string",
+			description: "Open Graph description",
+		},
+		ogImageUrl: {
+			type: "string",
+			description: "Open Graph image URL",
+		},
+		requiredCapabilities: {
+			type: "array",
+			items: {
+				type: "string",
+			},
+			description: "Required capabilities for the mini app",
+		},
+		requiredChains: {
+			type: "array",
+			items: {
+				type: "string",
+			},
+			description: "Required blockchain chains",
+		},
+		viewerContext: {
+			$ref: "#/components/schemas/mini-app_ViewerContext",
+		},
+	},
+} as const;
+
+export const RankedMiniAppSchema = {
+	type: "object",
+	properties: {
+		rank: {
+			type: "integer",
+			description: "Current rank of the mini app",
+		},
+		miniApp: {
+			$ref: "#/components/schemas/MiniApp",
+		},
+		rank72hChange: {
+			type: "integer",
+			description: "Change in rank over the last 72 hours",
+		},
+	},
+} as const;
+
+export const top_mini_apps_response_PaginationCursorSchema = {
+	type: "object",
+	properties: {
+		cursor: {
+			type: "string",
+			description: "Base64 encoded cursor for pagination",
+		},
+	},
+} as const;
+
+export const TopMiniAppsResponseSchema = {
+	type: "object",
+	properties: {
+		result: {
+			type: "object",
+			properties: {
+				miniApps: {
+					type: "array",
+					items: {
+						$ref: "#/components/schemas/RankedMiniApp",
+					},
+				},
+				next: {
+					$ref: "#/components/schemas/top-mini-apps-response_PaginationCursor",
 				},
 			},
 		},
@@ -2587,5 +2882,21 @@ export const ApiKeySchema = {
 } as const;
 
 export const DirectCastSendResponseSchema = {
+	$ref: "#/components/schemas/common_SuccessResponse",
+} as const;
+
+export const DirectCastConversationCategorizationResponseSchema = {
+	$ref: "#/components/schemas/common_SuccessResponse",
+} as const;
+
+export const DirectCastConversationNotificationsResponseSchema = {
+	$ref: "#/components/schemas/common_SuccessResponse",
+} as const;
+
+export const DirectCastConversationMessageTtlResponseSchema = {
+	$ref: "#/components/schemas/common_SuccessResponse",
+} as const;
+
+export const DirectCastMessageReactionResponseSchema = {
 	$ref: "#/components/schemas/common_SuccessResponse",
 } as const;

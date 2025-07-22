@@ -1,12 +1,16 @@
 get:
   operationId: getUserByUsername
+  tags:
+    - User
   summary: Get user by username
+  description: Retrieves user information based on username
   parameters:
     - name: username
       in: query
       required: true
       schema:
         type: string
+      description: The username to look up
   security:
     - bearerAuth: []
   responses:
@@ -15,7 +19,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: '../../components/schemas/index.yaml#/UserResponse'
+            $ref: '../../components/schemas/index.yaml#/UserByFidResponse'
     '401':
       $ref: '../../components/responses/index.yaml#/Unauthorized'
     '404':
