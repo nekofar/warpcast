@@ -592,6 +592,52 @@ DirectCastConversationMessagesResponse:
               description: Cursor for pagination to get next set of messages
           additionalProperties: true
           description: Pagination information for next page
+
+DirectCastSendRequest:
+  type: object
+  required:
+    - conversationId
+    - recipientFids
+    - messageId
+    - type
+    - message
+  properties:
+    conversationId:
+      type: string
+      description: ID of the conversation to send the message to
+    recipientFids:
+      type: array
+      items:
+        type: integer
+      description: Array of Farcaster IDs of message recipients
+      example: [17838, 861305]
+    messageId:
+      type: string
+      description: Unique identifier for the message
+    type:
+      type: string
+      enum: [text, image, reaction, link]
+      description: Type of the message
+      example: "text"
+    message:
+      type: string
+      description: Content of the message
+    inReplyToId:
+      type: string
+      description: ID of the message this is replying to (optional)
+
+DirectCastSendResponse:
+  type: object
+  required: [result]
+  properties:
+    result:
+      type: object
+      required: [success]
+      properties:
+        success:
+          type: boolean
+          description: Whether the message was sent successfully
+          example: true
 DiscoverChannelsResponse:
   type: object
   required: [result]

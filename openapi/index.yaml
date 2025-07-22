@@ -105,6 +105,9 @@ paths:
   /v2/direct-cast-conversation-recent-messages:
     $ref: ./paths/v2/direct-cast-conversation-recent-messages.yaml
 
+  /v2/direct-cast-send:
+    $ref: ./paths/v2/direct-cast-send.yaml
+
   /v2/discover-channels:
     $ref: ./paths/v2/discover-channels.yaml
 
