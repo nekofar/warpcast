@@ -677,6 +677,24 @@ DirectCastConversationNotificationsRequest:
 
 DirectCastConversationNotificationsResponse:
   $ref: './common.yaml#/SuccessResponse'
+
+DirectCastConversationMessageTtlRequest:
+  type: object
+  required:
+    - conversationId
+    - ttl
+  properties:
+    conversationId:
+      type: string
+      description: ID of the conversation to set message TTL for
+      example: "12590-20146"
+    ttl:
+      type: integer
+      description: Time to live for messages in days
+      example: 365
+
+DirectCastConversationMessageTtlResponse:
+  $ref: './common.yaml#/SuccessResponse'
 DiscoverChannelsResponse:
   allOf:
     - $ref: './common.yaml#/GenericResponse'

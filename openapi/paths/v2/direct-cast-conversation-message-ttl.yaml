@@ -1,0 +1,25 @@
+post:
+  operationId: setDirectCastConversationMessageTtl
+  summary: Set direct cast conversation message TTL
+  description: Sets the time-to-live (TTL) for messages in a direct cast conversation.
+  tags:
+    - Messaging
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/index.yaml#/DirectCastConversationMessageTtlRequest'
+  security:
+    - bearerAuth: []
+  responses:
+    '200':
+      description: Message TTL set successfully
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/index.yaml#/DirectCastConversationMessageTtlResponse'
+    '401':
+      $ref: '../../components/responses/index.yaml#/Unauthorized'
+    '429':
+      description: Too many requests
