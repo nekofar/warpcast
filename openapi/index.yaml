@@ -129,6 +129,9 @@ paths:
   /v2/direct-cast-conversation-messages:
     $ref: ./paths/v2/direct-cast-conversation-messages.yaml
 
+  /v2/direct-cast-conversation-notifications:
+    $ref: ./paths/v2/direct-cast-conversation-notifications.yaml
+
   /v2/direct-cast-conversation-recent-messages:
     $ref: ./paths/v2/direct-cast-conversation-recent-messages.yaml
 

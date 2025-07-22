@@ -1,0 +1,25 @@
+post:
+  operationId: updateDirectCastConversationNotifications
+  summary: Update direct cast conversation notifications
+  description: Updates notification settings for a direct cast conversation.
+  tags:
+    - Messaging
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/index.yaml#/DirectCastConversationNotificationsRequest'
+  security:
+    - bearerAuth: []
+  responses:
+    '200':
+      description: Notification settings updated successfully
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/index.yaml#/DirectCastConversationNotificationsResponse'
+    '401':
+      $ref: '../../components/responses/index.yaml#/Unauthorized'
+    '429':
+      description: Too many requests
