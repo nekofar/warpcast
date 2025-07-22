@@ -83,6 +83,12 @@ import type {
 	DirectCastManuallyMarkUnreadData,
 	DirectCastManuallyMarkUnreadResponses,
 	DirectCastManuallyMarkUnreadErrors,
+	RemoveDirectCastMessageReactionData,
+	RemoveDirectCastMessageReactionResponses,
+	RemoveDirectCastMessageReactionErrors,
+	AddDirectCastMessageReactionData,
+	AddDirectCastMessageReactionResponses,
+	AddDirectCastMessageReactionErrors,
 	UnpinDirectCastConversationData,
 	UnpinDirectCastConversationResponses,
 	UnpinDirectCastConversationErrors,
@@ -1037,6 +1043,64 @@ export const directCastManuallyMarkUnread = <
 			},
 		],
 		url: "/v2/direct-cast-manually-mark-unread",
+		...options,
+		headers: {
+			"Content-Type": "application/json",
+			...options.headers,
+		},
+	});
+};
+
+/**
+ * Remove reaction from direct cast message
+ * Removes an emoji reaction from a specific message in a direct cast conversation.
+ */
+export const removeDirectCastMessageReaction = <
+	ThrowOnError extends boolean = false,
+>(
+	options: Options<RemoveDirectCastMessageReactionData, ThrowOnError>,
+) => {
+	return (options.client ?? _heyApiClient).delete<
+		RemoveDirectCastMessageReactionResponses,
+		RemoveDirectCastMessageReactionErrors,
+		ThrowOnError
+	>({
+		security: [
+			{
+				scheme: "bearer",
+				type: "http",
+			},
+		],
+		url: "/v2/direct-cast-message-reaction",
+		...options,
+		headers: {
+			"Content-Type": "application/json",
+			...options.headers,
+		},
+	});
+};
+
+/**
+ * Add reaction to direct cast message
+ * Adds an emoji reaction to a specific message in a direct cast conversation.
+ */
+export const addDirectCastMessageReaction = <
+	ThrowOnError extends boolean = false,
+>(
+	options: Options<AddDirectCastMessageReactionData, ThrowOnError>,
+) => {
+	return (options.client ?? _heyApiClient).put<
+		AddDirectCastMessageReactionResponses,
+		AddDirectCastMessageReactionErrors,
+		ThrowOnError
+	>({
+		security: [
+			{
+				scheme: "bearer",
+				type: "http",
+			},
+		],
+		url: "/v2/direct-cast-message-reaction",
 		...options,
 		headers: {
 			"Content-Type": "application/json",

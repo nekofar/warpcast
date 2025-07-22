@@ -1376,6 +1376,28 @@ export const DirectCastManuallyMarkUnreadRequestSchema = {
 	},
 } as const;
 
+export const DirectCastMessageReactionRequestSchema = {
+	type: "object",
+	required: ["conversationId", "messageId", "reaction"],
+	properties: {
+		conversationId: {
+			type: "string",
+			description: "ID of the conversation containing the message",
+			example: "12590-20146",
+		},
+		messageId: {
+			type: "string",
+			description: "ID of the message to react to",
+			example: "17c7f0b459ff8f625fc35bba6a89c817",
+		},
+		reaction: {
+			type: "string",
+			description: "Emoji reaction to add or remove",
+			example: "👍",
+		},
+	},
+} as const;
+
 export const DirectCastPinConversationRequestSchema = {
 	type: "object",
 	required: ["conversationId"],
@@ -2872,5 +2894,9 @@ export const DirectCastConversationNotificationsResponseSchema = {
 } as const;
 
 export const DirectCastConversationMessageTtlResponseSchema = {
+	$ref: "#/components/schemas/common_SuccessResponse",
+} as const;
+
+export const DirectCastMessageReactionResponseSchema = {
 	$ref: "#/components/schemas/common_SuccessResponse",
 } as const;

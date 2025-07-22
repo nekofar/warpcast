@@ -612,6 +612,21 @@ export type DirectCastManuallyMarkUnreadRequest = {
 	conversationId: string;
 };
 
+export type DirectCastMessageReactionRequest = {
+	/**
+	 * ID of the conversation containing the message
+	 */
+	conversationId: string;
+	/**
+	 * ID of the message to react to
+	 */
+	messageId: string;
+	/**
+	 * Emoji reaction to add or remove
+	 */
+	reaction: string;
+};
+
 export type DirectCastPinConversationRequest = {
 	/**
 	 * ID of the conversation to pin
@@ -1285,6 +1300,8 @@ export type DirectCastConversationCategorizationResponse =
 export type DirectCastConversationNotificationsResponse = CommonSuccessResponse;
 
 export type DirectCastConversationMessageTtlResponse = CommonSuccessResponse;
+
+export type DirectCastMessageReactionResponse = CommonSuccessResponse;
 
 /**
  * The user's FID (Farcaster ID)
@@ -2206,6 +2223,68 @@ export type DirectCastManuallyMarkUnreadResponses = {
 
 export type DirectCastManuallyMarkUnreadResponse =
 	DirectCastManuallyMarkUnreadResponses[keyof DirectCastManuallyMarkUnreadResponses];
+
+export type RemoveDirectCastMessageReactionData = {
+	body: DirectCastMessageReactionRequest;
+	path?: never;
+	query?: never;
+	url: "/v2/direct-cast-message-reaction";
+};
+
+export type RemoveDirectCastMessageReactionErrors = {
+	/**
+	 * Authentication is required or failed
+	 */
+	401: ErrorResponse;
+	/**
+	 * Too many requests
+	 */
+	429: unknown;
+};
+
+export type RemoveDirectCastMessageReactionError =
+	RemoveDirectCastMessageReactionErrors[keyof RemoveDirectCastMessageReactionErrors];
+
+export type RemoveDirectCastMessageReactionResponses = {
+	/**
+	 * Reaction removed successfully
+	 */
+	200: CommonSuccessResponse;
+};
+
+export type RemoveDirectCastMessageReactionResponse =
+	RemoveDirectCastMessageReactionResponses[keyof RemoveDirectCastMessageReactionResponses];
+
+export type AddDirectCastMessageReactionData = {
+	body: DirectCastMessageReactionRequest;
+	path?: never;
+	query?: never;
+	url: "/v2/direct-cast-message-reaction";
+};
+
+export type AddDirectCastMessageReactionErrors = {
+	/**
+	 * Authentication is required or failed
+	 */
+	401: ErrorResponse;
+	/**
+	 * Too many requests
+	 */
+	429: unknown;
+};
+
+export type AddDirectCastMessageReactionError =
+	AddDirectCastMessageReactionErrors[keyof AddDirectCastMessageReactionErrors];
+
+export type AddDirectCastMessageReactionResponses = {
+	/**
+	 * Reaction added successfully
+	 */
+	200: CommonSuccessResponse;
+};
+
+export type AddDirectCastMessageReactionResponse =
+	AddDirectCastMessageReactionResponses[keyof AddDirectCastMessageReactionResponses];
 
 export type UnpinDirectCastConversationData = {
 	body: DirectCastPinConversationRequest;
