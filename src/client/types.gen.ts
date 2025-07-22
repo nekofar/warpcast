@@ -2207,6 +2207,37 @@ export type DirectCastManuallyMarkUnreadResponses = {
 export type DirectCastManuallyMarkUnreadResponse =
 	DirectCastManuallyMarkUnreadResponses[keyof DirectCastManuallyMarkUnreadResponses];
 
+export type UnpinDirectCastConversationData = {
+	body: DirectCastPinConversationRequest;
+	path?: never;
+	query?: never;
+	url: "/v2/direct-cast-pin-conversation";
+};
+
+export type UnpinDirectCastConversationErrors = {
+	/**
+	 * Authentication is required or failed
+	 */
+	401: ErrorResponse;
+	/**
+	 * Too many requests
+	 */
+	429: unknown;
+};
+
+export type UnpinDirectCastConversationError =
+	UnpinDirectCastConversationErrors[keyof UnpinDirectCastConversationErrors];
+
+export type UnpinDirectCastConversationResponses = {
+	/**
+	 * Direct cast conversation unpinned successfully
+	 */
+	200: CommonSuccessResponse;
+};
+
+export type UnpinDirectCastConversationResponse =
+	UnpinDirectCastConversationResponses[keyof UnpinDirectCastConversationResponses];
+
 export type PinDirectCastConversationData = {
 	body: DirectCastPinConversationRequest;
 	path?: never;

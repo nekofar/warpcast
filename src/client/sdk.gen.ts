@@ -83,6 +83,9 @@ import type {
 	DirectCastManuallyMarkUnreadData,
 	DirectCastManuallyMarkUnreadResponses,
 	DirectCastManuallyMarkUnreadErrors,
+	UnpinDirectCastConversationData,
+	UnpinDirectCastConversationResponses,
+	UnpinDirectCastConversationErrors,
 	PinDirectCastConversationData,
 	PinDirectCastConversationResponses,
 	PinDirectCastConversationErrors,
@@ -1034,6 +1037,35 @@ export const directCastManuallyMarkUnread = <
 			},
 		],
 		url: "/v2/direct-cast-manually-mark-unread",
+		...options,
+		headers: {
+			"Content-Type": "application/json",
+			...options.headers,
+		},
+	});
+};
+
+/**
+ * Unpin direct cast conversation
+ * Unpins a direct cast conversation by conversationId.
+ */
+export const unpinDirectCastConversation = <
+	ThrowOnError extends boolean = false,
+>(
+	options: Options<UnpinDirectCastConversationData, ThrowOnError>,
+) => {
+	return (options.client ?? _heyApiClient).delete<
+		UnpinDirectCastConversationResponses,
+		UnpinDirectCastConversationErrors,
+		ThrowOnError
+	>({
+		security: [
+			{
+				scheme: "bearer",
+				type: "http",
+			},
+		],
+		url: "/v2/direct-cast-pin-conversation",
 		...options,
 		headers: {
 			"Content-Type": "application/json",
