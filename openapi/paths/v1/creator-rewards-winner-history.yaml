@@ -1,4 +1,6 @@
 get:
+  tags:
+    - Rewards
   operationId: getCreatorRewardWinners
   summary: Get creator reward winners
   security:

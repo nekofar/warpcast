@@ -3,6 +3,7 @@ get:
   description: Retrieves a list of external social accounts connected to the user's Warpcast profile
   operationId: getConnectedAccounts
   tags:
+    - Authentication
     - User
   security:
     - bearerAuth: []

@@ -1,4 +1,6 @@
 post:
+  tags:
+    - Moderation
   operationId: moderateCast
   summary: Moderate a cast (e.g., hide it)
   security:

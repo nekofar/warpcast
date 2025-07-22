@@ -1,0 +1,25 @@
+put:
+  operationId: sendDirectCastMessage
+  summary: Send direct cast message
+  description: Sends a direct cast message to specified recipients in a conversation.
+  tags:
+    - Messaging
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/index.yaml#/DirectCastSendRequest'
+  security:
+    - bearerAuth: []
+  responses:
+    '200':
+      description: Direct cast message sent successfully
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/index.yaml#/DirectCastSendResponse'
+    '401':
+      $ref: '../../components/responses/index.yaml#/Unauthorized'
+    '429':
+      description: Too many requests

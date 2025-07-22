@@ -1,4 +1,6 @@
 get:
+  tags:
+    - Moderation
   operationId: getChannelModeratedCasts
   summary: Get moderated casts for a channel
   parameters:

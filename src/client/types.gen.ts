@@ -412,29 +412,42 @@ export type FeedItemsResponse = {
 	};
 };
 
-export type UserResponse = {
+export type GenericResponse = {
+	result: {
+		[key: string]: unknown;
+	};
+};
+
+export type UserResponse = GenericResponse & {
 	result?: {
 		user?: UserWithExtras;
 		collectionsOwned?: Array<{
 			[key: string]: unknown;
 		}>;
-		extras?: {
-			fid?: number;
-			custodyAddress?: string;
-			ethWallets?: Array<string>;
-			solanaWallets?: Array<string>;
-		};
+		extras?: UserExtras;
 	};
 };
 
-export type SuggestedUsersResponse = {
+export type PaginationCursor = {
+	/**
+	 * Base64 encoded cursor for pagination
+	 */
+	cursor?: string;
+	[key: string]: unknown | string | undefined;
+};
+
+export type PaginatedResponse = {
+	result: {
+		[key: string]: unknown;
+	};
+	next?: PaginationCursor;
+};
+
+export type SuggestedUsersResponse = PaginatedResponse & {
 	result?: {
 		users?: Array<{
 			[key: string]: unknown;
 		}>;
-		next?: {
-			cursor?: string;
-		};
 	};
 };
 
@@ -503,40 +516,66 @@ export type NotificationsResponse = {
 	};
 };
 
-export type DirectCastConversationResponse = {
-	result: {
+export type DirectCastConversationResponse = GenericResponse & {
+	result?: {
 		conversation?: {
 			[key: string]: unknown;
 		};
 	};
 };
 
-export type DirectCastConversationMessagesResponse = {
-	result: {
+export type DirectCastConversationMessagesResponse = PaginatedResponse & {
+	result?: {
 		messages: Array<DirectCastMessage>;
-		/**
-		 * Pagination information for next page
-		 */
-		next?: {
-			/**
-			 * Cursor for pagination to get next set of messages
-			 */
-			cursor?: string;
-			[key: string]: unknown | string | undefined;
-		};
 	};
 };
 
-export type DiscoverChannelsResponse = {
-	result: {
+export type DirectCastSendRequest = {
+	/**
+	 * ID of the conversation to send the message to
+	 */
+	conversationId: string;
+	/**
+	 * Array of Farcaster IDs of message recipients
+	 */
+	recipientFids: Array<number>;
+	/**
+	 * Unique identifier for the message
+	 */
+	messageId: string;
+	/**
+	 * Type of the message
+	 */
+	type: "text" | "image" | "reaction" | "link";
+	/**
+	 * Content of the message
+	 */
+	message: string;
+	/**
+	 * ID of the message this is replying to (optional)
+	 */
+	inReplyToId?: string;
+};
+
+export type CommonSuccessResponse = GenericResponse & {
+	result?: {
+		/**
+		 * Whether the operation was successful
+		 */
+		success: boolean;
+	};
+};
+
+export type DiscoverChannelsResponse = GenericResponse & {
+	result?: {
 		channels?: Array<{
 			[key: string]: unknown;
 		}>;
 	};
 };
 
-export type InvitesAvailableResponse = {
-	result: {
+export type InvitesAvailableResponse = GenericResponse & {
+	result?: {
 		/**
 		 * Total number of invites allocated to the user
 		 */
@@ -548,12 +587,20 @@ export type InvitesAvailableResponse = {
 	};
 };
 
-export type SponsoredInvitesResponse = {
-	result: {
+export type SponsoredInvitesResponse = GenericResponse & {
+	result?: {
 		invites?: Array<{
 			[key: string]: unknown;
 		}>;
 	};
+	[key: string]:
+		| unknown
+		| {
+				invites?: Array<{
+					[key: string]: unknown;
+				}>;
+		  }
+		| undefined;
 };
 
 export type RewardsLeaderboardResponse = {
@@ -931,12 +978,9 @@ export type ChannelFollower = {
 	followedAt?: number;
 };
 
-export type ChannelFollowersResponse = {
+export type ChannelFollowersResponse = PaginatedResponse & {
 	result?: {
 		users?: Array<ChannelFollower>;
-		next?: {
-			cursor?: string;
-		};
 	};
 };
 
@@ -1042,6 +1086,8 @@ export type ApiKey = {
 	description: string;
 };
 
+export type DirectCastSendResponse = CommonSuccessResponse;
+
 /**
  * The user's FID (Farcaster ID)
  */
@@ -1051,6 +1097,11 @@ export type FidParam = number;
  * Maximum number of items to return
  */
 export type LimitParam = number;
+
+/**
+ * Base64 encoded cursor for pagination
+ */
+export type CursorParam = string;
 
 export type GetUserOnboardingStateData = {
 	body?: never;
@@ -1799,6 +1850,37 @@ export type GetDirectCastConversationRecentMessagesResponses = {
 
 export type GetDirectCastConversationRecentMessagesResponse =
 	GetDirectCastConversationRecentMessagesResponses[keyof GetDirectCastConversationRecentMessagesResponses];
+
+export type SendDirectCastMessageData = {
+	body: DirectCastSendRequest;
+	path?: never;
+	query?: never;
+	url: "/v2/direct-cast-send";
+};
+
+export type SendDirectCastMessageErrors = {
+	/**
+	 * Authentication is required or failed
+	 */
+	401: ErrorResponse;
+	/**
+	 * Too many requests
+	 */
+	429: unknown;
+};
+
+export type SendDirectCastMessageError =
+	SendDirectCastMessageErrors[keyof SendDirectCastMessageErrors];
+
+export type SendDirectCastMessageResponses = {
+	/**
+	 * Direct cast message sent successfully
+	 */
+	200: CommonSuccessResponse;
+};
+
+export type SendDirectCastMessageResponse =
+	SendDirectCastMessageResponses[keyof SendDirectCastMessageResponses];
 
 export type DiscoverChannelsData = {
 	body?: never;

@@ -354,48 +354,34 @@ FeedItemsResponse:
         replaceFeed:
           type: boolean
 UserResponse:
-  type: object
-  properties:
-    result:
-      type: object
+  allOf:
+    - $ref: './common.yaml#/GenericResponse'
+    - type: object
       properties:
-        user:
-          $ref: '#/UserWithExtras'
-        collectionsOwned:
-          type: array
-          items:
-            type: object
-        extras:
+        result:
           type: object
           properties:
-            fid:
-              type: integer
-            custodyAddress:
-              type: string
-            ethWallets:
+            user:
+              $ref: '#/UserWithExtras'
+            collectionsOwned:
               type: array
               items:
-                type: string
-            solanaWallets:
-              type: array
-              items:
-                type: string
+                type: object
+            extras:
+              $ref: '#/UserExtras'
 SuggestedUsersResponse:
-  type: object
-  properties:
-    result:
-      type: object
+  allOf:
+    - $ref: './common.yaml#/PaginatedResponse'
+    - type: object
       properties:
-        users:
-          type: array
-          items:
-            type: object
-            additionalProperties: true
-        next:
+        result:
           type: object
           properties:
-            cursor:
-              type: string
+            users:
+              type: array
+              items:
+                type: object
+                additionalProperties: true
 Action:
   type: object
   properties:
@@ -562,76 +548,109 @@ NotificationsResponse:
             type: object
             additionalProperties: true
 DirectCastConversationResponse:
-  type: object
-  required: [result]
-  properties:
-    result:
-      type: object
+  allOf:
+    - $ref: './common.yaml#/GenericResponse'
+    - type: object
       properties:
-        conversation:
-          type: object
-          additionalProperties: true
-
-DirectCastConversationMessagesResponse:
-  type: object
-  required: [result]
-  properties:
-    result:
-      type: object
-      required: [messages]
-      properties:
-        messages:
-          type: array
-          items:
-            $ref: '../../components/schemas/index.yaml#/DirectCastMessage'
-        next:
+        result:
           type: object
           properties:
-            cursor:
-              type: string
-              description: Cursor for pagination to get next set of messages
-          additionalProperties: true
-          description: Pagination information for next page
+            conversation:
+              type: object
+              additionalProperties: true
+
+DirectCastConversationMessagesResponse:
+  allOf:
+    - $ref: './common.yaml#/PaginatedResponse'
+    - type: object
+      properties:
+        result:
+          type: object
+          required: [messages]
+          properties:
+            messages:
+              type: array
+              items:
+                $ref: '../../components/schemas/index.yaml#/DirectCastMessage'
+
+DirectCastSendRequest:
+  type: object
+  required:
+    - conversationId
+    - recipientFids
+    - messageId
+    - type
+    - message
+  properties:
+    conversationId:
+      type: string
+      description: ID of the conversation to send the message to
+    recipientFids:
+      type: array
+      items:
+        type: integer
+      description: Array of Farcaster IDs of message recipients
+      example: [17838, 861305]
+    messageId:
+      type: string
+      description: Unique identifier for the message
+    type:
+      type: string
+      enum: [text, image, reaction, link]
+      description: Type of the message
+      example: "text"
+    message:
+      type: string
+      description: Content of the message
+    inReplyToId:
+      type: string
+      description: ID of the message this is replying to (optional)
+
+DirectCastSendResponse:
+  $ref: './common.yaml#/SuccessResponse'
 DiscoverChannelsResponse:
-  type: object
-  required: [result]
-  properties:
-    result:
-      type: object
+  allOf:
+    - $ref: './common.yaml#/GenericResponse'
+    - type: object
       properties:
-        channels:
-          type: array
-          items:
-            type: object
-            additionalProperties: true
+        result:
+          type: object
+          properties:
+            channels:
+              type: array
+              items:
+                type: object
+                additionalProperties: true
 InvitesAvailableResponse:
-  type: object
-  required: [result]
-  properties:
-    result:
-      type: object
-      required:
-        - allocatedInvitesCount
-        - availableInvitesCount
+  allOf:
+    - $ref: './common.yaml#/GenericResponse'
+    - type: object
       properties:
-        allocatedInvitesCount:
-          type: integer
-          description: Total number of invites allocated to the user
-        availableInvitesCount:
-          type: integer
-          description: Number of invites currently available to send
+        result:
+          type: object
+          required:
+            - allocatedInvitesCount
+            - availableInvitesCount
+          properties:
+            allocatedInvitesCount:
+              type: integer
+              description: Total number of invites allocated to the user
+            availableInvitesCount:
+              type: integer
+              description: Number of invites currently available to send
 SponsoredInvitesResponse:
-  type: object
-  required: [result]
-  properties:
-    result:
-      type: object
+  allOf:
+    - $ref: './common.yaml#/GenericResponse'
+    - type: object
       properties:
-        invites:
-          type: array
-          items:
-            type: object
-    additionalProperties: true
+        result:
+          type: object
+          properties:
+            invites:
+              type: array
+              items:
+                type: object
+      additionalProperties: true
 RewardsLeaderboardResponse:
   type: object
   required: [result]
@@ -1188,20 +1207,17 @@ ChannelFollower:
       type: integer
 
 ChannelFollowersResponse:
-  type: object
-  properties:
-    result:
-      type: object
+  allOf:
+    - $ref: './common.yaml#/PaginatedResponse'
+    - type: object
       properties:
-        users:
-          type: array
-          items:
-            $ref: '#/ChannelFollower'
-        next:
+        result:
           type: object
           properties:
-            cursor:
-              type: string
+            users:
+              type: array
+              items:
+                $ref: '#/ChannelFollower'
 AppsByAuthorResponse:
   type: object
   properties:

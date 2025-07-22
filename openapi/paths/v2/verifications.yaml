@@ -1,4 +1,6 @@
 get:
+  tags:
+    - Authentication
   operationId: getVerifications
   summary: Get verified addresses for an FID
   description: Returns verified Ethereum addresses associated with a specific FID.

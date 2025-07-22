@@ -1,0 +1,74 @@
+# Common reusable schema components to reduce duplication
+
+# Generic response wrapper for APIs that return a result object
+GenericResponse:
+  type: object
+  required: [result]
+  properties:
+    result:
+      type: object
+      additionalProperties: true
+
+# Generic response wrapper with pagination support
+PaginatedResponse:
+  type: object
+  required: [result]
+  properties:
+    result:
+      type: object
+      additionalProperties: true
+    next:
+      $ref: '#/PaginationCursor'
+
+# Pagination cursor object
+PaginationCursor:
+  type: object
+  properties:
+    cursor:
+      type: string
+      description: Base64 encoded cursor for pagination
+  additionalProperties: true
+
+# Generic array response wrapper
+ArrayResponse:
+  allOf:
+    - $ref: '#/GenericResponse'
+    - type: object
+      properties:
+        result:
+          type: object
+          properties:
+            items:
+              type: array
+              items:
+                type: object
+                additionalProperties: true
+
+# Generic paginated array response
+PaginatedArrayResponse:
+  allOf:
+    - $ref: '#/PaginatedResponse'
+    - type: object
+      properties:
+        result:
+          type: object
+          properties:
+            items:
+              type: array
+              items:
+                type: object
+                additionalProperties: true
+
+# Success response for operations that return boolean success
+SuccessResponse:
+  allOf:
+    - $ref: '#/GenericResponse'
+    - type: object
+      properties:
+        result:
+          type: object
+          required: [success]
+          properties:
+            success:
+              type: boolean
+              description: Whether the operation was successful

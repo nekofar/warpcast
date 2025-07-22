@@ -1,4 +1,6 @@
 get:
+  tags:
+    - Rewards
   operationId: getRewardsLeaderboard
   summary: Get rewards leaderboard
   description: Returns a list of users in the rewards leaderboard based on invite activity.

@@ -1,5 +1,6 @@
 get:
   tags:
+    - Authentication
     - DevTools
   summary: Retrieve API keys for the authenticated user
   description: Returns a list of API keys associated with the user's account, including active and revoked keys
@@ -32,6 +33,7 @@ get:
 
 put:
   tags:
+    - Authentication
     - DevTools
   summary: Create a new API key
   description: Creates a new API key with the specified description and expiration date

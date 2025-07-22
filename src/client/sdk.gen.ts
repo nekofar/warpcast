@@ -68,6 +68,9 @@ import type {
 	GetDirectCastConversationRecentMessagesData,
 	GetDirectCastConversationRecentMessagesResponses,
 	GetDirectCastConversationRecentMessagesErrors,
+	SendDirectCastMessageData,
+	SendDirectCastMessageResponses,
+	SendDirectCastMessageErrors,
 	DiscoverChannelsData,
 	DiscoverChannelsResponses,
 	DiscoverChannelsErrors,
@@ -874,6 +877,33 @@ export const getDirectCastConversationRecentMessages = <
 		],
 		url: "/v2/direct-cast-conversation-recent-messages",
 		...options,
+	});
+};
+
+/**
+ * Send direct cast message
+ * Sends a direct cast message to specified recipients in a conversation.
+ */
+export const sendDirectCastMessage = <ThrowOnError extends boolean = false>(
+	options: Options<SendDirectCastMessageData, ThrowOnError>,
+) => {
+	return (options.client ?? _heyApiClient).put<
+		SendDirectCastMessageResponses,
+		SendDirectCastMessageErrors,
+		ThrowOnError
+	>({
+		security: [
+			{
+				scheme: "bearer",
+				type: "http",
+			},
+		],
+		url: "/v2/direct-cast-send",
+		...options,
+		headers: {
+			"Content-Type": "application/json",
+			...options.headers,
+		},
 	});
 };
 

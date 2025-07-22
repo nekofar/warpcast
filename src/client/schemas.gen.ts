@@ -929,73 +929,95 @@ export const FeedItemsResponseSchema = {
 	},
 } as const;
 
-export const UserResponseSchema = {
+export const GenericResponseSchema = {
 	type: "object",
+	required: ["result"],
 	properties: {
 		result: {
 			type: "object",
+			additionalProperties: true,
+		},
+	},
+} as const;
+
+export const UserResponseSchema = {
+	allOf: [
+		{
+			$ref: "#/components/schemas/GenericResponse",
+		},
+		{
+			type: "object",
 			properties: {
-				user: {
-					$ref: "#/components/schemas/UserWithExtras",
-				},
-				collectionsOwned: {
-					type: "array",
-					items: {
-						type: "object",
-					},
-				},
-				extras: {
+				result: {
 					type: "object",
 					properties: {
-						fid: {
-							type: "integer",
+						user: {
+							$ref: "#/components/schemas/UserWithExtras",
 						},
-						custodyAddress: {
-							type: "string",
-						},
-						ethWallets: {
+						collectionsOwned: {
 							type: "array",
 							items: {
-								type: "string",
+								type: "object",
 							},
 						},
-						solanaWallets: {
-							type: "array",
-							items: {
-								type: "string",
-							},
+						extras: {
+							$ref: "#/components/schemas/UserExtras",
 						},
 					},
 				},
 			},
+		},
+	],
+} as const;
+
+export const PaginationCursorSchema = {
+	type: "object",
+	properties: {
+		cursor: {
+			type: "string",
+			description: "Base64 encoded cursor for pagination",
+		},
+	},
+	additionalProperties: true,
+} as const;
+
+export const PaginatedResponseSchema = {
+	type: "object",
+	required: ["result"],
+	properties: {
+		result: {
+			type: "object",
+			additionalProperties: true,
+		},
+		next: {
+			$ref: "#/components/schemas/PaginationCursor",
 		},
 	},
 } as const;
 
 export const SuggestedUsersResponseSchema = {
-	type: "object",
-	properties: {
-		result: {
+	allOf: [
+		{
+			$ref: "#/components/schemas/PaginatedResponse",
+		},
+		{
 			type: "object",
 			properties: {
-				users: {
-					type: "array",
-					items: {
-						type: "object",
-						additionalProperties: true,
-					},
-				},
-				next: {
+				result: {
 					type: "object",
 					properties: {
-						cursor: {
-							type: "string",
+						users: {
+							type: "array",
+							items: {
+								type: "object",
+								additionalProperties: true,
+							},
 						},
 					},
 				},
 			},
 		},
-	},
+	],
 } as const;
 
 export const FavoriteFramesResponseSchema = {
@@ -1163,108 +1185,187 @@ export const NotificationsResponseSchema = {
 } as const;
 
 export const DirectCastConversationResponseSchema = {
-	type: "object",
-	required: ["result"],
-	properties: {
-		result: {
+	allOf: [
+		{
+			$ref: "#/components/schemas/GenericResponse",
+		},
+		{
 			type: "object",
 			properties: {
-				conversation: {
+				result: {
 					type: "object",
-					additionalProperties: true,
+					properties: {
+						conversation: {
+							type: "object",
+							additionalProperties: true,
+						},
+					},
 				},
 			},
 		},
-	},
+	],
 } as const;
 
 export const DirectCastConversationMessagesResponseSchema = {
-	type: "object",
-	required: ["result"],
-	properties: {
-		result: {
+	allOf: [
+		{
+			$ref: "#/components/schemas/PaginatedResponse",
+		},
+		{
 			type: "object",
-			required: ["messages"],
 			properties: {
-				messages: {
-					type: "array",
-					items: {
-						$ref: "#/components/schemas/DirectCastMessage",
-					},
-				},
-				next: {
+				result: {
 					type: "object",
+					required: ["messages"],
 					properties: {
-						cursor: {
-							type: "string",
-							description: "Cursor for pagination to get next set of messages",
+						messages: {
+							type: "array",
+							items: {
+								$ref: "#/components/schemas/DirectCastMessage",
+							},
 						},
 					},
-					additionalProperties: true,
-					description: "Pagination information for next page",
 				},
 			},
 		},
+	],
+} as const;
+
+export const DirectCastSendRequestSchema = {
+	type: "object",
+	required: ["conversationId", "recipientFids", "messageId", "type", "message"],
+	properties: {
+		conversationId: {
+			type: "string",
+			description: "ID of the conversation to send the message to",
+		},
+		recipientFids: {
+			type: "array",
+			items: {
+				type: "integer",
+			},
+			description: "Array of Farcaster IDs of message recipients",
+			example: [17838, 861305],
+		},
+		messageId: {
+			type: "string",
+			description: "Unique identifier for the message",
+		},
+		type: {
+			type: "string",
+			enum: ["text", "image", "reaction", "link"],
+			description: "Type of the message",
+			example: "text",
+		},
+		message: {
+			type: "string",
+			description: "Content of the message",
+		},
+		inReplyToId: {
+			type: "string",
+			description: "ID of the message this is replying to (optional)",
+		},
 	},
+} as const;
+
+export const common_SuccessResponseSchema = {
+	allOf: [
+		{
+			$ref: "#/components/schemas/GenericResponse",
+		},
+		{
+			type: "object",
+			properties: {
+				result: {
+					type: "object",
+					required: ["success"],
+					properties: {
+						success: {
+							type: "boolean",
+							description: "Whether the operation was successful",
+						},
+					},
+				},
+			},
+		},
+	],
 } as const;
 
 export const DiscoverChannelsResponseSchema = {
-	type: "object",
-	required: ["result"],
-	properties: {
-		result: {
+	allOf: [
+		{
+			$ref: "#/components/schemas/GenericResponse",
+		},
+		{
 			type: "object",
 			properties: {
-				channels: {
-					type: "array",
-					items: {
-						type: "object",
-						additionalProperties: true,
+				result: {
+					type: "object",
+					properties: {
+						channels: {
+							type: "array",
+							items: {
+								type: "object",
+								additionalProperties: true,
+							},
+						},
 					},
 				},
 			},
 		},
-	},
+	],
 } as const;
 
 export const InvitesAvailableResponseSchema = {
-	type: "object",
-	required: ["result"],
-	properties: {
-		result: {
-			type: "object",
-			required: ["allocatedInvitesCount", "availableInvitesCount"],
-			properties: {
-				allocatedInvitesCount: {
-					type: "integer",
-					description: "Total number of invites allocated to the user",
-				},
-				availableInvitesCount: {
-					type: "integer",
-					description: "Number of invites currently available to send",
-				},
-			},
+	allOf: [
+		{
+			$ref: "#/components/schemas/GenericResponse",
 		},
-	},
-} as const;
-
-export const SponsoredInvitesResponseSchema = {
-	type: "object",
-	required: ["result"],
-	properties: {
-		result: {
+		{
 			type: "object",
 			properties: {
-				invites: {
-					type: "array",
-					items: {
-						type: "object",
+				result: {
+					type: "object",
+					required: ["allocatedInvitesCount", "availableInvitesCount"],
+					properties: {
+						allocatedInvitesCount: {
+							type: "integer",
+							description: "Total number of invites allocated to the user",
+						},
+						availableInvitesCount: {
+							type: "integer",
+							description: "Number of invites currently available to send",
+						},
 					},
 				},
 			},
 		},
-		additionalProperties: true,
-	},
+	],
+} as const;
+
+export const SponsoredInvitesResponseSchema = {
+	allOf: [
+		{
+			$ref: "#/components/schemas/GenericResponse",
+		},
+		{
+			type: "object",
+			properties: {
+				result: {
+					type: "object",
+					properties: {
+						invites: {
+							type: "array",
+							items: {
+								type: "object",
+							},
+						},
+					},
+				},
+			},
+			additionalProperties: true,
+		},
+	],
 } as const;
 
 export const RewardsLeaderboardResponseSchema = {
@@ -2272,28 +2373,27 @@ export const ChannelFollowerSchema = {
 } as const;
 
 export const ChannelFollowersResponseSchema = {
-	type: "object",
-	properties: {
-		result: {
+	allOf: [
+		{
+			$ref: "#/components/schemas/PaginatedResponse",
+		},
+		{
 			type: "object",
 			properties: {
-				users: {
-					type: "array",
-					items: {
-						$ref: "#/components/schemas/ChannelFollower",
-					},
-				},
-				next: {
+				result: {
 					type: "object",
 					properties: {
-						cursor: {
-							type: "string",
+						users: {
+							type: "array",
+							items: {
+								$ref: "#/components/schemas/ChannelFollower",
+							},
 						},
 					},
 				},
 			},
 		},
-	},
+	],
 } as const;
 
 export const ChannelFollowStatusSchema = {
@@ -2484,4 +2584,8 @@ export const ApiKeySchema = {
 			description: "User-provided description of the API key's purpose",
 		},
 	},
+} as const;
+
+export const DirectCastSendResponseSchema = {
+	$ref: "#/components/schemas/common_SuccessResponse",
 } as const;
