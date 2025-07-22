@@ -68,6 +68,9 @@ import type {
 	GetDirectCastConversationMessagesData,
 	GetDirectCastConversationMessagesResponses,
 	GetDirectCastConversationMessagesErrors,
+	SetDirectCastConversationMessageTtlData,
+	SetDirectCastConversationMessageTtlResponses,
+	SetDirectCastConversationMessageTtlErrors,
 	UpdateDirectCastConversationNotificationsData,
 	UpdateDirectCastConversationNotificationsResponses,
 	UpdateDirectCastConversationNotificationsErrors,
@@ -895,6 +898,35 @@ export const getDirectCastConversationMessages = <
 		],
 		url: "/v2/direct-cast-conversation-messages",
 		...options,
+	});
+};
+
+/**
+ * Set direct cast conversation message TTL
+ * Sets the time-to-live (TTL) for messages in a direct cast conversation.
+ */
+export const setDirectCastConversationMessageTtl = <
+	ThrowOnError extends boolean = false,
+>(
+	options: Options<SetDirectCastConversationMessageTtlData, ThrowOnError>,
+) => {
+	return (options.client ?? _heyApiClient).post<
+		SetDirectCastConversationMessageTtlResponses,
+		SetDirectCastConversationMessageTtlErrors,
+		ThrowOnError
+	>({
+		security: [
+			{
+				scheme: "bearer",
+				type: "http",
+			},
+		],
+		url: "/v2/direct-cast-conversation-message-ttl",
+		...options,
+		headers: {
+			"Content-Type": "application/json",
+			...options.headers,
+		},
 	});
 };
 

@@ -1294,6 +1294,23 @@ export const DirectCastConversationMessagesResponseSchema = {
 	],
 } as const;
 
+export const DirectCastConversationMessageTtlRequestSchema = {
+	type: "object",
+	required: ["conversationId", "ttl"],
+	properties: {
+		conversationId: {
+			type: "string",
+			description: "ID of the conversation to set message TTL for",
+			example: "12590-20146",
+		},
+		ttl: {
+			type: "integer",
+			description: "Time to live for messages in days",
+			example: 365,
+		},
+	},
+} as const;
+
 export const DirectCastConversationNotificationsRequestSchema = {
 	type: "object",
 	required: ["conversationId", "muted"],
@@ -2851,5 +2868,9 @@ export const DirectCastConversationCategorizationResponseSchema = {
 } as const;
 
 export const DirectCastConversationNotificationsResponseSchema = {
+	$ref: "#/components/schemas/common_SuccessResponse",
+} as const;
+
+export const DirectCastConversationMessageTtlResponseSchema = {
 	$ref: "#/components/schemas/common_SuccessResponse",
 } as const;

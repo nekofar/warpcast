@@ -556,6 +556,17 @@ export type DirectCastConversationMessagesResponse = PaginatedResponse & {
 	};
 };
 
+export type DirectCastConversationMessageTtlRequest = {
+	/**
+	 * ID of the conversation to set message TTL for
+	 */
+	conversationId: string;
+	/**
+	 * Time to live for messages in days
+	 */
+	ttl: number;
+};
+
 export type DirectCastConversationNotificationsRequest = {
 	/**
 	 * ID of the conversation to update notification settings for
@@ -1272,6 +1283,8 @@ export type DirectCastConversationCategorizationResponse =
 	CommonSuccessResponse;
 
 export type DirectCastConversationNotificationsResponse = CommonSuccessResponse;
+
+export type DirectCastConversationMessageTtlResponse = CommonSuccessResponse;
 
 /**
  * The user's FID (Farcaster ID)
@@ -2030,6 +2043,37 @@ export type GetDirectCastConversationMessagesResponses = {
 
 export type GetDirectCastConversationMessagesResponse =
 	GetDirectCastConversationMessagesResponses[keyof GetDirectCastConversationMessagesResponses];
+
+export type SetDirectCastConversationMessageTtlData = {
+	body: DirectCastConversationMessageTtlRequest;
+	path?: never;
+	query?: never;
+	url: "/v2/direct-cast-conversation-message-ttl";
+};
+
+export type SetDirectCastConversationMessageTtlErrors = {
+	/**
+	 * Authentication is required or failed
+	 */
+	401: ErrorResponse;
+	/**
+	 * Too many requests
+	 */
+	429: unknown;
+};
+
+export type SetDirectCastConversationMessageTtlError =
+	SetDirectCastConversationMessageTtlErrors[keyof SetDirectCastConversationMessageTtlErrors];
+
+export type SetDirectCastConversationMessageTtlResponses = {
+	/**
+	 * Message TTL set successfully
+	 */
+	200: CommonSuccessResponse;
+};
+
+export type SetDirectCastConversationMessageTtlResponse =
+	SetDirectCastConversationMessageTtlResponses[keyof SetDirectCastConversationMessageTtlResponses];
 
 export type UpdateDirectCastConversationNotificationsData = {
 	body: DirectCastConversationNotificationsRequest;
