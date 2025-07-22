@@ -90,6 +90,12 @@ export type UserExtras = {
 	custodyAddress?: string;
 	ethWallets?: Array<string>;
 	solanaWallets?: Array<string>;
+	walletLabels?: Array<{
+		address?: string;
+		labels?: Array<string>;
+	}>;
+	v2?: boolean;
+	publicSpamLabel?: string;
 };
 
 export type UserByFidResponse = {
@@ -1649,6 +1655,9 @@ export type GetUserByUsernameData = {
 	body?: never;
 	path?: never;
 	query: {
+		/**
+		 * The username to look up
+		 */
 		username: string;
 	};
 	url: "/v2/user-by-username";
@@ -1672,7 +1681,7 @@ export type GetUserByUsernameResponses = {
 	/**
 	 * Successful retrieval of user by username
 	 */
-	200: UserResponse;
+	200: UserByFidResponse;
 };
 
 export type GetUserByUsernameResponse =

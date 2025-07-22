@@ -252,6 +252,29 @@ export const UserExtrasSchema = {
 				type: "string",
 			},
 		},
+		walletLabels: {
+			type: "array",
+			items: {
+				type: "object",
+				properties: {
+					address: {
+						type: "string",
+					},
+					labels: {
+						type: "array",
+						items: {
+							type: "string",
+						},
+					},
+				},
+			},
+		},
+		v2: {
+			type: "boolean",
+		},
+		publicSpamLabel: {
+			type: "string",
+		},
 	},
 } as const;
 

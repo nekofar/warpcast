@@ -632,6 +632,7 @@ export const getUserFavoriteFrames = <ThrowOnError extends boolean = false>(
 
 /**
  * Get user by username
+ * Retrieves user information based on username
  */
 export const getUserByUsername = <ThrowOnError extends boolean = false>(
 	options: Options<GetUserByUsernameData, ThrowOnError>,
