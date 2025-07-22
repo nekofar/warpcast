@@ -626,6 +626,24 @@ DirectCastPinConversationRequest:
     conversationId:
       type: string
       description: ID of the conversation to pin
+
+DirectCastConversationCategorizationRequest:
+  type: object
+  required:
+    - conversationId
+    - category
+  properties:
+    conversationId:
+      type: string
+      description: ID of the conversation to categorize
+      example: "17838-20146"
+    category:
+      type: string
+      description: Category to assign to the conversation
+      example: "archived"
+
+DirectCastConversationCategorizationResponse:
+  $ref: './common.yaml#/SuccessResponse'
 DiscoverChannelsResponse:
   allOf:
     - $ref: './common.yaml#/GenericResponse'
