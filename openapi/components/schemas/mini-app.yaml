@@ -1,0 +1,95 @@
+MiniApp:
+  type: object
+  properties:
+    domain:
+      type: string
+      description: The domain of the mini app
+    name:
+      type: string
+      description: The name of the mini app
+    iconUrl:
+      type: string
+      description: URL to the mini app's icon
+    homeUrl:
+      type: string
+      description: The home URL of the mini app
+    author:
+      $ref: './user.yaml#/User'
+    supportsNotifications:
+      type: boolean
+      description: Whether the mini app supports notifications
+    id:
+      type: string
+      description: Unique identifier for the mini app
+    shortId:
+      type: string
+      description: Short identifier for the mini app
+    imageUrl:
+      type: string
+      description: URL to the mini app's main image
+    buttonTitle:
+      type: string
+      description: Title for the action button
+    splashImageUrl:
+      type: string
+      description: URL to the splash screen image
+    splashBackgroundColor:
+      type: string
+      description: Background color for the splash screen
+    castShareUrl:
+      type: string
+      description: URL for sharing casts
+    subtitle:
+      type: string
+      description: Subtitle of the mini app
+    description:
+      type: string
+      description: Description of the mini app
+    tagline:
+      type: string
+      description: Tagline of the mini app
+    heroImageUrl:
+      type: string
+      description: URL to the hero image
+    primaryCategory:
+      type: string
+      description: Primary category of the mini app
+    tags:
+      type: array
+      items:
+        type: string
+      description: Tags associated with the mini app
+    screenshotUrls:
+      type: array
+      items:
+        type: string
+      description: URLs to screenshot images
+    noindex:
+      type: boolean
+      description: Whether the mini app should be indexed
+    ogTitle:
+      type: string
+      description: Open Graph title
+    ogDescription:
+      type: string
+      description: Open Graph description
+    ogImageUrl:
+      type: string
+      description: Open Graph image URL
+    requiredCapabilities:
+      type: array
+      items:
+        type: string
+      description: Required capabilities for the mini app
+    requiredChains:
+      type: array
+      items:
+        type: string
+      description: Required blockchain chains
+    viewerContext:
+      $ref: '#/ViewerContext'
+
+ViewerContext:
+  type: object
+  properties: {}
+  description: Context information for the viewer

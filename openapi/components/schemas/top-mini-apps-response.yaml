@@ -1,0 +1,31 @@
+TopMiniAppsResponse:
+  type: object
+  properties:
+    result:
+      type: object
+      properties:
+        miniApps:
+          type: array
+          items:
+            $ref: '#/RankedMiniApp'
+        next:
+          $ref: '#/PaginationCursor'
+
+RankedMiniApp:
+  type: object
+  properties:
+    rank:
+      type: integer
+      description: Current rank of the mini app
+    miniApp:
+      $ref: './mini-app.yaml#/MiniApp'
+    rank72hChange:
+      type: integer
+      description: Change in rank over the last 72 hours
+
+PaginationCursor:
+  type: object
+  properties:
+    cursor:
+      type: string
+      description: Base64 encoded cursor for pagination
