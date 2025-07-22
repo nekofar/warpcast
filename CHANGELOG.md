@@ -2,6 +2,38 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.34] - 2025-07-22
+
+### 🚀 Features
+
+- *(openapi)* Add endpoint for marking direct cast unread
+- *(openapi)* Add endpoint for marking direct cast unread
+- *(client)* Add `directCastManuallyMarkUnread` endpoint
+- *(openapi)* Add `pinDirectCastConversation` endpoint
+- *(openapi)* Add `pinDirectCastConversation` schema
+- *(client)* Add `pinDirectCastConversation` functionality
+- *(openapi)* Add schemas and endpoint for `topMiniApps`
+- *(openapi)* Add `getTopMiniApps` endpoint and schemas
+- *(openapi)* Add schemas and endpoint for `RankedMiniApp`
+- *(openapi)* Add `categorizeDirectCastConversation` endpoint
+- *(openapi)* Add `categorizeDirectCastConversation` endpoint
+- *(openapi)* Add `categorizeDirectCastConversation` schemas
+- *(openapi)* Add `updateDirectCastConversationNotifications` endpoint
+- *(openapi)* Add `updateDirectCastConversationNotifications` schemas
+- *(client)* Add `updateDirectCastConversationNotifications`
+- *(openapi)* Update `getUserByUsername` schema and response
+- *(openapi)* Improve `getUserByUsername` API documentation
+- *(openapi)* Enhance user schemas with additional fields
+- *(openapi)* Add `setDirectCastConversationMessageTtl` endpoint
+- *(openapi)* Add `setDirectCastConversationMessageTtl` endpoint
+- *(openapi)* Add `setDirectCastConversationMessageTtl` schemas
+- *(openapi)* Add `unpinDirectCastConversation` endpoint
+- *(openapi)* Add `unpinDirectCastConversation` endpoint
+- *(client)* Add `unpinDirectCastConversation`
+- *(openapi)* Add `directCastMessageReaction` endpoint
+- *(openapi)* Add `directCastMessageReaction` endpoint
+- *(client)* Add SDK methods for message reactions
+
 ## [2.0.0-alpha.33] - 2025-07-22
 
 ### 🚀 Features
