@@ -1269,6 +1269,47 @@
             "description": "Too many requests"
           }
         }
+      },
+      "delete": {
+        "operationId": "unpinDirectCastConversation",
+        "summary": "Unpin direct cast conversation",
+        "description": "Unpins a direct cast conversation by conversationId.",
+        "tags": [
+          "Messaging"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DirectCastPinConversationRequest"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Direct cast conversation unpinned successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/common_SuccessResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "429": {
+            "description": "Too many requests"
+          }
+        }
       }
     },
     "/v2/discover-channels": {
