@@ -960,6 +960,49 @@
         }
       }
     },
+    "/v2/direct-cast-send": {
+      "put": {
+        "operationId": "sendDirectCastMessage",
+        "summary": "Send direct cast message",
+        "description": "Sends a direct cast message to specified recipients in a conversation.",
+        "tags": [
+          "Messaging"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DirectCastSendRequest"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Direct cast message sent successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DirectCastSendResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "429": {
+            "description": "Too many requests"
+          }
+        }
+      }
+    },
     "/v2/discover-channels": {
       "get": {
         "operationId": "discoverChannels",
@@ -7651,6 +7694,81 @@
                 },
                 "additionalProperties": true,
                 "description": "Pagination information for next page"
+              }
+            }
+          }
+        }
+      },
+      "DirectCastSendRequest": {
+        "type": "object",
+        "required": [
+          "conversationId",
+          "recipientFids",
+          "messageId",
+          "type",
+          "message"
+        ],
+        "properties": {
+          "conversationId": {
+            "type": "string",
+            "description": "ID of the conversation to send the message to",
+            "example": "908811244217b112fcf727baf0975fc65fb65687fb3e562c3d16d4a457e05efd"
+          },
+          "recipientFids": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            },
+            "description": "Array of Farcaster IDs of message recipients",
+            "example": [
+              17838,
+              861305
+            ]
+          },
+          "messageId": {
+            "type": "string",
+            "description": "Unique identifier for the message",
+            "example": "199b59f9c76097ba3a902625a1989870"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "text",
+              "image",
+              "reaction",
+              "link"
+            ],
+            "description": "Type of the message",
+            "example": "text"
+          },
+          "message": {
+            "type": "string",
+            "description": "Content of the message",
+            "example": "sup"
+          },
+          "inReplyToId": {
+            "type": "string",
+            "description": "ID of the message this is replying to (optional)",
+            "example": "2554cd70feb9365ff96996be5132ce77"
+          }
+        }
+      },
+      "DirectCastSendResponse": {
+        "type": "object",
+        "required": [
+          "result"
+        ],
+        "properties": {
+          "result": {
+            "type": "object",
+            "required": [
+              "success"
+            ],
+            "properties": {
+              "success": {
+                "type": "boolean",
+                "description": "Whether the message was sent successfully",
+                "example": true
               }
             }
           }
