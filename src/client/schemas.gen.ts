@@ -1569,16 +1569,15 @@ export const RewardsMetadataResponseSchema = {
 	properties: {
 		result: {
 			type: "object",
-			required: ["metadata"],
+			required: [
+				"type",
+				"lastUpdateTimestamp",
+				"currentPeriodStartTimestamp",
+				"currentPeriodEndTimestamp",
+			],
 			properties: {
 				metadata: {
 					type: "object",
-					required: [
-						"type",
-						"lastUpdateTimestamp",
-						"currentPeriodStartTimestamp",
-						"currentPeriodEndTimestamp",
-					],
 					properties: {
 						type: {
 							type: "string",
