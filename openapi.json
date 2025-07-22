@@ -532,7 +532,11 @@
     "/v2/user-by-username": {
       "get": {
         "operationId": "getUserByUsername",
+        "tags": [
+          "User"
+        ],
         "summary": "Get user by username",
+        "description": "Retrieves user information based on username",
         "parameters": [
           {
             "name": "username",
@@ -540,7 +544,8 @@
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "description": "The username to look up"
           }
         ],
         "security": [
@@ -554,7 +559,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/UserResponse"
+                  "$ref": "#/components/schemas/UserByFidResponse"
                 }
               }
             }
@@ -7034,6 +7039,29 @@
             "items": {
               "type": "string"
             }
+          },
+          "walletLabels": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "address": {
+                  "type": "string"
+                },
+                "labels": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "v2": {
+            "type": "boolean"
+          },
+          "publicSpamLabel": {
+            "type": "string"
           }
         }
       },
