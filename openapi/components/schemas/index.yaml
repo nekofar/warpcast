@@ -695,6 +695,29 @@ DirectCastConversationMessageTtlRequest:
 
 DirectCastConversationMessageTtlResponse:
   $ref: './common.yaml#/SuccessResponse'
+
+DirectCastMessageReactionRequest:
+  type: object
+  required:
+    - conversationId
+    - messageId
+    - reaction
+  properties:
+    conversationId:
+      type: string
+      description: ID of the conversation containing the message
+      example: "12590-20146"
+    messageId:
+      type: string
+      description: ID of the message to react to
+      example: "17c7f0b459ff8f625fc35bba6a89c817"
+    reaction:
+      type: string
+      description: Emoji reaction to add or remove
+      example: "👍"
+
+DirectCastMessageReactionResponse:
+  $ref: './common.yaml#/SuccessResponse'
 DiscoverChannelsResponse:
   allOf:
     - $ref: './common.yaml#/GenericResponse'
