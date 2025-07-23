@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.36] - 2025-07-23
+
+### 🚀 Features
+
+- *(package)* Add `types` export in package configuration
+
 ## [2.0.0-alpha.35] - 2025-07-22
 
 ### 🚀 Features
