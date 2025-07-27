@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.37] - 2025-07-27
+
+### 🚀 Features
+
+- *(openapi)* Add `filter` query parameter to direct-cast-inbox
+- *(openapi)* Add `filter` query parameter for conversations
+- *(client)* Add `filter` property to conversation types
+
 ## [2.0.0-alpha.36] - 2025-07-23
 
 ### 🚀 Features

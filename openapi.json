@@ -186,6 +186,20 @@
             }
           },
           {
+            "name": "filter",
+            "in": "query",
+            "description": "Filter for conversations (e.g., unread, all)",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "unread",
+                "group",
+                "1-1"
+              ]
+            }
+          },
+          {
             "name": "cursor",
             "in": "query",
             "description": "Pagination cursor for retrieving next page",
