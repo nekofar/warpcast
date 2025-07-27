@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.38] - 2025-07-27
+
+### 🐛 Bug Fixes
+
+- *(package)* Update `types` export configuration
+
+### ⚙️ Miscellaneous Tasks
+
+- *(workspace)* Add pnpm workspace configuration
+
 ## [2.0.0-alpha.37] - 2025-07-27
 
 ### 🚀 Features
