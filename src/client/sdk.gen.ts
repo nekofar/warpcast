@@ -357,6 +357,7 @@ import type {
 import { client as _heyApiClient } from "./client.gen";
 import {
 	getDirectCastInboxResponseTransformer,
+	getDirectCastConversationResponseTransformer,
 	getDirectCastConversationMessagesResponseTransformer,
 	getDirectCastConversationRecentMessagesResponseTransformer,
 	getCastsByFidResponseTransformer,
@@ -844,6 +845,7 @@ export const getDirectCastConversation = <ThrowOnError extends boolean = false>(
 		GetDirectCastConversationErrors,
 		ThrowOnError
 	>({
+		responseTransformer: getDirectCastConversationResponseTransformer,
 		security: [
 			{
 				scheme: "bearer",

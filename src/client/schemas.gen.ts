@@ -507,26 +507,63 @@ export const DirectCastMessageMentionSchema = {
 export const DirectCastConversationViewerContextSchema = {
 	type: "object",
 	properties: {
+		access: {
+			type: "string",
+			enum: ["read-write", "read-only"],
+			description: "Access level for the conversation",
+			example: "read-write",
+		},
 		category: {
 			type: "string",
+			description: "Category of the conversation",
+			example: "default",
+		},
+		archived: {
+			type: "boolean",
+			description: "Whether the conversation is archived",
+			example: false,
 		},
 		lastReadAt: {
 			type: "integer",
+			format: "int64",
+			description: "Timestamp of last read (Unix milliseconds)",
+			example: 1753650746109,
 		},
 		muted: {
 			type: "boolean",
+			description: "Whether the conversation is muted",
+			example: false,
 		},
 		manuallyMarkedUnread: {
 			type: "boolean",
+			description: "Whether the conversation is manually marked as unread",
+			example: false,
 		},
 		pinned: {
 			type: "boolean",
+			description: "Whether the conversation is pinned",
+			example: false,
 		},
 		unreadCount: {
 			type: "integer",
+			minimum: 0,
+			description: "Number of unread messages",
+			example: 0,
 		},
 		unreadMentionsCount: {
 			type: "integer",
+			minimum: 0,
+			description: "Number of unread mentions",
+			example: 0,
+		},
+		counterParty: {
+			$ref: "#/components/schemas/User",
+			description: "The other participant in a 1:1 conversation",
+		},
+		tag: {
+			type: "string",
+			description: "Tag associated with the conversation",
+			example: "automated",
 		},
 	},
 } as const;
@@ -540,6 +577,17 @@ export const DirectCastConversationSchema = {
 		"viewerContext",
 		"adminFids",
 		"lastReadTime",
+		"removedFids",
+		"participants",
+		"selfLastReadTime",
+		"pinnedMessages",
+		"hasPinnedMessages",
+		"isCollectionTokenGated",
+		"activeParticipantsCount",
+		"messageTTLDays",
+		"unreadCount",
+		"muted",
+		"hasMention",
 	],
 	properties: {
 		conversationId: {
@@ -566,16 +614,65 @@ export const DirectCastConversationSchema = {
 			},
 			description: "List of admin Farcaster IDs",
 		},
+		removedFids: {
+			type: "array",
+			items: {
+				type: "integer",
+			},
+			description: "List of removed Farcaster IDs",
+		},
+		participants: {
+			type: "array",
+			items: {
+				$ref: "#/components/schemas/User",
+			},
+			description: "List of conversation participants",
+		},
 		lastReadTime: {
 			type: "integer",
 			format: "int64",
 			description: "Timestamp of last read time (Unix milliseconds)",
 			example: 1741871452933,
 		},
+		selfLastReadTime: {
+			type: "integer",
+			format: "int64",
+			description: "Timestamp of viewer's last read time (Unix milliseconds)",
+			example: 1753650746109,
+		},
+		pinnedMessages: {
+			type: "array",
+			items: {
+				$ref: "#/components/schemas/DirectCastMessage",
+			},
+			description: "List of pinned messages in the conversation",
+		},
+		hasPinnedMessages: {
+			type: "boolean",
+			description: "Whether the conversation has pinned messages",
+			example: false,
+		},
 		isGroup: {
 			type: "boolean",
 			description: "Whether this is a group conversation",
 			example: true,
+		},
+		isCollectionTokenGated: {
+			type: "boolean",
+			description: "Whether the conversation is collection token gated",
+			example: false,
+		},
+		activeParticipantsCount: {
+			type: "integer",
+			minimum: 0,
+			description: "Number of active participants in the conversation",
+			example: 2,
+		},
+		messageTTLDays: {
+			type: "integer",
+			minimum: 0,
+			description: "Message time-to-live in days",
+			example: 365,
 		},
 		createdAt: {
 			type: "integer",
@@ -583,6 +680,22 @@ export const DirectCastConversationSchema = {
 			description:
 				"Timestamp when conversation was created (Unix milliseconds)",
 			example: 1709952982363,
+		},
+		unreadCount: {
+			type: "integer",
+			minimum: 0,
+			description: "Number of unread messages",
+			example: 0,
+		},
+		muted: {
+			type: "boolean",
+			description: "Whether the conversation is muted",
+			example: false,
+		},
+		hasMention: {
+			type: "boolean",
+			description: "Whether the conversation has mentions",
+			example: false,
 		},
 		lastMessage: {
 			$ref: "#/components/schemas/DirectCastMessage",
@@ -1217,10 +1330,10 @@ export const DirectCastConversationResponseSchema = {
 			properties: {
 				result: {
 					type: "object",
+					required: ["conversation"],
 					properties: {
 						conversation: {
-							type: "object",
-							additionalProperties: true,
+							$ref: "#/components/schemas/DirectCastConversation",
 						},
 					},
 				},

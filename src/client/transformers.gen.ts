@@ -2,6 +2,7 @@
 
 import type {
 	GetDirectCastInboxResponse,
+	GetDirectCastConversationResponse,
 	GetDirectCastConversationMessagesResponse,
 	GetDirectCastConversationRecentMessagesResponse,
 	GetCastsByFidResponse,
@@ -22,14 +23,31 @@ const directCastMessageSchemaResponseTransformer = (data: any) => {
 	return data;
 };
 
+const directCastConversationViewerContextSchemaResponseTransformer = (
+	data: any,
+) => {
+	if (data.lastReadAt) {
+		data.lastReadAt = BigInt(data.lastReadAt.toString());
+	}
+	return data;
+};
+
 const directCastConversationSchemaResponseTransformer = (data: any) => {
 	data.lastReadTime = BigInt(data.lastReadTime.toString());
+	data.selfLastReadTime = BigInt(data.selfLastReadTime.toString());
+	data.pinnedMessages = data.pinnedMessages.map((item: any) => {
+		return directCastMessageSchemaResponseTransformer(item);
+	});
 	data.createdAt = BigInt(data.createdAt.toString());
 	if (data.lastMessage) {
 		data.lastMessage = directCastMessageSchemaResponseTransformer(
 			data.lastMessage,
 		);
 	}
+	data.viewerContext =
+		directCastConversationViewerContextSchemaResponseTransformer(
+			data.viewerContext,
+		);
 	return data;
 };
 
@@ -49,6 +67,22 @@ export const getDirectCastInboxResponseTransformer = async (
 	data: any,
 ): Promise<GetDirectCastInboxResponse> => {
 	data = directCastInboxResponseSchemaResponseTransformer(data);
+	return data;
+};
+
+const directCastConversationResponseSchemaResponseTransformer = (data: any) => {
+	if (data.result) {
+		data.result.conversation = directCastConversationSchemaResponseTransformer(
+			data.result.conversation,
+		);
+	}
+	return data;
+};
+
+export const getDirectCastConversationResponseTransformer = async (
+	data: any,
+): Promise<GetDirectCastConversationResponse> => {
+	data = directCastConversationResponseSchemaResponseTransformer(data);
 	return data;
 };
 
