@@ -165,10 +165,11 @@ DirectCastConversationResponse:
       properties:
         result:
           type: object
+          required:
+            - conversation
           properties:
             conversation:
-              type: object
-              additionalProperties: true
+              $ref: '#/DirectCastConversation'
 
 DirectCastConversationMessagesResponse:
   allOf:

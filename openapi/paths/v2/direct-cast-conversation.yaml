@@ -1,5 +1,7 @@
 get:
   operationId: getDirectCastConversation
+  tags:
+    - Messaging
   summary: Get direct cast conversation
   description: Fetches a direct cast conversation by conversationId.
   parameters:
