@@ -1393,6 +1393,10 @@ export type GetDirectCastInboxData = {
 		 */
 		category?: "default" | "requests" | "spam";
 		/**
+		 * Filter for conversations (e.g., unread, all)
+		 */
+		filter?: "unread" | "group" | "1-1";
+		/**
 		 * Base64 encoded cursor from previous response
 		 */
 		cursor?: string;
