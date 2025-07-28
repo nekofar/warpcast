@@ -394,6 +394,7 @@ export const DirectCastMessageSchema = {
 				"link",
 				"group_membership_addition",
 				"pin_message",
+				"message_ttl_change",
 			],
 			description: "Type of the message",
 			example: "text",

@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.41] - 2025-07-28
+
+### 🚀 Features
+
+- *(openapi)* Add `message_ttl_change` to message types
+- *(openapi)* Add `message_ttl_change` to message types
+- *(client)* Add `message_ttl_change` to supported message types
+
 ## [2.0.0-alpha.40] - 2025-07-28
 
 ### 🚜 Refactor
