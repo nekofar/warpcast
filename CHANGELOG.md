@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.39] - 2025-07-28
+
+### 🚀 Features
+
+- *(openapi)* Enhance direct cast conversation schema
+- *(openapi)* Extend `DirectCastConversation` schema
+- *(openapi)* Extend `DirectCastConversation` schemas
+- *(openapi)* Add support for `zod` validator
+- *(openapi)* Add zod schemas for API responses
+
 ## [2.0.0-alpha.38] - 2025-07-27
 
 ### 🐛 Bug Fixes

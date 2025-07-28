@@ -236,13 +236,50 @@ export type DirectCastMessageMention = {
 };
 
 export type DirectCastConversationViewerContext = {
+	/**
+	 * Access level for the conversation
+	 */
+	access?: "read-write" | "read-only";
+	/**
+	 * Category of the conversation
+	 */
 	category?: string;
-	lastReadAt?: number;
+	/**
+	 * Whether the conversation is archived
+	 */
+	archived?: boolean;
+	/**
+	 * Timestamp of last read (Unix milliseconds)
+	 */
+	lastReadAt?: bigint;
+	/**
+	 * Whether the conversation is muted
+	 */
 	muted?: boolean;
+	/**
+	 * Whether the conversation is manually marked as unread
+	 */
 	manuallyMarkedUnread?: boolean;
+	/**
+	 * Whether the conversation is pinned
+	 */
 	pinned?: boolean;
+	/**
+	 * Number of unread messages
+	 */
 	unreadCount?: number;
+	/**
+	 * Number of unread mentions
+	 */
 	unreadMentionsCount?: number;
+	/**
+	 * The other participant in a 1:1 conversation
+	 */
+	counterParty?: User;
+	/**
+	 * Tag associated with the conversation
+	 */
+	tag?: string;
 };
 
 export type DirectCastConversation = {
@@ -267,17 +304,61 @@ export type DirectCastConversation = {
 	 */
 	adminFids: Array<number>;
 	/**
+	 * List of removed Farcaster IDs
+	 */
+	removedFids: Array<number>;
+	/**
+	 * List of conversation participants
+	 */
+	participants: Array<User>;
+	/**
 	 * Timestamp of last read time (Unix milliseconds)
 	 */
 	lastReadTime: bigint;
+	/**
+	 * Timestamp of viewer's last read time (Unix milliseconds)
+	 */
+	selfLastReadTime: bigint;
+	/**
+	 * List of pinned messages in the conversation
+	 */
+	pinnedMessages: Array<DirectCastMessage>;
+	/**
+	 * Whether the conversation has pinned messages
+	 */
+	hasPinnedMessages: boolean;
 	/**
 	 * Whether this is a group conversation
 	 */
 	isGroup: boolean;
 	/**
+	 * Whether the conversation is collection token gated
+	 */
+	isCollectionTokenGated: boolean;
+	/**
+	 * Number of active participants in the conversation
+	 */
+	activeParticipantsCount: number;
+	/**
+	 * Message time-to-live in days
+	 */
+	messageTTLDays: number;
+	/**
 	 * Timestamp when conversation was created (Unix milliseconds)
 	 */
 	createdAt: bigint;
+	/**
+	 * Number of unread messages
+	 */
+	unreadCount: number;
+	/**
+	 * Whether the conversation is muted
+	 */
+	muted: boolean;
+	/**
+	 * Whether the conversation has mentions
+	 */
+	hasMention: boolean;
 	lastMessage?: DirectCastMessage;
 	viewerContext: DirectCastConversationViewerContext;
 };
@@ -524,9 +605,7 @@ export type NotificationsResponse = {
 
 export type DirectCastConversationResponse = GenericResponse & {
 	result?: {
-		conversation?: {
-			[key: string]: unknown;
-		};
+		conversation: DirectCastConversation;
 	};
 };
 
