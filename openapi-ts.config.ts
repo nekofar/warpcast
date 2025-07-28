@@ -30,6 +30,11 @@ export default defineConfig({
     {
       name: '@hey-api/sdk',
       transformer: true,
+      validator: 'zod',
     },
+    {
+      name:'zod',
+      exportFromIndex: true,
+    }
   ],
 })
