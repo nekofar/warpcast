@@ -166,7 +166,8 @@ export type DirectCastMessage = {
 		| "reaction"
 		| "link"
 		| "group_membership_addition"
-		| "pin_message";
+		| "pin_message"
+		| "message_ttl_change";
 	/**
 	 * Content of the message
 	 */

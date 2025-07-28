@@ -156,6 +156,7 @@ export const zDirectCastMessage = z.object({
 		"link",
 		"group_membership_addition",
 		"pin_message",
+		"message_ttl_change",
 	]),
 	message: z.string(),
 	hasMention: z.boolean(),
