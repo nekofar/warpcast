@@ -34,10 +34,14 @@ const directCastConversationViewerContextSchemaResponseTransformer = (
 
 const directCastConversationSchemaResponseTransformer = (data: any) => {
 	data.lastReadTime = BigInt(data.lastReadTime.toString());
-	data.selfLastReadTime = BigInt(data.selfLastReadTime.toString());
-	data.pinnedMessages = data.pinnedMessages.map((item: any) => {
-		return directCastMessageSchemaResponseTransformer(item);
-	});
+	if (data.selfLastReadTime) {
+		data.selfLastReadTime = BigInt(data.selfLastReadTime.toString());
+	}
+	if (data.pinnedMessages) {
+		data.pinnedMessages = data.pinnedMessages.map((item: any) => {
+			return directCastMessageSchemaResponseTransformer(item);
+		});
+	}
 	data.createdAt = BigInt(data.createdAt.toString());
 	if (data.lastMessage) {
 		data.lastMessage = directCastMessageSchemaResponseTransformer(

@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.40] - 2025-07-28
+
+### 🚜 Refactor
+
+- *(openapi)* Simplify `DirectCastConversation` schema
+- *(openapi)* Make `DirectCastConversation` fields optional
+- *(openapi)* Remove unused properties from schema
+
 ## [2.0.0-alpha.39] - 2025-07-28
 
 ### 🚀 Features

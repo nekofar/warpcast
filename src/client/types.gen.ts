@@ -306,11 +306,11 @@ export type DirectCastConversation = {
 	/**
 	 * List of removed Farcaster IDs
 	 */
-	removedFids: Array<number>;
+	removedFids?: Array<number>;
 	/**
 	 * List of conversation participants
 	 */
-	participants: Array<User>;
+	participants?: Array<User>;
 	/**
 	 * Timestamp of last read time (Unix milliseconds)
 	 */
@@ -318,15 +318,15 @@ export type DirectCastConversation = {
 	/**
 	 * Timestamp of viewer's last read time (Unix milliseconds)
 	 */
-	selfLastReadTime: bigint;
+	selfLastReadTime?: bigint;
 	/**
 	 * List of pinned messages in the conversation
 	 */
-	pinnedMessages: Array<DirectCastMessage>;
+	pinnedMessages?: Array<DirectCastMessage>;
 	/**
 	 * Whether the conversation has pinned messages
 	 */
-	hasPinnedMessages: boolean;
+	hasPinnedMessages?: boolean;
 	/**
 	 * Whether this is a group conversation
 	 */
@@ -334,15 +334,15 @@ export type DirectCastConversation = {
 	/**
 	 * Whether the conversation is collection token gated
 	 */
-	isCollectionTokenGated: boolean;
+	isCollectionTokenGated?: boolean;
 	/**
 	 * Number of active participants in the conversation
 	 */
-	activeParticipantsCount: number;
+	activeParticipantsCount?: number;
 	/**
 	 * Message time-to-live in days
 	 */
-	messageTTLDays: number;
+	messageTTLDays?: number;
 	/**
 	 * Timestamp when conversation was created (Unix milliseconds)
 	 */
@@ -350,15 +350,15 @@ export type DirectCastConversation = {
 	/**
 	 * Number of unread messages
 	 */
-	unreadCount: number;
+	unreadCount?: number;
 	/**
 	 * Whether the conversation is muted
 	 */
-	muted: boolean;
+	muted?: boolean;
 	/**
 	 * Whether the conversation has mentions
 	 */
-	hasMention: boolean;
+	hasMention?: boolean;
 	lastMessage?: DirectCastMessage;
 	viewerContext: DirectCastConversationViewerContext;
 };

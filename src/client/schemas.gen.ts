@@ -577,17 +577,6 @@ export const DirectCastConversationSchema = {
 		"viewerContext",
 		"adminFids",
 		"lastReadTime",
-		"removedFids",
-		"participants",
-		"selfLastReadTime",
-		"pinnedMessages",
-		"hasPinnedMessages",
-		"isCollectionTokenGated",
-		"activeParticipantsCount",
-		"messageTTLDays",
-		"unreadCount",
-		"muted",
-		"hasMention",
 	],
 	properties: {
 		conversationId: {
