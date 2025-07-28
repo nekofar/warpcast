@@ -207,7 +207,7 @@ export const zDirectCastConversation = z.object({
 	isGroup: z.boolean(),
 	isCollectionTokenGated: z.optional(z.boolean()),
 	activeParticipantsCount: z.optional(z.int().gte(0)),
-	messageTTLDays: z.optional(z.int().gte(0)),
+	messageTTLDays: z.optional(z.union([z.int().gte(0), z.enum(["Infinity"])])),
 	createdAt: z.coerce.bigint(),
 	unreadCount: z.optional(z.int().gte(0)),
 	muted: z.optional(z.boolean()),

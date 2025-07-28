@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.42] - 2025-07-28
+
+### 🚀 Features
+
+- *(openapi)* Update `messageTTLDays` schema for flexibility
+- *(openapi)* Enhance `messageTTLDays` schema flexibility
+- *(client)* Update `messageTTLDays` schema for flexibility
+
 ## [2.0.0-alpha.41] - 2025-07-28
 
 ### 🚀 Features
