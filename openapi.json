@@ -7634,10 +7634,25 @@
             "example": 2
           },
           "messageTTLDays": {
-            "type": "integer",
-            "minimum": 0,
-            "description": "Message time-to-live in days",
-            "example": 365
+            "oneOf": [
+              {
+                "type": "integer",
+                "minimum": 0,
+                "description": "Number of days until message expires"
+              },
+              {
+                "type": "string",
+                "enum": [
+                  "Infinity"
+                ],
+                "description": "Messages never expire"
+              }
+            ],
+            "description": "Message time-to-live in days, or \"Infinity\" for no expiration",
+            "examples": [
+              365,
+              "Infinity"
+            ]
           },
           "createdAt": {
             "type": "integer",
