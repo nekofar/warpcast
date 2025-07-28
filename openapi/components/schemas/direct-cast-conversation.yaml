@@ -127,7 +127,7 @@ DirectCastMessage:
       example: 1753112479748
     type:
       type: string
-      enum: [ text, image, reaction, link, group_membership_addition, pin_message ]
+      enum: [ text, image, reaction, link, group_membership_addition, pin_message, message_ttl_change ]
       description: Type of the message
       example: "text"
     message:
