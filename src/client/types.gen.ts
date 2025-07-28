@@ -341,9 +341,9 @@ export type DirectCastConversation = {
 	 */
 	activeParticipantsCount?: number;
 	/**
-	 * Message time-to-live in days
+	 * Message time-to-live in days, or "Infinity" for no expiration
 	 */
-	messageTTLDays?: number;
+	messageTTLDays?: number | "Infinity";
 	/**
 	 * Timestamp when conversation was created (Unix milliseconds)
 	 */
