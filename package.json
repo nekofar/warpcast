@@ -48,6 +48,9 @@
     "openapi:bundle": "redocly bundle openapi/index.yaml --output openapi.json",
     "openapi:generate": "openapi-ts",
     "openapi:lint": "redocly lint openapi/index.yaml",
+    "asyncapi:bundle": "asyncapi bundle asyncapi/index.yaml --output asyncapi.json",
+    "asyncapi:generate": "asyncapi generate fromTemplate asyncapi/index.yaml @asyncapi/nodejs-ws-template --param server=production --output dist/asyncapi",
+    "asyncapi:lint": "asyncapi validate asyncapi/index.yaml",
     "prepublishOnly": "pnpm build",
     "test": "vitest run"
   },
