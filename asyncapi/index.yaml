@@ -76,7 +76,7 @@ components:
               - unseen
           data:
             type: string
-            description: JSON string containing unseen data that can be parsed to either inbox count or channel feeds status
+            description: JSON string containing unseen data that can be parsed to inbox count, unread notifications count, or channel feeds status
         required:
           - messageType
           - data
@@ -180,6 +180,12 @@ components:
               type: integer
           required:
             - inboxCount
+        - type: object
+          properties:
+            unreadNotificationsCount:
+              type: integer
+          required:
+            - unreadNotificationsCount
         - type: object
           properties:
             channelFeedsUnseenStatus:
