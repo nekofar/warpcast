@@ -187,6 +187,12 @@ components:
             - unreadNotificationsCount
         - type: object
           properties:
+            warpTransactionCount:
+              type: integer
+          required:
+            - warpTransactionCount
+        - type: object
+          properties:
             channelFeedsUnseenStatus:
               type: array
               items:
