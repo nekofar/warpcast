@@ -75,32 +75,8 @@ components:
             enum:
               - unseen
           data:
-            oneOf:
-              - type: object
-                properties:
-                  inboxCount:
-                    type: integer
-                required:
-                  - inboxCount
-              - type: object
-                properties:
-                  channelFeedsUnseenStatus:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        channelKey:
-                          type: string
-                        feedType:
-                          type: string
-                        hasNewItems:
-                          type: boolean
-                      required:
-                        - channelKey
-                        - feedType
-                        - hasNewItems
-                required:
-                  - channelFeedsUnseenStatus
+            type: string
+            description: JSON string containing unseen data that can be parsed to either inbox count or channel feeds status
         required:
           - messageType
           - data
@@ -195,3 +171,31 @@ components:
           - messageType
           - payload
           - data
+  schemas:
+    unseenData:
+      oneOf:
+        - type: object
+          properties:
+            inboxCount:
+              type: integer
+          required:
+            - inboxCount
+        - type: object
+          properties:
+            channelFeedsUnseenStatus:
+              type: array
+              items:
+                type: object
+                properties:
+                  channelKey:
+                    type: string
+                  feedType:
+                    type: string
+                  hasNewItems:
+                    type: boolean
+                required:
+                  - channelKey
+                  - feedType
+                  - hasNewItems
+          required:
+            - channelFeedsUnseenStatus
