@@ -1,14 +1,14 @@
-asyncapi: '2.6.0'
+asyncapi: 2.6.0
 info:
   title: Farcaster WebSocket API
-  version: '1.0.0'
+  version: 1.0.0
   description: AsyncAPI specification for the Farcaster WebSocket stream endpoint
 servers:
   production:
-    url: wss://ws.farcaster.xyz/stream
+    url: 'wss://ws.farcaster.xyz/stream'
     protocol: wss
 channels:
-  '/':
+  /:
     subscribe:
       summary: Receive events from the Farcaster stream
       operationId: onMessage
@@ -40,7 +40,6 @@ components:
         required:
           - messageType
           - data
-
     directCastReadMessage:
       contentType: application/json
       payload:
@@ -64,7 +63,6 @@ components:
           - messageType
           - payload
           - data
-
     unseenMessage:
       contentType: application/json
       payload:
@@ -76,11 +74,12 @@ components:
               - unseen
           data:
             type: string
-            description: JSON string containing unseen data that can be parsed to inbox count, unread notifications count, or channel feeds status
+            description: >-
+              JSON string containing unseen data that can be parsed to inbox
+              count, unread notifications count, or channel feeds status
         required:
           - messageType
           - data
-
     refreshDirectCastConversationMessage:
       contentType: application/json
       payload:
