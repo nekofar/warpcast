@@ -16,6 +16,7 @@ channels:
         oneOf:
           - $ref: '#/components/messages/unseenMessage'
           - $ref: '#/components/messages/refreshDirectCastConversationMessage'
+          - $ref: '#/components/messages/refreshSelfDirectCastsInboxMessage'
     publish:
       summary: Send commands to the Farcaster stream
       operationId: sendMessage
@@ -25,6 +26,25 @@ channels:
           - $ref: '#/components/messages/directCastReadMessage'
 components:
   messages:
+    refreshSelfDirectCastsInboxMessage:
+      contentType: application/json
+      payload:
+        type: object
+        properties:
+          messageType:
+            type: string
+            enum:
+              - refresh-self-direct-casts-inbox
+          payload:
+            type: object
+            properties:
+              conversationId:
+                type: string
+            required:
+              - conversationId
+        required:
+          - messageType
+          - payload
     authenticateMessage:
       contentType: application/json
       payload:
@@ -111,6 +131,55 @@ components:
                     type: string
                   isDeleted:
                     type: boolean
+                  inReplyTo:
+                    type: object
+                    properties:
+                      conversationId:
+                        type: string
+                      message:
+                        type: string
+                      messageId:
+                        type: string
+                      senderFid:
+                        type: integer
+                      serverTimestamp:
+                        type: integer
+                      type:
+                        type: string
+                      isDeleted:
+                        type: boolean
+                      senderContext:
+                        type: object
+                        properties:
+                          displayName:
+                            type: string
+                          fid:
+                            type: integer
+                          pfp:
+                            type: object
+                            properties:
+                              url:
+                                type: string
+                              verified:
+                                type: boolean
+                            required:
+                              - url
+                              - verified
+                          username:
+                            type: string
+                        required:
+                          - displayName
+                          - fid
+                          - pfp
+                          - username
+                      reactions:
+                        type: array
+                        items:
+                          type: object
+                      hasMention:
+                        type: boolean
+                      isPinned:
+                        type: boolean
                   senderContext:
                     type: object
                     properties:
