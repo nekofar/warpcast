@@ -1,4 +1,11 @@
 onlyBuiltDependencies:
+  - '@asyncapi/cli'
+  - '@hyperjump/json-pointer'
+  - '@hyperjump/json-schema'
+  - '@hyperjump/json-schema-core'
+  - '@hyperjump/pact'
   - core-js
   - esbuild
   - protobufjs
+  - sharp
+  - yarn
