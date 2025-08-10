@@ -1,0 +1,97 @@
+project
+@nekofar/warpcast
+
+overview
+TypeScript client for interacting with Warpcast's experimental API surface. The library is
+unstable and intended for exploratory integrations.
+
+setup and runtime
+- Node.js 18+
+- pnpm install
+- pnpm format:check
+- pnpm lint
+- pnpm test
+- pnpm build
+
+public api index
+src/index.ts -> version - package version
+src/client/sdk.gen.ts -> getUserOnboardingState, getUserByFid, getDirectCastInbox, getUserAppContext,
+getUserPreferences, getHighlightedChannels, getFeedItems, getUser, getUserFollowingChannels,
+getSuggestedUsers, getUserFavoriteFrames, getUserByUsername, getChannelStreaksForUser,
+getUnseenCounts, getUserThreadCasts, getChannelFollowersYouKnow, markAllNotificationsRead,
+getNotifications, setLastCheckedTimestamp, getDirectCastConversation,
+categorizeDirectCastConversation, getDirectCastConversationMessages,
+setDirectCastConversationMessageTtl, updateDirectCastConversationNotifications,
+getDirectCastConversationRecentMessages, sendDirectCastMessage,
+directCastManuallyMarkUnread, removeDirectCastMessageReaction, addDirectCastMessageReaction,
+unpinDirectCastConversation, pinDirectCastConversation, discoverChannels,
+getAvailableInvites, getSponsoredInvites, getRewardsLeaderboard, getUserRewardsScores,
+getRewardsMetadata, getBookmarkedCasts, getUserStarterPacks, getSuggestedStarterPacks,
+getStarterPack, getStarterPackUsers, getChannel, getChannelUsers, getFollowing, getFollowers,
+getMutualFollowers, getTopFrameApps, getTopMiniApps, getVerifications, getMutedKeywords,
+muteKeyword, unmuteKeyword, unlikeCast, getCastLikes, likeCast, undoRecast, recastCast,
+attachEmbeds, getCastRecasters, getCastQuotes, getCurrentUser, searchChannels, getDraftCasts,
+createDraftCasts, deleteDraftCast, deleteCast, getCastsByFid, createCast, getAllChannels,
+getChannelDetails, getChannelFollowers, getUserFollowedChannels,
+checkUserChannelFollowStatus, getChannelMembers, removeChannelInvite, getChannelInvites,
+acceptChannelInvite, inviteUserToChannel, getChannelModeratedCasts,
+getChannelRestrictedUsers, unbanUserFromChannel, getChannelBannedUsers,
+banUserFromChannel, unfollowChannel, followChannel, moderateCast, unpinCastFromChannel,
+pinCastToChannel, getDiscoverableActions, getDiscoverableComposerActions, unblockUser,
+getBlockedUsers, blockUser, getAccountVerifications, getCreatorRewardWinners,
+getUserPrimaryAddress, getUserPrimaryAddresses, getStarterPackMembers, sendDirectCast,
+getUserByVerificationAddress, getDeveloperRewardWinners, getAppsByAuthor, getDomainManifest,
+getMetaTags, getFarcasterJson, getOwnedDomains, getApiKeys, createApiKey, revokeApiKey,
+getConnectedAccounts, getProfileCasts, getUserLikedCasts, getMiniAppAnalyticsRollup,
+inspectMiniAppUrl, inspectImageUrl, exportMiniAppUserData
+src/client/zod.gen.ts -> numerous Zod schemas such as zProfilePicture, zUser, zChannel,
+zNotificationsResponse, zCast, zCreateCastData and many more covering request and response
+validation for every endpoint
+src/client/schemas.gen.ts -> JSON schemas including ProfilePictureSchema, UserSchema,
+FeedItemsResponseSchema, CastSchema and other structures used by the API
+src/client/types.gen.ts -> over 600 generated TypeScript types like ProfilePicture, User,
+DirectCastConversation, FeedItemsResponse, Cast, ApiKey and hundreds of additional data
+shapes used throughout the client
+
+public api details
+name: getUser
+kind: function
+module: src/client/sdk.gen.ts
+summary: Get user information
+description: Retrieves detailed user information based on FID.
+params:
+  options: Options<GetUserData, ThrowOnError> - Request configuration
+returns: Promise<GetUserResponses> - Response wrapper
+usage:
+```ts
+import { getUser } from "@nekofar/warpcast";
+const { data } = await getUser({ params: { fid: 1 } });
+```
+source: src/client/sdk.gen.ts L838-L859
+
+errors and edge cases
+Network failures or invalid authentication tokens from Warpcast may result in rejected
+promises.
+
+security and safety
+Client communicates with Warpcast's private APIs. Do not expose credentials in untrusted
+environments.
+
+conventions
+- ESM modules
+- Prettier formatting
+- ESLint static analysis
+
+examples
+```ts
+import { createCast, getUser } from "@nekofar/warpcast";
+const { data: user } = await getUser({ params: { fid: 1 } });
+await createCast({ body: { text: "Hello from Warpcast" } });
+```
+
+limitations
+API surface is auto-generated and may change without notice. Many endpoints require
+Warpcast authentication and may not be accessible to the public.
+
+license
+Apache-2.0
