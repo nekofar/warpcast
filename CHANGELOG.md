@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.43] - 2025-08-10
+
+### 🚀 Features
+
+- *(asyncapi)* Add WebSocket API AsyncAPI specification
+- *(asyncapi)* Refactor `data` field and define `schemas`
+- *(asyncapi)* Extend `data` description and enhance schema
+- *(asyncapi)* Add WebSocket API AsyncAPI specification
+- *(asyncapi)* Add npm scripts for AsyncAPI workflows
+- *(asyncapi)* Add `warpTransactionCount` to schema
+- *(asyncapi)* Add `refreshSelfDirectCastsInboxMessage`
+- *(asyncapi)* Add `inReplyTo` to message schema
+
+### ⚙️ Miscellaneous Tasks
+
+- *(asyncapi)* Update formatting for consistency
+- *(deps)* Bump orhun/git-cliff-action from 4.4.2 to 4.5.0
+- *(deps)* Bump orhun/git-cliff-action from 4.4.2 to 4.5.1 (#206)
+
 ## [2.0.0-alpha.42] - 2025-07-28
 
 ### 🚀 Features
