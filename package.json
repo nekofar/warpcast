@@ -37,9 +37,9 @@
     "LICENSE"
   ],
   "scripts": {
-    "prebuild": "pnpm clean && pnpm openapi:lint && pnpm openapi:bundle && pnpm openapi:generate",
+    "prebuild": "pnpm clean && pnpm openapi:lint && pnpm openapi:bundle && pnpm openapi:generate && pnpm asyncapi:lint && pnpm asyncapi:bundle && pnpm asyncapi:generate",
     "build": "tsup",
-    "clean": "rimraf dist openapi.json",
+    "clean": "rimraf dist openapi.json asyncapi.json",
     "docs": "typedoc",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
