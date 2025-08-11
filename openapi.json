@@ -8285,6 +8285,9 @@
       },
       "Cast": {
         "type": "object",
+        "required": [
+          "hash"
+        ],
         "properties": {
           "hash": {
             "type": "string",
