@@ -924,11 +924,9 @@ export const zCastQuotesResponse = z.object({
 });
 
 export const zUserResponseUserResponse = z.object({
-	result: z.optional(
-		z.object({
-			user: z.optional(zUser),
-		}),
-	),
+	result: z.object({
+		user: zUser,
+	}),
 });
 
 export const zSearchChannelsResponse = z.object({
