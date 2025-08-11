@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.52] - 2025-08-11
+
+### 🚀 Features
+
+- *(openapi)* Add required fields to `Cast` schema
+- *(openapi)* Add `author`, `text`, and `timestamp` to `Cast`
+- *(openapi)* Enforce `author`, `text`, and `timestamp` in `Cast`
+- *(openapi)* Add required fields to schemas
+- *(openapi)* Add required fields to `User` and `UrlEmbed`
+- *(openapi)* Enforce required fields in schemas
+
 ## [2.0.0-alpha.51] - 2025-08-11
 
 ### 🚀 Features
