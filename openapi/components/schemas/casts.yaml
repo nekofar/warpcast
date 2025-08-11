@@ -1,7 +1,7 @@
 # Cast-related schemas
 Cast:
   type: object
-  required: [hash, author, text, timestamp]
+  required: [id, timestamp, cast, collectible, viewerContext]
   properties:
     hash:
       type: string

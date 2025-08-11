@@ -8298,10 +8298,11 @@
       "Cast": {
         "type": "object",
         "required": [
-          "hash",
-          "author",
-          "text",
-          "timestamp"
+          "id",
+          "timestamp",
+          "cast",
+          "collectible",
+          "viewerContext"
         ],
         "properties": {
           "hash": {
@@ -8573,6 +8574,9 @@
           },
           {
             "type": "object",
+            "required": [
+              "result"
+            ],
             "properties": {
               "result": {
                 "type": "object",

@@ -408,7 +408,7 @@ export const zRecaster = z.object({
 });
 
 export const zCast = z.object({
-	hash: z.string(),
+	hash: z.optional(z.string()),
 	threadHash: z.optional(z.string()),
 	parentHash: z.optional(z.string()),
 	parentSource: z.optional(
@@ -417,8 +417,8 @@ export const zCast = z.object({
 			url: z.optional(z.string()),
 		}),
 	),
-	author: zUser,
-	text: z.string(),
+	author: z.optional(zUser),
+	text: z.optional(z.string()),
 	timestamp: z.coerce.bigint(),
 	mentions: z.optional(z.array(zUser)),
 	embeds: z.optional(
@@ -480,13 +480,11 @@ export const zCast = z.object({
 			authorRole: z.optional(z.string()),
 		}),
 	),
-	viewerContext: z.optional(
-		z.object({
-			reacted: z.optional(z.boolean()),
-			recast: z.optional(z.boolean()),
-			bookmarked: z.optional(z.boolean()),
-		}),
-	),
+	viewerContext: z.object({
+		reacted: z.optional(z.boolean()),
+		recast: z.optional(z.boolean()),
+		bookmarked: z.optional(z.boolean()),
+	}),
 });
 
 export const zFeedItemsResponse = z.object({
@@ -511,13 +509,11 @@ export const zGenericResponse = z.object({
 
 export const zUserResponse = zGenericResponse.and(
 	z.object({
-		result: z.optional(
-			z.object({
-				user: z.optional(zUserWithExtras),
-				collectionsOwned: z.optional(z.array(z.object({}))),
-				extras: z.optional(zUserExtras),
-			}),
-		),
+		result: z.object({
+			user: z.optional(zUserWithExtras),
+			collectionsOwned: z.optional(z.array(z.object({}))),
+			extras: z.optional(zUserExtras),
+		}),
 	}),
 );
 
