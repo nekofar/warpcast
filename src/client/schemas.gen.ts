@@ -1200,6 +1200,7 @@ export const RecasterSchema = {
 
 export const CastSchema = {
 	type: "object",
+	required: ["hash"],
 	properties: {
 		hash: {
 			type: "string",

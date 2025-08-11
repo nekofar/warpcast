@@ -410,7 +410,7 @@ export const zRecaster = z.object({
 });
 
 export const zCast = z.object({
-	hash: z.optional(z.string()),
+	hash: z.string(),
 	threadHash: z.optional(z.string()),
 	parentHash: z.optional(z.string()),
 	parentSource: z.optional(
