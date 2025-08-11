@@ -16,51 +16,7 @@ get:
           schema:
             $ref: '../../components/schemas/user.yaml#/UserByFidResponse'
     '400':
-      description: Invalid fid parameter
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              errors:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    instancePath:
-                      type: string
-                      description: JSON Pointer to the part of the request that failed validation
-                    schemaPath:
-                      type: string
-                      description: JSON Schema path that was violated
-                    keyword:
-                      type: string
-                      description: The JSON Schema keyword that failed
-                    params:
-                      type: object
-                      description: Additional parameters describing the validation error
-                      additionalProperties: true
-                    message:
-                      type: string
-                      description: Human-readable error description
-                  required:
-                    - instancePath
-                    - schemaPath
-                    - keyword
-                    - message
-            required:
-              - errors
-          examples:
-            InvalidFidType:
-              summary: fid must be an integer
-              value:
-                errors:
-                  - instancePath: "/fid"
-                    schemaPath: "ApiFid/type"
-                    keyword: "type"
-                    params:
-                      type: "integer"
-                    message: "must be integer"
+      $ref: '../../components/responses/index.yaml#/BadRequest'
     '401':
       $ref: '../../components/responses/index.yaml#/Unauthorized'
     '404':

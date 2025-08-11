@@ -11,3 +11,34 @@ Unauthorized:
     application/json:
       schema:
         $ref: '../schemas/index.yaml#/ErrorResponse'
+
+BadRequest:
+  description: Bad request - validation errors or malformed request
+  content:
+    application/json:
+      schema:
+        $ref: '../schemas/index.yaml#/BadRequestError'
+      examples:
+        ValidationError:
+          summary: Validation error example
+          value:
+            errors:
+              - instancePath: "/fid"
+                schemaPath: "ApiFid/type"
+                keyword: "type"
+                params:
+                  type: "integer"
+                message: "must be integer"
+
+GenericBadRequest:
+  description: Bad request - generic error
+  content:
+    application/json:
+      schema:
+        $ref: '../schemas/index.yaml#/GenericBadRequestError'
+      examples:
+        GenericError:
+          summary: Generic bad request error
+          value:
+            errors:
+              - message: "Invalid request parameters"
