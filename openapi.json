@@ -8393,6 +8393,9 @@
           },
           "replies": {
             "type": "object",
+            "required": [
+              "count"
+            ],
             "properties": {
               "count": {
                 "type": "integer"
@@ -8401,6 +8404,9 @@
           },
           "reactions": {
             "type": "object",
+            "required": [
+              "count"
+            ],
             "properties": {
               "count": {
                 "type": "integer"
@@ -8409,6 +8415,9 @@
           },
           "recasts": {
             "type": "object",
+            "required": [
+              "count"
+            ],
             "properties": {
               "count": {
                 "type": "integer"
@@ -8423,6 +8432,9 @@
           },
           "watches": {
             "type": "object",
+            "required": [
+              "count"
+            ],
             "properties": {
               "count": {
                 "type": "integer"
