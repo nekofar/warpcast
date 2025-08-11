@@ -629,23 +629,32 @@ export const zBookmarkedCastsResponse = z.object({
 	}),
 });
 
-export const zStarterPack = z.object({});
+export const zStarterPack = z.object({
+	id: z.string(),
+	creator: z.optional(zUser),
+	name: z.optional(z.string()),
+	description: z.optional(z.string()),
+	openGraphImageUrl: z.optional(z.url()),
+	itemCount: z.optional(z.int()),
+	items: z.optional(z.array(z.object({}))),
+	labels: z.optional(z.array(z.string())),
+});
 
 export const zStarterPacksResponse = z.object({
 	result: z.object({
-		starterPacks: z.optional(z.array(zStarterPack)),
+		starterPacks: z.array(zStarterPack),
 	}),
 });
 
 export const zStarterPackResponse = z.object({
 	result: z.object({
-		starterPack: z.optional(zStarterPack),
+		starterPack: zStarterPack,
 	}),
 });
 
 export const zStarterPackUsersResponse = z.object({
 	result: z.object({
-		users: z.optional(z.array(zUser)),
+		users: z.array(zUser),
 	}),
 });
 
