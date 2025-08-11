@@ -21,7 +21,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: '../../index.yaml#/components/schemas/UserResponse'
+            $ref: '../../components/schemas/user.yaml#/UserResponse'
     '400':
       description: Invalid address format
     '404':
