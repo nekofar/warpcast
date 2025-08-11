@@ -8298,11 +8298,15 @@
       "Cast": {
         "type": "object",
         "required": [
-          "id",
+          "hash",
+          "author",
+          "text",
           "timestamp",
-          "cast",
-          "collectible",
-          "viewerContext"
+          "replies",
+          "reactions",
+          "recasts",
+          "watches",
+          "processedCastText"
         ],
         "properties": {
           "hash": {

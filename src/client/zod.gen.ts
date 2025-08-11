@@ -408,7 +408,7 @@ export const zRecaster = z.object({
 });
 
 export const zCast = z.object({
-	hash: z.optional(z.string()),
+	hash: z.string(),
 	threadHash: z.optional(z.string()),
 	parentHash: z.optional(z.string()),
 	parentSource: z.optional(
@@ -417,8 +417,8 @@ export const zCast = z.object({
 			url: z.optional(z.string()),
 		}),
 	),
-	author: z.optional(zUser),
-	text: z.optional(z.string()),
+	author: zUser,
+	text: z.string(),
 	timestamp: z.coerce.bigint(),
 	mentions: z.optional(z.array(zUser)),
 	embeds: z.optional(
@@ -431,27 +431,19 @@ export const zCast = z.object({
 			groupInvites: z.optional(z.array(z.object({}))),
 		}),
 	),
-	replies: z.optional(
-		z.object({
-			count: z.optional(z.int()),
-		}),
-	),
-	reactions: z.optional(
-		z.object({
-			count: z.optional(z.int()),
-		}),
-	),
-	recasts: z.optional(
-		z.object({
-			count: z.optional(z.int()),
-			recasters: z.optional(z.array(zRecaster)),
-		}),
-	),
-	watches: z.optional(
-		z.object({
-			count: z.optional(z.int()),
-		}),
-	),
+	replies: z.object({
+		count: z.optional(z.int()),
+	}),
+	reactions: z.object({
+		count: z.optional(z.int()),
+	}),
+	recasts: z.object({
+		count: z.optional(z.int()),
+		recasters: z.optional(z.array(zRecaster)),
+	}),
+	watches: z.object({
+		count: z.optional(z.int()),
+	}),
 	recast: z.optional(z.boolean()),
 	tags: z.optional(
 		z.array(
@@ -480,11 +472,13 @@ export const zCast = z.object({
 			authorRole: z.optional(z.string()),
 		}),
 	),
-	viewerContext: z.object({
-		reacted: z.optional(z.boolean()),
-		recast: z.optional(z.boolean()),
-		bookmarked: z.optional(z.boolean()),
-	}),
+	viewerContext: z.optional(
+		z.object({
+			reacted: z.optional(z.boolean()),
+			recast: z.optional(z.boolean()),
+			bookmarked: z.optional(z.boolean()),
+		}),
+	),
 });
 
 export const zFeedItemsResponse = z.object({
