@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.54] - 2025-08-11
+
+### 🚀 Features
+
+- *(openapi)* Add new required fields in `Cast` schema
+- *(openapi)* Modify required fields in `Cast` schema
+- *(openapi)* Enforce stricter validation in `Cast` schema
+
+### ◀️ Revert
+
+- *(openapi)* Update required fields in `Cast` schema
+
 ## [2.0.0-alpha.53] - 2025-08-11
 
 ### 🚀 Features
