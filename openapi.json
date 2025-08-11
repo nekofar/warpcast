@@ -9884,9 +9884,15 @@
       },
       "user-response_UserResponse": {
         "type": "object",
+        "required": [
+          "result"
+        ],
         "properties": {
           "result": {
             "type": "object",
+            "required": [
+              "user"
+            ],
             "properties": {
               "user": {
                 "$ref": "#/components/schemas/User"
