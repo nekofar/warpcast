@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.45] - 2025-08-11
+
+### 🚀 Features
+
+- *(openapi)* Add validation details to `400` response
+- *(openapi)* Enhance `400` response with error details
+- *(openapi)* Add detailed validation errors for `400` response
+- *(openapi)* Enhance `400` response with detailed error structure
+
+### 🐛 Bug Fixes
+
+- *(openapi)* Correct client URL in server configuration
+- *(openapi)* Update client URL in server configuration
+
+### 🚜 Refactor
+
+- *(openapi)* Update schema reference for `UserResponse`
+- *(openapi)* Update references for `user-by-fid` schema
+- *(openapi)* Centralize error schemas and update references
+- *(openapi)* Harmonize `400` error schemas and enhance consistency
+- *(client)* Centralize and enhance `400` error schemas
+
 ## [2.0.0-alpha.44] - 2025-08-11
 
 ### 🚜 Refactor
