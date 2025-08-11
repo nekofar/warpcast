@@ -598,6 +598,7 @@ import {
 import { client as _heyApiClient } from "./client.gen";
 import {
 	getDirectCastInboxResponseTransformer,
+	getFeedItemsResponseTransformer,
 	getDirectCastConversationResponseTransformer,
 	getDirectCastConversationMessagesResponseTransformer,
 	getDirectCastConversationRecentMessagesResponseTransformer,
@@ -818,6 +819,7 @@ export const getFeedItems = <ThrowOnError extends boolean = false>(
 		requestValidator: async (data) => {
 			return await zGetFeedItemsData.parseAsync(data);
 		},
+		responseTransformer: getFeedItemsResponseTransformer,
 		responseValidator: async (data) => {
 			return await zGetFeedItemsResponse.parseAsync(data);
 		},

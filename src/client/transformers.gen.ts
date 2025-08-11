@@ -2,6 +2,7 @@
 
 import type {
 	GetDirectCastInboxResponse,
+	GetFeedItemsResponse,
 	GetDirectCastConversationResponse,
 	GetDirectCastConversationMessagesResponse,
 	GetDirectCastConversationRecentMessagesResponse,
@@ -74,6 +75,28 @@ export const getDirectCastInboxResponseTransformer = async (
 	return data;
 };
 
+const castSchemaResponseTransformer = (data: any) => {
+	if (data.timestamp) {
+		data.timestamp = BigInt(data.timestamp.toString());
+	}
+	return data;
+};
+
+const feedItemsResponseSchemaResponseTransformer = (data: any) => {
+	data.result.items = data.result.items.map((item: any) => {
+		item.cast = castSchemaResponseTransformer(item.cast);
+		return item;
+	});
+	return data;
+};
+
+export const getFeedItemsResponseTransformer = async (
+	data: any,
+): Promise<GetFeedItemsResponse> => {
+	data = feedItemsResponseSchemaResponseTransformer(data);
+	return data;
+};
+
 const directCastConversationResponseSchemaResponseTransformer = (data: any) => {
 	if (data.result) {
 		data.result.conversation = directCastConversationSchemaResponseTransformer(
@@ -116,13 +139,6 @@ export const getDirectCastConversationRecentMessagesResponseTransformer =
 			directCastConversationMessagesResponseSchemaResponseTransformer(data);
 		return data;
 	};
-
-const castSchemaResponseTransformer = (data: any) => {
-	if (data.timestamp) {
-		data.timestamp = BigInt(data.timestamp.toString());
-	}
-	return data;
-};
 
 export const getCastsByFidResponseTransformer = async (
 	data: any,

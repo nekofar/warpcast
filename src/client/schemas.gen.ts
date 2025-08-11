@@ -1095,17 +1095,337 @@ export const HighlightedChannelsResponseSchema = {
 	},
 } as const;
 
+export const ImageEmbedSchema = {
+	type: "object",
+	properties: {
+		type: {
+			type: "string",
+			enum: ["image"],
+		},
+		url: {
+			type: "string",
+		},
+		sourceUrl: {
+			type: "string",
+		},
+		media: {
+			type: "object",
+			properties: {
+				version: {
+					type: "string",
+				},
+				width: {
+					type: "integer",
+				},
+				height: {
+					type: "integer",
+				},
+				staticRaster: {
+					type: "string",
+				},
+				mimeType: {
+					type: "string",
+				},
+			},
+		},
+		alt: {
+			type: "string",
+		},
+	},
+} as const;
+
+export const UrlEmbedSchema = {
+	type: "object",
+	properties: {
+		type: {
+			type: "string",
+			enum: ["url"],
+		},
+		openGraph: {
+			type: "object",
+			properties: {
+				url: {
+					type: "string",
+				},
+				sourceUrl: {
+					type: "string",
+				},
+				title: {
+					type: "string",
+				},
+				description: {
+					type: "string",
+				},
+				domain: {
+					type: "string",
+				},
+				image: {
+					type: "string",
+				},
+				useLargeImage: {
+					type: "boolean",
+				},
+			},
+		},
+	},
+} as const;
+
+export const VideoEmbedSchema = {
+	type: "object",
+	properties: {
+		type: {
+			type: "string",
+			enum: ["video"],
+		},
+	},
+} as const;
+
+export const RecasterSchema = {
+	type: "object",
+	properties: {
+		fid: {
+			type: "integer",
+		},
+		username: {
+			type: "string",
+		},
+		displayName: {
+			type: "string",
+		},
+		recastHash: {
+			type: "string",
+		},
+	},
+} as const;
+
+export const CastSchema = {
+	type: "object",
+	properties: {
+		hash: {
+			type: "string",
+			description: "Unique hash identifier for the cast",
+		},
+		threadHash: {
+			type: "string",
+			description: "Hash identifier for the thread this cast belongs to",
+		},
+		parentHash: {
+			type: "string",
+			description: "Hash identifier of the parent cast (if this is a reply)",
+		},
+		parentSource: {
+			type: "object",
+			properties: {
+				type: {
+					type: "string",
+					enum: ["url"],
+				},
+				url: {
+					type: "string",
+				},
+			},
+		},
+		author: {
+			$ref: "#/components/schemas/User",
+		},
+		text: {
+			type: "string",
+			description: "The text content of the cast",
+		},
+		timestamp: {
+			type: "integer",
+			format: "int64",
+			description: "Unix timestamp in milliseconds",
+		},
+		mentions: {
+			type: "array",
+			items: {
+				$ref: "#/components/schemas/User",
+			},
+		},
+		embeds: {
+			type: "object",
+			properties: {
+				images: {
+					type: "array",
+					items: {
+						$ref: "#/components/schemas/ImageEmbed",
+					},
+				},
+				urls: {
+					type: "array",
+					items: {
+						$ref: "#/components/schemas/UrlEmbed",
+					},
+				},
+				videos: {
+					type: "array",
+					items: {
+						$ref: "#/components/schemas/VideoEmbed",
+					},
+				},
+				unknowns: {
+					type: "array",
+					items: {
+						type: "object",
+					},
+				},
+				processedCastText: {
+					type: "string",
+				},
+				groupInvites: {
+					type: "array",
+					items: {
+						type: "object",
+					},
+				},
+			},
+		},
+		replies: {
+			type: "object",
+			properties: {
+				count: {
+					type: "integer",
+				},
+			},
+		},
+		reactions: {
+			type: "object",
+			properties: {
+				count: {
+					type: "integer",
+				},
+			},
+		},
+		recasts: {
+			type: "object",
+			properties: {
+				count: {
+					type: "integer",
+				},
+				recasters: {
+					type: "array",
+					items: {
+						$ref: "#/components/schemas/Recaster",
+					},
+				},
+			},
+		},
+		watches: {
+			type: "object",
+			properties: {
+				count: {
+					type: "integer",
+				},
+			},
+		},
+		recast: {
+			type: "boolean",
+		},
+		tags: {
+			type: "array",
+			items: {
+				type: "object",
+				properties: {
+					type: {
+						type: "string",
+					},
+					id: {
+						type: "string",
+					},
+					name: {
+						type: "string",
+					},
+					imageUrl: {
+						type: "string",
+					},
+				},
+			},
+		},
+		quoteCount: {
+			type: "integer",
+		},
+		combinedRecastCount: {
+			type: "integer",
+		},
+		channel: {
+			type: "object",
+			properties: {
+				key: {
+					type: "string",
+				},
+				name: {
+					type: "string",
+				},
+				imageUrl: {
+					type: "string",
+				},
+				authorContext: {
+					type: "object",
+					properties: {
+						role: {
+							type: "string",
+						},
+						restricted: {
+							type: "boolean",
+						},
+						banned: {
+							type: "boolean",
+						},
+					},
+				},
+				authorRole: {
+					type: "string",
+				},
+			},
+		},
+		viewerContext: {
+			type: "object",
+			properties: {
+				reacted: {
+					type: "boolean",
+				},
+				recast: {
+					type: "boolean",
+				},
+				bookmarked: {
+					type: "boolean",
+				},
+			},
+		},
+	},
+} as const;
+
 export const FeedItemsResponseSchema = {
 	type: "object",
+	required: ["result"],
 	properties: {
 		result: {
 			type: "object",
+			required: ["items", "replaceFeed"],
 			properties: {
 				items: {
 					type: "array",
 					items: {
 						type: "object",
-						additionalProperties: true,
+						required: ["id", "timestamp", "cast"],
+						properties: {
+							id: {
+								type: "string",
+							},
+							timestamp: {
+								type: "integer",
+							},
+							cast: {
+								$ref: "#/components/schemas/Cast",
+							},
+							otherParticipants: {
+								type: "array",
+								items: {
+									$ref: "#/components/schemas/User",
+								},
+							},
+						},
 					},
 				},
 				latestMainCastTimestamp: {
@@ -2441,307 +2761,6 @@ export const DraftCreatedResponseSchema = {
 			properties: {
 				draft: {
 					$ref: "#/components/schemas/Draft",
-				},
-			},
-		},
-	},
-} as const;
-
-export const ImageEmbedSchema = {
-	type: "object",
-	properties: {
-		type: {
-			type: "string",
-			enum: ["image"],
-		},
-		url: {
-			type: "string",
-		},
-		sourceUrl: {
-			type: "string",
-		},
-		media: {
-			type: "object",
-			properties: {
-				version: {
-					type: "string",
-				},
-				width: {
-					type: "integer",
-				},
-				height: {
-					type: "integer",
-				},
-				staticRaster: {
-					type: "string",
-				},
-				mimeType: {
-					type: "string",
-				},
-			},
-		},
-		alt: {
-			type: "string",
-		},
-	},
-} as const;
-
-export const UrlEmbedSchema = {
-	type: "object",
-	properties: {
-		type: {
-			type: "string",
-			enum: ["url"],
-		},
-		openGraph: {
-			type: "object",
-			properties: {
-				url: {
-					type: "string",
-				},
-				sourceUrl: {
-					type: "string",
-				},
-				title: {
-					type: "string",
-				},
-				description: {
-					type: "string",
-				},
-				domain: {
-					type: "string",
-				},
-				image: {
-					type: "string",
-				},
-				useLargeImage: {
-					type: "boolean",
-				},
-			},
-		},
-	},
-} as const;
-
-export const VideoEmbedSchema = {
-	type: "object",
-	properties: {
-		type: {
-			type: "string",
-			enum: ["video"],
-		},
-	},
-} as const;
-
-export const RecasterSchema = {
-	type: "object",
-	properties: {
-		fid: {
-			type: "integer",
-		},
-		username: {
-			type: "string",
-		},
-		displayName: {
-			type: "string",
-		},
-		recastHash: {
-			type: "string",
-		},
-	},
-} as const;
-
-export const CastSchema = {
-	type: "object",
-	properties: {
-		hash: {
-			type: "string",
-			description: "Unique hash identifier for the cast",
-		},
-		threadHash: {
-			type: "string",
-			description: "Hash identifier for the thread this cast belongs to",
-		},
-		parentHash: {
-			type: "string",
-			description: "Hash identifier of the parent cast (if this is a reply)",
-		},
-		parentSource: {
-			type: "object",
-			properties: {
-				type: {
-					type: "string",
-					enum: ["url"],
-				},
-				url: {
-					type: "string",
-				},
-			},
-		},
-		author: {
-			$ref: "#/components/schemas/User",
-		},
-		text: {
-			type: "string",
-			description: "The text content of the cast",
-		},
-		timestamp: {
-			type: "integer",
-			format: "int64",
-			description: "Unix timestamp in milliseconds",
-		},
-		mentions: {
-			type: "array",
-			items: {
-				$ref: "#/components/schemas/User",
-			},
-		},
-		embeds: {
-			type: "object",
-			properties: {
-				images: {
-					type: "array",
-					items: {
-						$ref: "#/components/schemas/ImageEmbed",
-					},
-				},
-				urls: {
-					type: "array",
-					items: {
-						$ref: "#/components/schemas/UrlEmbed",
-					},
-				},
-				videos: {
-					type: "array",
-					items: {
-						$ref: "#/components/schemas/VideoEmbed",
-					},
-				},
-				unknowns: {
-					type: "array",
-					items: {
-						type: "object",
-					},
-				},
-				processedCastText: {
-					type: "string",
-				},
-				groupInvites: {
-					type: "array",
-					items: {
-						type: "object",
-					},
-				},
-			},
-		},
-		replies: {
-			type: "object",
-			properties: {
-				count: {
-					type: "integer",
-				},
-			},
-		},
-		reactions: {
-			type: "object",
-			properties: {
-				count: {
-					type: "integer",
-				},
-			},
-		},
-		recasts: {
-			type: "object",
-			properties: {
-				count: {
-					type: "integer",
-				},
-				recasters: {
-					type: "array",
-					items: {
-						$ref: "#/components/schemas/Recaster",
-					},
-				},
-			},
-		},
-		watches: {
-			type: "object",
-			properties: {
-				count: {
-					type: "integer",
-				},
-			},
-		},
-		recast: {
-			type: "boolean",
-		},
-		tags: {
-			type: "array",
-			items: {
-				type: "object",
-				properties: {
-					type: {
-						type: "string",
-					},
-					id: {
-						type: "string",
-					},
-					name: {
-						type: "string",
-					},
-					imageUrl: {
-						type: "string",
-					},
-				},
-			},
-		},
-		quoteCount: {
-			type: "integer",
-		},
-		combinedRecastCount: {
-			type: "integer",
-		},
-		channel: {
-			type: "object",
-			properties: {
-				key: {
-					type: "string",
-				},
-				name: {
-					type: "string",
-				},
-				imageUrl: {
-					type: "string",
-				},
-				authorContext: {
-					type: "object",
-					properties: {
-						role: {
-							type: "string",
-						},
-						restricted: {
-							type: "boolean",
-						},
-						banned: {
-							type: "boolean",
-						},
-					},
-				},
-				authorRole: {
-					type: "string",
-				},
-			},
-		},
-		viewerContext: {
-			type: "object",
-			properties: {
-				reacted: {
-					type: "boolean",
-				},
-				recast: {
-					type: "boolean",
-				},
-				bookmarked: {
-					type: "boolean",
 				},
 			},
 		},

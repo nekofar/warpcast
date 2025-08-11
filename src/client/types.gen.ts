@@ -530,14 +530,134 @@ export type HighlightedChannelsResponse = {
 	};
 };
 
-export type FeedItemsResponse = {
-	result?: {
-		items?: Array<{
+export type ImageEmbed = {
+	type?: "image";
+	url?: string;
+	sourceUrl?: string;
+	media?: {
+		version?: string;
+		width?: number;
+		height?: number;
+		staticRaster?: string;
+		mimeType?: string;
+	};
+	alt?: string;
+};
+
+export type UrlEmbed = {
+	type?: "url";
+	openGraph?: {
+		url?: string;
+		sourceUrl?: string;
+		title?: string;
+		description?: string;
+		domain?: string;
+		image?: string;
+		useLargeImage?: boolean;
+	};
+};
+
+export type VideoEmbed = {
+	type?: "video";
+};
+
+export type Recaster = {
+	fid?: number;
+	username?: string;
+	displayName?: string;
+	recastHash?: string;
+};
+
+export type Cast = {
+	/**
+	 * Unique hash identifier for the cast
+	 */
+	hash?: string;
+	/**
+	 * Hash identifier for the thread this cast belongs to
+	 */
+	threadHash?: string;
+	/**
+	 * Hash identifier of the parent cast (if this is a reply)
+	 */
+	parentHash?: string;
+	parentSource?: {
+		type?: "url";
+		url?: string;
+	};
+	author?: User;
+	/**
+	 * The text content of the cast
+	 */
+	text?: string;
+	/**
+	 * Unix timestamp in milliseconds
+	 */
+	timestamp?: bigint;
+	mentions?: Array<User>;
+	embeds?: {
+		images?: Array<ImageEmbed>;
+		urls?: Array<UrlEmbed>;
+		videos?: Array<VideoEmbed>;
+		unknowns?: Array<{
 			[key: string]: unknown;
+		}>;
+		processedCastText?: string;
+		groupInvites?: Array<{
+			[key: string]: unknown;
+		}>;
+	};
+	replies?: {
+		count?: number;
+	};
+	reactions?: {
+		count?: number;
+	};
+	recasts?: {
+		count?: number;
+		recasters?: Array<Recaster>;
+	};
+	watches?: {
+		count?: number;
+	};
+	recast?: boolean;
+	tags?: Array<{
+		type?: string;
+		id?: string;
+		name?: string;
+		imageUrl?: string;
+	}>;
+	quoteCount?: number;
+	combinedRecastCount?: number;
+	channel?: {
+		key?: string;
+		name?: string;
+		imageUrl?: string;
+		authorContext?: {
+			role?: string;
+			restricted?: boolean;
+			banned?: boolean;
+		};
+		authorRole?: string;
+	};
+	viewerContext?: {
+		reacted?: boolean;
+		recast?: boolean;
+		bookmarked?: boolean;
+	};
+};
+
+export type FeedItemsResponse = {
+	result: {
+		items: Array<{
+			id: string;
+			timestamp: number;
+			cast: Cast;
+			otherParticipants?: Array<User>;
 		}>;
 		latestMainCastTimestamp?: number;
 		feedTopSeenAtTimestamp?: number;
-		replaceFeed?: boolean;
+		replaceFeed: boolean;
 	};
 };
 
@@ -1179,123 +1299,6 @@ export type Draft = {
 export type DraftCreatedResponse = {
 	result?: {
 		draft?: Draft;
-	};
-};
-
-export type ImageEmbed = {
-	type?: "image";
-	url?: string;
-	sourceUrl?: string;
-	media?: {
-		version?: string;
-		width?: number;
-		height?: number;
-		staticRaster?: string;
-		mimeType?: string;
-	};
-	alt?: string;
-};
-
-export type UrlEmbed = {
-	type?: "url";
-	openGraph?: {
-		url?: string;
-		sourceUrl?: string;
-		title?: string;
-		description?: string;
-		domain?: string;
-		image?: string;
-		useLargeImage?: boolean;
-	};
-};
-
-export type VideoEmbed = {
-	type?: "video";
-};
-
-export type Recaster = {
-	fid?: number;
-	username?: string;
-	displayName?: string;
-	recastHash?: string;
-};
-
-export type Cast = {
-	/**
-	 * Unique hash identifier for the cast
-	 */
-	hash?: string;
-	/**
-	 * Hash identifier for the thread this cast belongs to
-	 */
-	threadHash?: string;
-	/**
-	 * Hash identifier of the parent cast (if this is a reply)
-	 */
-	parentHash?: string;
-	parentSource?: {
-		type?: "url";
-		url?: string;
-	};
-	author?: User;
-	/**
-	 * The text content of the cast
-	 */
-	text?: string;
-	/**
-	 * Unix timestamp in milliseconds
-	 */
-	timestamp?: bigint;
-	mentions?: Array<User>;
-	embeds?: {
-		images?: Array<ImageEmbed>;
-		urls?: Array<UrlEmbed>;
-		videos?: Array<VideoEmbed>;
-		unknowns?: Array<{
-			[key: string]: unknown;
-		}>;
-		processedCastText?: string;
-		groupInvites?: Array<{
-			[key: string]: unknown;
-		}>;
-	};
-	replies?: {
-		count?: number;
-	};
-	reactions?: {
-		count?: number;
-	};
-	recasts?: {
-		count?: number;
-		recasters?: Array<Recaster>;
-	};
-	watches?: {
-		count?: number;
-	};
-	recast?: boolean;
-	tags?: Array<{
-		type?: string;
-		id?: string;
-		name?: string;
-		imageUrl?: string;
-	}>;
-	quoteCount?: number;
-	combinedRecastCount?: number;
-	channel?: {
-		key?: string;
-		name?: string;
-		imageUrl?: string;
-		authorContext?: {
-			role?: string;
-			restricted?: boolean;
-			banned?: boolean;
-		};
-		authorRole?: string;
-	};
-	viewerContext?: {
-		reacted?: boolean;
-		recast?: boolean;
-		bookmarked?: boolean;
 	};
 };
 

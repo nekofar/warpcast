@@ -367,15 +367,144 @@ export const zHighlightedChannelsResponse = z.object({
 	),
 });
 
-export const zFeedItemsResponse = z.object({
-	result: z.optional(
+export const zImageEmbed = z.object({
+	type: z.optional(z.enum(["image"])),
+	url: z.optional(z.string()),
+	sourceUrl: z.optional(z.string()),
+	media: z.optional(
 		z.object({
-			items: z.optional(z.array(z.object({}))),
-			latestMainCastTimestamp: z.optional(z.int()),
-			feedTopSeenAtTimestamp: z.optional(z.int()),
-			replaceFeed: z.optional(z.boolean()),
+			version: z.optional(z.string()),
+			width: z.optional(z.int()),
+			height: z.optional(z.int()),
+			staticRaster: z.optional(z.string()),
+			mimeType: z.optional(z.string()),
 		}),
 	),
+	alt: z.optional(z.string()),
+});
+
+export const zUrlEmbed = z.object({
+	type: z.optional(z.enum(["url"])),
+	openGraph: z.optional(
+		z.object({
+			url: z.optional(z.string()),
+			sourceUrl: z.optional(z.string()),
+			title: z.optional(z.string()),
+			description: z.optional(z.string()),
+			domain: z.optional(z.string()),
+			image: z.optional(z.string()),
+			useLargeImage: z.optional(z.boolean()),
+		}),
+	),
+});
+
+export const zVideoEmbed = z.object({
+	type: z.optional(z.enum(["video"])),
+});
+
+export const zRecaster = z.object({
+	fid: z.optional(z.int()),
+	username: z.optional(z.string()),
+	displayName: z.optional(z.string()),
+	recastHash: z.optional(z.string()),
+});
+
+export const zCast = z.object({
+	hash: z.optional(z.string()),
+	threadHash: z.optional(z.string()),
+	parentHash: z.optional(z.string()),
+	parentSource: z.optional(
+		z.object({
+			type: z.optional(z.enum(["url"])),
+			url: z.optional(z.string()),
+		}),
+	),
+	author: z.optional(zUser),
+	text: z.optional(z.string()),
+	timestamp: z.optional(z.coerce.bigint()),
+	mentions: z.optional(z.array(zUser)),
+	embeds: z.optional(
+		z.object({
+			images: z.optional(z.array(zImageEmbed)),
+			urls: z.optional(z.array(zUrlEmbed)),
+			videos: z.optional(z.array(zVideoEmbed)),
+			unknowns: z.optional(z.array(z.object({}))),
+			processedCastText: z.optional(z.string()),
+			groupInvites: z.optional(z.array(z.object({}))),
+		}),
+	),
+	replies: z.optional(
+		z.object({
+			count: z.optional(z.int()),
+		}),
+	),
+	reactions: z.optional(
+		z.object({
+			count: z.optional(z.int()),
+		}),
+	),
+	recasts: z.optional(
+		z.object({
+			count: z.optional(z.int()),
+			recasters: z.optional(z.array(zRecaster)),
+		}),
+	),
+	watches: z.optional(
+		z.object({
+			count: z.optional(z.int()),
+		}),
+	),
+	recast: z.optional(z.boolean()),
+	tags: z.optional(
+		z.array(
+			z.object({
+				type: z.optional(z.string()),
+				id: z.optional(z.string()),
+				name: z.optional(z.string()),
+				imageUrl: z.optional(z.string()),
+			}),
+		),
+	),
+	quoteCount: z.optional(z.int()),
+	combinedRecastCount: z.optional(z.int()),
+	channel: z.optional(
+		z.object({
+			key: z.optional(z.string()),
+			name: z.optional(z.string()),
+			imageUrl: z.optional(z.string()),
+			authorContext: z.optional(
+				z.object({
+					role: z.optional(z.string()),
+					restricted: z.optional(z.boolean()),
+					banned: z.optional(z.boolean()),
+				}),
+			),
+			authorRole: z.optional(z.string()),
+		}),
+	),
+	viewerContext: z.optional(
+		z.object({
+			reacted: z.optional(z.boolean()),
+			recast: z.optional(z.boolean()),
+			bookmarked: z.optional(z.boolean()),
+		}),
+	),
+});
+
+export const zFeedItemsResponse = z.object({
+	result: z.object({
+		items: z.array(
+			z.object({
+				id: z.string(),
+				timestamp: z.int(),
+				cast: zCast,
+				otherParticipants: z.optional(z.array(zUser)),
+			}),
+		),
+		latestMainCastTimestamp: z.optional(z.int()),
+		feedTopSeenAtTimestamp: z.optional(z.int()),
+		replaceFeed: z.boolean(),
+	}),
 });
 
 export const zGenericResponse = z.object({
@@ -844,130 +973,6 @@ export const zDraftCreatedResponse = z.object({
 	result: z.optional(
 		z.object({
 			draft: z.optional(zDraft),
-		}),
-	),
-});
-
-export const zImageEmbed = z.object({
-	type: z.optional(z.enum(["image"])),
-	url: z.optional(z.string()),
-	sourceUrl: z.optional(z.string()),
-	media: z.optional(
-		z.object({
-			version: z.optional(z.string()),
-			width: z.optional(z.int()),
-			height: z.optional(z.int()),
-			staticRaster: z.optional(z.string()),
-			mimeType: z.optional(z.string()),
-		}),
-	),
-	alt: z.optional(z.string()),
-});
-
-export const zUrlEmbed = z.object({
-	type: z.optional(z.enum(["url"])),
-	openGraph: z.optional(
-		z.object({
-			url: z.optional(z.string()),
-			sourceUrl: z.optional(z.string()),
-			title: z.optional(z.string()),
-			description: z.optional(z.string()),
-			domain: z.optional(z.string()),
-			image: z.optional(z.string()),
-			useLargeImage: z.optional(z.boolean()),
-		}),
-	),
-});
-
-export const zVideoEmbed = z.object({
-	type: z.optional(z.enum(["video"])),
-});
-
-export const zRecaster = z.object({
-	fid: z.optional(z.int()),
-	username: z.optional(z.string()),
-	displayName: z.optional(z.string()),
-	recastHash: z.optional(z.string()),
-});
-
-export const zCast = z.object({
-	hash: z.optional(z.string()),
-	threadHash: z.optional(z.string()),
-	parentHash: z.optional(z.string()),
-	parentSource: z.optional(
-		z.object({
-			type: z.optional(z.enum(["url"])),
-			url: z.optional(z.string()),
-		}),
-	),
-	author: z.optional(zUser),
-	text: z.optional(z.string()),
-	timestamp: z.optional(z.coerce.bigint()),
-	mentions: z.optional(z.array(zUser)),
-	embeds: z.optional(
-		z.object({
-			images: z.optional(z.array(zImageEmbed)),
-			urls: z.optional(z.array(zUrlEmbed)),
-			videos: z.optional(z.array(zVideoEmbed)),
-			unknowns: z.optional(z.array(z.object({}))),
-			processedCastText: z.optional(z.string()),
-			groupInvites: z.optional(z.array(z.object({}))),
-		}),
-	),
-	replies: z.optional(
-		z.object({
-			count: z.optional(z.int()),
-		}),
-	),
-	reactions: z.optional(
-		z.object({
-			count: z.optional(z.int()),
-		}),
-	),
-	recasts: z.optional(
-		z.object({
-			count: z.optional(z.int()),
-			recasters: z.optional(z.array(zRecaster)),
-		}),
-	),
-	watches: z.optional(
-		z.object({
-			count: z.optional(z.int()),
-		}),
-	),
-	recast: z.optional(z.boolean()),
-	tags: z.optional(
-		z.array(
-			z.object({
-				type: z.optional(z.string()),
-				id: z.optional(z.string()),
-				name: z.optional(z.string()),
-				imageUrl: z.optional(z.string()),
-			}),
-		),
-	),
-	quoteCount: z.optional(z.int()),
-	combinedRecastCount: z.optional(z.int()),
-	channel: z.optional(
-		z.object({
-			key: z.optional(z.string()),
-			name: z.optional(z.string()),
-			imageUrl: z.optional(z.string()),
-			authorContext: z.optional(
-				z.object({
-					role: z.optional(z.string()),
-					restricted: z.optional(z.boolean()),
-					banned: z.optional(z.boolean()),
-				}),
-			),
-			authorRole: z.optional(z.string()),
-		}),
-	),
-	viewerContext: z.optional(
-		z.object({
-			reacted: z.optional(z.boolean()),
-			recast: z.optional(z.boolean()),
-			bookmarked: z.optional(z.boolean()),
 		}),
 	),
 });

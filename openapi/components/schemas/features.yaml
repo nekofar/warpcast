@@ -465,15 +465,28 @@ Action:
 # Feed schemas
 FeedItemsResponse:
   type: object
+  required: [result]
   properties:
     result:
       type: object
+      required: [items, replaceFeed]
       properties:
         items:
           type: array
           items:
             type: object
-            additionalProperties: true
+            required: [id, timestamp, cast]
+            properties:
+              id:
+                type: string
+              timestamp:
+                type: integer
+              cast:
+                $ref: './casts.yaml#/Cast'
+              otherParticipants:
+                type: array
+                items:
+                  $ref: './user.yaml#/User'
         latestMainCastTimestamp:
           type: integer
         feedTopSeenAtTimestamp:
