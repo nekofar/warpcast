@@ -1807,6 +1807,48 @@ export const BookmarkedCastsResponseSchema = {
 
 export const StarterPackSchema = {
 	type: "object",
+	required: ["id"],
+	properties: {
+		id: {
+			type: "string",
+			description: "Unique identifier for the starter pack",
+		},
+		creator: {
+			$ref: "#/components/schemas/User",
+		},
+		name: {
+			type: "string",
+			description: "Display name of the starter pack",
+		},
+		description: {
+			type: "string",
+			description: "Description of the starter pack",
+		},
+		openGraphImageUrl: {
+			type: "string",
+			format: "uri",
+			description: "URL for OG image preview",
+		},
+		itemCount: {
+			type: "integer",
+			description: "Number of items in the starter pack",
+		},
+		items: {
+			type: "array",
+			items: {
+				type: "object",
+				additionalProperties: true,
+			},
+			description: "Items contained in the starter pack",
+		},
+		labels: {
+			type: "array",
+			items: {
+				type: "string",
+			},
+			description: "Labels/tags for the starter pack",
+		},
+	},
 	additionalProperties: true,
 } as const;
 
@@ -1816,6 +1858,7 @@ export const StarterPacksResponseSchema = {
 	properties: {
 		result: {
 			type: "object",
+			required: ["starterPacks"],
 			properties: {
 				starterPacks: {
 					type: "array",
@@ -1834,6 +1877,7 @@ export const StarterPackResponseSchema = {
 	properties: {
 		result: {
 			type: "object",
+			required: ["starterPack"],
 			properties: {
 				starterPack: {
 					$ref: "#/components/schemas/StarterPack",
@@ -1849,6 +1893,7 @@ export const StarterPackUsersResponseSchema = {
 	properties: {
 		result: {
 			type: "object",
+			required: ["users"],
 			properties: {
 				users: {
 					type: "array",

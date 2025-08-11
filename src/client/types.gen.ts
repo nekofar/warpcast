@@ -847,24 +847,64 @@ export type BookmarkedCastsResponse = {
 };
 
 export type StarterPack = {
-	[key: string]: unknown;
+	/**
+	 * Unique identifier for the starter pack
+	 */
+	id: string;
+	creator?: User;
+	/**
+	 * Display name of the starter pack
+	 */
+	name?: string;
+	/**
+	 * Description of the starter pack
+	 */
+	description?: string;
+	/**
+	 * URL for OG image preview
+	 */
+	openGraphImageUrl?: string;
+	/**
+	 * Number of items in the starter pack
+	 */
+	itemCount?: number;
+	/**
+	 * Items contained in the starter pack
+	 */
+	items?: Array<{
+		[key: string]: unknown;
+	}>;
+	/**
+	 * Labels/tags for the starter pack
+	 */
+	labels?: Array<string>;
+	[key: string]:
+		| unknown
+		| string
+		| User
+		| number
+		| Array<{
+				[key: string]: unknown;
+		  }>
+		| Array<string>
+		| undefined;
 };
 
 export type StarterPacksResponse = {
 	result: {
-		starterPacks?: Array<StarterPack>;
+		starterPacks: Array<StarterPack>;
 	};
 };
 
 export type StarterPackResponse = {
 	result: {
-		starterPack?: StarterPack;
+		starterPack: StarterPack;
 	};
 };
 
 export type StarterPackUsersResponse = {
 	result: {
-		users?: Array<User>;
+		users: Array<User>;
 	};
 };
 
