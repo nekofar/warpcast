@@ -2696,9 +2696,11 @@ export const CastQuotesResponseSchema = {
 
 export const user_response_UserResponseSchema = {
 	type: "object",
+	required: ["result"],
 	properties: {
 		result: {
 			type: "object",
+			required: ["user"],
 			properties: {
 				user: {
 					$ref: "#/components/schemas/User",

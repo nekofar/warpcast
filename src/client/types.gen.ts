@@ -1269,8 +1269,8 @@ export type CastQuotesResponse = {
 };
 
 export type UserResponseUserResponse = {
-	result?: {
-		user?: User;
+	result: {
+		user: User;
 	};
 };
 
