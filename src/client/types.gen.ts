@@ -572,7 +572,7 @@ export type Cast = {
 	/**
 	 * Unique hash identifier for the cast
 	 */
-	hash: string;
+	hash?: string;
 	/**
 	 * Hash identifier for the thread this cast belongs to
 	 */
@@ -585,11 +585,11 @@ export type Cast = {
 		type?: "url";
 		url?: string;
 	};
-	author: User;
+	author?: User;
 	/**
 	 * The text content of the cast
 	 */
-	text: string;
+	text?: string;
 	/**
 	 * Unix timestamp in milliseconds
 	 */
@@ -640,7 +640,7 @@ export type Cast = {
 		};
 		authorRole?: string;
 	};
-	viewerContext?: {
+	viewerContext: {
 		reacted?: boolean;
 		recast?: boolean;
 		bookmarked?: boolean;
