@@ -1215,7 +1215,20 @@ export const zGetFeedItemsData = z.object({
 	body: z.object({
 		feedKey: z.string(),
 		feedType: z.string(),
-		castViewEvents: z.optional(z.array(z.object({}))),
+		olderThan: z.optional(z.coerce.bigint()),
+		latestMainCastTimestamp: z.optional(z.coerce.bigint()),
+		excludeItemIdPrefixes: z.optional(z.array(z.string())),
+		castViewEvents: z.optional(
+			z.array(
+				z.object({
+					ts: z.coerce.bigint(),
+					hash: z.string(),
+					on: z.string(),
+					channel: z.string(),
+					feed: z.string(),
+				}),
+			),
+		),
 		updateState: z.optional(z.boolean()),
 	}),
 	path: z.optional(z.never()),

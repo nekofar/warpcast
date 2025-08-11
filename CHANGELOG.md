@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.49] - 2025-08-11
+
+### 🚀 Features
+
+- *(openapi)* Enhance `feed-items` schema with examples and details
+- *(openapi)* Update `feed-items` schema with new properties
+- *(client)* Update `feed-items` schema with new properties
+
 ## [2.0.0-alpha.48] - 2025-08-11
 
 ### 🚀 Features

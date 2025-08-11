@@ -19,20 +19,82 @@ post:
             feedKey:
               type: string
               description: Identifier for the specific feed
+              example: lilnouns
             feedType:
               type: string
               description: Type of feed to retrieve
+              example: default
+            olderThan:
+              type: integer
+              format: int64
+              description: Only return items older than this timestamp (ms)
+              example: 1754870423000
+            latestMainCastTimestamp:
+              type: integer
+              format: int64
+              description: Latest main cast timestamp used for pagination (ms)
+              example: 1754870423000
+            excludeItemIdPrefixes:
+              type: array
+              description: List of item ID prefixes to exclude from the response
+              items:
+                type: string
+              example:
+                - "4a85f26e"
+                - "7f1ebf49"
             castViewEvents:
               type: array
+              description: View events for casts
               items:
                 type: object
-              description: View events for casts
+                required:
+                  - ts
+                  - hash
+                  - on
+                  - channel
+                  - feed
+                properties:
+                  ts:
+                    type: integer
+                    format: int64
+                    description: Event timestamp in ms
+                    example: 1754903185414
+                  hash:
+                    type: string
+                    description: Cast hash
+                    example: "0x5548daccf7811fcfcbbc918059ecb5c685eddc47"
+                  on:
+                    type: string
+                    description: Context of the view event
+                    example: channel
+                  channel:
+                    type: string
+                    description: Channel key
+                    example: lilnouns
+                  feed:
+                    type: string
+                    description: Feed type where event occurred
+                    example: default
             updateState:
               type: boolean
               description: Whether to update the feed state
+              example: true
         example:
-          feedKey: 'home'
-          feedType: 'following'
+          feedKey: "lilnouns"
+          feedType: "default"
+          olderThan: 1754870423000
+          latestMainCastTimestamp: 1754870423000
+          excludeItemIdPrefixes:
+            - "4a85f26e"
+            - "7f1ebf49"
+            - "6c268220"
+            - "5548dacc"
+          castViewEvents:
+            - ts: 1754903185414
+              hash: "0x5548daccf7811fcfcbbc918059ecb5c685eddc47"
+              on: "channel"
+              channel: "lilnouns"
+              feed: "default"
           updateState: true
   responses:
     '200':

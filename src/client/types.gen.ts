@@ -1691,10 +1691,41 @@ export type GetFeedItemsData = {
 		 */
 		feedType: string;
 		/**
+		 * Only return items older than this timestamp (ms)
+		 */
+		olderThan?: bigint;
+		/**
+		 * Latest main cast timestamp used for pagination (ms)
+		 */
+		latestMainCastTimestamp?: bigint;
+		/**
+		 * List of item ID prefixes to exclude from the response
+		 */
+		excludeItemIdPrefixes?: Array<string>;
+		/**
 		 * View events for casts
 		 */
 		castViewEvents?: Array<{
-			[key: string]: unknown;
+			/**
+			 * Event timestamp in ms
+			 */
+			ts: bigint;
+			/**
+			 * Cast hash
+			 */
+			hash: string;
+			/**
+			 * Context of the view event
+			 */
+			on: string;
+			/**
+			 * Channel key
+			 */
+			channel: string;
+			/**
+			 * Feed type where event occurred
+			 */
+			feed: string;
 		}>;
 		/**
 		 * Whether to update the feed state
