@@ -1297,6 +1297,7 @@ export const CastSchema = {
 		},
 		replies: {
 			type: "object",
+			required: ["count"],
 			properties: {
 				count: {
 					type: "integer",
@@ -1305,6 +1306,7 @@ export const CastSchema = {
 		},
 		reactions: {
 			type: "object",
+			required: ["count"],
 			properties: {
 				count: {
 					type: "integer",
@@ -1313,6 +1315,7 @@ export const CastSchema = {
 		},
 		recasts: {
 			type: "object",
+			required: ["count"],
 			properties: {
 				count: {
 					type: "integer",
@@ -1327,6 +1330,7 @@ export const CastSchema = {
 		},
 		watches: {
 			type: "object",
+			required: ["count"],
 			properties: {
 				count: {
 					type: "integer",

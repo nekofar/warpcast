@@ -60,16 +60,19 @@ Cast:
             type: object
     replies:
       type: object
+      required: [count]
       properties:
         count:
           type: integer
     reactions:
       type: object
+      required: [count]
       properties:
         count:
           type: integer
     recasts:
       type: object
+      required: [count]
       properties:
         count:
           type: integer
@@ -79,6 +82,7 @@ Cast:
             $ref: '#/Recaster'
     watches:
       type: object
+      required: [count]
       properties:
         count:
           type: integer

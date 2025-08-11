@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.56] - 2025-08-11
+
+### 🚀 Features
+
+- *(openapi)* Enforce required `count` fields in schemas
+- *(openapi)* Enforce required `count` fields in response schemas
+- *(openapi)* Enforce required `count` fields in schemas
+
 ## [2.0.0-alpha.55] - 2025-08-11
 
 ### 🚀 Features

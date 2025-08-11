@@ -608,17 +608,17 @@ export type Cast = {
 		}>;
 	};
 	replies: {
-		count?: number;
+		count: number;
 	};
 	reactions: {
-		count?: number;
+		count: number;
 	};
 	recasts: {
-		count?: number;
+		count: number;
 		recasters?: Array<Recaster>;
 	};
 	watches: {
-		count?: number;
+		count: number;
 	};
 	recast?: boolean;
 	tags?: Array<{

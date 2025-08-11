@@ -432,17 +432,17 @@ export const zCast = z.object({
 		}),
 	),
 	replies: z.object({
-		count: z.optional(z.int()),
+		count: z.int(),
 	}),
 	reactions: z.object({
-		count: z.optional(z.int()),
+		count: z.int(),
 	}),
 	recasts: z.object({
-		count: z.optional(z.int()),
+		count: z.int(),
 		recasters: z.optional(z.array(zRecaster)),
 	}),
 	watches: z.object({
-		count: z.optional(z.int()),
+		count: z.int(),
 	}),
 	recast: z.optional(z.boolean()),
 	tags: z.optional(
