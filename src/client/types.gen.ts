@@ -30,9 +30,9 @@ export type ViewerContext = {
 };
 
 export type User = {
-	fid?: number;
-	username?: string;
-	displayName?: string;
+	fid: number;
+	username: string;
+	displayName: string;
 	pfp?: ProfilePicture;
 	profile?: Profile;
 	followerCount?: number;
@@ -545,9 +545,9 @@ export type ImageEmbed = {
 };
 
 export type UrlEmbed = {
-	type?: "url";
-	openGraph?: {
-		url?: string;
+	type: "url";
+	openGraph: {
+		url: string;
 		sourceUrl?: string;
 		title?: string;
 		description?: string;
