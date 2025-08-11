@@ -419,9 +419,9 @@ export const zCast = z.object({
 			url: z.optional(z.string()),
 		}),
 	),
-	author: z.optional(zUser),
-	text: z.optional(z.string()),
-	timestamp: z.optional(z.coerce.bigint()),
+	author: zUser,
+	text: z.string(),
+	timestamp: z.coerce.bigint(),
 	mentions: z.optional(z.array(zUser)),
 	embeds: z.optional(
 		z.object({

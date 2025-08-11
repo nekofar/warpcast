@@ -585,15 +585,15 @@ export type Cast = {
 		type?: "url";
 		url?: string;
 	};
-	author?: User;
+	author: User;
 	/**
 	 * The text content of the cast
 	 */
-	text?: string;
+	text: string;
 	/**
 	 * Unix timestamp in milliseconds
 	 */
-	timestamp?: bigint;
+	timestamp: bigint;
 	mentions?: Array<User>;
 	embeds?: {
 		images?: Array<ImageEmbed>;
