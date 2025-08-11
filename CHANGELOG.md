@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.55] - 2025-08-11
+
+### 🚀 Features
+
+- *(openapi)* Enforce stricter validation in `UserResponse` schema
+- *(openapi)* Update required fields in `UserResponse` schema
+- *(openapi)* Enforce stricter validation in `UserResponse` schema
+
 ## [2.0.0-alpha.54] - 2025-08-11
 
 ### 🚀 Features
