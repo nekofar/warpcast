@@ -1828,6 +1828,85 @@
             "$ref": "#/components/responses/Unauthorized"
           }
         }
+      },
+      "patch": {
+        "tags": [
+          "Starter Packs"
+        ],
+        "operationId": "updateStarterPack",
+        "summary": "Update a starter pack",
+        "description": "Updates the specified starter pack.",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "id",
+                  "name",
+                  "description",
+                  "fids",
+                  "labels"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "description": "Unique identifier for the starter pack to update"
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "Display name of the starter pack"
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "Description of the starter pack"
+                  },
+                  "fids": {
+                    "type": "array",
+                    "description": "List of FIDs included in the starter pack",
+                    "items": {
+                      "type": "integer"
+                    }
+                  },
+                  "labels": {
+                    "type": "array",
+                    "description": "Labels/tags for the starter pack",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated starter pack object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StarterPackResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        }
       }
     },
     "/v2/starter-pack-users": {
