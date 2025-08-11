@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.47] - 2025-08-11
+
+### 🚀 Features
+
+- *(openapi)* Add `updateStarterPack` operation to API
+- *(openapi)* Add `updateStarterPack` endpoint
+- *(openapi)* Add `updateStarterPack` schema and SDK integration
+
 ## [2.0.0-alpha.46] - 2025-08-11
 
 ### 🚀 Features
