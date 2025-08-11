@@ -125,6 +125,9 @@ import type {
 	GetStarterPackData,
 	GetStarterPackResponses,
 	GetStarterPackErrors,
+	UpdateStarterPackData,
+	UpdateStarterPackResponses,
+	UpdateStarterPackErrors,
 	GetStarterPackUsersData,
 	GetStarterPackUsersResponses,
 	GetStarterPackUsersErrors,
@@ -437,6 +440,8 @@ import {
 	zGetSuggestedStarterPacksResponse,
 	zGetStarterPackData,
 	zGetStarterPackResponse,
+	zUpdateStarterPackData,
+	zUpdateStarterPackResponse,
 	zGetStarterPackUsersData,
 	zGetStarterPackUsersResponse,
 	zGetChannelData,
@@ -1886,6 +1891,39 @@ export const getStarterPack = <ThrowOnError extends boolean = false>(
 		],
 		url: "/v2/starter-pack",
 		...options,
+	});
+};
+
+/**
+ * Update a starter pack
+ * Updates the specified starter pack.
+ */
+export const updateStarterPack = <ThrowOnError extends boolean = false>(
+	options: Options<UpdateStarterPackData, ThrowOnError>,
+) => {
+	return (options.client ?? _heyApiClient).patch<
+		UpdateStarterPackResponses,
+		UpdateStarterPackErrors,
+		ThrowOnError
+	>({
+		requestValidator: async (data) => {
+			return await zUpdateStarterPackData.parseAsync(data);
+		},
+		responseValidator: async (data) => {
+			return await zUpdateStarterPackResponse.parseAsync(data);
+		},
+		security: [
+			{
+				scheme: "bearer",
+				type: "http",
+			},
+		],
+		url: "/v2/starter-pack",
+		...options,
+		headers: {
+			"Content-Type": "application/json",
+			...options.headers,
+		},
 	});
 };
 

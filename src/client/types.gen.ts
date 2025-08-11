@@ -2852,6 +2852,62 @@ export type GetStarterPackResponses = {
 export type GetStarterPackResponse =
 	GetStarterPackResponses[keyof GetStarterPackResponses];
 
+export type UpdateStarterPackData = {
+	body: {
+		/**
+		 * Unique identifier for the starter pack to update
+		 */
+		id: string;
+		/**
+		 * Display name of the starter pack
+		 */
+		name: string;
+		/**
+		 * Description of the starter pack
+		 */
+		description: string;
+		/**
+		 * List of FIDs included in the starter pack
+		 */
+		fids: Array<number>;
+		/**
+		 * Labels/tags for the starter pack
+		 */
+		labels: Array<string>;
+	};
+	path?: never;
+	query?: never;
+	url: "/v2/starter-pack";
+};
+
+export type UpdateStarterPackErrors = {
+	/**
+	 * Bad request - validation errors or malformed request
+	 */
+	400: BadRequestError;
+	/**
+	 * Authentication is required or failed
+	 */
+	401: ErrorResponse;
+	/**
+	 * The specified resource was not found
+	 */
+	404: ErrorResponse;
+};
+
+export type UpdateStarterPackError =
+	UpdateStarterPackErrors[keyof UpdateStarterPackErrors];
+
+export type UpdateStarterPackResponses = {
+	/**
+	 * Updated starter pack object
+	 */
+	200: StarterPackResponse;
+};
+
+export type UpdateStarterPackResponse =
+	UpdateStarterPackResponses[keyof UpdateStarterPackResponses];
+
 export type GetStarterPackUsersData = {
 	body?: never;
 	path?: never;

@@ -1678,6 +1678,23 @@ export const zGetStarterPackData = z.object({
  */
 export const zGetStarterPackResponse = zStarterPackResponse;
 
+export const zUpdateStarterPackData = z.object({
+	body: z.object({
+		id: z.string(),
+		name: z.string(),
+		description: z.string(),
+		fids: z.array(z.int()),
+		labels: z.array(z.string()),
+	}),
+	path: z.optional(z.never()),
+	query: z.optional(z.never()),
+});
+
+/**
+ * Updated starter pack object
+ */
+export const zUpdateStarterPackResponse = zStarterPackResponse;
+
 export const zGetStarterPackUsersData = z.object({
 	body: z.optional(z.never()),
 	path: z.optional(z.never()),
