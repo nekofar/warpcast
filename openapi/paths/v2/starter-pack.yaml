@@ -49,15 +49,7 @@ patch:
       content:
         application/json:
           schema:
-            type: object
-            required: [result]
-            properties:
-              result:
-                type: object
-                required: [success]
-                properties:
-                  success:
-                    type: boolean
+            $ref: '../../components/schemas/index.yaml#/SuccessResponse'
     '400':
       $ref: '../../components/responses/index.yaml#/BadRequest'
     '401':

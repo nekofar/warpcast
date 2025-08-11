@@ -369,8 +369,14 @@ OnboardingStateResponse:
   $ref: './onboarding.yaml#/OnboardingStateResponse'
 ErrorResponse:
   $ref: './onboarding.yaml#/ErrorResponse'
+
+# Common response schemas
 SuccessResponse:
-  $ref: './onboarding.yaml#/SuccessResponse'
+  $ref: './common.yaml#/SuccessResponse'
+GenericResponse:
+  $ref: './common.yaml#/GenericResponse'
+PaginatedResponse:
+  $ref: './common.yaml#/PaginatedResponse'
 
 # Error schemas
 ValidationError:
