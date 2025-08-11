@@ -5422,7 +5422,7 @@
             "$ref": "#/components/responses/Unauthorized"
           },
           "404": {
-            "description": "No user found for the provided address"
+            "$ref": "#/components/responses/NotFound"
           }
         }
       }
