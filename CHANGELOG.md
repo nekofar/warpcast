@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.53] - 2025-08-11
+
+### 🚀 Features
+
+- *(openapi)* Enforce `result` as required in `User` schema
+- *(openapi)* Enforce `result` as required in schema
+- *(openapi)* Enforce `result` as required in `UserResponse`
+- *(openapi)* Update required fields in `Cast` schema
+- *(openapi)* Update required fields in `Cast` schema
+- *(openapi)* Adjust optional fields in `Cast` schema
+
 ## [2.0.0-alpha.52] - 2025-08-11
 
 ### 🚀 Features
