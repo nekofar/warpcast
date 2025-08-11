@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.51] - 2025-08-11
+
+### 🚀 Features
+
+- *(openapi)* Add `hash` as required field in `Cast`
+- *(openapi)* Make `hash` required in `Cast` schema
+- *(openapi)* Enforce `hash` as required in `Cast` schema
+
 ## [2.0.0-alpha.50] - 2025-08-11
 
 ### 🚀 Features
