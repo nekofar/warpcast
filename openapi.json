@@ -7163,6 +7163,11 @@
       },
       "User": {
         "type": "object",
+        "required": [
+          "fid",
+          "displayName",
+          "username"
+        ],
         "properties": {
           "fid": {
             "type": "integer"
@@ -8220,6 +8225,10 @@
       },
       "UrlEmbed": {
         "type": "object",
+        "required": [
+          "type",
+          "openGraph"
+        ],
         "properties": {
           "type": {
             "type": "string",
@@ -8229,6 +8238,9 @@
           },
           "openGraph": {
             "type": "object",
+            "required": [
+              "url"
+            ],
             "properties": {
               "url": {
                 "type": "string"
