@@ -11,7 +11,7 @@ info:
 servers:
   - url: https://api.farcaster.xyz
     description: Main API server
-  - url: https://client.warpcast.com
+  - url: https://client.farcaster.xyz
     description: Client-side interface
 
 tags:
