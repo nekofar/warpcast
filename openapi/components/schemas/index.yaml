@@ -333,6 +333,8 @@ StarterPackResponse:
   $ref: './features.yaml#/StarterPackResponse'
 StarterPackUsersResponse:
   $ref: './features.yaml#/StarterPackUsersResponse'
+StarterPackUpdateRequest:
+  $ref: './features.yaml#/StarterPackUpdateRequest'
 Frame:
   $ref: './features.yaml#/Frame'
 AppsByAuthorResponse:

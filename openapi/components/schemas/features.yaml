@@ -188,6 +188,35 @@ StarterPackUsersResponse:
           items:
             $ref: './user.yaml#/User'
 
+StarterPackUpdateRequest:
+  type: object
+  required:
+    - id
+    - name
+    - description
+    - fids
+    - labels
+  properties:
+    id:
+      type: string
+      description: Unique identifier for the starter pack to update
+    name:
+      type: string
+      description: Display name of the starter pack
+    description:
+      type: string
+      description: Description of the starter pack
+    fids:
+      type: array
+      description: List of FIDs included in the starter pack
+      items:
+        type: integer
+    labels:
+      type: array
+      description: Labels/tags for the starter pack
+      items:
+        type: string
+
 # Frame/App schemas
 Frame:
   type: object
