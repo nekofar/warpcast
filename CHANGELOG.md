@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.50] - 2025-08-11
+
+### 🚀 Features
+
+- *(openapi)* Enhance `feed-items` schema with required fields
+- *(openapi)* Update and restructure embedded schemas
+- *(openapi)* Restructure embed and cast schemas
+
 ## [2.0.0-alpha.49] - 2025-08-11
 
 ### 🚀 Features
