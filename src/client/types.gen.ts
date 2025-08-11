@@ -4908,7 +4908,32 @@ export type GetUserByVerificationAddressErrors = {
 	/**
 	 * Invalid address format
 	 */
-	400: unknown;
+	400: {
+		errors: Array<{
+			/**
+			 * JSON Pointer to the part of the request that failed validation
+			 */
+			instancePath: string;
+			/**
+			 * JSON Schema path that was violated
+			 */
+			schemaPath: string;
+			/**
+			 * The JSON Schema keyword that failed
+			 */
+			keyword: string;
+			/**
+			 * Additional parameters describing the validation error
+			 */
+			params?: {
+				[key: string]: unknown;
+			};
+			/**
+			 * Human-readable error description
+			 */
+			message: string;
+		}>;
+	};
 	/**
 	 * Authentication is required or failed
 	 */
