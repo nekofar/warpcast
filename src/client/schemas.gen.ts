@@ -299,6 +299,58 @@ export const UserByFidResponseSchema = {
 	},
 } as const;
 
+export const ValidationErrorSchema = {
+	type: "object",
+	description: "Represents a single validation error",
+	properties: {
+		instancePath: {
+			type: "string",
+			description:
+				"JSON Pointer to the part of the request that failed validation",
+			example: "/fid",
+		},
+		schemaPath: {
+			type: "string",
+			description: "JSON Schema path that was violated",
+			example: "ApiFid/type",
+		},
+		keyword: {
+			type: "string",
+			description: "The JSON Schema keyword that failed",
+			example: "type",
+		},
+		params: {
+			type: "object",
+			description: "Additional parameters describing the validation error",
+			additionalProperties: true,
+			example: {
+				type: "integer",
+			},
+		},
+		message: {
+			type: "string",
+			description: "Human-readable error description",
+			example: "must be integer",
+		},
+	},
+	required: ["instancePath", "schemaPath", "keyword", "message"],
+} as const;
+
+export const BadRequestErrorSchema = {
+	type: "object",
+	description: "Standard 400 Bad Request error response",
+	properties: {
+		errors: {
+			type: "array",
+			description: "Array of validation errors",
+			items: {
+				$ref: "#/components/schemas/ValidationError",
+			},
+		},
+	},
+	required: ["errors"],
+} as const;
+
 export const DirectCastMessageReactionSchema = {
 	type: "object",
 	required: ["reaction", "count"],
@@ -2992,6 +3044,27 @@ export const ApiKeySchema = {
 			description: "User-provided description of the API key's purpose",
 		},
 	},
+} as const;
+
+export const GenericBadRequestErrorSchema = {
+	type: "object",
+	description: "Generic 400 Bad Request error for simple error messages",
+	properties: {
+		errors: {
+			type: "array",
+			items: {
+				type: "object",
+				properties: {
+					message: {
+						type: "string",
+						description: "Error message describing the issue",
+					},
+				},
+				required: ["message"],
+			},
+		},
+	},
+	required: ["errors"],
 } as const;
 
 export const DirectCastSendResponseSchema = {

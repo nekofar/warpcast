@@ -106,6 +106,44 @@ export type UserByFidResponse = {
 	};
 };
 
+/**
+ * Represents a single validation error
+ */
+export type ValidationError = {
+	/**
+	 * JSON Pointer to the part of the request that failed validation
+	 */
+	instancePath: string;
+	/**
+	 * JSON Schema path that was violated
+	 */
+	schemaPath: string;
+	/**
+	 * The JSON Schema keyword that failed
+	 */
+	keyword: string;
+	/**
+	 * Additional parameters describing the validation error
+	 */
+	params?: {
+		[key: string]: unknown;
+	};
+	/**
+	 * Human-readable error description
+	 */
+	message: string;
+};
+
+/**
+ * Standard 400 Bad Request error response
+ */
+export type BadRequestError = {
+	/**
+	 * Array of validation errors
+	 */
+	errors: Array<ValidationError>;
+};
+
 export type DirectCastMessageReaction = {
 	/**
 	 * Emoji used for the reaction
@@ -1372,6 +1410,18 @@ export type ApiKey = {
 	description: string;
 };
 
+/**
+ * Generic 400 Bad Request error for simple error messages
+ */
+export type GenericBadRequestError = {
+	errors: Array<{
+		/**
+		 * Error message describing the issue
+		 */
+		message: string;
+	}>;
+};
+
 export type DirectCastSendResponse = CommonSuccessResponse;
 
 export type DirectCastConversationCategorizationResponse =
@@ -1438,6 +1488,10 @@ export type GetUserByFidData = {
 };
 
 export type GetUserByFidErrors = {
+	/**
+	 * Bad request - validation errors or malformed request
+	 */
+	400: BadRequestError;
 	/**
 	 * Authentication is required or failed
 	 */
@@ -4906,34 +4960,9 @@ export type GetUserByVerificationAddressData = {
 
 export type GetUserByVerificationAddressErrors = {
 	/**
-	 * Invalid address format
+	 * Bad request - validation errors or malformed request
 	 */
-	400: {
-		errors: Array<{
-			/**
-			 * JSON Pointer to the part of the request that failed validation
-			 */
-			instancePath: string;
-			/**
-			 * JSON Schema path that was violated
-			 */
-			schemaPath: string;
-			/**
-			 * The JSON Schema keyword that failed
-			 */
-			keyword: string;
-			/**
-			 * Additional parameters describing the validation error
-			 */
-			params?: {
-				[key: string]: unknown;
-			};
-			/**
-			 * Human-readable error description
-			 */
-			message: string;
-		}>;
-	};
+	400: BadRequestError;
 	/**
 	 * Authentication is required or failed
 	 */
@@ -5677,9 +5706,9 @@ export type GetUserLikedCastsData = {
 
 export type GetUserLikedCastsErrors = {
 	/**
-	 * Bad request (e.g., missing required parameters)
+	 * Bad request - generic error
 	 */
-	400: unknown;
+	400: GenericBadRequestError;
 	/**
 	 * Authentication is required or failed
 	 */
@@ -5769,9 +5798,9 @@ export type GetMiniAppAnalyticsRollupData = {
 
 export type GetMiniAppAnalyticsRollupErrors = {
 	/**
-	 * Bad request - Invalid parameters
+	 * Bad request - generic error
 	 */
-	400: unknown;
+	400: GenericBadRequestError;
 	/**
 	 * Authentication is required or failed
 	 */
@@ -5846,9 +5875,9 @@ export type InspectMiniAppUrlData = {
 
 export type InspectMiniAppUrlErrors = {
 	/**
-	 * Bad request - Invalid URL format
+	 * Bad request - generic error
 	 */
-	400: unknown;
+	400: GenericBadRequestError;
 	/**
 	 * Authentication is required or failed
 	 */
@@ -6030,6 +6059,6 @@ export type ExportMiniAppUserDataResponse =
 export type ClientOptions = {
 	baseUrl:
 		| "https://api.farcaster.xyz"
-		| "https://client.warpcccastt.com"
+		| "https://client.farcaster.xyz"
 		| (string & {});
 };
