@@ -76,9 +76,7 @@ export const getDirectCastInboxResponseTransformer = async (
 };
 
 const castSchemaResponseTransformer = (data: any) => {
-	if (data.timestamp) {
-		data.timestamp = BigInt(data.timestamp.toString());
-	}
+	data.timestamp = BigInt(data.timestamp.toString());
 	return data;
 };
 

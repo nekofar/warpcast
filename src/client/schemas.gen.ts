@@ -77,6 +77,7 @@ export const ViewerContextSchema = {
 
 export const UserSchema = {
 	type: "object",
+	required: ["fid", "displayName", "username"],
 	properties: {
 		fid: {
 			type: "integer",
@@ -1136,6 +1137,7 @@ export const ImageEmbedSchema = {
 
 export const UrlEmbedSchema = {
 	type: "object",
+	required: ["type", "openGraph"],
 	properties: {
 		type: {
 			type: "string",
@@ -1143,6 +1145,7 @@ export const UrlEmbedSchema = {
 		},
 		openGraph: {
 			type: "object",
+			required: ["url"],
 			properties: {
 				url: {
 					type: "string",
@@ -1200,7 +1203,7 @@ export const RecasterSchema = {
 
 export const CastSchema = {
 	type: "object",
-	required: ["hash"],
+	required: ["hash", "author", "text", "timestamp"],
 	properties: {
 		hash: {
 			type: "string",

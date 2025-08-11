@@ -30,9 +30,9 @@ export type ViewerContext = {
 };
 
 export type User = {
-	fid?: number;
-	username?: string;
-	displayName?: string;
+	fid: number;
+	username: string;
+	displayName: string;
 	pfp?: ProfilePicture;
 	profile?: Profile;
 	followerCount?: number;
@@ -545,9 +545,9 @@ export type ImageEmbed = {
 };
 
 export type UrlEmbed = {
-	type?: "url";
-	openGraph?: {
-		url?: string;
+	type: "url";
+	openGraph: {
+		url: string;
 		sourceUrl?: string;
 		title?: string;
 		description?: string;
@@ -585,15 +585,15 @@ export type Cast = {
 		type?: "url";
 		url?: string;
 	};
-	author?: User;
+	author: User;
 	/**
 	 * The text content of the cast
 	 */
-	text?: string;
+	text: string;
 	/**
 	 * Unix timestamp in milliseconds
 	 */
-	timestamp?: bigint;
+	timestamp: bigint;
 	mentions?: Array<User>;
 	embeds?: {
 		images?: Array<ImageEmbed>;

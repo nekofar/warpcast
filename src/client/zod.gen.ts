@@ -32,9 +32,9 @@ export const zViewerContext = z.object({
 });
 
 export const zUser = z.object({
-	fid: z.optional(z.int()),
-	username: z.optional(z.string()),
-	displayName: z.optional(z.string()),
+	fid: z.int(),
+	username: z.string(),
+	displayName: z.string(),
 	pfp: z.optional(zProfilePicture),
 	profile: z.optional(zProfile),
 	followerCount: z.optional(z.int()),
@@ -384,18 +384,16 @@ export const zImageEmbed = z.object({
 });
 
 export const zUrlEmbed = z.object({
-	type: z.optional(z.enum(["url"])),
-	openGraph: z.optional(
-		z.object({
-			url: z.optional(z.string()),
-			sourceUrl: z.optional(z.string()),
-			title: z.optional(z.string()),
-			description: z.optional(z.string()),
-			domain: z.optional(z.string()),
-			image: z.optional(z.string()),
-			useLargeImage: z.optional(z.boolean()),
-		}),
-	),
+	type: z.enum(["url"]),
+	openGraph: z.object({
+		url: z.string(),
+		sourceUrl: z.optional(z.string()),
+		title: z.optional(z.string()),
+		description: z.optional(z.string()),
+		domain: z.optional(z.string()),
+		image: z.optional(z.string()),
+		useLargeImage: z.optional(z.boolean()),
+	}),
 });
 
 export const zVideoEmbed = z.object({
@@ -419,9 +417,9 @@ export const zCast = z.object({
 			url: z.optional(z.string()),
 		}),
 	),
-	author: z.optional(zUser),
-	text: z.optional(z.string()),
-	timestamp: z.optional(z.coerce.bigint()),
+	author: zUser,
+	text: z.string(),
+	timestamp: z.coerce.bigint(),
 	mentions: z.optional(z.array(zUser)),
 	embeds: z.optional(
 		z.object({
