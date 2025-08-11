@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.44] - 2025-08-11
+
+### 🚜 Refactor
+
+- *(openapi)* Update `404` response to use shared reference
+- *(openapi)* Replace hardcoded `404` with shared reference
+
+### ⚙️ Miscellaneous Tasks
+
+- *(deps)* Bump actions/cache from 4.2.3 to 4.2.4 (#207)
+- *(scripts)* Update `prebuild` and `clean` scripts
+- *(scripts)* Simplify `prebuild` and `clean` scripts
+
 ## [2.0.0-alpha.43] - 2025-08-10
 
 ### 🚀 Features
