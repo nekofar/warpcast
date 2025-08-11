@@ -668,7 +668,7 @@ export type GenericResponse = {
 };
 
 export type UserResponse = GenericResponse & {
-	result?: {
+	result: {
 		user?: UserWithExtras;
 		collectionsOwned?: Array<{
 			[key: string]: unknown;

@@ -1464,6 +1464,7 @@ export const UserResponseSchema = {
 		},
 		{
 			type: "object",
+			required: ["result"],
 			properties: {
 				result: {
 					type: "object",

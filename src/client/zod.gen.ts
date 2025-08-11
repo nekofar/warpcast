@@ -511,13 +511,11 @@ export const zGenericResponse = z.object({
 
 export const zUserResponse = zGenericResponse.and(
 	z.object({
-		result: z.optional(
-			z.object({
-				user: z.optional(zUserWithExtras),
-				collectionsOwned: z.optional(z.array(z.object({}))),
-				extras: z.optional(zUserExtras),
-			}),
-		),
+		result: z.object({
+			user: z.optional(zUserWithExtras),
+			collectionsOwned: z.optional(z.array(z.object({}))),
+			extras: z.optional(zUserExtras),
+		}),
 	}),
 );
 
