@@ -57,7 +57,7 @@ get:
                         description: Indicates if the Mini App manifest is valid
                         example: true
     '400':
-      description: Bad request - Invalid URL format
+      $ref: '../../../components/responses/index.yaml#/GenericBadRequest'
     '401':
       $ref: '../../../components/responses/index.yaml#/Unauthorized'
     '403':

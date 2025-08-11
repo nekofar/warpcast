@@ -119,6 +119,24 @@ export const zUserByFidResponse = z.object({
 	),
 });
 
+/**
+ * Represents a single validation error
+ */
+export const zValidationError = z.object({
+	instancePath: z.string(),
+	schemaPath: z.string(),
+	keyword: z.string(),
+	params: z.optional(z.object({})),
+	message: z.string(),
+});
+
+/**
+ * Standard 400 Bad Request error response
+ */
+export const zBadRequestError = z.object({
+	errors: z.array(zValidationError),
+});
+
 export const zDirectCastMessageReaction = z.object({
 	reaction: z.string(),
 	count: z.int().gte(1),
@@ -1077,6 +1095,17 @@ export const zApiKey = z.object({
 	revokedAt: z.optional(z.union([z.string(), z.null()])),
 	tag: z.string(),
 	description: z.string(),
+});
+
+/**
+ * Generic 400 Bad Request error for simple error messages
+ */
+export const zGenericBadRequestError = z.object({
+	errors: z.array(
+		z.object({
+			message: z.string(),
+		}),
+	),
 });
 
 export const zDirectCastSendResponse = zCommonSuccessResponse;

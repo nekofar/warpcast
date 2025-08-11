@@ -1,6 +1,6 @@
 {
   "name": "@nekofar/warpcast",
-  "version": "2.0.0-alpha.44",
+  "version": "2.0.0-alpha.45",
   "description": "TypeScript client for interacting with Warpcast APIs",
   "keywords": [
     "warpcast",
@@ -59,7 +59,7 @@
     "@asyncapi/generator": "^2.7.1",
     "@biomejs/biome": "^2.1.2",
     "@hey-api/openapi-ts": "^0.80.1",
-    "@redocly/cli": "^2.0.0",
+    "@redocly/cli": "^2.0.2",
     "@types/node": "^24.1.0",
     "globals": "^16.3.0",
     "rimraf": "^6.0.1",
@@ -72,7 +72,7 @@
   "peerDependencies": {
     "zod": "^4.0.10"
   },
-  "packageManager": "pnpm@10.13.1",
+  "packageManager": "pnpm@10.14.0",
   "publishConfig": {
     "access": "public"
   }

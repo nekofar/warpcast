@@ -42,6 +42,6 @@ get:
     '401':
       $ref: '../../components/responses/index.yaml#/Unauthorized'
     '400':
-      description: Bad request (e.g., missing required parameters)
+      $ref: '../../components/responses/index.yaml#/GenericBadRequest'
     '500':
       description: Internal Server Error

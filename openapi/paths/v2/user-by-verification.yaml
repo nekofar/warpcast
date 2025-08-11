@@ -21,9 +21,9 @@ get:
       content:
         application/json:
           schema:
-            $ref: '../../index.yaml#/components/schemas/UserResponse'
+            $ref: '../../components/schemas/user.yaml#/UserResponse'
     '400':
-      description: Invalid address format
+      $ref: '../../components/responses/index.yaml#/BadRequest'
     '404':
       $ref: '../../components/responses/index.yaml#/NotFound'
     '401':

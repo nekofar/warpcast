@@ -1,11 +1,11 @@
 get:
   operationId: getUserByFid
   tags:
-    - User
+    - Users
   summary: Get user by fid
   description: Retrieves user information based on FID
   parameters:
-    - $ref: '../../index.yaml#/components/parameters/fidParam'
+    - $ref: '../../components/parameters/index.yaml#/fidParam'
   security:
     - bearerAuth: []
   responses:
@@ -14,8 +14,10 @@ get:
       content:
         application/json:
           schema:
-            $ref: '../../index.yaml#/components/schemas/UserByFidResponse'
+            $ref: '../../components/schemas/user.yaml#/UserByFidResponse'
+    '400':
+      $ref: '../../components/responses/index.yaml#/BadRequest'
     '401':
-      $ref: '../../index.yaml#/components/responses/Unauthorized'
+      $ref: '../../components/responses/index.yaml#/Unauthorized'
     '404':
-      $ref: '../../index.yaml#/components/responses/NotFound'
+      $ref: '../../components/responses/index.yaml#/NotFound'

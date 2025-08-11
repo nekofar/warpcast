@@ -369,3 +369,11 @@ ErrorResponse:
   $ref: './onboarding.yaml#/ErrorResponse'
 SuccessResponse:
   $ref: './onboarding.yaml#/SuccessResponse'
+
+# Error schemas
+ValidationError:
+  $ref: './errors.yaml#/ValidationError'
+BadRequestError:
+  $ref: './errors.yaml#/BadRequestError'
+GenericBadRequestError:
+  $ref: './errors.yaml#/GenericBadRequestError'

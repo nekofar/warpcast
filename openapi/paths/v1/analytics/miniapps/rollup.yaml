@@ -163,7 +163,7 @@ post:
                                     type: integer
                                     example: 1
     '400':
-      description: Bad request - Invalid parameters
+      $ref: '../../../../components/responses/index.yaml#/GenericBadRequest'
     '401':
       $ref: '../../../../components/responses/index.yaml#/Unauthorized'
     '403':
