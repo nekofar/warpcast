@@ -124,13 +124,7 @@ DirectCastInboxResponse:
     result:
       $ref: '#/DirectCastInboxResult'
     next:
-      type: object
-      required:
-        - cursor
-      properties:
-        cursor:
-          type: string
-          description: Base64 encoded cursor for pagination
+      $ref: './common.yaml#/PaginationCursor'
 
 DirectCastInboxResult:
   type: object
@@ -333,6 +327,8 @@ StarterPackResponse:
   $ref: './features.yaml#/StarterPackResponse'
 StarterPackUsersResponse:
   $ref: './features.yaml#/StarterPackUsersResponse'
+StarterPackUpdateRequest:
+  $ref: './features.yaml#/StarterPackUpdateRequest'
 Frame:
   $ref: './features.yaml#/Frame'
 AppsByAuthorResponse:
@@ -367,8 +363,14 @@ OnboardingStateResponse:
   $ref: './onboarding.yaml#/OnboardingStateResponse'
 ErrorResponse:
   $ref: './onboarding.yaml#/ErrorResponse'
+
+# Common response schemas
 SuccessResponse:
-  $ref: './onboarding.yaml#/SuccessResponse'
+  $ref: './common.yaml#/SuccessResponse'
+GenericResponse:
+  $ref: './common.yaml#/GenericResponse'
+PaginatedResponse:
+  $ref: './common.yaml#/PaginatedResponse'
 
 # Error schemas
 ValidationError:

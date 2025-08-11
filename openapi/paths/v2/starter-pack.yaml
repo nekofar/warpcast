@@ -30,45 +30,26 @@ patch:
   description: Updates the specified starter pack.
   security:
     - bearerAuth: [ ]
+  parameters:
+    - name: idempotency-key
+      in: header
+      required: false
+      description: Idempotency key to safely retry the request without performing the operation multiple times.
+      schema:
+        type: string
   requestBody:
     required: true
     content:
       application/json:
         schema:
-          type: object
-          required:
-            - id
-            - name
-            - description
-            - fids
-            - labels
-          properties:
-            id:
-              type: string
-              description: Unique identifier for the starter pack to update
-            name:
-              type: string
-              description: Display name of the starter pack
-            description:
-              type: string
-              description: Description of the starter pack
-            fids:
-              type: array
-              description: List of FIDs included in the starter pack
-              items:
-                type: integer
-            labels:
-              type: array
-              description: Labels/tags for the starter pack
-              items:
-                type: string
+          $ref: '../../components/schemas/index.yaml#/StarterPackUpdateRequest'
   responses:
     '200':
-      description: Updated starter pack object
+      description: Update status
       content:
         application/json:
           schema:
-            $ref: '../../components/schemas/index.yaml#/StarterPackResponse'
+            $ref: '../../components/schemas/index.yaml#/SuccessResponse'
     '400':
       $ref: '../../components/responses/index.yaml#/BadRequest'
     '401':

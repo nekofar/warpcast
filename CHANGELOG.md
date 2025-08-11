@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.48] - 2025-08-11
+
+### 🚀 Features
+
+- *(openapi)* Enhance `updateStarterPack` schema
+- *(openapi)* Refactor `StarterPackUpdateRequest` schema
+- *(openapi)* Refactor schema references for consistency
+- *(openapi)* Refactor `PaginationCursor` schema references
+- *(openapi)* Use reusable `SuccessResponse` schema
+- *(openapi)* Update `PaginationCursor` reference path
+- *(openapi)* Refactor schema references for consistency
+- *(openapi)* Refactor schemas for reusability and clarity
+
 ## [2.0.0-alpha.47] - 2025-08-11
 
 ### 🚀 Features

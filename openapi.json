@@ -961,7 +961,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/common_SuccessResponse"
+                  "$ref": "#/components/schemas/SuccessResponse"
                 }
               }
             }
@@ -1061,7 +1061,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/common_SuccessResponse"
+                  "$ref": "#/components/schemas/SuccessResponse"
                 }
               }
             }
@@ -1104,7 +1104,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/common_SuccessResponse"
+                  "$ref": "#/components/schemas/SuccessResponse"
                 }
               }
             }
@@ -1191,7 +1191,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/common_SuccessResponse"
+                  "$ref": "#/components/schemas/SuccessResponse"
                 }
               }
             }
@@ -1234,7 +1234,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/common_SuccessResponse"
+                  "$ref": "#/components/schemas/SuccessResponse"
                 }
               }
             }
@@ -1277,7 +1277,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/common_SuccessResponse"
+                  "$ref": "#/components/schemas/SuccessResponse"
                 }
               }
             }
@@ -1318,7 +1318,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/common_SuccessResponse"
+                  "$ref": "#/components/schemas/SuccessResponse"
                 }
               }
             }
@@ -1361,7 +1361,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/common_SuccessResponse"
+                  "$ref": "#/components/schemas/SuccessResponse"
                 }
               }
             }
@@ -1402,7 +1402,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/common_SuccessResponse"
+                  "$ref": "#/components/schemas/SuccessResponse"
                 }
               }
             }
@@ -1841,58 +1841,34 @@
             "bearerAuth": []
           }
         ],
+        "parameters": [
+          {
+            "name": "idempotency-key",
+            "in": "header",
+            "required": false,
+            "description": "Idempotency key to safely retry the request without performing the operation multiple times.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "required": [
-                  "id",
-                  "name",
-                  "description",
-                  "fids",
-                  "labels"
-                ],
-                "properties": {
-                  "id": {
-                    "type": "string",
-                    "description": "Unique identifier for the starter pack to update"
-                  },
-                  "name": {
-                    "type": "string",
-                    "description": "Display name of the starter pack"
-                  },
-                  "description": {
-                    "type": "string",
-                    "description": "Description of the starter pack"
-                  },
-                  "fids": {
-                    "type": "array",
-                    "description": "List of FIDs included in the starter pack",
-                    "items": {
-                      "type": "integer"
-                    }
-                  },
-                  "labels": {
-                    "type": "array",
-                    "description": "Labels/tags for the starter pack",
-                    "items": {
-                      "type": "string"
-                    }
-                  }
-                }
+                "$ref": "#/components/schemas/StarterPackUpdateRequest"
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "Updated starter pack object",
+            "description": "Update status",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/StarterPackResponse"
+                  "$ref": "#/components/schemas/SuccessResponse"
                 }
               }
             }
@@ -4734,13 +4710,7 @@
                           }
                         },
                         "next": {
-                          "type": "object",
-                          "properties": {
-                            "cursor": {
-                              "type": "string",
-                              "description": "Pagination cursor for fetching the next set of blocked users"
-                            }
-                          }
+                          "$ref": "#/components/schemas/PaginationCursor"
                         }
                       }
                     }
@@ -4804,24 +4774,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "required": [
-                    "result"
-                  ],
-                  "properties": {
-                    "result": {
-                      "type": "object",
-                      "required": [
-                        "success"
-                      ],
-                      "properties": {
-                        "success": {
-                          "type": "boolean",
-                          "description": "Indicates whether the block operation was successful"
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/SuccessResponse"
                 },
                 "example": {
                   "result": {
@@ -4959,12 +4912,7 @@
                       }
                     },
                     "next": {
-                      "type": "object",
-                      "properties": {
-                        "cursor": {
-                          "type": "string"
-                        }
-                      }
+                      "$ref": "#/components/schemas/PaginationCursor"
                     }
                   }
                 },
@@ -7855,6 +7803,16 @@
           }
         }
       },
+      "PaginationCursor": {
+        "type": "object",
+        "properties": {
+          "cursor": {
+            "type": "string",
+            "description": "Base64 encoded cursor for pagination"
+          }
+        },
+        "additionalProperties": true
+      },
       "DirectCastInboxResponse": {
         "type": "object",
         "required": [
@@ -7865,16 +7823,7 @@
             "$ref": "#/components/schemas/DirectCastInboxResult"
           },
           "next": {
-            "type": "object",
-            "required": [
-              "cursor"
-            ],
-            "properties": {
-              "cursor": {
-                "type": "string",
-                "description": "Base64 encoded cursor for pagination"
-              }
-            }
+            "$ref": "#/components/schemas/PaginationCursor"
           }
         }
       },
@@ -8218,16 +8167,6 @@
           }
         ]
       },
-      "PaginationCursor": {
-        "type": "object",
-        "properties": {
-          "cursor": {
-            "type": "string",
-            "description": "Base64 encoded cursor for pagination"
-          }
-        },
-        "additionalProperties": true
-      },
       "PaginatedResponse": {
         "type": "object",
         "required": [
@@ -8415,24 +8354,28 @@
         }
       },
       "SuccessResponse": {
-        "type": "object",
-        "required": [
-          "result"
-        ],
-        "properties": {
-          "result": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/GenericResponse"
+          },
+          {
             "type": "object",
-            "required": [
-              "success"
-            ],
             "properties": {
-              "success": {
-                "type": "boolean",
-                "description": "Indicates whether the operation was successful"
+              "result": {
+                "type": "object",
+                "required": [
+                  "success"
+                ],
+                "properties": {
+                  "success": {
+                    "type": "boolean",
+                    "description": "Whether the operation was successful"
+                  }
+                }
               }
             }
           }
-        }
+        ]
       },
       "NotificationsResponse": {
         "type": "object",
@@ -8495,30 +8438,6 @@
             "example": "archived"
           }
         }
-      },
-      "common_SuccessResponse": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/GenericResponse"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "result": {
-                "type": "object",
-                "required": [
-                  "success"
-                ],
-                "properties": {
-                  "success": {
-                    "type": "boolean",
-                    "description": "Whether the operation was successful"
-                  }
-                }
-              }
-            }
-          }
-        ]
       },
       "DirectCastConversationMessagesResponse": {
         "allOf": [
@@ -9012,6 +8931,44 @@
           }
         }
       },
+      "StarterPackUpdateRequest": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "description",
+          "fids",
+          "labels"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the starter pack to update"
+          },
+          "name": {
+            "type": "string",
+            "description": "Display name of the starter pack"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the starter pack"
+          },
+          "fids": {
+            "type": "array",
+            "description": "List of FIDs included in the starter pack",
+            "items": {
+              "type": "integer"
+            }
+          },
+          "labels": {
+            "type": "array",
+            "description": "Labels/tags for the starter pack",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
       "StarterPackUsersResponse": {
         "type": "object",
         "required": [
@@ -9281,15 +9238,6 @@
           }
         }
       },
-      "top-mini-apps-response_PaginationCursor": {
-        "type": "object",
-        "properties": {
-          "cursor": {
-            "type": "string",
-            "description": "Base64 encoded cursor for pagination"
-          }
-        }
-      },
       "TopMiniAppsResponse": {
         "type": "object",
         "properties": {
@@ -9303,7 +9251,7 @@
                 }
               },
               "next": {
-                "$ref": "#/components/schemas/top-mini-apps-response_PaginationCursor"
+                "$ref": "#/components/schemas/PaginationCursor"
               }
             }
           }
@@ -10255,19 +10203,19 @@
         ]
       },
       "DirectCastSendResponse": {
-        "$ref": "#/components/schemas/common_SuccessResponse"
+        "$ref": "#/components/schemas/SuccessResponse"
       },
       "DirectCastConversationCategorizationResponse": {
-        "$ref": "#/components/schemas/common_SuccessResponse"
+        "$ref": "#/components/schemas/SuccessResponse"
       },
       "DirectCastConversationNotificationsResponse": {
-        "$ref": "#/components/schemas/common_SuccessResponse"
+        "$ref": "#/components/schemas/SuccessResponse"
       },
       "DirectCastConversationMessageTtlResponse": {
-        "$ref": "#/components/schemas/common_SuccessResponse"
+        "$ref": "#/components/schemas/SuccessResponse"
       },
       "DirectCastMessageReactionResponse": {
-        "$ref": "#/components/schemas/common_SuccessResponse"
+        "$ref": "#/components/schemas/SuccessResponse"
       }
     },
     "parameters": {

@@ -418,14 +418,17 @@ export type DirectCastInboxResult = {
 	conversations: Array<DirectCastConversation>;
 };
 
+export type PaginationCursor = {
+	/**
+	 * Base64 encoded cursor for pagination
+	 */
+	cursor?: string;
+	[key: string]: unknown | string | undefined;
+};
+
 export type DirectCastInboxResponse = {
 	result: DirectCastInboxResult;
-	next?: {
-		/**
-		 * Base64 encoded cursor for pagination
-		 */
-		cursor: string;
-	};
+	next?: PaginationCursor;
 };
 
 export type CastAction = {
@@ -554,14 +557,6 @@ export type UserResponse = GenericResponse & {
 	};
 };
 
-export type PaginationCursor = {
-	/**
-	 * Base64 encoded cursor for pagination
-	 */
-	cursor?: string;
-	[key: string]: unknown | string | undefined;
-};
-
 export type PaginatedResponse = {
 	result: {
 		[key: string]: unknown;
@@ -625,10 +620,10 @@ export type ChannelFollowersYouKnowResponse = {
 	};
 };
 
-export type SuccessResponse = {
-	result: {
+export type SuccessResponse = GenericResponse & {
+	result?: {
 		/**
-		 * Indicates whether the operation was successful
+		 * Whether the operation was successful
 		 */
 		success: boolean;
 	};
@@ -657,15 +652,6 @@ export type DirectCastConversationCategorizationRequest = {
 	 * Category to assign to the conversation
 	 */
 	category: string;
-};
-
-export type CommonSuccessResponse = GenericResponse & {
-	result?: {
-		/**
-		 * Whether the operation was successful
-		 */
-		success: boolean;
-	};
 };
 
 export type DirectCastConversationMessagesResponse = PaginatedResponse & {
@@ -902,6 +888,29 @@ export type StarterPackResponse = {
 	};
 };
 
+export type StarterPackUpdateRequest = {
+	/**
+	 * Unique identifier for the starter pack to update
+	 */
+	id: string;
+	/**
+	 * Display name of the starter pack
+	 */
+	name: string;
+	/**
+	 * Description of the starter pack
+	 */
+	description: string;
+	/**
+	 * List of FIDs included in the starter pack
+	 */
+	fids: Array<number>;
+	/**
+	 * Labels/tags for the starter pack
+	 */
+	labels: Array<string>;
+};
+
 export type StarterPackUsersResponse = {
 	result: {
 		users: Array<User>;
@@ -1067,17 +1076,10 @@ export type RankedMiniApp = {
 	rank72hChange?: number;
 };
 
-export type TopMiniAppsResponsePaginationCursor = {
-	/**
-	 * Base64 encoded cursor for pagination
-	 */
-	cursor?: string;
-};
-
 export type TopMiniAppsResponse = {
 	result?: {
 		miniApps?: Array<RankedMiniApp>;
-		next?: TopMiniAppsResponsePaginationCursor;
+		next?: PaginationCursor;
 	};
 };
 
@@ -1462,16 +1464,15 @@ export type GenericBadRequestError = {
 	}>;
 };
 
-export type DirectCastSendResponse = CommonSuccessResponse;
+export type DirectCastSendResponse = SuccessResponse;
 
-export type DirectCastConversationCategorizationResponse =
-	CommonSuccessResponse;
+export type DirectCastConversationCategorizationResponse = SuccessResponse;
 
-export type DirectCastConversationNotificationsResponse = CommonSuccessResponse;
+export type DirectCastConversationNotificationsResponse = SuccessResponse;
 
-export type DirectCastConversationMessageTtlResponse = CommonSuccessResponse;
+export type DirectCastConversationMessageTtlResponse = SuccessResponse;
 
-export type DirectCastMessageReactionResponse = CommonSuccessResponse;
+export type DirectCastMessageReactionResponse = SuccessResponse;
 
 /**
  * The user's FID (Farcaster ID)
@@ -2190,7 +2191,7 @@ export type CategorizeDirectCastConversationResponses = {
 	/**
 	 * Conversation categorized successfully
 	 */
-	200: CommonSuccessResponse;
+	200: SuccessResponse;
 };
 
 export type CategorizeDirectCastConversationResponse =
@@ -2264,7 +2265,7 @@ export type SetDirectCastConversationMessageTtlResponses = {
 	/**
 	 * Message TTL set successfully
 	 */
-	200: CommonSuccessResponse;
+	200: SuccessResponse;
 };
 
 export type SetDirectCastConversationMessageTtlResponse =
@@ -2295,7 +2296,7 @@ export type UpdateDirectCastConversationNotificationsResponses = {
 	/**
 	 * Notification settings updated successfully
 	 */
-	200: CommonSuccessResponse;
+	200: SuccessResponse;
 };
 
 export type UpdateDirectCastConversationNotificationsResponse =
@@ -2365,7 +2366,7 @@ export type SendDirectCastMessageResponses = {
 	/**
 	 * Direct cast message sent successfully
 	 */
-	200: CommonSuccessResponse;
+	200: SuccessResponse;
 };
 
 export type SendDirectCastMessageResponse =
@@ -2396,7 +2397,7 @@ export type DirectCastManuallyMarkUnreadResponses = {
 	/**
 	 * Direct cast conversation marked as unread successfully
 	 */
-	200: CommonSuccessResponse;
+	200: SuccessResponse;
 };
 
 export type DirectCastManuallyMarkUnreadResponse =
@@ -2427,7 +2428,7 @@ export type RemoveDirectCastMessageReactionResponses = {
 	/**
 	 * Reaction removed successfully
 	 */
-	200: CommonSuccessResponse;
+	200: SuccessResponse;
 };
 
 export type RemoveDirectCastMessageReactionResponse =
@@ -2458,7 +2459,7 @@ export type AddDirectCastMessageReactionResponses = {
 	/**
 	 * Reaction added successfully
 	 */
-	200: CommonSuccessResponse;
+	200: SuccessResponse;
 };
 
 export type AddDirectCastMessageReactionResponse =
@@ -2489,7 +2490,7 @@ export type UnpinDirectCastConversationResponses = {
 	/**
 	 * Direct cast conversation unpinned successfully
 	 */
-	200: CommonSuccessResponse;
+	200: SuccessResponse;
 };
 
 export type UnpinDirectCastConversationResponse =
@@ -2520,7 +2521,7 @@ export type PinDirectCastConversationResponses = {
 	/**
 	 * Direct cast conversation pinned successfully
 	 */
-	200: CommonSuccessResponse;
+	200: SuccessResponse;
 };
 
 export type PinDirectCastConversationResponse =
@@ -2853,27 +2854,12 @@ export type GetStarterPackResponse =
 	GetStarterPackResponses[keyof GetStarterPackResponses];
 
 export type UpdateStarterPackData = {
-	body: {
+	body: StarterPackUpdateRequest;
+	headers?: {
 		/**
-		 * Unique identifier for the starter pack to update
+		 * Idempotency key to safely retry the request without performing the operation multiple times.
 		 */
-		id: string;
-		/**
-		 * Display name of the starter pack
-		 */
-		name: string;
-		/**
-		 * Description of the starter pack
-		 */
-		description: string;
-		/**
-		 * List of FIDs included in the starter pack
-		 */
-		fids: Array<number>;
-		/**
-		 * Labels/tags for the starter pack
-		 */
-		labels: Array<string>;
+		"idempotency-key"?: string;
 	};
 	path?: never;
 	query?: never;
@@ -2900,9 +2886,9 @@ export type UpdateStarterPackError =
 
 export type UpdateStarterPackResponses = {
 	/**
-	 * Updated starter pack object
+	 * Update status
 	 */
-	200: StarterPackResponse;
+	200: SuccessResponse;
 };
 
 export type UpdateStarterPackResponse =
@@ -4708,12 +4694,7 @@ export type GetBlockedUsersResponses = {
 				 */
 				createdAt: number;
 			}>;
-			next?: {
-				/**
-				 * Pagination cursor for fetching the next set of blocked users
-				 */
-				cursor?: string;
-			};
+			next?: PaginationCursor;
 		};
 	};
 };
@@ -4746,14 +4727,7 @@ export type BlockUserResponses = {
 	/**
 	 * Successful block operation
 	 */
-	200: {
-		result: {
-			/**
-			 * Indicates whether the block operation was successful
-			 */
-			success: boolean;
-		};
-	};
+	200: SuccessResponse;
 };
 
 export type BlockUserResponse = BlockUserResponses[keyof BlockUserResponses];
@@ -4794,9 +4768,7 @@ export type GetAccountVerificationsResponses = {
 				verifiedAt?: number;
 			}>;
 		};
-		next?: {
-			cursor?: string;
-		};
+		next?: PaginationCursor;
 	};
 };
 

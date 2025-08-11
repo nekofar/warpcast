@@ -34,10 +34,7 @@ get:
                         verifiedAt:
                           type: integer
               next:
-                type: object
-                properties:
-                  cursor:
-                    type: string
+                $ref: '../../components/schemas/common.yaml#/PaginationCursor'
           example:
             result:
               verifications:
