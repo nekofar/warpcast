@@ -8286,7 +8286,10 @@
       "Cast": {
         "type": "object",
         "required": [
-          "hash"
+          "hash",
+          "author",
+          "text",
+          "timestamp"
         ],
         "properties": {
           "hash": {
