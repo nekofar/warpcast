@@ -4914,9 +4914,9 @@ export type GetUserByVerificationAddressErrors = {
 	 */
 	401: ErrorResponse;
 	/**
-	 * No user found for the provided address
+	 * The specified resource was not found
 	 */
-	404: unknown;
+	404: ErrorResponse;
 };
 
 export type GetUserByVerificationAddressError =
