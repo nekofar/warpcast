@@ -793,6 +793,17 @@ export const DirectCastInboxResultSchema = {
 	},
 } as const;
 
+export const PaginationCursorSchema = {
+	type: "object",
+	properties: {
+		cursor: {
+			type: "string",
+			description: "Base64 encoded cursor for pagination",
+		},
+	},
+	additionalProperties: true,
+} as const;
+
 export const DirectCastInboxResponseSchema = {
 	type: "object",
 	required: ["result"],
@@ -801,14 +812,7 @@ export const DirectCastInboxResponseSchema = {
 			$ref: "#/components/schemas/DirectCastInboxResult",
 		},
 		next: {
-			type: "object",
-			required: ["cursor"],
-			properties: {
-				cursor: {
-					type: "string",
-					description: "Base64 encoded cursor for pagination",
-				},
-			},
+			$ref: "#/components/schemas/PaginationCursor",
 		},
 	},
 } as const;
@@ -1159,17 +1163,6 @@ export const UserResponseSchema = {
 	],
 } as const;
 
-export const PaginationCursorSchema = {
-	type: "object",
-	properties: {
-		cursor: {
-			type: "string",
-			description: "Base64 encoded cursor for pagination",
-		},
-	},
-	additionalProperties: true,
-} as const;
-
 export const PaginatedResponseSchema = {
 	type: "object",
 	required: ["result"],
@@ -1338,20 +1331,26 @@ export const ChannelFollowersYouKnowResponseSchema = {
 } as const;
 
 export const SuccessResponseSchema = {
-	type: "object",
-	required: ["result"],
-	properties: {
-		result: {
+	allOf: [
+		{
+			$ref: "#/components/schemas/GenericResponse",
+		},
+		{
 			type: "object",
-			required: ["success"],
 			properties: {
-				success: {
-					type: "boolean",
-					description: "Indicates whether the operation was successful",
+				result: {
+					type: "object",
+					required: ["success"],
+					properties: {
+						success: {
+							type: "boolean",
+							description: "Whether the operation was successful",
+						},
+					},
 				},
 			},
 		},
-	},
+	],
 } as const;
 
 export const NotificationsResponseSchema = {
@@ -1410,29 +1409,6 @@ export const DirectCastConversationCategorizationRequestSchema = {
 			example: "archived",
 		},
 	},
-} as const;
-
-export const common_SuccessResponseSchema = {
-	allOf: [
-		{
-			$ref: "#/components/schemas/GenericResponse",
-		},
-		{
-			type: "object",
-			properties: {
-				result: {
-					type: "object",
-					required: ["success"],
-					properties: {
-						success: {
-							type: "boolean",
-							description: "Whether the operation was successful",
-						},
-					},
-				},
-			},
-		},
-	],
 } as const;
 
 export const DirectCastConversationMessagesResponseSchema = {
@@ -1887,6 +1863,39 @@ export const StarterPackResponseSchema = {
 	},
 } as const;
 
+export const StarterPackUpdateRequestSchema = {
+	type: "object",
+	required: ["id", "name", "description", "fids", "labels"],
+	properties: {
+		id: {
+			type: "string",
+			description: "Unique identifier for the starter pack to update",
+		},
+		name: {
+			type: "string",
+			description: "Display name of the starter pack",
+		},
+		description: {
+			type: "string",
+			description: "Description of the starter pack",
+		},
+		fids: {
+			type: "array",
+			description: "List of FIDs included in the starter pack",
+			items: {
+				type: "integer",
+			},
+		},
+		labels: {
+			type: "array",
+			description: "Labels/tags for the starter pack",
+			items: {
+				type: "string",
+			},
+		},
+	},
+} as const;
+
 export const StarterPackUsersResponseSchema = {
 	type: "object",
 	required: ["result"],
@@ -2149,16 +2158,6 @@ export const RankedMiniAppSchema = {
 	},
 } as const;
 
-export const top_mini_apps_response_PaginationCursorSchema = {
-	type: "object",
-	properties: {
-		cursor: {
-			type: "string",
-			description: "Base64 encoded cursor for pagination",
-		},
-	},
-} as const;
-
 export const TopMiniAppsResponseSchema = {
 	type: "object",
 	properties: {
@@ -2172,7 +2171,7 @@ export const TopMiniAppsResponseSchema = {
 					},
 				},
 				next: {
-					$ref: "#/components/schemas/top-mini-apps-response_PaginationCursor",
+					$ref: "#/components/schemas/PaginationCursor",
 				},
 			},
 		},
@@ -3113,21 +3112,21 @@ export const GenericBadRequestErrorSchema = {
 } as const;
 
 export const DirectCastSendResponseSchema = {
-	$ref: "#/components/schemas/common_SuccessResponse",
+	$ref: "#/components/schemas/SuccessResponse",
 } as const;
 
 export const DirectCastConversationCategorizationResponseSchema = {
-	$ref: "#/components/schemas/common_SuccessResponse",
+	$ref: "#/components/schemas/SuccessResponse",
 } as const;
 
 export const DirectCastConversationNotificationsResponseSchema = {
-	$ref: "#/components/schemas/common_SuccessResponse",
+	$ref: "#/components/schemas/SuccessResponse",
 } as const;
 
 export const DirectCastConversationMessageTtlResponseSchema = {
-	$ref: "#/components/schemas/common_SuccessResponse",
+	$ref: "#/components/schemas/SuccessResponse",
 } as const;
 
 export const DirectCastMessageReactionResponseSchema = {
-	$ref: "#/components/schemas/common_SuccessResponse",
+	$ref: "#/components/schemas/SuccessResponse",
 } as const;

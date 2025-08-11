@@ -241,13 +241,13 @@ export const zDirectCastInboxResult = z.object({
 	conversations: z.array(zDirectCastConversation),
 });
 
+export const zPaginationCursor = z.object({
+	cursor: z.optional(z.string()),
+});
+
 export const zDirectCastInboxResponse = z.object({
 	result: zDirectCastInboxResult,
-	next: z.optional(
-		z.object({
-			cursor: z.string(),
-		}),
-	),
+	next: z.optional(zPaginationCursor),
 });
 
 export const zCastAction = z.object({
@@ -394,10 +394,6 @@ export const zUserResponse = zGenericResponse.and(
 	}),
 );
 
-export const zPaginationCursor = z.object({
-	cursor: z.optional(z.string()),
-});
-
 export const zPaginatedResponse = z.object({
 	result: z.object({}),
 	next: z.optional(zPaginationCursor),
@@ -461,11 +457,15 @@ export const zChannelFollowersYouKnowResponse = z.object({
 	}),
 });
 
-export const zSuccessResponse = z.object({
-	result: z.object({
-		success: z.boolean(),
+export const zSuccessResponse = zGenericResponse.and(
+	z.object({
+		result: z.optional(
+			z.object({
+				success: z.boolean(),
+			}),
+		),
 	}),
-});
+);
 
 export const zNotificationsResponse = z.object({
 	result: z.object({
@@ -487,16 +487,6 @@ export const zDirectCastConversationCategorizationRequest = z.object({
 	conversationId: z.string(),
 	category: z.string(),
 });
-
-export const zCommonSuccessResponse = zGenericResponse.and(
-	z.object({
-		result: z.optional(
-			z.object({
-				success: z.boolean(),
-			}),
-		),
-	}),
-);
 
 export const zDirectCastConversationMessagesResponse = zPaginatedResponse.and(
 	z.object({
@@ -652,6 +642,14 @@ export const zStarterPackResponse = z.object({
 	}),
 });
 
+export const zStarterPackUpdateRequest = z.object({
+	id: z.string(),
+	name: z.string(),
+	description: z.string(),
+	fids: z.array(z.int()),
+	labels: z.array(z.string()),
+});
+
 export const zStarterPackUsersResponse = z.object({
 	result: z.object({
 		users: z.array(zUser),
@@ -734,15 +732,11 @@ export const zRankedMiniApp = z.object({
 	rank72hChange: z.optional(z.int()),
 });
 
-export const zTopMiniAppsResponsePaginationCursor = z.object({
-	cursor: z.optional(z.string()),
-});
-
 export const zTopMiniAppsResponse = z.object({
 	result: z.optional(
 		z.object({
 			miniApps: z.optional(z.array(zRankedMiniApp)),
-			next: z.optional(zTopMiniAppsResponsePaginationCursor),
+			next: z.optional(zPaginationCursor),
 		}),
 	),
 });
@@ -1117,17 +1111,15 @@ export const zGenericBadRequestError = z.object({
 	),
 });
 
-export const zDirectCastSendResponse = zCommonSuccessResponse;
+export const zDirectCastSendResponse = zSuccessResponse;
 
-export const zDirectCastConversationCategorizationResponse =
-	zCommonSuccessResponse;
+export const zDirectCastConversationCategorizationResponse = zSuccessResponse;
 
-export const zDirectCastConversationNotificationsResponse =
-	zCommonSuccessResponse;
+export const zDirectCastConversationNotificationsResponse = zSuccessResponse;
 
-export const zDirectCastConversationMessageTtlResponse = zCommonSuccessResponse;
+export const zDirectCastConversationMessageTtlResponse = zSuccessResponse;
 
-export const zDirectCastMessageReactionResponse = zCommonSuccessResponse;
+export const zDirectCastMessageReactionResponse = zSuccessResponse;
 
 /**
  * The user's FID (Farcaster ID)
@@ -1421,7 +1413,7 @@ export const zCategorizeDirectCastConversationData = z.object({
 /**
  * Conversation categorized successfully
  */
-export const zCategorizeDirectCastConversationResponse = zCommonSuccessResponse;
+export const zCategorizeDirectCastConversationResponse = zSuccessResponse;
 
 export const zGetDirectCastConversationMessagesData = z.object({
 	body: z.optional(z.never()),
@@ -1447,8 +1439,7 @@ export const zSetDirectCastConversationMessageTtlData = z.object({
 /**
  * Message TTL set successfully
  */
-export const zSetDirectCastConversationMessageTtlResponse =
-	zCommonSuccessResponse;
+export const zSetDirectCastConversationMessageTtlResponse = zSuccessResponse;
 
 export const zUpdateDirectCastConversationNotificationsData = z.object({
 	body: zDirectCastConversationNotificationsRequest,
@@ -1460,7 +1451,7 @@ export const zUpdateDirectCastConversationNotificationsData = z.object({
  * Notification settings updated successfully
  */
 export const zUpdateDirectCastConversationNotificationsResponse =
-	zCommonSuccessResponse;
+	zSuccessResponse;
 
 export const zGetDirectCastConversationRecentMessagesData = z.object({
 	body: z.optional(z.never()),
@@ -1485,7 +1476,7 @@ export const zSendDirectCastMessageData = z.object({
 /**
  * Direct cast message sent successfully
  */
-export const zSendDirectCastMessageResponse = zCommonSuccessResponse;
+export const zSendDirectCastMessageResponse = zSuccessResponse;
 
 export const zDirectCastManuallyMarkUnreadData = z.object({
 	body: zDirectCastManuallyMarkUnreadRequest,
@@ -1496,7 +1487,7 @@ export const zDirectCastManuallyMarkUnreadData = z.object({
 /**
  * Direct cast conversation marked as unread successfully
  */
-export const zDirectCastManuallyMarkUnreadResponse = zCommonSuccessResponse;
+export const zDirectCastManuallyMarkUnreadResponse = zSuccessResponse;
 
 export const zRemoveDirectCastMessageReactionData = z.object({
 	body: zDirectCastMessageReactionRequest,
@@ -1507,7 +1498,7 @@ export const zRemoveDirectCastMessageReactionData = z.object({
 /**
  * Reaction removed successfully
  */
-export const zRemoveDirectCastMessageReactionResponse = zCommonSuccessResponse;
+export const zRemoveDirectCastMessageReactionResponse = zSuccessResponse;
 
 export const zAddDirectCastMessageReactionData = z.object({
 	body: zDirectCastMessageReactionRequest,
@@ -1518,7 +1509,7 @@ export const zAddDirectCastMessageReactionData = z.object({
 /**
  * Reaction added successfully
  */
-export const zAddDirectCastMessageReactionResponse = zCommonSuccessResponse;
+export const zAddDirectCastMessageReactionResponse = zSuccessResponse;
 
 export const zUnpinDirectCastConversationData = z.object({
 	body: zDirectCastPinConversationRequest,
@@ -1529,7 +1520,7 @@ export const zUnpinDirectCastConversationData = z.object({
 /**
  * Direct cast conversation unpinned successfully
  */
-export const zUnpinDirectCastConversationResponse = zCommonSuccessResponse;
+export const zUnpinDirectCastConversationResponse = zSuccessResponse;
 
 export const zPinDirectCastConversationData = z.object({
 	body: zDirectCastPinConversationRequest,
@@ -1540,7 +1531,7 @@ export const zPinDirectCastConversationData = z.object({
 /**
  * Direct cast conversation pinned successfully
  */
-export const zPinDirectCastConversationResponse = zCommonSuccessResponse;
+export const zPinDirectCastConversationResponse = zSuccessResponse;
 
 export const zDiscoverChannelsData = z.object({
 	body: z.optional(z.never()),
@@ -1679,21 +1670,20 @@ export const zGetStarterPackData = z.object({
 export const zGetStarterPackResponse = zStarterPackResponse;
 
 export const zUpdateStarterPackData = z.object({
-	body: z.object({
-		id: z.string(),
-		name: z.string(),
-		description: z.string(),
-		fids: z.array(z.int()),
-		labels: z.array(z.string()),
-	}),
+	body: zStarterPackUpdateRequest,
 	path: z.optional(z.never()),
 	query: z.optional(z.never()),
+	headers: z.optional(
+		z.object({
+			"idempotency-key": z.optional(z.string()),
+		}),
+	),
 });
 
 /**
- * Updated starter pack object
+ * Update status
  */
-export const zUpdateStarterPackResponse = zStarterPackResponse;
+export const zUpdateStarterPackResponse = zSuccessResponse;
 
 export const zGetStarterPackUsersData = z.object({
 	body: z.optional(z.never()),
@@ -2576,11 +2566,7 @@ export const zGetBlockedUsersResponse = z.object({
 				createdAt: z.int(),
 			}),
 		),
-		next: z.optional(
-			z.object({
-				cursor: z.optional(z.string()),
-			}),
-		),
+		next: z.optional(zPaginationCursor),
 	}),
 });
 
@@ -2595,11 +2581,7 @@ export const zBlockUserData = z.object({
 /**
  * Successful block operation
  */
-export const zBlockUserResponse = z.object({
-	result: z.object({
-		success: z.boolean(),
-	}),
-});
+export const zBlockUserResponse = zSuccessResponse;
 
 export const zGetAccountVerificationsData = z.object({
 	body: z.optional(z.never()),
@@ -2628,11 +2610,7 @@ export const zGetAccountVerificationsResponse = z.object({
 			),
 		}),
 	),
-	next: z.optional(
-		z.object({
-			cursor: z.optional(z.string()),
-		}),
-	),
+	next: z.optional(zPaginationCursor),
 });
 
 export const zGetCreatorRewardWinnersData = z.object({
