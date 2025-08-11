@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.46] - 2025-08-11
+
+### 🚀 Features
+
+- *(openapi)* Add `StarterPack` schema with detailed properties
+- *(openapi)* Add required properties to `StarterPack`
+- *(openapi)* Enhance `StarterPack` schema properties
+
+### 🚜 Refactor
+
+- *(openapi)* Update reference for `StarterPackResponse`
+
 ## [2.0.0-alpha.45] - 2025-08-11
 
 ### 🚀 Features
