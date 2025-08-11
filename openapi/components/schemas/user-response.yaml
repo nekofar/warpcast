@@ -1,8 +1,10 @@
 UserResponse:
   type: object
+  required: [result]
   properties:
     result:
       type: object
+      required: [user]
       properties:
         user:
           $ref: './user.yaml#/User'
