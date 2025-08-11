@@ -572,7 +572,7 @@ export type Cast = {
 	/**
 	 * Unique hash identifier for the cast
 	 */
-	hash?: string;
+	hash: string;
 	/**
 	 * Hash identifier for the thread this cast belongs to
 	 */
