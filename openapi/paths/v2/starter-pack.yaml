@@ -30,6 +30,13 @@ patch:
   description: Updates the specified starter pack.
   security:
     - bearerAuth: [ ]
+  parameters:
+    - name: idempotency-key
+      in: header
+      required: false
+      description: Idempotency key to safely retry the request without performing the operation multiple times.
+      schema:
+        type: string
   requestBody:
     required: true
     content:
@@ -64,11 +71,19 @@ patch:
                 type: string
   responses:
     '200':
-      description: Updated starter pack object
+      description: Update status
       content:
         application/json:
           schema:
-            $ref: '../../components/schemas/index.yaml#/StarterPackResponse'
+            type: object
+            required: [result]
+            properties:
+              result:
+                type: object
+                required: [success]
+                properties:
+                  success:
+                    type: boolean
     '400':
       $ref: '../../components/responses/index.yaml#/BadRequest'
     '401':
