@@ -39,11 +39,7 @@ get:
                           type: integer
                           description: Unix timestamp of when the user was blocked
                   next:
-                    type: object
-                    properties:
-                      cursor:
-                        type: string
-                        description: Pagination cursor for fetching the next set of blocked users
+                    $ref: '../../components/schemas/common.yaml#/PaginationCursor'
           example:
             result:
               blockedUsers:

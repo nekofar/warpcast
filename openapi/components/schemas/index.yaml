@@ -124,13 +124,7 @@ DirectCastInboxResponse:
     result:
       $ref: '#/DirectCastInboxResult'
     next:
-      type: object
-      required:
-        - cursor
-      properties:
-        cursor:
-          type: string
-          description: Base64 encoded cursor for pagination
+      $ref: './common.yaml#/PaginationCursor'
 
 DirectCastInboxResult:
   type: object
