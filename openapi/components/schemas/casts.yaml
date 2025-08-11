@@ -48,10 +48,6 @@ Cast:
           type: array
           items:
             $ref: './embeds.yaml#/VideoEmbed'
-        #        casts:
-        #          type: array
-        #          items:
-        #            $ref: '#/Cast'
         unknowns:
           type: array
           items:

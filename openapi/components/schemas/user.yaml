@@ -2,6 +2,7 @@
 
 User:
   type: object
+  required: [ fid, displayName, username ]
   properties:
     fid:
       type: integer

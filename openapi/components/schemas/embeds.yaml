@@ -28,12 +28,14 @@ ImageEmbed:
 
 UrlEmbed:
   type: object
+  required: [ type, openGraph ]
   properties:
     type:
       type: string
       enum: [url]
     openGraph:
       type: object
+      required: [ url ]
       properties:
         url:
           type: string
