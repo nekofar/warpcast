@@ -1203,7 +1203,17 @@ export const RecasterSchema = {
 
 export const CastSchema = {
 	type: "object",
-	required: ["id", "timestamp", "cast", "collectible", "viewerContext"],
+	required: [
+		"hash",
+		"author",
+		"text",
+		"timestamp",
+		"replies",
+		"reactions",
+		"recasts",
+		"watches",
+		"processedCastText",
+	],
 	properties: {
 		hash: {
 			type: "string",
