@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.57] - 2025-08-15
+
+### 🐛 Bug Fixes
+
+- Solve some minor issues and update dependencies
+
 ## [2.0.0-alpha.56] - 2025-08-11
 
 ### 🚀 Features
@@ -140,7 +146,6 @@ All notable changes to this project will be documented in this file.
 
 ### ⚙️ Miscellaneous Tasks
 
-- *(deps)* Bump actions/cache from 4.2.3 to 4.2.4 (#207)
 - *(scripts)* Update `prebuild` and `clean` scripts
 - *(scripts)* Simplify `prebuild` and `clean` scripts
 
@@ -160,8 +165,6 @@ All notable changes to this project will be documented in this file.
 ### ⚙️ Miscellaneous Tasks
 
 - *(asyncapi)* Update formatting for consistency
-- *(deps)* Bump orhun/git-cliff-action from 4.4.2 to 4.5.0
-- *(deps)* Bump orhun/git-cliff-action from 4.4.2 to 4.5.1 (#206)
 
 ## [2.0.0-alpha.42] - 2025-07-28
 
@@ -408,10 +411,6 @@ All notable changes to this project will be documented in this file.
 
 - *(client)* Update naming for `Miniapp` to `MiniApp`
 - *(client)* Remove redundant `@param options` comments
-
-### ⚙️ Miscellaneous Tasks
-
-- *(deps)* Bump actions/setup-node from 4.3.0 to 4.4.0 (#173)
 
 ## [2.0.0-alpha.21] - 2025-04-15
 
@@ -780,13 +779,6 @@ All notable changes to this project will be documented in this file.
 - *(openapi)* Move `openapi.yaml` to `openapi` folder
 - *(scripts)* Update build script to use `openapi-ts`
 
-## [1.0.0-alpha.6] - 2025-03-24
-
-### ⚙️ Miscellaneous Tasks
-
-- *(deps)* Bump actions/setup-node from 4.2.0 to 4.3.0 (#143)
-- *(deps)* Bump actions/cache from 4.2.2 to 4.2.3 (#149)
-
 ## [1.0.0-alpha.5] - 2025-03-15
 
 ### 🚀 Features
@@ -828,10 +820,6 @@ All notable changes to this project will be documented in this file.
 
 - *(gitignore)* Add `.env.*` to ignored files
 - *(vitest)* Add Vitest configuration setup
-- *(deps)* Bump actions/setup-node from 4.1.0 to 4.2.0 (#62)
-- *(deps)* Bump pnpm/action-setup from 4.0.0 to 4.1.0 (#81)
-- *(deps)* Bump actions/cache from 4.2.0 to 4.2.1 (#104)
-- *(deps)* Bump actions/cache from 4.2.1 to 4.2.2 (#117)
 
 ## [1.0.0-alpha.4] - 2025-01-15
 
@@ -872,10 +860,6 @@ All notable changes to this project will be documented in this file.
 ### 🎨 Styling
 
 - *(utils)* Format `ApiError` class for consistency
-
-### ⚙️ Miscellaneous Tasks
-
-- *(deps)* Bump orhun/git-cliff-action from 4.4.1 to 4.4.2 (#1)
 
 ## [1.0.0-alpha.1] - 2024-12-14
 
