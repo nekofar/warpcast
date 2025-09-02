@@ -126,7 +126,7 @@ export const zValidationError = z.object({
 	instancePath: z.string(),
 	schemaPath: z.string(),
 	keyword: z.string(),
-	params: z.optional(z.object({})),
+	params: z.optional(z.record(z.string(), z.unknown())),
 	message: z.string(),
 });
 
@@ -151,9 +151,9 @@ export const zDirectCastMessageViewerContext = z.object({
 });
 
 export const zDirectCastMessageMetadata = z.object({
-	casts: z.optional(z.array(z.object({}))),
-	urls: z.optional(z.array(z.object({}))),
-	medias: z.optional(z.array(z.object({}))),
+	casts: z.optional(z.array(z.record(z.string(), z.unknown()))),
+	urls: z.optional(z.array(z.record(z.string(), z.unknown()))),
+	medias: z.optional(z.array(z.record(z.string(), z.unknown()))),
 });
 
 export const zDirectCastMessageMention = z.object({
@@ -294,7 +294,7 @@ export const zUserAppContextResponse = z.object({
 					enabledVideoAutoplay: z.optional(z.boolean()),
 					regularCastByteLimit: z.optional(z.int()),
 					longCastByteLimit: z.optional(z.int()),
-					newUserStatus: z.optional(z.object({})),
+					newUserStatus: z.optional(z.record(z.string(), z.unknown())),
 					country: z.optional(z.string()),
 					higherClientEventSamplingRateEnabled: z.optional(z.boolean()),
 				}),
@@ -306,7 +306,7 @@ export const zUserAppContextResponse = z.object({
 export const zUserPreferencesResponse = z.object({
 	result: z.optional(
 		z.object({
-			preferences: z.optional(z.object({})),
+			preferences: z.optional(z.record(z.string(), z.unknown())),
 		}),
 	),
 });
@@ -341,7 +341,7 @@ export const zChannel = z.object({
 			target: z.optional(z.string()),
 		}),
 	),
-	headerActionMetadata: z.optional(z.object({})),
+	headerActionMetadata: z.optional(z.record(z.string(), z.unknown())),
 	viewerContext: z.optional(
 		z.object({
 			following: z.optional(z.boolean()),
@@ -426,9 +426,9 @@ export const zCast = z.object({
 			images: z.optional(z.array(zImageEmbed)),
 			urls: z.optional(z.array(zUrlEmbed)),
 			videos: z.optional(z.array(zVideoEmbed)),
-			unknowns: z.optional(z.array(z.object({}))),
+			unknowns: z.optional(z.array(z.record(z.string(), z.unknown()))),
 			processedCastText: z.optional(z.string()),
-			groupInvites: z.optional(z.array(z.object({}))),
+			groupInvites: z.optional(z.array(z.record(z.string(), z.unknown()))),
 		}),
 	),
 	replies: z.object({
@@ -498,21 +498,21 @@ export const zFeedItemsResponse = z.object({
 });
 
 export const zGenericResponse = z.object({
-	result: z.object({}),
+	result: z.record(z.string(), z.unknown()),
 });
 
 export const zUserResponse = zGenericResponse.and(
 	z.object({
 		result: z.object({
 			user: z.optional(zUserWithExtras),
-			collectionsOwned: z.optional(z.array(z.object({}))),
+			collectionsOwned: z.optional(z.array(z.record(z.string(), z.unknown()))),
 			extras: z.optional(zUserExtras),
 		}),
 	}),
 );
 
 export const zPaginatedResponse = z.object({
-	result: z.object({}),
+	result: z.record(z.string(), z.unknown()),
 	next: z.optional(zPaginationCursor),
 });
 
@@ -520,7 +520,7 @@ export const zSuggestedUsersResponse = zPaginatedResponse.and(
 	z.object({
 		result: z.optional(
 			z.object({
-				users: z.optional(z.array(z.object({}))),
+				users: z.optional(z.array(z.record(z.string(), z.unknown()))),
 			}),
 		),
 	}),
@@ -528,12 +528,12 @@ export const zSuggestedUsersResponse = zPaginatedResponse.and(
 
 export const zFavoriteFramesResponse = z.object({
 	result: z.object({
-		frames: z.array(z.object({})),
+		frames: z.array(z.record(z.string(), z.unknown())),
 	}),
 });
 
 export const zChannelStreaksResponse = z.object({
-	result: z.object({}),
+	result: z.record(z.string(), z.unknown()),
 });
 
 export const zUnseenCountsResponse = z.object({
@@ -563,13 +563,13 @@ export const zUnseenCountsResponse = z.object({
 
 export const zUserThreadCastsResponse = z.object({
 	result: z.object({
-		casts: z.array(z.object({})),
+		casts: z.array(z.record(z.string(), z.unknown())),
 	}),
 });
 
 export const zChannelFollowersYouKnowResponse = z.object({
 	result: z.object({
-		users: z.array(z.object({})),
+		users: z.array(z.record(z.string(), z.unknown())),
 		totalCount: z.int(),
 	}),
 });
@@ -586,7 +586,7 @@ export const zSuccessResponse = zGenericResponse.and(
 
 export const zNotificationsResponse = z.object({
 	result: z.object({
-		notifications: z.optional(z.array(z.object({}))),
+		notifications: z.optional(z.array(z.record(z.string(), z.unknown()))),
 	}),
 });
 
@@ -652,7 +652,7 @@ export const zDiscoverChannelsResponse = zGenericResponse.and(
 	z.object({
 		result: z.optional(
 			z.object({
-				channels: z.optional(z.array(z.object({}))),
+				channels: z.optional(z.array(z.record(z.string(), z.unknown()))),
 			}),
 		),
 	}),
@@ -673,7 +673,7 @@ export const zSponsoredInvitesResponse = zGenericResponse.and(
 	z.object({
 		result: z.optional(
 			z.object({
-				invites: z.optional(z.array(z.object({}))),
+				invites: z.optional(z.array(z.record(z.string(), z.unknown()))),
 			}),
 		),
 	}),
@@ -685,7 +685,7 @@ export const zRewardsLeaderboardResponse = z.object({
 			type: z.string(),
 			users: z.array(
 				z.object({
-					user: z.optional(z.object({})),
+					user: z.optional(z.record(z.string(), z.unknown())),
 					score: z.optional(z.int()),
 					rank: z.optional(z.int()),
 				}),
@@ -699,7 +699,7 @@ export const zRewardsScoresResponse = z.object({
 		scores: z.array(
 			z.object({
 				type: z.optional(z.string()),
-				user: z.optional(z.object({})),
+				user: z.optional(z.record(z.string(), z.unknown())),
 				allTimeScore: z.optional(z.int()),
 				currentPeriodScore: z.optional(z.int()),
 				previousPeriodScore: z.optional(z.int()),
@@ -716,7 +716,7 @@ export const zRewardsMetadataResponse = z.object({
 				lastUpdateTimestamp: z.optional(z.int()),
 				currentPeriodStartTimestamp: z.optional(z.int()),
 				currentPeriodEndTimestamp: z.optional(z.int()),
-				tiers: z.optional(z.array(z.object({}))),
+				tiers: z.optional(z.array(z.record(z.string(), z.unknown()))),
 				proportionalPayout: z.optional(
 					z.object({
 						numWinners: z.optional(z.int()),
@@ -728,7 +728,7 @@ export const zRewardsMetadataResponse = z.object({
 	}),
 });
 
-export const zBookmarkedCast = z.object({});
+export const zBookmarkedCast = z.record(z.string(), z.unknown());
 
 export const zBookmarkedCastsResponse = z.object({
 	result: z.object({
@@ -743,7 +743,7 @@ export const zStarterPack = z.object({
 	description: z.optional(z.string()),
 	openGraphImageUrl: z.optional(z.url()),
 	itemCount: z.optional(z.int()),
-	items: z.optional(z.array(z.object({}))),
+	items: z.optional(z.array(z.record(z.string(), z.unknown()))),
 	labels: z.optional(z.array(z.string())),
 });
 
@@ -798,7 +798,7 @@ export const zUsersWithCountResponse = z.object({
 	}),
 });
 
-export const zFrameApp = z.object({});
+export const zFrameApp = z.record(z.string(), z.unknown());
 
 export const zFrameAppsResponse = z.object({
 	result: z.optional(
@@ -811,7 +811,7 @@ export const zFrameAppsResponse = z.object({
 /**
  * Context information for the viewer
  */
-export const zMiniAppViewerContext = z.object({});
+export const zMiniAppViewerContext = z.record(z.string(), z.unknown());
 
 export const zMiniApp = z.object({
 	domain: z.optional(z.string()),
@@ -894,7 +894,7 @@ export const zCastHashResponse = z.object({
 });
 
 export const zAttachEmbedsResponse = z.object({
-	result: z.object({}),
+	result: z.record(z.string(), z.unknown()),
 });
 
 export const zCastRecastersResponse = z.object({
@@ -1070,7 +1070,7 @@ export const zFrame = z.object({
 	buttonTitle: z.optional(z.union([z.string(), z.null()])),
 	imageUrl: z.optional(z.union([z.string(), z.null()])),
 	supportsNotifications: z.optional(z.boolean()),
-	viewerContext: z.optional(z.object({})),
+	viewerContext: z.optional(z.record(z.string(), z.unknown())),
 	author: z.optional(zUser),
 });
 
@@ -1359,7 +1359,7 @@ export const zGetChannelFollowersYouKnowResponse =
 	zChannelFollowersYouKnowResponse;
 
 export const zMarkAllNotificationsReadData = z.object({
-	body: z.object({}),
+	body: z.record(z.string(), z.never()),
 	path: z.optional(z.never()),
 	query: z.optional(z.never()),
 });
@@ -1384,7 +1384,7 @@ export const zGetNotificationsData = z.object({
 export const zGetNotificationsResponse = zNotificationsResponse;
 
 export const zSetLastCheckedTimestampData = z.object({
-	body: z.object({}),
+	body: z.record(z.string(), z.unknown()),
 	path: z.optional(z.never()),
 	query: z.optional(z.never()),
 });
