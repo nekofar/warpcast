@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.58] - 2025-09-02
+
+### 🚜 Refactor
+
+- *(client)* Remove unused client implementation
+- *(client)* Update `z.object` definitions to `z.record`
+
 ## [2.0.0-alpha.57] - 2025-08-15
 
 ### 🐛 Bug Fixes
