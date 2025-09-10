@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.59] - 2025-09-10
+
+### 💼 Other
+
+- *(pnpm)* Remove `onlyBuiltDependencies` from `pnpm-workspace.yaml`
+
 ## [2.0.0-alpha.58] - 2025-09-02
 
 ### 🚜 Refactor
