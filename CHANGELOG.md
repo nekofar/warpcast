@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.60] - 2025-09-15
+
+### 🚜 Refactor
+
+- *(client)* Export all from generated client module
+
+### ⚙️ Miscellaneous Tasks
+
+- *(workflows)* Simplify Node.js setup and pnpm caching
+
 ## [2.0.0-alpha.59] - 2025-09-10
 
 ### 💼 Other
