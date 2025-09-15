@@ -64,7 +64,7 @@
     "@hey-api/openapi-ts": "^0.83.1",
     "rimraf": "^6.0.1",
     "tsup": "^8.5.0",
-    "typedoc": "^0.28.12",
+    "typedoc": "^0.28.13",
     "typedoc-plugin-markdown": "^4.8.1",
     "typescript": "^5.9.2",
     "vitest": "^3.2.4"
