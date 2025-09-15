@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.61] - 2025-09-15
+
+### 🚜 Refactor
+
+- *(client)* Simplify interceptors and header handling
+
 ## [2.0.0-alpha.60] - 2025-09-15
 
 ### 🚜 Refactor
