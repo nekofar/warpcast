@@ -9,6 +9,6 @@ export default defineConfig({
     return { js: format === 'esm' ? '.mjs' : '.cjs' }
   },
   bundle: true,
-  external: [],
+  external: ['zod'], // keep zod as a peer dependency, do not bundle
   noExternal: [],
 })
