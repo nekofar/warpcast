@@ -18,9 +18,6 @@ import type {
 
 const directCastMessageSchemaResponseTransformer = (data: any) => {
 	data.serverTimestamp = BigInt(data.serverTimestamp.toString());
-	if (data.inReplyTo) {
-		data.inReplyTo = directCastMessageSchemaResponseTransformer(data.inReplyTo);
-	}
 	return data;
 };
 
