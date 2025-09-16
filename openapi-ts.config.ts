@@ -16,12 +16,10 @@ export default defineConfig({
     ...defaultPlugins,
     {
       name: '@hey-api/schemas',
-      exportFromIndex: true,
     },
     {
       name: '@hey-api/transformers',
       dates: true,
-      exportFromIndex: true,
     },
     {
       name: '@hey-api/typescript',
@@ -33,8 +31,7 @@ export default defineConfig({
       validator: 'zod',
     },
     {
-      name:'zod',
-      exportFromIndex: true,
-    }
+      name: 'zod',
+    },
   ],
 })
