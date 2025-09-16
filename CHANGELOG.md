@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.62] - 2025-09-16
+
+### 🚜 Refactor
+
+- *(config)* Remove unused `exportFromIndex` options
+- *(config)* Set `indexFile` to false in `openapi-ts`
+- *(client)* Remove generated `index.ts` file
+- *(client)* Update exports for generated client modules
+- *(config)* Enable `clean` in `openapi-ts` config
+- *(config)* Enable `metadata` in `openapi-ts` plugin
+- *(client)* Add metadata registration for zod schemas
+- *(config)* Disable `responses` in `zod` plugin
+- *(client)* Remove redundant response exports from `zod`
+- *(config)* Enable `requests` and `definitions` in `zod`
+
 ## [2.0.0-alpha.61] - 2025-09-15
 
 ### 🚜 Refactor
