@@ -1,3 +1,7 @@
-export * from './client'
 export * from './client/client.gen'
+export * from './client/schemas.gen'
+export * from './client/sdk.gen'
+export * from './client/transformers.gen'
+export * from './client/types.gen'
+export * from './client/zod.gen'
 export { version } from '../package.json'
