@@ -6,7 +6,8 @@ export default defineConfig({
     format: 'biome',
     lint: 'biome',
     path: './src/client',
-    indexFile: false
+    indexFile: false,
+    clean: true,
   },
   parser: {
     transforms: {
