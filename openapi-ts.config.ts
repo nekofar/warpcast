@@ -34,6 +34,7 @@ export default defineConfig({
     },
     {
       name: 'zod',
+      metadata: true,
     },
   ],
 })
