@@ -1614,11 +1614,6 @@ export const zGetUserOnboardingStateData = z.object({
 	query: z.optional(z.never()),
 });
 
-/**
- * Successful retrieval of onboarding state
- */
-export const zGetUserOnboardingStateResponse = zOnboardingStateResponse;
-
 export const zGetUserByFidData = z.object({
 	body: z.optional(z.never()),
 	path: z.optional(z.never()),
@@ -1628,11 +1623,6 @@ export const zGetUserByFidData = z.object({
 		}),
 	}),
 });
-
-/**
- * Successful retrieval of user by fid
- */
-export const zGetUserByFidResponse = zUserByFidResponse;
 
 export const zGetDirectCastInboxData = z.object({
 	body: z.optional(z.never()),
@@ -1665,21 +1655,11 @@ export const zGetDirectCastInboxData = z.object({
 	),
 });
 
-/**
- * Successful retrieval of direct cast inbox
- */
-export const zGetDirectCastInboxResponse = zDirectCastInboxResponse;
-
 export const zGetUserAppContextData = z.object({
 	body: z.optional(z.never()),
 	path: z.optional(z.never()),
 	query: z.optional(z.never()),
 });
-
-/**
- * Successful retrieval of user app context
- */
-export const zGetUserAppContextResponse = zUserAppContextResponse;
 
 export const zGetUserPreferencesData = z.object({
 	body: z.optional(z.never()),
@@ -1687,21 +1667,11 @@ export const zGetUserPreferencesData = z.object({
 	query: z.optional(z.never()),
 });
 
-/**
- * Successful retrieval of user preferences
- */
-export const zGetUserPreferencesResponse = zUserPreferencesResponse;
-
 export const zGetHighlightedChannelsData = z.object({
 	body: z.optional(z.never()),
 	path: z.optional(z.never()),
 	query: z.optional(z.never()),
 });
-
-/**
- * Successful retrieval of highlighted channels
- */
-export const zGetHighlightedChannelsResponse = zHighlightedChannelsResponse;
 
 export const zGetFeedItemsData = z.object({
 	body: z.object({
@@ -1761,11 +1731,6 @@ export const zGetFeedItemsData = z.object({
 	query: z.optional(z.never()),
 });
 
-/**
- * Successful retrieval of feed items
- */
-export const zGetFeedItemsResponse = zFeedItemsResponse;
-
 export const zGetUserData = z.object({
 	body: z.optional(z.never()),
 	path: z.optional(z.never()),
@@ -1775,11 +1740,6 @@ export const zGetUserData = z.object({
 		}),
 	}),
 });
-
-/**
- * Successful retrieval of user information
- */
-export const zGetUserResponse = zUserResponse;
 
 export const zGetUserFollowingChannelsData = z.object({
 	body: z.optional(z.never()),
@@ -1803,11 +1763,6 @@ export const zGetUserFollowingChannelsData = z.object({
 	),
 });
 
-/**
- * Successful retrieval of followed channels
- */
-export const zGetUserFollowingChannelsResponse = zHighlightedChannelsResponse;
-
 export const zGetSuggestedUsersData = z.object({
 	body: z.optional(z.never()),
 	path: z.optional(z.never()),
@@ -1825,11 +1780,6 @@ export const zGetSuggestedUsersData = z.object({
 	),
 });
 
-/**
- * Successful retrieval of suggested users
- */
-export const zGetSuggestedUsersResponse = zSuggestedUsersResponse;
-
 export const zGetUserFavoriteFramesData = z.object({
 	body: z.optional(z.never()),
 	path: z.optional(z.never()),
@@ -1846,11 +1796,6 @@ export const zGetUserFavoriteFramesData = z.object({
 	),
 });
 
-/**
- * Successful retrieval of favorite frames
- */
-export const zGetUserFavoriteFramesResponse = zFavoriteFramesResponse;
-
 export const zGetUserByUsernameData = z.object({
 	body: z.optional(z.never()),
 	path: z.optional(z.never()),
@@ -1861,11 +1806,6 @@ export const zGetUserByUsernameData = z.object({
 	}),
 });
 
-/**
- * Successful retrieval of user by username
- */
-export const zGetUserByUsernameResponse = zUserByFidResponse;
-
 export const zGetChannelStreaksForUserData = z.object({
 	body: z.optional(z.never()),
 	path: z.optional(z.never()),
@@ -1874,21 +1814,11 @@ export const zGetChannelStreaksForUserData = z.object({
 	}),
 });
 
-/**
- * Successful retrieval of channel streaks
- */
-export const zGetChannelStreaksForUserResponse = zChannelStreaksResponse;
-
 export const zGetUnseenCountsData = z.object({
 	body: z.optional(z.never()),
 	path: z.optional(z.never()),
 	query: z.optional(z.never()),
 });
-
-/**
- * Successful retrieval of unseen feed and notification data
- */
-export const zGetUnseenCountsResponse = zUnseenCountsResponse;
 
 export const zGetUserThreadCastsData = z.object({
 	body: z.optional(z.never()),
@@ -1910,11 +1840,6 @@ export const zGetUserThreadCastsData = z.object({
 	}),
 });
 
-/**
- * Successful retrieval of user thread casts
- */
-export const zGetUserThreadCastsResponse = zUserThreadCastsResponse;
-
 export const zGetChannelFollowersYouKnowData = z.object({
 	body: z.optional(z.never()),
 	path: z.optional(z.never()),
@@ -1924,22 +1849,11 @@ export const zGetChannelFollowersYouKnowData = z.object({
 	}),
 });
 
-/**
- * Successful retrieval of known channel followers
- */
-export const zGetChannelFollowersYouKnowResponse =
-	zChannelFollowersYouKnowResponse;
-
 export const zMarkAllNotificationsReadData = z.object({
 	body: z.record(z.string(), z.never()),
 	path: z.optional(z.never()),
 	query: z.optional(z.never()),
 });
-
-/**
- * Successful mark-all-read operation
- */
-export const zMarkAllNotificationsReadResponse = zSuccessResponse;
 
 export const zGetNotificationsData = z.object({
 	body: z.optional(z.never()),
@@ -1960,11 +1874,6 @@ export const zGetNotificationsData = z.object({
 	}),
 });
 
-/**
- * A list of notifications
- */
-export const zGetNotificationsResponse = zNotificationsResponse;
-
 export const zSetLastCheckedTimestampData = z.object({
 	body: z.record(z.string(), z.unknown()).register(z.globalRegistry, {
 		description: "Empty object for now",
@@ -1972,11 +1881,6 @@ export const zSetLastCheckedTimestampData = z.object({
 	path: z.optional(z.never()),
 	query: z.optional(z.never()),
 });
-
-/**
- * Success
- */
-export const zSetLastCheckedTimestampResponse = zSuccessResponse;
 
 export const zGetDirectCastConversationData = z.object({
 	body: z.optional(z.never()),
@@ -1989,22 +1893,11 @@ export const zGetDirectCastConversationData = z.object({
 	}),
 });
 
-/**
- * A direct cast conversation object
- */
-export const zGetDirectCastConversationResponse =
-	zDirectCastConversationResponse;
-
 export const zCategorizeDirectCastConversationData = z.object({
 	body: zDirectCastConversationCategorizationRequest,
 	path: z.optional(z.never()),
 	query: z.optional(z.never()),
 });
-
-/**
- * Conversation categorized successfully
- */
-export const zCategorizeDirectCastConversationResponse = zSuccessResponse;
 
 export const zGetDirectCastConversationMessagesData = z.object({
 	body: z.optional(z.never()),
@@ -2024,34 +1917,17 @@ export const zGetDirectCastConversationMessagesData = z.object({
 	}),
 });
 
-/**
- * A list of direct cast conversation messages with pagination
- */
-export const zGetDirectCastConversationMessagesResponse =
-	zDirectCastConversationMessagesResponse;
-
 export const zSetDirectCastConversationMessageTtlData = z.object({
 	body: zDirectCastConversationMessageTtlRequest,
 	path: z.optional(z.never()),
 	query: z.optional(z.never()),
 });
 
-/**
- * Message TTL set successfully
- */
-export const zSetDirectCastConversationMessageTtlResponse = zSuccessResponse;
-
 export const zUpdateDirectCastConversationNotificationsData = z.object({
 	body: zDirectCastConversationNotificationsRequest,
 	path: z.optional(z.never()),
 	query: z.optional(z.never()),
 });
-
-/**
- * Notification settings updated successfully
- */
-export const zUpdateDirectCastConversationNotificationsResponse =
-	zSuccessResponse;
 
 export const zGetDirectCastConversationRecentMessagesData = z.object({
 	body: z.optional(z.never()),
@@ -2064,22 +1940,11 @@ export const zGetDirectCastConversationRecentMessagesData = z.object({
 	}),
 });
 
-/**
- * A list of recent direct cast conversation messages
- */
-export const zGetDirectCastConversationRecentMessagesResponse =
-	zDirectCastConversationMessagesResponse;
-
 export const zSendDirectCastMessageData = z.object({
 	body: zDirectCastSendRequest,
 	path: z.optional(z.never()),
 	query: z.optional(z.never()),
 });
-
-/**
- * Direct cast message sent successfully
- */
-export const zSendDirectCastMessageResponse = zSuccessResponse;
 
 export const zDirectCastManuallyMarkUnreadData = z.object({
 	body: zDirectCastManuallyMarkUnreadRequest,
@@ -2087,21 +1952,11 @@ export const zDirectCastManuallyMarkUnreadData = z.object({
 	query: z.optional(z.never()),
 });
 
-/**
- * Direct cast conversation marked as unread successfully
- */
-export const zDirectCastManuallyMarkUnreadResponse = zSuccessResponse;
-
 export const zRemoveDirectCastMessageReactionData = z.object({
 	body: zDirectCastMessageReactionRequest,
 	path: z.optional(z.never()),
 	query: z.optional(z.never()),
 });
-
-/**
- * Reaction removed successfully
- */
-export const zRemoveDirectCastMessageReactionResponse = zSuccessResponse;
 
 export const zAddDirectCastMessageReactionData = z.object({
 	body: zDirectCastMessageReactionRequest,
@@ -2109,32 +1964,17 @@ export const zAddDirectCastMessageReactionData = z.object({
 	query: z.optional(z.never()),
 });
 
-/**
- * Reaction added successfully
- */
-export const zAddDirectCastMessageReactionResponse = zSuccessResponse;
-
 export const zUnpinDirectCastConversationData = z.object({
 	body: zDirectCastPinConversationRequest,
 	path: z.optional(z.never()),
 	query: z.optional(z.never()),
 });
 
-/**
- * Direct cast conversation unpinned successfully
- */
-export const zUnpinDirectCastConversationResponse = zSuccessResponse;
-
 export const zPinDirectCastConversationData = z.object({
 	body: zDirectCastPinConversationRequest,
 	path: z.optional(z.never()),
 	query: z.optional(z.never()),
 });
-
-/**
- * Direct cast conversation pinned successfully
- */
-export const zPinDirectCastConversationResponse = zSuccessResponse;
 
 export const zDiscoverChannelsData = z.object({
 	body: z.optional(z.never()),
@@ -2152,32 +1992,17 @@ export const zDiscoverChannelsData = z.object({
 	),
 });
 
-/**
- * A list of channels
- */
-export const zDiscoverChannelsResponse2 = zDiscoverChannelsResponse;
-
 export const zGetAvailableInvitesData = z.object({
 	body: z.optional(z.never()),
 	path: z.optional(z.never()),
 	query: z.optional(z.never()),
 });
 
-/**
- * Invite count information
- */
-export const zGetAvailableInvitesResponse = zInvitesAvailableResponse;
-
 export const zGetSponsoredInvitesData = z.object({
 	body: z.optional(z.never()),
 	path: z.optional(z.never()),
 	query: z.optional(z.never()),
 });
-
-/**
- * List of sponsored invites
- */
-export const zGetSponsoredInvitesResponse = zSponsoredInvitesResponse;
 
 export const zGetRewardsLeaderboardData = z.object({
 	body: z.optional(z.never()),
@@ -2195,11 +2020,6 @@ export const zGetRewardsLeaderboardData = z.object({
 	}),
 });
 
-/**
- * Rewards leaderboard
- */
-export const zGetRewardsLeaderboardResponse = zRewardsLeaderboardResponse;
-
 export const zGetUserRewardsScoresData = z.object({
 	body: z.optional(z.never()),
 	path: z.optional(z.never()),
@@ -2211,11 +2031,6 @@ export const zGetUserRewardsScoresData = z.object({
 	}),
 });
 
-/**
- * User rewards scores
- */
-export const zGetUserRewardsScoresResponse = zRewardsScoresResponse;
-
 export const zGetRewardsMetadataData = z.object({
 	body: z.optional(z.never()),
 	path: z.optional(z.never()),
@@ -2223,11 +2038,6 @@ export const zGetRewardsMetadataData = z.object({
 		rewardsType: z.enum(["invite"]),
 	}),
 });
-
-/**
- * Invite rewards metadata
- */
-export const zGetRewardsMetadataResponse = zRewardsMetadataResponse;
 
 export const zGetBookmarkedCastsData = z.object({
 	body: z.optional(z.never()),
@@ -2245,11 +2055,6 @@ export const zGetBookmarkedCastsData = z.object({
 	),
 });
 
-/**
- * A list of bookmarked casts
- */
-export const zGetBookmarkedCastsResponse = zBookmarkedCastsResponse;
-
 export const zGetUserStarterPacksData = z.object({
 	body: z.optional(z.never()),
 	path: z.optional(z.never()),
@@ -2258,11 +2063,6 @@ export const zGetUserStarterPacksData = z.object({
 		limit: z.optional(z.int()).default(15),
 	}),
 });
-
-/**
- * A list of starter packs
- */
-export const zGetUserStarterPacksResponse = zStarterPacksResponse;
 
 export const zGetSuggestedStarterPacksData = z.object({
 	body: z.optional(z.never()),
@@ -2274,11 +2074,6 @@ export const zGetSuggestedStarterPacksData = z.object({
 	),
 });
 
-/**
- * A list of suggested starter packs
- */
-export const zGetSuggestedStarterPacksResponse = zStarterPacksResponse;
-
 export const zGetStarterPackData = z.object({
 	body: z.optional(z.never()),
 	path: z.optional(z.never()),
@@ -2286,11 +2081,6 @@ export const zGetStarterPackData = z.object({
 		id: z.string(),
 	}),
 });
-
-/**
- * A starter pack object
- */
-export const zGetStarterPackResponse = zStarterPackResponse;
 
 export const zUpdateStarterPackData = z.object({
 	body: zStarterPackUpdateRequest,
@@ -2308,11 +2098,6 @@ export const zUpdateStarterPackData = z.object({
 	),
 });
 
-/**
- * Update status
- */
-export const zUpdateStarterPackResponse = zSuccessResponse;
-
 export const zGetStarterPackUsersData = z.object({
 	body: z.optional(z.never()),
 	path: z.optional(z.never()),
@@ -2328,11 +2113,6 @@ export const zGetStarterPackUsersData = z.object({
 	}),
 });
 
-/**
- * List of users in the starter pack
- */
-export const zGetStarterPackUsersResponse = zStarterPackUsersResponse;
-
 export const zGetChannelData = z.object({
 	body: z.optional(z.never()),
 	path: z.optional(z.never()),
@@ -2340,11 +2120,6 @@ export const zGetChannelData = z.object({
 		key: z.string(),
 	}),
 });
-
-/**
- * Channel metadata
- */
-export const zGetChannelResponse = zChannelResponse;
 
 export const zGetChannelUsersData = z.object({
 	body: z.optional(z.never()),
@@ -2363,11 +2138,6 @@ export const zGetChannelUsersData = z.object({
 	}),
 });
 
-/**
- * A list of users in the specified channel
- */
-export const zGetChannelUsersResponse = zChannelUsersResponse;
-
 export const zGetFollowingData = z.object({
 	body: z.optional(z.never()),
 	path: z.optional(z.never()),
@@ -2376,11 +2146,6 @@ export const zGetFollowingData = z.object({
 		limit: z.optional(z.int()),
 	}),
 });
-
-/**
- * A list of followed users
- */
-export const zGetFollowingResponse = zUsersResponse;
 
 export const zGetFollowersData = z.object({
 	body: z.optional(z.never()),
@@ -2391,11 +2156,6 @@ export const zGetFollowersData = z.object({
 	}),
 });
 
-/**
- * A list of followers
- */
-export const zGetFollowersResponse = zUsersResponse;
-
 export const zGetMutualFollowersData = z.object({
 	body: z.optional(z.never()),
 	path: z.optional(z.never()),
@@ -2404,11 +2164,6 @@ export const zGetMutualFollowersData = z.object({
 		limit: z.optional(z.int()),
 	}),
 });
-
-/**
- * A list of mutual followers
- */
-export const zGetMutualFollowersResponse = zUsersWithCountResponse;
 
 export const zGetTopFrameAppsData = z.object({
 	body: z.optional(z.never()),
@@ -2426,11 +2181,6 @@ export const zGetTopFrameAppsData = z.object({
 		}),
 	),
 });
-
-/**
- * A list of FrameApps
- */
-export const zGetTopFrameAppsResponse = zFrameAppsResponse;
 
 export const zGetTopMiniAppsData = z.object({
 	body: z.optional(z.never()),
@@ -2453,11 +2203,6 @@ export const zGetTopMiniAppsData = z.object({
 	),
 });
 
-/**
- * A list of top mini apps
- */
-export const zGetTopMiniAppsResponse = zTopMiniAppsResponse;
-
 export const zGetVerificationsData = z.object({
 	body: z.optional(z.never()),
 	path: z.optional(z.never()),
@@ -2475,31 +2220,11 @@ export const zGetVerificationsData = z.object({
 	}),
 });
 
-/**
- * A list of verifications
- */
-export const zGetVerificationsResponse = z
-	.object({
-		result: z.optional(
-			z.object({
-				verifications: z.optional(z.array(zVerifiedAddress)),
-			}),
-		),
-	})
-	.register(z.globalRegistry, {
-		description: "A list of verifications",
-	});
-
 export const zGetMutedKeywordsData = z.object({
 	body: z.optional(z.never()),
 	path: z.optional(z.never()),
 	query: z.optional(z.never()),
 });
-
-/**
- * A list of muted keywords
- */
-export const zGetMutedKeywordsResponse = zMutedKeywordsResponse;
 
 export const zMuteKeywordData = z.object({
 	body: z.object({
@@ -2510,11 +2235,6 @@ export const zMuteKeywordData = z.object({
 	query: z.optional(z.never()),
 });
 
-/**
- * The muted keyword and its settings
- */
-export const zMuteKeywordResponse = zMutedKeywordsResponse;
-
 export const zUnmuteKeywordData = z.object({
 	body: z.object({
 		keyword: z.optional(z.string()),
@@ -2523,11 +2243,6 @@ export const zUnmuteKeywordData = z.object({
 	query: z.optional(z.never()),
 });
 
-/**
- * Keyword unmuted
- */
-export const zUnmuteKeywordResponse = zMutedKeywordsResponse;
-
 export const zUnlikeCastData = z.object({
 	body: z.object({
 		castHash: z.string(),
@@ -2535,21 +2250,6 @@ export const zUnlikeCastData = z.object({
 	path: z.optional(z.never()),
 	query: z.optional(z.never()),
 });
-
-/**
- * Unlike response
- */
-export const zUnlikeCastResponse = z
-	.object({
-		result: z.optional(
-			z.object({
-				success: z.optional(z.boolean()),
-			}),
-		),
-	})
-	.register(z.globalRegistry, {
-		description: "Unlike response",
-	});
 
 export const zGetCastLikesData = z.object({
 	body: z.optional(z.never()),
@@ -2560,31 +2260,6 @@ export const zGetCastLikesData = z.object({
 	}),
 });
 
-/**
- * A list of cast likes
- */
-export const zGetCastLikesResponse = z
-	.object({
-		result: z.optional(
-			z.object({
-				likes: z.optional(
-					z.array(
-						z.object({
-							type: z.optional(z.string()),
-							hash: z.optional(z.string()),
-							castHash: z.optional(z.string()),
-							timestamp: z.optional(z.int()),
-							reactor: z.optional(zUser),
-						}),
-					),
-				),
-			}),
-		),
-	})
-	.register(z.globalRegistry, {
-		description: "A list of cast likes",
-	});
-
 export const zLikeCastData = z.object({
 	body: z.object({
 		castHash: z.string(),
@@ -2592,29 +2267,6 @@ export const zLikeCastData = z.object({
 	path: z.optional(z.never()),
 	query: z.optional(z.never()),
 });
-
-/**
- * Like response
- */
-export const zLikeCastResponse = z
-	.object({
-		result: z.optional(
-			z.object({
-				like: z.optional(
-					z.object({
-						type: z.optional(z.string()),
-						hash: z.optional(z.string()),
-						castHash: z.optional(z.string()),
-						timestamp: z.optional(z.int()),
-						reactor: z.optional(zUser),
-					}),
-				),
-			}),
-		),
-	})
-	.register(z.globalRegistry, {
-		description: "Like response",
-	});
 
 export const zUndoRecastData = z.object({
 	body: z.object({
@@ -2624,11 +2276,6 @@ export const zUndoRecastData = z.object({
 	query: z.optional(z.never()),
 });
 
-/**
- * Undo recast response
- */
-export const zUndoRecastResponse = zSuccessResponse;
-
 export const zRecastCastData = z.object({
 	body: z.object({
 		castHash: z.string(),
@@ -2636,11 +2283,6 @@ export const zRecastCastData = z.object({
 	path: z.optional(z.never()),
 	query: z.optional(z.never()),
 });
-
-/**
- * Recast response
- */
-export const zRecastCastResponse = zCastHashResponse;
 
 export const zAttachEmbedsData = z.object({
 	body: z.object({
@@ -2650,11 +2292,6 @@ export const zAttachEmbedsData = z.object({
 	path: z.optional(z.never()),
 	query: z.optional(z.never()),
 });
-
-/**
- * Attachment response
- */
-export const zAttachEmbedsResponse2 = zAttachEmbedsResponse;
 
 export const zGetCastRecastersData = z.object({
 	body: z.optional(z.never()),
@@ -2671,11 +2308,6 @@ export const zGetCastRecastersData = z.object({
 	}),
 });
 
-/**
- * A list of users who recasted the cast
- */
-export const zGetCastRecastersResponse = zCastRecastersResponse;
-
 export const zGetCastQuotesData = z.object({
 	body: z.optional(z.never()),
 	path: z.optional(z.never()),
@@ -2685,21 +2317,11 @@ export const zGetCastQuotesData = z.object({
 	}),
 });
 
-/**
- * A list of quote casts referencing the given cast
- */
-export const zGetCastQuotesResponse = zCastQuotesResponse;
-
 export const zGetCurrentUserData = z.object({
 	body: z.optional(z.never()),
 	path: z.optional(z.never()),
 	query: z.optional(z.never()),
 });
-
-/**
- * Successful retrieval of current user
- */
-export const zGetCurrentUserResponse = zUserResponseUserResponse;
 
 export const zSearchChannelsData = z.object({
 	body: z.optional(z.never()),
@@ -2720,11 +2342,6 @@ export const zSearchChannelsData = z.object({
 	),
 });
 
-/**
- * A list of matched channels
- */
-export const zSearchChannelsResponse2 = zSearchChannelsResponse;
-
 export const zGetDraftCastsData = z.object({
 	body: z.optional(z.never()),
 	path: z.optional(z.never()),
@@ -2734,11 +2351,6 @@ export const zGetDraftCastsData = z.object({
 		}),
 	),
 });
-
-/**
- * A list of draft cast storms
- */
-export const zGetDraftCastsResponse = zDraftsResponse;
 
 export const zCreateDraftCastsData = z.object({
 	body: z.object({
@@ -2755,11 +2367,6 @@ export const zCreateDraftCastsData = z.object({
 	}),
 });
 
-/**
- * Created draft caststorm
- */
-export const zCreateDraftCastsResponse = zDraftCreatedResponse;
-
 export const zDeleteDraftCastData = z.object({
 	body: z.object({
 		draftId: z.optional(z.string()),
@@ -2768,11 +2375,6 @@ export const zDeleteDraftCastData = z.object({
 	query: z.optional(z.never()),
 });
 
-/**
- * Draft cast deleted
- */
-export const zDeleteDraftCastResponse = zSuccessResponse;
-
 export const zDeleteCastData = z.object({
 	body: z.object({
 		castHash: z.optional(z.string()),
@@ -2780,11 +2382,6 @@ export const zDeleteCastData = z.object({
 	path: z.optional(z.never()),
 	query: z.optional(z.never()),
 });
-
-/**
- * Cast deleted successfully
- */
-export const zDeleteCastResponse = zSuccessResponse;
 
 export const zGetCastsByFidData = z.object({
 	body: z.optional(z.never()),
@@ -2803,21 +2400,6 @@ export const zGetCastsByFidData = z.object({
 	}),
 });
 
-/**
- * Successfully retrieved casts
- */
-export const zGetCastsByFidResponse = z
-	.object({
-		result: z.optional(
-			z.object({
-				casts: z.optional(z.array(zCast)),
-			}),
-		),
-	})
-	.register(z.globalRegistry, {
-		description: "Successfully retrieved casts",
-	});
-
 export const zCreateCastData = z.object({
 	body: z.object({
 		text: z.string(),
@@ -2832,21 +2414,11 @@ export const zCreateCastData = z.object({
 	query: z.optional(z.never()),
 });
 
-/**
- * Cast created successfully
- */
-export const zCreateCastResponse = zCastCreatedResponse;
-
 export const zGetAllChannelsData = z.object({
 	body: z.optional(z.never()),
 	path: z.optional(z.never()),
 	query: z.optional(z.never()),
 });
-
-/**
- * Successful response
- */
-export const zGetAllChannelsResponse = zChannelListResponse;
 
 export const zGetChannelDetailsData = z.object({
 	body: z.optional(z.never()),
@@ -2855,11 +2427,6 @@ export const zGetChannelDetailsData = z.object({
 		channelId: z.string(),
 	}),
 });
-
-/**
- * Channel details
- */
-export const zGetChannelDetailsResponse = zRawChannelResponse;
 
 export const zGetChannelFollowersData = z.object({
 	body: z.optional(z.never()),
@@ -2870,11 +2437,6 @@ export const zGetChannelFollowersData = z.object({
 	}),
 });
 
-/**
- * A list of channel followers
- */
-export const zGetChannelFollowersResponse = zChannelFollowersResponse;
-
 export const zGetUserFollowedChannelsData = z.object({
 	body: z.optional(z.never()),
 	path: z.optional(z.never()),
@@ -2884,11 +2446,6 @@ export const zGetUserFollowedChannelsData = z.object({
 		}),
 	}),
 });
-
-/**
- * Successful response with list of followed channels
- */
-export const zGetUserFollowedChannelsResponse = zChannelListResponse;
 
 export const zCheckUserChannelFollowStatusData = z.object({
 	body: z.optional(z.never()),
@@ -2901,12 +2458,6 @@ export const zCheckUserChannelFollowStatusData = z.object({
 	}),
 });
 
-/**
- * Successful response with follow status
- */
-export const zCheckUserChannelFollowStatusResponse =
-	zChannelFollowStatusResponse;
-
 export const zGetChannelMembersData = z.object({
 	body: z.optional(z.never()),
 	path: z.optional(z.never()),
@@ -2914,37 +2465,6 @@ export const zGetChannelMembersData = z.object({
 		channelId: z.string(),
 	}),
 });
-
-/**
- * Successful response with list of members
- */
-export const zGetChannelMembersResponse = z
-	.object({
-		result: z.object({
-			members: z.array(
-				z.object({
-					fid: z.int().register(z.globalRegistry, {
-						description: "Farcaster ID of the member",
-					}),
-					memberAt: z.int().register(z.globalRegistry, {
-						description: "Timestamp when the user became a member",
-					}),
-				}),
-			),
-		}),
-		next: z.optional(
-			z.object({
-				cursor: z.optional(
-					z.string().register(z.globalRegistry, {
-						description: "Cursor for pagination",
-					}),
-				),
-			}),
-		),
-	})
-	.register(z.globalRegistry, {
-		description: "Successful response with list of members",
-	});
 
 export const zRemoveChannelInviteData = z.object({
 	body: z.object({
@@ -2963,11 +2483,6 @@ export const zRemoveChannelInviteData = z.object({
 	query: z.optional(z.never()),
 });
 
-/**
- * Successful removal of invite
- */
-export const zRemoveChannelInviteResponse = zSuccessResponse;
-
 export const zGetChannelInvitesData = z.object({
 	body: z.optional(z.never()),
 	path: z.optional(z.never()),
@@ -2975,36 +2490,6 @@ export const zGetChannelInvitesData = z.object({
 		channelId: z.string(),
 	}),
 });
-
-/**
- * Successful response with list of channel invites
- */
-export const zGetChannelInvitesResponse = z
-	.object({
-		result: z.optional(
-			z.object({
-				invites: z.optional(
-					z.array(
-						z.object({
-							channelId: z.string(),
-							invitedFid: z.int(),
-							invitedAt: z.int(),
-							inviterFid: z.int(),
-							role: z.enum(["member", "admin"]),
-						}),
-					),
-				),
-			}),
-		),
-		next: z.optional(
-			z.object({
-				cursor: z.optional(z.string()),
-			}),
-		),
-	})
-	.register(z.globalRegistry, {
-		description: "Successful response with list of channel invites",
-	});
 
 export const zAcceptChannelInviteData = z.object({
 	body: z.object({
@@ -3022,11 +2507,6 @@ export const zAcceptChannelInviteData = z.object({
 	query: z.optional(z.never()),
 });
 
-/**
- * Successful acceptance of invite
- */
-export const zAcceptChannelInviteResponse = zSuccessResponse;
-
 export const zInviteUserToChannelData = z.object({
 	body: z.object({
 		channelId: z.string().register(z.globalRegistry, {
@@ -3043,11 +2523,6 @@ export const zInviteUserToChannelData = z.object({
 	query: z.optional(z.never()),
 });
 
-/**
- * Successful invite operation
- */
-export const zInviteUserToChannelResponse = zSuccessResponse;
-
 export const zGetChannelModeratedCastsData = z.object({
 	body: z.optional(z.never()),
 	path: z.optional(z.never()),
@@ -3058,45 +2533,6 @@ export const zGetChannelModeratedCastsData = z.object({
 	}),
 });
 
-/**
- * Successful response with list of moderation actions
- */
-export const zGetChannelModeratedCastsResponse = z
-	.object({
-		result: z.object({
-			moderationActions: z.array(
-				z.object({
-					castHash: z.string().register(z.globalRegistry, {
-						description: "Hash of the moderated cast",
-					}),
-					channelId: z.string().register(z.globalRegistry, {
-						description: "ID of the channel where the cast was moderated",
-					}),
-					action: z.enum(["hide"]).register(z.globalRegistry, {
-						description: "Type of moderation action applied",
-					}),
-					moderatedAt: z.int().register(z.globalRegistry, {
-						description:
-							"Unix timestamp of when the moderation action was taken",
-					}),
-				}),
-			),
-		}),
-		next: z.optional(
-			z.object({
-				cursor: z.optional(
-					z.string().register(z.globalRegistry, {
-						description:
-							"Pagination cursor for fetching the next set of results",
-					}),
-				),
-			}),
-		),
-	})
-	.register(z.globalRegistry, {
-		description: "Successful response with list of moderation actions",
-	});
-
 export const zGetChannelRestrictedUsersData = z.object({
 	body: z.optional(z.never()),
 	path: z.optional(z.never()),
@@ -3106,41 +2542,6 @@ export const zGetChannelRestrictedUsersData = z.object({
 		}),
 	}),
 });
-
-/**
- * Successful response with list of restricted users
- */
-export const zGetChannelRestrictedUsersResponse = z
-	.object({
-		result: z.object({
-			restrictedUsers: z.array(
-				z.object({
-					fid: z.int().register(z.globalRegistry, {
-						description: "Farcaster ID of the restricted user",
-					}),
-					channelId: z.string().register(z.globalRegistry, {
-						description: "ID of the channel where the user is restricted",
-					}),
-					restrictedAt: z.int().register(z.globalRegistry, {
-						description: "Unix timestamp of when the user was restricted",
-					}),
-				}),
-			),
-		}),
-		next: z.optional(
-			z.object({
-				cursor: z.optional(
-					z.string().register(z.globalRegistry, {
-						description:
-							"Pagination cursor for fetching the next set of results",
-					}),
-				),
-			}),
-		),
-	})
-	.register(z.globalRegistry, {
-		description: "Successful response with list of restricted users",
-	});
 
 export const zUnbanUserFromChannelData = z.object({
 	body: z.object({
@@ -3155,11 +2556,6 @@ export const zUnbanUserFromChannelData = z.object({
 	query: z.optional(z.never()),
 });
 
-/**
- * Successful unban operation
- */
-export const zUnbanUserFromChannelResponse = zSuccessResponse;
-
 export const zGetChannelBannedUsersData = z.object({
 	body: z.optional(z.never()),
 	path: z.optional(z.never()),
@@ -3169,41 +2565,6 @@ export const zGetChannelBannedUsersData = z.object({
 		}),
 	}),
 });
-
-/**
- * Successful response with list of banned users
- */
-export const zGetChannelBannedUsersResponse = z
-	.object({
-		result: z.object({
-			bannedUsers: z.array(
-				z.object({
-					fid: z.int().register(z.globalRegistry, {
-						description: "Farcaster ID of the banned user",
-					}),
-					channelId: z.string().register(z.globalRegistry, {
-						description: "ID of the channel where the user is banned",
-					}),
-					bannedAt: z.int().register(z.globalRegistry, {
-						description: "Unix timestamp of when the user was banned",
-					}),
-				}),
-			),
-		}),
-		next: z.optional(
-			z.object({
-				cursor: z.optional(
-					z.string().register(z.globalRegistry, {
-						description:
-							"Pagination cursor for fetching the next set of banned users",
-					}),
-				),
-			}),
-		),
-	})
-	.register(z.globalRegistry, {
-		description: "Successful response with list of banned users",
-	});
 
 export const zBanUserFromChannelData = z.object({
 	body: z.object({
@@ -3218,11 +2579,6 @@ export const zBanUserFromChannelData = z.object({
 	query: z.optional(z.never()),
 });
 
-/**
- * Successful ban operation
- */
-export const zBanUserFromChannelResponse = zSuccessResponse;
-
 export const zUnfollowChannelData = z.object({
 	body: z.object({
 		channelId: z.string().register(z.globalRegistry, {
@@ -3233,11 +2589,6 @@ export const zUnfollowChannelData = z.object({
 	query: z.optional(z.never()),
 });
 
-/**
- * Successful unfollow operation
- */
-export const zUnfollowChannelResponse = zSuccessResponse;
-
 export const zFollowChannelData = z.object({
 	body: z.object({
 		channelId: z.string().register(z.globalRegistry, {
@@ -3247,11 +2598,6 @@ export const zFollowChannelData = z.object({
 	path: z.optional(z.never()),
 	query: z.optional(z.never()),
 });
-
-/**
- * Successful follow operation
- */
-export const zFollowChannelResponse = zSuccessResponse;
 
 export const zModerateCastData = z.object({
 	body: z.object({
@@ -3266,11 +2612,6 @@ export const zModerateCastData = z.object({
 	query: z.optional(z.never()),
 });
 
-/**
- * Successful moderation action
- */
-export const zModerateCastResponse = zSuccessResponse;
-
 export const zUnpinCastFromChannelData = z.object({
 	body: z.object({
 		channelId: z.string().register(z.globalRegistry, {
@@ -3280,11 +2621,6 @@ export const zUnpinCastFromChannelData = z.object({
 	path: z.optional(z.never()),
 	query: z.optional(z.never()),
 });
-
-/**
- * Successful unpin operation
- */
-export const zUnpinCastFromChannelResponse = zSuccessResponse;
 
 export const zPinCastToChannelData = z.object({
 	body: z.object({
@@ -3301,11 +2637,6 @@ export const zPinCastToChannelData = z.object({
 	query: z.optional(z.never()),
 });
 
-/**
- * Successful pin operation
- */
-export const zPinCastToChannelResponse = zSuccessResponse;
-
 export const zGetDiscoverableActionsData = z.object({
 	body: z.optional(z.never()),
 	path: z.optional(z.never()),
@@ -3315,26 +2646,6 @@ export const zGetDiscoverableActionsData = z.object({
 	}),
 });
 
-/**
- * Successful response with list of discoverable actions
- */
-export const zGetDiscoverableActionsResponse = z
-	.object({
-		result: z.optional(
-			z.object({
-				actions: z.optional(z.array(zAction)),
-				next: z.optional(
-					z.object({
-						cursor: z.optional(z.string()),
-					}),
-				),
-			}),
-		),
-	})
-	.register(z.globalRegistry, {
-		description: "Successful response with list of discoverable actions",
-	});
-
 export const zGetDiscoverableComposerActionsData = z.object({
 	body: z.optional(z.never()),
 	path: z.optional(z.never()),
@@ -3343,27 +2654,6 @@ export const zGetDiscoverableComposerActionsData = z.object({
 		limit: z.optional(z.int()),
 	}),
 });
-
-/**
- * Successful response with list of discoverable composer actions
- */
-export const zGetDiscoverableComposerActionsResponse = z
-	.object({
-		result: z.optional(
-			z.object({
-				actions: z.optional(z.array(zAction)),
-				next: z.optional(
-					z.object({
-						cursor: z.optional(z.string()),
-					}),
-				),
-			}),
-		),
-	})
-	.register(z.globalRegistry, {
-		description:
-			"Successful response with list of discoverable composer actions",
-	});
 
 export const zUnblockUserData = z.object({
 	body: z.object({
@@ -3375,52 +2665,11 @@ export const zUnblockUserData = z.object({
 	query: z.optional(z.never()),
 });
 
-/**
- * Successful unblock operation
- */
-export const zUnblockUserResponse = z
-	.object({
-		result: z.object({
-			success: z.boolean().register(z.globalRegistry, {
-				description: "Indicates whether the unblock operation was successful",
-			}),
-		}),
-	})
-	.register(z.globalRegistry, {
-		description: "Successful unblock operation",
-	});
-
 export const zGetBlockedUsersData = z.object({
 	body: z.optional(z.never()),
 	path: z.optional(z.never()),
 	query: z.optional(z.never()),
 });
-
-/**
- * Successful response with list of blocked users
- */
-export const zGetBlockedUsersResponse = z
-	.object({
-		result: z.object({
-			blockedUsers: z.array(
-				z.object({
-					blockerFid: z.int().register(z.globalRegistry, {
-						description: "Farcaster ID of the user who blocked",
-					}),
-					blockedFid: z.int().register(z.globalRegistry, {
-						description: "Farcaster ID of the user who was blocked",
-					}),
-					createdAt: z.int().register(z.globalRegistry, {
-						description: "Unix timestamp of when the user was blocked",
-					}),
-				}),
-			),
-			next: z.optional(zPaginationCursor),
-		}),
-	})
-	.register(z.globalRegistry, {
-		description: "Successful response with list of blocked users",
-	});
 
 export const zBlockUserData = z.object({
 	body: z.object({
@@ -3432,11 +2681,6 @@ export const zBlockUserData = z.object({
 	query: z.optional(z.never()),
 });
 
-/**
- * Successful block operation
- */
-export const zBlockUserResponse = zSuccessResponse;
-
 export const zGetAccountVerificationsData = z.object({
 	body: z.optional(z.never()),
 	path: z.optional(z.never()),
@@ -3446,32 +2690,6 @@ export const zGetAccountVerificationsData = z.object({
 		}),
 	}),
 });
-
-/**
- * Successful response with list of account verifications
- */
-export const zGetAccountVerificationsResponse = z
-	.object({
-		result: z.optional(
-			z.object({
-				verifications: z.optional(
-					z.array(
-						z.object({
-							fid: z.optional(z.int()),
-							platform: z.optional(z.string()),
-							platformId: z.optional(z.string()),
-							platformUsername: z.optional(z.string()),
-							verifiedAt: z.optional(z.int()),
-						}),
-					),
-				),
-			}),
-		),
-		next: z.optional(zPaginationCursor),
-	})
-	.register(z.globalRegistry, {
-		description: "Successful response with list of account verifications",
-	});
 
 export const zGetCreatorRewardWinnersData = z.object({
 	body: z.optional(z.never()),
@@ -3488,38 +2706,6 @@ export const zGetCreatorRewardWinnersData = z.object({
 	),
 });
 
-/**
- * Successful response with creator reward winners history
- */
-export const zGetCreatorRewardWinnersResponse = z
-	.object({
-		result: z.optional(
-			z.object({
-				periodStartTimestamp: z.optional(z.coerce.bigint()),
-				periodEndTimestamp: z.optional(z.coerce.bigint()),
-				winners: z.optional(
-					z.array(
-						z.object({
-							fid: z.optional(z.int()),
-							score: z.optional(z.int()),
-							rank: z.optional(z.int()),
-							rewardCents: z.optional(z.int()),
-							walletAddress: z.optional(z.string()),
-						}),
-					),
-				),
-			}),
-		),
-		next: z.optional(
-			z.object({
-				cursor: z.optional(z.string()),
-			}),
-		),
-	})
-	.register(z.globalRegistry, {
-		description: "Successful response with creator reward winners history",
-	});
-
 export const zGetUserPrimaryAddressData = z.object({
 	body: z.optional(z.never()),
 	path: z.optional(z.never()),
@@ -3532,21 +2718,6 @@ export const zGetUserPrimaryAddressData = z.object({
 		}),
 	}),
 });
-
-/**
- * Successful response with the user's primary address.
- */
-export const zGetUserPrimaryAddressResponse = z
-	.object({
-		result: z.optional(
-			z.object({
-				address: z.optional(zVerifiedAddress),
-			}),
-		),
-	})
-	.register(z.globalRegistry, {
-		description: "Successful response with the user's primary address.",
-	});
 
 export const zGetUserPrimaryAddressesData = z.object({
 	body: z.optional(z.never()),
@@ -3562,33 +2733,6 @@ export const zGetUserPrimaryAddressesData = z.object({
 	}),
 });
 
-/**
- * Successful response with list of primary addresses.
- */
-export const zGetUserPrimaryAddressesResponse = z
-	.object({
-		result: z.optional(
-			z.object({
-				addresses: z.optional(
-					z.array(
-						z.object({
-							fid: z.int().register(z.globalRegistry, {
-								description: "The Farcaster ID of the user",
-							}),
-							success: z.boolean().register(z.globalRegistry, {
-								description: "Whether the address was successfully retrieved",
-							}),
-							address: z.optional(zVerifiedAddress),
-						}),
-					),
-				),
-			}),
-		),
-	})
-	.register(z.globalRegistry, {
-		description: "Successful response with list of primary addresses.",
-	});
-
 export const zGetStarterPackMembersData = z.object({
 	body: z.optional(z.never()),
 	path: z.optional(z.never()),
@@ -3599,43 +2743,6 @@ export const zGetStarterPackMembersData = z.object({
 		}),
 	}),
 });
-
-/**
- * Successful response with list of starter pack members.
- */
-export const zGetStarterPackMembersResponse = z
-	.object({
-		result: z.optional(
-			z.object({
-				members: z.optional(
-					z.array(
-						z.object({
-							fid: z.int().register(z.globalRegistry, {
-								description: "The Farcaster ID of the starter pack member",
-							}),
-							memberAt: z.coerce.bigint().register(z.globalRegistry, {
-								description:
-									"Timestamp in milliseconds when the user became a member",
-							}),
-						}),
-					),
-				),
-			}),
-		),
-		next: z.optional(
-			z.object({
-				cursor: z.optional(
-					z.string().register(z.globalRegistry, {
-						description:
-							"Pagination cursor for fetching the next set of results",
-					}),
-				),
-			}),
-		),
-	})
-	.register(z.globalRegistry, {
-		description: "Successful response with list of starter pack members.",
-	});
 
 export const zSendDirectCastData = z.object({
 	body: z.object({
@@ -3653,21 +2760,6 @@ export const zSendDirectCastData = z.object({
 	query: z.optional(z.never()),
 });
 
-/**
- * Direct cast sent successfully
- */
-export const zSendDirectCastResponse = z
-	.object({
-		result: z.object({
-			success: z.boolean().register(z.globalRegistry, {
-				description: "Indicates if the direct cast was sent successfully",
-			}),
-		}),
-	})
-	.register(z.globalRegistry, {
-		description: "Direct cast sent successfully",
-	});
-
 export const zGetUserByVerificationAddressData = z.object({
 	body: z.optional(z.never()),
 	path: z.optional(z.never()),
@@ -3677,11 +2769,6 @@ export const zGetUserByVerificationAddressData = z.object({
 		}),
 	}),
 });
-
-/**
- * User data successfully retrieved
- */
-export const zGetUserByVerificationAddressResponse = zUserResponse;
 
 export const zGetDeveloperRewardWinnersData = z.object({
 	body: z.optional(z.never()),
@@ -3697,40 +2784,6 @@ export const zGetDeveloperRewardWinnersData = z.object({
 		}),
 	),
 });
-
-/**
- * A paginated list of developer reward winners
- */
-export const zGetDeveloperRewardWinnersResponse = z
-	.object({
-		result: z.optional(
-			z.object({
-				periodStartTimestamp: z.optional(
-					z.int().register(z.globalRegistry, {
-						description: "Unix time in milliseconds when rewards period began",
-					}),
-				),
-				periodEndTimestamp: z.optional(
-					z.int().register(z.globalRegistry, {
-						description: "Unix time in milliseconds when rewards period ended",
-					}),
-				),
-				winners: z.optional(z.array(zWinner)),
-			}),
-		),
-		next: z.optional(
-			z.object({
-				cursor: z.optional(
-					z.string().register(z.globalRegistry, {
-						description: "Pagination cursor for the next set of results",
-					}),
-				),
-			}),
-		),
-	})
-	.register(z.globalRegistry, {
-		description: "A paginated list of developer reward winners",
-	});
 
 export const zGetAppsByAuthorData = z.object({
 	body: z.optional(z.never()),
@@ -3749,11 +2802,6 @@ export const zGetAppsByAuthorData = z.object({
 	}),
 });
 
-/**
- * A list of frames by the author
- */
-export const zGetAppsByAuthorResponse = zAppsByAuthorResponse;
-
 export const zGetDomainManifestData = z.object({
 	body: z.optional(z.never()),
 	path: z.optional(z.never()),
@@ -3763,120 +2811,6 @@ export const zGetDomainManifestData = z.object({
 		}),
 	}),
 });
-
-/**
- * Successfully retrieved domain manifest
- */
-export const zGetDomainManifestResponse = z
-	.object({
-		result: z.optional(
-			z.object({
-				state: z.optional(
-					z.object({
-						verified: z.optional(
-							z.boolean().register(z.globalRegistry, {
-								description: "Indicates if the domain is verified",
-							}),
-						),
-						manifest: z.optional(
-							z.string().register(z.globalRegistry, {
-								description: "JSON string containing the raw manifest data",
-							}),
-						),
-						decodedManifest: z.optional(
-							z.object({
-								accountAssociation: z.optional(
-									z.object({
-										fid: z.optional(
-											z.int().register(z.globalRegistry, {
-												description: "Farcaster ID associated with the domain",
-											}),
-										),
-										key: z.optional(
-											z.string().register(z.globalRegistry, {
-												description: "Public key associated with the domain",
-											}),
-										),
-										domain: z.optional(
-											z.string().register(z.globalRegistry, {
-												description: "The domain name",
-											}),
-										),
-										signature: z.optional(
-											z.string().register(z.globalRegistry, {
-												description: "Signature proving domain ownership",
-											}),
-										),
-									}),
-								),
-							}),
-						),
-						frameConfig: z.optional(
-							z
-								.object({
-									name: z.optional(
-										z.string().register(z.globalRegistry, {
-											description: "Name of the Frame",
-										}),
-									),
-									version: z.optional(
-										z.string().register(z.globalRegistry, {
-											description: "Version of the Frame",
-										}),
-									),
-									iconUrl: z.optional(
-										z.string().register(z.globalRegistry, {
-											description: "URL to the Frame's icon",
-										}),
-									),
-									homeUrl: z.optional(
-										z.string().register(z.globalRegistry, {
-											description: "Home URL of the Frame",
-										}),
-									),
-									imageUrl: z.optional(
-										z.string().register(z.globalRegistry, {
-											description: "Image URL for the Frame",
-										}),
-									),
-									buttonTitle: z.optional(
-										z.string().register(z.globalRegistry, {
-											description: "Title for the Frame's button",
-										}),
-									),
-									splashImageUrl: z.optional(
-										z.string().register(z.globalRegistry, {
-											description: "URL for the splash image",
-										}),
-									),
-									splashBackgroundColor: z.optional(
-										z.string().register(z.globalRegistry, {
-											description: "Background color for splash screen",
-										}),
-									),
-									webhookUrl: z.optional(
-										z.string().register(z.globalRegistry, {
-											description: "Webhook URL for the Frame",
-										}),
-									),
-								})
-								.register(z.globalRegistry, {
-									description: "Configuration for Farcaster Frames",
-								}),
-						),
-						updatedAt: z.optional(
-							z.int().register(z.globalRegistry, {
-								description: "Timestamp of when the data was last updated",
-							}),
-						),
-					}),
-				),
-			}),
-		),
-	})
-	.register(z.globalRegistry, {
-		description: "Successfully retrieved domain manifest",
-	});
 
 export const zGetMetaTagsData = z.object({
 	body: z.optional(z.never()),
@@ -3888,141 +2822,6 @@ export const zGetMetaTagsData = z.object({
 	}),
 });
 
-/**
- * Successfully retrieved metadata
- */
-export const zGetMetaTagsResponse = z
-	.object({
-		viewport: z.optional(
-			z.string().register(z.globalRegistry, {
-				description: "Viewport meta tag content",
-			}),
-		),
-		"theme-color": z.optional(
-			z.array(z.string()).register(z.globalRegistry, {
-				description: "Theme color values",
-			}),
-		),
-		"color-scheme": z.optional(
-			z.string().register(z.globalRegistry, {
-				description: "Color scheme preference",
-			}),
-		),
-		description: z.optional(
-			z.string().register(z.globalRegistry, {
-				description: "Page description",
-			}),
-		),
-		"apple-mobile-web-app-capable": z.optional(
-			z.string().register(z.globalRegistry, {
-				description: "Apple mobile web app capability setting",
-			}),
-		),
-		"apple-mobile-web-app-title": z.optional(
-			z.string().register(z.globalRegistry, {
-				description: "Apple mobile web app title",
-			}),
-		),
-		"apple-mobile-web-app-status-bar-style": z.optional(
-			z.string().register(z.globalRegistry, {
-				description: "Apple mobile status bar style",
-			}),
-		),
-		"og:title": z.optional(
-			z.string().register(z.globalRegistry, {
-				description: "Open Graph title",
-			}),
-		),
-		"og:description": z.optional(
-			z.string().register(z.globalRegistry, {
-				description: "Open Graph description",
-			}),
-		),
-		"og:url": z.optional(
-			z.string().register(z.globalRegistry, {
-				description: "Open Graph URL",
-			}),
-		),
-		"og:site_name": z.optional(
-			z.string().register(z.globalRegistry, {
-				description: "Open Graph site name",
-			}),
-		),
-		"og:image:alt": z.optional(
-			z.string().register(z.globalRegistry, {
-				description: "Open Graph image alt text",
-			}),
-		),
-		"og:image:type": z.optional(
-			z.string().register(z.globalRegistry, {
-				description: "Open Graph image MIME type",
-			}),
-		),
-		"og:image:width": z.optional(
-			z.string().register(z.globalRegistry, {
-				description: "Open Graph image width",
-			}),
-		),
-		"og:image:height": z.optional(
-			z.string().register(z.globalRegistry, {
-				description: "Open Graph image height",
-			}),
-		),
-		"og:image": z.optional(
-			z.string().register(z.globalRegistry, {
-				description: "Open Graph image URL",
-			}),
-		),
-		"og:type": z.optional(
-			z.string().register(z.globalRegistry, {
-				description: "Open Graph content type",
-			}),
-		),
-		"twitter:card": z.optional(
-			z.string().register(z.globalRegistry, {
-				description: "Twitter card type",
-			}),
-		),
-		"twitter:title": z.optional(
-			z.string().register(z.globalRegistry, {
-				description: "Twitter card title",
-			}),
-		),
-		"twitter:description": z.optional(
-			z.string().register(z.globalRegistry, {
-				description: "Twitter card description",
-			}),
-		),
-		"twitter:image:alt": z.optional(
-			z.string().register(z.globalRegistry, {
-				description: "Twitter image alt text",
-			}),
-		),
-		"twitter:image:type": z.optional(
-			z.string().register(z.globalRegistry, {
-				description: "Twitter image MIME type",
-			}),
-		),
-		"twitter:image:width": z.optional(
-			z.string().register(z.globalRegistry, {
-				description: "Twitter image width",
-			}),
-		),
-		"twitter:image:height": z.optional(
-			z.string().register(z.globalRegistry, {
-				description: "Twitter image height",
-			}),
-		),
-		"twitter:image": z.optional(
-			z.string().register(z.globalRegistry, {
-				description: "Twitter image URL",
-			}),
-		),
-	})
-	.register(z.globalRegistry, {
-		description: "Successfully retrieved metadata",
-	});
-
 export const zGetFarcasterJsonData = z.object({
 	body: z.optional(z.never()),
 	path: z.optional(z.never()),
@@ -4033,126 +2832,17 @@ export const zGetFarcasterJsonData = z.object({
 	}),
 });
 
-/**
- * Successfully retrieved Farcaster JSON data
- */
-export const zGetFarcasterJsonResponse = z
-	.object({
-		accountAssociation: z.optional(
-			z
-				.object({
-					header: z.optional(
-						z.string().register(z.globalRegistry, {
-							description:
-								"Base64 encoded header containing FID, type, and key information",
-						}),
-					),
-					payload: z.optional(
-						z.string().register(z.globalRegistry, {
-							description:
-								"Base64 encoded payload containing domain information",
-						}),
-					),
-					signature: z.optional(
-						z.string().register(z.globalRegistry, {
-							description: "Cryptographic signature for verification",
-						}),
-					),
-				})
-				.register(z.globalRegistry, {
-					description: "Farcaster account association information",
-				}),
-		),
-		frame: z.optional(
-			z
-				.object({
-					homeUrl: z.optional(
-						z.url().register(z.globalRegistry, {
-							description: "URL of the frame's home page",
-						}),
-					),
-					iconUrl: z.optional(
-						z.url().register(z.globalRegistry, {
-							description: "URL of the frame's icon",
-						}),
-					),
-					name: z.optional(
-						z.string().register(z.globalRegistry, {
-							description: "Name of the frame",
-						}),
-					),
-					splashBackgroundColor: z.optional(
-						z.string().register(z.globalRegistry, {
-							description:
-								"Background color for the splash screen in hex format",
-						}),
-					),
-					splashImageUrl: z.optional(
-						z.url().register(z.globalRegistry, {
-							description: "URL of the splash image",
-						}),
-					),
-					version: z.optional(
-						z.string().register(z.globalRegistry, {
-							description: "Version of the frame",
-						}),
-					),
-					webhookUrl: z.optional(
-						z.url().register(z.globalRegistry, {
-							description: "URL of the frame's webhook",
-						}),
-					),
-				})
-				.register(z.globalRegistry, {
-					description: "Farcaster frame configuration",
-				}),
-		),
-	})
-	.register(z.globalRegistry, {
-		description: "Successfully retrieved Farcaster JSON data",
-	});
-
 export const zGetOwnedDomainsData = z.object({
 	body: z.optional(z.never()),
 	path: z.optional(z.never()),
 	query: z.optional(z.never()),
 });
 
-/**
- * Successfully retrieved owned domains
- */
-export const zGetOwnedDomainsResponse = z
-	.object({
-		result: z.object({
-			domains: z.optional(
-				z.array(z.string()).register(z.globalRegistry, {
-					description: "List of domains owned by the authenticated user",
-				}),
-			),
-		}),
-	})
-	.register(z.globalRegistry, {
-		description: "Successfully retrieved owned domains",
-	});
-
 export const zGetApiKeysData = z.object({
 	body: z.optional(z.never()),
 	path: z.optional(z.never()),
 	query: z.optional(z.never()),
 });
-
-/**
- * Successfully retrieved API keys
- */
-export const zGetApiKeysResponse = z
-	.object({
-		result: z.object({
-			apiKeys: z.array(zApiKey),
-		}),
-	})
-	.register(z.globalRegistry, {
-		description: "Successfully retrieved API keys",
-	});
 
 export const zCreateApiKeyData = z.object({
 	body: z.object({
@@ -4177,25 +2867,6 @@ export const zCreateApiKeyData = z.object({
 	),
 });
 
-/**
- * Successfully created API key
- */
-export const zCreateApiKeyResponse = z
-	.object({
-		result: z.object({
-			id: z.uuid().register(z.globalRegistry, {
-				description: "Unique identifier for the created API key",
-			}),
-			secretKey: z.string().register(z.globalRegistry, {
-				description:
-					"The secret key value that should be used for authentication (only returned once at creation)",
-			}),
-		}),
-	})
-	.register(z.globalRegistry, {
-		description: "Successfully created API key",
-	});
-
 export const zRevokeApiKeyData = z.object({
 	body: z.object({
 		id: z.uuid().register(z.globalRegistry, {
@@ -4215,19 +2886,6 @@ export const zRevokeApiKeyData = z.object({
 	),
 });
 
-/**
- * Successfully revoked the API key
- */
-export const zRevokeApiKeyResponse = z
-	.object({
-		result: z.object({
-			success: z.boolean(),
-		}),
-	})
-	.register(z.globalRegistry, {
-		description: "Successfully revoked the API key",
-	});
-
 export const zGetConnectedAccountsData = z.object({
 	body: z.optional(z.never()),
 	path: z.optional(z.never()),
@@ -4243,46 +2901,6 @@ export const zGetConnectedAccountsData = z.object({
 		}),
 	),
 });
-
-/**
- * List of connected accounts
- */
-export const zGetConnectedAccountsResponse = z
-	.object({
-		result: z.object({
-			accounts: z.optional(
-				z.array(
-					z.object({
-						connectedAccountId: z.optional(
-							z.string().register(z.globalRegistry, {
-								description: "Unique identifier for the connected account",
-							}),
-						),
-						platform: z.optional(
-							z
-								.enum(["x", "github", "lens", "ethereum"])
-								.register(z.globalRegistry, {
-									description: "Social platform name (e.g., x, github, lens)",
-								}),
-						),
-						username: z.optional(
-							z.string().register(z.globalRegistry, {
-								description: "Username on the connected platform",
-							}),
-						),
-						expired: z.optional(
-							z.boolean().register(z.globalRegistry, {
-								description: "Whether the connection has expired",
-							}),
-						),
-					}),
-				),
-			),
-		}),
-	})
-	.register(z.globalRegistry, {
-		description: "List of connected accounts",
-	});
 
 export const zGetProfileCastsData = z.object({
 	body: z.optional(z.never()),
@@ -4306,28 +2924,6 @@ export const zGetProfileCastsData = z.object({
 	}),
 });
 
-/**
- * Successfully retrieved user's casts
- */
-export const zGetProfileCastsResponse = z
-	.object({
-		result: z.object({
-			casts: z.array(zCast),
-		}),
-		next: z.optional(
-			z.object({
-				cursor: z.optional(
-					z.string().register(z.globalRegistry, {
-						description: "Cursor for fetching the next page of results",
-					}),
-				),
-			}),
-		),
-	})
-	.register(z.globalRegistry, {
-		description: "Successfully retrieved user's casts",
-	});
-
 export const zGetUserLikedCastsData = z.object({
 	body: z.optional(z.never()),
 	path: z.optional(z.never()),
@@ -4345,24 +2941,6 @@ export const zGetUserLikedCastsData = z.object({
 			.default(15),
 	}),
 });
-
-/**
- * Successfully retrieved liked casts.
- */
-export const zGetUserLikedCastsResponse = z
-	.object({
-		result: z.object({
-			casts: z.optional(z.array(zCast)),
-			next: z.optional(
-				z.object({
-					cursor: z.optional(z.string()),
-				}),
-			),
-		}),
-	})
-	.register(z.globalRegistry, {
-		description: "Successfully retrieved liked casts.",
-	});
 
 export const zGetMiniAppAnalyticsRollupData = z.object({
 	body: z.object({
@@ -4428,76 +3006,6 @@ export const zGetMiniAppAnalyticsRollupData = z.object({
 	query: z.optional(z.never()),
 });
 
-/**
- * Successful analytics rollup retrieval
- */
-export const zGetMiniAppAnalyticsRollupResponse = z
-	.object({
-		result: z.optional(
-			z.object({
-				rollup: z.optional(
-					z.object({
-						dateRange: z.optional(
-							z.object({
-								startDate: z.optional(z.iso.date()),
-								endDate: z.optional(z.iso.date()),
-							}),
-						),
-						restrictions: z.optional(
-							z.array(
-								z.object({
-									dimension: z.optional(z.string()),
-									values: z.optional(z.array(z.string())),
-								}),
-							),
-						),
-						totals: z.optional(
-							z
-								.array(
-									z.object({
-										name: z.optional(z.string()),
-										value: z.optional(z.int()),
-									}),
-								)
-								.register(z.globalRegistry, {
-									description: "Aggregate metric totals",
-								}),
-						),
-						breakdown: z.optional(
-							z
-								.array(
-									z.object({
-										slices: z.optional(
-											z.array(
-												z.object({
-													dimension: z.optional(z.string()),
-													values: z.optional(z.array(z.string())),
-												}),
-											),
-										),
-										measures: z.optional(
-											z.array(
-												z.object({
-													name: z.optional(z.string()),
-													value: z.optional(z.int()),
-												}),
-											),
-										),
-									}),
-								)
-								.register(z.globalRegistry, {
-									description: "Metrics broken down by dimensions",
-								}),
-						),
-					}),
-				),
-			}),
-		),
-	})
-	.register(z.globalRegistry, {
-		description: "Successful analytics rollup retrieval",
-	});
-
 export const zInspectMiniAppUrlData = z.object({
 	body: z.optional(z.never()),
 	path: z.optional(z.never()),
@@ -4507,56 +3015,6 @@ export const zInspectMiniAppUrlData = z.object({
 		}),
 	}),
 });
-
-/**
- * Successful inspection of the Mini App URL
- */
-export const zInspectMiniAppUrlResponse = z
-	.object({
-		result: z.optional(
-			z.object({
-				facts: z.optional(
-					z.object({
-						url: z.optional(
-							z.url().register(z.globalRegistry, {
-								description: "The URL that was inspected",
-							}),
-						),
-						statusCode: z.optional(
-							z.int().register(z.globalRegistry, {
-								description: "HTTP status code returned by the URL",
-							}),
-						),
-						miniAppEmbedPresent: z.optional(
-							z.boolean().register(z.globalRegistry, {
-								description:
-									"Indicates if the Mini App embedding code is present",
-							}),
-						),
-						miniAppManifestPresent: z.optional(
-							z.boolean().register(z.globalRegistry, {
-								description: "Indicates if the Mini App manifest is present",
-							}),
-						),
-						miniAppEmbedValid: z.optional(
-							z.boolean().register(z.globalRegistry, {
-								description:
-									"Indicates if the Mini App embedding code is valid",
-							}),
-						),
-						miniAppManifestValid: z.optional(
-							z.boolean().register(z.globalRegistry, {
-								description: "Indicates if the Mini App manifest is valid",
-							}),
-						),
-					}),
-				),
-			}),
-		),
-	})
-	.register(z.globalRegistry, {
-		description: "Successful inspection of the Mini App URL",
-	});
 
 export const zInspectImageUrlData = z.object({
 	body: z.optional(z.never()),
@@ -4568,52 +3026,6 @@ export const zInspectImageUrlData = z.object({
 	}),
 });
 
-/**
- * Image inspection successful
- */
-export const zInspectImageUrlResponse = z
-	.object({
-		result: z.object({
-			facts: z.optional(
-				z.object({
-					url: z.optional(
-						z.string().register(z.globalRegistry, {
-							description: "The URL of the inspected image",
-						}),
-					),
-					statusCode: z.optional(
-						z.int().register(z.globalRegistry, {
-							description: "HTTP status code of the response",
-						}),
-					),
-					cacheHeader: z.optional(
-						z.string().register(z.globalRegistry, {
-							description: "The cache header used by the image",
-						}),
-					),
-					cacheAge: z.optional(
-						z.int().register(z.globalRegistry, {
-							description: "Cache age in seconds",
-						}),
-					),
-					imageSizeBytes: z.optional(
-						z.int().register(z.globalRegistry, {
-							description: "Size of the image in bytes",
-						}),
-					),
-					imageLoadTimeMs: z.optional(
-						z.int().register(z.globalRegistry, {
-							description: "Time taken to load the image in milliseconds",
-						}),
-					),
-				}),
-			),
-		}),
-	})
-	.register(z.globalRegistry, {
-		description: "Image inspection successful",
-	});
-
 export const zExportMiniAppUserDataData = z.object({
 	body: z.optional(z.never()),
 	path: z.optional(z.never()),
@@ -4623,29 +3035,3 @@ export const zExportMiniAppUserDataData = z.object({
 		}),
 	}),
 });
-
-/**
- * Successfully retrieved mini app user data
- */
-export const zExportMiniAppUserDataResponse = z
-	.object({
-		result: z.object({
-			users: z.optional(
-				z.array(
-					z.object({
-						fid: z.int().register(z.globalRegistry, {
-							description: "Farcaster ID of the user",
-						}),
-						notificationToken: z.optional(z.union([z.string(), z.null()])),
-						added: z.boolean().register(z.globalRegistry, {
-							description:
-								"Whether the user has been added/registered with the mini app",
-						}),
-					}),
-				),
-			),
-		}),
-	})
-	.register(z.globalRegistry, {
-		description: "Successfully retrieved mini app user data",
-	});
