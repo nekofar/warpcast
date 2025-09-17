@@ -36,6 +36,9 @@
     "README.md",
     "LICENSE"
   ],
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "scripts": {
     "prebuild": "pnpm clean && pnpm openapi:lint && pnpm openapi:bundle && pnpm openapi:generate",
     "build": "tsup",
