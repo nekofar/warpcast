@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.64] - 2025-09-17
+
+### ⚙️ Miscellaneous Tasks
+
+- *(config)* Enforce Node.js version >=20.0.0
+- *(ci)* Improve grammar and consistency in workflow comments
+
 ## [2.0.0-alpha.63] - 2025-09-17
 
 ### 🚜 Refactor
