@@ -8,7 +8,7 @@ on:
       - hotfix/*
       - feature/*
       - release/*
-    paths-ignore: # Ignoring the markdown file changes.
+    paths-ignore: # Ignoring the Markdown file changes.
       - '**/*.md'
   pull_request: # Also on pull request events.
   workflow_dispatch: # Allows you to run this workflow manually from the Actions tab.
@@ -38,7 +38,7 @@ jobs:
       - name: Install dependencies using pnpm
         run: pnpm install
 
-      # This compiles the application in optimized production mode and output it to the build folder.
+      # This compiles the application in optimized production mode and outputs it to the build folder.
       - name: Build the application and export it
         run: pnpm run build
 
@@ -59,7 +59,7 @@ jobs:
     permissions:
       contents: write
 
-    steps: # Checkout the repository code
+    steps: # Check out the repository code
       - name: Checkout code
         uses: actions/checkout@v5.0.0
         with:
@@ -106,4 +106,4 @@ jobs:
 
 concurrency: # Allows controlling the concurrency level of the job in the build pipeline.
   group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true # If enabled, previous runs of this workflow for the same group-key will be cancelled while this build or run is in progress.
+  cancel-in-progress: true # If enabled, previous runs of this workflow for the same group-key will be canceled while this build or run is in progress.
