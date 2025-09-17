@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.65] - 2025-09-17
+
+### ⚙️ Miscellaneous Tasks
+
+- *(config)* Remove `pnpm-lock.yaml` from `.gitignore`
+
+### ◀️ Revert
+
+- *(deps-dev)* Pin dev dependencies to exact versions
+
 ## [2.0.0-alpha.64] - 2025-09-17
 
 ### ⚙️ Miscellaneous Tasks
