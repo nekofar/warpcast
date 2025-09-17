@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.63] - 2025-09-17
+
+### 🚜 Refactor
+
+- *(client)* Restructure exports for improved clarity
+- *(config)* Enable `clean` option in build process
+- *(config)* Disable `splitting` in tsup config
+
 ## [2.0.0-alpha.62] - 2025-09-16
 
 ### 🚜 Refactor
