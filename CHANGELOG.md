@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.67] - 2025-09-17
+
+### ⚙️ Miscellaneous Tasks
+
+- *(config)* Remove `pnpm-workspace.yaml`
+
 ## [2.0.0-alpha.66] - 2025-09-17
 
 ### 🐛 Bug Fixes
