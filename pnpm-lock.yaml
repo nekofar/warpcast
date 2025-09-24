@@ -23,7 +23,7 @@ importers:
         version: 2.2.4
       '@hey-api/openapi-ts':
         specifier: ^0.84.1
-        version: 0.84.1(typescript@5.9.2)
+        version: 0.84.2(typescript@5.9.2)
       '@redocly/cli':
         specifier: ^2.1.3
         version: 2.1.5(@opentelemetry/api@1.9.0)(ajv@8.17.1)(core-js@3.44.0)(encoding@0.1.13)
@@ -1359,8 +1359,8 @@ packages:
     resolution: {integrity: sha512-+5eg9pgAAM9oSqJQuUtfTKbLz8yieFKN91myyXiLnprqFj8ROfxUKJLr9DKq/hGKyybKT1WxFSetDqCFm80pCA==}
     engines: {node: '>= 16'}
 
-  '@hey-api/openapi-ts@0.84.1':
-    resolution: {integrity: sha512-tgqP8WQtrGrg+WUYQJA4DmFTlWZq19H+8S/cuEAcPjBRkLZO6SdSnZzF0wfnk8AKcF8F/BLDZoPAiGt0mMnDdA==}
+  '@hey-api/openapi-ts@0.84.2':
+    resolution: {integrity: sha512-wfILeH3R3IKLdWwm0BB00wQMHYrDz4Ot8B2hPAd3QqlrsSSPDnRXatZ/Cya5tbcTqoUjXuBP2oXfbvndcNPIZQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=22.10.0}
     hasBin: true
     peerDependencies:
@@ -9430,7 +9430,7 @@ snapshots:
       js-yaml: 4.1.0
       lodash: 4.17.21
 
-  '@hey-api/openapi-ts@0.84.1(typescript@5.9.2)':
+  '@hey-api/openapi-ts@0.84.2(typescript@5.9.2)':
     dependencies:
       '@hey-api/codegen-core': 0.2.0(typescript@5.9.2)
       '@hey-api/json-schema-ref-parser': 1.1.0
@@ -11075,7 +11075,7 @@ snapshots:
 
   '@stoplight/spectral-formats@1.8.2(encoding@0.1.13)':
     dependencies:
-      '@stoplight/json': 3.21.7
+      '@stoplight/json': 3.20.3
       '@stoplight/spectral-core': 1.20.0(encoding@0.1.13)
       '@types/json-schema': 7.0.15
       tslib: 2.8.1
