@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.69] - 2025-09-26
+
+### 🚜 Refactor
+
+- *(client)* Update type imports and structure
+
 ## [2.0.0-alpha.68] - 2025-09-22
 
 ### 🐛 Bug Fixes
