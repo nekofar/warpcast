@@ -2004,6 +2004,12 @@ export const zGetSponsoredInvitesData = z.object({
 	query: z.optional(z.never()),
 });
 
+export const zGetOrCreateReferralCodeData = z.object({
+	body: z.record(z.string(), z.unknown()),
+	path: z.optional(z.never()),
+	query: z.optional(z.never()),
+});
+
 export const zGetRewardsLeaderboardData = z.object({
 	body: z.optional(z.never()),
 	path: z.optional(z.never()),

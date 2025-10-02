@@ -2666,6 +2666,50 @@ export type GetSponsoredInvitesResponses = {
 export type GetSponsoredInvitesResponse =
 	GetSponsoredInvitesResponses[keyof GetSponsoredInvitesResponses];
 
+export type GetOrCreateReferralCodeData = {
+	body: {
+		[key: string]: unknown;
+	};
+	path?: never;
+	query?: never;
+	url: "/v2/get-or-create-referral-code";
+};
+
+export type GetOrCreateReferralCodeErrors = {
+	/**
+	 * Authentication is required or failed
+	 */
+	401: ErrorResponse;
+	/**
+	 * Too many requests
+	 */
+	429: unknown;
+};
+
+export type GetOrCreateReferralCodeError =
+	GetOrCreateReferralCodeErrors[keyof GetOrCreateReferralCodeErrors];
+
+export type GetOrCreateReferralCodeResponses = {
+	/**
+	 * Referral code retrieved or created successfully
+	 */
+	200: {
+		result: {
+			/**
+			 * The referral code
+			 */
+			code: string;
+			/**
+			 * The unique identifier for the referral code
+			 */
+			id: string;
+		};
+	};
+};
+
+export type GetOrCreateReferralCodeResponse =
+	GetOrCreateReferralCodeResponses[keyof GetOrCreateReferralCodeResponses];
+
 export type GetRewardsLeaderboardData = {
 	body?: never;
 	path?: never;

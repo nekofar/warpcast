@@ -198,6 +198,9 @@ import type {
 	GetNotificationsData,
 	GetNotificationsErrors,
 	GetNotificationsResponses,
+	GetOrCreateReferralCodeData,
+	GetOrCreateReferralCodeErrors,
+	GetOrCreateReferralCodeResponses,
 	GetOwnedDomainsData,
 	GetOwnedDomainsErrors,
 	GetOwnedDomainsResponses,
@@ -434,6 +437,7 @@ import {
 	zGetMutedKeywordsData,
 	zGetMutualFollowersData,
 	zGetNotificationsData,
+	zGetOrCreateReferralCodeData,
 	zGetOwnedDomainsData,
 	zGetProfileCastsData,
 	zGetRewardsLeaderboardData,
@@ -1464,6 +1468,36 @@ export const getSponsoredInvites = <ThrowOnError extends boolean = false>(
 		],
 		url: "/v2/warpcast-sponsored-invites",
 		...options,
+	});
+};
+
+/**
+ * Get or create referral code
+ * Gets an existing referral code or creates a new one for the authenticated user.
+ */
+export const getOrCreateReferralCode = <ThrowOnError extends boolean = false>(
+	options: Options<GetOrCreateReferralCodeData, ThrowOnError>,
+) => {
+	return (options.client ?? client).post<
+		GetOrCreateReferralCodeResponses,
+		GetOrCreateReferralCodeErrors,
+		ThrowOnError
+	>({
+		requestValidator: async (data) => {
+			return await zGetOrCreateReferralCodeData.parseAsync(data);
+		},
+		security: [
+			{
+				scheme: "bearer",
+				type: "http",
+			},
+		],
+		url: "/v2/get-or-create-referral-code",
+		...options,
+		headers: {
+			"Content-Type": "application/json",
+			...options.headers,
+		},
 	});
 };
 
