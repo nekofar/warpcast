@@ -2818,6 +2818,58 @@ export type GetRewardsMetadataResponses = {
 export type GetRewardsMetadataResponse =
 	GetRewardsMetadataResponses[keyof GetRewardsMetadataResponses];
 
+export type GetXpRewardsData = {
+	body?: never;
+	path?: never;
+	query?: {
+		/**
+		 * Maximum number of rewards to return
+		 */
+		limit?: number;
+	};
+	url: "/v2/xp-rewards";
+};
+
+export type GetXpRewardsErrors = {
+	/**
+	 * Authentication is required or failed
+	 */
+	401: ErrorResponse;
+	/**
+	 * Too many requests
+	 */
+	429: unknown;
+};
+
+export type GetXpRewardsError = GetXpRewardsErrors[keyof GetXpRewardsErrors];
+
+export type GetXpRewardsResponses = {
+	/**
+	 * XP rewards retrieved successfully
+	 */
+	200: {
+		result: {
+			/**
+			 * List of reward items
+			 */
+			rewards: Array<{
+				[key: string]: unknown;
+			}>;
+			/**
+			 * Total USDC earned from rewards
+			 */
+			totalUsdc: number;
+			/**
+			 * Total number of referrals
+			 */
+			totalReferrals: number;
+		};
+	};
+};
+
+export type GetXpRewardsResponse =
+	GetXpRewardsResponses[keyof GetXpRewardsResponses];
+
 export type GetBookmarkedCastsData = {
 	body?: never;
 	path?: never;

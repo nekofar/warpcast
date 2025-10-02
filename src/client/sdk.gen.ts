@@ -291,6 +291,9 @@ import type {
 	GetVerificationsData,
 	GetVerificationsErrors,
 	GetVerificationsResponses,
+	GetXpRewardsData,
+	GetXpRewardsErrors,
+	GetXpRewardsResponses,
 	InspectImageUrlData,
 	InspectImageUrlErrors,
 	InspectImageUrlResponses,
@@ -471,6 +474,7 @@ import {
 	zGetUserStarterPacksData,
 	zGetUserThreadCastsData,
 	zGetVerificationsData,
+	zGetXpRewardsData,
 	zInspectImageUrlData,
 	zInspectMiniAppUrlData,
 	zInviteUserToChannelData,
@@ -1579,6 +1583,32 @@ export const getRewardsMetadata = <ThrowOnError extends boolean = false>(
 			},
 		],
 		url: "/v2/rewards-metadata",
+		...options,
+	});
+};
+
+/**
+ * Get XP rewards
+ * Retrieves the user's XP rewards, including total USDC earned and referral count.
+ */
+export const getXpRewards = <ThrowOnError extends boolean = false>(
+	options?: Options<GetXpRewardsData, ThrowOnError>,
+) => {
+	return (options?.client ?? client).get<
+		GetXpRewardsResponses,
+		GetXpRewardsErrors,
+		ThrowOnError
+	>({
+		requestValidator: async (data) => {
+			return await zGetXpRewardsData.parseAsync(data);
+		},
+		security: [
+			{
+				scheme: "bearer",
+				type: "http",
+			},
+		],
+		url: "/v2/xp-rewards",
 		...options,
 	});
 };

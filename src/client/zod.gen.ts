@@ -2045,6 +2045,20 @@ export const zGetRewardsMetadataData = z.object({
 	}),
 });
 
+export const zGetXpRewardsData = z.object({
+	body: z.optional(z.never()),
+	path: z.optional(z.never()),
+	query: z.optional(
+		z.object({
+			limit: z.optional(
+				z.int().register(z.globalRegistry, {
+					description: "Maximum number of rewards to return",
+				}),
+			),
+		}),
+	),
+});
+
 export const zGetBookmarkedCastsData = z.object({
 	body: z.optional(z.never()),
 	path: z.optional(z.never()),
