@@ -159,6 +159,9 @@ paths:
   /v2/warpcast-sponsored-invites:
     $ref: ./paths/v2/warpcast-sponsored-invites.yaml
 
+  /v2/get-or-create-referral-code:
+    $ref: ./paths/v2/get-or-create-referral-code.yaml
+
   /v2/rewards-leaderboard:
     $ref: ./paths/v2/rewards-leaderboard.yaml
 

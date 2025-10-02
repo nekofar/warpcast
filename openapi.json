@@ -1598,6 +1598,70 @@
         }
       }
     },
+    "/v2/get-or-create-referral-code": {
+      "post": {
+        "operationId": "getOrCreateReferralCode",
+        "summary": "Get or create referral code",
+        "description": "Gets an existing referral code or creates a new one for the authenticated user.",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Referral code retrieved or created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "result"
+                  ],
+                  "properties": {
+                    "result": {
+                      "type": "object",
+                      "required": [
+                        "code",
+                        "id"
+                      ],
+                      "properties": {
+                        "code": {
+                          "type": "string",
+                          "description": "The referral code",
+                          "example": "ABC123"
+                        },
+                        "id": {
+                          "type": "string",
+                          "description": "The unique identifier for the referral code",
+                          "example": "01234567-89ab-cdef-0123-456789abcdef"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "429": {
+            "description": "Too many requests"
+          }
+        }
+      }
+    },
     "/v2/rewards-leaderboard": {
       "get": {
         "tags": [
