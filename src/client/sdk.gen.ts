@@ -291,6 +291,9 @@ import type {
 	GetVerificationsData,
 	GetVerificationsErrors,
 	GetVerificationsResponses,
+	GetXpClaimableSummaryData,
+	GetXpClaimableSummaryErrors,
+	GetXpClaimableSummaryResponses,
 	GetXpRewardsData,
 	GetXpRewardsErrors,
 	GetXpRewardsResponses,
@@ -474,6 +477,7 @@ import {
 	zGetUserStarterPacksData,
 	zGetUserThreadCastsData,
 	zGetVerificationsData,
+	zGetXpClaimableSummaryData,
 	zGetXpRewardsData,
 	zInspectImageUrlData,
 	zInspectMiniAppUrlData,
@@ -1610,6 +1614,36 @@ export const getXpRewards = <ThrowOnError extends boolean = false>(
 		],
 		url: "/v2/xp-rewards",
 		...options,
+	});
+};
+
+/**
+ * Get XP claimable summary
+ * Retrieves a summary of claimable XP rewards for the authenticated user.
+ */
+export const getXpClaimableSummary = <ThrowOnError extends boolean = false>(
+	options: Options<GetXpClaimableSummaryData, ThrowOnError>,
+) => {
+	return (options.client ?? client).post<
+		GetXpClaimableSummaryResponses,
+		GetXpClaimableSummaryErrors,
+		ThrowOnError
+	>({
+		requestValidator: async (data) => {
+			return await zGetXpClaimableSummaryData.parseAsync(data);
+		},
+		security: [
+			{
+				scheme: "bearer",
+				type: "http",
+			},
+		],
+		url: "/v2/xp-claimable-summary",
+		...options,
+		headers: {
+			"Content-Type": "application/json",
+			...options.headers,
+		},
 	});
 };
 

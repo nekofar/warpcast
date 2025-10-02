@@ -2870,6 +2870,58 @@ export type GetXpRewardsResponses = {
 export type GetXpRewardsResponse =
 	GetXpRewardsResponses[keyof GetXpRewardsResponses];
 
+export type GetXpClaimableSummaryData = {
+	body: {
+		[key: string]: unknown;
+	};
+	path?: never;
+	query?: never;
+	url: "/v2/xp-claimable-summary";
+};
+
+export type GetXpClaimableSummaryErrors = {
+	/**
+	 * Authentication is required or failed
+	 */
+	401: ErrorResponse;
+	/**
+	 * Too many requests
+	 */
+	429: unknown;
+};
+
+export type GetXpClaimableSummaryError =
+	GetXpClaimableSummaryErrors[keyof GetXpClaimableSummaryErrors];
+
+export type GetXpClaimableSummaryResponses = {
+	/**
+	 * XP claimable summary retrieved successfully
+	 */
+	200: {
+		result: {
+			/**
+			 * Total USDC amount available to claim
+			 */
+			totalClaimableUsdc: number;
+			/**
+			 * Number of pending rewards
+			 */
+			pendingRewardsCount: number;
+			/**
+			 * Whether the user is eligible to claim rewards
+			 */
+			eligibleToClaim: boolean;
+			/**
+			 * Reason why user is ineligible to claim (if applicable)
+			 */
+			ineligibleToClaimReason?: string;
+		};
+	};
+};
+
+export type GetXpClaimableSummaryResponse =
+	GetXpClaimableSummaryResponses[keyof GetXpClaimableSummaryResponses];
+
 export type GetBookmarkedCastsData = {
 	body?: never;
 	path?: never;

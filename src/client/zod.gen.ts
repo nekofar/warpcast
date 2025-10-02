@@ -2059,6 +2059,12 @@ export const zGetXpRewardsData = z.object({
 	),
 });
 
+export const zGetXpClaimableSummaryData = z.object({
+	body: z.record(z.string(), z.unknown()),
+	path: z.optional(z.never()),
+	query: z.optional(z.never()),
+});
+
 export const zGetBookmarkedCastsData = z.object({
 	body: z.optional(z.never()),
 	path: z.optional(z.never()),
