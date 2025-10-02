@@ -333,6 +333,9 @@ paths:
   /v1/domain-manifest:
     $ref: ./paths/v1/domain-manifest.yaml
 
+  /v1/get-trending-topics:
+    $ref: ./paths/v1/get-trending-topics.yaml
+
   /v1/dev-tools/meta-tags:
     $ref: ./paths/v1/dev-tools/meta-tags.yaml
 
