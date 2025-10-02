@@ -2948,6 +2948,31 @@ export const zGetUserLikedCastsData = z.object({
 	}),
 });
 
+export const zSubmitAnalyticsEventsData = z.object({
+	body: z.object({
+		events: z
+			.array(
+				z.object({
+					type: z.string().register(z.globalRegistry, {
+						description: "Type of the analytics event",
+					}),
+					data: z.record(z.string(), z.unknown()).register(z.globalRegistry, {
+						description: "Event-specific data",
+					}),
+					ts: z.coerce.bigint().register(z.globalRegistry, {
+						description:
+							"Unix timestamp in milliseconds when the event occurred",
+					}),
+				}),
+			)
+			.register(z.globalRegistry, {
+				description: "Array of analytics events to submit",
+			}),
+	}),
+	path: z.optional(z.never()),
+	query: z.optional(z.never()),
+});
+
 export const zGetMiniAppAnalyticsRollupData = z.object({
 	body: z.object({
 		dateRange: z.object({

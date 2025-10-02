@@ -345,6 +345,9 @@ import type {
 	SetLastCheckedTimestampData,
 	SetLastCheckedTimestampErrors,
 	SetLastCheckedTimestampResponses,
+	SubmitAnalyticsEventsData,
+	SubmitAnalyticsEventsErrors,
+	SubmitAnalyticsEventsResponses,
 	UnbanUserFromChannelData,
 	UnbanUserFromChannelErrors,
 	UnbanUserFromChannelResponses,
@@ -486,6 +489,7 @@ import {
 	zSendDirectCastMessageData,
 	zSetDirectCastConversationMessageTtlData,
 	zSetLastCheckedTimestampData,
+	zSubmitAnalyticsEventsData,
 	zUnbanUserFromChannelData,
 	zUnblockUserData,
 	zUndoRecastData,
@@ -3655,6 +3659,36 @@ export const getUserLikedCasts = <ThrowOnError extends boolean = false>(
 		],
 		url: "/v2/user-liked-casts",
 		...options,
+	});
+};
+
+/**
+ * Submit analytics events
+ * Submit one or more analytics events for tracking user activity.
+ */
+export const submitAnalyticsEvents = <ThrowOnError extends boolean = false>(
+	options: Options<SubmitAnalyticsEventsData, ThrowOnError>,
+) => {
+	return (options.client ?? client).post<
+		SubmitAnalyticsEventsResponses,
+		SubmitAnalyticsEventsErrors,
+		ThrowOnError
+	>({
+		requestValidator: async (data) => {
+			return await zSubmitAnalyticsEventsData.parseAsync(data);
+		},
+		security: [
+			{
+				scheme: "bearer",
+				type: "http",
+			},
+		],
+		url: "/v1/analytics-events",
+		...options,
+		headers: {
+			"Content-Type": "application/json",
+			...options.headers,
+		},
 	});
 };
 

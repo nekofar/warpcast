@@ -5892,6 +5892,57 @@ export type GetUserLikedCastsResponses = {
 export type GetUserLikedCastsResponse =
 	GetUserLikedCastsResponses[keyof GetUserLikedCastsResponses];
 
+export type SubmitAnalyticsEventsData = {
+	body: {
+		/**
+		 * Array of analytics events to submit
+		 */
+		events: Array<{
+			/**
+			 * Type of the analytics event
+			 */
+			type: string;
+			/**
+			 * Event-specific data
+			 */
+			data: {
+				[key: string]: unknown;
+			};
+			/**
+			 * Unix timestamp in milliseconds when the event occurred
+			 */
+			ts: bigint;
+		}>;
+	};
+	path?: never;
+	query?: never;
+	url: "/v1/analytics-events";
+};
+
+export type SubmitAnalyticsEventsErrors = {
+	/**
+	 * Authentication is required or failed
+	 */
+	401: ErrorResponse;
+	/**
+	 * Too many requests
+	 */
+	429: unknown;
+};
+
+export type SubmitAnalyticsEventsError =
+	SubmitAnalyticsEventsErrors[keyof SubmitAnalyticsEventsErrors];
+
+export type SubmitAnalyticsEventsResponses = {
+	/**
+	 * Analytics events submitted successfully
+	 */
+	200: SuccessResponse;
+};
+
+export type SubmitAnalyticsEventsResponse =
+	SubmitAnalyticsEventsResponses[keyof SubmitAnalyticsEventsResponses];
+
 export type GetMiniAppAnalyticsRollupData = {
 	body: {
 		dateRange: {
