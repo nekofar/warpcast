@@ -377,3 +377,6 @@ paths:
 
   /v1/dev-tools/export/miniapp-user-data:
     $ref: ./paths/v1/dev-tools/export/miniapp-user-data.yaml
+
+  /v2/ss/v1/rgstr:
+    $ref: ./paths/v2/ss/v1/rgstr.yaml

@@ -1,0 +1,101 @@
+post:
+  operationId: registerStatsigEvents
+  summary: Register Statsig events
+  description: Submits Statsig analytics events including gate exposures and other tracking events.
+  security: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - events
+          properties:
+            events:
+              type: array
+              description: Array of Statsig events to submit
+              items:
+                type: object
+                required:
+                  - eventName
+                  - user
+                  - time
+                properties:
+                  eventName:
+                    type: string
+                    description: Name of the event
+                    example: "statsig::gate_exposure"
+                  user:
+                    type: object
+                    description: User information
+                    properties:
+                      userID:
+                        type: integer
+                        description: User ID
+                        example: 12345
+                      appVersion:
+                        type: string
+                        description: Application version
+                        example: "2025-01-01-12-00-abc1234"
+                      statsigEnvironment:
+                        type: object
+                        properties:
+                          tier:
+                            type: string
+                            description: Environment tier
+                            example: "production"
+                  value:
+                    type: ['string', 'null']
+                    description: Event value
+                  metadata:
+                    type: object
+                    description: Event metadata
+                    additionalProperties: true
+                  time:
+                    type: integer
+                    format: int64
+                    description: Unix timestamp in milliseconds when the event occurred
+                    example: 1234567890000
+                  statsigMetadata:
+                    type: object
+                    description: Additional Statsig metadata
+                    additionalProperties: true
+                  secondaryExposures:
+                    type: array
+                    description: Secondary exposures
+                    items:
+                      type: object
+                      additionalProperties: true
+            statsigMetadata:
+              type: object
+              description: SDK metadata
+              properties:
+                sdkType:
+                  type: string
+                  description: Type of SDK
+                  example: "react-client"
+                sdkVersion:
+                  type: string
+                  description: Version of SDK
+                  example: "1.30.0"
+                stableID:
+                  type: string
+                  description: Stable ID for the client
+                  example: "abc12345-6789-0def-ghij-klmnopqrstuv"
+  responses:
+    '200':
+      description: Events registered successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - success
+            properties:
+              success:
+                type: boolean
+                description: Whether the events were successfully registered
+                example: true
+    '429':
+      description: Too many requests
