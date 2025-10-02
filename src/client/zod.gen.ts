@@ -3116,3 +3116,91 @@ export const zExportMiniAppUserDataData = z.object({
 		}),
 	}),
 });
+
+export const zRegisterStatsigEventsData = z.object({
+	body: z.object({
+		events: z
+			.array(
+				z.object({
+					eventName: z.string().register(z.globalRegistry, {
+						description: "Name of the event",
+					}),
+					user: z
+						.object({
+							userID: z.optional(
+								z.int().register(z.globalRegistry, {
+									description: "User ID",
+								}),
+							),
+							appVersion: z.optional(
+								z.string().register(z.globalRegistry, {
+									description: "Application version",
+								}),
+							),
+							statsigEnvironment: z.optional(
+								z.object({
+									tier: z.optional(
+										z.string().register(z.globalRegistry, {
+											description: "Environment tier",
+										}),
+									),
+								}),
+							),
+						})
+						.register(z.globalRegistry, {
+							description: "User information",
+						}),
+					value: z.optional(z.union([z.string(), z.null()])),
+					metadata: z.optional(
+						z.record(z.string(), z.unknown()).register(z.globalRegistry, {
+							description: "Event metadata",
+						}),
+					),
+					time: z.coerce.bigint().register(z.globalRegistry, {
+						description:
+							"Unix timestamp in milliseconds when the event occurred",
+					}),
+					statsigMetadata: z.optional(
+						z.record(z.string(), z.unknown()).register(z.globalRegistry, {
+							description: "Additional Statsig metadata",
+						}),
+					),
+					secondaryExposures: z.optional(
+						z
+							.array(z.record(z.string(), z.unknown()))
+							.register(z.globalRegistry, {
+								description: "Secondary exposures",
+							}),
+					),
+				}),
+			)
+			.register(z.globalRegistry, {
+				description: "Array of Statsig events to submit",
+			}),
+		statsigMetadata: z.optional(
+			z
+				.object({
+					sdkType: z.optional(
+						z.string().register(z.globalRegistry, {
+							description: "Type of SDK",
+						}),
+					),
+					sdkVersion: z.optional(
+						z.string().register(z.globalRegistry, {
+							description: "Version of SDK",
+						}),
+					),
+					stableID: z.optional(
+						z.string().register(z.globalRegistry, {
+							description: "Stable ID for the client",
+						}),
+					),
+				})
+				.register(z.globalRegistry, {
+					description: "SDK metadata",
+				}),
+		),
+	}),
+	path: z.optional(z.never()),
+	query: z.optional(z.never()),
+});

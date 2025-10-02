@@ -6448,3 +6448,104 @@ export type ExportMiniAppUserDataResponses = {
 
 export type ExportMiniAppUserDataResponse =
 	ExportMiniAppUserDataResponses[keyof ExportMiniAppUserDataResponses];
+
+export type RegisterStatsigEventsData = {
+	body: {
+		/**
+		 * Array of Statsig events to submit
+		 */
+		events: Array<{
+			/**
+			 * Name of the event
+			 */
+			eventName: string;
+			/**
+			 * User information
+			 */
+			user: {
+				/**
+				 * User ID
+				 */
+				userID?: number;
+				/**
+				 * Application version
+				 */
+				appVersion?: string;
+				statsigEnvironment?: {
+					/**
+					 * Environment tier
+					 */
+					tier?: string;
+				};
+			};
+			/**
+			 * Event value
+			 */
+			value?: string | null;
+			/**
+			 * Event metadata
+			 */
+			metadata?: {
+				[key: string]: unknown;
+			};
+			/**
+			 * Unix timestamp in milliseconds when the event occurred
+			 */
+			time: bigint;
+			/**
+			 * Additional Statsig metadata
+			 */
+			statsigMetadata?: {
+				[key: string]: unknown;
+			};
+			/**
+			 * Secondary exposures
+			 */
+			secondaryExposures?: Array<{
+				[key: string]: unknown;
+			}>;
+		}>;
+		/**
+		 * SDK metadata
+		 */
+		statsigMetadata?: {
+			/**
+			 * Type of SDK
+			 */
+			sdkType?: string;
+			/**
+			 * Version of SDK
+			 */
+			sdkVersion?: string;
+			/**
+			 * Stable ID for the client
+			 */
+			stableID?: string;
+		};
+	};
+	path?: never;
+	query?: never;
+	url: "/v2/ss/v1/rgstr";
+};
+
+export type RegisterStatsigEventsErrors = {
+	/**
+	 * Too many requests
+	 */
+	429: unknown;
+};
+
+export type RegisterStatsigEventsResponses = {
+	/**
+	 * Events registered successfully
+	 */
+	200: {
+		/**
+		 * Whether the events were successfully registered
+		 */
+		success: boolean;
+	};
+};
+
+export type RegisterStatsigEventsResponse =
+	RegisterStatsigEventsResponses[keyof RegisterStatsigEventsResponses];

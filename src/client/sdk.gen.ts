@@ -333,6 +333,9 @@ import type {
 	RecastCastData,
 	RecastCastErrors,
 	RecastCastResponses,
+	RegisterStatsigEventsData,
+	RegisterStatsigEventsErrors,
+	RegisterStatsigEventsResponses,
 	RemoveChannelInviteData,
 	RemoveChannelInviteErrors,
 	RemoveChannelInviteResponses,
@@ -497,6 +500,7 @@ import {
 	zPinCastToChannelData,
 	zPinDirectCastConversationData,
 	zRecastCastData,
+	zRegisterStatsigEventsData,
 	zRemoveChannelInviteData,
 	zRemoveDirectCastMessageReactionData,
 	zRevokeApiKeyData,
@@ -3926,5 +3930,29 @@ export const exportMiniAppUserData = <ThrowOnError extends boolean = false>(
 		],
 		url: "/v1/dev-tools/export/miniapp-user-data",
 		...options,
+	});
+};
+
+/**
+ * Register Statsig events
+ * Submits Statsig analytics events including gate exposures and other tracking events.
+ */
+export const registerStatsigEvents = <ThrowOnError extends boolean = false>(
+	options: Options<RegisterStatsigEventsData, ThrowOnError>,
+) => {
+	return (options.client ?? client).post<
+		RegisterStatsigEventsResponses,
+		RegisterStatsigEventsErrors,
+		ThrowOnError
+	>({
+		requestValidator: async (data) => {
+			return await zRegisterStatsigEventsData.parseAsync(data);
+		},
+		url: "/v2/ss/v1/rgstr",
+		...options,
+		headers: {
+			"Content-Type": "application/json",
+			...options.headers,
+		},
 	});
 };
