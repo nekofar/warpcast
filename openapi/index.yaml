@@ -171,6 +171,9 @@ paths:
   /v2/rewards-metadata:
     $ref: ./paths/v2/rewards-metadata.yaml
 
+  /v2/xp-rewards:
+    $ref: ./paths/v2/xp-rewards.yaml
+
   /v2/bookmarked-casts:
     $ref: ./paths/v2/bookmarked-casts.yaml
 
