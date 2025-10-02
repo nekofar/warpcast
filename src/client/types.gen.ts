@@ -1713,29 +1713,29 @@ export type GetFeedItemsData = {
 		 */
 		excludeItemIdPrefixes?: Array<string>;
 		/**
-		 * View events for casts
+		 * View events for casts (can be empty array)
 		 */
 		castViewEvents?: Array<{
 			/**
 			 * Event timestamp in ms
 			 */
-			ts: bigint;
+			ts?: bigint;
 			/**
 			 * Cast hash
 			 */
-			hash: string;
+			hash?: string;
 			/**
 			 * Context of the view event
 			 */
-			on: string;
+			on?: string;
 			/**
 			 * Channel key
 			 */
-			channel: string;
+			channel?: string;
 			/**
 			 * Feed type where event occurred
 			 */
-			feed: string;
+			feed?: string;
 		}>;
 		/**
 		 * Whether to update the feed state

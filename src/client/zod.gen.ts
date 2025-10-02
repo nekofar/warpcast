@@ -1700,25 +1700,35 @@ export const zGetFeedItemsData = z.object({
 			z
 				.array(
 					z.object({
-						ts: z.coerce.bigint().register(z.globalRegistry, {
-							description: "Event timestamp in ms",
-						}),
-						hash: z.string().register(z.globalRegistry, {
-							description: "Cast hash",
-						}),
-						on: z.string().register(z.globalRegistry, {
-							description: "Context of the view event",
-						}),
-						channel: z.string().register(z.globalRegistry, {
-							description: "Channel key",
-						}),
-						feed: z.string().register(z.globalRegistry, {
-							description: "Feed type where event occurred",
-						}),
+						ts: z.optional(
+							z.coerce.bigint().register(z.globalRegistry, {
+								description: "Event timestamp in ms",
+							}),
+						),
+						hash: z.optional(
+							z.string().register(z.globalRegistry, {
+								description: "Cast hash",
+							}),
+						),
+						on: z.optional(
+							z.string().register(z.globalRegistry, {
+								description: "Context of the view event",
+							}),
+						),
+						channel: z.optional(
+							z.string().register(z.globalRegistry, {
+								description: "Channel key",
+							}),
+						),
+						feed: z.optional(
+							z.string().register(z.globalRegistry, {
+								description: "Feed type where event occurred",
+							}),
+						),
 					}),
 				)
 				.register(z.globalRegistry, {
-					description: "View events for casts",
+					description: "View events for casts (can be empty array)",
 				}),
 		),
 		updateState: z.optional(
