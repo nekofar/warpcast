@@ -6633,6 +6633,85 @@
         }
       }
     },
+    "/v1/analytics-events": {
+      "post": {
+        "operationId": "submitAnalyticsEvents",
+        "summary": "Submit analytics events",
+        "description": "Submit one or more analytics events for tracking user activity.",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "events"
+                ],
+                "properties": {
+                  "events": {
+                    "type": "array",
+                    "description": "Array of analytics events to submit",
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "data",
+                        "ts"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "description": "Type of the analytics event",
+                          "example": "page-view"
+                        },
+                        "data": {
+                          "type": "object",
+                          "description": "Event-specific data",
+                          "additionalProperties": true,
+                          "example": {
+                            "on": "feed",
+                            "itemId": "abc123"
+                          }
+                        },
+                        "ts": {
+                          "type": "integer",
+                          "format": "int64",
+                          "description": "Unix timestamp in milliseconds when the event occurred",
+                          "example": 1234567890000
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Analytics events submitted successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "429": {
+            "description": "Too many requests"
+          }
+        }
+      }
+    },
     "/v1/analytics/miniapps/rollup": {
       "post": {
         "tags": [
