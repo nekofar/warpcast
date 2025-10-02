@@ -240,6 +240,9 @@ import type {
 	GetTopMiniAppsData,
 	GetTopMiniAppsErrors,
 	GetTopMiniAppsResponses,
+	GetTrendingTopicsData,
+	GetTrendingTopicsErrors,
+	GetTrendingTopicsResponses,
 	GetUnseenCountsData,
 	GetUnseenCountsErrors,
 	GetUnseenCountsResponses,
@@ -463,6 +466,7 @@ import {
 	zGetSuggestedUsersData,
 	zGetTopFrameAppsData,
 	zGetTopMiniAppsData,
+	zGetTrendingTopicsData,
 	zGetUnseenCountsData,
 	zGetUserAppContextData,
 	zGetUserByFidData,
@@ -3482,6 +3486,32 @@ export const getDomainManifest = <ThrowOnError extends boolean = false>(
 			},
 		],
 		url: "/v1/domain-manifest",
+		...options,
+	});
+};
+
+/**
+ * Get trending topics
+ * Retrieves a list of currently trending topics on the platform.
+ */
+export const getTrendingTopics = <ThrowOnError extends boolean = false>(
+	options?: Options<GetTrendingTopicsData, ThrowOnError>,
+) => {
+	return (options?.client ?? client).get<
+		GetTrendingTopicsResponses,
+		GetTrendingTopicsErrors,
+		ThrowOnError
+	>({
+		requestValidator: async (data) => {
+			return await zGetTrendingTopicsData.parseAsync(data);
+		},
+		security: [
+			{
+				scheme: "bearer",
+				type: "http",
+			},
+		],
+		url: "/v1/get-trending-topics",
 		...options,
 	});
 };

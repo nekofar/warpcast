@@ -5439,6 +5439,46 @@ export type GetDomainManifestResponses = {
 export type GetDomainManifestResponse =
 	GetDomainManifestResponses[keyof GetDomainManifestResponses];
 
+export type GetTrendingTopicsData = {
+	body?: never;
+	path?: never;
+	query?: never;
+	url: "/v1/get-trending-topics";
+};
+
+export type GetTrendingTopicsErrors = {
+	/**
+	 * Authentication is required or failed
+	 */
+	401: ErrorResponse;
+	/**
+	 * Too many requests
+	 */
+	429: unknown;
+};
+
+export type GetTrendingTopicsError =
+	GetTrendingTopicsErrors[keyof GetTrendingTopicsErrors];
+
+export type GetTrendingTopicsResponses = {
+	/**
+	 * Trending topics retrieved successfully
+	 */
+	200: {
+		result: {
+			/**
+			 * List of trending topics
+			 */
+			topics: Array<{
+				[key: string]: unknown;
+			}>;
+		};
+	};
+};
+
+export type GetTrendingTopicsResponse =
+	GetTrendingTopicsResponses[keyof GetTrendingTopicsResponses];
+
 export type GetMetaTagsData = {
 	body?: never;
 	path?: never;

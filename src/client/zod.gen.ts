@@ -2838,6 +2838,12 @@ export const zGetDomainManifestData = z.object({
 	}),
 });
 
+export const zGetTrendingTopicsData = z.object({
+	body: z.optional(z.never()),
+	path: z.optional(z.never()),
+	query: z.optional(z.never()),
+});
+
 export const zGetMetaTagsData = z.object({
 	body: z.optional(z.never()),
 	path: z.optional(z.never()),
