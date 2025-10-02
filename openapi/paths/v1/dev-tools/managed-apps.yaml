@@ -1,0 +1,39 @@
+get:
+  operationId: getManagedApps
+  summary: Get managed apps
+  description: Retrieves a list of apps managed by the authenticated user.
+  security:
+    - bearerAuth: []
+  parameters:
+    - name: limit
+      in: query
+      description: Maximum number of apps to return
+      required: false
+      schema:
+        type: integer
+        example: 25
+  responses:
+    '200':
+      description: Managed apps retrieved successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - result
+            properties:
+              result:
+                type: object
+                required:
+                  - apps
+                properties:
+                  apps:
+                    type: array
+                    description: List of managed apps
+                    items:
+                      type: object
+                      additionalProperties: true
+    '401':
+      $ref: '../../../components/responses/index.yaml#/Unauthorized'
+    '429':
+      description: Too many requests
