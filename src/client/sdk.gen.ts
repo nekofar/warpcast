@@ -183,6 +183,9 @@ import type {
 	GetHighlightedChannelsData,
 	GetHighlightedChannelsErrors,
 	GetHighlightedChannelsResponses,
+	GetManagedAppsData,
+	GetManagedAppsErrors,
+	GetManagedAppsResponses,
 	GetMetaTagsData,
 	GetMetaTagsErrors,
 	GetMetaTagsResponses,
@@ -441,6 +444,7 @@ import {
 	zGetFollowersData,
 	zGetFollowingData,
 	zGetHighlightedChannelsData,
+	zGetManagedAppsData,
 	zGetMetaTagsData,
 	zGetMiniAppAnalyticsRollupData,
 	zGetMutedKeywordsData,
@@ -3556,6 +3560,32 @@ export const getOwnedDomains = <ThrowOnError extends boolean = false>(
 			},
 		],
 		url: "/v1/dev-tools/domains-owned",
+		...options,
+	});
+};
+
+/**
+ * Get managed apps
+ * Retrieves a list of apps managed by the authenticated user.
+ */
+export const getManagedApps = <ThrowOnError extends boolean = false>(
+	options?: Options<GetManagedAppsData, ThrowOnError>,
+) => {
+	return (options?.client ?? client).get<
+		GetManagedAppsResponses,
+		GetManagedAppsErrors,
+		ThrowOnError
+	>({
+		requestValidator: async (data) => {
+			return await zGetManagedAppsData.parseAsync(data);
+		},
+		security: [
+			{
+				scheme: "bearer",
+				type: "http",
+			},
+		],
+		url: "/v1/dev-tools/managed-apps",
 		...options,
 	});
 };

@@ -2864,6 +2864,20 @@ export const zGetOwnedDomainsData = z.object({
 	query: z.optional(z.never()),
 });
 
+export const zGetManagedAppsData = z.object({
+	body: z.optional(z.never()),
+	path: z.optional(z.never()),
+	query: z.optional(
+		z.object({
+			limit: z.optional(
+				z.int().register(z.globalRegistry, {
+					description: "Maximum number of apps to return",
+				}),
+			),
+		}),
+	),
+});
+
 export const zGetApiKeysData = z.object({
 	body: z.optional(z.never()),
 	path: z.optional(z.never()),

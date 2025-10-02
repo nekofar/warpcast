@@ -5696,6 +5696,51 @@ export type GetOwnedDomainsResponses = {
 export type GetOwnedDomainsResponse =
 	GetOwnedDomainsResponses[keyof GetOwnedDomainsResponses];
 
+export type GetManagedAppsData = {
+	body?: never;
+	path?: never;
+	query?: {
+		/**
+		 * Maximum number of apps to return
+		 */
+		limit?: number;
+	};
+	url: "/v1/dev-tools/managed-apps";
+};
+
+export type GetManagedAppsErrors = {
+	/**
+	 * Authentication is required or failed
+	 */
+	401: ErrorResponse;
+	/**
+	 * Too many requests
+	 */
+	429: unknown;
+};
+
+export type GetManagedAppsError =
+	GetManagedAppsErrors[keyof GetManagedAppsErrors];
+
+export type GetManagedAppsResponses = {
+	/**
+	 * Managed apps retrieved successfully
+	 */
+	200: {
+		result: {
+			/**
+			 * List of managed apps
+			 */
+			apps: Array<{
+				[key: string]: unknown;
+			}>;
+		};
+	};
+};
+
+export type GetManagedAppsResponse =
+	GetManagedAppsResponses[keyof GetManagedAppsResponses];
+
 export type GetApiKeysData = {
 	body?: never;
 	path?: never;
