@@ -1888,6 +1888,81 @@
         }
       }
     },
+    "/v2/xp-claimable-summary": {
+      "post": {
+        "operationId": "getXpClaimableSummary",
+        "summary": "Get XP claimable summary",
+        "description": "Retrieves a summary of claimable XP rewards for the authenticated user.",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "XP claimable summary retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "result"
+                  ],
+                  "properties": {
+                    "result": {
+                      "type": "object",
+                      "required": [
+                        "totalClaimableUsdc",
+                        "pendingRewardsCount",
+                        "eligibleToClaim"
+                      ],
+                      "properties": {
+                        "totalClaimableUsdc": {
+                          "type": "number",
+                          "description": "Total USDC amount available to claim",
+                          "example": 25.75
+                        },
+                        "pendingRewardsCount": {
+                          "type": "integer",
+                          "description": "Number of pending rewards",
+                          "example": 5
+                        },
+                        "eligibleToClaim": {
+                          "type": "boolean",
+                          "description": "Whether the user is eligible to claim rewards",
+                          "example": true
+                        },
+                        "ineligibleToClaimReason": {
+                          "type": "string",
+                          "description": "Reason why user is ineligible to claim (if applicable)",
+                          "example": "kyc-required"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "429": {
+            "description": "Too many requests"
+          }
+        }
+      }
+    },
     "/v2/bookmarked-casts": {
       "get": {
         "tags": [
