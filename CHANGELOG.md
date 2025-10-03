@@ -2,6 +2,34 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.72] - 2025-10-03
+
+### 🚀 Features
+
+- *(api)* Update example values in `user-thread-casts`
+- *(api)* Add `tags` for improved endpoint categorization
+- *(api)* Add validation constraints to query params
+- *(api)* Add `429` response to v2 endpoints
+- *(api)* Add `404` response to v2 endpoints
+- *(api)* Refactor parameters with shared references
+- *(api)* Add `400` response to API endpoints
+- *(api)* Add descriptions and examples to v2 endpoints
+- *(api)* Add validation constraints to string fields
+- *(api)* Enhance parameter validation and documentation
+- *(api)* Centralize `429 Too Many Requests` response
+- *(api)* Add `tags` for endpoint categorization
+- *(api)* Enhance validation and documentation for errors
+
+### 🐛 Bug Fixes
+
+- *(api)* Correct `$ref` paths for components
+- *(api)* Correct `$ref` paths for `429` response
+- *(api)* Update `429` response structure for consistency
+- *(api)* Remove `processedCastText` from required fields
+- *(api)* Update `metadata` field requirements
+- *(api)* Adjust schema requirements for clarity
+- *(api)* Enhance rewards metadata schema
+
 ## [2.0.0-alpha.71] - 2025-10-03
 
 ### 🚀 Features

@@ -1,6 +1,6 @@
 {
   "name": "@nekofar/warpcast",
-  "version": "2.0.0-alpha.71",
+  "version": "2.0.0-alpha.72",
   "description": "TypeScript client for interacting with Warpcast APIs",
   "keywords": [
     "warpcast",
