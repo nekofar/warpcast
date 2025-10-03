@@ -6,19 +6,8 @@ get:
   security:
     - bearerAuth: []
   parameters:
-    - name: fid
-      in: query
-      required: true
-      schema:
-        type: integer
-        description: The FID (Farcaster ID) of the user whose casts to retrieve
-    - name: limit
-      in: query
-      required: false
-      schema:
-        type: integer
-        description: Maximum number of casts to return
-        default: 15
+    - $ref: '../../components/parameters/index.yaml#/fidParam'
+    - $ref: '../../components/parameters/index.yaml#/limitParam'
   responses:
     '200':
       description: Successfully retrieved casts

@@ -5,17 +5,8 @@ get:
   tags:
     - Starter Packs
   parameters:
-    - name: fid
-      in: query
-      required: true
-      schema:
-        type: integer
-    - name: limit
-      in: query
-      required: false
-      schema:
-        type: integer
-        default: 15
+    - $ref: '../../components/parameters/index.yaml#/fidParam'
+    - $ref: '../../components/parameters/index.yaml#/limitParam'
   security:
     - bearerAuth: [ ]
   responses:

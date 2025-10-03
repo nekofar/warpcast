@@ -6,7 +6,7 @@ get:
   security:
     - bearerAuth: []
   parameters:
-    - $ref: '../../index.yaml#/components/parameters/limitParam'
+    - $ref: '../../components/parameters/index.yaml#/limitParam'
     - name: q
       in: query
       required: false
