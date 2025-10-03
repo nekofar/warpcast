@@ -12,6 +12,7 @@ import type {
 	GetFeedItemsResponse,
 	GetMiniAppAnalyticsRollupResponse,
 	GetProfileCastsResponse,
+	GetRewardsMetadataResponse,
 	GetStarterPackMembersResponse,
 	GetUserLikedCastsResponse,
 } from "./types.gen";
@@ -137,6 +138,28 @@ export const getDirectCastConversationRecentMessagesResponseTransformer =
 			directCastConversationMessagesResponseSchemaResponseTransformer(data);
 		return data;
 	};
+
+export const getRewardsMetadataResponseTransformer = async (
+	data: any,
+): Promise<GetRewardsMetadataResponse> => {
+	data = rewardsMetadataResponseSchemaResponseTransformer(data);
+	return data;
+};
+
+const rewardsMetadataResponseSchemaResponseTransformer = (data: any) => {
+	if (data.result.metadata) {
+		data.result.metadata.lastUpdateTimestamp = BigInt(
+			data.result.metadata.lastUpdateTimestamp.toString(),
+		);
+		data.result.metadata.currentPeriodStartTimestamp = BigInt(
+			data.result.metadata.currentPeriodStartTimestamp.toString(),
+		);
+		data.result.metadata.currentPeriodEndTimestamp = BigInt(
+			data.result.metadata.currentPeriodEndTimestamp.toString(),
+		);
+	}
+	return data;
+};
 
 export const getCastsByFidResponseTransformer = async (
 	data: any,

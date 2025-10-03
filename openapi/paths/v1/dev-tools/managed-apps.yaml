@@ -2,6 +2,8 @@ get:
   operationId: getManagedApps
   summary: Get managed apps
   description: Retrieves a list of apps managed by the authenticated user.
+  tags:
+    - DevTools
   security:
     - bearerAuth: []
   parameters:
@@ -11,6 +13,9 @@ get:
       required: false
       schema:
         type: integer
+        minimum: 1
+        maximum: 100
+        default: 25
         example: 25
   responses:
     '200':
@@ -36,4 +41,4 @@ get:
     '401':
       $ref: '../../../components/responses/index.yaml#/Unauthorized'
     '429':
-      description: Too many requests
+      $ref: '../../../components/responses/index.yaml#/TooManyRequests'

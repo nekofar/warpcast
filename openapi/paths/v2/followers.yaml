@@ -2,19 +2,13 @@ get:
   operationId: getFollowers
   summary: Get users following a given user
   description: Returns a list of users who follow the specified FID.
+  tags:
+    - Follows
   parameters:
-    - name: fid
-      in: query
-      required: true
-      schema:
-        type: integer
-    - name: limit
-      in: query
-      required: false
-      schema:
-        type: integer
+    - $ref: '../../components/parameters/index.yaml#/fidParam'
+    - $ref: '../../components/parameters/index.yaml#/limitParam'
   security:
-    - bearerAuth: [ ]
+    - bearerAuth: []
   responses:
     '200':
       description: A list of followers
@@ -22,5 +16,9 @@ get:
         application/json:
           schema:
             $ref: '../../components/schemas/index.yaml#/UsersResponse'
+    '400':
+      $ref: '../../components/responses/index.yaml#/BadRequest'
     '401':
       $ref: '../../components/responses/index.yaml#/Unauthorized'
+    '429':
+      $ref: '../../components/responses/index.yaml#/TooManyRequests'

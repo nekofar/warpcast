@@ -2,14 +2,18 @@ get:
   operationId: getChannel
   summary: Get channel details
   description: Returns metadata about a channel.
+  tags:
+    - Channels
   parameters:
     - name: key
       in: query
       required: true
       schema:
         type: string
+      description: The unique key identifier for the channel
+      example: "farcaster"
   security:
-    - bearerAuth: [ ]
+    - bearerAuth: []
   responses:
     '200':
       description: Channel metadata
@@ -17,5 +21,11 @@ get:
         application/json:
           schema:
             $ref: '../../components/schemas/index.yaml#/ChannelResponse'
+    '400':
+      $ref: '../../components/responses/index.yaml#/BadRequest'
     '401':
       $ref: '../../components/responses/index.yaml#/Unauthorized'
+    '404':
+      $ref: '../../components/responses/index.yaml#/NotFound'
+    '429':
+      $ref: '../../components/responses/index.yaml#/TooManyRequests'

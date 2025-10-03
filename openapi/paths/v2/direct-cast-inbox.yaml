@@ -21,13 +21,7 @@ get:
       schema:
         type: string
         enum: [ unread, group, 1-1 ]
-    - name: cursor
-      in: query
-      description: Pagination cursor for retrieving next page
-      required: false
-      schema:
-        type: string
-        description: Base64 encoded cursor from previous response
+    - $ref: '../../components/parameters/index.yaml#/cursorParam'
   security:
     - bearerAuth: []
   responses:
@@ -37,5 +31,9 @@ get:
         application/json:
           schema:
             $ref: '../../components/schemas/index.yaml#/DirectCastInboxResponse'
+    '400':
+      $ref: '../../components/responses/index.yaml#/BadRequest'
     '401':
       $ref: '../../components/responses/index.yaml#/Unauthorized'
+    '429':
+      $ref: '../../components/responses/index.yaml#/TooManyRequests'

@@ -1,12 +1,16 @@
 get:
   operationId: getSuggestedUsers
   summary: Get suggested users
+  tags:
+    - Discovery
   parameters:
-    - $ref: '../../index.yaml#/components/parameters/limitParam'
+    - $ref: '../../components/parameters/index.yaml#/limitParam'
     - name: randomized
       in: query
       schema:
         type: boolean
+        default: false
+      description: Whether to randomize the suggested users
   security:
     - bearerAuth: []
   responses:
@@ -18,3 +22,5 @@ get:
             $ref: '../../index.yaml#/components/schemas/SuggestedUsersResponse'
     '401':
       $ref: '../../components/responses/index.yaml#/Unauthorized'
+    '429':
+      $ref: '../../components/responses/index.yaml#/TooManyRequests'

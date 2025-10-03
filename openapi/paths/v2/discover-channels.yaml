@@ -2,16 +2,10 @@ get:
   operationId: discoverChannels
   summary: Discover channels
   description: Retrieves a list of discoverable channels with optional limit.
+  tags:
+    - Discovery
   parameters:
-    - in: query
-      name: limit
-      required: false
-      schema:
-        type: integer
-        default: 15
-        minimum: 1
-        maximum: 100
-      description: Maximum number of channels to retrieve
+    - $ref: '../../components/parameters/index.yaml#/limitParam'
   security:
     - bearerAuth: []
   responses:
@@ -24,4 +18,4 @@ get:
     '401':
       $ref: '../../components/responses/index.yaml#/Unauthorized'
     '429':
-      description: Too many requests
+      $ref: '../../components/responses/index.yaml#/TooManyRequests'

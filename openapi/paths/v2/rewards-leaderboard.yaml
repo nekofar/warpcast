@@ -5,17 +5,15 @@ get:
   summary: Get rewards leaderboard
   description: Returns a list of users in the rewards leaderboard based on invite activity.
   parameters:
-    - $ref: '../../index.yaml#/components/parameters/limitParam'
+    - $ref: '../../components/parameters/index.yaml#/limitParam'
     - name: rewardsType
       in: query
       required: true
       schema:
         type: string
         enum: [invite]
-    - name: cursor
-      in: query
-      schema:
-        type: string
+      description: Type of rewards to retrieve
+    - $ref: '../../components/parameters/index.yaml#/cursorParam'
   security:
     - bearerAuth: []
   responses:
@@ -25,7 +23,9 @@ get:
         application/json:
           schema:
             $ref: '../../index.yaml#/components/schemas/RewardsLeaderboardResponse'
+    '400':
+      $ref: '../../components/responses/index.yaml#/BadRequest'
     '401':
       $ref: '../../components/responses/index.yaml#/Unauthorized'
     '429':
-      description: Too many requests
+      $ref: '../../components/responses/index.yaml#/TooManyRequests'
