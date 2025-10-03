@@ -4,7 +4,7 @@ get:
   tags:
     - Discovery
   parameters:
-    - $ref: '../../index.yaml#/components/parameters/limitParam'
+    - $ref: '../../components/parameters/index.yaml#/limitParam'
     - name: randomized
       in: query
       schema:
