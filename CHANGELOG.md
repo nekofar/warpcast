@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.71] - 2025-10-03
+
+### 🚀 Features
+
+- *(api)* Add `getOrCreateReferralCode` endpoint
+- *(client)* Add `getOrCreateReferralCode` helper
+- *(api)* Add `submitAnalyticsEvents` endpoint
+- *(client)* Add `submitAnalyticsEvents` endpoint
+- *(api)* Add `getXpRewards` endpoint
+- *(client)* Add `getXpRewards` endpoint
+- *(api)* Add `getXpClaimableSummary` endpoint
+- *(client)* Add `getXpClaimableSummary` endpoint
+- *(api)* Add `getManagedApps` endpoint
+- *(client)* Add `getManagedApps` endpoint
+- *(api)* Add `getTrendingTopics` endpoint
+- *(client)* Add `getTrendingTopics` endpoint
+- *(api)* Update `feed-items` schema definitions
+- *(client)* Make `castViewEvents` fields optional
+- *(api)* Add `registerStatsigEvents` endpoint
+- *(client)* Add `registerStatsigEvents` endpoint
+
 ## [2.0.0-alpha.70] - 2025-10-02
 
 ### 🐛 Bug Fixes
