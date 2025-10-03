@@ -22,6 +22,8 @@ get:
         application/json:
           schema:
             $ref: '../../index.yaml#/components/schemas/RewardsLeaderboardResponse'
+    '400':
+      $ref: '../../components/responses/index.yaml#/BadRequest'
     '401':
       $ref: '../../components/responses/index.yaml#/Unauthorized'
     '429':

@@ -31,6 +31,8 @@ get:
         application/json:
           schema:
             $ref: '../../components/schemas/search-channels-response.yaml#/SearchChannelsResponse'
+    '400':
+      $ref: '../../components/responses/index.yaml#/BadRequest'
     '401':
       $ref: '../../components/responses/index.yaml#/Unauthorized'
     '429':

@@ -23,6 +23,8 @@ get:
         application/json:
           schema:
             $ref: '../../components/schemas/index.yaml#/DirectCastConversationResponse'
+    '400':
+      $ref: '../../components/responses/index.yaml#/BadRequest'
     '401':
       $ref: '../../components/responses/index.yaml#/Unauthorized'
     '404':
