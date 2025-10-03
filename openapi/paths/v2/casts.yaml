@@ -57,8 +57,11 @@ post:
               maxLength: 320
             embeds:
               type: array
-              items: {}
               description: Optional array of embeds (URLs, images, etc.)
+              items:
+                type: object
+                description: Embed object
+                additionalProperties: true
             channelKey:
               type: string
               description: Optional channel to post the cast to
@@ -90,10 +93,13 @@ delete:
       application/json:
         schema:
           type: object
+          required:
+            - castHash
           properties:
             castHash:
               type: string
               description: The hash of the cast to delete
+              pattern: '^0x[a-fA-F0-9]{40}$'
               example: "0xabcdef1234567890abcdef1234567890abcdef12"
   responses:
     '200':

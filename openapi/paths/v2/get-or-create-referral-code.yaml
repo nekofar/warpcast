@@ -12,6 +12,7 @@ post:
       application/json:
         schema:
           type: object
+          additionalProperties: false
           description: Empty request body
   responses:
     '200':
@@ -35,6 +36,7 @@ post:
                     example: "ABC123"
                   id:
                     type: string
+                    format: uuid
                     description: The unique identifier for the referral code
                     example: "01234567-89ab-cdef-0123-456789abcdef"
     '401':

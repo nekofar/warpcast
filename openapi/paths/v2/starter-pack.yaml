@@ -10,10 +10,11 @@ get:
       required: true
       schema:
         type: string
+        format: uuid
       description: The unique identifier of the starter pack
       example: "01234567-89ab-cdef-0123-456789abcdef"
   security:
-    - bearerAuth: [ ]
+    - bearerAuth: []
   responses:
     '200':
       description: A starter pack object
@@ -37,9 +38,9 @@ patch:
   summary: Update a starter pack
   description: Updates the specified starter pack.
   security:
-    - bearerAuth: [ ]
+    - bearerAuth: []
   parameters:
-    - name: idempotency-key
+    - name: Idempotency-Key
       in: header
       required: false
       description: Idempotency key to safely retry the request without performing the operation multiple times.

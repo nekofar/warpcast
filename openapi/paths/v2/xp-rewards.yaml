@@ -42,10 +42,14 @@ get:
                       additionalProperties: true
                   totalUsdc:
                     type: number
+                    format: double
+                    minimum: 0
                     description: Total USDC earned from rewards
                     example: 150.50
                   totalReferrals:
                     type: integer
+                    format: int32
+                    minimum: 0
                     description: Total number of referrals
                     example: 10
     '401':
