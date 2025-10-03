@@ -98,4 +98,4 @@ post:
                 description: Whether the events were successfully registered
                 example: true
     '429':
-      $ref: '../../../../../../components/responses/index.yaml#/TooManyRequests'
+      $ref: '../../../../components/responses/index.yaml#/TooManyRequests'
