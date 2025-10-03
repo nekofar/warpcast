@@ -2,6 +2,8 @@ get:
   operationId: getAvailableInvites
   summary: Check available invites
   description: Returns the number of allocated and currently available invites.
+  tags:
+    - Invites
   security:
     - bearerAuth: []
   responses:

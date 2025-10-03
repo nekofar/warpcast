@@ -1,6 +1,8 @@
 get:
   operationId: getSuggestedUsers
   summary: Get suggested users
+  tags:
+    - Discovery
   parameters:
     - $ref: '../../index.yaml#/components/parameters/limitParam'
     - name: randomized

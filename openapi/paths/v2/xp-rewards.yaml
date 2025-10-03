@@ -2,6 +2,8 @@ get:
   operationId: getXpRewards
   summary: Get XP rewards
   description: Retrieves the user's XP rewards, including total USDC earned and referral count.
+  tags:
+    - Rewards
   security:
     - bearerAuth: []
   parameters:

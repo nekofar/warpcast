@@ -2,6 +2,8 @@ get:
   operationId: discoverChannels
   summary: Discover channels
   description: Retrieves a list of discoverable channels with optional limit.
+  tags:
+    - Discovery
   parameters:
     - in: query
       name: limit

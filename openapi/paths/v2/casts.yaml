@@ -1,6 +1,8 @@
 get:
   summary: Retrieve casts for a specific user
   operationId: getCastsByFid
+  tags:
+    - Casts
   security:
     - bearerAuth: []
   parameters:
@@ -44,6 +46,8 @@ get:
 post:
   summary: Create a new cast
   operationId: createCast
+  tags:
+    - Casts
   security:
     - bearerAuth: []
   requestBody:
@@ -76,6 +80,8 @@ post:
 delete:
   summary: Delete a cast
   operationId: deleteCast
+  tags:
+    - Casts
   security:
     - bearerAuth: []
   requestBody:

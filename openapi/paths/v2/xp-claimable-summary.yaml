@@ -2,6 +2,8 @@ post:
   operationId: getXpClaimableSummary
   summary: Get XP claimable summary
   description: Retrieves a summary of claimable XP rewards for the authenticated user.
+  tags:
+    - Rewards
   security:
     - bearerAuth: []
   requestBody:

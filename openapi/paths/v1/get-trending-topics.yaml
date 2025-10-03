@@ -2,6 +2,8 @@ get:
   operationId: getTrendingTopics
   summary: Get trending topics
   description: Retrieves a list of currently trending topics on the platform.
+  tags:
+    - Discovery
   security:
     - bearerAuth: []
   responses:

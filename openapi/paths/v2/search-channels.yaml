@@ -1,6 +1,8 @@
 get:
   summary: Search for channels
   operationId: searchChannels
+  tags:
+    - Channels
   security:
     - bearerAuth: []
   parameters:

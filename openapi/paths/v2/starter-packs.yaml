@@ -2,6 +2,8 @@ get:
   operationId: getUserStarterPacks
   summary: Get starter packs
   description: Returns starter packs created by a specific user.
+  tags:
+    - Starter Packs
   parameters:
     - name: fid
       in: query

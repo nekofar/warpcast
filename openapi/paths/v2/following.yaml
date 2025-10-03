@@ -2,6 +2,8 @@ get:
   operationId: getFollowing
   summary: Get users a given user is following
   description: Returns a list of users followed by a specified FID.
+  tags:
+    - Follows
   parameters:
     - name: fid
       in: query

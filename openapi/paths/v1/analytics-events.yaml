@@ -2,6 +2,8 @@ post:
   operationId: submitAnalyticsEvents
   summary: Submit analytics events
   description: Submit one or more analytics events for tracking user activity.
+  tags:
+    - Analytics
   security:
     - bearerAuth: []
   requestBody:

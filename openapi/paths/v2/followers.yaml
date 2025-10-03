@@ -2,6 +2,8 @@ get:
   operationId: getFollowers
   summary: Get users following a given user
   description: Returns a list of users who follow the specified FID.
+  tags:
+    - Follows
   parameters:
     - name: fid
       in: query

@@ -2,6 +2,8 @@ get:
   operationId: getManagedApps
   summary: Get managed apps
   description: Retrieves a list of apps managed by the authenticated user.
+  tags:
+    - DevTools
   security:
     - bearerAuth: []
   parameters:

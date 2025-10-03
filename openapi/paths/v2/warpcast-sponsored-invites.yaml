@@ -2,6 +2,8 @@ get:
   operationId: getSponsoredInvites
   summary: Get sponsored invites
   description: Returns a list of Warpcast-sponsored invites available to the user.
+  tags:
+    - Invites
   security:
     - bearerAuth: []
   responses:

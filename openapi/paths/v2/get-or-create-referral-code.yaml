@@ -2,6 +2,8 @@ post:
   operationId: getOrCreateReferralCode
   summary: Get or create referral code
   description: Gets an existing referral code or creates a new one for the authenticated user.
+  tags:
+    - Invites
   security:
     - bearerAuth: []
   requestBody:
