@@ -53,8 +53,8 @@ TooManyRequests:
         RateLimitExceeded:
           summary: Rate limit exceeded
           value:
-            message: "Too many requests. Please try again later."
-            code: "rate_limit_exceeded"
+            errors:
+              - message: "Too many requests. Please try again later."
   headers:
     X-RateLimit-Limit:
       description: The maximum number of requests allowed in the time window
