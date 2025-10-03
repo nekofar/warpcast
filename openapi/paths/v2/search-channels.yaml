@@ -33,3 +33,5 @@ get:
             $ref: '../../components/schemas/search-channels-response.yaml#/SearchChannelsResponse'
     '401':
       $ref: '../../components/responses/index.yaml#/Unauthorized'
+    '429':
+      description: Too many requests

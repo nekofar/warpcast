@@ -21,6 +21,8 @@ get:
             $ref: '../../components/schemas/index.yaml#/StarterPackResponse'
     '401':
       $ref: '../../components/responses/index.yaml#/Unauthorized'
+    '429':
+      description: Too many requests
 
 patch:
   tags:
@@ -56,3 +58,5 @@ patch:
       $ref: '../../components/responses/index.yaml#/Unauthorized'
     '404':
       $ref: '../../components/responses/index.yaml#/NotFound'
+    '429':
+      description: Too many requests

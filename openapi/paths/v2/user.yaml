@@ -19,3 +19,5 @@ get:
       $ref: '../../index.yaml#/components/responses/Unauthorized'
     '404':
       $ref: '../../index.yaml#/components/responses/NotFound'
+    '429':
+      description: Too many requests

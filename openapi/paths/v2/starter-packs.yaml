@@ -27,3 +27,5 @@ get:
             $ref: '../../index.yaml#/components/schemas/StarterPacksResponse'
     '401':
       $ref: '../../components/responses/index.yaml#/Unauthorized'
+    '429':
+      description: Too many requests

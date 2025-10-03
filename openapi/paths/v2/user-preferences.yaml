@@ -15,3 +15,5 @@ get:
             $ref: '../../index.yaml#/components/schemas/UserPreferencesResponse'
     '401':
       $ref: '../../index.yaml#/components/responses/Unauthorized'
+    '429':
+      description: Too many requests

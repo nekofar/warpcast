@@ -17,3 +17,5 @@ get:
             $ref: '../../components/schemas/index.yaml#/BookmarkedCastsResponse'
     '401':
       $ref: '../../components/responses/index.yaml#/Unauthorized'
+    '429':
+      description: Too many requests
