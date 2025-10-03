@@ -21,5 +21,7 @@ get:
             $ref: '../../components/schemas/index.yaml#/ChannelResponse'
     '401':
       $ref: '../../components/responses/index.yaml#/Unauthorized'
+    '404':
+      $ref: '../../components/responses/index.yaml#/NotFound'
     '429':
       description: Too many requests

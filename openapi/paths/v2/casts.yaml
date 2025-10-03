@@ -106,5 +106,7 @@ delete:
             $ref: '../../components/schemas/index.yaml#/SuccessResponse'
     '401':
       $ref: '../../components/responses/index.yaml#/Unauthorized'
+    '404':
+      $ref: '../../components/responses/index.yaml#/NotFound'
     '429':
       description: Too many requests
