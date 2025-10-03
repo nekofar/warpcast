@@ -42,3 +42,38 @@ GenericBadRequest:
           value:
             errors:
               - message: "Invalid request parameters"
+
+TooManyRequests:
+  description: Too many requests - rate limit exceeded
+  content:
+    application/json:
+      schema:
+        $ref: '../schemas/index.yaml#/ErrorResponse'
+      examples:
+        RateLimitExceeded:
+          summary: Rate limit exceeded
+          value:
+            message: "Too many requests. Please try again later."
+            code: "rate_limit_exceeded"
+  headers:
+    X-RateLimit-Limit:
+      description: The maximum number of requests allowed in the time window
+      schema:
+        type: integer
+        example: 100
+    X-RateLimit-Remaining:
+      description: The number of requests remaining in the current time window
+      schema:
+        type: integer
+        example: 0
+    X-RateLimit-Reset:
+      description: Unix timestamp when the rate limit resets
+      schema:
+        type: integer
+        format: int64
+        example: 1234567890
+    Retry-After:
+      description: Number of seconds to wait before retrying
+      schema:
+        type: integer
+        example: 60
