@@ -988,10 +988,10 @@ export const zRewardsMetadataResponse = z.object({
 	result: z.object({
 		metadata: z.optional(
 			z.object({
-				type: z.optional(z.string()),
-				lastUpdateTimestamp: z.optional(z.int()),
-				currentPeriodStartTimestamp: z.optional(z.int()),
-				currentPeriodEndTimestamp: z.optional(z.int()),
+				type: z.string(),
+				lastUpdateTimestamp: z.coerce.bigint(),
+				currentPeriodStartTimestamp: z.coerce.bigint(),
+				currentPeriodEndTimestamp: z.coerce.bigint(),
 				tiers: z.optional(z.array(z.record(z.string(), z.unknown()))),
 				proportionalPayout: z.optional(
 					z.object({

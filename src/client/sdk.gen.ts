@@ -14,6 +14,7 @@ import {
 	getFeedItemsResponseTransformer,
 	getMiniAppAnalyticsRollupResponseTransformer,
 	getProfileCastsResponseTransformer,
+	getRewardsMetadataResponseTransformer,
 	getStarterPackMembersResponseTransformer,
 	getUserLikedCastsResponseTransformer,
 } from "./transformers.gen";
@@ -1592,6 +1593,7 @@ export const getRewardsMetadata = <ThrowOnError extends boolean = false>(
 		requestValidator: async (data) => {
 			return await zGetRewardsMetadataData.parseAsync(data);
 		},
+		responseTransformer: getRewardsMetadataResponseTransformer,
 		security: [
 			{
 				scheme: "bearer",
