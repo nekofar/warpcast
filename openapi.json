@@ -116,6 +116,9 @@
           },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
           }
         }
       }
@@ -203,14 +206,7 @@
             }
           },
           {
-            "name": "cursor",
-            "in": "query",
-            "description": "Pagination cursor for retrieving next page",
-            "required": false,
-            "schema": {
-              "type": "string",
-              "description": "Base64 encoded cursor from previous response"
-            }
+            "$ref": "#/components/parameters/cursorParam"
           }
         ],
         "security": [
@@ -229,8 +225,14 @@
               }
             }
           },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
           }
         }
       }
@@ -291,6 +293,9 @@
           },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
           }
         }
       }
@@ -479,11 +484,17 @@
               }
             }
           },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
           },
           "404": {
             "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
           }
         }
       }
@@ -536,6 +547,9 @@
       "get": {
         "operationId": "getSuggestedUsers",
         "summary": "Get suggested users",
+        "tags": [
+          "Discovery"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/limitParam"
@@ -544,8 +558,10 @@
             "name": "randomized",
             "in": "query",
             "schema": {
-              "type": "boolean"
-            }
+              "type": "boolean",
+              "default": false
+            },
+            "description": "Whether to randomize the suggested users"
           }
         ],
         "security": [
@@ -566,6 +582,9 @@
           },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
           }
         }
       }
@@ -615,9 +634,12 @@
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 16
             },
-            "description": "The username to look up"
+            "description": "The username to look up",
+            "example": "username"
           }
         ],
         "security": [
@@ -636,11 +658,17 @@
               }
             }
           },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
           },
           "404": {
             "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
           }
         }
       }
@@ -897,7 +925,7 @@
             "$ref": "#/components/responses/Unauthorized"
           },
           "429": {
-            "description": "Too many requests"
+            "$ref": "#/components/responses/TooManyRequests"
           }
         }
       }
@@ -938,7 +966,7 @@
             "$ref": "#/components/responses/Unauthorized"
           },
           "429": {
-            "description": "Too many requests"
+            "$ref": "#/components/responses/TooManyRequests"
           }
         }
       }
@@ -959,7 +987,8 @@
             "schema": {
               "type": "string"
             },
-            "description": "Conversation ID. Format depends on conversation type:\n- 1:1 conversations: \"fid1-fid2\" (e.g., \"123-456\")\n- Group conversations: Hash format (e.g., \"a1b2c3d4e5f6...\")\n"
+            "description": "Conversation ID. Format depends on conversation type:\n- 1:1 conversations: \"fid1-fid2\" (e.g., \"123-456\")\n- Group conversations: Hash format (e.g., \"a1b2c3d4e5f6...\")\n",
+            "example": "123-456"
           }
         ],
         "security": [
@@ -978,11 +1007,17 @@
               }
             }
           },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
           },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
           "429": {
-            "description": "Too many requests"
+            "$ref": "#/components/responses/TooManyRequests"
           }
         }
       }
@@ -1025,7 +1060,7 @@
             "$ref": "#/components/responses/Unauthorized"
           },
           "429": {
-            "description": "Too many requests"
+            "$ref": "#/components/responses/TooManyRequests"
           }
         }
       }
@@ -1082,7 +1117,7 @@
             "$ref": "#/components/responses/Unauthorized"
           },
           "429": {
-            "description": "Too many requests"
+            "$ref": "#/components/responses/TooManyRequests"
           }
         }
       }
@@ -1125,7 +1160,7 @@
             "$ref": "#/components/responses/Unauthorized"
           },
           "429": {
-            "description": "Too many requests"
+            "$ref": "#/components/responses/TooManyRequests"
           }
         }
       }
@@ -1168,7 +1203,7 @@
             "$ref": "#/components/responses/Unauthorized"
           },
           "429": {
-            "description": "Too many requests"
+            "$ref": "#/components/responses/TooManyRequests"
           }
         }
       }
@@ -1212,7 +1247,7 @@
             "$ref": "#/components/responses/Unauthorized"
           },
           "429": {
-            "description": "Too many requests"
+            "$ref": "#/components/responses/TooManyRequests"
           }
         }
       }
@@ -1255,7 +1290,7 @@
             "$ref": "#/components/responses/Unauthorized"
           },
           "429": {
-            "description": "Too many requests"
+            "$ref": "#/components/responses/TooManyRequests"
           }
         }
       }
@@ -1298,7 +1333,7 @@
             "$ref": "#/components/responses/Unauthorized"
           },
           "429": {
-            "description": "Too many requests"
+            "$ref": "#/components/responses/TooManyRequests"
           }
         }
       }
@@ -1341,7 +1376,7 @@
             "$ref": "#/components/responses/Unauthorized"
           },
           "429": {
-            "description": "Too many requests"
+            "$ref": "#/components/responses/TooManyRequests"
           }
         }
       },
@@ -1382,7 +1417,7 @@
             "$ref": "#/components/responses/Unauthorized"
           },
           "429": {
-            "description": "Too many requests"
+            "$ref": "#/components/responses/TooManyRequests"
           }
         }
       }
@@ -1425,7 +1460,7 @@
             "$ref": "#/components/responses/Unauthorized"
           },
           "429": {
-            "description": "Too many requests"
+            "$ref": "#/components/responses/TooManyRequests"
           }
         }
       },
@@ -1466,7 +1501,7 @@
             "$ref": "#/components/responses/Unauthorized"
           },
           "429": {
-            "description": "Too many requests"
+            "$ref": "#/components/responses/TooManyRequests"
           }
         }
       }
@@ -1476,18 +1511,12 @@
         "operationId": "discoverChannels",
         "summary": "Discover channels",
         "description": "Retrieves a list of discoverable channels with optional limit.",
+        "tags": [
+          "Discovery"
+        ],
         "parameters": [
           {
-            "in": "query",
-            "name": "limit",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "default": 15,
-              "minimum": 1,
-              "maximum": 100
-            },
-            "description": "Maximum number of channels to retrieve"
+            "$ref": "#/components/parameters/limitParam"
           }
         ],
         "security": [
@@ -1510,7 +1539,7 @@
             "$ref": "#/components/responses/Unauthorized"
           },
           "429": {
-            "description": "Too many requests"
+            "$ref": "#/components/responses/TooManyRequests"
           }
         }
       }
@@ -1520,6 +1549,9 @@
         "operationId": "getAvailableInvites",
         "summary": "Check available invites",
         "description": "Returns the number of allocated and currently available invites.",
+        "tags": [
+          "Invites"
+        ],
         "security": [
           {
             "bearerAuth": []
@@ -1540,7 +1572,7 @@
             "$ref": "#/components/responses/Unauthorized"
           },
           "429": {
-            "description": "Too many requests"
+            "$ref": "#/components/responses/TooManyRequests"
           }
         }
       }
@@ -1550,6 +1582,9 @@
         "operationId": "getSponsoredInvites",
         "summary": "Get sponsored invites",
         "description": "Returns a list of Warpcast-sponsored invites available to the user.",
+        "tags": [
+          "Invites"
+        ],
         "security": [
           {
             "bearerAuth": []
@@ -1570,7 +1605,7 @@
             "$ref": "#/components/responses/Unauthorized"
           },
           "429": {
-            "description": "Too many requests"
+            "$ref": "#/components/responses/TooManyRequests"
           }
         }
       }
@@ -1580,6 +1615,9 @@
         "operationId": "getOrCreateReferralCode",
         "summary": "Get or create referral code",
         "description": "Gets an existing referral code or creates a new one for the authenticated user.",
+        "tags": [
+          "Invites"
+        ],
         "security": [
           {
             "bearerAuth": []
@@ -1590,7 +1628,9 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object"
+                "type": "object",
+                "additionalProperties": false,
+                "description": "Empty request body"
               }
             }
           }
@@ -1620,6 +1660,7 @@
                         },
                         "id": {
                           "type": "string",
+                          "format": "uuid",
                           "description": "The unique identifier for the referral code",
                           "example": "01234567-89ab-cdef-0123-456789abcdef"
                         }
@@ -1634,7 +1675,7 @@
             "$ref": "#/components/responses/Unauthorized"
           },
           "429": {
-            "description": "Too many requests"
+            "$ref": "#/components/responses/TooManyRequests"
           }
         }
       }
@@ -1660,14 +1701,11 @@
               "enum": [
                 "invite"
               ]
-            }
+            },
+            "description": "Type of rewards to retrieve"
           },
           {
-            "name": "cursor",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/cursorParam"
           }
         ],
         "security": [
@@ -1686,11 +1724,14 @@
               }
             }
           },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
           },
           "429": {
-            "description": "Too many requests"
+            "$ref": "#/components/responses/TooManyRequests"
           }
         }
       }
@@ -1739,7 +1780,7 @@
             "$ref": "#/components/responses/Unauthorized"
           },
           "429": {
-            "description": "Too many requests"
+            "$ref": "#/components/responses/TooManyRequests"
           }
         }
       }
@@ -1785,7 +1826,7 @@
             "$ref": "#/components/responses/Unauthorized"
           },
           "429": {
-            "description": "Too many requests"
+            "$ref": "#/components/responses/TooManyRequests"
           }
         }
       }
@@ -1795,6 +1836,9 @@
         "operationId": "getXpRewards",
         "summary": "Get XP rewards",
         "description": "Retrieves the user's XP rewards, including total USDC earned and referral count.",
+        "tags": [
+          "Rewards"
+        ],
         "security": [
           {
             "bearerAuth": []
@@ -1808,6 +1852,9 @@
             "required": false,
             "schema": {
               "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 50,
               "example": 25
             }
           }
@@ -1841,11 +1888,15 @@
                         },
                         "totalUsdc": {
                           "type": "number",
+                          "format": "double",
+                          "minimum": 0,
                           "description": "Total USDC earned from rewards",
                           "example": 150.5
                         },
                         "totalReferrals": {
                           "type": "integer",
+                          "format": "int32",
+                          "minimum": 0,
                           "description": "Total number of referrals",
                           "example": 10
                         }
@@ -1860,7 +1911,7 @@
             "$ref": "#/components/responses/Unauthorized"
           },
           "429": {
-            "description": "Too many requests"
+            "$ref": "#/components/responses/TooManyRequests"
           }
         }
       }
@@ -1870,6 +1921,9 @@
         "operationId": "getXpClaimableSummary",
         "summary": "Get XP claimable summary",
         "description": "Retrieves a summary of claimable XP rewards for the authenticated user.",
+        "tags": [
+          "Rewards"
+        ],
         "security": [
           {
             "bearerAuth": []
@@ -1880,7 +1934,9 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object"
+                "type": "object",
+                "additionalProperties": false,
+                "description": "Empty request body"
               }
             }
           }
@@ -1906,11 +1962,15 @@
                       "properties": {
                         "totalClaimableUsdc": {
                           "type": "number",
+                          "format": "double",
+                          "minimum": 0,
                           "description": "Total USDC amount available to claim",
                           "example": 25.75
                         },
                         "pendingRewardsCount": {
                           "type": "integer",
+                          "format": "int32",
+                          "minimum": 0,
                           "description": "Number of pending rewards",
                           "example": 5
                         },
@@ -1935,7 +1995,7 @@
             "$ref": "#/components/responses/Unauthorized"
           },
           "429": {
-            "description": "Too many requests"
+            "$ref": "#/components/responses/TooManyRequests"
           }
         }
       }
@@ -1971,6 +2031,9 @@
           },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
           }
         }
       }
@@ -1980,23 +2043,15 @@
         "operationId": "getUserStarterPacks",
         "summary": "Get starter packs",
         "description": "Returns starter packs created by a specific user.",
+        "tags": [
+          "Starter Packs"
+        ],
         "parameters": [
           {
-            "name": "fid",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
+            "$ref": "#/components/parameters/fidParam"
           },
           {
-            "name": "limit",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "default": 15
-            }
+            "$ref": "#/components/parameters/limitParam"
           }
         ],
         "security": [
@@ -2015,8 +2070,14 @@
               }
             }
           },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
           }
         }
       }
@@ -2073,8 +2134,11 @@
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string"
-            }
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "The unique identifier of the starter pack",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
           }
         ],
         "security": [
@@ -2093,8 +2157,17 @@
               }
             }
           },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
           }
         }
       },
@@ -2112,13 +2185,15 @@
         ],
         "parameters": [
           {
-            "name": "idempotency-key",
+            "name": "Idempotency-Key",
             "in": "header",
             "required": false,
             "description": "Idempotency key to safely retry the request without performing the operation multiple times.",
             "schema": {
-              "type": "string"
-            }
+              "type": "string",
+              "format": "uuid"
+            },
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
           }
         ],
         "requestBody": {
@@ -2150,6 +2225,9 @@
           },
           "404": {
             "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
           }
         }
       }
@@ -2199,6 +2277,9 @@
         "operationId": "getChannel",
         "summary": "Get channel details",
         "description": "Returns metadata about a channel.",
+        "tags": [
+          "Channels"
+        ],
         "parameters": [
           {
             "name": "key",
@@ -2206,7 +2287,9 @@
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "description": "The unique key identifier for the channel",
+            "example": "farcaster"
           }
         ],
         "security": [
@@ -2225,8 +2308,17 @@
               }
             }
           },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
           }
         }
       }
@@ -2292,22 +2384,15 @@
         "operationId": "getFollowing",
         "summary": "Get users a given user is following",
         "description": "Returns a list of users followed by a specified FID.",
+        "tags": [
+          "Follows"
+        ],
         "parameters": [
           {
-            "name": "fid",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
+            "$ref": "#/components/parameters/fidParam"
           },
           {
-            "name": "limit",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
+            "$ref": "#/components/parameters/limitParam"
           }
         ],
         "security": [
@@ -2326,8 +2411,14 @@
               }
             }
           },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
           }
         }
       }
@@ -2337,22 +2428,15 @@
         "operationId": "getFollowers",
         "summary": "Get users following a given user",
         "description": "Returns a list of users who follow the specified FID.",
+        "tags": [
+          "Follows"
+        ],
         "parameters": [
           {
-            "name": "fid",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
+            "$ref": "#/components/parameters/fidParam"
           },
           {
-            "name": "limit",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
+            "$ref": "#/components/parameters/limitParam"
           }
         ],
         "security": [
@@ -2371,8 +2455,14 @@
               }
             }
           },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
           }
         }
       }
@@ -3095,6 +3185,9 @@
       "get": {
         "operationId": "getCurrentUser",
         "summary": "Get current user",
+        "tags": [
+          "User"
+        ],
         "security": [
           {
             "bearerAuth": []
@@ -3113,6 +3206,9 @@
           },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
           }
         }
       }
@@ -3121,6 +3217,9 @@
       "get": {
         "summary": "Search for channels",
         "operationId": "searchChannels",
+        "tags": [
+          "Channels"
+        ],
         "security": [
           {
             "bearerAuth": []
@@ -3135,8 +3234,11 @@
             "in": "query",
             "required": false,
             "schema": {
-              "type": "string"
-            }
+              "type": "string",
+              "minLength": 1
+            },
+            "description": "Search query string",
+            "example": "farcaster"
           },
           {
             "name": "prioritizeFollowed",
@@ -3145,7 +3247,8 @@
             "schema": {
               "type": "boolean",
               "default": true
-            }
+            },
+            "description": "Whether to prioritize channels the user follows"
           },
           {
             "name": "forComposer",
@@ -3154,7 +3257,8 @@
             "schema": {
               "type": "boolean",
               "default": false
-            }
+            },
+            "description": "Whether the search is for the composer context"
           }
         ],
         "responses": {
@@ -3168,8 +3272,14 @@
               }
             }
           },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
           }
         }
       }
@@ -3313,6 +3423,9 @@
       "get": {
         "summary": "Retrieve casts for a specific user",
         "operationId": "getCastsByFid",
+        "tags": [
+          "Casts"
+        ],
         "security": [
           {
             "bearerAuth": []
@@ -3320,23 +3433,10 @@
         ],
         "parameters": [
           {
-            "name": "fid",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "description": "The FID (Farcaster ID) of the user whose casts to retrieve"
-            }
+            "$ref": "#/components/parameters/fidParam"
           },
           {
-            "name": "limit",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "description": "Maximum number of casts to return",
-              "default": 15
-            }
+            "$ref": "#/components/parameters/limitParam"
           }
         ],
         "responses": {
@@ -3375,12 +3475,18 @@
           },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
           }
         }
       },
       "post": {
         "summary": "Create a new cast",
         "operationId": "createCast",
+        "tags": [
+          "Casts"
+        ],
         "security": [
           {
             "bearerAuth": []
@@ -3397,15 +3503,24 @@
                 ],
                 "properties": {
                   "text": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The text content of the cast",
+                    "minLength": 1,
+                    "maxLength": 320
                   },
                   "embeds": {
                     "type": "array",
-                    "items": {}
+                    "description": "Optional array of embeds (URLs, images, etc.)",
+                    "items": {
+                      "type": "object",
+                      "description": "Embed object",
+                      "additionalProperties": true
+                    }
                   },
                   "channelKey": {
                     "type": "string",
-                    "description": "Optional channel to post the cast to"
+                    "description": "Optional channel to post the cast to",
+                    "example": "farcaster"
                   }
                 }
               }
@@ -3423,14 +3538,23 @@
               }
             }
           },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
           }
         }
       },
       "delete": {
         "summary": "Delete a cast",
         "operationId": "deleteCast",
+        "tags": [
+          "Casts"
+        ],
         "security": [
           {
             "bearerAuth": []
@@ -3442,9 +3566,15 @@
             "application/json": {
               "schema": {
                 "type": "object",
+                "required": [
+                  "castHash"
+                ],
                 "properties": {
                   "castHash": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The hash of the cast to delete",
+                    "pattern": "^0x[a-fA-F0-9]{40}$",
+                    "example": "0xabcdef1234567890abcdef1234567890abcdef12"
                   }
                 }
               }
@@ -3462,8 +3592,17 @@
               }
             }
           },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
           }
         }
       }
@@ -5970,6 +6109,9 @@
         "operationId": "getTrendingTopics",
         "summary": "Get trending topics",
         "description": "Retrieves a list of currently trending topics on the platform.",
+        "tags": [
+          "Discovery"
+        ],
         "security": [
           {
             "bearerAuth": []
@@ -6011,7 +6153,7 @@
             "$ref": "#/components/responses/Unauthorized"
           },
           "429": {
-            "description": "Too many requests"
+            "$ref": "#/components/responses/TooManyRequests"
           }
         }
       }
@@ -6329,6 +6471,9 @@
         "operationId": "getManagedApps",
         "summary": "Get managed apps",
         "description": "Retrieves a list of apps managed by the authenticated user.",
+        "tags": [
+          "DevTools"
+        ],
         "security": [
           {
             "bearerAuth": []
@@ -6342,6 +6487,9 @@
             "required": false,
             "schema": {
               "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 25,
               "example": 25
             }
           }
@@ -6382,7 +6530,7 @@
             "$ref": "#/components/responses/Unauthorized"
           },
           "429": {
-            "description": "Too many requests"
+            "$ref": "#/components/responses/TooManyRequests"
           }
         }
       }
@@ -6879,6 +7027,9 @@
         "operationId": "submitAnalyticsEvents",
         "summary": "Submit analytics events",
         "description": "Submit one or more analytics events for tracking user activity.",
+        "tags": [
+          "Analytics"
+        ],
         "security": [
           {
             "bearerAuth": []
@@ -6948,7 +7099,7 @@
             "$ref": "#/components/responses/Unauthorized"
           },
           "429": {
-            "description": "Too many requests"
+            "$ref": "#/components/responses/TooManyRequests"
           }
         }
       }
@@ -7612,7 +7763,7 @@
             }
           },
           "429": {
-            "description": "Too many requests"
+            "$ref": "#/components/responses/TooManyRequests"
           }
         }
       }
@@ -10937,6 +11088,59 @@
           "application/json": {
             "schema": {
               "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      },
+      "TooManyRequests": {
+        "description": "Too many requests - rate limit exceeded",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            },
+            "examples": {
+              "RateLimitExceeded": {
+                "summary": "Rate limit exceeded",
+                "value": {
+                  "errors": [
+                    {
+                      "message": "Too many requests. Please try again later."
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "headers": {
+          "X-RateLimit-Limit": {
+            "description": "The maximum number of requests allowed in the time window",
+            "schema": {
+              "type": "integer",
+              "example": 100
+            }
+          },
+          "X-RateLimit-Remaining": {
+            "description": "The number of requests remaining in the current time window",
+            "schema": {
+              "type": "integer",
+              "example": 0
+            }
+          },
+          "X-RateLimit-Reset": {
+            "description": "Unix timestamp when the rate limit resets",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "example": 1234567890
+            }
+          },
+          "Retry-After": {
+            "description": "Number of seconds to wait before retrying",
+            "schema": {
+              "type": "integer",
+              "example": 60
             }
           }
         }
