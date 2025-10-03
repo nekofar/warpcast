@@ -1,0 +1,31 @@
+get:
+  operationId: getTrendingTopics
+  summary: Get trending topics
+  description: Retrieves a list of currently trending topics on the platform.
+  security:
+    - bearerAuth: []
+  responses:
+    '200':
+      description: Trending topics retrieved successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - result
+            properties:
+              result:
+                type: object
+                required:
+                  - topics
+                properties:
+                  topics:
+                    type: array
+                    description: List of trending topics
+                    items:
+                      type: object
+                      additionalProperties: true
+    '401':
+      $ref: '../../components/responses/index.yaml#/Unauthorized'
+    '429':
+      description: Too many requests

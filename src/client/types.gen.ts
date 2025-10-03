@@ -1713,29 +1713,29 @@ export type GetFeedItemsData = {
 		 */
 		excludeItemIdPrefixes?: Array<string>;
 		/**
-		 * View events for casts
+		 * View events for casts (can be empty array)
 		 */
 		castViewEvents?: Array<{
 			/**
 			 * Event timestamp in ms
 			 */
-			ts: bigint;
+			ts?: bigint;
 			/**
 			 * Cast hash
 			 */
-			hash: string;
+			hash?: string;
 			/**
 			 * Context of the view event
 			 */
-			on: string;
+			on?: string;
 			/**
 			 * Channel key
 			 */
-			channel: string;
+			channel?: string;
 			/**
 			 * Feed type where event occurred
 			 */
-			feed: string;
+			feed?: string;
 		}>;
 		/**
 		 * Whether to update the feed state
@@ -2666,6 +2666,50 @@ export type GetSponsoredInvitesResponses = {
 export type GetSponsoredInvitesResponse =
 	GetSponsoredInvitesResponses[keyof GetSponsoredInvitesResponses];
 
+export type GetOrCreateReferralCodeData = {
+	body: {
+		[key: string]: unknown;
+	};
+	path?: never;
+	query?: never;
+	url: "/v2/get-or-create-referral-code";
+};
+
+export type GetOrCreateReferralCodeErrors = {
+	/**
+	 * Authentication is required or failed
+	 */
+	401: ErrorResponse;
+	/**
+	 * Too many requests
+	 */
+	429: unknown;
+};
+
+export type GetOrCreateReferralCodeError =
+	GetOrCreateReferralCodeErrors[keyof GetOrCreateReferralCodeErrors];
+
+export type GetOrCreateReferralCodeResponses = {
+	/**
+	 * Referral code retrieved or created successfully
+	 */
+	200: {
+		result: {
+			/**
+			 * The referral code
+			 */
+			code: string;
+			/**
+			 * The unique identifier for the referral code
+			 */
+			id: string;
+		};
+	};
+};
+
+export type GetOrCreateReferralCodeResponse =
+	GetOrCreateReferralCodeResponses[keyof GetOrCreateReferralCodeResponses];
+
 export type GetRewardsLeaderboardData = {
 	body?: never;
 	path?: never;
@@ -2773,6 +2817,110 @@ export type GetRewardsMetadataResponses = {
 
 export type GetRewardsMetadataResponse =
 	GetRewardsMetadataResponses[keyof GetRewardsMetadataResponses];
+
+export type GetXpRewardsData = {
+	body?: never;
+	path?: never;
+	query?: {
+		/**
+		 * Maximum number of rewards to return
+		 */
+		limit?: number;
+	};
+	url: "/v2/xp-rewards";
+};
+
+export type GetXpRewardsErrors = {
+	/**
+	 * Authentication is required or failed
+	 */
+	401: ErrorResponse;
+	/**
+	 * Too many requests
+	 */
+	429: unknown;
+};
+
+export type GetXpRewardsError = GetXpRewardsErrors[keyof GetXpRewardsErrors];
+
+export type GetXpRewardsResponses = {
+	/**
+	 * XP rewards retrieved successfully
+	 */
+	200: {
+		result: {
+			/**
+			 * List of reward items
+			 */
+			rewards: Array<{
+				[key: string]: unknown;
+			}>;
+			/**
+			 * Total USDC earned from rewards
+			 */
+			totalUsdc: number;
+			/**
+			 * Total number of referrals
+			 */
+			totalReferrals: number;
+		};
+	};
+};
+
+export type GetXpRewardsResponse =
+	GetXpRewardsResponses[keyof GetXpRewardsResponses];
+
+export type GetXpClaimableSummaryData = {
+	body: {
+		[key: string]: unknown;
+	};
+	path?: never;
+	query?: never;
+	url: "/v2/xp-claimable-summary";
+};
+
+export type GetXpClaimableSummaryErrors = {
+	/**
+	 * Authentication is required or failed
+	 */
+	401: ErrorResponse;
+	/**
+	 * Too many requests
+	 */
+	429: unknown;
+};
+
+export type GetXpClaimableSummaryError =
+	GetXpClaimableSummaryErrors[keyof GetXpClaimableSummaryErrors];
+
+export type GetXpClaimableSummaryResponses = {
+	/**
+	 * XP claimable summary retrieved successfully
+	 */
+	200: {
+		result: {
+			/**
+			 * Total USDC amount available to claim
+			 */
+			totalClaimableUsdc: number;
+			/**
+			 * Number of pending rewards
+			 */
+			pendingRewardsCount: number;
+			/**
+			 * Whether the user is eligible to claim rewards
+			 */
+			eligibleToClaim: boolean;
+			/**
+			 * Reason why user is ineligible to claim (if applicable)
+			 */
+			ineligibleToClaimReason?: string;
+		};
+	};
+};
+
+export type GetXpClaimableSummaryResponse =
+	GetXpClaimableSummaryResponses[keyof GetXpClaimableSummaryResponses];
 
 export type GetBookmarkedCastsData = {
 	body?: never;
@@ -5291,6 +5439,46 @@ export type GetDomainManifestResponses = {
 export type GetDomainManifestResponse =
 	GetDomainManifestResponses[keyof GetDomainManifestResponses];
 
+export type GetTrendingTopicsData = {
+	body?: never;
+	path?: never;
+	query?: never;
+	url: "/v1/get-trending-topics";
+};
+
+export type GetTrendingTopicsErrors = {
+	/**
+	 * Authentication is required or failed
+	 */
+	401: ErrorResponse;
+	/**
+	 * Too many requests
+	 */
+	429: unknown;
+};
+
+export type GetTrendingTopicsError =
+	GetTrendingTopicsErrors[keyof GetTrendingTopicsErrors];
+
+export type GetTrendingTopicsResponses = {
+	/**
+	 * Trending topics retrieved successfully
+	 */
+	200: {
+		result: {
+			/**
+			 * List of trending topics
+			 */
+			topics: Array<{
+				[key: string]: unknown;
+			}>;
+		};
+	};
+};
+
+export type GetTrendingTopicsResponse =
+	GetTrendingTopicsResponses[keyof GetTrendingTopicsResponses];
+
 export type GetMetaTagsData = {
 	body?: never;
 	path?: never;
@@ -5547,6 +5735,51 @@ export type GetOwnedDomainsResponses = {
 
 export type GetOwnedDomainsResponse =
 	GetOwnedDomainsResponses[keyof GetOwnedDomainsResponses];
+
+export type GetManagedAppsData = {
+	body?: never;
+	path?: never;
+	query?: {
+		/**
+		 * Maximum number of apps to return
+		 */
+		limit?: number;
+	};
+	url: "/v1/dev-tools/managed-apps";
+};
+
+export type GetManagedAppsErrors = {
+	/**
+	 * Authentication is required or failed
+	 */
+	401: ErrorResponse;
+	/**
+	 * Too many requests
+	 */
+	429: unknown;
+};
+
+export type GetManagedAppsError =
+	GetManagedAppsErrors[keyof GetManagedAppsErrors];
+
+export type GetManagedAppsResponses = {
+	/**
+	 * Managed apps retrieved successfully
+	 */
+	200: {
+		result: {
+			/**
+			 * List of managed apps
+			 */
+			apps: Array<{
+				[key: string]: unknown;
+			}>;
+		};
+	};
+};
+
+export type GetManagedAppsResponse =
+	GetManagedAppsResponses[keyof GetManagedAppsResponses];
 
 export type GetApiKeysData = {
 	body?: never;
@@ -5847,6 +6080,57 @@ export type GetUserLikedCastsResponses = {
 
 export type GetUserLikedCastsResponse =
 	GetUserLikedCastsResponses[keyof GetUserLikedCastsResponses];
+
+export type SubmitAnalyticsEventsData = {
+	body: {
+		/**
+		 * Array of analytics events to submit
+		 */
+		events: Array<{
+			/**
+			 * Type of the analytics event
+			 */
+			type: string;
+			/**
+			 * Event-specific data
+			 */
+			data: {
+				[key: string]: unknown;
+			};
+			/**
+			 * Unix timestamp in milliseconds when the event occurred
+			 */
+			ts: bigint;
+		}>;
+	};
+	path?: never;
+	query?: never;
+	url: "/v1/analytics-events";
+};
+
+export type SubmitAnalyticsEventsErrors = {
+	/**
+	 * Authentication is required or failed
+	 */
+	401: ErrorResponse;
+	/**
+	 * Too many requests
+	 */
+	429: unknown;
+};
+
+export type SubmitAnalyticsEventsError =
+	SubmitAnalyticsEventsErrors[keyof SubmitAnalyticsEventsErrors];
+
+export type SubmitAnalyticsEventsResponses = {
+	/**
+	 * Analytics events submitted successfully
+	 */
+	200: SuccessResponse;
+};
+
+export type SubmitAnalyticsEventsResponse =
+	SubmitAnalyticsEventsResponses[keyof SubmitAnalyticsEventsResponses];
 
 export type GetMiniAppAnalyticsRollupData = {
 	body: {
@@ -6164,3 +6448,104 @@ export type ExportMiniAppUserDataResponses = {
 
 export type ExportMiniAppUserDataResponse =
 	ExportMiniAppUserDataResponses[keyof ExportMiniAppUserDataResponses];
+
+export type RegisterStatsigEventsData = {
+	body: {
+		/**
+		 * Array of Statsig events to submit
+		 */
+		events: Array<{
+			/**
+			 * Name of the event
+			 */
+			eventName: string;
+			/**
+			 * User information
+			 */
+			user: {
+				/**
+				 * User ID
+				 */
+				userID?: number;
+				/**
+				 * Application version
+				 */
+				appVersion?: string;
+				statsigEnvironment?: {
+					/**
+					 * Environment tier
+					 */
+					tier?: string;
+				};
+			};
+			/**
+			 * Event value
+			 */
+			value?: string | null;
+			/**
+			 * Event metadata
+			 */
+			metadata?: {
+				[key: string]: unknown;
+			};
+			/**
+			 * Unix timestamp in milliseconds when the event occurred
+			 */
+			time: bigint;
+			/**
+			 * Additional Statsig metadata
+			 */
+			statsigMetadata?: {
+				[key: string]: unknown;
+			};
+			/**
+			 * Secondary exposures
+			 */
+			secondaryExposures?: Array<{
+				[key: string]: unknown;
+			}>;
+		}>;
+		/**
+		 * SDK metadata
+		 */
+		statsigMetadata?: {
+			/**
+			 * Type of SDK
+			 */
+			sdkType?: string;
+			/**
+			 * Version of SDK
+			 */
+			sdkVersion?: string;
+			/**
+			 * Stable ID for the client
+			 */
+			stableID?: string;
+		};
+	};
+	path?: never;
+	query?: never;
+	url: "/v2/ss/v1/rgstr";
+};
+
+export type RegisterStatsigEventsErrors = {
+	/**
+	 * Too many requests
+	 */
+	429: unknown;
+};
+
+export type RegisterStatsigEventsResponses = {
+	/**
+	 * Events registered successfully
+	 */
+	200: {
+		/**
+		 * Whether the events were successfully registered
+		 */
+		success: boolean;
+	};
+};
+
+export type RegisterStatsigEventsResponse =
+	RegisterStatsigEventsResponses[keyof RegisterStatsigEventsResponses];

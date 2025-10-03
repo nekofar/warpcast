@@ -183,6 +183,9 @@ import type {
 	GetHighlightedChannelsData,
 	GetHighlightedChannelsErrors,
 	GetHighlightedChannelsResponses,
+	GetManagedAppsData,
+	GetManagedAppsErrors,
+	GetManagedAppsResponses,
 	GetMetaTagsData,
 	GetMetaTagsErrors,
 	GetMetaTagsResponses,
@@ -198,6 +201,9 @@ import type {
 	GetNotificationsData,
 	GetNotificationsErrors,
 	GetNotificationsResponses,
+	GetOrCreateReferralCodeData,
+	GetOrCreateReferralCodeErrors,
+	GetOrCreateReferralCodeResponses,
 	GetOwnedDomainsData,
 	GetOwnedDomainsErrors,
 	GetOwnedDomainsResponses,
@@ -234,6 +240,9 @@ import type {
 	GetTopMiniAppsData,
 	GetTopMiniAppsErrors,
 	GetTopMiniAppsResponses,
+	GetTrendingTopicsData,
+	GetTrendingTopicsErrors,
+	GetTrendingTopicsResponses,
 	GetUnseenCountsData,
 	GetUnseenCountsErrors,
 	GetUnseenCountsResponses,
@@ -288,6 +297,12 @@ import type {
 	GetVerificationsData,
 	GetVerificationsErrors,
 	GetVerificationsResponses,
+	GetXpClaimableSummaryData,
+	GetXpClaimableSummaryErrors,
+	GetXpClaimableSummaryResponses,
+	GetXpRewardsData,
+	GetXpRewardsErrors,
+	GetXpRewardsResponses,
 	InspectImageUrlData,
 	InspectImageUrlErrors,
 	InspectImageUrlResponses,
@@ -318,6 +333,9 @@ import type {
 	RecastCastData,
 	RecastCastErrors,
 	RecastCastResponses,
+	RegisterStatsigEventsData,
+	RegisterStatsigEventsErrors,
+	RegisterStatsigEventsResponses,
 	RemoveChannelInviteData,
 	RemoveChannelInviteErrors,
 	RemoveChannelInviteResponses,
@@ -342,6 +360,9 @@ import type {
 	SetLastCheckedTimestampData,
 	SetLastCheckedTimestampErrors,
 	SetLastCheckedTimestampResponses,
+	SubmitAnalyticsEventsData,
+	SubmitAnalyticsEventsErrors,
+	SubmitAnalyticsEventsResponses,
 	UnbanUserFromChannelData,
 	UnbanUserFromChannelErrors,
 	UnbanUserFromChannelResponses,
@@ -429,11 +450,13 @@ import {
 	zGetFollowersData,
 	zGetFollowingData,
 	zGetHighlightedChannelsData,
+	zGetManagedAppsData,
 	zGetMetaTagsData,
 	zGetMiniAppAnalyticsRollupData,
 	zGetMutedKeywordsData,
 	zGetMutualFollowersData,
 	zGetNotificationsData,
+	zGetOrCreateReferralCodeData,
 	zGetOwnedDomainsData,
 	zGetProfileCastsData,
 	zGetRewardsLeaderboardData,
@@ -446,6 +469,7 @@ import {
 	zGetSuggestedUsersData,
 	zGetTopFrameAppsData,
 	zGetTopMiniAppsData,
+	zGetTrendingTopicsData,
 	zGetUnseenCountsData,
 	zGetUserAppContextData,
 	zGetUserByFidData,
@@ -464,6 +488,8 @@ import {
 	zGetUserStarterPacksData,
 	zGetUserThreadCastsData,
 	zGetVerificationsData,
+	zGetXpClaimableSummaryData,
+	zGetXpRewardsData,
 	zInspectImageUrlData,
 	zInspectMiniAppUrlData,
 	zInviteUserToChannelData,
@@ -474,6 +500,7 @@ import {
 	zPinCastToChannelData,
 	zPinDirectCastConversationData,
 	zRecastCastData,
+	zRegisterStatsigEventsData,
 	zRemoveChannelInviteData,
 	zRemoveDirectCastMessageReactionData,
 	zRevokeApiKeyData,
@@ -482,6 +509,7 @@ import {
 	zSendDirectCastMessageData,
 	zSetDirectCastConversationMessageTtlData,
 	zSetLastCheckedTimestampData,
+	zSubmitAnalyticsEventsData,
 	zUnbanUserFromChannelData,
 	zUnblockUserData,
 	zUndoRecastData,
@@ -1468,6 +1496,36 @@ export const getSponsoredInvites = <ThrowOnError extends boolean = false>(
 };
 
 /**
+ * Get or create referral code
+ * Gets an existing referral code or creates a new one for the authenticated user.
+ */
+export const getOrCreateReferralCode = <ThrowOnError extends boolean = false>(
+	options: Options<GetOrCreateReferralCodeData, ThrowOnError>,
+) => {
+	return (options.client ?? client).post<
+		GetOrCreateReferralCodeResponses,
+		GetOrCreateReferralCodeErrors,
+		ThrowOnError
+	>({
+		requestValidator: async (data) => {
+			return await zGetOrCreateReferralCodeData.parseAsync(data);
+		},
+		security: [
+			{
+				scheme: "bearer",
+				type: "http",
+			},
+		],
+		url: "/v2/get-or-create-referral-code",
+		...options,
+		headers: {
+			"Content-Type": "application/json",
+			...options.headers,
+		},
+	});
+};
+
+/**
  * Get rewards leaderboard
  * Returns a list of users in the rewards leaderboard based on invite activity.
  */
@@ -1542,6 +1600,62 @@ export const getRewardsMetadata = <ThrowOnError extends boolean = false>(
 		],
 		url: "/v2/rewards-metadata",
 		...options,
+	});
+};
+
+/**
+ * Get XP rewards
+ * Retrieves the user's XP rewards, including total USDC earned and referral count.
+ */
+export const getXpRewards = <ThrowOnError extends boolean = false>(
+	options?: Options<GetXpRewardsData, ThrowOnError>,
+) => {
+	return (options?.client ?? client).get<
+		GetXpRewardsResponses,
+		GetXpRewardsErrors,
+		ThrowOnError
+	>({
+		requestValidator: async (data) => {
+			return await zGetXpRewardsData.parseAsync(data);
+		},
+		security: [
+			{
+				scheme: "bearer",
+				type: "http",
+			},
+		],
+		url: "/v2/xp-rewards",
+		...options,
+	});
+};
+
+/**
+ * Get XP claimable summary
+ * Retrieves a summary of claimable XP rewards for the authenticated user.
+ */
+export const getXpClaimableSummary = <ThrowOnError extends boolean = false>(
+	options: Options<GetXpClaimableSummaryData, ThrowOnError>,
+) => {
+	return (options.client ?? client).post<
+		GetXpClaimableSummaryResponses,
+		GetXpClaimableSummaryErrors,
+		ThrowOnError
+	>({
+		requestValidator: async (data) => {
+			return await zGetXpClaimableSummaryData.parseAsync(data);
+		},
+		security: [
+			{
+				scheme: "bearer",
+				type: "http",
+			},
+		],
+		url: "/v2/xp-claimable-summary",
+		...options,
+		headers: {
+			"Content-Type": "application/json",
+			...options.headers,
+		},
 	});
 };
 
@@ -3381,6 +3495,32 @@ export const getDomainManifest = <ThrowOnError extends boolean = false>(
 };
 
 /**
+ * Get trending topics
+ * Retrieves a list of currently trending topics on the platform.
+ */
+export const getTrendingTopics = <ThrowOnError extends boolean = false>(
+	options?: Options<GetTrendingTopicsData, ThrowOnError>,
+) => {
+	return (options?.client ?? client).get<
+		GetTrendingTopicsResponses,
+		GetTrendingTopicsErrors,
+		ThrowOnError
+	>({
+		requestValidator: async (data) => {
+			return await zGetTrendingTopicsData.parseAsync(data);
+		},
+		security: [
+			{
+				scheme: "bearer",
+				type: "http",
+			},
+		],
+		url: "/v1/get-trending-topics",
+		...options,
+	});
+};
+
+/**
  * Fetch meta tags from a URL
  * Retrieves metadata and Open Graph information from a specified URL
  */
@@ -3454,6 +3594,32 @@ export const getOwnedDomains = <ThrowOnError extends boolean = false>(
 			},
 		],
 		url: "/v1/dev-tools/domains-owned",
+		...options,
+	});
+};
+
+/**
+ * Get managed apps
+ * Retrieves a list of apps managed by the authenticated user.
+ */
+export const getManagedApps = <ThrowOnError extends boolean = false>(
+	options?: Options<GetManagedAppsData, ThrowOnError>,
+) => {
+	return (options?.client ?? client).get<
+		GetManagedAppsResponses,
+		GetManagedAppsErrors,
+		ThrowOnError
+	>({
+		requestValidator: async (data) => {
+			return await zGetManagedAppsData.parseAsync(data);
+		},
+		security: [
+			{
+				scheme: "bearer",
+				type: "http",
+			},
+		],
+		url: "/v1/dev-tools/managed-apps",
 		...options,
 	});
 };
@@ -3625,6 +3791,36 @@ export const getUserLikedCasts = <ThrowOnError extends boolean = false>(
 };
 
 /**
+ * Submit analytics events
+ * Submit one or more analytics events for tracking user activity.
+ */
+export const submitAnalyticsEvents = <ThrowOnError extends boolean = false>(
+	options: Options<SubmitAnalyticsEventsData, ThrowOnError>,
+) => {
+	return (options.client ?? client).post<
+		SubmitAnalyticsEventsResponses,
+		SubmitAnalyticsEventsErrors,
+		ThrowOnError
+	>({
+		requestValidator: async (data) => {
+			return await zSubmitAnalyticsEventsData.parseAsync(data);
+		},
+		security: [
+			{
+				scheme: "bearer",
+				type: "http",
+			},
+		],
+		url: "/v1/analytics-events",
+		...options,
+		headers: {
+			"Content-Type": "application/json",
+			...options.headers,
+		},
+	});
+};
+
+/**
  * Get analytics rollup for miniapps
  * Retrieves analytics data for miniapps over a specified date range,
  * providing various metrics broken down by configured dimensions.
@@ -3734,5 +3930,29 @@ export const exportMiniAppUserData = <ThrowOnError extends boolean = false>(
 		],
 		url: "/v1/dev-tools/export/miniapp-user-data",
 		...options,
+	});
+};
+
+/**
+ * Register Statsig events
+ * Submits Statsig analytics events including gate exposures and other tracking events.
+ */
+export const registerStatsigEvents = <ThrowOnError extends boolean = false>(
+	options: Options<RegisterStatsigEventsData, ThrowOnError>,
+) => {
+	return (options.client ?? client).post<
+		RegisterStatsigEventsResponses,
+		RegisterStatsigEventsErrors,
+		ThrowOnError
+	>({
+		requestValidator: async (data) => {
+			return await zRegisterStatsigEventsData.parseAsync(data);
+		},
+		url: "/v2/ss/v1/rgstr",
+		...options,
+		headers: {
+			"Content-Type": "application/json",
+			...options.headers,
+		},
 	});
 };

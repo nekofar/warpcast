@@ -1,0 +1,49 @@
+get:
+  operationId: getXpRewards
+  summary: Get XP rewards
+  description: Retrieves the user's XP rewards, including total USDC earned and referral count.
+  security:
+    - bearerAuth: []
+  parameters:
+    - name: limit
+      in: query
+      description: Maximum number of rewards to return
+      required: false
+      schema:
+        type: integer
+        example: 25
+  responses:
+    '200':
+      description: XP rewards retrieved successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - result
+            properties:
+              result:
+                type: object
+                required:
+                  - rewards
+                  - totalUsdc
+                  - totalReferrals
+                properties:
+                  rewards:
+                    type: array
+                    description: List of reward items
+                    items:
+                      type: object
+                      additionalProperties: true
+                  totalUsdc:
+                    type: number
+                    description: Total USDC earned from rewards
+                    example: 150.50
+                  totalReferrals:
+                    type: integer
+                    description: Total number of referrals
+                    example: 10
+    '401':
+      $ref: '../../components/responses/index.yaml#/Unauthorized'
+    '429':
+      description: Too many requests

@@ -1700,25 +1700,35 @@ export const zGetFeedItemsData = z.object({
 			z
 				.array(
 					z.object({
-						ts: z.coerce.bigint().register(z.globalRegistry, {
-							description: "Event timestamp in ms",
-						}),
-						hash: z.string().register(z.globalRegistry, {
-							description: "Cast hash",
-						}),
-						on: z.string().register(z.globalRegistry, {
-							description: "Context of the view event",
-						}),
-						channel: z.string().register(z.globalRegistry, {
-							description: "Channel key",
-						}),
-						feed: z.string().register(z.globalRegistry, {
-							description: "Feed type where event occurred",
-						}),
+						ts: z.optional(
+							z.coerce.bigint().register(z.globalRegistry, {
+								description: "Event timestamp in ms",
+							}),
+						),
+						hash: z.optional(
+							z.string().register(z.globalRegistry, {
+								description: "Cast hash",
+							}),
+						),
+						on: z.optional(
+							z.string().register(z.globalRegistry, {
+								description: "Context of the view event",
+							}),
+						),
+						channel: z.optional(
+							z.string().register(z.globalRegistry, {
+								description: "Channel key",
+							}),
+						),
+						feed: z.optional(
+							z.string().register(z.globalRegistry, {
+								description: "Feed type where event occurred",
+							}),
+						),
 					}),
 				)
 				.register(z.globalRegistry, {
-					description: "View events for casts",
+					description: "View events for casts (can be empty array)",
 				}),
 		),
 		updateState: z.optional(
@@ -2004,6 +2014,12 @@ export const zGetSponsoredInvitesData = z.object({
 	query: z.optional(z.never()),
 });
 
+export const zGetOrCreateReferralCodeData = z.object({
+	body: z.record(z.string(), z.unknown()),
+	path: z.optional(z.never()),
+	query: z.optional(z.never()),
+});
+
 export const zGetRewardsLeaderboardData = z.object({
 	body: z.optional(z.never()),
 	path: z.optional(z.never()),
@@ -2037,6 +2053,26 @@ export const zGetRewardsMetadataData = z.object({
 	query: z.object({
 		rewardsType: z.enum(["invite"]),
 	}),
+});
+
+export const zGetXpRewardsData = z.object({
+	body: z.optional(z.never()),
+	path: z.optional(z.never()),
+	query: z.optional(
+		z.object({
+			limit: z.optional(
+				z.int().register(z.globalRegistry, {
+					description: "Maximum number of rewards to return",
+				}),
+			),
+		}),
+	),
+});
+
+export const zGetXpClaimableSummaryData = z.object({
+	body: z.record(z.string(), z.unknown()),
+	path: z.optional(z.never()),
+	query: z.optional(z.never()),
 });
 
 export const zGetBookmarkedCastsData = z.object({
@@ -2812,6 +2848,12 @@ export const zGetDomainManifestData = z.object({
 	}),
 });
 
+export const zGetTrendingTopicsData = z.object({
+	body: z.optional(z.never()),
+	path: z.optional(z.never()),
+	query: z.optional(z.never()),
+});
+
 export const zGetMetaTagsData = z.object({
 	body: z.optional(z.never()),
 	path: z.optional(z.never()),
@@ -2836,6 +2878,20 @@ export const zGetOwnedDomainsData = z.object({
 	body: z.optional(z.never()),
 	path: z.optional(z.never()),
 	query: z.optional(z.never()),
+});
+
+export const zGetManagedAppsData = z.object({
+	body: z.optional(z.never()),
+	path: z.optional(z.never()),
+	query: z.optional(
+		z.object({
+			limit: z.optional(
+				z.int().register(z.globalRegistry, {
+					description: "Maximum number of apps to return",
+				}),
+			),
+		}),
+	),
 });
 
 export const zGetApiKeysData = z.object({
@@ -2942,6 +2998,31 @@ export const zGetUserLikedCastsData = z.object({
 	}),
 });
 
+export const zSubmitAnalyticsEventsData = z.object({
+	body: z.object({
+		events: z
+			.array(
+				z.object({
+					type: z.string().register(z.globalRegistry, {
+						description: "Type of the analytics event",
+					}),
+					data: z.record(z.string(), z.unknown()).register(z.globalRegistry, {
+						description: "Event-specific data",
+					}),
+					ts: z.coerce.bigint().register(z.globalRegistry, {
+						description:
+							"Unix timestamp in milliseconds when the event occurred",
+					}),
+				}),
+			)
+			.register(z.globalRegistry, {
+				description: "Array of analytics events to submit",
+			}),
+	}),
+	path: z.optional(z.never()),
+	query: z.optional(z.never()),
+});
+
 export const zGetMiniAppAnalyticsRollupData = z.object({
 	body: z.object({
 		dateRange: z.object({
@@ -3034,4 +3115,92 @@ export const zExportMiniAppUserDataData = z.object({
 			description: "The domain name of the mini app to export user data for",
 		}),
 	}),
+});
+
+export const zRegisterStatsigEventsData = z.object({
+	body: z.object({
+		events: z
+			.array(
+				z.object({
+					eventName: z.string().register(z.globalRegistry, {
+						description: "Name of the event",
+					}),
+					user: z
+						.object({
+							userID: z.optional(
+								z.int().register(z.globalRegistry, {
+									description: "User ID",
+								}),
+							),
+							appVersion: z.optional(
+								z.string().register(z.globalRegistry, {
+									description: "Application version",
+								}),
+							),
+							statsigEnvironment: z.optional(
+								z.object({
+									tier: z.optional(
+										z.string().register(z.globalRegistry, {
+											description: "Environment tier",
+										}),
+									),
+								}),
+							),
+						})
+						.register(z.globalRegistry, {
+							description: "User information",
+						}),
+					value: z.optional(z.union([z.string(), z.null()])),
+					metadata: z.optional(
+						z.record(z.string(), z.unknown()).register(z.globalRegistry, {
+							description: "Event metadata",
+						}),
+					),
+					time: z.coerce.bigint().register(z.globalRegistry, {
+						description:
+							"Unix timestamp in milliseconds when the event occurred",
+					}),
+					statsigMetadata: z.optional(
+						z.record(z.string(), z.unknown()).register(z.globalRegistry, {
+							description: "Additional Statsig metadata",
+						}),
+					),
+					secondaryExposures: z.optional(
+						z
+							.array(z.record(z.string(), z.unknown()))
+							.register(z.globalRegistry, {
+								description: "Secondary exposures",
+							}),
+					),
+				}),
+			)
+			.register(z.globalRegistry, {
+				description: "Array of Statsig events to submit",
+			}),
+		statsigMetadata: z.optional(
+			z
+				.object({
+					sdkType: z.optional(
+						z.string().register(z.globalRegistry, {
+							description: "Type of SDK",
+						}),
+					),
+					sdkVersion: z.optional(
+						z.string().register(z.globalRegistry, {
+							description: "Version of SDK",
+						}),
+					),
+					stableID: z.optional(
+						z.string().register(z.globalRegistry, {
+							description: "Stable ID for the client",
+						}),
+					),
+				})
+				.register(z.globalRegistry, {
+					description: "SDK metadata",
+				}),
+		),
+	}),
+	path: z.optional(z.never()),
+	query: z.optional(z.never()),
 });

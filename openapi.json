@@ -352,7 +352,7 @@
                   "feedKey": {
                     "type": "string",
                     "description": "Identifier for the specific feed",
-                    "example": "lilnouns"
+                    "example": "example-channel"
                   },
                   "feedType": {
                     "type": "string",
@@ -363,13 +363,13 @@
                     "type": "integer",
                     "format": "int64",
                     "description": "Only return items older than this timestamp (ms)",
-                    "example": 1754870423000
+                    "example": 1234567890000
                   },
                   "latestMainCastTimestamp": {
                     "type": "integer",
                     "format": "int64",
                     "description": "Latest main cast timestamp used for pagination (ms)",
-                    "example": 1754870423000
+                    "example": 1234567890000
                   },
                   "excludeItemIdPrefixes": {
                     "type": "array",
@@ -378,43 +378,36 @@
                       "type": "string"
                     },
                     "example": [
-                      "4a85f26e",
-                      "7f1ebf49"
+                      "abc123",
+                      "def456"
                     ]
                   },
                   "castViewEvents": {
                     "type": "array",
-                    "description": "View events for casts",
+                    "description": "View events for casts (can be empty array)",
                     "items": {
                       "type": "object",
-                      "required": [
-                        "ts",
-                        "hash",
-                        "on",
-                        "channel",
-                        "feed"
-                      ],
                       "properties": {
                         "ts": {
                           "type": "integer",
                           "format": "int64",
                           "description": "Event timestamp in ms",
-                          "example": 1754903185414
+                          "example": 1234567890000
                         },
                         "hash": {
                           "type": "string",
                           "description": "Cast hash",
-                          "example": "0x5548daccf7811fcfcbbc918059ecb5c685eddc47"
+                          "example": "0xabcd1234"
                         },
                         "on": {
                           "type": "string",
                           "description": "Context of the view event",
-                          "example": "channel"
+                          "example": "feed"
                         },
                         "channel": {
                           "type": "string",
                           "description": "Channel key",
-                          "example": "lilnouns"
+                          "example": "example-channel"
                         },
                         "feed": {
                           "type": "string",
@@ -432,26 +425,10 @@
                 }
               },
               "example": {
-                "feedKey": "lilnouns",
+                "feedKey": "example-channel",
                 "feedType": "default",
-                "olderThan": 1754870423000,
-                "latestMainCastTimestamp": 1754870423000,
-                "excludeItemIdPrefixes": [
-                  "4a85f26e",
-                  "7f1ebf49",
-                  "6c268220",
-                  "5548dacc"
-                ],
-                "castViewEvents": [
-                  {
-                    "ts": 1754903185414,
-                    "hash": "0x5548daccf7811fcfcbbc918059ecb5c685eddc47",
-                    "on": "channel",
-                    "channel": "lilnouns",
-                    "feed": "default"
-                  }
-                ],
-                "updateState": true
+                "castViewEvents": [],
+                "updateState": false
               }
             }
           }
@@ -1598,6 +1575,70 @@
         }
       }
     },
+    "/v2/get-or-create-referral-code": {
+      "post": {
+        "operationId": "getOrCreateReferralCode",
+        "summary": "Get or create referral code",
+        "description": "Gets an existing referral code or creates a new one for the authenticated user.",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Referral code retrieved or created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "result"
+                  ],
+                  "properties": {
+                    "result": {
+                      "type": "object",
+                      "required": [
+                        "code",
+                        "id"
+                      ],
+                      "properties": {
+                        "code": {
+                          "type": "string",
+                          "description": "The referral code",
+                          "example": "ABC123"
+                        },
+                        "id": {
+                          "type": "string",
+                          "description": "The unique identifier for the referral code",
+                          "example": "01234567-89ab-cdef-0123-456789abcdef"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "429": {
+            "description": "Too many requests"
+          }
+        }
+      }
+    },
     "/v2/rewards-leaderboard": {
       "get": {
         "tags": [
@@ -1736,6 +1777,156 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/RewardsMetadataResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "429": {
+            "description": "Too many requests"
+          }
+        }
+      }
+    },
+    "/v2/xp-rewards": {
+      "get": {
+        "operationId": "getXpRewards",
+        "summary": "Get XP rewards",
+        "description": "Retrieves the user's XP rewards, including total USDC earned and referral count.",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Maximum number of rewards to return",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "example": 25
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "XP rewards retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "result"
+                  ],
+                  "properties": {
+                    "result": {
+                      "type": "object",
+                      "required": [
+                        "rewards",
+                        "totalUsdc",
+                        "totalReferrals"
+                      ],
+                      "properties": {
+                        "rewards": {
+                          "type": "array",
+                          "description": "List of reward items",
+                          "items": {
+                            "type": "object",
+                            "additionalProperties": true
+                          }
+                        },
+                        "totalUsdc": {
+                          "type": "number",
+                          "description": "Total USDC earned from rewards",
+                          "example": 150.5
+                        },
+                        "totalReferrals": {
+                          "type": "integer",
+                          "description": "Total number of referrals",
+                          "example": 10
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "429": {
+            "description": "Too many requests"
+          }
+        }
+      }
+    },
+    "/v2/xp-claimable-summary": {
+      "post": {
+        "operationId": "getXpClaimableSummary",
+        "summary": "Get XP claimable summary",
+        "description": "Retrieves a summary of claimable XP rewards for the authenticated user.",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "XP claimable summary retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "result"
+                  ],
+                  "properties": {
+                    "result": {
+                      "type": "object",
+                      "required": [
+                        "totalClaimableUsdc",
+                        "pendingRewardsCount",
+                        "eligibleToClaim"
+                      ],
+                      "properties": {
+                        "totalClaimableUsdc": {
+                          "type": "number",
+                          "description": "Total USDC amount available to claim",
+                          "example": 25.75
+                        },
+                        "pendingRewardsCount": {
+                          "type": "integer",
+                          "description": "Number of pending rewards",
+                          "example": 5
+                        },
+                        "eligibleToClaim": {
+                          "type": "boolean",
+                          "description": "Whether the user is eligible to claim rewards",
+                          "example": true
+                        },
+                        "ineligibleToClaimReason": {
+                          "type": "string",
+                          "description": "Reason why user is ineligible to claim (if applicable)",
+                          "example": "kyc-required"
+                        }
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -5774,6 +5965,57 @@
         }
       }
     },
+    "/v1/get-trending-topics": {
+      "get": {
+        "operationId": "getTrendingTopics",
+        "summary": "Get trending topics",
+        "description": "Retrieves a list of currently trending topics on the platform.",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Trending topics retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "result"
+                  ],
+                  "properties": {
+                    "result": {
+                      "type": "object",
+                      "required": [
+                        "topics"
+                      ],
+                      "properties": {
+                        "topics": {
+                          "type": "array",
+                          "description": "List of trending topics",
+                          "items": {
+                            "type": "object",
+                            "additionalProperties": true
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "429": {
+            "description": "Too many requests"
+          }
+        }
+      }
+    },
     "/v1/dev-tools/meta-tags": {
       "get": {
         "operationId": "getMetaTags",
@@ -6078,6 +6320,69 @@
           },
           "500": {
             "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/v1/dev-tools/managed-apps": {
+      "get": {
+        "operationId": "getManagedApps",
+        "summary": "Get managed apps",
+        "description": "Retrieves a list of apps managed by the authenticated user.",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Maximum number of apps to return",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "example": 25
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Managed apps retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "result"
+                  ],
+                  "properties": {
+                    "result": {
+                      "type": "object",
+                      "required": [
+                        "apps"
+                      ],
+                      "properties": {
+                        "apps": {
+                          "type": "array",
+                          "description": "List of managed apps",
+                          "items": {
+                            "type": "object",
+                            "additionalProperties": true
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "429": {
+            "description": "Too many requests"
           }
         }
       }
@@ -6565,6 +6870,85 @@
           },
           "500": {
             "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/v1/analytics-events": {
+      "post": {
+        "operationId": "submitAnalyticsEvents",
+        "summary": "Submit analytics events",
+        "description": "Submit one or more analytics events for tracking user activity.",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "events"
+                ],
+                "properties": {
+                  "events": {
+                    "type": "array",
+                    "description": "Array of analytics events to submit",
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "data",
+                        "ts"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "description": "Type of the analytics event",
+                          "example": "page-view"
+                        },
+                        "data": {
+                          "type": "object",
+                          "description": "Event-specific data",
+                          "additionalProperties": true,
+                          "example": {
+                            "on": "feed",
+                            "itemId": "abc123"
+                          }
+                        },
+                        "ts": {
+                          "type": "integer",
+                          "format": "int64",
+                          "description": "Unix timestamp in milliseconds when the event occurred",
+                          "example": 1234567890000
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Analytics events submitted successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "429": {
+            "description": "Too many requests"
           }
         }
       }
@@ -7084,6 +7468,151 @@
           },
           "500": {
             "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/v2/ss/v1/rgstr": {
+      "post": {
+        "operationId": "registerStatsigEvents",
+        "summary": "Register Statsig events",
+        "description": "Submits Statsig analytics events including gate exposures and other tracking events.",
+        "security": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "events"
+                ],
+                "properties": {
+                  "events": {
+                    "type": "array",
+                    "description": "Array of Statsig events to submit",
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "eventName",
+                        "user",
+                        "time"
+                      ],
+                      "properties": {
+                        "eventName": {
+                          "type": "string",
+                          "description": "Name of the event",
+                          "example": "statsig::gate_exposure"
+                        },
+                        "user": {
+                          "type": "object",
+                          "description": "User information",
+                          "properties": {
+                            "userID": {
+                              "type": "integer",
+                              "description": "User ID",
+                              "example": 12345
+                            },
+                            "appVersion": {
+                              "type": "string",
+                              "description": "Application version",
+                              "example": "2025-01-01-12-00-abc1234"
+                            },
+                            "statsigEnvironment": {
+                              "type": "object",
+                              "properties": {
+                                "tier": {
+                                  "type": "string",
+                                  "description": "Environment tier",
+                                  "example": "production"
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "value": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "description": "Event value"
+                        },
+                        "metadata": {
+                          "type": "object",
+                          "description": "Event metadata",
+                          "additionalProperties": true
+                        },
+                        "time": {
+                          "type": "integer",
+                          "format": "int64",
+                          "description": "Unix timestamp in milliseconds when the event occurred",
+                          "example": 1234567890000
+                        },
+                        "statsigMetadata": {
+                          "type": "object",
+                          "description": "Additional Statsig metadata",
+                          "additionalProperties": true
+                        },
+                        "secondaryExposures": {
+                          "type": "array",
+                          "description": "Secondary exposures",
+                          "items": {
+                            "type": "object",
+                            "additionalProperties": true
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "statsigMetadata": {
+                    "type": "object",
+                    "description": "SDK metadata",
+                    "properties": {
+                      "sdkType": {
+                        "type": "string",
+                        "description": "Type of SDK",
+                        "example": "react-client"
+                      },
+                      "sdkVersion": {
+                        "type": "string",
+                        "description": "Version of SDK",
+                        "example": "1.30.0"
+                      },
+                      "stableID": {
+                        "type": "string",
+                        "description": "Stable ID for the client",
+                        "example": "abc12345-6789-0def-ghij-klmnopqrstuv"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Events registered successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "Whether the events were successfully registered",
+                      "example": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too many requests"
           }
         }
       }
