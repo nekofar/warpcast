@@ -9,6 +9,7 @@ get:
       in: query
       schema:
         type: boolean
+      description: Whether to randomize the suggested users
   security:
     - bearerAuth: []
   responses:

@@ -12,6 +12,7 @@ get:
       schema:
         type: string
         enum: [invite]
+      description: Type of rewards to retrieve
     - $ref: '../../components/parameters/index.yaml#/cursorParam'
   security:
     - bearerAuth: []

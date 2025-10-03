@@ -10,6 +10,8 @@ get:
       required: true
       schema:
         type: string
+      description: The unique identifier of the starter pack
+      example: "01234567-89ab-cdef-0123-456789abcdef"
   security:
     - bearerAuth: [ ]
   responses:

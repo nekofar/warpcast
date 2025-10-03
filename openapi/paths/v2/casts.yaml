@@ -52,12 +52,15 @@ post:
           properties:
             text:
               type: string
+              description: The text content of the cast
             embeds:
               type: array
               items: {}
+              description: Optional array of embeds (URLs, images, etc.)
             channelKey:
               type: string
               description: Optional channel to post the cast to
+              example: "farcaster"
   responses:
     '200':
       description: Cast created successfully
@@ -88,6 +91,8 @@ delete:
           properties:
             castHash:
               type: string
+              description: The hash of the cast to delete
+              example: "0xabcdef1234567890abcdef1234567890abcdef12"
   responses:
     '200':
       description: Cast deleted successfully

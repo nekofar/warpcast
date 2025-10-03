@@ -12,18 +12,22 @@ get:
       required: false
       schema:
         type: string
+      description: Search query string
+      example: "farcaster"
     - name: prioritizeFollowed
       in: query
       required: false
       schema:
         type: boolean
         default: true
+      description: Whether to prioritize channels the user follows
     - name: forComposer
       in: query
       required: false
       schema:
         type: boolean
         default: false
+      description: Whether the search is for the composer context
   responses:
     '200':
       description: A list of matched channels

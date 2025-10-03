@@ -12,6 +12,7 @@ post:
       application/json:
         schema:
           type: object
+          description: Empty request body
   responses:
     '200':
       description: Referral code retrieved or created successfully
