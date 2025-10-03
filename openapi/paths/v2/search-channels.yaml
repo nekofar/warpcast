@@ -12,6 +12,7 @@ get:
       required: false
       schema:
         type: string
+        minLength: 1
       description: Search query string
       example: "farcaster"
     - name: prioritizeFollowed

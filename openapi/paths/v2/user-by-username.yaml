@@ -10,6 +10,8 @@ get:
       required: true
       schema:
         type: string
+        minLength: 1
+        maxLength: 16
       description: The username to look up
       example: "username"
   security:

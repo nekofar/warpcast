@@ -53,6 +53,8 @@ post:
             text:
               type: string
               description: The text content of the cast
+              minLength: 1
+              maxLength: 320
             embeds:
               type: array
               items: {}
