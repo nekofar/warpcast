@@ -934,10 +934,10 @@ export type RewardsScoresResponse = {
 export type RewardsMetadataResponse = {
 	result: {
 		metadata?: {
-			type?: string;
-			lastUpdateTimestamp?: number;
-			currentPeriodStartTimestamp?: number;
-			currentPeriodEndTimestamp?: number;
+			type: string;
+			lastUpdateTimestamp: bigint;
+			currentPeriodStartTimestamp: bigint;
+			currentPeriodEndTimestamp: bigint;
 			tiers?: Array<{
 				[key: string]: unknown;
 			}>;
@@ -1511,6 +1511,10 @@ export type GetUserOnboardingStateErrors = {
 	 * Authentication is required or failed
 	 */
 	401: ErrorResponse;
+	/**
+	 * Too many requests - rate limit exceeded
+	 */
+	429: ErrorResponse;
 };
 
 export type GetUserOnboardingStateError =
@@ -1582,7 +1586,7 @@ export type GetDirectCastInboxData = {
 		 */
 		filter?: "unread" | "group" | "1-1";
 		/**
-		 * Base64 encoded cursor from previous response
+		 * Base64 encoded cursor for pagination
 		 */
 		cursor?: string;
 	};
@@ -1591,9 +1595,17 @@ export type GetDirectCastInboxData = {
 
 export type GetDirectCastInboxErrors = {
 	/**
+	 * Bad request - validation errors or malformed request
+	 */
+	400: BadRequestError;
+	/**
 	 * Authentication is required or failed
 	 */
 	401: ErrorResponse;
+	/**
+	 * Too many requests - rate limit exceeded
+	 */
+	429: ErrorResponse;
 };
 
 export type GetDirectCastInboxError =
@@ -1648,6 +1660,10 @@ export type GetUserPreferencesErrors = {
 	 * Authentication is required or failed
 	 */
 	401: ErrorResponse;
+	/**
+	 * Too many requests - rate limit exceeded
+	 */
+	429: ErrorResponse;
 };
 
 export type GetUserPreferencesError =
@@ -1780,6 +1796,10 @@ export type GetUserData = {
 
 export type GetUserErrors = {
 	/**
+	 * Bad request - validation errors or malformed request
+	 */
+	400: BadRequestError;
+	/**
 	 * Authentication is required or failed
 	 */
 	401: ErrorResponse;
@@ -1787,6 +1807,10 @@ export type GetUserErrors = {
 	 * The specified resource was not found
 	 */
 	404: ErrorResponse;
+	/**
+	 * Too many requests - rate limit exceeded
+	 */
+	429: ErrorResponse;
 };
 
 export type GetUserError = GetUserErrors[keyof GetUserErrors];
@@ -1844,6 +1868,9 @@ export type GetSuggestedUsersData = {
 		 * Maximum number of items to return
 		 */
 		limit?: number;
+		/**
+		 * Whether to randomize the suggested users
+		 */
 		randomized?: boolean;
 	};
 	url: "/v2/suggested-users";
@@ -1854,6 +1881,10 @@ export type GetSuggestedUsersErrors = {
 	 * Authentication is required or failed
 	 */
 	401: ErrorResponse;
+	/**
+	 * Too many requests - rate limit exceeded
+	 */
+	429: ErrorResponse;
 };
 
 export type GetSuggestedUsersError =
@@ -1915,6 +1946,10 @@ export type GetUserByUsernameData = {
 
 export type GetUserByUsernameErrors = {
 	/**
+	 * Bad request - validation errors or malformed request
+	 */
+	400: BadRequestError;
+	/**
 	 * Authentication is required or failed
 	 */
 	401: ErrorResponse;
@@ -1922,6 +1957,10 @@ export type GetUserByUsernameErrors = {
 	 * The specified resource was not found
 	 */
 	404: ErrorResponse;
+	/**
+	 * Too many requests - rate limit exceeded
+	 */
+	429: ErrorResponse;
 };
 
 export type GetUserByUsernameError =
@@ -2114,9 +2153,9 @@ export type GetNotificationsErrors = {
 	 */
 	401: ErrorResponse;
 	/**
-	 * Too many requests
+	 * Too many requests - rate limit exceeded
 	 */
-	429: unknown;
+	429: ErrorResponse;
 };
 
 export type GetNotificationsError =
@@ -2150,9 +2189,9 @@ export type SetLastCheckedTimestampErrors = {
 	 */
 	401: ErrorResponse;
 	/**
-	 * Too many requests
+	 * Too many requests - rate limit exceeded
 	 */
-	429: unknown;
+	429: ErrorResponse;
 };
 
 export type SetLastCheckedTimestampError =
@@ -2185,13 +2224,21 @@ export type GetDirectCastConversationData = {
 
 export type GetDirectCastConversationErrors = {
 	/**
+	 * Bad request - validation errors or malformed request
+	 */
+	400: BadRequestError;
+	/**
 	 * Authentication is required or failed
 	 */
 	401: ErrorResponse;
 	/**
-	 * Too many requests
+	 * The specified resource was not found
 	 */
-	429: unknown;
+	404: ErrorResponse;
+	/**
+	 * Too many requests - rate limit exceeded
+	 */
+	429: ErrorResponse;
 };
 
 export type GetDirectCastConversationError =
@@ -2220,9 +2267,9 @@ export type CategorizeDirectCastConversationErrors = {
 	 */
 	401: ErrorResponse;
 	/**
-	 * Too many requests
+	 * Too many requests - rate limit exceeded
 	 */
-	429: unknown;
+	429: ErrorResponse;
 };
 
 export type CategorizeDirectCastConversationError =
@@ -2263,9 +2310,9 @@ export type GetDirectCastConversationMessagesErrors = {
 	 */
 	401: ErrorResponse;
 	/**
-	 * Too many requests
+	 * Too many requests - rate limit exceeded
 	 */
-	429: unknown;
+	429: ErrorResponse;
 };
 
 export type GetDirectCastConversationMessagesError =
@@ -2294,9 +2341,9 @@ export type SetDirectCastConversationMessageTtlErrors = {
 	 */
 	401: ErrorResponse;
 	/**
-	 * Too many requests
+	 * Too many requests - rate limit exceeded
 	 */
-	429: unknown;
+	429: ErrorResponse;
 };
 
 export type SetDirectCastConversationMessageTtlError =
@@ -2325,9 +2372,9 @@ export type UpdateDirectCastConversationNotificationsErrors = {
 	 */
 	401: ErrorResponse;
 	/**
-	 * Too many requests
+	 * Too many requests - rate limit exceeded
 	 */
-	429: unknown;
+	429: ErrorResponse;
 };
 
 export type UpdateDirectCastConversationNotificationsError =
@@ -2364,9 +2411,9 @@ export type GetDirectCastConversationRecentMessagesErrors = {
 	 */
 	401: ErrorResponse;
 	/**
-	 * Too many requests
+	 * Too many requests - rate limit exceeded
 	 */
-	429: unknown;
+	429: ErrorResponse;
 };
 
 export type GetDirectCastConversationRecentMessagesError =
@@ -2395,9 +2442,9 @@ export type SendDirectCastMessageErrors = {
 	 */
 	401: ErrorResponse;
 	/**
-	 * Too many requests
+	 * Too many requests - rate limit exceeded
 	 */
-	429: unknown;
+	429: ErrorResponse;
 };
 
 export type SendDirectCastMessageError =
@@ -2426,9 +2473,9 @@ export type DirectCastManuallyMarkUnreadErrors = {
 	 */
 	401: ErrorResponse;
 	/**
-	 * Too many requests
+	 * Too many requests - rate limit exceeded
 	 */
-	429: unknown;
+	429: ErrorResponse;
 };
 
 export type DirectCastManuallyMarkUnreadError =
@@ -2457,9 +2504,9 @@ export type RemoveDirectCastMessageReactionErrors = {
 	 */
 	401: ErrorResponse;
 	/**
-	 * Too many requests
+	 * Too many requests - rate limit exceeded
 	 */
-	429: unknown;
+	429: ErrorResponse;
 };
 
 export type RemoveDirectCastMessageReactionError =
@@ -2488,9 +2535,9 @@ export type AddDirectCastMessageReactionErrors = {
 	 */
 	401: ErrorResponse;
 	/**
-	 * Too many requests
+	 * Too many requests - rate limit exceeded
 	 */
-	429: unknown;
+	429: ErrorResponse;
 };
 
 export type AddDirectCastMessageReactionError =
@@ -2519,9 +2566,9 @@ export type UnpinDirectCastConversationErrors = {
 	 */
 	401: ErrorResponse;
 	/**
-	 * Too many requests
+	 * Too many requests - rate limit exceeded
 	 */
-	429: unknown;
+	429: ErrorResponse;
 };
 
 export type UnpinDirectCastConversationError =
@@ -2550,9 +2597,9 @@ export type PinDirectCastConversationErrors = {
 	 */
 	401: ErrorResponse;
 	/**
-	 * Too many requests
+	 * Too many requests - rate limit exceeded
 	 */
-	429: unknown;
+	429: ErrorResponse;
 };
 
 export type PinDirectCastConversationError =
@@ -2573,7 +2620,7 @@ export type DiscoverChannelsData = {
 	path?: never;
 	query?: {
 		/**
-		 * Maximum number of channels to retrieve
+		 * Maximum number of items to return
 		 */
 		limit?: number;
 	};
@@ -2586,9 +2633,9 @@ export type DiscoverChannelsErrors = {
 	 */
 	401: ErrorResponse;
 	/**
-	 * Too many requests
+	 * Too many requests - rate limit exceeded
 	 */
-	429: unknown;
+	429: ErrorResponse;
 };
 
 export type DiscoverChannelsError =
@@ -2617,9 +2664,9 @@ export type GetAvailableInvitesErrors = {
 	 */
 	401: ErrorResponse;
 	/**
-	 * Too many requests
+	 * Too many requests - rate limit exceeded
 	 */
-	429: unknown;
+	429: ErrorResponse;
 };
 
 export type GetAvailableInvitesError =
@@ -2648,9 +2695,9 @@ export type GetSponsoredInvitesErrors = {
 	 */
 	401: ErrorResponse;
 	/**
-	 * Too many requests
+	 * Too many requests - rate limit exceeded
 	 */
-	429: unknown;
+	429: ErrorResponse;
 };
 
 export type GetSponsoredInvitesError =
@@ -2667,8 +2714,11 @@ export type GetSponsoredInvitesResponse =
 	GetSponsoredInvitesResponses[keyof GetSponsoredInvitesResponses];
 
 export type GetOrCreateReferralCodeData = {
+	/**
+	 * Empty request body
+	 */
 	body: {
-		[key: string]: unknown;
+		[key: string]: never;
 	};
 	path?: never;
 	query?: never;
@@ -2681,9 +2731,9 @@ export type GetOrCreateReferralCodeErrors = {
 	 */
 	401: ErrorResponse;
 	/**
-	 * Too many requests
+	 * Too many requests - rate limit exceeded
 	 */
-	429: unknown;
+	429: ErrorResponse;
 };
 
 export type GetOrCreateReferralCodeError =
@@ -2718,7 +2768,13 @@ export type GetRewardsLeaderboardData = {
 		 * Maximum number of items to return
 		 */
 		limit?: number;
+		/**
+		 * Type of rewards to retrieve
+		 */
 		rewardsType: "invite";
+		/**
+		 * Base64 encoded cursor for pagination
+		 */
 		cursor?: string;
 	};
 	url: "/v2/rewards-leaderboard";
@@ -2726,13 +2782,17 @@ export type GetRewardsLeaderboardData = {
 
 export type GetRewardsLeaderboardErrors = {
 	/**
+	 * Bad request - validation errors or malformed request
+	 */
+	400: BadRequestError;
+	/**
 	 * Authentication is required or failed
 	 */
 	401: ErrorResponse;
 	/**
-	 * Too many requests
+	 * Too many requests - rate limit exceeded
 	 */
-	429: unknown;
+	429: ErrorResponse;
 };
 
 export type GetRewardsLeaderboardError =
@@ -2767,9 +2827,9 @@ export type GetUserRewardsScoresErrors = {
 	 */
 	401: ErrorResponse;
 	/**
-	 * Too many requests
+	 * Too many requests - rate limit exceeded
 	 */
-	429: unknown;
+	429: ErrorResponse;
 };
 
 export type GetUserRewardsScoresError =
@@ -2800,9 +2860,9 @@ export type GetRewardsMetadataErrors = {
 	 */
 	401: ErrorResponse;
 	/**
-	 * Too many requests
+	 * Too many requests - rate limit exceeded
 	 */
-	429: unknown;
+	429: ErrorResponse;
 };
 
 export type GetRewardsMetadataError =
@@ -2836,9 +2896,9 @@ export type GetXpRewardsErrors = {
 	 */
 	401: ErrorResponse;
 	/**
-	 * Too many requests
+	 * Too many requests - rate limit exceeded
 	 */
-	429: unknown;
+	429: ErrorResponse;
 };
 
 export type GetXpRewardsError = GetXpRewardsErrors[keyof GetXpRewardsErrors];
@@ -2871,8 +2931,11 @@ export type GetXpRewardsResponse =
 	GetXpRewardsResponses[keyof GetXpRewardsResponses];
 
 export type GetXpClaimableSummaryData = {
+	/**
+	 * Empty request body
+	 */
 	body: {
-		[key: string]: unknown;
+		[key: string]: never;
 	};
 	path?: never;
 	query?: never;
@@ -2885,9 +2948,9 @@ export type GetXpClaimableSummaryErrors = {
 	 */
 	401: ErrorResponse;
 	/**
-	 * Too many requests
+	 * Too many requests - rate limit exceeded
 	 */
-	429: unknown;
+	429: ErrorResponse;
 };
 
 export type GetXpClaimableSummaryError =
@@ -2939,6 +3002,10 @@ export type GetBookmarkedCastsErrors = {
 	 * Authentication is required or failed
 	 */
 	401: ErrorResponse;
+	/**
+	 * Too many requests - rate limit exceeded
+	 */
+	429: ErrorResponse;
 };
 
 export type GetBookmarkedCastsError =
@@ -2958,7 +3025,13 @@ export type GetUserStarterPacksData = {
 	body?: never;
 	path?: never;
 	query: {
+		/**
+		 * The user's FID (Farcaster ID)
+		 */
 		fid: number;
+		/**
+		 * Maximum number of items to return
+		 */
 		limit?: number;
 	};
 	url: "/v2/starter-packs";
@@ -2966,9 +3039,17 @@ export type GetUserStarterPacksData = {
 
 export type GetUserStarterPacksErrors = {
 	/**
+	 * Bad request - validation errors or malformed request
+	 */
+	400: BadRequestError;
+	/**
 	 * Authentication is required or failed
 	 */
 	401: ErrorResponse;
+	/**
+	 * Too many requests - rate limit exceeded
+	 */
+	429: ErrorResponse;
 };
 
 export type GetUserStarterPacksError =
@@ -3017,6 +3098,9 @@ export type GetStarterPackData = {
 	body?: never;
 	path?: never;
 	query: {
+		/**
+		 * The unique identifier of the starter pack
+		 */
 		id: string;
 	};
 	url: "/v2/starter-pack";
@@ -3024,9 +3108,21 @@ export type GetStarterPackData = {
 
 export type GetStarterPackErrors = {
 	/**
+	 * Bad request - validation errors or malformed request
+	 */
+	400: BadRequestError;
+	/**
 	 * Authentication is required or failed
 	 */
 	401: ErrorResponse;
+	/**
+	 * The specified resource was not found
+	 */
+	404: ErrorResponse;
+	/**
+	 * Too many requests - rate limit exceeded
+	 */
+	429: ErrorResponse;
 };
 
 export type GetStarterPackError =
@@ -3048,7 +3144,7 @@ export type UpdateStarterPackData = {
 		/**
 		 * Idempotency key to safely retry the request without performing the operation multiple times.
 		 */
-		"idempotency-key"?: string;
+		"Idempotency-Key"?: string;
 	};
 	path?: never;
 	query?: never;
@@ -3068,6 +3164,10 @@ export type UpdateStarterPackErrors = {
 	 * The specified resource was not found
 	 */
 	404: ErrorResponse;
+	/**
+	 * Too many requests - rate limit exceeded
+	 */
+	429: ErrorResponse;
 };
 
 export type UpdateStarterPackError =
@@ -3120,6 +3220,9 @@ export type GetChannelData = {
 	body?: never;
 	path?: never;
 	query: {
+		/**
+		 * The unique key identifier for the channel
+		 */
 		key: string;
 	};
 	url: "/v2/channel";
@@ -3127,9 +3230,21 @@ export type GetChannelData = {
 
 export type GetChannelErrors = {
 	/**
+	 * Bad request - validation errors or malformed request
+	 */
+	400: BadRequestError;
+	/**
 	 * Authentication is required or failed
 	 */
 	401: ErrorResponse;
+	/**
+	 * The specified resource was not found
+	 */
+	404: ErrorResponse;
+	/**
+	 * Too many requests - rate limit exceeded
+	 */
+	429: ErrorResponse;
 };
 
 export type GetChannelError = GetChannelErrors[keyof GetChannelErrors];
@@ -3182,7 +3297,13 @@ export type GetFollowingData = {
 	body?: never;
 	path?: never;
 	query: {
+		/**
+		 * The user's FID (Farcaster ID)
+		 */
 		fid: number;
+		/**
+		 * Maximum number of items to return
+		 */
 		limit?: number;
 	};
 	url: "/v2/following";
@@ -3190,9 +3311,17 @@ export type GetFollowingData = {
 
 export type GetFollowingErrors = {
 	/**
+	 * Bad request - validation errors or malformed request
+	 */
+	400: BadRequestError;
+	/**
 	 * Authentication is required or failed
 	 */
 	401: ErrorResponse;
+	/**
+	 * Too many requests - rate limit exceeded
+	 */
+	429: ErrorResponse;
 };
 
 export type GetFollowingError = GetFollowingErrors[keyof GetFollowingErrors];
@@ -3211,7 +3340,13 @@ export type GetFollowersData = {
 	body?: never;
 	path?: never;
 	query: {
+		/**
+		 * The user's FID (Farcaster ID)
+		 */
 		fid: number;
+		/**
+		 * Maximum number of items to return
+		 */
 		limit?: number;
 	};
 	url: "/v2/followers";
@@ -3219,9 +3354,17 @@ export type GetFollowersData = {
 
 export type GetFollowersErrors = {
 	/**
+	 * Bad request - validation errors or malformed request
+	 */
+	400: BadRequestError;
+	/**
 	 * Authentication is required or failed
 	 */
 	401: ErrorResponse;
+	/**
+	 * Too many requests - rate limit exceeded
+	 */
+	429: ErrorResponse;
 };
 
 export type GetFollowersError = GetFollowersErrors[keyof GetFollowersErrors];
@@ -3723,6 +3866,10 @@ export type GetCurrentUserErrors = {
 	 * Authentication is required or failed
 	 */
 	401: ErrorResponse;
+	/**
+	 * Too many requests - rate limit exceeded
+	 */
+	429: ErrorResponse;
 };
 
 export type GetCurrentUserError =
@@ -3746,8 +3893,17 @@ export type SearchChannelsData = {
 		 * Maximum number of items to return
 		 */
 		limit?: number;
+		/**
+		 * Search query string
+		 */
 		q?: string;
+		/**
+		 * Whether to prioritize channels the user follows
+		 */
 		prioritizeFollowed?: boolean;
+		/**
+		 * Whether the search is for the composer context
+		 */
 		forComposer?: boolean;
 	};
 	url: "/v2/search-channels";
@@ -3755,9 +3911,17 @@ export type SearchChannelsData = {
 
 export type SearchChannelsErrors = {
 	/**
+	 * Bad request - validation errors or malformed request
+	 */
+	400: BadRequestError;
+	/**
 	 * Authentication is required or failed
 	 */
 	401: ErrorResponse;
+	/**
+	 * Too many requests - rate limit exceeded
+	 */
+	429: ErrorResponse;
 };
 
 export type SearchChannelsError =
@@ -3866,7 +4030,10 @@ export type DeleteDraftCastResponse =
 
 export type DeleteCastData = {
 	body: {
-		castHash?: string;
+		/**
+		 * The hash of the cast to delete
+		 */
+		castHash: string;
 	};
 	path?: never;
 	query?: never;
@@ -3875,9 +4042,21 @@ export type DeleteCastData = {
 
 export type DeleteCastErrors = {
 	/**
+	 * Bad request - validation errors or malformed request
+	 */
+	400: BadRequestError;
+	/**
 	 * Authentication is required or failed
 	 */
 	401: ErrorResponse;
+	/**
+	 * The specified resource was not found
+	 */
+	404: ErrorResponse;
+	/**
+	 * Too many requests - rate limit exceeded
+	 */
+	429: ErrorResponse;
 };
 
 export type DeleteCastError = DeleteCastErrors[keyof DeleteCastErrors];
@@ -3896,11 +4075,11 @@ export type GetCastsByFidData = {
 	path?: never;
 	query: {
 		/**
-		 * The FID (Farcaster ID) of the user whose casts to retrieve
+		 * The user's FID (Farcaster ID)
 		 */
 		fid: number;
 		/**
-		 * Maximum number of casts to return
+		 * Maximum number of items to return
 		 */
 		limit?: number;
 	};
@@ -3916,6 +4095,10 @@ export type GetCastsByFidErrors = {
 	 * Authentication is required or failed
 	 */
 	401: ErrorResponse;
+	/**
+	 * Too many requests - rate limit exceeded
+	 */
+	429: ErrorResponse;
 };
 
 export type GetCastsByFidError = GetCastsByFidErrors[keyof GetCastsByFidErrors];
@@ -3936,8 +4119,16 @@ export type GetCastsByFidResponse =
 
 export type CreateCastData = {
 	body: {
+		/**
+		 * The text content of the cast
+		 */
 		text: string;
-		embeds?: Array<unknown>;
+		/**
+		 * Optional array of embeds (URLs, images, etc.)
+		 */
+		embeds?: Array<{
+			[key: string]: unknown;
+		}>;
 		/**
 		 * Optional channel to post the cast to
 		 */
@@ -3950,9 +4141,17 @@ export type CreateCastData = {
 
 export type CreateCastErrors = {
 	/**
+	 * Bad request - validation errors or malformed request
+	 */
+	400: BadRequestError;
+	/**
 	 * Authentication is required or failed
 	 */
 	401: ErrorResponse;
+	/**
+	 * Too many requests - rate limit exceeded
+	 */
+	429: ErrorResponse;
 };
 
 export type CreateCastError = CreateCastErrors[keyof CreateCastErrors];
@@ -5452,9 +5651,9 @@ export type GetTrendingTopicsErrors = {
 	 */
 	401: ErrorResponse;
 	/**
-	 * Too many requests
+	 * Too many requests - rate limit exceeded
 	 */
-	429: unknown;
+	429: ErrorResponse;
 };
 
 export type GetTrendingTopicsError =
@@ -5754,9 +5953,9 @@ export type GetManagedAppsErrors = {
 	 */
 	401: ErrorResponse;
 	/**
-	 * Too many requests
+	 * Too many requests - rate limit exceeded
 	 */
-	429: unknown;
+	429: ErrorResponse;
 };
 
 export type GetManagedAppsError =
@@ -6114,9 +6313,9 @@ export type SubmitAnalyticsEventsErrors = {
 	 */
 	401: ErrorResponse;
 	/**
-	 * Too many requests
+	 * Too many requests - rate limit exceeded
 	 */
-	429: unknown;
+	429: ErrorResponse;
 };
 
 export type SubmitAnalyticsEventsError =
@@ -6530,10 +6729,13 @@ export type RegisterStatsigEventsData = {
 
 export type RegisterStatsigEventsErrors = {
 	/**
-	 * Too many requests
+	 * Too many requests - rate limit exceeded
 	 */
-	429: unknown;
+	429: ErrorResponse;
 };
+
+export type RegisterStatsigEventsError =
+	RegisterStatsigEventsErrors[keyof RegisterStatsigEventsErrors];
 
 export type RegisterStatsigEventsResponses = {
 	/**

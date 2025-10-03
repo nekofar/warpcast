@@ -1,6 +1,8 @@
 get:
   operationId: getCurrentUser
   summary: Get current user
+  tags:
+    - User
   security:
     - bearerAuth: []
   responses:
@@ -12,3 +14,5 @@ get:
             $ref: '../../components/schemas/user-response.yaml#/UserResponse'
     '401':
       $ref: '../../components/responses/index.yaml#/Unauthorized'
+    '429':
+      $ref: '../../components/responses/index.yaml#/TooManyRequests'

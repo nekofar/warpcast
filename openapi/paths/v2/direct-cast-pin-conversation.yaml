@@ -22,7 +22,7 @@ post:
     '401':
       $ref: '../../components/responses/index.yaml#/Unauthorized'
     '429':
-      description: Too many requests
+      $ref: '../../components/responses/index.yaml#/TooManyRequests'
 
 delete:
   operationId: unpinDirectCastConversation
@@ -48,4 +48,4 @@ delete:
     '401':
       $ref: '../../components/responses/index.yaml#/Unauthorized'
     '429':
-      description: Too many requests
+      $ref: '../../components/responses/index.yaml#/TooManyRequests'

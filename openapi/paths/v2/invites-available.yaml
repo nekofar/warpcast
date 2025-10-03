@@ -2,6 +2,8 @@ get:
   operationId: getAvailableInvites
   summary: Check available invites
   description: Returns the number of allocated and currently available invites.
+  tags:
+    - Invites
   security:
     - bearerAuth: []
   responses:
@@ -14,4 +16,4 @@ get:
     '401':
       $ref: '../../components/responses/index.yaml#/Unauthorized'
     '429':
-      description: Too many requests
+      $ref: '../../components/responses/index.yaml#/TooManyRequests'

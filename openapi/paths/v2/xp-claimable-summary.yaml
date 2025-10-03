@@ -2,6 +2,8 @@ post:
   operationId: getXpClaimableSummary
   summary: Get XP claimable summary
   description: Retrieves a summary of claimable XP rewards for the authenticated user.
+  tags:
+    - Rewards
   security:
     - bearerAuth: []
   requestBody:
@@ -10,6 +12,8 @@ post:
       application/json:
         schema:
           type: object
+          additionalProperties: false
+          description: Empty request body
   responses:
     '200':
       description: XP claimable summary retrieved successfully
@@ -29,10 +33,14 @@ post:
                 properties:
                   totalClaimableUsdc:
                     type: number
+                    format: double
+                    minimum: 0
                     description: Total USDC amount available to claim
                     example: 25.75
                   pendingRewardsCount:
                     type: integer
+                    format: int32
+                    minimum: 0
                     description: Number of pending rewards
                     example: 5
                   eligibleToClaim:
@@ -46,4 +54,4 @@ post:
     '401':
       $ref: '../../components/responses/index.yaml#/Unauthorized'
     '429':
-      description: Too many requests
+      $ref: '../../components/responses/index.yaml#/TooManyRequests'

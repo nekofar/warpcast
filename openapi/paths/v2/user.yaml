@@ -15,7 +15,11 @@ get:
         application/json:
           schema:
             $ref: '../../index.yaml#/components/schemas/UserResponse'
+    '400':
+      $ref: '../../components/responses/index.yaml#/BadRequest'
     '401':
-      $ref: '../../index.yaml#/components/responses/Unauthorized'
+      $ref: '../../components/responses/index.yaml#/Unauthorized'
     '404':
-      $ref: '../../index.yaml#/components/responses/NotFound'
+      $ref: '../../components/responses/index.yaml#/NotFound'
+    '429':
+      $ref: '../../components/responses/index.yaml#/TooManyRequests'

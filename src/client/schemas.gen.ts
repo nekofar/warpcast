@@ -1212,7 +1212,6 @@ export const CastSchema = {
 		"reactions",
 		"recasts",
 		"watches",
-		"processedCastText",
 	],
 	properties: {
 		hash: {
@@ -2050,27 +2049,30 @@ export const RewardsMetadataResponseSchema = {
 	properties: {
 		result: {
 			type: "object",
-			required: [
-				"type",
-				"lastUpdateTimestamp",
-				"currentPeriodStartTimestamp",
-				"currentPeriodEndTimestamp",
-			],
 			properties: {
 				metadata: {
 					type: "object",
+					required: [
+						"type",
+						"lastUpdateTimestamp",
+						"currentPeriodStartTimestamp",
+						"currentPeriodEndTimestamp",
+					],
 					properties: {
 						type: {
 							type: "string",
 						},
 						lastUpdateTimestamp: {
 							type: "integer",
+							format: "int64",
 						},
 						currentPeriodStartTimestamp: {
 							type: "integer",
+							format: "int64",
 						},
 						currentPeriodEndTimestamp: {
 							type: "integer",
+							format: "int64",
 						},
 						tiers: {
 							type: "array",

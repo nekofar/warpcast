@@ -988,10 +988,10 @@ export const zRewardsMetadataResponse = z.object({
 	result: z.object({
 		metadata: z.optional(
 			z.object({
-				type: z.optional(z.string()),
-				lastUpdateTimestamp: z.optional(z.int()),
-				currentPeriodStartTimestamp: z.optional(z.int()),
-				currentPeriodEndTimestamp: z.optional(z.int()),
+				type: z.string(),
+				lastUpdateTimestamp: z.coerce.bigint(),
+				currentPeriodStartTimestamp: z.coerce.bigint(),
+				currentPeriodEndTimestamp: z.coerce.bigint(),
 				tiers: z.optional(z.array(z.record(z.string(), z.unknown()))),
 				proportionalPayout: z.optional(
 					z.object({
@@ -1648,7 +1648,7 @@ export const zGetDirectCastInboxData = z.object({
 			),
 			cursor: z.optional(
 				z.string().register(z.globalRegistry, {
-					description: "Base64 encoded cursor from previous response",
+					description: "Base64 encoded cursor for pagination",
 				}),
 			),
 		}),
@@ -1785,7 +1785,13 @@ export const zGetSuggestedUsersData = z.object({
 					}),
 				)
 				.default(50),
-			randomized: z.optional(z.boolean()),
+			randomized: z
+				.optional(
+					z.boolean().register(z.globalRegistry, {
+						description: "Whether to randomize the suggested users",
+					}),
+				)
+				.default(false),
 		}),
 	),
 });
@@ -1810,7 +1816,7 @@ export const zGetUserByUsernameData = z.object({
 	body: z.optional(z.never()),
 	path: z.optional(z.never()),
 	query: z.object({
-		username: z.string().register(z.globalRegistry, {
+		username: z.string().min(1).max(16).register(z.globalRegistry, {
 			description: "The username to look up",
 		}),
 	}),
@@ -1994,10 +2000,10 @@ export const zDiscoverChannelsData = z.object({
 			limit: z
 				.optional(
 					z.int().gte(1).lte(100).register(z.globalRegistry, {
-						description: "Maximum number of channels to retrieve",
+						description: "Maximum number of items to return",
 					}),
 				)
-				.default(15),
+				.default(50),
 		}),
 	),
 });
@@ -2015,7 +2021,9 @@ export const zGetSponsoredInvitesData = z.object({
 });
 
 export const zGetOrCreateReferralCodeData = z.object({
-	body: z.record(z.string(), z.unknown()),
+	body: z.record(z.string(), z.never()).register(z.globalRegistry, {
+		description: "Empty request body",
+	}),
 	path: z.optional(z.never()),
 	query: z.optional(z.never()),
 });
@@ -2031,8 +2039,14 @@ export const zGetRewardsLeaderboardData = z.object({
 				}),
 			)
 			.default(50),
-		rewardsType: z.enum(["invite"]),
-		cursor: z.optional(z.string()),
+		rewardsType: z.enum(["invite"]).register(z.globalRegistry, {
+			description: "Type of rewards to retrieve",
+		}),
+		cursor: z.optional(
+			z.string().register(z.globalRegistry, {
+				description: "Base64 encoded cursor for pagination",
+			}),
+		),
 	}),
 });
 
@@ -2060,17 +2074,21 @@ export const zGetXpRewardsData = z.object({
 	path: z.optional(z.never()),
 	query: z.optional(
 		z.object({
-			limit: z.optional(
-				z.int().register(z.globalRegistry, {
-					description: "Maximum number of rewards to return",
-				}),
-			),
+			limit: z
+				.optional(
+					z.int().gte(1).lte(100).register(z.globalRegistry, {
+						description: "Maximum number of rewards to return",
+					}),
+				)
+				.default(50),
 		}),
 	),
 });
 
 export const zGetXpClaimableSummaryData = z.object({
-	body: z.record(z.string(), z.unknown()),
+	body: z.record(z.string(), z.never()).register(z.globalRegistry, {
+		description: "Empty request body",
+	}),
 	path: z.optional(z.never()),
 	query: z.optional(z.never()),
 });
@@ -2095,8 +2113,16 @@ export const zGetUserStarterPacksData = z.object({
 	body: z.optional(z.never()),
 	path: z.optional(z.never()),
 	query: z.object({
-		fid: z.int(),
-		limit: z.optional(z.int()).default(15),
+		fid: z.int().register(z.globalRegistry, {
+			description: "The user's FID (Farcaster ID)",
+		}),
+		limit: z
+			.optional(
+				z.int().gte(1).lte(100).register(z.globalRegistry, {
+					description: "Maximum number of items to return",
+				}),
+			)
+			.default(50),
 	}),
 });
 
@@ -2114,7 +2140,9 @@ export const zGetStarterPackData = z.object({
 	body: z.optional(z.never()),
 	path: z.optional(z.never()),
 	query: z.object({
-		id: z.string(),
+		id: z.uuid().register(z.globalRegistry, {
+			description: "The unique identifier of the starter pack",
+		}),
 	}),
 });
 
@@ -2124,8 +2152,8 @@ export const zUpdateStarterPackData = z.object({
 	query: z.optional(z.never()),
 	headers: z.optional(
 		z.object({
-			"idempotency-key": z.optional(
-				z.string().register(z.globalRegistry, {
+			"Idempotency-Key": z.optional(
+				z.uuid().register(z.globalRegistry, {
 					description:
 						"Idempotency key to safely retry the request without performing the operation multiple times.",
 				}),
@@ -2153,7 +2181,9 @@ export const zGetChannelData = z.object({
 	body: z.optional(z.never()),
 	path: z.optional(z.never()),
 	query: z.object({
-		key: z.string(),
+		key: z.string().register(z.globalRegistry, {
+			description: "The unique key identifier for the channel",
+		}),
 	}),
 });
 
@@ -2178,8 +2208,16 @@ export const zGetFollowingData = z.object({
 	body: z.optional(z.never()),
 	path: z.optional(z.never()),
 	query: z.object({
-		fid: z.int(),
-		limit: z.optional(z.int()),
+		fid: z.int().register(z.globalRegistry, {
+			description: "The user's FID (Farcaster ID)",
+		}),
+		limit: z
+			.optional(
+				z.int().gte(1).lte(100).register(z.globalRegistry, {
+					description: "Maximum number of items to return",
+				}),
+			)
+			.default(50),
 	}),
 });
 
@@ -2187,8 +2225,16 @@ export const zGetFollowersData = z.object({
 	body: z.optional(z.never()),
 	path: z.optional(z.never()),
 	query: z.object({
-		fid: z.int(),
-		limit: z.optional(z.int()),
+		fid: z.int().register(z.globalRegistry, {
+			description: "The user's FID (Farcaster ID)",
+		}),
+		limit: z
+			.optional(
+				z.int().gte(1).lte(100).register(z.globalRegistry, {
+					description: "Maximum number of items to return",
+				}),
+			)
+			.default(50),
 	}),
 });
 
@@ -2371,9 +2417,25 @@ export const zSearchChannelsData = z.object({
 					}),
 				)
 				.default(50),
-			q: z.optional(z.string()),
-			prioritizeFollowed: z.optional(z.boolean()).default(true),
-			forComposer: z.optional(z.boolean()).default(false),
+			q: z.optional(
+				z.string().min(1).register(z.globalRegistry, {
+					description: "Search query string",
+				}),
+			),
+			prioritizeFollowed: z
+				.optional(
+					z.boolean().register(z.globalRegistry, {
+						description: "Whether to prioritize channels the user follows",
+					}),
+				)
+				.default(true),
+			forComposer: z
+				.optional(
+					z.boolean().register(z.globalRegistry, {
+						description: "Whether the search is for the composer context",
+					}),
+				)
+				.default(false),
 		}),
 	),
 });
@@ -2413,7 +2475,12 @@ export const zDeleteDraftCastData = z.object({
 
 export const zDeleteCastData = z.object({
 	body: z.object({
-		castHash: z.optional(z.string()),
+		castHash: z
+			.string()
+			.regex(/^0x[a-fA-F0-9]{40}$/)
+			.register(z.globalRegistry, {
+				description: "The hash of the cast to delete",
+			}),
 	}),
 	path: z.optional(z.never()),
 	query: z.optional(z.never()),
@@ -2424,22 +2491,34 @@ export const zGetCastsByFidData = z.object({
 	path: z.optional(z.never()),
 	query: z.object({
 		fid: z.int().register(z.globalRegistry, {
-			description: "The FID (Farcaster ID) of the user whose casts to retrieve",
+			description: "The user's FID (Farcaster ID)",
 		}),
 		limit: z
 			.optional(
-				z.int().register(z.globalRegistry, {
-					description: "Maximum number of casts to return",
+				z.int().gte(1).lte(100).register(z.globalRegistry, {
+					description: "Maximum number of items to return",
 				}),
 			)
-			.default(15),
+			.default(50),
 	}),
 });
 
 export const zCreateCastData = z.object({
 	body: z.object({
-		text: z.string(),
-		embeds: z.optional(z.array(z.unknown())),
+		text: z.string().min(1).max(320).register(z.globalRegistry, {
+			description: "The text content of the cast",
+		}),
+		embeds: z.optional(
+			z
+				.array(
+					z.record(z.string(), z.unknown()).register(z.globalRegistry, {
+						description: "Embed object",
+					}),
+				)
+				.register(z.globalRegistry, {
+					description: "Optional array of embeds (URLs, images, etc.)",
+				}),
+		),
 		channelKey: z.optional(
 			z.string().register(z.globalRegistry, {
 				description: "Optional channel to post the cast to",
@@ -2885,11 +2964,13 @@ export const zGetManagedAppsData = z.object({
 	path: z.optional(z.never()),
 	query: z.optional(
 		z.object({
-			limit: z.optional(
-				z.int().register(z.globalRegistry, {
-					description: "Maximum number of apps to return",
-				}),
-			),
+			limit: z
+				.optional(
+					z.int().gte(1).lte(100).register(z.globalRegistry, {
+						description: "Maximum number of apps to return",
+					}),
+				)
+				.default(25),
 		}),
 	),
 });

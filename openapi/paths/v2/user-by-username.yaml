@@ -10,7 +10,10 @@ get:
       required: true
       schema:
         type: string
+        minLength: 1
+        maxLength: 16
       description: The username to look up
+      example: "username"
   security:
     - bearerAuth: []
   responses:
@@ -20,7 +23,11 @@ get:
         application/json:
           schema:
             $ref: '../../components/schemas/index.yaml#/UserByFidResponse'
+    '400':
+      $ref: '../../components/responses/index.yaml#/BadRequest'
     '401':
       $ref: '../../components/responses/index.yaml#/Unauthorized'
     '404':
       $ref: '../../components/responses/index.yaml#/NotFound'
+    '429':
+      $ref: '../../components/responses/index.yaml#/TooManyRequests'
