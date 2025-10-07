@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.73] - 2025-10-07
+
+### 🚀 Features
+
+- *(client)* Export serializeQueryKeyValue for query key hashing
+
 ## [2.0.0-alpha.72] - 2025-10-03
 
 ### 🚀 Features
