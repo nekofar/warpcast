@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.76] - 2025-10-09
+
+### 🐛 Bug Fixes
+
+- *(client)* Remove duplicate Options export to avoid conflicts
+
 ## [2.0.0-alpha.75] - 2025-10-09
 
 ### 🚀 Features
