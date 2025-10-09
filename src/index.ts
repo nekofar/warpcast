@@ -147,9 +147,7 @@ export {
   DirectCastMessageReactionResponseSchema, // Direct cast message reaction response schema definition.
 } from './client/schemas.gen';
 
-export type {
-  Options, // Sdk options contract.
-} from './client/sdk.gen';
+// Note: Options is exported from './client/client'
 
 export {
   getUserOnboardingState, // Get user onboarding state endpoint helper.
