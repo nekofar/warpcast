@@ -6,6 +6,32 @@ export {
   client, // Preconfigured Warpcast API client instance.
 } from './client/client.gen';
 
+// Curated client factory, helpers, and core types
+export {
+  createClient, // Create a configurable client instance.
+  createConfig, // Create a client config object.
+  mergeHeaders, // Merge Request/Client headers helper.
+  formDataBodySerializer, // FormData body serializer.
+  jsonBodySerializer, // JSON body serializer.
+  urlSearchParamsBodySerializer, // URLSearchParams body serializer.
+  buildClientParams, // Build client params helper.
+  serializeQueryKeyValue, // Serialize query-key helper.
+} from './client/client';
+
+export type {
+  Auth, // Auth type.
+  Client, // Core client instance type.
+  Config, // Client configuration type.
+  Options, // Request options type.
+  OptionsLegacyParser, // Legacy parser options type.
+  RequestOptions, // Request options per-call type.
+  RequestResult, // Request result type.
+  ResolvedRequestOptions, // Resolved request options type.
+  ResponseStyle, // Response style type.
+  TDataShape, // Data shape type.
+  QuerySerializerOptions, // Query/body serializer options type.
+} from './client/client';
+
 export {
   ProfilePictureSchema, // Profile picture schema definition.
   BioSchema, // Bio schema definition.
