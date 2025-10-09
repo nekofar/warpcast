@@ -1,6 +1,6 @@
 {
   "name": "@nekofar/warpcast",
-  "version": "2.0.0-alpha.73",
+  "version": "2.0.0-alpha.74",
   "description": "TypeScript client for interacting with Warpcast APIs",
   "keywords": [
     "warpcast",
@@ -78,7 +78,7 @@
   "overrides": {
     "jsonpath-plus": ">=10.3.0"
   },
-  "packageManager": "pnpm@10.17.0",
+  "packageManager": "pnpm@10.18.1",
   "publishConfig": {
     "access": "public"
   }
