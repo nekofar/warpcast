@@ -41,14 +41,7 @@
   ],
   "categorizeByGroup": false,
   "defaultCategory": "Other",
-  "categoryOrder": [
-    "Client",
-    "Types",
-    "Schemas",
-    "SDK",
-    "Transformers",
-    "*"
-  ],
+  "categoryOrder": ["Client", "Types", "Schemas", "SDK", "Transformers", "*"],
   "cleanOutputDir": true,
   "treatWarningsAsErrors": false,
   "treatValidationWarningsAsErrors": false,
