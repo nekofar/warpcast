@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.79] - 2025-10-14
+
+### 📚 Documentation
+
+- *(client)* Add descriptions to SDK methods
+
+### ⚙️ Miscellaneous Tasks
+
+- *(config)* Add `biome.json` configuration
+- *(config)* Update indentation style to spaces
+- *(config)* Update quotes to double for consistency
+- *(config)* Update quotes to double for consistency
+- *(config)* Enable vcs and use `.gitignore` in biome
+- *(config)* Update `categoryOrder` formatting in `typedoc.json`
+- *(config)* Update `asyncapi.json` with expanded schema
+- *(client)* Reorganize imports and exports for clarity
+- *(test)* Update quotes in tests for consistency
+- *(client)* Update indentation to spaces for consistency
+
 ## [2.0.0-alpha.78] - 2025-10-13
 
 ### 🐛 Bug Fixes
