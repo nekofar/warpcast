@@ -1,11 +1,11 @@
-import { defaultPlugins, defineConfig } from '@hey-api/openapi-ts'
+import { defaultPlugins, defineConfig } from "@hey-api/openapi-ts";
 
 export default defineConfig({
-  input: './openapi.json',
+  input: "./openapi.json",
   output: {
-    format: 'biome',
-    lint: 'biome',
-    path: './src/client',
+    format: "biome",
+    lint: "biome",
+    path: "./src/client",
     indexFile: false,
     clean: true,
   },
@@ -17,27 +17,27 @@ export default defineConfig({
   plugins: [
     ...defaultPlugins,
     {
-      name: '@hey-api/schemas',
+      name: "@hey-api/schemas",
     },
     {
-      name: '@hey-api/transformers',
+      name: "@hey-api/transformers",
       dates: true,
     },
     {
-      name: '@hey-api/typescript',
-      enums: 'typescript',
+      name: "@hey-api/typescript",
+      enums: "typescript",
     },
     {
-      name: '@hey-api/sdk',
+      name: "@hey-api/sdk",
       transformer: true,
-      validator: 'zod',
+      validator: "zod",
     },
     {
-      name: 'zod',
+      name: "zod",
       requests: true,
       responses: false,
       definitions: true,
       metadata: true,
     },
   ],
-})
+});
