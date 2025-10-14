@@ -3,541 +3,541 @@
 import type { Client, Options as Options2, TDataShape } from "./client";
 import { client } from "./client.gen";
 import {
-	createCastResponseTransformer,
-	getApiKeysResponseTransformer,
-	getCastsByFidResponseTransformer,
-	getCreatorRewardWinnersResponseTransformer,
-	getDirectCastConversationMessagesResponseTransformer,
-	getDirectCastConversationRecentMessagesResponseTransformer,
-	getDirectCastConversationResponseTransformer,
-	getDirectCastInboxResponseTransformer,
-	getFeedItemsResponseTransformer,
-	getMiniAppAnalyticsRollupResponseTransformer,
-	getProfileCastsResponseTransformer,
-	getRewardsMetadataResponseTransformer,
-	getStarterPackMembersResponseTransformer,
-	getUserLikedCastsResponseTransformer,
+  createCastResponseTransformer,
+  getApiKeysResponseTransformer,
+  getCastsByFidResponseTransformer,
+  getCreatorRewardWinnersResponseTransformer,
+  getDirectCastConversationMessagesResponseTransformer,
+  getDirectCastConversationRecentMessagesResponseTransformer,
+  getDirectCastConversationResponseTransformer,
+  getDirectCastInboxResponseTransformer,
+  getFeedItemsResponseTransformer,
+  getMiniAppAnalyticsRollupResponseTransformer,
+  getProfileCastsResponseTransformer,
+  getRewardsMetadataResponseTransformer,
+  getStarterPackMembersResponseTransformer,
+  getUserLikedCastsResponseTransformer,
 } from "./transformers.gen";
 import type {
-	AcceptChannelInviteData,
-	AcceptChannelInviteErrors,
-	AcceptChannelInviteResponses,
-	AddDirectCastMessageReactionData,
-	AddDirectCastMessageReactionErrors,
-	AddDirectCastMessageReactionResponses,
-	AttachEmbedsData,
-	AttachEmbedsErrors,
-	AttachEmbedsResponses,
-	BanUserFromChannelData,
-	BanUserFromChannelErrors,
-	BanUserFromChannelResponses,
-	BlockUserData,
-	BlockUserErrors,
-	BlockUserResponses,
-	CategorizeDirectCastConversationData,
-	CategorizeDirectCastConversationErrors,
-	CategorizeDirectCastConversationResponses,
-	CheckUserChannelFollowStatusData,
-	CheckUserChannelFollowStatusErrors,
-	CheckUserChannelFollowStatusResponses,
-	CreateApiKeyData,
-	CreateApiKeyErrors,
-	CreateApiKeyResponses,
-	CreateCastData,
-	CreateCastErrors,
-	CreateCastResponses,
-	CreateDraftCastsData,
-	CreateDraftCastsErrors,
-	CreateDraftCastsResponses,
-	DeleteCastData,
-	DeleteCastErrors,
-	DeleteCastResponses,
-	DeleteDraftCastData,
-	DeleteDraftCastErrors,
-	DeleteDraftCastResponses,
-	DirectCastManuallyMarkUnreadData,
-	DirectCastManuallyMarkUnreadErrors,
-	DirectCastManuallyMarkUnreadResponses,
-	DiscoverChannelsData,
-	DiscoverChannelsErrors,
-	DiscoverChannelsResponses,
-	ExportMiniAppUserDataData,
-	ExportMiniAppUserDataErrors,
-	ExportMiniAppUserDataResponses,
-	FollowChannelData,
-	FollowChannelErrors,
-	FollowChannelResponses,
-	GetAccountVerificationsData,
-	GetAccountVerificationsErrors,
-	GetAccountVerificationsResponses,
-	GetAllChannelsData,
-	GetAllChannelsErrors,
-	GetAllChannelsResponses,
-	GetApiKeysData,
-	GetApiKeysErrors,
-	GetApiKeysResponses,
-	GetAppsByAuthorData,
-	GetAppsByAuthorErrors,
-	GetAppsByAuthorResponses,
-	GetAvailableInvitesData,
-	GetAvailableInvitesErrors,
-	GetAvailableInvitesResponses,
-	GetBlockedUsersData,
-	GetBlockedUsersErrors,
-	GetBlockedUsersResponses,
-	GetBookmarkedCastsData,
-	GetBookmarkedCastsErrors,
-	GetBookmarkedCastsResponses,
-	GetCastLikesData,
-	GetCastLikesErrors,
-	GetCastLikesResponses,
-	GetCastQuotesData,
-	GetCastQuotesErrors,
-	GetCastQuotesResponses,
-	GetCastRecastersData,
-	GetCastRecastersErrors,
-	GetCastRecastersResponses,
-	GetCastsByFidData,
-	GetCastsByFidErrors,
-	GetCastsByFidResponses,
-	GetChannelBannedUsersData,
-	GetChannelBannedUsersErrors,
-	GetChannelBannedUsersResponses,
-	GetChannelData,
-	GetChannelDetailsData,
-	GetChannelDetailsErrors,
-	GetChannelDetailsResponses,
-	GetChannelErrors,
-	GetChannelFollowersData,
-	GetChannelFollowersErrors,
-	GetChannelFollowersResponses,
-	GetChannelFollowersYouKnowData,
-	GetChannelFollowersYouKnowErrors,
-	GetChannelFollowersYouKnowResponses,
-	GetChannelInvitesData,
-	GetChannelInvitesErrors,
-	GetChannelInvitesResponses,
-	GetChannelMembersData,
-	GetChannelMembersErrors,
-	GetChannelMembersResponses,
-	GetChannelModeratedCastsData,
-	GetChannelModeratedCastsErrors,
-	GetChannelModeratedCastsResponses,
-	GetChannelResponses,
-	GetChannelRestrictedUsersData,
-	GetChannelRestrictedUsersErrors,
-	GetChannelRestrictedUsersResponses,
-	GetChannelStreaksForUserData,
-	GetChannelStreaksForUserErrors,
-	GetChannelStreaksForUserResponses,
-	GetChannelUsersData,
-	GetChannelUsersErrors,
-	GetChannelUsersResponses,
-	GetConnectedAccountsData,
-	GetConnectedAccountsErrors,
-	GetConnectedAccountsResponses,
-	GetCreatorRewardWinnersData,
-	GetCreatorRewardWinnersErrors,
-	GetCreatorRewardWinnersResponses,
-	GetCurrentUserData,
-	GetCurrentUserErrors,
-	GetCurrentUserResponses,
-	GetDeveloperRewardWinnersData,
-	GetDeveloperRewardWinnersErrors,
-	GetDeveloperRewardWinnersResponses,
-	GetDirectCastConversationData,
-	GetDirectCastConversationErrors,
-	GetDirectCastConversationMessagesData,
-	GetDirectCastConversationMessagesErrors,
-	GetDirectCastConversationMessagesResponses,
-	GetDirectCastConversationRecentMessagesData,
-	GetDirectCastConversationRecentMessagesErrors,
-	GetDirectCastConversationRecentMessagesResponses,
-	GetDirectCastConversationResponses,
-	GetDirectCastInboxData,
-	GetDirectCastInboxErrors,
-	GetDirectCastInboxResponses,
-	GetDiscoverableActionsData,
-	GetDiscoverableActionsErrors,
-	GetDiscoverableActionsResponses,
-	GetDiscoverableComposerActionsData,
-	GetDiscoverableComposerActionsErrors,
-	GetDiscoverableComposerActionsResponses,
-	GetDomainManifestData,
-	GetDomainManifestErrors,
-	GetDomainManifestResponses,
-	GetDraftCastsData,
-	GetDraftCastsErrors,
-	GetDraftCastsResponses,
-	GetFarcasterJsonData,
-	GetFarcasterJsonErrors,
-	GetFarcasterJsonResponses,
-	GetFeedItemsData,
-	GetFeedItemsErrors,
-	GetFeedItemsResponses,
-	GetFollowersData,
-	GetFollowersErrors,
-	GetFollowersResponses,
-	GetFollowingData,
-	GetFollowingErrors,
-	GetFollowingResponses,
-	GetHighlightedChannelsData,
-	GetHighlightedChannelsErrors,
-	GetHighlightedChannelsResponses,
-	GetManagedAppsData,
-	GetManagedAppsErrors,
-	GetManagedAppsResponses,
-	GetMetaTagsData,
-	GetMetaTagsErrors,
-	GetMetaTagsResponses,
-	GetMiniAppAnalyticsRollupData,
-	GetMiniAppAnalyticsRollupErrors,
-	GetMiniAppAnalyticsRollupResponses,
-	GetMutedKeywordsData,
-	GetMutedKeywordsErrors,
-	GetMutedKeywordsResponses,
-	GetMutualFollowersData,
-	GetMutualFollowersErrors,
-	GetMutualFollowersResponses,
-	GetNotificationsData,
-	GetNotificationsErrors,
-	GetNotificationsResponses,
-	GetOrCreateReferralCodeData,
-	GetOrCreateReferralCodeErrors,
-	GetOrCreateReferralCodeResponses,
-	GetOwnedDomainsData,
-	GetOwnedDomainsErrors,
-	GetOwnedDomainsResponses,
-	GetProfileCastsData,
-	GetProfileCastsErrors,
-	GetProfileCastsResponses,
-	GetRewardsLeaderboardData,
-	GetRewardsLeaderboardErrors,
-	GetRewardsLeaderboardResponses,
-	GetRewardsMetadataData,
-	GetRewardsMetadataErrors,
-	GetRewardsMetadataResponses,
-	GetSponsoredInvitesData,
-	GetSponsoredInvitesErrors,
-	GetSponsoredInvitesResponses,
-	GetStarterPackData,
-	GetStarterPackErrors,
-	GetStarterPackMembersData,
-	GetStarterPackMembersErrors,
-	GetStarterPackMembersResponses,
-	GetStarterPackResponses,
-	GetStarterPackUsersData,
-	GetStarterPackUsersErrors,
-	GetStarterPackUsersResponses,
-	GetSuggestedStarterPacksData,
-	GetSuggestedStarterPacksErrors,
-	GetSuggestedStarterPacksResponses,
-	GetSuggestedUsersData,
-	GetSuggestedUsersErrors,
-	GetSuggestedUsersResponses,
-	GetTopFrameAppsData,
-	GetTopFrameAppsErrors,
-	GetTopFrameAppsResponses,
-	GetTopMiniAppsData,
-	GetTopMiniAppsErrors,
-	GetTopMiniAppsResponses,
-	GetTrendingTopicsData,
-	GetTrendingTopicsErrors,
-	GetTrendingTopicsResponses,
-	GetUnseenCountsData,
-	GetUnseenCountsErrors,
-	GetUnseenCountsResponses,
-	GetUserAppContextData,
-	GetUserAppContextErrors,
-	GetUserAppContextResponses,
-	GetUserByFidData,
-	GetUserByFidErrors,
-	GetUserByFidResponses,
-	GetUserByUsernameData,
-	GetUserByUsernameErrors,
-	GetUserByUsernameResponses,
-	GetUserByVerificationAddressData,
-	GetUserByVerificationAddressErrors,
-	GetUserByVerificationAddressResponses,
-	GetUserData,
-	GetUserErrors,
-	GetUserFavoriteFramesData,
-	GetUserFavoriteFramesErrors,
-	GetUserFavoriteFramesResponses,
-	GetUserFollowedChannelsData,
-	GetUserFollowedChannelsErrors,
-	GetUserFollowedChannelsResponses,
-	GetUserFollowingChannelsData,
-	GetUserFollowingChannelsErrors,
-	GetUserFollowingChannelsResponses,
-	GetUserLikedCastsData,
-	GetUserLikedCastsErrors,
-	GetUserLikedCastsResponses,
-	GetUserOnboardingStateData,
-	GetUserOnboardingStateErrors,
-	GetUserOnboardingStateResponses,
-	GetUserPreferencesData,
-	GetUserPreferencesErrors,
-	GetUserPreferencesResponses,
-	GetUserPrimaryAddressData,
-	GetUserPrimaryAddressErrors,
-	GetUserPrimaryAddressesData,
-	GetUserPrimaryAddressesErrors,
-	GetUserPrimaryAddressesResponses,
-	GetUserPrimaryAddressResponses,
-	GetUserResponses,
-	GetUserRewardsScoresData,
-	GetUserRewardsScoresErrors,
-	GetUserRewardsScoresResponses,
-	GetUserStarterPacksData,
-	GetUserStarterPacksErrors,
-	GetUserStarterPacksResponses,
-	GetUserThreadCastsData,
-	GetUserThreadCastsErrors,
-	GetUserThreadCastsResponses,
-	GetVerificationsData,
-	GetVerificationsErrors,
-	GetVerificationsResponses,
-	GetXpClaimableSummaryData,
-	GetXpClaimableSummaryErrors,
-	GetXpClaimableSummaryResponses,
-	GetXpRewardsData,
-	GetXpRewardsErrors,
-	GetXpRewardsResponses,
-	InspectImageUrlData,
-	InspectImageUrlErrors,
-	InspectImageUrlResponses,
-	InspectMiniAppUrlData,
-	InspectMiniAppUrlErrors,
-	InspectMiniAppUrlResponses,
-	InviteUserToChannelData,
-	InviteUserToChannelErrors,
-	InviteUserToChannelResponses,
-	LikeCastData,
-	LikeCastErrors,
-	LikeCastResponses,
-	MarkAllNotificationsReadData,
-	MarkAllNotificationsReadErrors,
-	MarkAllNotificationsReadResponses,
-	ModerateCastData,
-	ModerateCastErrors,
-	ModerateCastResponses,
-	MuteKeywordData,
-	MuteKeywordErrors,
-	MuteKeywordResponses,
-	PinCastToChannelData,
-	PinCastToChannelErrors,
-	PinCastToChannelResponses,
-	PinDirectCastConversationData,
-	PinDirectCastConversationErrors,
-	PinDirectCastConversationResponses,
-	RecastCastData,
-	RecastCastErrors,
-	RecastCastResponses,
-	RegisterStatsigEventsData,
-	RegisterStatsigEventsErrors,
-	RegisterStatsigEventsResponses,
-	RemoveChannelInviteData,
-	RemoveChannelInviteErrors,
-	RemoveChannelInviteResponses,
-	RemoveDirectCastMessageReactionData,
-	RemoveDirectCastMessageReactionErrors,
-	RemoveDirectCastMessageReactionResponses,
-	RevokeApiKeyData,
-	RevokeApiKeyErrors,
-	RevokeApiKeyResponses,
-	SearchChannelsData,
-	SearchChannelsErrors,
-	SearchChannelsResponses,
-	SendDirectCastData,
-	SendDirectCastErrors,
-	SendDirectCastMessageData,
-	SendDirectCastMessageErrors,
-	SendDirectCastMessageResponses,
-	SendDirectCastResponses,
-	SetDirectCastConversationMessageTtlData,
-	SetDirectCastConversationMessageTtlErrors,
-	SetDirectCastConversationMessageTtlResponses,
-	SetLastCheckedTimestampData,
-	SetLastCheckedTimestampErrors,
-	SetLastCheckedTimestampResponses,
-	SubmitAnalyticsEventsData,
-	SubmitAnalyticsEventsErrors,
-	SubmitAnalyticsEventsResponses,
-	UnbanUserFromChannelData,
-	UnbanUserFromChannelErrors,
-	UnbanUserFromChannelResponses,
-	UnblockUserData,
-	UnblockUserErrors,
-	UnblockUserResponses,
-	UndoRecastData,
-	UndoRecastErrors,
-	UndoRecastResponses,
-	UnfollowChannelData,
-	UnfollowChannelErrors,
-	UnfollowChannelResponses,
-	UnlikeCastData,
-	UnlikeCastErrors,
-	UnlikeCastResponses,
-	UnmuteKeywordData,
-	UnmuteKeywordErrors,
-	UnmuteKeywordResponses,
-	UnpinCastFromChannelData,
-	UnpinCastFromChannelErrors,
-	UnpinCastFromChannelResponses,
-	UnpinDirectCastConversationData,
-	UnpinDirectCastConversationErrors,
-	UnpinDirectCastConversationResponses,
-	UpdateDirectCastConversationNotificationsData,
-	UpdateDirectCastConversationNotificationsErrors,
-	UpdateDirectCastConversationNotificationsResponses,
-	UpdateStarterPackData,
-	UpdateStarterPackErrors,
-	UpdateStarterPackResponses,
+  AcceptChannelInviteData,
+  AcceptChannelInviteErrors,
+  AcceptChannelInviteResponses,
+  AddDirectCastMessageReactionData,
+  AddDirectCastMessageReactionErrors,
+  AddDirectCastMessageReactionResponses,
+  AttachEmbedsData,
+  AttachEmbedsErrors,
+  AttachEmbedsResponses,
+  BanUserFromChannelData,
+  BanUserFromChannelErrors,
+  BanUserFromChannelResponses,
+  BlockUserData,
+  BlockUserErrors,
+  BlockUserResponses,
+  CategorizeDirectCastConversationData,
+  CategorizeDirectCastConversationErrors,
+  CategorizeDirectCastConversationResponses,
+  CheckUserChannelFollowStatusData,
+  CheckUserChannelFollowStatusErrors,
+  CheckUserChannelFollowStatusResponses,
+  CreateApiKeyData,
+  CreateApiKeyErrors,
+  CreateApiKeyResponses,
+  CreateCastData,
+  CreateCastErrors,
+  CreateCastResponses,
+  CreateDraftCastsData,
+  CreateDraftCastsErrors,
+  CreateDraftCastsResponses,
+  DeleteCastData,
+  DeleteCastErrors,
+  DeleteCastResponses,
+  DeleteDraftCastData,
+  DeleteDraftCastErrors,
+  DeleteDraftCastResponses,
+  DirectCastManuallyMarkUnreadData,
+  DirectCastManuallyMarkUnreadErrors,
+  DirectCastManuallyMarkUnreadResponses,
+  DiscoverChannelsData,
+  DiscoverChannelsErrors,
+  DiscoverChannelsResponses,
+  ExportMiniAppUserDataData,
+  ExportMiniAppUserDataErrors,
+  ExportMiniAppUserDataResponses,
+  FollowChannelData,
+  FollowChannelErrors,
+  FollowChannelResponses,
+  GetAccountVerificationsData,
+  GetAccountVerificationsErrors,
+  GetAccountVerificationsResponses,
+  GetAllChannelsData,
+  GetAllChannelsErrors,
+  GetAllChannelsResponses,
+  GetApiKeysData,
+  GetApiKeysErrors,
+  GetApiKeysResponses,
+  GetAppsByAuthorData,
+  GetAppsByAuthorErrors,
+  GetAppsByAuthorResponses,
+  GetAvailableInvitesData,
+  GetAvailableInvitesErrors,
+  GetAvailableInvitesResponses,
+  GetBlockedUsersData,
+  GetBlockedUsersErrors,
+  GetBlockedUsersResponses,
+  GetBookmarkedCastsData,
+  GetBookmarkedCastsErrors,
+  GetBookmarkedCastsResponses,
+  GetCastLikesData,
+  GetCastLikesErrors,
+  GetCastLikesResponses,
+  GetCastQuotesData,
+  GetCastQuotesErrors,
+  GetCastQuotesResponses,
+  GetCastRecastersData,
+  GetCastRecastersErrors,
+  GetCastRecastersResponses,
+  GetCastsByFidData,
+  GetCastsByFidErrors,
+  GetCastsByFidResponses,
+  GetChannelBannedUsersData,
+  GetChannelBannedUsersErrors,
+  GetChannelBannedUsersResponses,
+  GetChannelData,
+  GetChannelDetailsData,
+  GetChannelDetailsErrors,
+  GetChannelDetailsResponses,
+  GetChannelErrors,
+  GetChannelFollowersData,
+  GetChannelFollowersErrors,
+  GetChannelFollowersResponses,
+  GetChannelFollowersYouKnowData,
+  GetChannelFollowersYouKnowErrors,
+  GetChannelFollowersYouKnowResponses,
+  GetChannelInvitesData,
+  GetChannelInvitesErrors,
+  GetChannelInvitesResponses,
+  GetChannelMembersData,
+  GetChannelMembersErrors,
+  GetChannelMembersResponses,
+  GetChannelModeratedCastsData,
+  GetChannelModeratedCastsErrors,
+  GetChannelModeratedCastsResponses,
+  GetChannelResponses,
+  GetChannelRestrictedUsersData,
+  GetChannelRestrictedUsersErrors,
+  GetChannelRestrictedUsersResponses,
+  GetChannelStreaksForUserData,
+  GetChannelStreaksForUserErrors,
+  GetChannelStreaksForUserResponses,
+  GetChannelUsersData,
+  GetChannelUsersErrors,
+  GetChannelUsersResponses,
+  GetConnectedAccountsData,
+  GetConnectedAccountsErrors,
+  GetConnectedAccountsResponses,
+  GetCreatorRewardWinnersData,
+  GetCreatorRewardWinnersErrors,
+  GetCreatorRewardWinnersResponses,
+  GetCurrentUserData,
+  GetCurrentUserErrors,
+  GetCurrentUserResponses,
+  GetDeveloperRewardWinnersData,
+  GetDeveloperRewardWinnersErrors,
+  GetDeveloperRewardWinnersResponses,
+  GetDirectCastConversationData,
+  GetDirectCastConversationErrors,
+  GetDirectCastConversationMessagesData,
+  GetDirectCastConversationMessagesErrors,
+  GetDirectCastConversationMessagesResponses,
+  GetDirectCastConversationRecentMessagesData,
+  GetDirectCastConversationRecentMessagesErrors,
+  GetDirectCastConversationRecentMessagesResponses,
+  GetDirectCastConversationResponses,
+  GetDirectCastInboxData,
+  GetDirectCastInboxErrors,
+  GetDirectCastInboxResponses,
+  GetDiscoverableActionsData,
+  GetDiscoverableActionsErrors,
+  GetDiscoverableActionsResponses,
+  GetDiscoverableComposerActionsData,
+  GetDiscoverableComposerActionsErrors,
+  GetDiscoverableComposerActionsResponses,
+  GetDomainManifestData,
+  GetDomainManifestErrors,
+  GetDomainManifestResponses,
+  GetDraftCastsData,
+  GetDraftCastsErrors,
+  GetDraftCastsResponses,
+  GetFarcasterJsonData,
+  GetFarcasterJsonErrors,
+  GetFarcasterJsonResponses,
+  GetFeedItemsData,
+  GetFeedItemsErrors,
+  GetFeedItemsResponses,
+  GetFollowersData,
+  GetFollowersErrors,
+  GetFollowersResponses,
+  GetFollowingData,
+  GetFollowingErrors,
+  GetFollowingResponses,
+  GetHighlightedChannelsData,
+  GetHighlightedChannelsErrors,
+  GetHighlightedChannelsResponses,
+  GetManagedAppsData,
+  GetManagedAppsErrors,
+  GetManagedAppsResponses,
+  GetMetaTagsData,
+  GetMetaTagsErrors,
+  GetMetaTagsResponses,
+  GetMiniAppAnalyticsRollupData,
+  GetMiniAppAnalyticsRollupErrors,
+  GetMiniAppAnalyticsRollupResponses,
+  GetMutedKeywordsData,
+  GetMutedKeywordsErrors,
+  GetMutedKeywordsResponses,
+  GetMutualFollowersData,
+  GetMutualFollowersErrors,
+  GetMutualFollowersResponses,
+  GetNotificationsData,
+  GetNotificationsErrors,
+  GetNotificationsResponses,
+  GetOrCreateReferralCodeData,
+  GetOrCreateReferralCodeErrors,
+  GetOrCreateReferralCodeResponses,
+  GetOwnedDomainsData,
+  GetOwnedDomainsErrors,
+  GetOwnedDomainsResponses,
+  GetProfileCastsData,
+  GetProfileCastsErrors,
+  GetProfileCastsResponses,
+  GetRewardsLeaderboardData,
+  GetRewardsLeaderboardErrors,
+  GetRewardsLeaderboardResponses,
+  GetRewardsMetadataData,
+  GetRewardsMetadataErrors,
+  GetRewardsMetadataResponses,
+  GetSponsoredInvitesData,
+  GetSponsoredInvitesErrors,
+  GetSponsoredInvitesResponses,
+  GetStarterPackData,
+  GetStarterPackErrors,
+  GetStarterPackMembersData,
+  GetStarterPackMembersErrors,
+  GetStarterPackMembersResponses,
+  GetStarterPackResponses,
+  GetStarterPackUsersData,
+  GetStarterPackUsersErrors,
+  GetStarterPackUsersResponses,
+  GetSuggestedStarterPacksData,
+  GetSuggestedStarterPacksErrors,
+  GetSuggestedStarterPacksResponses,
+  GetSuggestedUsersData,
+  GetSuggestedUsersErrors,
+  GetSuggestedUsersResponses,
+  GetTopFrameAppsData,
+  GetTopFrameAppsErrors,
+  GetTopFrameAppsResponses,
+  GetTopMiniAppsData,
+  GetTopMiniAppsErrors,
+  GetTopMiniAppsResponses,
+  GetTrendingTopicsData,
+  GetTrendingTopicsErrors,
+  GetTrendingTopicsResponses,
+  GetUnseenCountsData,
+  GetUnseenCountsErrors,
+  GetUnseenCountsResponses,
+  GetUserAppContextData,
+  GetUserAppContextErrors,
+  GetUserAppContextResponses,
+  GetUserByFidData,
+  GetUserByFidErrors,
+  GetUserByFidResponses,
+  GetUserByUsernameData,
+  GetUserByUsernameErrors,
+  GetUserByUsernameResponses,
+  GetUserByVerificationAddressData,
+  GetUserByVerificationAddressErrors,
+  GetUserByVerificationAddressResponses,
+  GetUserData,
+  GetUserErrors,
+  GetUserFavoriteFramesData,
+  GetUserFavoriteFramesErrors,
+  GetUserFavoriteFramesResponses,
+  GetUserFollowedChannelsData,
+  GetUserFollowedChannelsErrors,
+  GetUserFollowedChannelsResponses,
+  GetUserFollowingChannelsData,
+  GetUserFollowingChannelsErrors,
+  GetUserFollowingChannelsResponses,
+  GetUserLikedCastsData,
+  GetUserLikedCastsErrors,
+  GetUserLikedCastsResponses,
+  GetUserOnboardingStateData,
+  GetUserOnboardingStateErrors,
+  GetUserOnboardingStateResponses,
+  GetUserPreferencesData,
+  GetUserPreferencesErrors,
+  GetUserPreferencesResponses,
+  GetUserPrimaryAddressData,
+  GetUserPrimaryAddressErrors,
+  GetUserPrimaryAddressesData,
+  GetUserPrimaryAddressesErrors,
+  GetUserPrimaryAddressesResponses,
+  GetUserPrimaryAddressResponses,
+  GetUserResponses,
+  GetUserRewardsScoresData,
+  GetUserRewardsScoresErrors,
+  GetUserRewardsScoresResponses,
+  GetUserStarterPacksData,
+  GetUserStarterPacksErrors,
+  GetUserStarterPacksResponses,
+  GetUserThreadCastsData,
+  GetUserThreadCastsErrors,
+  GetUserThreadCastsResponses,
+  GetVerificationsData,
+  GetVerificationsErrors,
+  GetVerificationsResponses,
+  GetXpClaimableSummaryData,
+  GetXpClaimableSummaryErrors,
+  GetXpClaimableSummaryResponses,
+  GetXpRewardsData,
+  GetXpRewardsErrors,
+  GetXpRewardsResponses,
+  InspectImageUrlData,
+  InspectImageUrlErrors,
+  InspectImageUrlResponses,
+  InspectMiniAppUrlData,
+  InspectMiniAppUrlErrors,
+  InspectMiniAppUrlResponses,
+  InviteUserToChannelData,
+  InviteUserToChannelErrors,
+  InviteUserToChannelResponses,
+  LikeCastData,
+  LikeCastErrors,
+  LikeCastResponses,
+  MarkAllNotificationsReadData,
+  MarkAllNotificationsReadErrors,
+  MarkAllNotificationsReadResponses,
+  ModerateCastData,
+  ModerateCastErrors,
+  ModerateCastResponses,
+  MuteKeywordData,
+  MuteKeywordErrors,
+  MuteKeywordResponses,
+  PinCastToChannelData,
+  PinCastToChannelErrors,
+  PinCastToChannelResponses,
+  PinDirectCastConversationData,
+  PinDirectCastConversationErrors,
+  PinDirectCastConversationResponses,
+  RecastCastData,
+  RecastCastErrors,
+  RecastCastResponses,
+  RegisterStatsigEventsData,
+  RegisterStatsigEventsErrors,
+  RegisterStatsigEventsResponses,
+  RemoveChannelInviteData,
+  RemoveChannelInviteErrors,
+  RemoveChannelInviteResponses,
+  RemoveDirectCastMessageReactionData,
+  RemoveDirectCastMessageReactionErrors,
+  RemoveDirectCastMessageReactionResponses,
+  RevokeApiKeyData,
+  RevokeApiKeyErrors,
+  RevokeApiKeyResponses,
+  SearchChannelsData,
+  SearchChannelsErrors,
+  SearchChannelsResponses,
+  SendDirectCastData,
+  SendDirectCastErrors,
+  SendDirectCastMessageData,
+  SendDirectCastMessageErrors,
+  SendDirectCastMessageResponses,
+  SendDirectCastResponses,
+  SetDirectCastConversationMessageTtlData,
+  SetDirectCastConversationMessageTtlErrors,
+  SetDirectCastConversationMessageTtlResponses,
+  SetLastCheckedTimestampData,
+  SetLastCheckedTimestampErrors,
+  SetLastCheckedTimestampResponses,
+  SubmitAnalyticsEventsData,
+  SubmitAnalyticsEventsErrors,
+  SubmitAnalyticsEventsResponses,
+  UnbanUserFromChannelData,
+  UnbanUserFromChannelErrors,
+  UnbanUserFromChannelResponses,
+  UnblockUserData,
+  UnblockUserErrors,
+  UnblockUserResponses,
+  UndoRecastData,
+  UndoRecastErrors,
+  UndoRecastResponses,
+  UnfollowChannelData,
+  UnfollowChannelErrors,
+  UnfollowChannelResponses,
+  UnlikeCastData,
+  UnlikeCastErrors,
+  UnlikeCastResponses,
+  UnmuteKeywordData,
+  UnmuteKeywordErrors,
+  UnmuteKeywordResponses,
+  UnpinCastFromChannelData,
+  UnpinCastFromChannelErrors,
+  UnpinCastFromChannelResponses,
+  UnpinDirectCastConversationData,
+  UnpinDirectCastConversationErrors,
+  UnpinDirectCastConversationResponses,
+  UpdateDirectCastConversationNotificationsData,
+  UpdateDirectCastConversationNotificationsErrors,
+  UpdateDirectCastConversationNotificationsResponses,
+  UpdateStarterPackData,
+  UpdateStarterPackErrors,
+  UpdateStarterPackResponses,
 } from "./types.gen";
 import {
-	zAcceptChannelInviteData,
-	zAddDirectCastMessageReactionData,
-	zAttachEmbedsData,
-	zBanUserFromChannelData,
-	zBlockUserData,
-	zCategorizeDirectCastConversationData,
-	zCheckUserChannelFollowStatusData,
-	zCreateApiKeyData,
-	zCreateCastData,
-	zCreateDraftCastsData,
-	zDeleteCastData,
-	zDeleteDraftCastData,
-	zDirectCastManuallyMarkUnreadData,
-	zDiscoverChannelsData,
-	zExportMiniAppUserDataData,
-	zFollowChannelData,
-	zGetAccountVerificationsData,
-	zGetAllChannelsData,
-	zGetApiKeysData,
-	zGetAppsByAuthorData,
-	zGetAvailableInvitesData,
-	zGetBlockedUsersData,
-	zGetBookmarkedCastsData,
-	zGetCastLikesData,
-	zGetCastQuotesData,
-	zGetCastRecastersData,
-	zGetCastsByFidData,
-	zGetChannelBannedUsersData,
-	zGetChannelData,
-	zGetChannelDetailsData,
-	zGetChannelFollowersData,
-	zGetChannelFollowersYouKnowData,
-	zGetChannelInvitesData,
-	zGetChannelMembersData,
-	zGetChannelModeratedCastsData,
-	zGetChannelRestrictedUsersData,
-	zGetChannelStreaksForUserData,
-	zGetChannelUsersData,
-	zGetConnectedAccountsData,
-	zGetCreatorRewardWinnersData,
-	zGetCurrentUserData,
-	zGetDeveloperRewardWinnersData,
-	zGetDirectCastConversationData,
-	zGetDirectCastConversationMessagesData,
-	zGetDirectCastConversationRecentMessagesData,
-	zGetDirectCastInboxData,
-	zGetDiscoverableActionsData,
-	zGetDiscoverableComposerActionsData,
-	zGetDomainManifestData,
-	zGetDraftCastsData,
-	zGetFarcasterJsonData,
-	zGetFeedItemsData,
-	zGetFollowersData,
-	zGetFollowingData,
-	zGetHighlightedChannelsData,
-	zGetManagedAppsData,
-	zGetMetaTagsData,
-	zGetMiniAppAnalyticsRollupData,
-	zGetMutedKeywordsData,
-	zGetMutualFollowersData,
-	zGetNotificationsData,
-	zGetOrCreateReferralCodeData,
-	zGetOwnedDomainsData,
-	zGetProfileCastsData,
-	zGetRewardsLeaderboardData,
-	zGetRewardsMetadataData,
-	zGetSponsoredInvitesData,
-	zGetStarterPackData,
-	zGetStarterPackMembersData,
-	zGetStarterPackUsersData,
-	zGetSuggestedStarterPacksData,
-	zGetSuggestedUsersData,
-	zGetTopFrameAppsData,
-	zGetTopMiniAppsData,
-	zGetTrendingTopicsData,
-	zGetUnseenCountsData,
-	zGetUserAppContextData,
-	zGetUserByFidData,
-	zGetUserByUsernameData,
-	zGetUserByVerificationAddressData,
-	zGetUserData,
-	zGetUserFavoriteFramesData,
-	zGetUserFollowedChannelsData,
-	zGetUserFollowingChannelsData,
-	zGetUserLikedCastsData,
-	zGetUserOnboardingStateData,
-	zGetUserPreferencesData,
-	zGetUserPrimaryAddressData,
-	zGetUserPrimaryAddressesData,
-	zGetUserRewardsScoresData,
-	zGetUserStarterPacksData,
-	zGetUserThreadCastsData,
-	zGetVerificationsData,
-	zGetXpClaimableSummaryData,
-	zGetXpRewardsData,
-	zInspectImageUrlData,
-	zInspectMiniAppUrlData,
-	zInviteUserToChannelData,
-	zLikeCastData,
-	zMarkAllNotificationsReadData,
-	zModerateCastData,
-	zMuteKeywordData,
-	zPinCastToChannelData,
-	zPinDirectCastConversationData,
-	zRecastCastData,
-	zRegisterStatsigEventsData,
-	zRemoveChannelInviteData,
-	zRemoveDirectCastMessageReactionData,
-	zRevokeApiKeyData,
-	zSearchChannelsData,
-	zSendDirectCastData,
-	zSendDirectCastMessageData,
-	zSetDirectCastConversationMessageTtlData,
-	zSetLastCheckedTimestampData,
-	zSubmitAnalyticsEventsData,
-	zUnbanUserFromChannelData,
-	zUnblockUserData,
-	zUndoRecastData,
-	zUnfollowChannelData,
-	zUnlikeCastData,
-	zUnmuteKeywordData,
-	zUnpinCastFromChannelData,
-	zUnpinDirectCastConversationData,
-	zUpdateDirectCastConversationNotificationsData,
-	zUpdateStarterPackData,
+  zAcceptChannelInviteData,
+  zAddDirectCastMessageReactionData,
+  zAttachEmbedsData,
+  zBanUserFromChannelData,
+  zBlockUserData,
+  zCategorizeDirectCastConversationData,
+  zCheckUserChannelFollowStatusData,
+  zCreateApiKeyData,
+  zCreateCastData,
+  zCreateDraftCastsData,
+  zDeleteCastData,
+  zDeleteDraftCastData,
+  zDirectCastManuallyMarkUnreadData,
+  zDiscoverChannelsData,
+  zExportMiniAppUserDataData,
+  zFollowChannelData,
+  zGetAccountVerificationsData,
+  zGetAllChannelsData,
+  zGetApiKeysData,
+  zGetAppsByAuthorData,
+  zGetAvailableInvitesData,
+  zGetBlockedUsersData,
+  zGetBookmarkedCastsData,
+  zGetCastLikesData,
+  zGetCastQuotesData,
+  zGetCastRecastersData,
+  zGetCastsByFidData,
+  zGetChannelBannedUsersData,
+  zGetChannelData,
+  zGetChannelDetailsData,
+  zGetChannelFollowersData,
+  zGetChannelFollowersYouKnowData,
+  zGetChannelInvitesData,
+  zGetChannelMembersData,
+  zGetChannelModeratedCastsData,
+  zGetChannelRestrictedUsersData,
+  zGetChannelStreaksForUserData,
+  zGetChannelUsersData,
+  zGetConnectedAccountsData,
+  zGetCreatorRewardWinnersData,
+  zGetCurrentUserData,
+  zGetDeveloperRewardWinnersData,
+  zGetDirectCastConversationData,
+  zGetDirectCastConversationMessagesData,
+  zGetDirectCastConversationRecentMessagesData,
+  zGetDirectCastInboxData,
+  zGetDiscoverableActionsData,
+  zGetDiscoverableComposerActionsData,
+  zGetDomainManifestData,
+  zGetDraftCastsData,
+  zGetFarcasterJsonData,
+  zGetFeedItemsData,
+  zGetFollowersData,
+  zGetFollowingData,
+  zGetHighlightedChannelsData,
+  zGetManagedAppsData,
+  zGetMetaTagsData,
+  zGetMiniAppAnalyticsRollupData,
+  zGetMutedKeywordsData,
+  zGetMutualFollowersData,
+  zGetNotificationsData,
+  zGetOrCreateReferralCodeData,
+  zGetOwnedDomainsData,
+  zGetProfileCastsData,
+  zGetRewardsLeaderboardData,
+  zGetRewardsMetadataData,
+  zGetSponsoredInvitesData,
+  zGetStarterPackData,
+  zGetStarterPackMembersData,
+  zGetStarterPackUsersData,
+  zGetSuggestedStarterPacksData,
+  zGetSuggestedUsersData,
+  zGetTopFrameAppsData,
+  zGetTopMiniAppsData,
+  zGetTrendingTopicsData,
+  zGetUnseenCountsData,
+  zGetUserAppContextData,
+  zGetUserByFidData,
+  zGetUserByUsernameData,
+  zGetUserByVerificationAddressData,
+  zGetUserData,
+  zGetUserFavoriteFramesData,
+  zGetUserFollowedChannelsData,
+  zGetUserFollowingChannelsData,
+  zGetUserLikedCastsData,
+  zGetUserOnboardingStateData,
+  zGetUserPreferencesData,
+  zGetUserPrimaryAddressData,
+  zGetUserPrimaryAddressesData,
+  zGetUserRewardsScoresData,
+  zGetUserStarterPacksData,
+  zGetUserThreadCastsData,
+  zGetVerificationsData,
+  zGetXpClaimableSummaryData,
+  zGetXpRewardsData,
+  zInspectImageUrlData,
+  zInspectMiniAppUrlData,
+  zInviteUserToChannelData,
+  zLikeCastData,
+  zMarkAllNotificationsReadData,
+  zModerateCastData,
+  zMuteKeywordData,
+  zPinCastToChannelData,
+  zPinDirectCastConversationData,
+  zRecastCastData,
+  zRegisterStatsigEventsData,
+  zRemoveChannelInviteData,
+  zRemoveDirectCastMessageReactionData,
+  zRevokeApiKeyData,
+  zSearchChannelsData,
+  zSendDirectCastData,
+  zSendDirectCastMessageData,
+  zSetDirectCastConversationMessageTtlData,
+  zSetLastCheckedTimestampData,
+  zSubmitAnalyticsEventsData,
+  zUnbanUserFromChannelData,
+  zUnblockUserData,
+  zUndoRecastData,
+  zUnfollowChannelData,
+  zUnlikeCastData,
+  zUnmuteKeywordData,
+  zUnpinCastFromChannelData,
+  zUnpinDirectCastConversationData,
+  zUpdateDirectCastConversationNotificationsData,
+  zUpdateStarterPackData,
 } from "./zod.gen";
 
 export type Options<
-	TData extends TDataShape = TDataShape,
-	ThrowOnError extends boolean = boolean,
+  TData extends TDataShape = TDataShape,
+  ThrowOnError extends boolean = boolean,
 > = Options2<TData, ThrowOnError> & {
-	/**
-	 * You can provide a client instance returned by `createClient()` instead of
-	 * individual options. This might be also useful if you want to implement a
-	 * custom client.
-	 */
-	client?: Client;
-	/**
-	 * You can pass arbitrary values through the `meta` object. This can be
-	 * used to access values that aren't defined as part of the SDK function.
-	 */
-	meta?: Record<string, unknown>;
+  /**
+   * You can provide a client instance returned by `createClient()` instead of
+   * individual options. This might be also useful if you want to implement a
+   * custom client.
+   */
+  client?: Client;
+  /**
+   * You can pass arbitrary values through the `meta` object. This can be
+   * used to access values that aren't defined as part of the SDK function.
+   */
+  meta?: Record<string, unknown>;
 };
 
 /**
@@ -546,25 +546,25 @@ export type Options<
  * Retrieves the current onboarding state for the authenticated user
  */
 export const getUserOnboardingState = <ThrowOnError extends boolean = false>(
-	options?: Options<GetUserOnboardingStateData, ThrowOnError>,
+  options?: Options<GetUserOnboardingStateData, ThrowOnError>,
 ) => {
-	return (options?.client ?? client).get<
-		GetUserOnboardingStateResponses,
-		GetUserOnboardingStateErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetUserOnboardingStateData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/onboarding-state",
-		...options,
-	});
+  return (options?.client ?? client).get<
+    GetUserOnboardingStateResponses,
+    GetUserOnboardingStateErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetUserOnboardingStateData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/onboarding-state",
+    ...options,
+  });
 };
 
 /**
@@ -573,25 +573,25 @@ export const getUserOnboardingState = <ThrowOnError extends boolean = false>(
  * Retrieves user information based on FID
  */
 export const getUserByFid = <ThrowOnError extends boolean = false>(
-	options: Options<GetUserByFidData, ThrowOnError>,
+  options: Options<GetUserByFidData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).get<
-		GetUserByFidResponses,
-		GetUserByFidErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetUserByFidData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/user-by-fid",
-		...options,
-	});
+  return (options.client ?? client).get<
+    GetUserByFidResponses,
+    GetUserByFidErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetUserByFidData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/user-by-fid",
+    ...options,
+  });
 };
 
 /**
@@ -600,26 +600,26 @@ export const getUserByFid = <ThrowOnError extends boolean = false>(
  * Retrieves direct casts sent to the authenticated user
  */
 export const getDirectCastInbox = <ThrowOnError extends boolean = false>(
-	options?: Options<GetDirectCastInboxData, ThrowOnError>,
+  options?: Options<GetDirectCastInboxData, ThrowOnError>,
 ) => {
-	return (options?.client ?? client).get<
-		GetDirectCastInboxResponses,
-		GetDirectCastInboxErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetDirectCastInboxData.parseAsync(data);
-		},
-		responseTransformer: getDirectCastInboxResponseTransformer,
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/direct-cast-inbox",
-		...options,
-	});
+  return (options?.client ?? client).get<
+    GetDirectCastInboxResponses,
+    GetDirectCastInboxErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetDirectCastInboxData.parseAsync(data);
+    },
+    responseTransformer: getDirectCastInboxResponseTransformer,
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/direct-cast-inbox",
+    ...options,
+  });
 };
 
 /**
@@ -628,25 +628,25 @@ export const getDirectCastInbox = <ThrowOnError extends boolean = false>(
  * Retrieves application context information for the authenticated user
  */
 export const getUserAppContext = <ThrowOnError extends boolean = false>(
-	options?: Options<GetUserAppContextData, ThrowOnError>,
+  options?: Options<GetUserAppContextData, ThrowOnError>,
 ) => {
-	return (options?.client ?? client).get<
-		GetUserAppContextResponses,
-		GetUserAppContextErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetUserAppContextData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/user-app-context",
-		...options,
-	});
+  return (options?.client ?? client).get<
+    GetUserAppContextResponses,
+    GetUserAppContextErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetUserAppContextData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/user-app-context",
+    ...options,
+  });
 };
 
 /**
@@ -655,25 +655,25 @@ export const getUserAppContext = <ThrowOnError extends boolean = false>(
  * Retrieves preference settings for the authenticated user
  */
 export const getUserPreferences = <ThrowOnError extends boolean = false>(
-	options?: Options<GetUserPreferencesData, ThrowOnError>,
+  options?: Options<GetUserPreferencesData, ThrowOnError>,
 ) => {
-	return (options?.client ?? client).get<
-		GetUserPreferencesResponses,
-		GetUserPreferencesErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetUserPreferencesData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/user-preferences",
-		...options,
-	});
+  return (options?.client ?? client).get<
+    GetUserPreferencesResponses,
+    GetUserPreferencesErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetUserPreferencesData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/user-preferences",
+    ...options,
+  });
 };
 
 /**
@@ -682,25 +682,25 @@ export const getUserPreferences = <ThrowOnError extends boolean = false>(
  * Retrieves a list of featured or recommended channels
  */
 export const getHighlightedChannels = <ThrowOnError extends boolean = false>(
-	options?: Options<GetHighlightedChannelsData, ThrowOnError>,
+  options?: Options<GetHighlightedChannelsData, ThrowOnError>,
 ) => {
-	return (options?.client ?? client).get<
-		GetHighlightedChannelsResponses,
-		GetHighlightedChannelsErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetHighlightedChannelsData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/highlighted-channels",
-		...options,
-	});
+  return (options?.client ?? client).get<
+    GetHighlightedChannelsResponses,
+    GetHighlightedChannelsErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetHighlightedChannelsData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/highlighted-channels",
+    ...options,
+  });
 };
 
 /**
@@ -709,30 +709,30 @@ export const getHighlightedChannels = <ThrowOnError extends boolean = false>(
  * Retrieves feed content based on provided filters and parameters
  */
 export const getFeedItems = <ThrowOnError extends boolean = false>(
-	options: Options<GetFeedItemsData, ThrowOnError>,
+  options: Options<GetFeedItemsData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).post<
-		GetFeedItemsResponses,
-		GetFeedItemsErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetFeedItemsData.parseAsync(data);
-		},
-		responseTransformer: getFeedItemsResponseTransformer,
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/feed-items",
-		...options,
-		headers: {
-			"Content-Type": "application/json",
-			...options.headers,
-		},
-	});
+  return (options.client ?? client).post<
+    GetFeedItemsResponses,
+    GetFeedItemsErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetFeedItemsData.parseAsync(data);
+    },
+    responseTransformer: getFeedItemsResponseTransformer,
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/feed-items",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
 };
 
 /**
@@ -741,25 +741,25 @@ export const getFeedItems = <ThrowOnError extends boolean = false>(
  * Retrieves detailed user information based on FID
  */
 export const getUser = <ThrowOnError extends boolean = false>(
-	options: Options<GetUserData, ThrowOnError>,
+  options: Options<GetUserData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).get<
-		GetUserResponses,
-		GetUserErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetUserData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/user",
-		...options,
-	});
+  return (options.client ?? client).get<
+    GetUserResponses,
+    GetUserErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetUserData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/user",
+    ...options,
+  });
 };
 
 /**
@@ -768,75 +768,75 @@ export const getUser = <ThrowOnError extends boolean = false>(
  * Retrieves channels that the authenticated user is following
  */
 export const getUserFollowingChannels = <ThrowOnError extends boolean = false>(
-	options?: Options<GetUserFollowingChannelsData, ThrowOnError>,
+  options?: Options<GetUserFollowingChannelsData, ThrowOnError>,
 ) => {
-	return (options?.client ?? client).get<
-		GetUserFollowingChannelsResponses,
-		GetUserFollowingChannelsErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetUserFollowingChannelsData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/user-following-channels",
-		...options,
-	});
+  return (options?.client ?? client).get<
+    GetUserFollowingChannelsResponses,
+    GetUserFollowingChannelsErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetUserFollowingChannelsData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/user-following-channels",
+    ...options,
+  });
 };
 
 /**
  * Get suggested users
  */
 export const getSuggestedUsers = <ThrowOnError extends boolean = false>(
-	options?: Options<GetSuggestedUsersData, ThrowOnError>,
+  options?: Options<GetSuggestedUsersData, ThrowOnError>,
 ) => {
-	return (options?.client ?? client).get<
-		GetSuggestedUsersResponses,
-		GetSuggestedUsersErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetSuggestedUsersData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/suggested-users",
-		...options,
-	});
+  return (options?.client ?? client).get<
+    GetSuggestedUsersResponses,
+    GetSuggestedUsersErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetSuggestedUsersData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/suggested-users",
+    ...options,
+  });
 };
 
 /**
  * Get user's favorite frames
  */
 export const getUserFavoriteFrames = <ThrowOnError extends boolean = false>(
-	options?: Options<GetUserFavoriteFramesData, ThrowOnError>,
+  options?: Options<GetUserFavoriteFramesData, ThrowOnError>,
 ) => {
-	return (options?.client ?? client).get<
-		GetUserFavoriteFramesResponses,
-		GetUserFavoriteFramesErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetUserFavoriteFramesData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v1/favorite-frames",
-		...options,
-	});
+  return (options?.client ?? client).get<
+    GetUserFavoriteFramesResponses,
+    GetUserFavoriteFramesErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetUserFavoriteFramesData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v1/favorite-frames",
+    ...options,
+  });
 };
 
 /**
@@ -845,75 +845,75 @@ export const getUserFavoriteFrames = <ThrowOnError extends boolean = false>(
  * Retrieves user information based on username
  */
 export const getUserByUsername = <ThrowOnError extends boolean = false>(
-	options: Options<GetUserByUsernameData, ThrowOnError>,
+  options: Options<GetUserByUsernameData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).get<
-		GetUserByUsernameResponses,
-		GetUserByUsernameErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetUserByUsernameData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/user-by-username",
-		...options,
-	});
+  return (options.client ?? client).get<
+    GetUserByUsernameResponses,
+    GetUserByUsernameErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetUserByUsernameData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/user-by-username",
+    ...options,
+  });
 };
 
 /**
  * Get channel streaks for user
  */
 export const getChannelStreaksForUser = <ThrowOnError extends boolean = false>(
-	options: Options<GetChannelStreaksForUserData, ThrowOnError>,
+  options: Options<GetChannelStreaksForUserData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).get<
-		GetChannelStreaksForUserResponses,
-		GetChannelStreaksForUserErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetChannelStreaksForUserData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/channel-streaks",
-		...options,
-	});
+  return (options.client ?? client).get<
+    GetChannelStreaksForUserResponses,
+    GetChannelStreaksForUserErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetChannelStreaksForUserData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/channel-streaks",
+    ...options,
+  });
 };
 
 /**
  * Get unseen counts and feed state
  */
 export const getUnseenCounts = <ThrowOnError extends boolean = false>(
-	options?: Options<GetUnseenCountsData, ThrowOnError>,
+  options?: Options<GetUnseenCountsData, ThrowOnError>,
 ) => {
-	return (options?.client ?? client).get<
-		GetUnseenCountsResponses,
-		GetUnseenCountsErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetUnseenCountsData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/unseen",
-		...options,
-	});
+  return (options?.client ?? client).get<
+    GetUnseenCountsResponses,
+    GetUnseenCountsErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetUnseenCountsData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/unseen",
+    ...options,
+  });
 };
 
 /**
@@ -922,81 +922,81 @@ export const getUnseenCounts = <ThrowOnError extends boolean = false>(
  * Retrieves casts from a specific thread by a user
  */
 export const getUserThreadCasts = <ThrowOnError extends boolean = false>(
-	options: Options<GetUserThreadCastsData, ThrowOnError>,
+  options: Options<GetUserThreadCastsData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).get<
-		GetUserThreadCastsResponses,
-		GetUserThreadCastsErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetUserThreadCastsData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/user-thread-casts",
-		...options,
-	});
+  return (options.client ?? client).get<
+    GetUserThreadCastsResponses,
+    GetUserThreadCastsErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetUserThreadCastsData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/user-thread-casts",
+    ...options,
+  });
 };
 
 /**
  * Get mutual followers in a channel
  */
 export const getChannelFollowersYouKnow = <
-	ThrowOnError extends boolean = false,
+  ThrowOnError extends boolean = false,
 >(
-	options: Options<GetChannelFollowersYouKnowData, ThrowOnError>,
+  options: Options<GetChannelFollowersYouKnowData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).get<
-		GetChannelFollowersYouKnowResponses,
-		GetChannelFollowersYouKnowErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetChannelFollowersYouKnowData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/channel-followers-you-know",
-		...options,
-	});
+  return (options.client ?? client).get<
+    GetChannelFollowersYouKnowResponses,
+    GetChannelFollowersYouKnowErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetChannelFollowersYouKnowData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/channel-followers-you-know",
+    ...options,
+  });
 };
 
 /**
  * Mark all notifications as read
  */
 export const markAllNotificationsRead = <ThrowOnError extends boolean = false>(
-	options: Options<MarkAllNotificationsReadData, ThrowOnError>,
+  options: Options<MarkAllNotificationsReadData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).put<
-		MarkAllNotificationsReadResponses,
-		MarkAllNotificationsReadErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zMarkAllNotificationsReadData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/mark-all-notifications-read",
-		...options,
-		headers: {
-			"Content-Type": "application/json",
-			...options.headers,
-		},
-	});
+  return (options.client ?? client).put<
+    MarkAllNotificationsReadResponses,
+    MarkAllNotificationsReadErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zMarkAllNotificationsReadData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/mark-all-notifications-read",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
 };
 
 /**
@@ -1005,25 +1005,25 @@ export const markAllNotificationsRead = <ThrowOnError extends boolean = false>(
  * Returns a list of notifications for the specified tab.
  */
 export const getNotifications = <ThrowOnError extends boolean = false>(
-	options: Options<GetNotificationsData, ThrowOnError>,
+  options: Options<GetNotificationsData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).get<
-		GetNotificationsResponses,
-		GetNotificationsErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetNotificationsData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v1/notifications-for-tab",
-		...options,
-	});
+  return (options.client ?? client).get<
+    GetNotificationsResponses,
+    GetNotificationsErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetNotificationsData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v1/notifications-for-tab",
+    ...options,
+  });
 };
 
 /**
@@ -1032,29 +1032,29 @@ export const getNotifications = <ThrowOnError extends boolean = false>(
  * Updates the last checked timestamp for notifications.
  */
 export const setLastCheckedTimestamp = <ThrowOnError extends boolean = false>(
-	options: Options<SetLastCheckedTimestampData, ThrowOnError>,
+  options: Options<SetLastCheckedTimestampData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).put<
-		SetLastCheckedTimestampResponses,
-		SetLastCheckedTimestampErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zSetLastCheckedTimestampData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/set-last-checked-timestamp",
-		...options,
-		headers: {
-			"Content-Type": "application/json",
-			...options.headers,
-		},
-	});
+  return (options.client ?? client).put<
+    SetLastCheckedTimestampResponses,
+    SetLastCheckedTimestampErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zSetLastCheckedTimestampData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/set-last-checked-timestamp",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
 };
 
 /**
@@ -1063,26 +1063,26 @@ export const setLastCheckedTimestamp = <ThrowOnError extends boolean = false>(
  * Fetches a direct cast conversation by conversationId.
  */
 export const getDirectCastConversation = <ThrowOnError extends boolean = false>(
-	options: Options<GetDirectCastConversationData, ThrowOnError>,
+  options: Options<GetDirectCastConversationData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).get<
-		GetDirectCastConversationResponses,
-		GetDirectCastConversationErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetDirectCastConversationData.parseAsync(data);
-		},
-		responseTransformer: getDirectCastConversationResponseTransformer,
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/direct-cast-conversation",
-		...options,
-	});
+  return (options.client ?? client).get<
+    GetDirectCastConversationResponses,
+    GetDirectCastConversationErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetDirectCastConversationData.parseAsync(data);
+    },
+    responseTransformer: getDirectCastConversationResponseTransformer,
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/direct-cast-conversation",
+    ...options,
+  });
 };
 
 /**
@@ -1091,31 +1091,31 @@ export const getDirectCastConversation = <ThrowOnError extends boolean = false>(
  * Categorizes a direct cast conversation by setting its category (e.g., archived).
  */
 export const categorizeDirectCastConversation = <
-	ThrowOnError extends boolean = false,
+  ThrowOnError extends boolean = false,
 >(
-	options: Options<CategorizeDirectCastConversationData, ThrowOnError>,
+  options: Options<CategorizeDirectCastConversationData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).post<
-		CategorizeDirectCastConversationResponses,
-		CategorizeDirectCastConversationErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zCategorizeDirectCastConversationData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/direct-cast-conversation-categorization",
-		...options,
-		headers: {
-			"Content-Type": "application/json",
-			...options.headers,
-		},
-	});
+  return (options.client ?? client).post<
+    CategorizeDirectCastConversationResponses,
+    CategorizeDirectCastConversationErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zCategorizeDirectCastConversationData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/direct-cast-conversation-categorization",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
 };
 
 /**
@@ -1124,28 +1124,28 @@ export const categorizeDirectCastConversation = <
  * Fetches messages from a direct cast conversation by conversationId with pagination support.
  */
 export const getDirectCastConversationMessages = <
-	ThrowOnError extends boolean = false,
+  ThrowOnError extends boolean = false,
 >(
-	options: Options<GetDirectCastConversationMessagesData, ThrowOnError>,
+  options: Options<GetDirectCastConversationMessagesData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).get<
-		GetDirectCastConversationMessagesResponses,
-		GetDirectCastConversationMessagesErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetDirectCastConversationMessagesData.parseAsync(data);
-		},
-		responseTransformer: getDirectCastConversationMessagesResponseTransformer,
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/direct-cast-conversation-messages",
-		...options,
-	});
+  return (options.client ?? client).get<
+    GetDirectCastConversationMessagesResponses,
+    GetDirectCastConversationMessagesErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetDirectCastConversationMessagesData.parseAsync(data);
+    },
+    responseTransformer: getDirectCastConversationMessagesResponseTransformer,
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/direct-cast-conversation-messages",
+    ...options,
+  });
 };
 
 /**
@@ -1154,31 +1154,31 @@ export const getDirectCastConversationMessages = <
  * Sets the time-to-live (TTL) for messages in a direct cast conversation.
  */
 export const setDirectCastConversationMessageTtl = <
-	ThrowOnError extends boolean = false,
+  ThrowOnError extends boolean = false,
 >(
-	options: Options<SetDirectCastConversationMessageTtlData, ThrowOnError>,
+  options: Options<SetDirectCastConversationMessageTtlData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).post<
-		SetDirectCastConversationMessageTtlResponses,
-		SetDirectCastConversationMessageTtlErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zSetDirectCastConversationMessageTtlData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/direct-cast-conversation-message-ttl",
-		...options,
-		headers: {
-			"Content-Type": "application/json",
-			...options.headers,
-		},
-	});
+  return (options.client ?? client).post<
+    SetDirectCastConversationMessageTtlResponses,
+    SetDirectCastConversationMessageTtlErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zSetDirectCastConversationMessageTtlData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/direct-cast-conversation-message-ttl",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
 };
 
 /**
@@ -1187,33 +1187,33 @@ export const setDirectCastConversationMessageTtl = <
  * Updates notification settings for a direct cast conversation.
  */
 export const updateDirectCastConversationNotifications = <
-	ThrowOnError extends boolean = false,
+  ThrowOnError extends boolean = false,
 >(
-	options: Options<UpdateDirectCastConversationNotificationsData, ThrowOnError>,
+  options: Options<UpdateDirectCastConversationNotificationsData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).post<
-		UpdateDirectCastConversationNotificationsResponses,
-		UpdateDirectCastConversationNotificationsErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zUpdateDirectCastConversationNotificationsData.parseAsync(
-				data,
-			);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/direct-cast-conversation-notifications",
-		...options,
-		headers: {
-			"Content-Type": "application/json",
-			...options.headers,
-		},
-	});
+  return (options.client ?? client).post<
+    UpdateDirectCastConversationNotificationsResponses,
+    UpdateDirectCastConversationNotificationsErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zUpdateDirectCastConversationNotificationsData.parseAsync(
+        data,
+      );
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/direct-cast-conversation-notifications",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
 };
 
 /**
@@ -1222,31 +1222,31 @@ export const updateDirectCastConversationNotifications = <
  * Fetches recent messages from a direct cast conversation by conversationId.
  */
 export const getDirectCastConversationRecentMessages = <
-	ThrowOnError extends boolean = false,
+  ThrowOnError extends boolean = false,
 >(
-	options: Options<GetDirectCastConversationRecentMessagesData, ThrowOnError>,
+  options: Options<GetDirectCastConversationRecentMessagesData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).get<
-		GetDirectCastConversationRecentMessagesResponses,
-		GetDirectCastConversationRecentMessagesErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetDirectCastConversationRecentMessagesData.parseAsync(
-				data,
-			);
-		},
-		responseTransformer:
-			getDirectCastConversationRecentMessagesResponseTransformer,
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/direct-cast-conversation-recent-messages",
-		...options,
-	});
+  return (options.client ?? client).get<
+    GetDirectCastConversationRecentMessagesResponses,
+    GetDirectCastConversationRecentMessagesErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetDirectCastConversationRecentMessagesData.parseAsync(
+        data,
+      );
+    },
+    responseTransformer:
+      getDirectCastConversationRecentMessagesResponseTransformer,
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/direct-cast-conversation-recent-messages",
+    ...options,
+  });
 };
 
 /**
@@ -1255,29 +1255,29 @@ export const getDirectCastConversationRecentMessages = <
  * Sends a direct cast message to specified recipients in a conversation.
  */
 export const sendDirectCastMessage = <ThrowOnError extends boolean = false>(
-	options: Options<SendDirectCastMessageData, ThrowOnError>,
+  options: Options<SendDirectCastMessageData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).put<
-		SendDirectCastMessageResponses,
-		SendDirectCastMessageErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zSendDirectCastMessageData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/direct-cast-send",
-		...options,
-		headers: {
-			"Content-Type": "application/json",
-			...options.headers,
-		},
-	});
+  return (options.client ?? client).put<
+    SendDirectCastMessageResponses,
+    SendDirectCastMessageErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zSendDirectCastMessageData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/direct-cast-send",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
 };
 
 /**
@@ -1286,31 +1286,31 @@ export const sendDirectCastMessage = <ThrowOnError extends boolean = false>(
  * Marks a direct cast conversation as unread for the authenticated user.
  */
 export const directCastManuallyMarkUnread = <
-	ThrowOnError extends boolean = false,
+  ThrowOnError extends boolean = false,
 >(
-	options: Options<DirectCastManuallyMarkUnreadData, ThrowOnError>,
+  options: Options<DirectCastManuallyMarkUnreadData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).put<
-		DirectCastManuallyMarkUnreadResponses,
-		DirectCastManuallyMarkUnreadErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zDirectCastManuallyMarkUnreadData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/direct-cast-manually-mark-unread",
-		...options,
-		headers: {
-			"Content-Type": "application/json",
-			...options.headers,
-		},
-	});
+  return (options.client ?? client).put<
+    DirectCastManuallyMarkUnreadResponses,
+    DirectCastManuallyMarkUnreadErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zDirectCastManuallyMarkUnreadData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/direct-cast-manually-mark-unread",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
 };
 
 /**
@@ -1319,31 +1319,31 @@ export const directCastManuallyMarkUnread = <
  * Removes an emoji reaction from a specific message in a direct cast conversation.
  */
 export const removeDirectCastMessageReaction = <
-	ThrowOnError extends boolean = false,
+  ThrowOnError extends boolean = false,
 >(
-	options: Options<RemoveDirectCastMessageReactionData, ThrowOnError>,
+  options: Options<RemoveDirectCastMessageReactionData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).delete<
-		RemoveDirectCastMessageReactionResponses,
-		RemoveDirectCastMessageReactionErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zRemoveDirectCastMessageReactionData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/direct-cast-message-reaction",
-		...options,
-		headers: {
-			"Content-Type": "application/json",
-			...options.headers,
-		},
-	});
+  return (options.client ?? client).delete<
+    RemoveDirectCastMessageReactionResponses,
+    RemoveDirectCastMessageReactionErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zRemoveDirectCastMessageReactionData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/direct-cast-message-reaction",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
 };
 
 /**
@@ -1352,31 +1352,31 @@ export const removeDirectCastMessageReaction = <
  * Adds an emoji reaction to a specific message in a direct cast conversation.
  */
 export const addDirectCastMessageReaction = <
-	ThrowOnError extends boolean = false,
+  ThrowOnError extends boolean = false,
 >(
-	options: Options<AddDirectCastMessageReactionData, ThrowOnError>,
+  options: Options<AddDirectCastMessageReactionData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).put<
-		AddDirectCastMessageReactionResponses,
-		AddDirectCastMessageReactionErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zAddDirectCastMessageReactionData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/direct-cast-message-reaction",
-		...options,
-		headers: {
-			"Content-Type": "application/json",
-			...options.headers,
-		},
-	});
+  return (options.client ?? client).put<
+    AddDirectCastMessageReactionResponses,
+    AddDirectCastMessageReactionErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zAddDirectCastMessageReactionData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/direct-cast-message-reaction",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
 };
 
 /**
@@ -1385,31 +1385,31 @@ export const addDirectCastMessageReaction = <
  * Unpins a direct cast conversation by conversationId.
  */
 export const unpinDirectCastConversation = <
-	ThrowOnError extends boolean = false,
+  ThrowOnError extends boolean = false,
 >(
-	options: Options<UnpinDirectCastConversationData, ThrowOnError>,
+  options: Options<UnpinDirectCastConversationData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).delete<
-		UnpinDirectCastConversationResponses,
-		UnpinDirectCastConversationErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zUnpinDirectCastConversationData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/direct-cast-pin-conversation",
-		...options,
-		headers: {
-			"Content-Type": "application/json",
-			...options.headers,
-		},
-	});
+  return (options.client ?? client).delete<
+    UnpinDirectCastConversationResponses,
+    UnpinDirectCastConversationErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zUnpinDirectCastConversationData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/direct-cast-pin-conversation",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
 };
 
 /**
@@ -1418,29 +1418,29 @@ export const unpinDirectCastConversation = <
  * Pins a direct cast conversation by conversationId.
  */
 export const pinDirectCastConversation = <ThrowOnError extends boolean = false>(
-	options: Options<PinDirectCastConversationData, ThrowOnError>,
+  options: Options<PinDirectCastConversationData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).post<
-		PinDirectCastConversationResponses,
-		PinDirectCastConversationErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zPinDirectCastConversationData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/direct-cast-pin-conversation",
-		...options,
-		headers: {
-			"Content-Type": "application/json",
-			...options.headers,
-		},
-	});
+  return (options.client ?? client).post<
+    PinDirectCastConversationResponses,
+    PinDirectCastConversationErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zPinDirectCastConversationData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/direct-cast-pin-conversation",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
 };
 
 /**
@@ -1449,25 +1449,25 @@ export const pinDirectCastConversation = <ThrowOnError extends boolean = false>(
  * Retrieves a list of discoverable channels with optional limit.
  */
 export const discoverChannels = <ThrowOnError extends boolean = false>(
-	options?: Options<DiscoverChannelsData, ThrowOnError>,
+  options?: Options<DiscoverChannelsData, ThrowOnError>,
 ) => {
-	return (options?.client ?? client).get<
-		DiscoverChannelsResponses,
-		DiscoverChannelsErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zDiscoverChannelsData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/discover-channels",
-		...options,
-	});
+  return (options?.client ?? client).get<
+    DiscoverChannelsResponses,
+    DiscoverChannelsErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zDiscoverChannelsData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/discover-channels",
+    ...options,
+  });
 };
 
 /**
@@ -1476,25 +1476,25 @@ export const discoverChannels = <ThrowOnError extends boolean = false>(
  * Returns the number of allocated and currently available invites.
  */
 export const getAvailableInvites = <ThrowOnError extends boolean = false>(
-	options?: Options<GetAvailableInvitesData, ThrowOnError>,
+  options?: Options<GetAvailableInvitesData, ThrowOnError>,
 ) => {
-	return (options?.client ?? client).get<
-		GetAvailableInvitesResponses,
-		GetAvailableInvitesErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetAvailableInvitesData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/invites-available",
-		...options,
-	});
+  return (options?.client ?? client).get<
+    GetAvailableInvitesResponses,
+    GetAvailableInvitesErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetAvailableInvitesData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/invites-available",
+    ...options,
+  });
 };
 
 /**
@@ -1503,25 +1503,25 @@ export const getAvailableInvites = <ThrowOnError extends boolean = false>(
  * Returns a list of Warpcast-sponsored invites available to the user.
  */
 export const getSponsoredInvites = <ThrowOnError extends boolean = false>(
-	options?: Options<GetSponsoredInvitesData, ThrowOnError>,
+  options?: Options<GetSponsoredInvitesData, ThrowOnError>,
 ) => {
-	return (options?.client ?? client).get<
-		GetSponsoredInvitesResponses,
-		GetSponsoredInvitesErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetSponsoredInvitesData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/warpcast-sponsored-invites",
-		...options,
-	});
+  return (options?.client ?? client).get<
+    GetSponsoredInvitesResponses,
+    GetSponsoredInvitesErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetSponsoredInvitesData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/warpcast-sponsored-invites",
+    ...options,
+  });
 };
 
 /**
@@ -1530,29 +1530,29 @@ export const getSponsoredInvites = <ThrowOnError extends boolean = false>(
  * Gets an existing referral code or creates a new one for the authenticated user.
  */
 export const getOrCreateReferralCode = <ThrowOnError extends boolean = false>(
-	options: Options<GetOrCreateReferralCodeData, ThrowOnError>,
+  options: Options<GetOrCreateReferralCodeData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).post<
-		GetOrCreateReferralCodeResponses,
-		GetOrCreateReferralCodeErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetOrCreateReferralCodeData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/get-or-create-referral-code",
-		...options,
-		headers: {
-			"Content-Type": "application/json",
-			...options.headers,
-		},
-	});
+  return (options.client ?? client).post<
+    GetOrCreateReferralCodeResponses,
+    GetOrCreateReferralCodeErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetOrCreateReferralCodeData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/get-or-create-referral-code",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
 };
 
 /**
@@ -1561,25 +1561,25 @@ export const getOrCreateReferralCode = <ThrowOnError extends boolean = false>(
  * Returns a list of users in the rewards leaderboard based on invite activity.
  */
 export const getRewardsLeaderboard = <ThrowOnError extends boolean = false>(
-	options: Options<GetRewardsLeaderboardData, ThrowOnError>,
+  options: Options<GetRewardsLeaderboardData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).get<
-		GetRewardsLeaderboardResponses,
-		GetRewardsLeaderboardErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetRewardsLeaderboardData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/rewards-leaderboard",
-		...options,
-	});
+  return (options.client ?? client).get<
+    GetRewardsLeaderboardResponses,
+    GetRewardsLeaderboardErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetRewardsLeaderboardData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/rewards-leaderboard",
+    ...options,
+  });
 };
 
 /**
@@ -1588,25 +1588,25 @@ export const getRewardsLeaderboard = <ThrowOnError extends boolean = false>(
  * Returns current, previous, and all-time invite rewards scores for the specified user.
  */
 export const getUserRewardsScores = <ThrowOnError extends boolean = false>(
-	options: Options<GetUserRewardsScoresData, ThrowOnError>,
+  options: Options<GetUserRewardsScoresData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).get<
-		GetUserRewardsScoresResponses,
-		GetUserRewardsScoresErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetUserRewardsScoresData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/rewards-scores-for-user",
-		...options,
-	});
+  return (options.client ?? client).get<
+    GetUserRewardsScoresResponses,
+    GetUserRewardsScoresErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetUserRewardsScoresData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/rewards-scores-for-user",
+    ...options,
+  });
 };
 
 /**
@@ -1615,26 +1615,26 @@ export const getUserRewardsScores = <ThrowOnError extends boolean = false>(
  * Returns metadata for the invite rewards program including the reward period and reward distribution details.
  */
 export const getRewardsMetadata = <ThrowOnError extends boolean = false>(
-	options: Options<GetRewardsMetadataData, ThrowOnError>,
+  options: Options<GetRewardsMetadataData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).get<
-		GetRewardsMetadataResponses,
-		GetRewardsMetadataErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetRewardsMetadataData.parseAsync(data);
-		},
-		responseTransformer: getRewardsMetadataResponseTransformer,
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/rewards-metadata",
-		...options,
-	});
+  return (options.client ?? client).get<
+    GetRewardsMetadataResponses,
+    GetRewardsMetadataErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetRewardsMetadataData.parseAsync(data);
+    },
+    responseTransformer: getRewardsMetadataResponseTransformer,
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/rewards-metadata",
+    ...options,
+  });
 };
 
 /**
@@ -1643,25 +1643,25 @@ export const getRewardsMetadata = <ThrowOnError extends boolean = false>(
  * Retrieves the user's XP rewards, including total USDC earned and referral count.
  */
 export const getXpRewards = <ThrowOnError extends boolean = false>(
-	options?: Options<GetXpRewardsData, ThrowOnError>,
+  options?: Options<GetXpRewardsData, ThrowOnError>,
 ) => {
-	return (options?.client ?? client).get<
-		GetXpRewardsResponses,
-		GetXpRewardsErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetXpRewardsData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/xp-rewards",
-		...options,
-	});
+  return (options?.client ?? client).get<
+    GetXpRewardsResponses,
+    GetXpRewardsErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetXpRewardsData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/xp-rewards",
+    ...options,
+  });
 };
 
 /**
@@ -1670,29 +1670,29 @@ export const getXpRewards = <ThrowOnError extends boolean = false>(
  * Retrieves a summary of claimable XP rewards for the authenticated user.
  */
 export const getXpClaimableSummary = <ThrowOnError extends boolean = false>(
-	options: Options<GetXpClaimableSummaryData, ThrowOnError>,
+  options: Options<GetXpClaimableSummaryData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).post<
-		GetXpClaimableSummaryResponses,
-		GetXpClaimableSummaryErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetXpClaimableSummaryData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/xp-claimable-summary",
-		...options,
-		headers: {
-			"Content-Type": "application/json",
-			...options.headers,
-		},
-	});
+  return (options.client ?? client).post<
+    GetXpClaimableSummaryResponses,
+    GetXpClaimableSummaryErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetXpClaimableSummaryData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/xp-claimable-summary",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
 };
 
 /**
@@ -1701,25 +1701,25 @@ export const getXpClaimableSummary = <ThrowOnError extends boolean = false>(
  * Returns the most recent casts bookmarked by the user.
  */
 export const getBookmarkedCasts = <ThrowOnError extends boolean = false>(
-	options?: Options<GetBookmarkedCastsData, ThrowOnError>,
+  options?: Options<GetBookmarkedCastsData, ThrowOnError>,
 ) => {
-	return (options?.client ?? client).get<
-		GetBookmarkedCastsResponses,
-		GetBookmarkedCastsErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetBookmarkedCastsData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/bookmarked-casts",
-		...options,
-	});
+  return (options?.client ?? client).get<
+    GetBookmarkedCastsResponses,
+    GetBookmarkedCastsErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetBookmarkedCastsData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/bookmarked-casts",
+    ...options,
+  });
 };
 
 /**
@@ -1728,25 +1728,25 @@ export const getBookmarkedCasts = <ThrowOnError extends boolean = false>(
  * Returns starter packs created by a specific user.
  */
 export const getUserStarterPacks = <ThrowOnError extends boolean = false>(
-	options: Options<GetUserStarterPacksData, ThrowOnError>,
+  options: Options<GetUserStarterPacksData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).get<
-		GetUserStarterPacksResponses,
-		GetUserStarterPacksErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetUserStarterPacksData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/starter-packs",
-		...options,
-	});
+  return (options.client ?? client).get<
+    GetUserStarterPacksResponses,
+    GetUserStarterPacksErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetUserStarterPacksData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/starter-packs",
+    ...options,
+  });
 };
 
 /**
@@ -1755,25 +1755,25 @@ export const getUserStarterPacks = <ThrowOnError extends boolean = false>(
  * Returns a list of suggested starter packs.
  */
 export const getSuggestedStarterPacks = <ThrowOnError extends boolean = false>(
-	options?: Options<GetSuggestedStarterPacksData, ThrowOnError>,
+  options?: Options<GetSuggestedStarterPacksData, ThrowOnError>,
 ) => {
-	return (options?.client ?? client).get<
-		GetSuggestedStarterPacksResponses,
-		GetSuggestedStarterPacksErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetSuggestedStarterPacksData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/starter-packs/suggested",
-		...options,
-	});
+  return (options?.client ?? client).get<
+    GetSuggestedStarterPacksResponses,
+    GetSuggestedStarterPacksErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetSuggestedStarterPacksData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/starter-packs/suggested",
+    ...options,
+  });
 };
 
 /**
@@ -1782,25 +1782,25 @@ export const getSuggestedStarterPacks = <ThrowOnError extends boolean = false>(
  * Returns a specific starter pack.
  */
 export const getStarterPack = <ThrowOnError extends boolean = false>(
-	options: Options<GetStarterPackData, ThrowOnError>,
+  options: Options<GetStarterPackData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).get<
-		GetStarterPackResponses,
-		GetStarterPackErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetStarterPackData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/starter-pack",
-		...options,
-	});
+  return (options.client ?? client).get<
+    GetStarterPackResponses,
+    GetStarterPackErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetStarterPackData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/starter-pack",
+    ...options,
+  });
 };
 
 /**
@@ -1809,29 +1809,29 @@ export const getStarterPack = <ThrowOnError extends boolean = false>(
  * Updates the specified starter pack.
  */
 export const updateStarterPack = <ThrowOnError extends boolean = false>(
-	options: Options<UpdateStarterPackData, ThrowOnError>,
+  options: Options<UpdateStarterPackData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).patch<
-		UpdateStarterPackResponses,
-		UpdateStarterPackErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zUpdateStarterPackData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/starter-pack",
-		...options,
-		headers: {
-			"Content-Type": "application/json",
-			...options.headers,
-		},
-	});
+  return (options.client ?? client).patch<
+    UpdateStarterPackResponses,
+    UpdateStarterPackErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zUpdateStarterPackData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/starter-pack",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
 };
 
 /**
@@ -1840,25 +1840,25 @@ export const updateStarterPack = <ThrowOnError extends boolean = false>(
  * Returns a list of users associated with a given starter pack.
  */
 export const getStarterPackUsers = <ThrowOnError extends boolean = false>(
-	options: Options<GetStarterPackUsersData, ThrowOnError>,
+  options: Options<GetStarterPackUsersData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).get<
-		GetStarterPackUsersResponses,
-		GetStarterPackUsersErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetStarterPackUsersData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/starter-pack-users",
-		...options,
-	});
+  return (options.client ?? client).get<
+    GetStarterPackUsersResponses,
+    GetStarterPackUsersErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetStarterPackUsersData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/starter-pack-users",
+    ...options,
+  });
 };
 
 /**
@@ -1867,25 +1867,25 @@ export const getStarterPackUsers = <ThrowOnError extends boolean = false>(
  * Returns metadata about a channel.
  */
 export const getChannel = <ThrowOnError extends boolean = false>(
-	options: Options<GetChannelData, ThrowOnError>,
+  options: Options<GetChannelData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).get<
-		GetChannelResponses,
-		GetChannelErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetChannelData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/channel",
-		...options,
-	});
+  return (options.client ?? client).get<
+    GetChannelResponses,
+    GetChannelErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetChannelData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/channel",
+    ...options,
+  });
 };
 
 /**
@@ -1894,25 +1894,25 @@ export const getChannel = <ThrowOnError extends boolean = false>(
  * Returns users who are members of a specific channel.
  */
 export const getChannelUsers = <ThrowOnError extends boolean = false>(
-	options: Options<GetChannelUsersData, ThrowOnError>,
+  options: Options<GetChannelUsersData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).get<
-		GetChannelUsersResponses,
-		GetChannelUsersErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetChannelUsersData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v1/channel-users",
-		...options,
-	});
+  return (options.client ?? client).get<
+    GetChannelUsersResponses,
+    GetChannelUsersErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetChannelUsersData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v1/channel-users",
+    ...options,
+  });
 };
 
 /**
@@ -1921,25 +1921,25 @@ export const getChannelUsers = <ThrowOnError extends boolean = false>(
  * Returns a list of users followed by a specified FID.
  */
 export const getFollowing = <ThrowOnError extends boolean = false>(
-	options: Options<GetFollowingData, ThrowOnError>,
+  options: Options<GetFollowingData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).get<
-		GetFollowingResponses,
-		GetFollowingErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetFollowingData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/following",
-		...options,
-	});
+  return (options.client ?? client).get<
+    GetFollowingResponses,
+    GetFollowingErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetFollowingData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/following",
+    ...options,
+  });
 };
 
 /**
@@ -1948,25 +1948,25 @@ export const getFollowing = <ThrowOnError extends boolean = false>(
  * Returns a list of users who follow the specified FID.
  */
 export const getFollowers = <ThrowOnError extends boolean = false>(
-	options: Options<GetFollowersData, ThrowOnError>,
+  options: Options<GetFollowersData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).get<
-		GetFollowersResponses,
-		GetFollowersErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetFollowersData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/followers",
-		...options,
-	});
+  return (options.client ?? client).get<
+    GetFollowersResponses,
+    GetFollowersErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetFollowersData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/followers",
+    ...options,
+  });
 };
 
 /**
@@ -1975,25 +1975,25 @@ export const getFollowers = <ThrowOnError extends boolean = false>(
  * Returns a list of users who follow the given FID and are followed by the viewer.
  */
 export const getMutualFollowers = <ThrowOnError extends boolean = false>(
-	options: Options<GetMutualFollowersData, ThrowOnError>,
+  options: Options<GetMutualFollowersData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).get<
-		GetMutualFollowersResponses,
-		GetMutualFollowersErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetMutualFollowersData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/followers-you-know",
-		...options,
-	});
+  return (options.client ?? client).get<
+    GetMutualFollowersResponses,
+    GetMutualFollowersErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetMutualFollowersData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/followers-you-know",
+    ...options,
+  });
 };
 
 /**
@@ -2002,25 +2002,25 @@ export const getMutualFollowers = <ThrowOnError extends boolean = false>(
  * Returns a list of top FrameApps with optional pagination.
  */
 export const getTopFrameApps = <ThrowOnError extends boolean = false>(
-	options?: Options<GetTopFrameAppsData, ThrowOnError>,
+  options?: Options<GetTopFrameAppsData, ThrowOnError>,
 ) => {
-	return (options?.client ?? client).get<
-		GetTopFrameAppsResponses,
-		GetTopFrameAppsErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetTopFrameAppsData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v1/top-frameapps",
-		...options,
-	});
+  return (options?.client ?? client).get<
+    GetTopFrameAppsResponses,
+    GetTopFrameAppsErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetTopFrameAppsData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v1/top-frameapps",
+    ...options,
+  });
 };
 
 /**
@@ -2029,25 +2029,25 @@ export const getTopFrameApps = <ThrowOnError extends boolean = false>(
  * Returns a list of top mini apps with optional pagination.
  */
 export const getTopMiniApps = <ThrowOnError extends boolean = false>(
-	options?: Options<GetTopMiniAppsData, ThrowOnError>,
+  options?: Options<GetTopMiniAppsData, ThrowOnError>,
 ) => {
-	return (options?.client ?? client).get<
-		GetTopMiniAppsResponses,
-		GetTopMiniAppsErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetTopMiniAppsData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v1/top-mini-apps",
-		...options,
-	});
+  return (options?.client ?? client).get<
+    GetTopMiniAppsResponses,
+    GetTopMiniAppsErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetTopMiniAppsData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v1/top-mini-apps",
+    ...options,
+  });
 };
 
 /**
@@ -2056,25 +2056,25 @@ export const getTopMiniApps = <ThrowOnError extends boolean = false>(
  * Returns verified Ethereum addresses associated with a specific FID.
  */
 export const getVerifications = <ThrowOnError extends boolean = false>(
-	options: Options<GetVerificationsData, ThrowOnError>,
+  options: Options<GetVerificationsData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).get<
-		GetVerificationsResponses,
-		GetVerificationsErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetVerificationsData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/verifications",
-		...options,
-	});
+  return (options.client ?? client).get<
+    GetVerificationsResponses,
+    GetVerificationsErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetVerificationsData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/verifications",
+    ...options,
+  });
 };
 
 /**
@@ -2083,25 +2083,25 @@ export const getVerifications = <ThrowOnError extends boolean = false>(
  * Returns a list of muted keywords for the authenticated user.
  */
 export const getMutedKeywords = <ThrowOnError extends boolean = false>(
-	options?: Options<GetMutedKeywordsData, ThrowOnError>,
+  options?: Options<GetMutedKeywordsData, ThrowOnError>,
 ) => {
-	return (options?.client ?? client).get<
-		GetMutedKeywordsResponses,
-		GetMutedKeywordsErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetMutedKeywordsData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/get-muted-keywords",
-		...options,
-	});
+  return (options?.client ?? client).get<
+    GetMutedKeywordsResponses,
+    GetMutedKeywordsErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetMutedKeywordsData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/get-muted-keywords",
+    ...options,
+  });
 };
 
 /**
@@ -2110,496 +2110,496 @@ export const getMutedKeywords = <ThrowOnError extends boolean = false>(
  * Mutes a keyword for the authenticated user with specified properties.
  */
 export const muteKeyword = <ThrowOnError extends boolean = false>(
-	options: Options<MuteKeywordData, ThrowOnError>,
+  options: Options<MuteKeywordData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).post<
-		MuteKeywordResponses,
-		MuteKeywordErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zMuteKeywordData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/mute-keyword",
-		...options,
-		headers: {
-			"Content-Type": "application/json",
-			...options.headers,
-		},
-	});
+  return (options.client ?? client).post<
+    MuteKeywordResponses,
+    MuteKeywordErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zMuteKeywordData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/mute-keyword",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
 };
 
 /**
  * Unmute a keyword
  */
 export const unmuteKeyword = <ThrowOnError extends boolean = false>(
-	options: Options<UnmuteKeywordData, ThrowOnError>,
+  options: Options<UnmuteKeywordData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).post<
-		UnmuteKeywordResponses,
-		UnmuteKeywordErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zUnmuteKeywordData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/unmute-keyword",
-		...options,
-		headers: {
-			"Content-Type": "application/json",
-			...options.headers,
-		},
-	});
+  return (options.client ?? client).post<
+    UnmuteKeywordResponses,
+    UnmuteKeywordErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zUnmuteKeywordData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/unmute-keyword",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
 };
 
 /**
  * Unlike a cast
  */
 export const unlikeCast = <ThrowOnError extends boolean = false>(
-	options: Options<UnlikeCastData, ThrowOnError>,
+  options: Options<UnlikeCastData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).delete<
-		UnlikeCastResponses,
-		UnlikeCastErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zUnlikeCastData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/cast-likes",
-		...options,
-		headers: {
-			"Content-Type": "application/json",
-			...options.headers,
-		},
-	});
+  return (options.client ?? client).delete<
+    UnlikeCastResponses,
+    UnlikeCastErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zUnlikeCastData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/cast-likes",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
 };
 
 /**
  * Get cast likes
  */
 export const getCastLikes = <ThrowOnError extends boolean = false>(
-	options: Options<GetCastLikesData, ThrowOnError>,
+  options: Options<GetCastLikesData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).get<
-		GetCastLikesResponses,
-		GetCastLikesErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetCastLikesData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/cast-likes",
-		...options,
-	});
+  return (options.client ?? client).get<
+    GetCastLikesResponses,
+    GetCastLikesErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetCastLikesData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/cast-likes",
+    ...options,
+  });
 };
 
 /**
  * Like a cast
  */
 export const likeCast = <ThrowOnError extends boolean = false>(
-	options: Options<LikeCastData, ThrowOnError>,
+  options: Options<LikeCastData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).put<
-		LikeCastResponses,
-		LikeCastErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zLikeCastData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/cast-likes",
-		...options,
-		headers: {
-			"Content-Type": "application/json",
-			...options.headers,
-		},
-	});
+  return (options.client ?? client).put<
+    LikeCastResponses,
+    LikeCastErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zLikeCastData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/cast-likes",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
 };
 
 /**
  * Undo recast
  */
 export const undoRecast = <ThrowOnError extends boolean = false>(
-	options: Options<UndoRecastData, ThrowOnError>,
+  options: Options<UndoRecastData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).delete<
-		UndoRecastResponses,
-		UndoRecastErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zUndoRecastData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/recasts",
-		...options,
-		headers: {
-			"Content-Type": "application/json",
-			...options.headers,
-		},
-	});
+  return (options.client ?? client).delete<
+    UndoRecastResponses,
+    UndoRecastErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zUndoRecastData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/recasts",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
 };
 
 /**
  * Recast a cast
  */
 export const recastCast = <ThrowOnError extends boolean = false>(
-	options: Options<RecastCastData, ThrowOnError>,
+  options: Options<RecastCastData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).put<
-		RecastCastResponses,
-		RecastCastErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zRecastCastData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/recasts",
-		...options,
-		headers: {
-			"Content-Type": "application/json",
-			...options.headers,
-		},
-	});
+  return (options.client ?? client).put<
+    RecastCastResponses,
+    RecastCastErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zRecastCastData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/recasts",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
 };
 
 /**
  * Attach embeds to a cast
  */
 export const attachEmbeds = <ThrowOnError extends boolean = false>(
-	options: Options<AttachEmbedsData, ThrowOnError>,
+  options: Options<AttachEmbedsData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).put<
-		AttachEmbedsResponses,
-		AttachEmbedsErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zAttachEmbedsData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/cast-attachments",
-		...options,
-		headers: {
-			"Content-Type": "application/json",
-			...options.headers,
-		},
-	});
+  return (options.client ?? client).put<
+    AttachEmbedsResponses,
+    AttachEmbedsErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zAttachEmbedsData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/cast-attachments",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
 };
 
 /**
  * Get cast recasters
  */
 export const getCastRecasters = <ThrowOnError extends boolean = false>(
-	options: Options<GetCastRecastersData, ThrowOnError>,
+  options: Options<GetCastRecastersData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).get<
-		GetCastRecastersResponses,
-		GetCastRecastersErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetCastRecastersData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/cast-recasters",
-		...options,
-	});
+  return (options.client ?? client).get<
+    GetCastRecastersResponses,
+    GetCastRecastersErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetCastRecastersData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/cast-recasters",
+    ...options,
+  });
 };
 
 /**
  * Get quotes of a cast
  */
 export const getCastQuotes = <ThrowOnError extends boolean = false>(
-	options: Options<GetCastQuotesData, ThrowOnError>,
+  options: Options<GetCastQuotesData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).get<
-		GetCastQuotesResponses,
-		GetCastQuotesErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetCastQuotesData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/cast-quotes",
-		...options,
-	});
+  return (options.client ?? client).get<
+    GetCastQuotesResponses,
+    GetCastQuotesErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetCastQuotesData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/cast-quotes",
+    ...options,
+  });
 };
 
 /**
  * Get current user
  */
 export const getCurrentUser = <ThrowOnError extends boolean = false>(
-	options?: Options<GetCurrentUserData, ThrowOnError>,
+  options?: Options<GetCurrentUserData, ThrowOnError>,
 ) => {
-	return (options?.client ?? client).get<
-		GetCurrentUserResponses,
-		GetCurrentUserErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetCurrentUserData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/me",
-		...options,
-	});
+  return (options?.client ?? client).get<
+    GetCurrentUserResponses,
+    GetCurrentUserErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetCurrentUserData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/me",
+    ...options,
+  });
 };
 
 /**
  * Search for channels
  */
 export const searchChannels = <ThrowOnError extends boolean = false>(
-	options?: Options<SearchChannelsData, ThrowOnError>,
+  options?: Options<SearchChannelsData, ThrowOnError>,
 ) => {
-	return (options?.client ?? client).get<
-		SearchChannelsResponses,
-		SearchChannelsErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zSearchChannelsData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/search-channels",
-		...options,
-	});
+  return (options?.client ?? client).get<
+    SearchChannelsResponses,
+    SearchChannelsErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zSearchChannelsData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/search-channels",
+    ...options,
+  });
 };
 
 /**
  * Get draft cast storms
  */
 export const getDraftCasts = <ThrowOnError extends boolean = false>(
-	options?: Options<GetDraftCastsData, ThrowOnError>,
+  options?: Options<GetDraftCastsData, ThrowOnError>,
 ) => {
-	return (options?.client ?? client).get<
-		GetDraftCastsResponses,
-		GetDraftCastsErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetDraftCastsData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/draft-caststorms",
-		...options,
-	});
+  return (options?.client ?? client).get<
+    GetDraftCastsResponses,
+    GetDraftCastsErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetDraftCastsData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/draft-caststorms",
+    ...options,
+  });
 };
 
 /**
  * Create a new draft casts
  */
 export const createDraftCasts = <ThrowOnError extends boolean = false>(
-	options: Options<CreateDraftCastsData, ThrowOnError>,
+  options: Options<CreateDraftCastsData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).post<
-		CreateDraftCastsResponses,
-		CreateDraftCastsErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zCreateDraftCastsData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/draft-caststorms",
-		...options,
-		headers: {
-			"Content-Type": "application/json",
-			...options.headers,
-		},
-	});
+  return (options.client ?? client).post<
+    CreateDraftCastsResponses,
+    CreateDraftCastsErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zCreateDraftCastsData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/draft-caststorms",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
 };
 
 /**
  * Delete a draft cast
  */
 export const deleteDraftCast = <ThrowOnError extends boolean = false>(
-	options: Options<DeleteDraftCastData, ThrowOnError>,
+  options: Options<DeleteDraftCastData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).delete<
-		DeleteDraftCastResponses,
-		DeleteDraftCastErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zDeleteDraftCastData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/draft-casts",
-		...options,
-		headers: {
-			"Content-Type": "application/json",
-			...options.headers,
-		},
-	});
+  return (options.client ?? client).delete<
+    DeleteDraftCastResponses,
+    DeleteDraftCastErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zDeleteDraftCastData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/draft-casts",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
 };
 
 /**
  * Delete a cast
  */
 export const deleteCast = <ThrowOnError extends boolean = false>(
-	options: Options<DeleteCastData, ThrowOnError>,
+  options: Options<DeleteCastData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).delete<
-		DeleteCastResponses,
-		DeleteCastErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zDeleteCastData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/casts",
-		...options,
-		headers: {
-			"Content-Type": "application/json",
-			...options.headers,
-		},
-	});
+  return (options.client ?? client).delete<
+    DeleteCastResponses,
+    DeleteCastErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zDeleteCastData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/casts",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
 };
 
 /**
  * Retrieve casts for a specific user
  */
 export const getCastsByFid = <ThrowOnError extends boolean = false>(
-	options: Options<GetCastsByFidData, ThrowOnError>,
+  options: Options<GetCastsByFidData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).get<
-		GetCastsByFidResponses,
-		GetCastsByFidErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetCastsByFidData.parseAsync(data);
-		},
-		responseTransformer: getCastsByFidResponseTransformer,
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/casts",
-		...options,
-	});
+  return (options.client ?? client).get<
+    GetCastsByFidResponses,
+    GetCastsByFidErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetCastsByFidData.parseAsync(data);
+    },
+    responseTransformer: getCastsByFidResponseTransformer,
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/casts",
+    ...options,
+  });
 };
 
 /**
  * Create a new cast
  */
 export const createCast = <ThrowOnError extends boolean = false>(
-	options: Options<CreateCastData, ThrowOnError>,
+  options: Options<CreateCastData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).post<
-		CreateCastResponses,
-		CreateCastErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zCreateCastData.parseAsync(data);
-		},
-		responseTransformer: createCastResponseTransformer,
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/casts",
-		...options,
-		headers: {
-			"Content-Type": "application/json",
-			...options.headers,
-		},
-	});
+  return (options.client ?? client).post<
+    CreateCastResponses,
+    CreateCastErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zCreateCastData.parseAsync(data);
+    },
+    responseTransformer: createCastResponseTransformer,
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/casts",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
 };
 
 /**
@@ -2608,804 +2608,804 @@ export const createCast = <ThrowOnError extends boolean = false>(
  * Returns a list of all channels on Warpcast
  */
 export const getAllChannels = <ThrowOnError extends boolean = false>(
-	options?: Options<GetAllChannelsData, ThrowOnError>,
+  options?: Options<GetAllChannelsData, ThrowOnError>,
 ) => {
-	return (options?.client ?? client).get<
-		GetAllChannelsResponses,
-		GetAllChannelsErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetAllChannelsData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/all-channels",
-		...options,
-	});
+  return (options?.client ?? client).get<
+    GetAllChannelsResponses,
+    GetAllChannelsErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetAllChannelsData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/all-channels",
+    ...options,
+  });
 };
 
 /**
  * Get details of a specific channel
  */
 export const getChannelDetails = <ThrowOnError extends boolean = false>(
-	options: Options<GetChannelDetailsData, ThrowOnError>,
+  options: Options<GetChannelDetailsData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).get<
-		GetChannelDetailsResponses,
-		GetChannelDetailsErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetChannelDetailsData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v1/channel",
-		...options,
-	});
+  return (options.client ?? client).get<
+    GetChannelDetailsResponses,
+    GetChannelDetailsErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetChannelDetailsData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v1/channel",
+    ...options,
+  });
 };
 
 /**
  * Get followers of a channel
  */
 export const getChannelFollowers = <ThrowOnError extends boolean = false>(
-	options: Options<GetChannelFollowersData, ThrowOnError>,
+  options: Options<GetChannelFollowersData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).get<
-		GetChannelFollowersResponses,
-		GetChannelFollowersErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetChannelFollowersData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v1/channel-followers",
-		...options,
-	});
+  return (options.client ?? client).get<
+    GetChannelFollowersResponses,
+    GetChannelFollowersErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetChannelFollowersData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v1/channel-followers",
+    ...options,
+  });
 };
 
 /**
  * Get list of channels followed by a user
  */
 export const getUserFollowedChannels = <ThrowOnError extends boolean = false>(
-	options: Options<GetUserFollowedChannelsData, ThrowOnError>,
+  options: Options<GetUserFollowedChannelsData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).get<
-		GetUserFollowedChannelsResponses,
-		GetUserFollowedChannelsErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetUserFollowedChannelsData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v1/user-following-channels",
-		...options,
-	});
+  return (options.client ?? client).get<
+    GetUserFollowedChannelsResponses,
+    GetUserFollowedChannelsErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetUserFollowedChannelsData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v1/user-following-channels",
+    ...options,
+  });
 };
 
 /**
  * Check if a user is following a channel
  */
 export const checkUserChannelFollowStatus = <
-	ThrowOnError extends boolean = false,
+  ThrowOnError extends boolean = false,
 >(
-	options: Options<CheckUserChannelFollowStatusData, ThrowOnError>,
+  options: Options<CheckUserChannelFollowStatusData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).get<
-		CheckUserChannelFollowStatusResponses,
-		CheckUserChannelFollowStatusErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zCheckUserChannelFollowStatusData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v1/user-channel",
-		...options,
-	});
+  return (options.client ?? client).get<
+    CheckUserChannelFollowStatusResponses,
+    CheckUserChannelFollowStatusErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zCheckUserChannelFollowStatusData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v1/user-channel",
+    ...options,
+  });
 };
 
 /**
  * Get members of a channel
  */
 export const getChannelMembers = <ThrowOnError extends boolean = false>(
-	options: Options<GetChannelMembersData, ThrowOnError>,
+  options: Options<GetChannelMembersData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).get<
-		GetChannelMembersResponses,
-		GetChannelMembersErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetChannelMembersData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/fc/channel-members",
-		...options,
-	});
+  return (options.client ?? client).get<
+    GetChannelMembersResponses,
+    GetChannelMembersErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetChannelMembersData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/fc/channel-members",
+    ...options,
+  });
 };
 
 /**
  * Remove a user's invite from a channel
  */
 export const removeChannelInvite = <ThrowOnError extends boolean = false>(
-	options: Options<RemoveChannelInviteData, ThrowOnError>,
+  options: Options<RemoveChannelInviteData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).delete<
-		RemoveChannelInviteResponses,
-		RemoveChannelInviteErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zRemoveChannelInviteData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/fc/channel-invites",
-		...options,
-		headers: {
-			"Content-Type": "application/json",
-			...options.headers,
-		},
-	});
+  return (options.client ?? client).delete<
+    RemoveChannelInviteResponses,
+    RemoveChannelInviteErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zRemoveChannelInviteData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/fc/channel-invites",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
 };
 
 /**
  * Get channel invites
  */
 export const getChannelInvites = <ThrowOnError extends boolean = false>(
-	options: Options<GetChannelInvitesData, ThrowOnError>,
+  options: Options<GetChannelInvitesData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).get<
-		GetChannelInvitesResponses,
-		GetChannelInvitesErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetChannelInvitesData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/fc/channel-invites",
-		...options,
-	});
+  return (options.client ?? client).get<
+    GetChannelInvitesResponses,
+    GetChannelInvitesErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetChannelInvitesData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/fc/channel-invites",
+    ...options,
+  });
 };
 
 /**
  * Accept a channel invite
  */
 export const acceptChannelInvite = <ThrowOnError extends boolean = false>(
-	options: Options<AcceptChannelInviteData, ThrowOnError>,
+  options: Options<AcceptChannelInviteData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).patch<
-		AcceptChannelInviteResponses,
-		AcceptChannelInviteErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zAcceptChannelInviteData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/fc/channel-invites",
-		...options,
-		headers: {
-			"Content-Type": "application/json",
-			...options.headers,
-		},
-	});
+  return (options.client ?? client).patch<
+    AcceptChannelInviteResponses,
+    AcceptChannelInviteErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zAcceptChannelInviteData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/fc/channel-invites",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
 };
 
 /**
  * Invite a user to a channel
  */
 export const inviteUserToChannel = <ThrowOnError extends boolean = false>(
-	options: Options<InviteUserToChannelData, ThrowOnError>,
+  options: Options<InviteUserToChannelData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).post<
-		InviteUserToChannelResponses,
-		InviteUserToChannelErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zInviteUserToChannelData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/fc/channel-invites",
-		...options,
-		headers: {
-			"Content-Type": "application/json",
-			...options.headers,
-		},
-	});
+  return (options.client ?? client).post<
+    InviteUserToChannelResponses,
+    InviteUserToChannelErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zInviteUserToChannelData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/fc/channel-invites",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
 };
 
 /**
  * Get moderated casts for a channel
  */
 export const getChannelModeratedCasts = <ThrowOnError extends boolean = false>(
-	options: Options<GetChannelModeratedCastsData, ThrowOnError>,
+  options: Options<GetChannelModeratedCastsData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).get<
-		GetChannelModeratedCastsResponses,
-		GetChannelModeratedCastsErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetChannelModeratedCastsData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/fc/moderated-casts",
-		...options,
-	});
+  return (options.client ?? client).get<
+    GetChannelModeratedCastsResponses,
+    GetChannelModeratedCastsErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetChannelModeratedCastsData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/fc/moderated-casts",
+    ...options,
+  });
 };
 
 /**
  * Get restricted users in a channel
  */
 export const getChannelRestrictedUsers = <ThrowOnError extends boolean = false>(
-	options: Options<GetChannelRestrictedUsersData, ThrowOnError>,
+  options: Options<GetChannelRestrictedUsersData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).get<
-		GetChannelRestrictedUsersResponses,
-		GetChannelRestrictedUsersErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetChannelRestrictedUsersData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/fc/channel-restricted-users",
-		...options,
-	});
+  return (options.client ?? client).get<
+    GetChannelRestrictedUsersResponses,
+    GetChannelRestrictedUsersErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetChannelRestrictedUsersData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/fc/channel-restricted-users",
+    ...options,
+  });
 };
 
 /**
  * Unban a user from a channel
  */
 export const unbanUserFromChannel = <ThrowOnError extends boolean = false>(
-	options: Options<UnbanUserFromChannelData, ThrowOnError>,
+  options: Options<UnbanUserFromChannelData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).delete<
-		UnbanUserFromChannelResponses,
-		UnbanUserFromChannelErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zUnbanUserFromChannelData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/fc/channel-bans",
-		...options,
-		headers: {
-			"Content-Type": "application/json",
-			...options.headers,
-		},
-	});
+  return (options.client ?? client).delete<
+    UnbanUserFromChannelResponses,
+    UnbanUserFromChannelErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zUnbanUserFromChannelData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/fc/channel-bans",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
 };
 
 /**
  * Get banned users in a channel
  */
 export const getChannelBannedUsers = <ThrowOnError extends boolean = false>(
-	options: Options<GetChannelBannedUsersData, ThrowOnError>,
+  options: Options<GetChannelBannedUsersData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).get<
-		GetChannelBannedUsersResponses,
-		GetChannelBannedUsersErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetChannelBannedUsersData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/fc/channel-bans",
-		...options,
-	});
+  return (options.client ?? client).get<
+    GetChannelBannedUsersResponses,
+    GetChannelBannedUsersErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetChannelBannedUsersData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/fc/channel-bans",
+    ...options,
+  });
 };
 
 /**
  * Ban a user from a channel
  */
 export const banUserFromChannel = <ThrowOnError extends boolean = false>(
-	options: Options<BanUserFromChannelData, ThrowOnError>,
+  options: Options<BanUserFromChannelData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).post<
-		BanUserFromChannelResponses,
-		BanUserFromChannelErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zBanUserFromChannelData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/fc/channel-bans",
-		...options,
-		headers: {
-			"Content-Type": "application/json",
-			...options.headers,
-		},
-	});
+  return (options.client ?? client).post<
+    BanUserFromChannelResponses,
+    BanUserFromChannelErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zBanUserFromChannelData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/fc/channel-bans",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
 };
 
 /**
  * Unfollow a channel
  */
 export const unfollowChannel = <ThrowOnError extends boolean = false>(
-	options: Options<UnfollowChannelData, ThrowOnError>,
+  options: Options<UnfollowChannelData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).delete<
-		UnfollowChannelResponses,
-		UnfollowChannelErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zUnfollowChannelData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/fc/channel-follows",
-		...options,
-		headers: {
-			"Content-Type": "application/json",
-			...options.headers,
-		},
-	});
+  return (options.client ?? client).delete<
+    UnfollowChannelResponses,
+    UnfollowChannelErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zUnfollowChannelData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/fc/channel-follows",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
 };
 
 /**
  * Follow a channel
  */
 export const followChannel = <ThrowOnError extends boolean = false>(
-	options: Options<FollowChannelData, ThrowOnError>,
+  options: Options<FollowChannelData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).post<
-		FollowChannelResponses,
-		FollowChannelErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zFollowChannelData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/fc/channel-follows",
-		...options,
-		headers: {
-			"Content-Type": "application/json",
-			...options.headers,
-		},
-	});
+  return (options.client ?? client).post<
+    FollowChannelResponses,
+    FollowChannelErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zFollowChannelData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/fc/channel-follows",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
 };
 
 /**
  * Moderate a cast (e.g., hide it)
  */
 export const moderateCast = <ThrowOnError extends boolean = false>(
-	options: Options<ModerateCastData, ThrowOnError>,
+  options: Options<ModerateCastData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).post<
-		ModerateCastResponses,
-		ModerateCastErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zModerateCastData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/fc/moderate-cast",
-		...options,
-		headers: {
-			"Content-Type": "application/json",
-			...options.headers,
-		},
-	});
+  return (options.client ?? client).post<
+    ModerateCastResponses,
+    ModerateCastErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zModerateCastData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/fc/moderate-cast",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
 };
 
 /**
  * Unpin a cast from a channel
  */
 export const unpinCastFromChannel = <ThrowOnError extends boolean = false>(
-	options: Options<UnpinCastFromChannelData, ThrowOnError>,
+  options: Options<UnpinCastFromChannelData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).delete<
-		UnpinCastFromChannelResponses,
-		UnpinCastFromChannelErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zUnpinCastFromChannelData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/fc/pinned-casts",
-		...options,
-		headers: {
-			"Content-Type": "application/json",
-			...options.headers,
-		},
-	});
+  return (options.client ?? client).delete<
+    UnpinCastFromChannelResponses,
+    UnpinCastFromChannelErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zUnpinCastFromChannelData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/fc/pinned-casts",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
 };
 
 /**
  * Pin a cast to a channel
  */
 export const pinCastToChannel = <ThrowOnError extends boolean = false>(
-	options: Options<PinCastToChannelData, ThrowOnError>,
+  options: Options<PinCastToChannelData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).put<
-		PinCastToChannelResponses,
-		PinCastToChannelErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zPinCastToChannelData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/fc/pinned-casts",
-		...options,
-		headers: {
-			"Content-Type": "application/json",
-			...options.headers,
-		},
-	});
+  return (options.client ?? client).put<
+    PinCastToChannelResponses,
+    PinCastToChannelErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zPinCastToChannelData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/fc/pinned-casts",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
 };
 
 /**
  * Get discoverable actions
  */
 export const getDiscoverableActions = <ThrowOnError extends boolean = false>(
-	options: Options<GetDiscoverableActionsData, ThrowOnError>,
+  options: Options<GetDiscoverableActionsData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).get<
-		GetDiscoverableActionsResponses,
-		GetDiscoverableActionsErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetDiscoverableActionsData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/discover-actions",
-		...options,
-	});
+  return (options.client ?? client).get<
+    GetDiscoverableActionsResponses,
+    GetDiscoverableActionsErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetDiscoverableActionsData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/discover-actions",
+    ...options,
+  });
 };
 
 /**
  * Get top discoverable composer actions
  */
 export const getDiscoverableComposerActions = <
-	ThrowOnError extends boolean = false,
+  ThrowOnError extends boolean = false,
 >(
-	options: Options<GetDiscoverableComposerActionsData, ThrowOnError>,
+  options: Options<GetDiscoverableComposerActionsData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).get<
-		GetDiscoverableComposerActionsResponses,
-		GetDiscoverableComposerActionsErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetDiscoverableComposerActionsData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/discover-composer-actions",
-		...options,
-	});
+  return (options.client ?? client).get<
+    GetDiscoverableComposerActionsResponses,
+    GetDiscoverableComposerActionsErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetDiscoverableComposerActionsData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/discover-composer-actions",
+    ...options,
+  });
 };
 
 /**
  * Unblock a user
  */
 export const unblockUser = <ThrowOnError extends boolean = false>(
-	options: Options<UnblockUserData, ThrowOnError>,
+  options: Options<UnblockUserData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).delete<
-		UnblockUserResponses,
-		UnblockUserErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zUnblockUserData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/fc/blocked-users",
-		...options,
-		headers: {
-			"Content-Type": "application/json",
-			...options.headers,
-		},
-	});
+  return (options.client ?? client).delete<
+    UnblockUserResponses,
+    UnblockUserErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zUnblockUserData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/fc/blocked-users",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
 };
 
 /**
  * Get list of blocked users
  */
 export const getBlockedUsers = <ThrowOnError extends boolean = false>(
-	options?: Options<GetBlockedUsersData, ThrowOnError>,
+  options?: Options<GetBlockedUsersData, ThrowOnError>,
 ) => {
-	return (options?.client ?? client).get<
-		GetBlockedUsersResponses,
-		GetBlockedUsersErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetBlockedUsersData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/fc/blocked-users",
-		...options,
-	});
+  return (options?.client ?? client).get<
+    GetBlockedUsersResponses,
+    GetBlockedUsersErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetBlockedUsersData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/fc/blocked-users",
+    ...options,
+  });
 };
 
 /**
  * Block a user
  */
 export const blockUser = <ThrowOnError extends boolean = false>(
-	options: Options<BlockUserData, ThrowOnError>,
+  options: Options<BlockUserData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).post<
-		BlockUserResponses,
-		BlockUserErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zBlockUserData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/fc/blocked-users",
-		...options,
-		headers: {
-			"Content-Type": "application/json",
-			...options.headers,
-		},
-	});
+  return (options.client ?? client).post<
+    BlockUserResponses,
+    BlockUserErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zBlockUserData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/fc/blocked-users",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
 };
 
 /**
  * Get account verifications
  */
 export const getAccountVerifications = <ThrowOnError extends boolean = false>(
-	options: Options<GetAccountVerificationsData, ThrowOnError>,
+  options: Options<GetAccountVerificationsData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).get<
-		GetAccountVerificationsResponses,
-		GetAccountVerificationsErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetAccountVerificationsData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/fc/account-verifications",
-		...options,
-	});
+  return (options.client ?? client).get<
+    GetAccountVerificationsResponses,
+    GetAccountVerificationsErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetAccountVerificationsData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/fc/account-verifications",
+    ...options,
+  });
 };
 
 /**
  * Get creator reward winners
  */
 export const getCreatorRewardWinners = <ThrowOnError extends boolean = false>(
-	options?: Options<GetCreatorRewardWinnersData, ThrowOnError>,
+  options?: Options<GetCreatorRewardWinnersData, ThrowOnError>,
 ) => {
-	return (options?.client ?? client).get<
-		GetCreatorRewardWinnersResponses,
-		GetCreatorRewardWinnersErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetCreatorRewardWinnersData.parseAsync(data);
-		},
-		responseTransformer: getCreatorRewardWinnersResponseTransformer,
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v1/creator-rewards-winner-history",
-		...options,
-	});
+  return (options?.client ?? client).get<
+    GetCreatorRewardWinnersResponses,
+    GetCreatorRewardWinnersErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetCreatorRewardWinnersData.parseAsync(data);
+    },
+    responseTransformer: getCreatorRewardWinnersResponseTransformer,
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v1/creator-rewards-winner-history",
+    ...options,
+  });
 };
 
 /**
  * Get User Primary Address
  */
 export const getUserPrimaryAddress = <ThrowOnError extends boolean = false>(
-	options: Options<GetUserPrimaryAddressData, ThrowOnError>,
+  options: Options<GetUserPrimaryAddressData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).get<
-		GetUserPrimaryAddressResponses,
-		GetUserPrimaryAddressErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetUserPrimaryAddressData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/fc/primary-address",
-		...options,
-	});
+  return (options.client ?? client).get<
+    GetUserPrimaryAddressResponses,
+    GetUserPrimaryAddressErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetUserPrimaryAddressData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/fc/primary-address",
+    ...options,
+  });
 };
 
 /**
  * Get Multiple User Primary Addresses
  */
 export const getUserPrimaryAddresses = <ThrowOnError extends boolean = false>(
-	options: Options<GetUserPrimaryAddressesData, ThrowOnError>,
+  options: Options<GetUserPrimaryAddressesData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).get<
-		GetUserPrimaryAddressesResponses,
-		GetUserPrimaryAddressesErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetUserPrimaryAddressesData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/fc/primary-addresses",
-		...options,
-	});
+  return (options.client ?? client).get<
+    GetUserPrimaryAddressesResponses,
+    GetUserPrimaryAddressesErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetUserPrimaryAddressesData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/fc/primary-addresses",
+    ...options,
+  });
 };
 
 /**
  * Get Starter Pack Members
  */
 export const getStarterPackMembers = <ThrowOnError extends boolean = false>(
-	options: Options<GetStarterPackMembersData, ThrowOnError>,
+  options: Options<GetStarterPackMembersData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).get<
-		GetStarterPackMembersResponses,
-		GetStarterPackMembersErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetStarterPackMembersData.parseAsync(data);
-		},
-		responseTransformer: getStarterPackMembersResponseTransformer,
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/fc/starter-pack-members",
-		...options,
-	});
+  return (options.client ?? client).get<
+    GetStarterPackMembersResponses,
+    GetStarterPackMembersErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetStarterPackMembersData.parseAsync(data);
+    },
+    responseTransformer: getStarterPackMembersResponseTransformer,
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/fc/starter-pack-members",
+    ...options,
+  });
 };
 
 /**
@@ -3415,29 +3415,29 @@ export const getStarterPackMembers = <ThrowOnError extends boolean = false>(
  *
  */
 export const sendDirectCast = <ThrowOnError extends boolean = false>(
-	options: Options<SendDirectCastData, ThrowOnError>,
+  options: Options<SendDirectCastData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).put<
-		SendDirectCastResponses,
-		SendDirectCastErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zSendDirectCastData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/ext-send-direct-cast",
-		...options,
-		headers: {
-			"Content-Type": "application/json",
-			...options.headers,
-		},
-	});
+  return (options.client ?? client).put<
+    SendDirectCastResponses,
+    SendDirectCastErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zSendDirectCastData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/ext-send-direct-cast",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
 };
 
 /**
@@ -3446,27 +3446,27 @@ export const sendDirectCast = <ThrowOnError extends boolean = false>(
  * Retrieves user information associated with the provided Ethereum verification address
  */
 export const getUserByVerificationAddress = <
-	ThrowOnError extends boolean = false,
+  ThrowOnError extends boolean = false,
 >(
-	options: Options<GetUserByVerificationAddressData, ThrowOnError>,
+  options: Options<GetUserByVerificationAddressData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).get<
-		GetUserByVerificationAddressResponses,
-		GetUserByVerificationAddressErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetUserByVerificationAddressData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/user-by-verification",
-		...options,
-	});
+  return (options.client ?? client).get<
+    GetUserByVerificationAddressResponses,
+    GetUserByVerificationAddressErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetUserByVerificationAddressData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/user-by-verification",
+    ...options,
+  });
 };
 
 /**
@@ -3475,25 +3475,25 @@ export const getUserByVerificationAddress = <
  * Provides access to all winners for a given period (week). Paginated, with the list of winners in rank order. Not authenticated.
  */
 export const getDeveloperRewardWinners = <ThrowOnError extends boolean = false>(
-	options?: Options<GetDeveloperRewardWinnersData, ThrowOnError>,
+  options?: Options<GetDeveloperRewardWinnersData, ThrowOnError>,
 ) => {
-	return (options?.client ?? client).get<
-		GetDeveloperRewardWinnersResponses,
-		GetDeveloperRewardWinnersErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetDeveloperRewardWinnersData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v1/developer-rewards-winner-history",
-		...options,
-	});
+  return (options?.client ?? client).get<
+    GetDeveloperRewardWinnersResponses,
+    GetDeveloperRewardWinnersErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetDeveloperRewardWinnersData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v1/developer-rewards-winner-history",
+    ...options,
+  });
 };
 
 /**
@@ -3504,25 +3504,25 @@ export const getDeveloperRewardWinners = <ThrowOnError extends boolean = false>(
  *
  */
 export const getAppsByAuthor = <ThrowOnError extends boolean = false>(
-	options: Options<GetAppsByAuthorData, ThrowOnError>,
+  options: Options<GetAppsByAuthorData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).get<
-		GetAppsByAuthorResponses,
-		GetAppsByAuthorErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetAppsByAuthorData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v1/apps-by-author",
-		...options,
-	});
+  return (options.client ?? client).get<
+    GetAppsByAuthorResponses,
+    GetAppsByAuthorErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetAppsByAuthorData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v1/apps-by-author",
+    ...options,
+  });
 };
 
 /**
@@ -3531,25 +3531,25 @@ export const getAppsByAuthor = <ThrowOnError extends boolean = false>(
  * Fetches verification and manifest information for a Farcaster domain
  */
 export const getDomainManifest = <ThrowOnError extends boolean = false>(
-	options: Options<GetDomainManifestData, ThrowOnError>,
+  options: Options<GetDomainManifestData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).get<
-		GetDomainManifestResponses,
-		GetDomainManifestErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetDomainManifestData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v1/domain-manifest",
-		...options,
-	});
+  return (options.client ?? client).get<
+    GetDomainManifestResponses,
+    GetDomainManifestErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetDomainManifestData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v1/domain-manifest",
+    ...options,
+  });
 };
 
 /**
@@ -3558,25 +3558,25 @@ export const getDomainManifest = <ThrowOnError extends boolean = false>(
  * Retrieves a list of currently trending topics on the platform.
  */
 export const getTrendingTopics = <ThrowOnError extends boolean = false>(
-	options?: Options<GetTrendingTopicsData, ThrowOnError>,
+  options?: Options<GetTrendingTopicsData, ThrowOnError>,
 ) => {
-	return (options?.client ?? client).get<
-		GetTrendingTopicsResponses,
-		GetTrendingTopicsErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetTrendingTopicsData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v1/get-trending-topics",
-		...options,
-	});
+  return (options?.client ?? client).get<
+    GetTrendingTopicsResponses,
+    GetTrendingTopicsErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetTrendingTopicsData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v1/get-trending-topics",
+    ...options,
+  });
 };
 
 /**
@@ -3585,25 +3585,25 @@ export const getTrendingTopics = <ThrowOnError extends boolean = false>(
  * Retrieves metadata and Open Graph information from a specified URL
  */
 export const getMetaTags = <ThrowOnError extends boolean = false>(
-	options: Options<GetMetaTagsData, ThrowOnError>,
+  options: Options<GetMetaTagsData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).get<
-		GetMetaTagsResponses,
-		GetMetaTagsErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetMetaTagsData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v1/dev-tools/meta-tags",
-		...options,
-	});
+  return (options.client ?? client).get<
+    GetMetaTagsResponses,
+    GetMetaTagsErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetMetaTagsData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v1/dev-tools/meta-tags",
+    ...options,
+  });
 };
 
 /**
@@ -3612,25 +3612,25 @@ export const getMetaTags = <ThrowOnError extends boolean = false>(
  * Retrieves Farcaster account association and frame information for a specified domain
  */
 export const getFarcasterJson = <ThrowOnError extends boolean = false>(
-	options: Options<GetFarcasterJsonData, ThrowOnError>,
+  options: Options<GetFarcasterJsonData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).get<
-		GetFarcasterJsonResponses,
-		GetFarcasterJsonErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetFarcasterJsonData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v1/dev-tools/farcaster-json",
-		...options,
-	});
+  return (options.client ?? client).get<
+    GetFarcasterJsonResponses,
+    GetFarcasterJsonErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetFarcasterJsonData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v1/dev-tools/farcaster-json",
+    ...options,
+  });
 };
 
 /**
@@ -3639,25 +3639,25 @@ export const getFarcasterJson = <ThrowOnError extends boolean = false>(
  * Returns a list of domains that are owned by the currently authenticated user.
  */
 export const getOwnedDomains = <ThrowOnError extends boolean = false>(
-	options?: Options<GetOwnedDomainsData, ThrowOnError>,
+  options?: Options<GetOwnedDomainsData, ThrowOnError>,
 ) => {
-	return (options?.client ?? client).get<
-		GetOwnedDomainsResponses,
-		GetOwnedDomainsErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetOwnedDomainsData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v1/dev-tools/domains-owned",
-		...options,
-	});
+  return (options?.client ?? client).get<
+    GetOwnedDomainsResponses,
+    GetOwnedDomainsErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetOwnedDomainsData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v1/dev-tools/domains-owned",
+    ...options,
+  });
 };
 
 /**
@@ -3666,25 +3666,25 @@ export const getOwnedDomains = <ThrowOnError extends boolean = false>(
  * Retrieves a list of apps managed by the authenticated user.
  */
 export const getManagedApps = <ThrowOnError extends boolean = false>(
-	options?: Options<GetManagedAppsData, ThrowOnError>,
+  options?: Options<GetManagedAppsData, ThrowOnError>,
 ) => {
-	return (options?.client ?? client).get<
-		GetManagedAppsResponses,
-		GetManagedAppsErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetManagedAppsData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v1/dev-tools/managed-apps",
-		...options,
-	});
+  return (options?.client ?? client).get<
+    GetManagedAppsResponses,
+    GetManagedAppsErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetManagedAppsData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v1/dev-tools/managed-apps",
+    ...options,
+  });
 };
 
 /**
@@ -3693,26 +3693,26 @@ export const getManagedApps = <ThrowOnError extends boolean = false>(
  * Returns a list of API keys associated with the user's account, including active and revoked keys
  */
 export const getApiKeys = <ThrowOnError extends boolean = false>(
-	options?: Options<GetApiKeysData, ThrowOnError>,
+  options?: Options<GetApiKeysData, ThrowOnError>,
 ) => {
-	return (options?.client ?? client).get<
-		GetApiKeysResponses,
-		GetApiKeysErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetApiKeysData.parseAsync(data);
-		},
-		responseTransformer: getApiKeysResponseTransformer,
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/api-keys",
-		...options,
-	});
+  return (options?.client ?? client).get<
+    GetApiKeysResponses,
+    GetApiKeysErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetApiKeysData.parseAsync(data);
+    },
+    responseTransformer: getApiKeysResponseTransformer,
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/api-keys",
+    ...options,
+  });
 };
 
 /**
@@ -3721,29 +3721,29 @@ export const getApiKeys = <ThrowOnError extends boolean = false>(
  * Creates a new API key with the specified description and expiration date
  */
 export const createApiKey = <ThrowOnError extends boolean = false>(
-	options: Options<CreateApiKeyData, ThrowOnError>,
+  options: Options<CreateApiKeyData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).put<
-		CreateApiKeyResponses,
-		CreateApiKeyErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zCreateApiKeyData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/api-keys",
-		...options,
-		headers: {
-			"Content-Type": "application/json",
-			...options.headers,
-		},
-	});
+  return (options.client ?? client).put<
+    CreateApiKeyResponses,
+    CreateApiKeyErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zCreateApiKeyData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/api-keys",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
 };
 
 /**
@@ -3752,29 +3752,29 @@ export const createApiKey = <ThrowOnError extends boolean = false>(
  * Revokes an existing API key making it no longer valid for authentication
  */
 export const revokeApiKey = <ThrowOnError extends boolean = false>(
-	options: Options<RevokeApiKeyData, ThrowOnError>,
+  options: Options<RevokeApiKeyData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).patch<
-		RevokeApiKeyResponses,
-		RevokeApiKeyErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zRevokeApiKeyData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/revoke-api-key",
-		...options,
-		headers: {
-			"Content-Type": "application/json",
-			...options.headers,
-		},
-	});
+  return (options.client ?? client).patch<
+    RevokeApiKeyResponses,
+    RevokeApiKeyErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zRevokeApiKeyData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/revoke-api-key",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
 };
 
 /**
@@ -3783,25 +3783,25 @@ export const revokeApiKey = <ThrowOnError extends boolean = false>(
  * Retrieves a list of external social accounts connected to the user's Warpcast profile
  */
 export const getConnectedAccounts = <ThrowOnError extends boolean = false>(
-	options?: Options<GetConnectedAccountsData, ThrowOnError>,
+  options?: Options<GetConnectedAccountsData, ThrowOnError>,
 ) => {
-	return (options?.client ?? client).get<
-		GetConnectedAccountsResponses,
-		GetConnectedAccountsErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetConnectedAccountsData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/connected-accounts",
-		...options,
-	});
+  return (options?.client ?? client).get<
+    GetConnectedAccountsResponses,
+    GetConnectedAccountsErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetConnectedAccountsData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/connected-accounts",
+    ...options,
+  });
 };
 
 /**
@@ -3810,52 +3810,52 @@ export const getConnectedAccounts = <ThrowOnError extends boolean = false>(
  * Retrieves a list of casts published by a specific user identified by their Farcaster ID (FID).
  */
 export const getProfileCasts = <ThrowOnError extends boolean = false>(
-	options: Options<GetProfileCastsData, ThrowOnError>,
+  options: Options<GetProfileCastsData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).get<
-		GetProfileCastsResponses,
-		GetProfileCastsErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetProfileCastsData.parseAsync(data);
-		},
-		responseTransformer: getProfileCastsResponseTransformer,
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/profile-casts",
-		...options,
-	});
+  return (options.client ?? client).get<
+    GetProfileCastsResponses,
+    GetProfileCastsErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetProfileCastsData.parseAsync(data);
+    },
+    responseTransformer: getProfileCastsResponseTransformer,
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/profile-casts",
+    ...options,
+  });
 };
 
 /**
  * Retrieve liked casts by user FID
  */
 export const getUserLikedCasts = <ThrowOnError extends boolean = false>(
-	options: Options<GetUserLikedCastsData, ThrowOnError>,
+  options: Options<GetUserLikedCastsData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).get<
-		GetUserLikedCastsResponses,
-		GetUserLikedCastsErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetUserLikedCastsData.parseAsync(data);
-		},
-		responseTransformer: getUserLikedCastsResponseTransformer,
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v2/user-liked-casts",
-		...options,
-	});
+  return (options.client ?? client).get<
+    GetUserLikedCastsResponses,
+    GetUserLikedCastsErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetUserLikedCastsData.parseAsync(data);
+    },
+    responseTransformer: getUserLikedCastsResponseTransformer,
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v2/user-liked-casts",
+    ...options,
+  });
 };
 
 /**
@@ -3864,29 +3864,29 @@ export const getUserLikedCasts = <ThrowOnError extends boolean = false>(
  * Submit one or more analytics events for tracking user activity.
  */
 export const submitAnalyticsEvents = <ThrowOnError extends boolean = false>(
-	options: Options<SubmitAnalyticsEventsData, ThrowOnError>,
+  options: Options<SubmitAnalyticsEventsData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).post<
-		SubmitAnalyticsEventsResponses,
-		SubmitAnalyticsEventsErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zSubmitAnalyticsEventsData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v1/analytics-events",
-		...options,
-		headers: {
-			"Content-Type": "application/json",
-			...options.headers,
-		},
-	});
+  return (options.client ?? client).post<
+    SubmitAnalyticsEventsResponses,
+    SubmitAnalyticsEventsErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zSubmitAnalyticsEventsData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v1/analytics-events",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
 };
 
 /**
@@ -3897,30 +3897,30 @@ export const submitAnalyticsEvents = <ThrowOnError extends boolean = false>(
  *
  */
 export const getMiniAppAnalyticsRollup = <ThrowOnError extends boolean = false>(
-	options: Options<GetMiniAppAnalyticsRollupData, ThrowOnError>,
+  options: Options<GetMiniAppAnalyticsRollupData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).post<
-		GetMiniAppAnalyticsRollupResponses,
-		GetMiniAppAnalyticsRollupErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zGetMiniAppAnalyticsRollupData.parseAsync(data);
-		},
-		responseTransformer: getMiniAppAnalyticsRollupResponseTransformer,
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v1/analytics/miniapps/rollup",
-		...options,
-		headers: {
-			"Content-Type": "application/json",
-			...options.headers,
-		},
-	});
+  return (options.client ?? client).post<
+    GetMiniAppAnalyticsRollupResponses,
+    GetMiniAppAnalyticsRollupErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zGetMiniAppAnalyticsRollupData.parseAsync(data);
+    },
+    responseTransformer: getMiniAppAnalyticsRollupResponseTransformer,
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v1/analytics/miniapps/rollup",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
 };
 
 /**
@@ -3931,25 +3931,25 @@ export const getMiniAppAnalyticsRollup = <ThrowOnError extends boolean = false>(
  *
  */
 export const inspectMiniAppUrl = <ThrowOnError extends boolean = false>(
-	options: Options<InspectMiniAppUrlData, ThrowOnError>,
+  options: Options<InspectMiniAppUrlData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).get<
-		InspectMiniAppUrlResponses,
-		InspectMiniAppUrlErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zInspectMiniAppUrlData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v1/dev-tools/inspect-miniapp-url",
-		...options,
-	});
+  return (options.client ?? client).get<
+    InspectMiniAppUrlResponses,
+    InspectMiniAppUrlErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zInspectMiniAppUrlData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v1/dev-tools/inspect-miniapp-url",
+    ...options,
+  });
 };
 
 /**
@@ -3958,25 +3958,25 @@ export const inspectMiniAppUrl = <ThrowOnError extends boolean = false>(
  * Retrieves metadata and information about an image at a specified URL, including size, cache settings, and loading time.
  */
 export const inspectImageUrl = <ThrowOnError extends boolean = false>(
-	options: Options<InspectImageUrlData, ThrowOnError>,
+  options: Options<InspectImageUrlData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).get<
-		InspectImageUrlResponses,
-		InspectImageUrlErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zInspectImageUrlData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v1/dev-tools/inspect-image-url",
-		...options,
-	});
+  return (options.client ?? client).get<
+    InspectImageUrlResponses,
+    InspectImageUrlErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zInspectImageUrlData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v1/dev-tools/inspect-image-url",
+    ...options,
+  });
 };
 
 /**
@@ -3985,25 +3985,25 @@ export const inspectImageUrl = <ThrowOnError extends boolean = false>(
  * Retrieves a list of users who have interacted with a specified mini app domain, including their Farcaster IDs and notification tokens.
  */
 export const exportMiniAppUserData = <ThrowOnError extends boolean = false>(
-	options: Options<ExportMiniAppUserDataData, ThrowOnError>,
+  options: Options<ExportMiniAppUserDataData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).get<
-		ExportMiniAppUserDataResponses,
-		ExportMiniAppUserDataErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zExportMiniAppUserDataData.parseAsync(data);
-		},
-		security: [
-			{
-				scheme: "bearer",
-				type: "http",
-			},
-		],
-		url: "/v1/dev-tools/export/miniapp-user-data",
-		...options,
-	});
+  return (options.client ?? client).get<
+    ExportMiniAppUserDataResponses,
+    ExportMiniAppUserDataErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zExportMiniAppUserDataData.parseAsync(data);
+    },
+    security: [
+      {
+        scheme: "bearer",
+        type: "http",
+      },
+    ],
+    url: "/v1/dev-tools/export/miniapp-user-data",
+    ...options,
+  });
 };
 
 /**
@@ -4012,21 +4012,21 @@ export const exportMiniAppUserData = <ThrowOnError extends boolean = false>(
  * Submits Statsig analytics events including gate exposures and other tracking events.
  */
 export const registerStatsigEvents = <ThrowOnError extends boolean = false>(
-	options: Options<RegisterStatsigEventsData, ThrowOnError>,
+  options: Options<RegisterStatsigEventsData, ThrowOnError>,
 ) => {
-	return (options.client ?? client).post<
-		RegisterStatsigEventsResponses,
-		RegisterStatsigEventsErrors,
-		ThrowOnError
-	>({
-		requestValidator: async (data) => {
-			return await zRegisterStatsigEventsData.parseAsync(data);
-		},
-		url: "/v2/ss/v1/rgstr",
-		...options,
-		headers: {
-			"Content-Type": "application/json",
-			...options.headers,
-		},
-	});
+  return (options.client ?? client).post<
+    RegisterStatsigEventsResponses,
+    RegisterStatsigEventsErrors,
+    ThrowOnError
+  >({
+    requestValidator: async (data) => {
+      return await zRegisterStatsigEventsData.parseAsync(data);
+    },
+    url: "/v2/ss/v1/rgstr",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
 };
