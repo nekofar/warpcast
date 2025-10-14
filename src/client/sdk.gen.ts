@@ -542,6 +542,7 @@ export type Options<
 
 /**
  * Get onboarding state
+ *
  * Retrieves the current onboarding state for the authenticated user
  */
 export const getUserOnboardingState = <ThrowOnError extends boolean = false>(
@@ -568,6 +569,7 @@ export const getUserOnboardingState = <ThrowOnError extends boolean = false>(
 
 /**
  * Get user by fid
+ *
  * Retrieves user information based on FID
  */
 export const getUserByFid = <ThrowOnError extends boolean = false>(
@@ -594,6 +596,7 @@ export const getUserByFid = <ThrowOnError extends boolean = false>(
 
 /**
  * Get user's direct cast inbox
+ *
  * Retrieves direct casts sent to the authenticated user
  */
 export const getDirectCastInbox = <ThrowOnError extends boolean = false>(
@@ -621,6 +624,7 @@ export const getDirectCastInbox = <ThrowOnError extends boolean = false>(
 
 /**
  * Get user app context
+ *
  * Retrieves application context information for the authenticated user
  */
 export const getUserAppContext = <ThrowOnError extends boolean = false>(
@@ -647,6 +651,7 @@ export const getUserAppContext = <ThrowOnError extends boolean = false>(
 
 /**
  * Get user preferences
+ *
  * Retrieves preference settings for the authenticated user
  */
 export const getUserPreferences = <ThrowOnError extends boolean = false>(
@@ -673,6 +678,7 @@ export const getUserPreferences = <ThrowOnError extends boolean = false>(
 
 /**
  * Get highlighted channels
+ *
  * Retrieves a list of featured or recommended channels
  */
 export const getHighlightedChannels = <ThrowOnError extends boolean = false>(
@@ -699,6 +705,7 @@ export const getHighlightedChannels = <ThrowOnError extends boolean = false>(
 
 /**
  * Get feed items
+ *
  * Retrieves feed content based on provided filters and parameters
  */
 export const getFeedItems = <ThrowOnError extends boolean = false>(
@@ -730,6 +737,7 @@ export const getFeedItems = <ThrowOnError extends boolean = false>(
 
 /**
  * Get user information
+ *
  * Retrieves detailed user information based on FID
  */
 export const getUser = <ThrowOnError extends boolean = false>(
@@ -756,6 +764,7 @@ export const getUser = <ThrowOnError extends boolean = false>(
 
 /**
  * Get user following channels
+ *
  * Retrieves channels that the authenticated user is following
  */
 export const getUserFollowingChannels = <ThrowOnError extends boolean = false>(
@@ -832,6 +841,7 @@ export const getUserFavoriteFrames = <ThrowOnError extends boolean = false>(
 
 /**
  * Get user by username
+ *
  * Retrieves user information based on username
  */
 export const getUserByUsername = <ThrowOnError extends boolean = false>(
@@ -908,6 +918,7 @@ export const getUnseenCounts = <ThrowOnError extends boolean = false>(
 
 /**
  * Get casts from a user thread
+ *
  * Retrieves casts from a specific thread by a user
  */
 export const getUserThreadCasts = <ThrowOnError extends boolean = false>(
@@ -990,6 +1001,7 @@ export const markAllNotificationsRead = <ThrowOnError extends boolean = false>(
 
 /**
  * Get notifications for a specific tab
+ *
  * Returns a list of notifications for the specified tab.
  */
 export const getNotifications = <ThrowOnError extends boolean = false>(
@@ -1016,6 +1028,7 @@ export const getNotifications = <ThrowOnError extends boolean = false>(
 
 /**
  * Set last checked timestamp
+ *
  * Updates the last checked timestamp for notifications.
  */
 export const setLastCheckedTimestamp = <ThrowOnError extends boolean = false>(
@@ -1046,6 +1059,7 @@ export const setLastCheckedTimestamp = <ThrowOnError extends boolean = false>(
 
 /**
  * Get direct cast conversation
+ *
  * Fetches a direct cast conversation by conversationId.
  */
 export const getDirectCastConversation = <ThrowOnError extends boolean = false>(
@@ -1073,6 +1087,7 @@ export const getDirectCastConversation = <ThrowOnError extends boolean = false>(
 
 /**
  * Categorize direct cast conversation
+ *
  * Categorizes a direct cast conversation by setting its category (e.g., archived).
  */
 export const categorizeDirectCastConversation = <
@@ -1105,6 +1120,7 @@ export const categorizeDirectCastConversation = <
 
 /**
  * Get direct cast conversation messages
+ *
  * Fetches messages from a direct cast conversation by conversationId with pagination support.
  */
 export const getDirectCastConversationMessages = <
@@ -1134,6 +1150,7 @@ export const getDirectCastConversationMessages = <
 
 /**
  * Set direct cast conversation message TTL
+ *
  * Sets the time-to-live (TTL) for messages in a direct cast conversation.
  */
 export const setDirectCastConversationMessageTtl = <
@@ -1166,6 +1183,7 @@ export const setDirectCastConversationMessageTtl = <
 
 /**
  * Update direct cast conversation notifications
+ *
  * Updates notification settings for a direct cast conversation.
  */
 export const updateDirectCastConversationNotifications = <
@@ -1200,6 +1218,7 @@ export const updateDirectCastConversationNotifications = <
 
 /**
  * Get recent messages from direct cast conversation
+ *
  * Fetches recent messages from a direct cast conversation by conversationId.
  */
 export const getDirectCastConversationRecentMessages = <
@@ -1232,6 +1251,7 @@ export const getDirectCastConversationRecentMessages = <
 
 /**
  * Send direct cast message
+ *
  * Sends a direct cast message to specified recipients in a conversation.
  */
 export const sendDirectCastMessage = <ThrowOnError extends boolean = false>(
@@ -1262,6 +1282,7 @@ export const sendDirectCastMessage = <ThrowOnError extends boolean = false>(
 
 /**
  * Manually mark direct cast conversation as unread
+ *
  * Marks a direct cast conversation as unread for the authenticated user.
  */
 export const directCastManuallyMarkUnread = <
@@ -1294,6 +1315,7 @@ export const directCastManuallyMarkUnread = <
 
 /**
  * Remove reaction from direct cast message
+ *
  * Removes an emoji reaction from a specific message in a direct cast conversation.
  */
 export const removeDirectCastMessageReaction = <
@@ -1326,6 +1348,7 @@ export const removeDirectCastMessageReaction = <
 
 /**
  * Add reaction to direct cast message
+ *
  * Adds an emoji reaction to a specific message in a direct cast conversation.
  */
 export const addDirectCastMessageReaction = <
@@ -1358,6 +1381,7 @@ export const addDirectCastMessageReaction = <
 
 /**
  * Unpin direct cast conversation
+ *
  * Unpins a direct cast conversation by conversationId.
  */
 export const unpinDirectCastConversation = <
@@ -1390,6 +1414,7 @@ export const unpinDirectCastConversation = <
 
 /**
  * Pin direct cast conversation
+ *
  * Pins a direct cast conversation by conversationId.
  */
 export const pinDirectCastConversation = <ThrowOnError extends boolean = false>(
@@ -1420,6 +1445,7 @@ export const pinDirectCastConversation = <ThrowOnError extends boolean = false>(
 
 /**
  * Discover channels
+ *
  * Retrieves a list of discoverable channels with optional limit.
  */
 export const discoverChannels = <ThrowOnError extends boolean = false>(
@@ -1446,6 +1472,7 @@ export const discoverChannels = <ThrowOnError extends boolean = false>(
 
 /**
  * Check available invites
+ *
  * Returns the number of allocated and currently available invites.
  */
 export const getAvailableInvites = <ThrowOnError extends boolean = false>(
@@ -1472,6 +1499,7 @@ export const getAvailableInvites = <ThrowOnError extends boolean = false>(
 
 /**
  * Get sponsored invites
+ *
  * Returns a list of Warpcast-sponsored invites available to the user.
  */
 export const getSponsoredInvites = <ThrowOnError extends boolean = false>(
@@ -1498,6 +1526,7 @@ export const getSponsoredInvites = <ThrowOnError extends boolean = false>(
 
 /**
  * Get or create referral code
+ *
  * Gets an existing referral code or creates a new one for the authenticated user.
  */
 export const getOrCreateReferralCode = <ThrowOnError extends boolean = false>(
@@ -1528,6 +1557,7 @@ export const getOrCreateReferralCode = <ThrowOnError extends boolean = false>(
 
 /**
  * Get rewards leaderboard
+ *
  * Returns a list of users in the rewards leaderboard based on invite activity.
  */
 export const getRewardsLeaderboard = <ThrowOnError extends boolean = false>(
@@ -1554,6 +1584,7 @@ export const getRewardsLeaderboard = <ThrowOnError extends boolean = false>(
 
 /**
  * Get invite rewards scores for a user
+ *
  * Returns current, previous, and all-time invite rewards scores for the specified user.
  */
 export const getUserRewardsScores = <ThrowOnError extends boolean = false>(
@@ -1580,6 +1611,7 @@ export const getUserRewardsScores = <ThrowOnError extends boolean = false>(
 
 /**
  * Get invite rewards metadata
+ *
  * Returns metadata for the invite rewards program including the reward period and reward distribution details.
  */
 export const getRewardsMetadata = <ThrowOnError extends boolean = false>(
@@ -1607,6 +1639,7 @@ export const getRewardsMetadata = <ThrowOnError extends boolean = false>(
 
 /**
  * Get XP rewards
+ *
  * Retrieves the user's XP rewards, including total USDC earned and referral count.
  */
 export const getXpRewards = <ThrowOnError extends boolean = false>(
@@ -1633,6 +1666,7 @@ export const getXpRewards = <ThrowOnError extends boolean = false>(
 
 /**
  * Get XP claimable summary
+ *
  * Retrieves a summary of claimable XP rewards for the authenticated user.
  */
 export const getXpClaimableSummary = <ThrowOnError extends boolean = false>(
@@ -1663,6 +1697,7 @@ export const getXpClaimableSummary = <ThrowOnError extends boolean = false>(
 
 /**
  * Get bookmarked casts
+ *
  * Returns the most recent casts bookmarked by the user.
  */
 export const getBookmarkedCasts = <ThrowOnError extends boolean = false>(
@@ -1689,6 +1724,7 @@ export const getBookmarkedCasts = <ThrowOnError extends boolean = false>(
 
 /**
  * Get starter packs
+ *
  * Returns starter packs created by a specific user.
  */
 export const getUserStarterPacks = <ThrowOnError extends boolean = false>(
@@ -1715,6 +1751,7 @@ export const getUserStarterPacks = <ThrowOnError extends boolean = false>(
 
 /**
  * Get suggested starter packs
+ *
  * Returns a list of suggested starter packs.
  */
 export const getSuggestedStarterPacks = <ThrowOnError extends boolean = false>(
@@ -1741,6 +1778,7 @@ export const getSuggestedStarterPacks = <ThrowOnError extends boolean = false>(
 
 /**
  * Get a specific starter pack by ID
+ *
  * Returns a specific starter pack.
  */
 export const getStarterPack = <ThrowOnError extends boolean = false>(
@@ -1767,6 +1805,7 @@ export const getStarterPack = <ThrowOnError extends boolean = false>(
 
 /**
  * Update a starter pack
+ *
  * Updates the specified starter pack.
  */
 export const updateStarterPack = <ThrowOnError extends boolean = false>(
@@ -1797,6 +1836,7 @@ export const updateStarterPack = <ThrowOnError extends boolean = false>(
 
 /**
  * Get users in a specific starter pack
+ *
  * Returns a list of users associated with a given starter pack.
  */
 export const getStarterPackUsers = <ThrowOnError extends boolean = false>(
@@ -1823,6 +1863,7 @@ export const getStarterPackUsers = <ThrowOnError extends boolean = false>(
 
 /**
  * Get channel details
+ *
  * Returns metadata about a channel.
  */
 export const getChannel = <ThrowOnError extends boolean = false>(
@@ -1849,6 +1890,7 @@ export const getChannel = <ThrowOnError extends boolean = false>(
 
 /**
  * Get members of a specific channel
+ *
  * Returns users who are members of a specific channel.
  */
 export const getChannelUsers = <ThrowOnError extends boolean = false>(
@@ -1875,6 +1917,7 @@ export const getChannelUsers = <ThrowOnError extends boolean = false>(
 
 /**
  * Get users a given user is following
+ *
  * Returns a list of users followed by a specified FID.
  */
 export const getFollowing = <ThrowOnError extends boolean = false>(
@@ -1901,6 +1944,7 @@ export const getFollowing = <ThrowOnError extends boolean = false>(
 
 /**
  * Get users following a given user
+ *
  * Returns a list of users who follow the specified FID.
  */
 export const getFollowers = <ThrowOnError extends boolean = false>(
@@ -1927,6 +1971,7 @@ export const getFollowers = <ThrowOnError extends boolean = false>(
 
 /**
  * Get mutual followers of a given user
+ *
  * Returns a list of users who follow the given FID and are followed by the viewer.
  */
 export const getMutualFollowers = <ThrowOnError extends boolean = false>(
@@ -1953,6 +1998,7 @@ export const getMutualFollowers = <ThrowOnError extends boolean = false>(
 
 /**
  * Get top FrameApps
+ *
  * Returns a list of top FrameApps with optional pagination.
  */
 export const getTopFrameApps = <ThrowOnError extends boolean = false>(
@@ -1979,6 +2025,7 @@ export const getTopFrameApps = <ThrowOnError extends boolean = false>(
 
 /**
  * Get top mini apps
+ *
  * Returns a list of top mini apps with optional pagination.
  */
 export const getTopMiniApps = <ThrowOnError extends boolean = false>(
@@ -2005,6 +2052,7 @@ export const getTopMiniApps = <ThrowOnError extends boolean = false>(
 
 /**
  * Get verified addresses for an FID
+ *
  * Returns verified Ethereum addresses associated with a specific FID.
  */
 export const getVerifications = <ThrowOnError extends boolean = false>(
@@ -2031,6 +2079,7 @@ export const getVerifications = <ThrowOnError extends boolean = false>(
 
 /**
  * Get muted keywords
+ *
  * Returns a list of muted keywords for the authenticated user.
  */
 export const getMutedKeywords = <ThrowOnError extends boolean = false>(
@@ -2057,6 +2106,7 @@ export const getMutedKeywords = <ThrowOnError extends boolean = false>(
 
 /**
  * Mute a keyword
+ *
  * Mutes a keyword for the authenticated user with specified properties.
  */
 export const muteKeyword = <ThrowOnError extends boolean = false>(
@@ -2554,6 +2604,7 @@ export const createCast = <ThrowOnError extends boolean = false>(
 
 /**
  * Get all channels
+ *
  * Returns a list of all channels on Warpcast
  */
 export const getAllChannels = <ThrowOnError extends boolean = false>(
@@ -3359,6 +3410,7 @@ export const getStarterPackMembers = <ThrowOnError extends boolean = false>(
 
 /**
  * Send a Direct Cast via External API
+ *
  * Send a programmatic Direct Cast to a recipient. The request must include a unique idempotency key.
  *
  */
@@ -3390,6 +3442,7 @@ export const sendDirectCast = <ThrowOnError extends boolean = false>(
 
 /**
  * Get user by verification address
+ *
  * Retrieves user information associated with the provided Ethereum verification address
  */
 export const getUserByVerificationAddress = <
@@ -3418,6 +3471,7 @@ export const getUserByVerificationAddress = <
 
 /**
  * Get developer reward winners
+ *
  * Provides access to all winners for a given period (week). Paginated, with the list of winners in rank order. Not authenticated.
  */
 export const getDeveloperRewardWinners = <ThrowOnError extends boolean = false>(
@@ -3444,6 +3498,7 @@ export const getDeveloperRewardWinners = <ThrowOnError extends boolean = false>(
 
 /**
  * Get apps (frames) by author
+ *
  * Retrieves a list of apps (aka "frames") created by a specific author on Warpcast, using their FID (Farcaster ID).
  * The response includes metadata for each app, including icons, URLs, and author profile details.
  *
@@ -3472,6 +3527,7 @@ export const getAppsByAuthor = <ThrowOnError extends boolean = false>(
 
 /**
  * Retrieve domain manifest information
+ *
  * Fetches verification and manifest information for a Farcaster domain
  */
 export const getDomainManifest = <ThrowOnError extends boolean = false>(
@@ -3498,6 +3554,7 @@ export const getDomainManifest = <ThrowOnError extends boolean = false>(
 
 /**
  * Get trending topics
+ *
  * Retrieves a list of currently trending topics on the platform.
  */
 export const getTrendingTopics = <ThrowOnError extends boolean = false>(
@@ -3524,6 +3581,7 @@ export const getTrendingTopics = <ThrowOnError extends boolean = false>(
 
 /**
  * Fetch meta tags from a URL
+ *
  * Retrieves metadata and Open Graph information from a specified URL
  */
 export const getMetaTags = <ThrowOnError extends boolean = false>(
@@ -3550,6 +3608,7 @@ export const getMetaTags = <ThrowOnError extends boolean = false>(
 
 /**
  * Fetch Farcaster JSON data from a domain
+ *
  * Retrieves Farcaster account association and frame information for a specified domain
  */
 export const getFarcasterJson = <ThrowOnError extends boolean = false>(
@@ -3576,6 +3635,7 @@ export const getFarcasterJson = <ThrowOnError extends boolean = false>(
 
 /**
  * Retrieve domains owned by the authenticated user
+ *
  * Returns a list of domains that are owned by the currently authenticated user.
  */
 export const getOwnedDomains = <ThrowOnError extends boolean = false>(
@@ -3602,6 +3662,7 @@ export const getOwnedDomains = <ThrowOnError extends boolean = false>(
 
 /**
  * Get managed apps
+ *
  * Retrieves a list of apps managed by the authenticated user.
  */
 export const getManagedApps = <ThrowOnError extends boolean = false>(
@@ -3628,6 +3689,7 @@ export const getManagedApps = <ThrowOnError extends boolean = false>(
 
 /**
  * Retrieve API keys for the authenticated user
+ *
  * Returns a list of API keys associated with the user's account, including active and revoked keys
  */
 export const getApiKeys = <ThrowOnError extends boolean = false>(
@@ -3655,6 +3717,7 @@ export const getApiKeys = <ThrowOnError extends boolean = false>(
 
 /**
  * Create a new API key
+ *
  * Creates a new API key with the specified description and expiration date
  */
 export const createApiKey = <ThrowOnError extends boolean = false>(
@@ -3685,6 +3748,7 @@ export const createApiKey = <ThrowOnError extends boolean = false>(
 
 /**
  * Revoke an API key
+ *
  * Revokes an existing API key making it no longer valid for authentication
  */
 export const revokeApiKey = <ThrowOnError extends boolean = false>(
@@ -3715,6 +3779,7 @@ export const revokeApiKey = <ThrowOnError extends boolean = false>(
 
 /**
  * Get connected social accounts
+ *
  * Retrieves a list of external social accounts connected to the user's Warpcast profile
  */
 export const getConnectedAccounts = <ThrowOnError extends boolean = false>(
@@ -3741,6 +3806,7 @@ export const getConnectedAccounts = <ThrowOnError extends boolean = false>(
 
 /**
  * Get casts from a user's profile
+ *
  * Retrieves a list of casts published by a specific user identified by their Farcaster ID (FID).
  */
 export const getProfileCasts = <ThrowOnError extends boolean = false>(
@@ -3794,6 +3860,7 @@ export const getUserLikedCasts = <ThrowOnError extends boolean = false>(
 
 /**
  * Submit analytics events
+ *
  * Submit one or more analytics events for tracking user activity.
  */
 export const submitAnalyticsEvents = <ThrowOnError extends boolean = false>(
@@ -3824,6 +3891,7 @@ export const submitAnalyticsEvents = <ThrowOnError extends boolean = false>(
 
 /**
  * Get analytics rollup for miniapps
+ *
  * Retrieves analytics data for miniapps over a specified date range,
  * providing various metrics broken down by configured dimensions.
  *
@@ -3857,6 +3925,7 @@ export const getMiniAppAnalyticsRollup = <ThrowOnError extends boolean = false>(
 
 /**
  * Inspect Mini App URL
+ *
  * Validates a Mini App URL by checking for proper embedding code and manifest,
  * returning information about its compatibility with the Warpcast platform.
  *
@@ -3885,6 +3954,7 @@ export const inspectMiniAppUrl = <ThrowOnError extends boolean = false>(
 
 /**
  * Inspect an image URL
+ *
  * Retrieves metadata and information about an image at a specified URL, including size, cache settings, and loading time.
  */
 export const inspectImageUrl = <ThrowOnError extends boolean = false>(
@@ -3911,6 +3981,7 @@ export const inspectImageUrl = <ThrowOnError extends boolean = false>(
 
 /**
  * Export user data for a specific mini app domain
+ *
  * Retrieves a list of users who have interacted with a specified mini app domain, including their Farcaster IDs and notification tokens.
  */
 export const exportMiniAppUserData = <ThrowOnError extends boolean = false>(
@@ -3937,6 +4008,7 @@ export const exportMiniAppUserData = <ThrowOnError extends boolean = false>(
 
 /**
  * Register Statsig events
+ *
  * Submits Statsig analytics events including gate exposures and other tracking events.
  */
 export const registerStatsigEvents = <ThrowOnError extends boolean = false>(
