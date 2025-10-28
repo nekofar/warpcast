@@ -23,7 +23,7 @@ importers:
         version: 2.3.1
       '@hey-api/openapi-ts':
         specifier: ^0.86.0
-        version: 0.86.1(typescript@5.9.3)
+        version: 0.86.7(typescript@5.9.3)
       '@redocly/cli':
         specifier: ^2.2.3
         version: 2.8.0(@opentelemetry/api@1.9.0)(ajv@8.17.1)(core-js@3.44.0)(encoding@0.1.13)
@@ -1365,18 +1365,18 @@ packages:
       react: ^16 || ^17 || ^18
       react-dom: ^16 || ^17 || ^18
 
-  '@hey-api/codegen-core@0.3.0':
-    resolution: {integrity: sha512-klSGsLQGzgUKpInH5UqzgX4+L1P9R864bgprNNemgr324rmOza2HoVxlcifRnxpD6tF2sIZX10opMzZbvdnl2w==}
+  '@hey-api/codegen-core@0.3.1':
+    resolution: {integrity: sha512-iLG9uRJdmQf83sCZ8WsDR6RXQep0X+D1t1mxuzhrSS9zVL4NvnjTQD6PNnQNPymJyss/mdPf7f7kbmcCK7DVmw==}
     engines: {node: '>=20.19.0'}
     peerDependencies:
       typescript: '>=5.5.3'
 
-  '@hey-api/json-schema-ref-parser@1.2.0':
-    resolution: {integrity: sha512-BMnIuhVgNmSudadw1GcTsP18Yk5l8FrYrg/OSYNxz0D2E0vf4D5e4j5nUbuY8MU6p1vp7ev0xrfP6A/NWazkzQ==}
+  '@hey-api/json-schema-ref-parser@1.2.1':
+    resolution: {integrity: sha512-inPeksRLq+j3ArnuGOzQPQE//YrhezQG0+9Y9yizScBN2qatJ78fIByhEgKdNAbtguDCn4RPxmEhcrePwHxs4A==}
     engines: {node: '>= 16'}
 
-  '@hey-api/openapi-ts@0.86.1':
-    resolution: {integrity: sha512-6paw3vlmx7ie0vG1LGuASQH2QaVzWjkCfdmi2J3wgl5+8OVdC1fEEbXPhuhixcu9c0KPA0Q1gcenNagfxdGR/Q==}
+  '@hey-api/openapi-ts@0.86.7':
+    resolution: {integrity: sha512-inXovHuofKR1QQ9jM26ikHNcqgAUcZoiRzVULczBwnbypQKwbHA5py9/RnHzRRhyc+TIfIhVVhuSA3oS/C1QcQ==}
     engines: {node: '>=20.19.0'}
     hasBin: true
     peerDependencies:
@@ -3639,9 +3639,9 @@ packages:
     resolution: {integrity: sha512-FQN4MRfuJeHf7cBbBMJFXhKSDq+2kAArBlmRBvcvFE5BB1HZKXtSFASDhdlz9zOYwxh8lDdnvmMOe/+5cdoEdg==}
     engines: {node: '>= 0.8'}
 
-  commander@13.0.0:
-    resolution: {integrity: sha512-oPYleIY8wmTVzkvQq10AEok6YcTC4sRUBl8F9gVuwchGVUCTbl/vhLTaQqutuuySYOsu8YTgV+OxKc/8Yvx+mQ==}
-    engines: {node: '>=18'}
+  commander@14.0.1:
+    resolution: {integrity: sha512-2JkV3gUZUVrbNA+1sjBOYLsMZ5cEEl8GTFP2a4AVz5hvasAMCQ1D2l2le/cX+pV4N6ZU17zjUahLpIXRrnWL8A==}
+    engines: {node: '>=20'}
 
   commander@4.1.1:
     resolution: {integrity: sha512-NOKm8xhkzAjzFx8B2v5OAHT+u5pRQc2UCa2Vq9jYL/31o2wi9mxBA7LIFs3sV5VSC49z6pEhfbMULvShKj26WA==}
@@ -5777,8 +5777,8 @@ packages:
     resolution: {integrity: sha512-kbpaSSGJTWdAY5KPVeMOKXSrPtr8C8C7wodJbcsd51jRnmD+GZu8Y0VoU6Dm5Z4vWr0Ig/1NKuWRKf7j5aaYSg==}
     engines: {node: '>=6'}
 
-  open@10.1.2:
-    resolution: {integrity: sha512-cxN6aIDPz6rm8hbebcP7vrQNhvRcveZoJU72Y7vskh4oIm+BZwBECnx5nTmrlres1Qapvx27Qo1Auukpf8PKXw==}
+  open@10.2.0:
+    resolution: {integrity: sha512-YgBpdJHPyQ2UE5x+hlSXcnejzAvD0b22U2OuAP+8OnlJT+PjWPxtgmGqKKc+RgTM63U9gN0YzrYc71R2WT/hTA==}
     engines: {node: '>=18'}
 
   open@8.4.2:
@@ -7380,6 +7380,10 @@ packages:
         optional: true
       utf-8-validate:
         optional: true
+
+  wsl-utils@0.1.0:
+    resolution: {integrity: sha512-h3Fbisa2nKGPxCpm89Hk33lBLsnaGBvctQopaBSOW/uIs6FTe1ATyAnKFJrzVs9vpGdsTe73WF3V4lIsk4Gacw==}
+    engines: {node: '>=18'}
 
   xml-name-validator@5.0.0:
     resolution: {integrity: sha512-EvGK8EJ3DhaHfbRlETOWAS5pO9MZITeauHKJyb8wyajUfQUenkIg2MvLDTZ4T/TgIcm3HU0TFBgWWboAZ30UHg==}
@@ -9549,27 +9553,27 @@ snapshots:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
 
-  '@hey-api/codegen-core@0.3.0(typescript@5.9.3)':
+  '@hey-api/codegen-core@0.3.1(typescript@5.9.3)':
     dependencies:
       typescript: 5.9.3
 
-  '@hey-api/json-schema-ref-parser@1.2.0':
+  '@hey-api/json-schema-ref-parser@1.2.1':
     dependencies:
       '@jsdevtools/ono': 7.1.3
       '@types/json-schema': 7.0.15
       js-yaml: 4.1.0
       lodash: 4.17.21
 
-  '@hey-api/openapi-ts@0.86.1(typescript@5.9.3)':
+  '@hey-api/openapi-ts@0.86.7(typescript@5.9.3)':
     dependencies:
-      '@hey-api/codegen-core': 0.3.0(typescript@5.9.3)
-      '@hey-api/json-schema-ref-parser': 1.2.0
+      '@hey-api/codegen-core': 0.3.1(typescript@5.9.3)
+      '@hey-api/json-schema-ref-parser': 1.2.1
       ansi-colors: 4.1.3
       c12: 3.3.1
       color-support: 1.1.3
-      commander: 13.0.0
+      commander: 14.0.1
       handlebars: 4.7.8
-      open: 10.1.2
+      open: 10.2.0
       semver: 7.7.2
       typescript: 5.9.3
     transitivePeerDependencies:
@@ -10103,7 +10107,7 @@ snapshots:
   '@npmcli/fs@2.1.2':
     dependencies:
       '@gar/promisify': 1.1.3
-      semver: 7.7.3
+      semver: 7.7.2
 
   '@npmcli/git@3.0.2':
     dependencies:
@@ -10114,7 +10118,7 @@ snapshots:
       proc-log: 2.0.1
       promise-inflight: 1.0.1
       promise-retry: 2.0.1
-      semver: 7.7.3
+      semver: 7.7.2
       which: 2.0.2
     transitivePeerDependencies:
       - bluebird
@@ -10128,7 +10132,7 @@ snapshots:
       proc-log: 4.2.0
       promise-inflight: 1.0.1
       promise-retry: 2.0.1
-      semver: 7.7.3
+      semver: 7.7.2
       which: 4.0.0
     transitivePeerDependencies:
       - bluebird
@@ -12094,7 +12098,7 @@ snapshots:
 
   builtins@5.1.0:
     dependencies:
-      semver: 7.7.3
+      semver: 7.7.2
 
   bundle-name@4.1.0:
     dependencies:
@@ -12363,7 +12367,7 @@ snapshots:
     dependencies:
       delayed-stream: 1.0.0
 
-  commander@13.0.0: {}
+  commander@14.0.1: {}
 
   commander@4.1.1: {}
 
@@ -14318,7 +14322,7 @@ snapshots:
       nopt: 6.0.0
       npmlog: 6.0.2
       rimraf: 3.0.2
-      semver: 7.7.3
+      semver: 7.7.2
       tar: 6.2.1
       which: 2.0.2
     transitivePeerDependencies:
@@ -14350,7 +14354,7 @@ snapshots:
     dependencies:
       hosted-git-info: 5.2.1
       is-core-module: 2.16.1
-      semver: 7.7.3
+      semver: 7.7.2
       validate-npm-package-license: 3.0.4
 
   normalize-package-data@6.0.2:
@@ -14379,7 +14383,7 @@ snapshots:
 
   npm-install-checks@6.3.0:
     dependencies:
-      semver: 7.7.3
+      semver: 7.7.2
 
   npm-normalize-package-bin@1.0.1: {}
 
@@ -14420,7 +14424,7 @@ snapshots:
       npm-install-checks: 6.3.0
       npm-normalize-package-bin: 3.0.1
       npm-package-arg: 11.0.3
-      semver: 7.7.3
+      semver: 7.7.2
 
   npm-registry-fetch@13.3.1:
     dependencies:
@@ -14567,12 +14571,12 @@ snapshots:
     dependencies:
       mimic-fn: 2.1.0
 
-  open@10.1.2:
+  open@10.2.0:
     dependencies:
       default-browser: 5.2.1
       define-lazy-prop: 3.0.0
       is-inside-container: 1.0.0
-      is-wsl: 3.1.0
+      wsl-utils: 0.1.0
 
   open@8.4.2:
     dependencies:
@@ -16443,6 +16447,10 @@ snapshots:
   ws@7.5.10: {}
 
   ws@8.18.3: {}
+
+  wsl-utils@0.1.0:
+    dependencies:
+      is-wsl: 3.1.0
 
   xml-name-validator@5.0.0: {}
 
