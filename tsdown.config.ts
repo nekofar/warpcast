@@ -17,9 +17,6 @@ export default defineConfig({
 
   // Clean the output directory before building
   clean: true,
-  outExtension({ format }) {
-    return { js: format === "esm" ? ".mjs" : ".cjs" };
-  },
   bundle: true,
   splitting: false,
   noExternal: [],
