@@ -17,4 +17,7 @@ export default defineConfig({
   splitting: false,
   external: ["zod"], // keep zod as a peer dependency, do not bundle
   noExternal: [],
+
+  // Generate package.json exports field
+  exports: true,
 });
