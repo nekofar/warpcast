@@ -23,6 +23,13 @@ export default defineConfig({
 
   // Disable minification for better readability
   minify: false,
+
+  // Enable tree shaking to remove unused code
+  treeshake: true,
+
+  // Add shims for Node.js compatibility
+  shims: true,
+
   // External dependencies that should not be bundled
   external: ["zod"],
 
