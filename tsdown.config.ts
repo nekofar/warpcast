@@ -11,6 +11,8 @@ export default defineConfig({
 
   // Generate source maps for debugging
   sourcemap: true,
+
+  // Generate TypeScript declaration files
   dts: true,
   clean: true,
   outExtension({ format }) {
