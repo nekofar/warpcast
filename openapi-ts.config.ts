@@ -17,6 +17,9 @@ export default defineConfig({
   plugins: [
     ...defaultPlugins,
     {
+      name: "@hey-api/client-ofetch",
+    },
+    {
       name: "@hey-api/schemas",
     },
     {
