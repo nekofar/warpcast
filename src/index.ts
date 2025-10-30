@@ -205,11 +205,13 @@ export {
   getFollowers, // Get followers endpoint helper.
   getFollowing, // Get following endpoint helper.
   getHighlightedChannels, // Get highlighted channels endpoint helper.
+  getManagedApps, // Get managed apps endpoint helper.
   getMetaTags, // Get meta tags endpoint helper.
   getMiniAppAnalyticsRollup, // Get mini app analytics rollup endpoint helper.
   getMutedKeywords, // Get muted keywords endpoint helper.
   getMutualFollowers, // Get mutual followers endpoint helper.
   getNotifications, // Get notifications endpoint helper.
+  getOrCreateReferralCode, // Get or create referral code endpoint helper.
   getOwnedDomains, // Get owned domains endpoint helper.
   getProfileCasts, // Get profile casts endpoint helper.
   getRewardsLeaderboard, // Get rewards leaderboard endpoint helper.
@@ -222,6 +224,7 @@ export {
   getSuggestedUsers, // Get suggested users endpoint helper.
   getTopFrameApps, // Get top frame apps endpoint helper.
   getTopMiniApps, // Get top mini apps endpoint helper.
+  getTrendingTopics, // Get trending topics endpoint helper.
   getUnseenCounts, // Get unseen counts endpoint helper.
   getUser, // Get user endpoint helper.
   getUserAppContext, // Get user app context endpoint helper.
@@ -240,6 +243,8 @@ export {
   getUserStarterPacks, // Get user starter packs endpoint helper.
   getUserThreadCasts, // Get user thread casts endpoint helper.
   getVerifications, // Get verifications endpoint helper.
+  getXpClaimableSummary, // Get xp claimable summary endpoint helper.
+  getXpRewards, // Get xp rewards endpoint helper.
   inspectImageUrl, // Inspect image url endpoint helper.
   inspectMiniAppUrl, // Inspect mini app url endpoint helper.
   inviteUserToChannel, // Invite user to channel endpoint helper.
@@ -250,6 +255,7 @@ export {
   pinCastToChannel, // Pin cast to channel endpoint helper.
   pinDirectCastConversation, // Pin direct cast conversation endpoint helper.
   recastCast, // Recast cast endpoint helper.
+  registerStatsigEvents, // Register statsig events endpoint helper.
   removeChannelInvite, // Remove channel invite endpoint helper.
   removeDirectCastMessageReaction, // Remove direct cast message reaction endpoint helper.
   revokeApiKey, // Revoke api key endpoint helper.
@@ -258,6 +264,7 @@ export {
   sendDirectCastMessage, // Send direct cast message endpoint helper.
   setDirectCastConversationMessageTtl, // Set direct cast conversation message ttl endpoint helper.
   setLastCheckedTimestamp, // Set last checked timestamp endpoint helper.
+  submitAnalyticsEvents, // Submit analytics events endpoint helper.
   unbanUserFromChannel, // Unban user from channel endpoint helper.
   unblockUser, // Unblock user endpoint helper.
   undoRecast, // Undo recast endpoint helper.
@@ -270,19 +277,107 @@ export {
   updateStarterPack, // Update starter pack endpoint helper.
 } from "./client/sdk.gen";
 export {
+  acceptChannelInviteResponseTransformer, // Accept channel invite response transformer.
+  addDirectCastMessageReactionResponseTransformer, // Add direct cast message reaction response transformer.
+  attachEmbedsResponseTransformer, // Attach embeds response transformer.
+  banUserFromChannelResponseTransformer, // Ban user from channel response transformer.
+  blockUserResponseTransformer, // Block user response transformer.
+  categorizeDirectCastConversationResponseTransformer, // Categorize direct cast conversation response transformer.
+  checkUserChannelFollowStatusResponseTransformer, // Check user channel follow status response transformer.
   createCastResponseTransformer, // Create cast response transformer.
+  createDraftCastsResponseTransformer, // Create draft casts response transformer.
+  deleteCastResponseTransformer, // Delete cast response transformer.
+  deleteDraftCastResponseTransformer, // Delete draft cast response transformer.
+  directCastManuallyMarkUnreadResponseTransformer, // Direct cast manually mark unread response transformer.
+  discoverChannelsResponseTransformer, // Discover channels response transformer.
+  followChannelResponseTransformer, // Follow channel response transformer.
+  getAccountVerificationsResponseTransformer, // Get account verifications response transformer.
+  getAllChannelsResponseTransformer, // Get all channels response transformer.
   getApiKeysResponseTransformer, // Get api keys response transformer.
+  getAppsByAuthorResponseTransformer, // Get apps by author response transformer.
+  getAvailableInvitesResponseTransformer, // Get available invites response transformer.
+  getBlockedUsersResponseTransformer, // Get blocked users response transformer.
+  getBookmarkedCastsResponseTransformer, // Get bookmarked casts response transformer.
+  getCastLikesResponseTransformer, // Get cast likes response transformer.
+  getCastQuotesResponseTransformer, // Get cast quotes response transformer.
+  getCastRecastersResponseTransformer, // Get cast recasters response transformer.
   getCastsByFidResponseTransformer, // Get casts by fid response transformer.
+  getChannelDetailsResponseTransformer, // Get channel details response transformer.
+  getChannelFollowersResponseTransformer, // Get channel followers response transformer.
+  getChannelFollowersYouKnowResponseTransformer, // Get channel followers you know response transformer.
+  getChannelResponseTransformer, // Get channel response transformer.
+  getChannelStreaksForUserResponseTransformer, // Get channel streaks for user response transformer.
+  getChannelUsersResponseTransformer, // Get channel users response transformer.
   getCreatorRewardWinnersResponseTransformer, // Get creator reward winners response transformer.
+  getCurrentUserResponseTransformer, // Get current user response transformer.
+  getDeveloperRewardWinnersResponseTransformer, // Get developer reward winners response transformer.
   getDirectCastConversationMessagesResponseTransformer, // Get direct cast conversation messages response transformer.
   getDirectCastConversationRecentMessagesResponseTransformer, // Get direct cast conversation recent messages response transformer.
   getDirectCastConversationResponseTransformer, // Get direct cast conversation response transformer.
   getDirectCastInboxResponseTransformer, // Get direct cast inbox response transformer.
+  getDiscoverableActionsResponseTransformer, // Get discoverable actions response transformer.
+  getDiscoverableComposerActionsResponseTransformer, // Get discoverable composer actions response transformer.
+  getDraftCastsResponseTransformer, // Get draft casts response transformer.
   getFeedItemsResponseTransformer, // Get feed items response transformer.
+  getFollowersResponseTransformer, // Get followers response transformer.
+  getFollowingResponseTransformer, // Get following response transformer.
+  getHighlightedChannelsResponseTransformer, // Get highlighted channels response transformer.
   getMiniAppAnalyticsRollupResponseTransformer, // Get mini app analytics rollup response transformer.
+  getMutedKeywordsResponseTransformer, // Get muted keywords response transformer.
+  getMutualFollowersResponseTransformer, // Get mutual followers response transformer.
+  getNotificationsResponseTransformer, // Get notifications response transformer.
   getProfileCastsResponseTransformer, // Get profile casts response transformer.
+  getRewardsLeaderboardResponseTransformer, // Get rewards leaderboard response transformer.
+  getRewardsMetadataResponseTransformer, // Get rewards metadata response transformer.
+  getSponsoredInvitesResponseTransformer, // Get sponsored invites response transformer.
   getStarterPackMembersResponseTransformer, // Get starter pack members response transformer.
+  getStarterPackResponseTransformer, // Get starter pack response transformer.
+  getStarterPackUsersResponseTransformer, // Get starter pack users response transformer.
+  getSuggestedStarterPacksResponseTransformer, // Get suggested starter packs response transformer.
+  getSuggestedUsersResponseTransformer, // Get suggested users response transformer.
+  getTopFrameAppsResponseTransformer, // Get top frame apps response transformer.
+  getTopMiniAppsResponseTransformer, // Get top mini apps response transformer.
+  getUnseenCountsResponseTransformer, // Get unseen counts response transformer.
+  getUserAppContextResponseTransformer, // Get user app context response transformer.
+  getUserByFidResponseTransformer, // Get user by fid response transformer.
+  getUserByUsernameResponseTransformer, // Get user by username response transformer.
+  getUserByVerificationAddressResponseTransformer, // Get user by verification address response transformer.
+  getUserFavoriteFramesResponseTransformer, // Get user favorite frames response transformer.
+  getUserFollowedChannelsResponseTransformer, // Get user followed channels response transformer.
+  getUserFollowingChannelsResponseTransformer, // Get user following channels response transformer.
   getUserLikedCastsResponseTransformer, // Get user liked casts response transformer.
+  getUserOnboardingStateResponseTransformer, // Get user onboarding state response transformer.
+  getUserPreferencesResponseTransformer, // Get user preferences response transformer.
+  getUserPrimaryAddressResponseTransformer, // Get user primary address response transformer.
+  getUserPrimaryAddressesResponseTransformer, // Get user primary addresses response transformer.
+  getUserResponseTransformer, // Get user response transformer.
+  getUserRewardsScoresResponseTransformer, // Get user rewards scores response transformer.
+  getUserStarterPacksResponseTransformer, // Get user starter packs response transformer.
+  getUserThreadCastsResponseTransformer, // Get user thread casts response transformer.
+  getVerificationsResponseTransformer, // Get verifications response transformer.
+  inviteUserToChannelResponseTransformer, // Invite user to channel response transformer.
+  likeCastResponseTransformer, // Like cast response transformer.
+  markAllNotificationsReadResponseTransformer, // Mark all notifications read response transformer.
+  moderateCastResponseTransformer, // Moderate cast response transformer.
+  muteKeywordResponseTransformer, // Mute keyword response transformer.
+  pinCastToChannelResponseTransformer, // Pin cast to channel response transformer.
+  pinDirectCastConversationResponseTransformer, // Pin direct cast conversation response transformer.
+  recastCastResponseTransformer, // Recast cast response transformer.
+  removeChannelInviteResponseTransformer, // Remove channel invite response transformer.
+  removeDirectCastMessageReactionResponseTransformer, // Remove direct cast message reaction response transformer.
+  searchChannelsResponseTransformer, // Search channels response transformer.
+  sendDirectCastMessageResponseTransformer, // Send direct cast message response transformer.
+  setDirectCastConversationMessageTtlResponseTransformer, // Set direct cast conversation message ttl response transformer.
+  setLastCheckedTimestampResponseTransformer, // Set last checked timestamp response transformer.
+  submitAnalyticsEventsResponseTransformer, // Submit analytics events response transformer.
+  unbanUserFromChannelResponseTransformer, // Unban user from channel response transformer.
+  undoRecastResponseTransformer, // Undo recast response transformer.
+  unfollowChannelResponseTransformer, // Unfollow channel response transformer.
+  unmuteKeywordResponseTransformer, // Unmute keyword response transformer.
+  unpinCastFromChannelResponseTransformer, // Unpin cast from channel response transformer.
+  unpinDirectCastConversationResponseTransformer, // Unpin direct cast conversation response transformer.
+  updateDirectCastConversationNotificationsResponseTransformer, // Update direct cast conversation notifications response transformer.
+  updateStarterPackResponseTransformer, // Update starter pack response transformer.
 } from "./client/transformers.gen";
 export type {
   AcceptChannelInviteData, // Accept channel invite type definition.
@@ -624,6 +719,11 @@ export type {
   GetHighlightedChannelsErrors, // Get highlighted channels type definition.
   GetHighlightedChannelsResponse, // Get highlighted channels type definition.
   GetHighlightedChannelsResponses, // Get highlighted channels type definition.
+  GetManagedAppsData, // Get managed apps type definition.
+  GetManagedAppsError, // Get managed apps type definition.
+  GetManagedAppsErrors, // Get managed apps type definition.
+  GetManagedAppsResponse, // Get managed apps type definition.
+  GetManagedAppsResponses, // Get managed apps type definition.
   GetMetaTagsData, // Get meta tags type definition.
   GetMetaTagsError, // Get meta tags type definition.
   GetMetaTagsErrors, // Get meta tags type definition.
@@ -649,6 +749,11 @@ export type {
   GetNotificationsErrors, // Get notifications type definition.
   GetNotificationsResponse, // Get notifications type definition.
   GetNotificationsResponses, // Get notifications type definition.
+  GetOrCreateReferralCodeData, // Get or create referral code type definition.
+  GetOrCreateReferralCodeError, // Get or create referral code type definition.
+  GetOrCreateReferralCodeErrors, // Get or create referral code type definition.
+  GetOrCreateReferralCodeResponse, // Get or create referral code type definition.
+  GetOrCreateReferralCodeResponses, // Get or create referral code type definition.
   GetOwnedDomainsData, // Get owned domains type definition.
   GetOwnedDomainsError, // Get owned domains type definition.
   GetOwnedDomainsErrors, // Get owned domains type definition.
@@ -709,6 +814,11 @@ export type {
   GetTopMiniAppsErrors, // Get top mini apps type definition.
   GetTopMiniAppsResponse, // Get top mini apps type definition.
   GetTopMiniAppsResponses, // Get top mini apps type definition.
+  GetTrendingTopicsData, // Get trending topics type definition.
+  GetTrendingTopicsError, // Get trending topics type definition.
+  GetTrendingTopicsErrors, // Get trending topics type definition.
+  GetTrendingTopicsResponse, // Get trending topics type definition.
+  GetTrendingTopicsResponses, // Get trending topics type definition.
   GetUnseenCountsData, // Get unseen counts type definition.
   GetUnseenCountsError, // Get unseen counts type definition.
   GetUnseenCountsErrors, // Get unseen counts type definition.
@@ -799,6 +909,16 @@ export type {
   GetVerificationsErrors, // Get verifications type definition.
   GetVerificationsResponse, // Get verifications type definition.
   GetVerificationsResponses, // Get verifications type definition.
+  GetXpClaimableSummaryData, // Get xp claimable summary type definition.
+  GetXpClaimableSummaryError, // Get xp claimable summary type definition.
+  GetXpClaimableSummaryErrors, // Get xp claimable summary type definition.
+  GetXpClaimableSummaryResponse, // Get xp claimable summary type definition.
+  GetXpClaimableSummaryResponses, // Get xp claimable summary type definition.
+  GetXpRewardsData, // Get xp rewards type definition.
+  GetXpRewardsError, // Get xp rewards type definition.
+  GetXpRewardsErrors, // Get xp rewards type definition.
+  GetXpRewardsResponse, // Get xp rewards type definition.
+  GetXpRewardsResponses, // Get xp rewards type definition.
   HighlightedChannelsResponse, // Highlighted channels type definition.
   ImageEmbed, // Image embed type definition.
   InspectImageUrlData, // Inspect image url type definition.
@@ -870,6 +990,11 @@ export type {
   RecastCastResponse, // Recast cast type definition.
   RecastCastResponses, // Recast cast type definition.
   Recaster, // Recaster type definition.
+  RegisterStatsigEventsData, // Register statsig events type definition.
+  RegisterStatsigEventsError, // Register statsig events type definition.
+  RegisterStatsigEventsErrors, // Register statsig events type definition.
+  RegisterStatsigEventsResponse, // Register statsig events type definition.
+  RegisterStatsigEventsResponses, // Register statsig events type definition.
   RemoveChannelInviteData, // Remove channel invite type definition.
   RemoveChannelInviteError, // Remove channel invite type definition.
   RemoveChannelInviteErrors, // Remove channel invite type definition.
@@ -920,6 +1045,11 @@ export type {
   StarterPacksResponse, // Starter packs type definition.
   StarterPackUpdateRequest, // Starter pack update type definition.
   StarterPackUsersResponse, // Starter pack users type definition.
+  SubmitAnalyticsEventsData, // Submit analytics events type definition.
+  SubmitAnalyticsEventsError, // Submit analytics events type definition.
+  SubmitAnalyticsEventsErrors, // Submit analytics events type definition.
+  SubmitAnalyticsEventsResponse, // Submit analytics events type definition.
+  SubmitAnalyticsEventsResponses, // Submit analytics events type definition.
   SuccessResponse, // Success type definition.
   SuggestedUsersResponse, // Suggested users type definition.
   TopMiniAppsResponse, // Top mini apps type definition.
@@ -1111,11 +1241,13 @@ export {
   zGetFollowersData, // Get followers data Zod schema.
   zGetFollowingData, // Get following data Zod schema.
   zGetHighlightedChannelsData, // Get highlighted channels data Zod schema.
+  zGetManagedAppsData, // Get managed apps data Zod schema.
   zGetMetaTagsData, // Get meta tags data Zod schema.
   zGetMiniAppAnalyticsRollupData, // Get mini app analytics rollup data Zod schema.
   zGetMutedKeywordsData, // Get muted keywords data Zod schema.
   zGetMutualFollowersData, // Get mutual followers data Zod schema.
   zGetNotificationsData, // Get notifications data Zod schema.
+  zGetOrCreateReferralCodeData, // Get or create referral code data Zod schema.
   zGetOwnedDomainsData, // Get owned domains data Zod schema.
   zGetProfileCastsData, // Get profile casts data Zod schema.
   zGetRewardsLeaderboardData, // Get rewards leaderboard data Zod schema.
@@ -1128,6 +1260,7 @@ export {
   zGetSuggestedUsersData, // Get suggested users data Zod schema.
   zGetTopFrameAppsData, // Get top frame apps data Zod schema.
   zGetTopMiniAppsData, // Get top mini apps data Zod schema.
+  zGetTrendingTopicsData, // Get trending topics data Zod schema.
   zGetUnseenCountsData, // Get unseen counts data Zod schema.
   zGetUserAppContextData, // Get user app context data Zod schema.
   zGetUserByFidData, // Get user by fid data Zod schema.
@@ -1146,6 +1279,8 @@ export {
   zGetUserStarterPacksData, // Get user starter packs data Zod schema.
   zGetUserThreadCastsData, // Get user thread casts data Zod schema.
   zGetVerificationsData, // Get verifications data Zod schema.
+  zGetXpClaimableSummaryData, // Get xp claimable summary data Zod schema.
+  zGetXpRewardsData, // Get xp rewards data Zod schema.
   zHighlightedChannelsResponse, // Highlighted channels response Zod schema.
   zImageEmbed, // Image embed Zod schema.
   zInspectImageUrlData, // Inspect image url data Zod schema.
@@ -1177,6 +1312,7 @@ export {
   zRawChannelResponse, // Raw channel response Zod schema.
   zRecastCastData, // Recast cast data Zod schema.
   zRecaster, // Recaster Zod schema.
+  zRegisterStatsigEventsData, // Register statsig events data Zod schema.
   zRemoveChannelInviteData, // Remove channel invite data Zod schema.
   zRemoveDirectCastMessageReactionData, // Remove direct cast message reaction data Zod schema.
   zRevokeApiKeyData, // Revoke api key data Zod schema.
@@ -1195,6 +1331,7 @@ export {
   zStarterPacksResponse, // Starter packs response Zod schema.
   zStarterPackUpdateRequest, // Starter pack update request Zod schema.
   zStarterPackUsersResponse, // Starter pack users response Zod schema.
+  zSubmitAnalyticsEventsData, // Submit analytics events data Zod schema.
   zSuccessResponse, // Success response Zod schema.
   zSuggestedUsersResponse, // Suggested users response Zod schema.
   zTopMiniAppsResponse, // Top mini apps response Zod schema.
