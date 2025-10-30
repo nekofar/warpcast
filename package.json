@@ -1,6 +1,6 @@
 {
   "name": "@nekofar/warpcast",
-  "version": "2.0.0-alpha.82",
+  "version": "2.0.0-alpha.83",
   "description": "TypeScript client for interacting with Warpcast APIs",
   "keywords": [
     "warpcast",
@@ -23,14 +23,14 @@
   "type": "module",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
+      "import": "./dist/index.js",
       "require": "./dist/index.cjs"
-    }
+    },
+    "./package.json": "./package.json"
   },
   "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
-  "types": "dist/index.d.ts",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.cts",
   "files": [
     "dist/",
     "README.md",
@@ -41,7 +41,7 @@
   },
   "scripts": {
     "prebuild": "pnpm clean && pnpm openapi:lint && pnpm openapi:bundle && pnpm openapi:generate",
-    "build": "tsup",
+    "build": "tsdown",
     "clean": "rimraf dist openapi.json",
     "docs": "typedoc",
     "format": "prettier --write .",
@@ -61,18 +61,19 @@
     "@asyncapi/cli": "^4.1.0",
     "@asyncapi/generator": "^2.8.3",
     "@biomejs/biome": "^2.2.5",
-    "@hey-api/openapi-ts": "^0.86.0",
-    "@redocly/cli": "^2.2.3",
+    "@hey-api/openapi-ts": "^0.86.8",
+    "@redocly/cli": "^2.9.0",
     "@types/node": "^24.6.2",
     "globals": "^16.4.0",
     "rimraf": "^6.0.1",
-    "tsup": "^8.5.0",
+    "tsdown": "0.15.12",
     "typedoc": "^0.28.13",
     "typedoc-plugin-markdown": "^4.8.1",
     "typescript": "^5.9.2",
     "vitest": "^4.0.1"
   },
   "peerDependencies": {
+    "ofetch": "^1.5.0",
     "zod": "^4.0.10"
   },
   "overrides": {

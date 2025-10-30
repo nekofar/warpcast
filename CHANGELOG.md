@@ -2,6 +2,37 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.83] - 2025-10-30
+
+### 🚀 Features
+
+- *(client)* Update query serializers and response transformers
+
+### 🐛 Bug Fixes
+
+- *(client)* Expose latest generated exports
+
+### ⚙️ Miscellaneous Tasks
+
+- *(config)* Update biome schema
+- *(scripts)* Update `build` script to use `tsdown`
+- *(config)* Update `tsdown` entry and formats
+- *(config)* Adjust `outDir` placement in `tsdown` config
+- *(config)* Enable `exports` field in `tsdown` config
+- *(config)* Update `external` comment in `tsdown` config
+- *(config)* Disable `minify` in `tsdown` config
+- *(config)* Enable `sourcemap` in `tsdown` config
+- *(config)* Enable `dts` in `tsdown` config
+- *(config)* Enable `clean` in `tsdown` config
+- *(config)* Remove `outExtension` from `tsdown` config
+- *(config)* Remove `bundle` and `splitting` from `tsdown` config
+- *(config)* Specify `target` as `es2022` in `tsdown` config
+- *(config)* Enable `treeshake` and `shims` in `tsdown` config
+- *(config)* Switch to `tsdown` in build configuration
+- *(config)* Update exports and types paths
+- *(config)* Add `ofetch` to `external` in `tsdown` config
+- *(config)* Add `@hey-api/client-ofetch` to plugins
+
 ## [2.0.0-alpha.82] - 2025-10-29
 
 ### 🐛 Bug Fixes
