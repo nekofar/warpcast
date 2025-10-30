@@ -8,6 +8,9 @@ export default defineConfig({
   format: ["esm", "cjs"],
   // Output directory for built files
   outDir: "dist",
+
+  // Generate source maps for debugging
+  sourcemap: true,
   dts: true,
   clean: true,
   outExtension({ format }) {
