@@ -17,7 +17,9 @@ export default defineConfig({
 
   // Clean the output directory before building
   clean: true,
-  noExternal: [],
+
+  // Target ECMAScript version
+  target: "es2022",
 
   // Disable minification for better readability
   minify: false,
