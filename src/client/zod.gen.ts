@@ -272,7 +272,7 @@ export const zDirectCastMessage = z.object({
   }),
   senderContext: zUser,
   viewerContext: z.optional(zDirectCastMessageViewerContext),
-  get inReplyTo(): z.ZodOptional {
+  get inReplyTo() {
     return z.optional(
       z.lazy((): any => {
         return zDirectCastMessage;
