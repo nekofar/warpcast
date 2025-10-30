@@ -41,7 +41,7 @@
   },
   "scripts": {
     "prebuild": "pnpm clean && pnpm openapi:lint && pnpm openapi:bundle && pnpm openapi:generate",
-    "build": "tsup",
+    "build": "tsdown",
     "clean": "rimraf dist openapi.json",
     "docs": "typedoc",
     "format": "prettier --write .",
