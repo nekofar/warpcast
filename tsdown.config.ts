@@ -16,6 +16,9 @@ export default defineConfig({
   bundle: true,
   splitting: false,
   noExternal: [],
+
+  // Disable minification for better readability
+  minify: false,
   // External dependencies that should not be bundled
   external: ["zod"],
 
