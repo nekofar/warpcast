@@ -1,11 +1,13 @@
-import { defineConfig } from "tsup";
+import { defineConfig } from "tsdown";
 
+// tsdown build configuration
 export default defineConfig({
   // Entry point for the build
   entry: ["src/index.ts"],
 
   // Output both ESM and CommonJS formats
   format: ["esm", "cjs"],
+
   // Output directory for built files
   outDir: "dist",
 
