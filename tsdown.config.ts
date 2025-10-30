@@ -14,6 +14,8 @@ export default defineConfig({
 
   // Generate TypeScript declaration files
   dts: true,
+
+  // Clean the output directory before building
   clean: true,
   outExtension({ format }) {
     return { js: format === "esm" ? ".mjs" : ".cjs" };
