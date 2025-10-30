@@ -1,7 +1,10 @@
 import { defineConfig } from "tsup";
 
 export default defineConfig({
-  entry: ["src/**/*.ts", "!src/**/*.test.ts"],
+  // Entry point for the build
+  entry: ["src/index.ts"],
+
+  // Output both ESM and CommonJS formats
   format: ["esm", "cjs"],
   dts: true,
   clean: true,
