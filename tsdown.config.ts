@@ -33,7 +33,7 @@ export default defineConfig({
   shims: true,
 
   // External dependencies that should not be bundled
-  external: ["zod"],
+  external: ["ofetch", "zod"],
 
   // Generate package.json exports field
   exports: true,
