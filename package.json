@@ -73,6 +73,7 @@
     "vitest": "^4.0.1"
   },
   "peerDependencies": {
+    "ofetch": "^1.5.0",
     "zod": "^4.0.10"
   },
   "overrides": {
