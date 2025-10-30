@@ -17,8 +17,6 @@ export default defineConfig({
 
   // Clean the output directory before building
   clean: true,
-  bundle: true,
-  splitting: false,
   noExternal: [],
 
   // Disable minification for better readability
