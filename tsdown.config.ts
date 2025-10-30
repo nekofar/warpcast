@@ -6,9 +6,10 @@ export default defineConfig({
 
   // Output both ESM and CommonJS formats
   format: ["esm", "cjs"],
+  // Output directory for built files
+  outDir: "dist",
   dts: true,
   clean: true,
-  outDir: "dist",
   outExtension({ format }) {
     return { js: format === "esm" ? ".mjs" : ".cjs" };
   },
