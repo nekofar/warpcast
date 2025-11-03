@@ -26,7 +26,7 @@ importers:
         version: 2.3.2
       '@hey-api/openapi-ts':
         specifier: ^0.86.8
-        version: 0.86.10(typescript@5.9.3)
+        version: 0.86.11(typescript@5.9.3)
       '@redocly/cli':
         specifier: ^2.9.0
         version: 2.10.0(@opentelemetry/api@1.9.0)(ajv@8.17.1)(core-js@3.44.0)(encoding@0.1.13)
@@ -1397,8 +1397,8 @@ packages:
     resolution: {integrity: sha512-inPeksRLq+j3ArnuGOzQPQE//YrhezQG0+9Y9yizScBN2qatJ78fIByhEgKdNAbtguDCn4RPxmEhcrePwHxs4A==}
     engines: {node: '>= 16'}
 
-  '@hey-api/openapi-ts@0.86.10':
-    resolution: {integrity: sha512-Ns0dTJp/RUrOMPiJsO4/1E2Sa3VZ1iw2KCdG6PDbd9vLwOXEYW2UmiWMDPOTInLCYB+f8FLMF9T25jtfQe7AZg==}
+  '@hey-api/openapi-ts@0.86.11':
+    resolution: {integrity: sha512-H3W+mlTuX+zNy435bz3ZAxUDo12pv+Mpr2zlLWHyrbthgURBZm5OHwPCA1o261eCOof57DvfKVwSjw6XTUxI1Q==}
     engines: {node: '>=20.19.0'}
     hasBin: true
     peerDependencies:
@@ -9580,7 +9580,7 @@ snapshots:
       js-yaml: 4.1.0
       lodash: 4.17.21
 
-  '@hey-api/openapi-ts@0.86.10(typescript@5.9.3)':
+  '@hey-api/openapi-ts@0.86.11(typescript@5.9.3)':
     dependencies:
       '@hey-api/codegen-core': 0.3.2(typescript@5.9.3)
       '@hey-api/json-schema-ref-parser': 1.2.1
