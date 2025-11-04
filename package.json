@@ -61,7 +61,7 @@
     "@asyncapi/cli": "^4.1.0",
     "@asyncapi/generator": "^2.8.3",
     "@biomejs/biome": "^2.2.5",
-    "@hey-api/openapi-ts": "^0.86.8",
+    "@hey-api/openapi-ts": "^0.87.0",
     "@redocly/cli": "^2.9.0",
     "@types/node": "^24.6.2",
     "globals": "^16.4.0",
