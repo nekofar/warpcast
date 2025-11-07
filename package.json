@@ -1,6 +1,6 @@
 {
   "name": "@nekofar/warpcast",
-  "version": "2.0.0-alpha.86",
+  "version": "2.0.0-alpha.87",
   "description": "TypeScript client for interacting with Warpcast APIs",
   "keywords": [
     "warpcast",
@@ -66,7 +66,7 @@
     "@types/node": "^24.6.2",
     "globals": "^16.4.0",
     "rimraf": "^6.0.1",
-    "tsdown": "0.15.12",
+    "tsdown": "0.16.0",
     "typedoc": "^0.28.13",
     "typedoc-plugin-markdown": "^4.8.1",
     "typescript": "^5.9.2",
