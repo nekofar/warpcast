@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.88] - 2025-11-08
+
+### 🐛 Bug Fixes
+
+- *(package)* Point module export to mjs
+
 ## [2.0.0-alpha.87] - 2025-11-07
 
 ### 🐛 Bug Fixes
