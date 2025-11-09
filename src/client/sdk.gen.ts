@@ -3,107 +3,20 @@
 import type { Client, Options as Options2, TDataShape } from "./client";
 import { client } from "./client.gen";
 import {
-  acceptChannelInviteResponseTransformer,
-  addDirectCastMessageReactionResponseTransformer,
-  attachEmbedsResponseTransformer,
-  banUserFromChannelResponseTransformer,
-  blockUserResponseTransformer,
-  categorizeDirectCastConversationResponseTransformer,
-  checkUserChannelFollowStatusResponseTransformer,
   createCastResponseTransformer,
-  createDraftCastsResponseTransformer,
-  deleteCastResponseTransformer,
-  deleteDraftCastResponseTransformer,
-  directCastManuallyMarkUnreadResponseTransformer,
-  discoverChannelsResponseTransformer,
-  followChannelResponseTransformer,
-  getAccountVerificationsResponseTransformer,
-  getAllChannelsResponseTransformer,
   getApiKeysResponseTransformer,
-  getAppsByAuthorResponseTransformer,
-  getAvailableInvitesResponseTransformer,
-  getBlockedUsersResponseTransformer,
-  getBookmarkedCastsResponseTransformer,
-  getCastLikesResponseTransformer,
-  getCastQuotesResponseTransformer,
-  getCastRecastersResponseTransformer,
   getCastsByFidResponseTransformer,
-  getChannelDetailsResponseTransformer,
-  getChannelFollowersResponseTransformer,
-  getChannelFollowersYouKnowResponseTransformer,
-  getChannelResponseTransformer,
-  getChannelStreaksForUserResponseTransformer,
-  getChannelUsersResponseTransformer,
   getCreatorRewardWinnersResponseTransformer,
-  getCurrentUserResponseTransformer,
-  getDeveloperRewardWinnersResponseTransformer,
   getDirectCastConversationMessagesResponseTransformer,
   getDirectCastConversationRecentMessagesResponseTransformer,
   getDirectCastConversationResponseTransformer,
   getDirectCastInboxResponseTransformer,
-  getDiscoverableActionsResponseTransformer,
-  getDiscoverableComposerActionsResponseTransformer,
-  getDraftCastsResponseTransformer,
   getFeedItemsResponseTransformer,
-  getFollowersResponseTransformer,
-  getFollowingResponseTransformer,
-  getHighlightedChannelsResponseTransformer,
   getMiniAppAnalyticsRollupResponseTransformer,
-  getMutedKeywordsResponseTransformer,
-  getMutualFollowersResponseTransformer,
-  getNotificationsResponseTransformer,
   getProfileCastsResponseTransformer,
-  getRewardsLeaderboardResponseTransformer,
   getRewardsMetadataResponseTransformer,
-  getSponsoredInvitesResponseTransformer,
   getStarterPackMembersResponseTransformer,
-  getStarterPackResponseTransformer,
-  getStarterPackUsersResponseTransformer,
-  getSuggestedStarterPacksResponseTransformer,
-  getSuggestedUsersResponseTransformer,
-  getTopFrameAppsResponseTransformer,
-  getTopMiniAppsResponseTransformer,
-  getUnseenCountsResponseTransformer,
-  getUserAppContextResponseTransformer,
-  getUserByFidResponseTransformer,
-  getUserByUsernameResponseTransformer,
-  getUserByVerificationAddressResponseTransformer,
-  getUserFavoriteFramesResponseTransformer,
-  getUserFollowedChannelsResponseTransformer,
-  getUserFollowingChannelsResponseTransformer,
   getUserLikedCastsResponseTransformer,
-  getUserOnboardingStateResponseTransformer,
-  getUserPreferencesResponseTransformer,
-  getUserPrimaryAddressesResponseTransformer,
-  getUserPrimaryAddressResponseTransformer,
-  getUserResponseTransformer,
-  getUserRewardsScoresResponseTransformer,
-  getUserStarterPacksResponseTransformer,
-  getUserThreadCastsResponseTransformer,
-  getVerificationsResponseTransformer,
-  inviteUserToChannelResponseTransformer,
-  likeCastResponseTransformer,
-  markAllNotificationsReadResponseTransformer,
-  moderateCastResponseTransformer,
-  muteKeywordResponseTransformer,
-  pinCastToChannelResponseTransformer,
-  pinDirectCastConversationResponseTransformer,
-  recastCastResponseTransformer,
-  removeChannelInviteResponseTransformer,
-  removeDirectCastMessageReactionResponseTransformer,
-  searchChannelsResponseTransformer,
-  sendDirectCastMessageResponseTransformer,
-  setDirectCastConversationMessageTtlResponseTransformer,
-  setLastCheckedTimestampResponseTransformer,
-  submitAnalyticsEventsResponseTransformer,
-  unbanUserFromChannelResponseTransformer,
-  undoRecastResponseTransformer,
-  unfollowChannelResponseTransformer,
-  unmuteKeywordResponseTransformer,
-  unpinCastFromChannelResponseTransformer,
-  unpinDirectCastConversationResponseTransformer,
-  updateDirectCastConversationNotificationsResponseTransformer,
-  updateStarterPackResponseTransformer,
 } from "./transformers.gen";
 import type {
   AcceptChannelInviteData,
@@ -643,7 +556,6 @@ export const getUserOnboardingState = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zGetUserOnboardingStateData.parseAsync(data);
     },
-    responseTransformer: getUserOnboardingStateResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -671,7 +583,6 @@ export const getUserByFid = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zGetUserByFidData.parseAsync(data);
     },
-    responseTransformer: getUserByFidResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -727,7 +638,6 @@ export const getUserAppContext = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zGetUserAppContextData.parseAsync(data);
     },
-    responseTransformer: getUserAppContextResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -755,7 +665,6 @@ export const getUserPreferences = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zGetUserPreferencesData.parseAsync(data);
     },
-    responseTransformer: getUserPreferencesResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -783,7 +692,6 @@ export const getHighlightedChannels = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zGetHighlightedChannelsData.parseAsync(data);
     },
-    responseTransformer: getHighlightedChannelsResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -843,7 +751,6 @@ export const getUser = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zGetUserData.parseAsync(data);
     },
-    responseTransformer: getUserResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -871,7 +778,6 @@ export const getUserFollowingChannels = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zGetUserFollowingChannelsData.parseAsync(data);
     },
-    responseTransformer: getUserFollowingChannelsResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -897,7 +803,6 @@ export const getSuggestedUsers = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zGetSuggestedUsersData.parseAsync(data);
     },
-    responseTransformer: getSuggestedUsersResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -923,7 +828,6 @@ export const getUserFavoriteFrames = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zGetUserFavoriteFramesData.parseAsync(data);
     },
-    responseTransformer: getUserFavoriteFramesResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -951,7 +855,6 @@ export const getUserByUsername = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zGetUserByUsernameData.parseAsync(data);
     },
-    responseTransformer: getUserByUsernameResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -977,7 +880,6 @@ export const getChannelStreaksForUser = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zGetChannelStreaksForUserData.parseAsync(data);
     },
-    responseTransformer: getChannelStreaksForUserResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -1003,7 +905,6 @@ export const getUnseenCounts = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zGetUnseenCountsData.parseAsync(data);
     },
-    responseTransformer: getUnseenCountsResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -1031,7 +932,6 @@ export const getUserThreadCasts = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zGetUserThreadCastsData.parseAsync(data);
     },
-    responseTransformer: getUserThreadCastsResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -1059,7 +959,6 @@ export const getChannelFollowersYouKnow = <
     requestValidator: async (data) => {
       return await zGetChannelFollowersYouKnowData.parseAsync(data);
     },
-    responseTransformer: getChannelFollowersYouKnowResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -1085,7 +984,6 @@ export const markAllNotificationsRead = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zMarkAllNotificationsReadData.parseAsync(data);
     },
-    responseTransformer: markAllNotificationsReadResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -1117,7 +1015,6 @@ export const getNotifications = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zGetNotificationsData.parseAsync(data);
     },
-    responseTransformer: getNotificationsResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -1145,7 +1042,6 @@ export const setLastCheckedTimestamp = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zSetLastCheckedTimestampData.parseAsync(data);
     },
-    responseTransformer: setLastCheckedTimestampResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -1207,7 +1103,6 @@ export const categorizeDirectCastConversation = <
     requestValidator: async (data) => {
       return await zCategorizeDirectCastConversationData.parseAsync(data);
     },
-    responseTransformer: categorizeDirectCastConversationResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -1271,7 +1166,6 @@ export const setDirectCastConversationMessageTtl = <
     requestValidator: async (data) => {
       return await zSetDirectCastConversationMessageTtlData.parseAsync(data);
     },
-    responseTransformer: setDirectCastConversationMessageTtlResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -1307,8 +1201,6 @@ export const updateDirectCastConversationNotifications = <
         data,
       );
     },
-    responseTransformer:
-      updateDirectCastConversationNotificationsResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -1373,7 +1265,6 @@ export const sendDirectCastMessage = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zSendDirectCastMessageData.parseAsync(data);
     },
-    responseTransformer: sendDirectCastMessageResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -1407,7 +1298,6 @@ export const directCastManuallyMarkUnread = <
     requestValidator: async (data) => {
       return await zDirectCastManuallyMarkUnreadData.parseAsync(data);
     },
-    responseTransformer: directCastManuallyMarkUnreadResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -1441,7 +1331,6 @@ export const removeDirectCastMessageReaction = <
     requestValidator: async (data) => {
       return await zRemoveDirectCastMessageReactionData.parseAsync(data);
     },
-    responseTransformer: removeDirectCastMessageReactionResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -1475,7 +1364,6 @@ export const addDirectCastMessageReaction = <
     requestValidator: async (data) => {
       return await zAddDirectCastMessageReactionData.parseAsync(data);
     },
-    responseTransformer: addDirectCastMessageReactionResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -1509,7 +1397,6 @@ export const unpinDirectCastConversation = <
     requestValidator: async (data) => {
       return await zUnpinDirectCastConversationData.parseAsync(data);
     },
-    responseTransformer: unpinDirectCastConversationResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -1541,7 +1428,6 @@ export const pinDirectCastConversation = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zPinDirectCastConversationData.parseAsync(data);
     },
-    responseTransformer: pinDirectCastConversationResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -1573,7 +1459,6 @@ export const discoverChannels = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zDiscoverChannelsData.parseAsync(data);
     },
-    responseTransformer: discoverChannelsResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -1601,7 +1486,6 @@ export const getAvailableInvites = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zGetAvailableInvitesData.parseAsync(data);
     },
-    responseTransformer: getAvailableInvitesResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -1629,7 +1513,6 @@ export const getSponsoredInvites = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zGetSponsoredInvitesData.parseAsync(data);
     },
-    responseTransformer: getSponsoredInvitesResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -1688,7 +1571,6 @@ export const getRewardsLeaderboard = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zGetRewardsLeaderboardData.parseAsync(data);
     },
-    responseTransformer: getRewardsLeaderboardResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -1716,7 +1598,6 @@ export const getUserRewardsScores = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zGetUserRewardsScoresData.parseAsync(data);
     },
-    responseTransformer: getUserRewardsScoresResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -1830,7 +1711,6 @@ export const getBookmarkedCasts = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zGetBookmarkedCastsData.parseAsync(data);
     },
-    responseTransformer: getBookmarkedCastsResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -1858,7 +1738,6 @@ export const getUserStarterPacks = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zGetUserStarterPacksData.parseAsync(data);
     },
-    responseTransformer: getUserStarterPacksResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -1886,7 +1765,6 @@ export const getSuggestedStarterPacks = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zGetSuggestedStarterPacksData.parseAsync(data);
     },
-    responseTransformer: getSuggestedStarterPacksResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -1914,7 +1792,6 @@ export const getStarterPack = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zGetStarterPackData.parseAsync(data);
     },
-    responseTransformer: getStarterPackResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -1942,7 +1819,6 @@ export const updateStarterPack = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zUpdateStarterPackData.parseAsync(data);
     },
-    responseTransformer: updateStarterPackResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -1974,7 +1850,6 @@ export const getStarterPackUsers = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zGetStarterPackUsersData.parseAsync(data);
     },
-    responseTransformer: getStarterPackUsersResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -2002,7 +1877,6 @@ export const getChannel = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zGetChannelData.parseAsync(data);
     },
-    responseTransformer: getChannelResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -2030,7 +1904,6 @@ export const getChannelUsers = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zGetChannelUsersData.parseAsync(data);
     },
-    responseTransformer: getChannelUsersResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -2058,7 +1931,6 @@ export const getFollowing = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zGetFollowingData.parseAsync(data);
     },
-    responseTransformer: getFollowingResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -2086,7 +1958,6 @@ export const getFollowers = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zGetFollowersData.parseAsync(data);
     },
-    responseTransformer: getFollowersResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -2114,7 +1985,6 @@ export const getMutualFollowers = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zGetMutualFollowersData.parseAsync(data);
     },
-    responseTransformer: getMutualFollowersResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -2142,7 +2012,6 @@ export const getTopFrameApps = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zGetTopFrameAppsData.parseAsync(data);
     },
-    responseTransformer: getTopFrameAppsResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -2170,7 +2039,6 @@ export const getTopMiniApps = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zGetTopMiniAppsData.parseAsync(data);
     },
-    responseTransformer: getTopMiniAppsResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -2198,7 +2066,6 @@ export const getVerifications = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zGetVerificationsData.parseAsync(data);
     },
-    responseTransformer: getVerificationsResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -2226,7 +2093,6 @@ export const getMutedKeywords = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zGetMutedKeywordsData.parseAsync(data);
     },
-    responseTransformer: getMutedKeywordsResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -2254,7 +2120,6 @@ export const muteKeyword = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zMuteKeywordData.parseAsync(data);
     },
-    responseTransformer: muteKeywordResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -2284,7 +2149,6 @@ export const unmuteKeyword = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zUnmuteKeywordData.parseAsync(data);
     },
-    responseTransformer: unmuteKeywordResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -2343,7 +2207,6 @@ export const getCastLikes = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zGetCastLikesData.parseAsync(data);
     },
-    responseTransformer: getCastLikesResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -2369,7 +2232,6 @@ export const likeCast = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zLikeCastData.parseAsync(data);
     },
-    responseTransformer: likeCastResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -2399,7 +2261,6 @@ export const undoRecast = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zUndoRecastData.parseAsync(data);
     },
-    responseTransformer: undoRecastResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -2429,7 +2290,6 @@ export const recastCast = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zRecastCastData.parseAsync(data);
     },
-    responseTransformer: recastCastResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -2459,7 +2319,6 @@ export const attachEmbeds = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zAttachEmbedsData.parseAsync(data);
     },
-    responseTransformer: attachEmbedsResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -2489,7 +2348,6 @@ export const getCastRecasters = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zGetCastRecastersData.parseAsync(data);
     },
-    responseTransformer: getCastRecastersResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -2515,7 +2373,6 @@ export const getCastQuotes = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zGetCastQuotesData.parseAsync(data);
     },
-    responseTransformer: getCastQuotesResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -2541,7 +2398,6 @@ export const getCurrentUser = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zGetCurrentUserData.parseAsync(data);
     },
-    responseTransformer: getCurrentUserResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -2567,7 +2423,6 @@ export const searchChannels = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zSearchChannelsData.parseAsync(data);
     },
-    responseTransformer: searchChannelsResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -2593,7 +2448,6 @@ export const getDraftCasts = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zGetDraftCastsData.parseAsync(data);
     },
-    responseTransformer: getDraftCastsResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -2619,7 +2473,6 @@ export const createDraftCasts = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zCreateDraftCastsData.parseAsync(data);
     },
-    responseTransformer: createDraftCastsResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -2649,7 +2502,6 @@ export const deleteDraftCast = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zDeleteDraftCastData.parseAsync(data);
     },
-    responseTransformer: deleteDraftCastResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -2679,7 +2531,6 @@ export const deleteCast = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zDeleteCastData.parseAsync(data);
     },
-    responseTransformer: deleteCastResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -2767,7 +2618,6 @@ export const getAllChannels = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zGetAllChannelsData.parseAsync(data);
     },
-    responseTransformer: getAllChannelsResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -2793,7 +2643,6 @@ export const getChannelDetails = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zGetChannelDetailsData.parseAsync(data);
     },
-    responseTransformer: getChannelDetailsResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -2819,7 +2668,6 @@ export const getChannelFollowers = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zGetChannelFollowersData.parseAsync(data);
     },
-    responseTransformer: getChannelFollowersResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -2845,7 +2693,6 @@ export const getUserFollowedChannels = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zGetUserFollowedChannelsData.parseAsync(data);
     },
-    responseTransformer: getUserFollowedChannelsResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -2873,7 +2720,6 @@ export const checkUserChannelFollowStatus = <
     requestValidator: async (data) => {
       return await zCheckUserChannelFollowStatusData.parseAsync(data);
     },
-    responseTransformer: checkUserChannelFollowStatusResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -2924,7 +2770,6 @@ export const removeChannelInvite = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zRemoveChannelInviteData.parseAsync(data);
     },
-    responseTransformer: removeChannelInviteResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -2979,7 +2824,6 @@ export const acceptChannelInvite = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zAcceptChannelInviteData.parseAsync(data);
     },
-    responseTransformer: acceptChannelInviteResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -3009,7 +2853,6 @@ export const inviteUserToChannel = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zInviteUserToChannelData.parseAsync(data);
     },
-    responseTransformer: inviteUserToChannelResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -3089,7 +2932,6 @@ export const unbanUserFromChannel = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zUnbanUserFromChannelData.parseAsync(data);
     },
-    responseTransformer: unbanUserFromChannelResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -3144,7 +2986,6 @@ export const banUserFromChannel = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zBanUserFromChannelData.parseAsync(data);
     },
-    responseTransformer: banUserFromChannelResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -3174,7 +3015,6 @@ export const unfollowChannel = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zUnfollowChannelData.parseAsync(data);
     },
-    responseTransformer: unfollowChannelResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -3204,7 +3044,6 @@ export const followChannel = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zFollowChannelData.parseAsync(data);
     },
-    responseTransformer: followChannelResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -3234,7 +3073,6 @@ export const moderateCast = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zModerateCastData.parseAsync(data);
     },
-    responseTransformer: moderateCastResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -3264,7 +3102,6 @@ export const unpinCastFromChannel = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zUnpinCastFromChannelData.parseAsync(data);
     },
-    responseTransformer: unpinCastFromChannelResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -3294,7 +3131,6 @@ export const pinCastToChannel = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zPinCastToChannelData.parseAsync(data);
     },
-    responseTransformer: pinCastToChannelResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -3324,7 +3160,6 @@ export const getDiscoverableActions = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zGetDiscoverableActionsData.parseAsync(data);
     },
-    responseTransformer: getDiscoverableActionsResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -3352,7 +3187,6 @@ export const getDiscoverableComposerActions = <
     requestValidator: async (data) => {
       return await zGetDiscoverableComposerActionsData.parseAsync(data);
     },
-    responseTransformer: getDiscoverableComposerActionsResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -3407,7 +3241,6 @@ export const getBlockedUsers = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zGetBlockedUsersData.parseAsync(data);
     },
-    responseTransformer: getBlockedUsersResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -3433,7 +3266,6 @@ export const blockUser = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zBlockUserData.parseAsync(data);
     },
-    responseTransformer: blockUserResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -3463,7 +3295,6 @@ export const getAccountVerifications = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zGetAccountVerificationsData.parseAsync(data);
     },
-    responseTransformer: getAccountVerificationsResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -3515,7 +3346,6 @@ export const getUserPrimaryAddress = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zGetUserPrimaryAddressData.parseAsync(data);
     },
-    responseTransformer: getUserPrimaryAddressResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -3541,7 +3371,6 @@ export const getUserPrimaryAddresses = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zGetUserPrimaryAddressesData.parseAsync(data);
     },
-    responseTransformer: getUserPrimaryAddressesResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -3629,7 +3458,6 @@ export const getUserByVerificationAddress = <
     requestValidator: async (data) => {
       return await zGetUserByVerificationAddressData.parseAsync(data);
     },
-    responseTransformer: getUserByVerificationAddressResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -3657,7 +3485,6 @@ export const getDeveloperRewardWinners = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zGetDeveloperRewardWinnersData.parseAsync(data);
     },
-    responseTransformer: getDeveloperRewardWinnersResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -3687,7 +3514,6 @@ export const getAppsByAuthor = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zGetAppsByAuthorData.parseAsync(data);
     },
-    responseTransformer: getAppsByAuthorResponseTransformer,
     security: [
       {
         scheme: "bearer",
@@ -4048,7 +3874,6 @@ export const submitAnalyticsEvents = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) => {
       return await zSubmitAnalyticsEventsData.parseAsync(data);
     },
-    responseTransformer: submitAnalyticsEventsResponseTransformer,
     security: [
       {
         scheme: "bearer",

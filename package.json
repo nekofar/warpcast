@@ -1,6 +1,6 @@
 {
   "name": "@nekofar/warpcast",
-  "version": "2.0.0-alpha.88",
+  "version": "2.0.0-alpha.89",
   "description": "TypeScript client for interacting with Warpcast APIs",
   "keywords": [
     "warpcast",
@@ -44,10 +44,9 @@
     "build": "tsdown",
     "clean": "rimraf dist openapi.json",
     "docs": "typedoc",
-    "format": "prettier --write .",
-    "format:check": "prettier --check .",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
+    "lint": "biome check .",
+    "format": "biome format --write .",
+    "format:check": "biome format .",
     "openapi:bundle": "redocly bundle openapi/index.yaml --output openapi.json",
     "openapi:generate": "openapi-ts",
     "openapi:lint": "redocly lint openapi/index.yaml",
@@ -60,17 +59,17 @@
   "devDependencies": {
     "@asyncapi/cli": "^4.1.0",
     "@asyncapi/generator": "^2.8.3",
-    "@biomejs/biome": "^2.2.5",
-    "@hey-api/openapi-ts": "^0.86.8",
-    "@redocly/cli": "^2.9.0",
+    "@biomejs/biome": "^2.3.4",
+    "@hey-api/openapi-ts": "^0.87.1",
+    "@redocly/cli": "^2.11.0",
     "@types/node": "^24.6.2",
     "globals": "^16.4.0",
     "rimraf": "^6.0.1",
-    "tsdown": "0.16.0",
+    "tsdown": "0.16.1",
     "typedoc": "^0.28.13",
     "typedoc-plugin-markdown": "^4.8.1",
     "typescript": "^5.9.2",
-    "vitest": "^4.0.1"
+    "vitest": "^4.0.8"
   },
   "peerDependencies": {
     "ofetch": "^1.5.0",
