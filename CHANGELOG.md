@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.89] - 2025-11-09
+
+### 🚜 Refactor
+
+- *(client)* Remove unused response transformers
+- *(client)* Update type definitions and helpers
+
+### ⚙️ Miscellaneous Tasks
+
+- *(scripts)* Migrate linting and formatting to `biome`
+
 ## [2.0.0-alpha.88] - 2025-11-08
 
 ### 🐛 Bug Fixes
