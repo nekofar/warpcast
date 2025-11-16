@@ -553,9 +553,8 @@ export const getUserOnboardingState = <ThrowOnError extends boolean = false>(
     GetUserOnboardingStateErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetUserOnboardingStateData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetUserOnboardingStateData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -580,9 +579,7 @@ export const getUserByFid = <ThrowOnError extends boolean = false>(
     GetUserByFidErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetUserByFidData.parseAsync(data);
-    },
+    requestValidator: async (data) => await zGetUserByFidData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -607,9 +604,8 @@ export const getDirectCastInbox = <ThrowOnError extends boolean = false>(
     GetDirectCastInboxErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetDirectCastInboxData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetDirectCastInboxData.parseAsync(data),
     responseTransformer: getDirectCastInboxResponseTransformer,
     security: [
       {
@@ -635,9 +631,8 @@ export const getUserAppContext = <ThrowOnError extends boolean = false>(
     GetUserAppContextErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetUserAppContextData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetUserAppContextData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -662,9 +657,8 @@ export const getUserPreferences = <ThrowOnError extends boolean = false>(
     GetUserPreferencesErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetUserPreferencesData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetUserPreferencesData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -689,9 +683,8 @@ export const getHighlightedChannels = <ThrowOnError extends boolean = false>(
     GetHighlightedChannelsErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetHighlightedChannelsData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetHighlightedChannelsData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -716,9 +709,7 @@ export const getFeedItems = <ThrowOnError extends boolean = false>(
     GetFeedItemsErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetFeedItemsData.parseAsync(data);
-    },
+    requestValidator: async (data) => await zGetFeedItemsData.parseAsync(data),
     responseTransformer: getFeedItemsResponseTransformer,
     security: [
       {
@@ -748,9 +739,7 @@ export const getUser = <ThrowOnError extends boolean = false>(
     GetUserErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetUserData.parseAsync(data);
-    },
+    requestValidator: async (data) => await zGetUserData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -775,9 +764,8 @@ export const getUserFollowingChannels = <ThrowOnError extends boolean = false>(
     GetUserFollowingChannelsErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetUserFollowingChannelsData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetUserFollowingChannelsData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -800,9 +788,8 @@ export const getSuggestedUsers = <ThrowOnError extends boolean = false>(
     GetSuggestedUsersErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetSuggestedUsersData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetSuggestedUsersData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -825,9 +812,8 @@ export const getUserFavoriteFrames = <ThrowOnError extends boolean = false>(
     GetUserFavoriteFramesErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetUserFavoriteFramesData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetUserFavoriteFramesData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -852,9 +838,8 @@ export const getUserByUsername = <ThrowOnError extends boolean = false>(
     GetUserByUsernameErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetUserByUsernameData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetUserByUsernameData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -877,9 +862,8 @@ export const getChannelStreaksForUser = <ThrowOnError extends boolean = false>(
     GetChannelStreaksForUserErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetChannelStreaksForUserData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetChannelStreaksForUserData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -902,9 +886,8 @@ export const getUnseenCounts = <ThrowOnError extends boolean = false>(
     GetUnseenCountsErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetUnseenCountsData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetUnseenCountsData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -929,9 +912,8 @@ export const getUserThreadCasts = <ThrowOnError extends boolean = false>(
     GetUserThreadCastsErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetUserThreadCastsData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetUserThreadCastsData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -956,9 +938,8 @@ export const getChannelFollowersYouKnow = <
     GetChannelFollowersYouKnowErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetChannelFollowersYouKnowData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetChannelFollowersYouKnowData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -981,9 +962,8 @@ export const markAllNotificationsRead = <ThrowOnError extends boolean = false>(
     MarkAllNotificationsReadErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zMarkAllNotificationsReadData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zMarkAllNotificationsReadData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -1012,9 +992,8 @@ export const getNotifications = <ThrowOnError extends boolean = false>(
     GetNotificationsErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetNotificationsData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetNotificationsData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -1039,9 +1018,8 @@ export const setLastCheckedTimestamp = <ThrowOnError extends boolean = false>(
     SetLastCheckedTimestampErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zSetLastCheckedTimestampData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zSetLastCheckedTimestampData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -1070,9 +1048,8 @@ export const getDirectCastConversation = <ThrowOnError extends boolean = false>(
     GetDirectCastConversationErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetDirectCastConversationData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetDirectCastConversationData.parseAsync(data),
     responseTransformer: getDirectCastConversationResponseTransformer,
     security: [
       {
@@ -1100,9 +1077,8 @@ export const categorizeDirectCastConversation = <
     CategorizeDirectCastConversationErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zCategorizeDirectCastConversationData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zCategorizeDirectCastConversationData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -1133,9 +1109,8 @@ export const getDirectCastConversationMessages = <
     GetDirectCastConversationMessagesErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetDirectCastConversationMessagesData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetDirectCastConversationMessagesData.parseAsync(data),
     responseTransformer: getDirectCastConversationMessagesResponseTransformer,
     security: [
       {
@@ -1163,9 +1138,8 @@ export const setDirectCastConversationMessageTtl = <
     SetDirectCastConversationMessageTtlErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zSetDirectCastConversationMessageTtlData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zSetDirectCastConversationMessageTtlData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -1196,11 +1170,8 @@ export const updateDirectCastConversationNotifications = <
     UpdateDirectCastConversationNotificationsErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zUpdateDirectCastConversationNotificationsData.parseAsync(
-        data,
-      );
-    },
+    requestValidator: async (data) =>
+      await zUpdateDirectCastConversationNotificationsData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -1231,11 +1202,8 @@ export const getDirectCastConversationRecentMessages = <
     GetDirectCastConversationRecentMessagesErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetDirectCastConversationRecentMessagesData.parseAsync(
-        data,
-      );
-    },
+    requestValidator: async (data) =>
+      await zGetDirectCastConversationRecentMessagesData.parseAsync(data),
     responseTransformer:
       getDirectCastConversationRecentMessagesResponseTransformer,
     security: [
@@ -1262,9 +1230,8 @@ export const sendDirectCastMessage = <ThrowOnError extends boolean = false>(
     SendDirectCastMessageErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zSendDirectCastMessageData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zSendDirectCastMessageData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -1295,9 +1262,8 @@ export const directCastManuallyMarkUnread = <
     DirectCastManuallyMarkUnreadErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zDirectCastManuallyMarkUnreadData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zDirectCastManuallyMarkUnreadData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -1328,9 +1294,8 @@ export const removeDirectCastMessageReaction = <
     RemoveDirectCastMessageReactionErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zRemoveDirectCastMessageReactionData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zRemoveDirectCastMessageReactionData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -1361,9 +1326,8 @@ export const addDirectCastMessageReaction = <
     AddDirectCastMessageReactionErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zAddDirectCastMessageReactionData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zAddDirectCastMessageReactionData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -1394,9 +1358,8 @@ export const unpinDirectCastConversation = <
     UnpinDirectCastConversationErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zUnpinDirectCastConversationData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zUnpinDirectCastConversationData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -1425,9 +1388,8 @@ export const pinDirectCastConversation = <ThrowOnError extends boolean = false>(
     PinDirectCastConversationErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zPinDirectCastConversationData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zPinDirectCastConversationData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -1456,9 +1418,8 @@ export const discoverChannels = <ThrowOnError extends boolean = false>(
     DiscoverChannelsErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zDiscoverChannelsData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zDiscoverChannelsData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -1483,9 +1444,8 @@ export const getAvailableInvites = <ThrowOnError extends boolean = false>(
     GetAvailableInvitesErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetAvailableInvitesData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetAvailableInvitesData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -1510,9 +1470,8 @@ export const getSponsoredInvites = <ThrowOnError extends boolean = false>(
     GetSponsoredInvitesErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetSponsoredInvitesData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetSponsoredInvitesData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -1537,9 +1496,8 @@ export const getOrCreateReferralCode = <ThrowOnError extends boolean = false>(
     GetOrCreateReferralCodeErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetOrCreateReferralCodeData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetOrCreateReferralCodeData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -1568,9 +1526,8 @@ export const getRewardsLeaderboard = <ThrowOnError extends boolean = false>(
     GetRewardsLeaderboardErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetRewardsLeaderboardData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetRewardsLeaderboardData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -1595,9 +1552,8 @@ export const getUserRewardsScores = <ThrowOnError extends boolean = false>(
     GetUserRewardsScoresErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetUserRewardsScoresData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetUserRewardsScoresData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -1622,9 +1578,8 @@ export const getRewardsMetadata = <ThrowOnError extends boolean = false>(
     GetRewardsMetadataErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetRewardsMetadataData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetRewardsMetadataData.parseAsync(data),
     responseTransformer: getRewardsMetadataResponseTransformer,
     security: [
       {
@@ -1650,9 +1605,7 @@ export const getXpRewards = <ThrowOnError extends boolean = false>(
     GetXpRewardsErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetXpRewardsData.parseAsync(data);
-    },
+    requestValidator: async (data) => await zGetXpRewardsData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -1677,9 +1630,8 @@ export const getXpClaimableSummary = <ThrowOnError extends boolean = false>(
     GetXpClaimableSummaryErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetXpClaimableSummaryData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetXpClaimableSummaryData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -1708,9 +1660,8 @@ export const getBookmarkedCasts = <ThrowOnError extends boolean = false>(
     GetBookmarkedCastsErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetBookmarkedCastsData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetBookmarkedCastsData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -1735,9 +1686,8 @@ export const getUserStarterPacks = <ThrowOnError extends boolean = false>(
     GetUserStarterPacksErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetUserStarterPacksData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetUserStarterPacksData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -1762,9 +1712,8 @@ export const getSuggestedStarterPacks = <ThrowOnError extends boolean = false>(
     GetSuggestedStarterPacksErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetSuggestedStarterPacksData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetSuggestedStarterPacksData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -1789,9 +1738,8 @@ export const getStarterPack = <ThrowOnError extends boolean = false>(
     GetStarterPackErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetStarterPackData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetStarterPackData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -1816,9 +1764,8 @@ export const updateStarterPack = <ThrowOnError extends boolean = false>(
     UpdateStarterPackErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zUpdateStarterPackData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zUpdateStarterPackData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -1847,9 +1794,8 @@ export const getStarterPackUsers = <ThrowOnError extends boolean = false>(
     GetStarterPackUsersErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetStarterPackUsersData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetStarterPackUsersData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -1874,9 +1820,7 @@ export const getChannel = <ThrowOnError extends boolean = false>(
     GetChannelErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetChannelData.parseAsync(data);
-    },
+    requestValidator: async (data) => await zGetChannelData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -1901,9 +1845,8 @@ export const getChannelUsers = <ThrowOnError extends boolean = false>(
     GetChannelUsersErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetChannelUsersData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetChannelUsersData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -1928,9 +1871,7 @@ export const getFollowing = <ThrowOnError extends boolean = false>(
     GetFollowingErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetFollowingData.parseAsync(data);
-    },
+    requestValidator: async (data) => await zGetFollowingData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -1955,9 +1896,7 @@ export const getFollowers = <ThrowOnError extends boolean = false>(
     GetFollowersErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetFollowersData.parseAsync(data);
-    },
+    requestValidator: async (data) => await zGetFollowersData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -1982,9 +1921,8 @@ export const getMutualFollowers = <ThrowOnError extends boolean = false>(
     GetMutualFollowersErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetMutualFollowersData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetMutualFollowersData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -2009,9 +1947,8 @@ export const getTopFrameApps = <ThrowOnError extends boolean = false>(
     GetTopFrameAppsErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetTopFrameAppsData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetTopFrameAppsData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -2036,9 +1973,8 @@ export const getTopMiniApps = <ThrowOnError extends boolean = false>(
     GetTopMiniAppsErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetTopMiniAppsData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetTopMiniAppsData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -2063,9 +1999,8 @@ export const getVerifications = <ThrowOnError extends boolean = false>(
     GetVerificationsErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetVerificationsData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetVerificationsData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -2090,9 +2025,8 @@ export const getMutedKeywords = <ThrowOnError extends boolean = false>(
     GetMutedKeywordsErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetMutedKeywordsData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetMutedKeywordsData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -2117,9 +2051,7 @@ export const muteKeyword = <ThrowOnError extends boolean = false>(
     MuteKeywordErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zMuteKeywordData.parseAsync(data);
-    },
+    requestValidator: async (data) => await zMuteKeywordData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -2146,9 +2078,7 @@ export const unmuteKeyword = <ThrowOnError extends boolean = false>(
     UnmuteKeywordErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zUnmuteKeywordData.parseAsync(data);
-    },
+    requestValidator: async (data) => await zUnmuteKeywordData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -2175,9 +2105,7 @@ export const unlikeCast = <ThrowOnError extends boolean = false>(
     UnlikeCastErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zUnlikeCastData.parseAsync(data);
-    },
+    requestValidator: async (data) => await zUnlikeCastData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -2204,9 +2132,7 @@ export const getCastLikes = <ThrowOnError extends boolean = false>(
     GetCastLikesErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetCastLikesData.parseAsync(data);
-    },
+    requestValidator: async (data) => await zGetCastLikesData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -2229,9 +2155,7 @@ export const likeCast = <ThrowOnError extends boolean = false>(
     LikeCastErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zLikeCastData.parseAsync(data);
-    },
+    requestValidator: async (data) => await zLikeCastData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -2258,9 +2182,7 @@ export const undoRecast = <ThrowOnError extends boolean = false>(
     UndoRecastErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zUndoRecastData.parseAsync(data);
-    },
+    requestValidator: async (data) => await zUndoRecastData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -2287,9 +2209,7 @@ export const recastCast = <ThrowOnError extends boolean = false>(
     RecastCastErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zRecastCastData.parseAsync(data);
-    },
+    requestValidator: async (data) => await zRecastCastData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -2316,9 +2236,7 @@ export const attachEmbeds = <ThrowOnError extends boolean = false>(
     AttachEmbedsErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zAttachEmbedsData.parseAsync(data);
-    },
+    requestValidator: async (data) => await zAttachEmbedsData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -2345,9 +2263,8 @@ export const getCastRecasters = <ThrowOnError extends boolean = false>(
     GetCastRecastersErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetCastRecastersData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetCastRecastersData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -2370,9 +2287,7 @@ export const getCastQuotes = <ThrowOnError extends boolean = false>(
     GetCastQuotesErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetCastQuotesData.parseAsync(data);
-    },
+    requestValidator: async (data) => await zGetCastQuotesData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -2395,9 +2310,8 @@ export const getCurrentUser = <ThrowOnError extends boolean = false>(
     GetCurrentUserErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetCurrentUserData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetCurrentUserData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -2420,9 +2334,8 @@ export const searchChannels = <ThrowOnError extends boolean = false>(
     SearchChannelsErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zSearchChannelsData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zSearchChannelsData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -2445,9 +2358,7 @@ export const getDraftCasts = <ThrowOnError extends boolean = false>(
     GetDraftCastsErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetDraftCastsData.parseAsync(data);
-    },
+    requestValidator: async (data) => await zGetDraftCastsData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -2470,9 +2381,8 @@ export const createDraftCasts = <ThrowOnError extends boolean = false>(
     CreateDraftCastsErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zCreateDraftCastsData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zCreateDraftCastsData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -2499,9 +2409,8 @@ export const deleteDraftCast = <ThrowOnError extends boolean = false>(
     DeleteDraftCastErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zDeleteDraftCastData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zDeleteDraftCastData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -2528,9 +2437,7 @@ export const deleteCast = <ThrowOnError extends boolean = false>(
     DeleteCastErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zDeleteCastData.parseAsync(data);
-    },
+    requestValidator: async (data) => await zDeleteCastData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -2557,9 +2464,7 @@ export const getCastsByFid = <ThrowOnError extends boolean = false>(
     GetCastsByFidErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetCastsByFidData.parseAsync(data);
-    },
+    requestValidator: async (data) => await zGetCastsByFidData.parseAsync(data),
     responseTransformer: getCastsByFidResponseTransformer,
     security: [
       {
@@ -2583,9 +2488,7 @@ export const createCast = <ThrowOnError extends boolean = false>(
     CreateCastErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zCreateCastData.parseAsync(data);
-    },
+    requestValidator: async (data) => await zCreateCastData.parseAsync(data),
     responseTransformer: createCastResponseTransformer,
     security: [
       {
@@ -2615,9 +2518,8 @@ export const getAllChannels = <ThrowOnError extends boolean = false>(
     GetAllChannelsErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetAllChannelsData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetAllChannelsData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -2640,9 +2542,8 @@ export const getChannelDetails = <ThrowOnError extends boolean = false>(
     GetChannelDetailsErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetChannelDetailsData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetChannelDetailsData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -2665,9 +2566,8 @@ export const getChannelFollowers = <ThrowOnError extends boolean = false>(
     GetChannelFollowersErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetChannelFollowersData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetChannelFollowersData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -2690,9 +2590,8 @@ export const getUserFollowedChannels = <ThrowOnError extends boolean = false>(
     GetUserFollowedChannelsErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetUserFollowedChannelsData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetUserFollowedChannelsData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -2717,9 +2616,8 @@ export const checkUserChannelFollowStatus = <
     CheckUserChannelFollowStatusErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zCheckUserChannelFollowStatusData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zCheckUserChannelFollowStatusData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -2742,9 +2640,8 @@ export const getChannelMembers = <ThrowOnError extends boolean = false>(
     GetChannelMembersErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetChannelMembersData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetChannelMembersData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -2767,9 +2664,8 @@ export const removeChannelInvite = <ThrowOnError extends boolean = false>(
     RemoveChannelInviteErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zRemoveChannelInviteData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zRemoveChannelInviteData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -2796,9 +2692,8 @@ export const getChannelInvites = <ThrowOnError extends boolean = false>(
     GetChannelInvitesErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetChannelInvitesData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetChannelInvitesData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -2821,9 +2716,8 @@ export const acceptChannelInvite = <ThrowOnError extends boolean = false>(
     AcceptChannelInviteErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zAcceptChannelInviteData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zAcceptChannelInviteData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -2850,9 +2744,8 @@ export const inviteUserToChannel = <ThrowOnError extends boolean = false>(
     InviteUserToChannelErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zInviteUserToChannelData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zInviteUserToChannelData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -2879,9 +2772,8 @@ export const getChannelModeratedCasts = <ThrowOnError extends boolean = false>(
     GetChannelModeratedCastsErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetChannelModeratedCastsData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetChannelModeratedCastsData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -2904,9 +2796,8 @@ export const getChannelRestrictedUsers = <ThrowOnError extends boolean = false>(
     GetChannelRestrictedUsersErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetChannelRestrictedUsersData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetChannelRestrictedUsersData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -2929,9 +2820,8 @@ export const unbanUserFromChannel = <ThrowOnError extends boolean = false>(
     UnbanUserFromChannelErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zUnbanUserFromChannelData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zUnbanUserFromChannelData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -2958,9 +2848,8 @@ export const getChannelBannedUsers = <ThrowOnError extends boolean = false>(
     GetChannelBannedUsersErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetChannelBannedUsersData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetChannelBannedUsersData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -2983,9 +2872,8 @@ export const banUserFromChannel = <ThrowOnError extends boolean = false>(
     BanUserFromChannelErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zBanUserFromChannelData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zBanUserFromChannelData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -3012,9 +2900,8 @@ export const unfollowChannel = <ThrowOnError extends boolean = false>(
     UnfollowChannelErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zUnfollowChannelData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zUnfollowChannelData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -3041,9 +2928,7 @@ export const followChannel = <ThrowOnError extends boolean = false>(
     FollowChannelErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zFollowChannelData.parseAsync(data);
-    },
+    requestValidator: async (data) => await zFollowChannelData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -3070,9 +2955,7 @@ export const moderateCast = <ThrowOnError extends boolean = false>(
     ModerateCastErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zModerateCastData.parseAsync(data);
-    },
+    requestValidator: async (data) => await zModerateCastData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -3099,9 +2982,8 @@ export const unpinCastFromChannel = <ThrowOnError extends boolean = false>(
     UnpinCastFromChannelErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zUnpinCastFromChannelData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zUnpinCastFromChannelData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -3128,9 +3010,8 @@ export const pinCastToChannel = <ThrowOnError extends boolean = false>(
     PinCastToChannelErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zPinCastToChannelData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zPinCastToChannelData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -3157,9 +3038,8 @@ export const getDiscoverableActions = <ThrowOnError extends boolean = false>(
     GetDiscoverableActionsErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetDiscoverableActionsData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetDiscoverableActionsData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -3184,9 +3064,8 @@ export const getDiscoverableComposerActions = <
     GetDiscoverableComposerActionsErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetDiscoverableComposerActionsData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetDiscoverableComposerActionsData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -3209,9 +3088,7 @@ export const unblockUser = <ThrowOnError extends boolean = false>(
     UnblockUserErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zUnblockUserData.parseAsync(data);
-    },
+    requestValidator: async (data) => await zUnblockUserData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -3238,9 +3115,8 @@ export const getBlockedUsers = <ThrowOnError extends boolean = false>(
     GetBlockedUsersErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetBlockedUsersData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetBlockedUsersData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -3263,9 +3139,7 @@ export const blockUser = <ThrowOnError extends boolean = false>(
     BlockUserErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zBlockUserData.parseAsync(data);
-    },
+    requestValidator: async (data) => await zBlockUserData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -3292,9 +3166,8 @@ export const getAccountVerifications = <ThrowOnError extends boolean = false>(
     GetAccountVerificationsErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetAccountVerificationsData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetAccountVerificationsData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -3317,9 +3190,8 @@ export const getCreatorRewardWinners = <ThrowOnError extends boolean = false>(
     GetCreatorRewardWinnersErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetCreatorRewardWinnersData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetCreatorRewardWinnersData.parseAsync(data),
     responseTransformer: getCreatorRewardWinnersResponseTransformer,
     security: [
       {
@@ -3343,9 +3215,8 @@ export const getUserPrimaryAddress = <ThrowOnError extends boolean = false>(
     GetUserPrimaryAddressErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetUserPrimaryAddressData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetUserPrimaryAddressData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -3368,9 +3239,8 @@ export const getUserPrimaryAddresses = <ThrowOnError extends boolean = false>(
     GetUserPrimaryAddressesErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetUserPrimaryAddressesData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetUserPrimaryAddressesData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -3393,9 +3263,8 @@ export const getStarterPackMembers = <ThrowOnError extends boolean = false>(
     GetStarterPackMembersErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetStarterPackMembersData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetStarterPackMembersData.parseAsync(data),
     responseTransformer: getStarterPackMembersResponseTransformer,
     security: [
       {
@@ -3422,9 +3291,8 @@ export const sendDirectCast = <ThrowOnError extends boolean = false>(
     SendDirectCastErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zSendDirectCastData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zSendDirectCastData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -3455,9 +3323,8 @@ export const getUserByVerificationAddress = <
     GetUserByVerificationAddressErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetUserByVerificationAddressData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetUserByVerificationAddressData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -3482,9 +3349,8 @@ export const getDeveloperRewardWinners = <ThrowOnError extends boolean = false>(
     GetDeveloperRewardWinnersErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetDeveloperRewardWinnersData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetDeveloperRewardWinnersData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -3511,9 +3377,8 @@ export const getAppsByAuthor = <ThrowOnError extends boolean = false>(
     GetAppsByAuthorErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetAppsByAuthorData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetAppsByAuthorData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -3538,9 +3403,8 @@ export const getDomainManifest = <ThrowOnError extends boolean = false>(
     GetDomainManifestErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetDomainManifestData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetDomainManifestData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -3565,9 +3429,8 @@ export const getTrendingTopics = <ThrowOnError extends boolean = false>(
     GetTrendingTopicsErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetTrendingTopicsData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetTrendingTopicsData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -3592,9 +3455,7 @@ export const getMetaTags = <ThrowOnError extends boolean = false>(
     GetMetaTagsErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetMetaTagsData.parseAsync(data);
-    },
+    requestValidator: async (data) => await zGetMetaTagsData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -3619,9 +3480,8 @@ export const getFarcasterJson = <ThrowOnError extends boolean = false>(
     GetFarcasterJsonErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetFarcasterJsonData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetFarcasterJsonData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -3646,9 +3506,8 @@ export const getOwnedDomains = <ThrowOnError extends boolean = false>(
     GetOwnedDomainsErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetOwnedDomainsData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetOwnedDomainsData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -3673,9 +3532,8 @@ export const getManagedApps = <ThrowOnError extends boolean = false>(
     GetManagedAppsErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetManagedAppsData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetManagedAppsData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -3700,9 +3558,7 @@ export const getApiKeys = <ThrowOnError extends boolean = false>(
     GetApiKeysErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetApiKeysData.parseAsync(data);
-    },
+    requestValidator: async (data) => await zGetApiKeysData.parseAsync(data),
     responseTransformer: getApiKeysResponseTransformer,
     security: [
       {
@@ -3728,9 +3584,7 @@ export const createApiKey = <ThrowOnError extends boolean = false>(
     CreateApiKeyErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zCreateApiKeyData.parseAsync(data);
-    },
+    requestValidator: async (data) => await zCreateApiKeyData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -3759,9 +3613,7 @@ export const revokeApiKey = <ThrowOnError extends boolean = false>(
     RevokeApiKeyErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zRevokeApiKeyData.parseAsync(data);
-    },
+    requestValidator: async (data) => await zRevokeApiKeyData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -3790,9 +3642,8 @@ export const getConnectedAccounts = <ThrowOnError extends boolean = false>(
     GetConnectedAccountsErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetConnectedAccountsData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetConnectedAccountsData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -3817,9 +3668,8 @@ export const getProfileCasts = <ThrowOnError extends boolean = false>(
     GetProfileCastsErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetProfileCastsData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetProfileCastsData.parseAsync(data),
     responseTransformer: getProfileCastsResponseTransformer,
     security: [
       {
@@ -3843,9 +3693,8 @@ export const getUserLikedCasts = <ThrowOnError extends boolean = false>(
     GetUserLikedCastsErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetUserLikedCastsData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetUserLikedCastsData.parseAsync(data),
     responseTransformer: getUserLikedCastsResponseTransformer,
     security: [
       {
@@ -3871,9 +3720,8 @@ export const submitAnalyticsEvents = <ThrowOnError extends boolean = false>(
     SubmitAnalyticsEventsErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zSubmitAnalyticsEventsData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zSubmitAnalyticsEventsData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -3904,9 +3752,8 @@ export const getMiniAppAnalyticsRollup = <ThrowOnError extends boolean = false>(
     GetMiniAppAnalyticsRollupErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zGetMiniAppAnalyticsRollupData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zGetMiniAppAnalyticsRollupData.parseAsync(data),
     responseTransformer: getMiniAppAnalyticsRollupResponseTransformer,
     security: [
       {
@@ -3938,9 +3785,8 @@ export const inspectMiniAppUrl = <ThrowOnError extends boolean = false>(
     InspectMiniAppUrlErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zInspectMiniAppUrlData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zInspectMiniAppUrlData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -3965,9 +3811,8 @@ export const inspectImageUrl = <ThrowOnError extends boolean = false>(
     InspectImageUrlErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zInspectImageUrlData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zInspectImageUrlData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -3992,9 +3837,8 @@ export const exportMiniAppUserData = <ThrowOnError extends boolean = false>(
     ExportMiniAppUserDataErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zExportMiniAppUserDataData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zExportMiniAppUserDataData.parseAsync(data),
     security: [
       {
         scheme: "bearer",
@@ -4019,9 +3863,8 @@ export const registerStatsigEvents = <ThrowOnError extends boolean = false>(
     RegisterStatsigEventsErrors,
     ThrowOnError
   >({
-    requestValidator: async (data) => {
-      return await zRegisterStatsigEventsData.parseAsync(data);
-    },
+    requestValidator: async (data) =>
+      await zRegisterStatsigEventsData.parseAsync(data),
     url: "/v2/ss/v1/rgstr",
     ...options,
     headers: {
