@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.91] - 2025-11-16
+
+### 🚜 Refactor
+
+- *(client)* Simplify request validators
+
 ## [2.0.0-alpha.90] - 2025-11-12
 
 ### 🐛 Bug Fixes
