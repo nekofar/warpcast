@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.93] - 2025-11-23
+
+### ⚙️ Miscellaneous Tasks
+
+- *(client)* Reformat generated client outputs
+
 ## [2.0.0-alpha.92] - 2025-11-19
 
 ### 🐛 Bug Fixes
