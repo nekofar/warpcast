@@ -23,9 +23,9 @@ const directCastInboxResponseSchemaResponseTransformer = (data: any) => {
 };
 
 const directCastInboxResultSchemaResponseTransformer = (data: any) => {
-  data.conversations = data.conversations.map((item: any) => {
-    return directCastConversationSchemaResponseTransformer(item);
-  });
+  data.conversations = data.conversations.map((item: any) =>
+    directCastConversationSchemaResponseTransformer(item),
+  );
   return data;
 };
 
@@ -35,9 +35,9 @@ const directCastConversationSchemaResponseTransformer = (data: any) => {
     data.selfLastReadTime = BigInt(data.selfLastReadTime.toString());
   }
   if (data.pinnedMessages) {
-    data.pinnedMessages = data.pinnedMessages.map((item: any) => {
-      return directCastMessageSchemaResponseTransformer(item);
-    });
+    data.pinnedMessages = data.pinnedMessages.map((item: any) =>
+      directCastMessageSchemaResponseTransformer(item),
+    );
   }
   data.createdAt = BigInt(data.createdAt.toString());
   if (data.lastMessage) {
@@ -116,9 +116,9 @@ const directCastConversationMessagesResponseSchemaResponseTransformer = (
   data: any,
 ) => {
   if (data.result) {
-    data.result.messages = data.result.messages.map((item: any) => {
-      return directCastMessageSchemaResponseTransformer(item);
-    });
+    data.result.messages = data.result.messages.map((item: any) =>
+      directCastMessageSchemaResponseTransformer(item),
+    );
   }
   return data;
 };
@@ -166,9 +166,9 @@ export const getCastsByFidResponseTransformer = async (
 ): Promise<GetCastsByFidResponse> => {
   if (data.result) {
     if (data.result.casts) {
-      data.result.casts = data.result.casts.map((item: any) => {
-        return castSchemaResponseTransformer(item);
-      });
+      data.result.casts = data.result.casts.map((item: any) =>
+        castSchemaResponseTransformer(item),
+      );
     }
   }
   return data;
@@ -231,18 +231,18 @@ const apiKeySchemaResponseTransformer = (data: any) => {
 export const getApiKeysResponseTransformer = async (
   data: any,
 ): Promise<GetApiKeysResponse> => {
-  data.result.apiKeys = data.result.apiKeys.map((item: any) => {
-    return apiKeySchemaResponseTransformer(item);
-  });
+  data.result.apiKeys = data.result.apiKeys.map((item: any) =>
+    apiKeySchemaResponseTransformer(item),
+  );
   return data;
 };
 
 export const getProfileCastsResponseTransformer = async (
   data: any,
 ): Promise<GetProfileCastsResponse> => {
-  data.result.casts = data.result.casts.map((item: any) => {
-    return castSchemaResponseTransformer(item);
-  });
+  data.result.casts = data.result.casts.map((item: any) =>
+    castSchemaResponseTransformer(item),
+  );
   return data;
 };
 
@@ -250,9 +250,9 @@ export const getUserLikedCastsResponseTransformer = async (
   data: any,
 ): Promise<GetUserLikedCastsResponse> => {
   if (data.result.casts) {
-    data.result.casts = data.result.casts.map((item: any) => {
-      return castSchemaResponseTransformer(item);
-    });
+    data.result.casts = data.result.casts.map((item: any) =>
+      castSchemaResponseTransformer(item),
+    );
   }
   return data;
 };
