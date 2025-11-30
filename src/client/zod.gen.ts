@@ -2507,9 +2507,14 @@ export const zCreateCastData = z.object({
     embeds: z.optional(
       z
         .array(
-          z.record(z.string(), z.unknown()).register(z.globalRegistry, {
-            description: "Embed object",
-          }),
+          z.union([
+            z.string().register(z.globalRegistry, {
+              description: "Embed URL",
+            }),
+            z.record(z.string(), z.unknown()).register(z.globalRegistry, {
+              description: "Embed object",
+            }),
+          ]),
         )
         .register(z.globalRegistry, {
           description: "Optional array of embeds (URLs, images, etc.)",

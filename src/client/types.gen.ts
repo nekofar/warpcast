@@ -4126,9 +4126,12 @@ export type CreateCastData = {
     /**
      * Optional array of embeds (URLs, images, etc.)
      */
-    embeds?: Array<{
-      [key: string]: unknown;
-    }>;
+    embeds?: Array<
+      | string
+      | {
+          [key: string]: unknown;
+        }
+    >;
     /**
      * Optional channel to post the cast to
      */

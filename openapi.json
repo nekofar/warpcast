@@ -3512,9 +3512,17 @@
                     "type": "array",
                     "description": "Optional array of embeds (URLs, images, etc.)",
                     "items": {
-                      "type": "object",
-                      "description": "Embed object",
-                      "additionalProperties": true
+                      "oneOf": [
+                        {
+                          "type": "string",
+                          "description": "Embed URL"
+                        },
+                        {
+                          "type": "object",
+                          "description": "Embed object",
+                          "additionalProperties": true
+                        }
+                      ]
                     }
                   },
                   "channelKey": {
