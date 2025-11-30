@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.96] - 2025-11-30
+
+### 📚 Documentation
+
+- *(readme)* Add usage instructions and examples
+
 ## [2.0.0-alpha.95] - 2025-11-28
 
 ### 🐛 Bug Fixes
