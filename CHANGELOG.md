@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.97] - 2025-11-30
+
+### 🐛 Bug Fixes
+
+- *(openapi)* Enhance `embeds` schema for mixed types
+
 ## [2.0.0-alpha.96] - 2025-11-30
 
 ### 📚 Documentation
