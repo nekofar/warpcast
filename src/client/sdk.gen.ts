@@ -574,7 +574,6 @@ export const getUserByFid = <ThrowOnError extends boolean = false>(
     ThrowOnError
   >({
     requestValidator: async (data) => await zGetUserByFidData.parseAsync(data),
-    security: [{ scheme: "bearer", type: "http" }],
     url: "/v2/user-by-fid",
     ...options,
   });
