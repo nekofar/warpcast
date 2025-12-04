@@ -1676,7 +1676,6 @@ export const getVerifications = <ThrowOnError extends boolean = false>(
   >({
     requestValidator: async (data) =>
       await zGetVerificationsData.parseAsync(data),
-    security: [{ scheme: "bearer", type: "http" }],
     url: "/v2/verifications",
     ...options,
   });
