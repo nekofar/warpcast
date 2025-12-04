@@ -694,7 +694,6 @@ export const getUser = <ThrowOnError extends boolean = false>(
   (options.client ?? client).get<GetUserResponses, GetUserErrors, ThrowOnError>(
     {
       requestValidator: async (data) => await zGetUserData.parseAsync(data),
-      security: [{ scheme: "bearer", type: "http" }],
       url: "/v2/user",
       ...options,
     },
