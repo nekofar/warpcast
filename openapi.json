@@ -2405,11 +2405,7 @@
             "$ref": "#/components/parameters/limitParam"
           }
         ],
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
+        "security": [],
         "responses": {
           "200": {
             "description": "A list of followed users",

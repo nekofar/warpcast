@@ -1579,7 +1579,6 @@ export const getFollowing = <ThrowOnError extends boolean = false>(
     ThrowOnError
   >({
     requestValidator: async (data) => await zGetFollowingData.parseAsync(data),
-    security: [{ scheme: "bearer", type: "http" }],
     url: "/v2/following",
     ...options,
   });
