@@ -2719,7 +2719,6 @@ export const getDeveloperRewardWinners = <ThrowOnError extends boolean = false>(
   >({
     requestValidator: async (data) =>
       await zGetDeveloperRewardWinnersData.parseAsync(data),
-    security: [{ scheme: "bearer", type: "http" }],
     url: "/v1/developer-rewards-winner-history",
     ...options,
   });

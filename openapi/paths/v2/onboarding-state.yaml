@@ -13,6 +13,18 @@ get:
         application/json:
           schema:
             $ref: '../../components/schemas/index.yaml#/OnboardingStateResponse'
+    '400':
+      description: Missing or invalid authorization header
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/index.yaml#/GenericBadRequestError'
+          examples:
+            MissingAuthorization:
+              summary: Authorization header required
+              value:
+                errors:
+                  - message: Must provide Authorization header with Bearer token
     '401':
       $ref: '../../components/responses/index.yaml#/Unauthorized'
     '429':

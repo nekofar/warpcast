@@ -114,6 +114,28 @@
               }
             }
           },
+          "400": {
+            "description": "Missing or invalid authorization header",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericBadRequestError"
+                },
+                "examples": {
+                  "MissingAuthorization": {
+                    "summary": "Authorization header required",
+                    "value": {
+                      "errors": [
+                        {
+                          "message": "Must provide Authorization header with Bearer token"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
           },
@@ -5880,11 +5902,7 @@
         ],
         "operationId": "getDeveloperRewardWinners",
         "summary": "Get developer reward winners",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
+        "security": [],
         "description": "Provides access to all winners for a given period (week). Paginated, with the list of winners in rank order. Not authenticated.",
         "parameters": [
           {
@@ -5938,8 +5956,8 @@
               }
             }
           },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
+          "400": {
+            "$ref": "#/components/responses/GenericBadRequest"
           }
         }
       }
@@ -7971,6 +7989,30 @@
             }
           }
         }
+      },
+      "GenericBadRequestError": {
+        "type": "object",
+        "description": "Generic 400 Bad Request error for simple error messages",
+        "properties": {
+          "errors": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "description": "Error message describing the issue"
+                }
+              },
+              "required": [
+                "message"
+              ]
+            }
+          }
+        },
+        "required": [
+          "errors"
+        ]
       },
       "ErrorResponse": {
         "type": "object",
@@ -11017,30 +11059,6 @@
             "description": "User-provided description of the API key's purpose"
           }
         }
-      },
-      "GenericBadRequestError": {
-        "type": "object",
-        "description": "Generic 400 Bad Request error for simple error messages",
-        "properties": {
-          "errors": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "message": {
-                  "type": "string",
-                  "description": "Error message describing the issue"
-                }
-              },
-              "required": [
-                "message"
-              ]
-            }
-          }
-        },
-        "required": [
-          "errors"
-        ]
       },
       "DirectCastSendResponse": {
         "$ref": "#/components/schemas/SuccessResponse"

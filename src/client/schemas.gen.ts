@@ -197,6 +197,27 @@ export const OnboardingStateResponseSchema = {
   },
 } as const;
 
+export const GenericBadRequestErrorSchema = {
+  type: "object",
+  description: "Generic 400 Bad Request error for simple error messages",
+  properties: {
+    errors: {
+      type: "array",
+      items: {
+        type: "object",
+        properties: {
+          message: {
+            type: "string",
+            description: "Error message describing the issue",
+          },
+        },
+        required: ["message"],
+      },
+    },
+  },
+  required: ["errors"],
+} as const;
+
 export const ErrorResponseSchema = {
   type: "object",
   properties: {
@@ -3130,27 +3151,6 @@ export const ApiKeySchema = {
       description: "User-provided description of the API key's purpose",
     },
   },
-} as const;
-
-export const GenericBadRequestErrorSchema = {
-  type: "object",
-  description: "Generic 400 Bad Request error for simple error messages",
-  properties: {
-    errors: {
-      type: "array",
-      items: {
-        type: "object",
-        properties: {
-          message: {
-            type: "string",
-            description: "Error message describing the issue",
-          },
-        },
-        required: ["message"],
-      },
-    },
-  },
-  required: ["errors"],
 } as const;
 
 export const DirectCastSendResponseSchema = {

@@ -79,6 +79,18 @@ export type OnboardingStateResponse = {
   };
 };
 
+/**
+ * Generic 400 Bad Request error for simple error messages
+ */
+export type GenericBadRequestError = {
+  errors: Array<{
+    /**
+     * Error message describing the issue
+     */
+    message: string;
+  }>;
+};
+
 export type ErrorResponse = {
   errors?: Array<{
     /**
@@ -1462,18 +1474,6 @@ export type ApiKey = {
   description: string;
 };
 
-/**
- * Generic 400 Bad Request error for simple error messages
- */
-export type GenericBadRequestError = {
-  errors: Array<{
-    /**
-     * Error message describing the issue
-     */
-    message: string;
-  }>;
-};
-
 export type DirectCastSendResponse = SuccessResponse;
 
 export type DirectCastConversationCategorizationResponse = SuccessResponse;
@@ -1507,6 +1507,10 @@ export type GetUserOnboardingStateData = {
 };
 
 export type GetUserOnboardingStateErrors = {
+  /**
+   * Missing or invalid authorization header
+   */
+  400: GenericBadRequestError;
   /**
    * Authentication is required or failed
    */
@@ -5459,9 +5463,9 @@ export type GetDeveloperRewardWinnersData = {
 
 export type GetDeveloperRewardWinnersErrors = {
   /**
-   * Authentication is required or failed
+   * Bad request - generic error
    */
-  401: ErrorResponse;
+  400: GenericBadRequestError;
 };
 
 export type GetDeveloperRewardWinnersError =
