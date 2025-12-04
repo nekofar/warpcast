@@ -2127,7 +2127,6 @@ export const getUserFollowedChannels = <ThrowOnError extends boolean = false>(
   >({
     requestValidator: async (data) =>
       await zGetUserFollowedChannelsData.parseAsync(data),
-    security: [{ scheme: "bearer", type: "http" }],
     url: "/v1/user-following-channels",
     ...options,
   });
@@ -2571,7 +2570,6 @@ export const getAccountVerifications = <ThrowOnError extends boolean = false>(
   >({
     requestValidator: async (data) =>
       await zGetAccountVerificationsData.parseAsync(data),
-    security: [{ scheme: "bearer", type: "http" }],
     url: "/fc/account-verifications",
     ...options,
   });
@@ -2608,7 +2606,6 @@ export const getUserPrimaryAddress = <ThrowOnError extends boolean = false>(
   >({
     requestValidator: async (data) =>
       await zGetUserPrimaryAddressData.parseAsync(data),
-    security: [{ scheme: "bearer", type: "http" }],
     url: "/fc/primary-address",
     ...options,
   });

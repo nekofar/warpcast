@@ -3,8 +3,7 @@ get:
   summary: Get list of channels followed by a user
   parameters:
     - $ref: '../../index.yaml#/components/parameters/fidParam'
-  security:
-    - bearerAuth: [ ]
+  security: [ ]
   responses:
     '200':
       description: Successful response with list of followed channels

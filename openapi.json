@@ -3725,11 +3725,7 @@
             "$ref": "#/components/parameters/fidParam"
           }
         ],
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
+        "security": [],
         "responses": {
           "200": {
             "description": "Successful response with list of followed channels",
@@ -5275,11 +5271,7 @@
         ],
         "operationId": "getAccountVerifications",
         "summary": "Get account verifications",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
+        "security": [],
         "parameters": [
           {
             "$ref": "#/components/parameters/fidParam"
@@ -5466,11 +5458,7 @@
       "get": {
         "operationId": "getUserPrimaryAddress",
         "summary": "Get User Primary Address",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
+        "security": [],
         "parameters": [
           {
             "$ref": "#/components/parameters/fidParam"
