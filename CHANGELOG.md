@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.100] - 2025-12-04
+
+### 🐛 Bug Fixes
+
+- *(openapi)* Document unauth rewards and onboarding 400
+- *(openapi)* Mark user-by-fid endpoint public
+- *(openapi)* Mark user endpoint public
+- *(openapi)* Mark profile-casts endpoint public
+- *(openapi)* Mark user-by-username endpoint public
+- *(openapi)* Mark following endpoint public
+- *(openapi)* Mark followers endpoint public
+- *(openapi)* Mark verifications endpoint public
+- *(openapi)* Mark casts endpoint public
+- *(openapi)* Mark apps-by-author endpoint public
+
+### ⚙️ Miscellaneous Tasks
+
+- *(package)* Reorder export fields
+
 ## [2.0.0-alpha.99] - 2025-12-03
 
 ### 🐛 Bug Fixes
