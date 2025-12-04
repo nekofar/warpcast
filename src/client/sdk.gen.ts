@@ -770,7 +770,6 @@ export const getUserByUsername = <ThrowOnError extends boolean = false>(
   >({
     requestValidator: async (data) =>
       await zGetUserByUsernameData.parseAsync(data),
-    security: [{ scheme: "bearer", type: "http" }],
     url: "/v2/user-by-username",
     ...options,
   });

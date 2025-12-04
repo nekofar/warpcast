@@ -656,11 +656,7 @@
             "example": "username"
           }
         ],
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
+        "security": [],
         "responses": {
           "200": {
             "description": "Successful retrieval of user by username",
