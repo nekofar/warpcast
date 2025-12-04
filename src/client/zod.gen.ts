@@ -76,6 +76,23 @@ export const zOnboardingStateResponse = z.object({
   ),
 });
 
+/**
+ * Generic 400 Bad Request error for simple error messages
+ */
+export const zGenericBadRequestError = z
+  .object({
+    errors: z.array(
+      z.object({
+        message: z.string().register(z.globalRegistry, {
+          description: "Error message describing the issue",
+        }),
+      }),
+    ),
+  })
+  .register(z.globalRegistry, {
+    description: "Generic 400 Bad Request error for simple error messages",
+  });
+
 export const zErrorResponse = z.object({
   errors: z.optional(
     z.array(
@@ -1550,23 +1567,6 @@ export const zApiKey = z.object({
     description: "User-provided description of the API key's purpose",
   }),
 });
-
-/**
- * Generic 400 Bad Request error for simple error messages
- */
-export const zGenericBadRequestError = z
-  .object({
-    errors: z.array(
-      z.object({
-        message: z.string().register(z.globalRegistry, {
-          description: "Error message describing the issue",
-        }),
-      }),
-    ),
-  })
-  .register(z.globalRegistry, {
-    description: "Generic 400 Bad Request error for simple error messages",
-  });
 
 export const zDirectCastSendResponse = zSuccessResponse;
 

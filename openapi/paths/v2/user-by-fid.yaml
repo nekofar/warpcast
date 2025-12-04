@@ -6,8 +6,7 @@ get:
   description: Retrieves user information based on FID
   parameters:
     - $ref: '../../components/parameters/index.yaml#/fidParam'
-  security:
-    - bearerAuth: []
+  security: [ ]
   responses:
     '200':
       description: Successful retrieval of user by fid

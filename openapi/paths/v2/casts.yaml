@@ -3,8 +3,7 @@ get:
   operationId: getCastsByFid
   tags:
     - Casts
-  security:
-    - bearerAuth: []
+  security: [ ]
   parameters:
     - $ref: '../../components/parameters/index.yaml#/fidParam'
     - $ref: '../../components/parameters/index.yaml#/limitParam'

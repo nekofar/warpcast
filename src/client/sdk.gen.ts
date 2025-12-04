@@ -574,7 +574,6 @@ export const getUserByFid = <ThrowOnError extends boolean = false>(
     ThrowOnError
   >({
     requestValidator: async (data) => await zGetUserByFidData.parseAsync(data),
-    security: [{ scheme: "bearer", type: "http" }],
     url: "/v2/user-by-fid",
     ...options,
   });
@@ -695,7 +694,6 @@ export const getUser = <ThrowOnError extends boolean = false>(
   (options.client ?? client).get<GetUserResponses, GetUserErrors, ThrowOnError>(
     {
       requestValidator: async (data) => await zGetUserData.parseAsync(data),
-      security: [{ scheme: "bearer", type: "http" }],
       url: "/v2/user",
       ...options,
     },
@@ -772,7 +770,6 @@ export const getUserByUsername = <ThrowOnError extends boolean = false>(
   >({
     requestValidator: async (data) =>
       await zGetUserByUsernameData.parseAsync(data),
-    security: [{ scheme: "bearer", type: "http" }],
     url: "/v2/user-by-username",
     ...options,
   });
@@ -1582,7 +1579,6 @@ export const getFollowing = <ThrowOnError extends boolean = false>(
     ThrowOnError
   >({
     requestValidator: async (data) => await zGetFollowingData.parseAsync(data),
-    security: [{ scheme: "bearer", type: "http" }],
     url: "/v2/following",
     ...options,
   });
@@ -1601,7 +1597,6 @@ export const getFollowers = <ThrowOnError extends boolean = false>(
     ThrowOnError
   >({
     requestValidator: async (data) => await zGetFollowersData.parseAsync(data),
-    security: [{ scheme: "bearer", type: "http" }],
     url: "/v2/followers",
     ...options,
   });
@@ -1681,7 +1676,6 @@ export const getVerifications = <ThrowOnError extends boolean = false>(
   >({
     requestValidator: async (data) =>
       await zGetVerificationsData.parseAsync(data),
-    security: [{ scheme: "bearer", type: "http" }],
     url: "/v2/verifications",
     ...options,
   });
@@ -2038,7 +2032,6 @@ export const getCastsByFid = <ThrowOnError extends boolean = false>(
   >({
     requestValidator: async (data) => await zGetCastsByFidData.parseAsync(data),
     responseTransformer: getCastsByFidResponseTransformer,
-    security: [{ scheme: "bearer", type: "http" }],
     url: "/v2/casts",
     ...options,
   });
@@ -2719,7 +2712,6 @@ export const getDeveloperRewardWinners = <ThrowOnError extends boolean = false>(
   >({
     requestValidator: async (data) =>
       await zGetDeveloperRewardWinnersData.parseAsync(data),
-    security: [{ scheme: "bearer", type: "http" }],
     url: "/v1/developer-rewards-winner-history",
     ...options,
   });
@@ -2741,7 +2733,6 @@ export const getAppsByAuthor = <ThrowOnError extends boolean = false>(
   >({
     requestValidator: async (data) =>
       await zGetAppsByAuthorData.parseAsync(data),
-    security: [{ scheme: "bearer", type: "http" }],
     url: "/v1/apps-by-author",
     ...options,
   });
@@ -2967,7 +2958,6 @@ export const getProfileCasts = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) =>
       await zGetProfileCastsData.parseAsync(data),
     responseTransformer: getProfileCastsResponseTransformer,
-    security: [{ scheme: "bearer", type: "http" }],
     url: "/v2/profile-casts",
     ...options,
   });

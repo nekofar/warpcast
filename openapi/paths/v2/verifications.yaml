@@ -7,8 +7,7 @@ get:
   parameters:
     - $ref: '../../index.yaml#/components/parameters/fidParam'
     - $ref: '../../index.yaml#/components/parameters/limitParam'
-  security:
-    - bearerAuth: [ ]
+  security: [ ]
   responses:
     '200':
       description: A list of verifications

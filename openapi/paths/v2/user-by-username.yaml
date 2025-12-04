@@ -14,8 +14,7 @@ get:
         maxLength: 16
       description: The username to look up
       example: "username"
-  security:
-    - bearerAuth: []
+  security: [ ]
   responses:
     '200':
       description: Successful retrieval of user by username

@@ -114,6 +114,28 @@
               }
             }
           },
+          "400": {
+            "description": "Missing or invalid authorization header",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericBadRequestError"
+                },
+                "examples": {
+                  "MissingAuthorization": {
+                    "summary": "Authorization header required",
+                    "value": {
+                      "errors": [
+                        {
+                          "message": "Must provide Authorization header with Bearer token"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
           },
@@ -136,11 +158,7 @@
             "$ref": "#/components/parameters/fidParam"
           }
         ],
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
+        "security": [],
         "responses": {
           "200": {
             "description": "Successful retrieval of user by fid",
@@ -468,11 +486,7 @@
             "$ref": "#/components/parameters/fidParam"
           }
         ],
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
+        "security": [],
         "responses": {
           "200": {
             "description": "Successful retrieval of user information",
@@ -642,11 +656,7 @@
             "example": "username"
           }
         ],
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
+        "security": [],
         "responses": {
           "200": {
             "description": "Successful retrieval of user by username",
@@ -2395,11 +2405,7 @@
             "$ref": "#/components/parameters/limitParam"
           }
         ],
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
+        "security": [],
         "responses": {
           "200": {
             "description": "A list of followed users",
@@ -2439,11 +2445,7 @@
             "$ref": "#/components/parameters/limitParam"
           }
         ],
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
+        "security": [],
         "responses": {
           "200": {
             "description": "A list of followers",
@@ -2612,11 +2614,7 @@
             "$ref": "#/components/parameters/limitParam"
           }
         ],
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
+        "security": [],
         "responses": {
           "200": {
             "description": "A list of verifications",
@@ -3426,11 +3424,7 @@
         "tags": [
           "Casts"
         ],
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
+        "security": [],
         "parameters": [
           {
             "$ref": "#/components/parameters/fidParam"
@@ -5880,11 +5874,7 @@
         ],
         "operationId": "getDeveloperRewardWinners",
         "summary": "Get developer reward winners",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
+        "security": [],
         "description": "Provides access to all winners for a given period (week). Paginated, with the list of winners in rank order. Not authenticated.",
         "parameters": [
           {
@@ -5938,8 +5928,8 @@
               }
             }
           },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
+          "400": {
+            "$ref": "#/components/responses/GenericBadRequest"
           }
         }
       }
@@ -5972,11 +5962,7 @@
             "$ref": "#/components/responses/Unauthorized"
           }
         },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ]
+        "security": []
       }
     },
     "/v1/domain-manifest": {
@@ -6899,11 +6885,7 @@
             "description": "Cursor for pagination"
           }
         ],
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
+        "security": [],
         "responses": {
           "200": {
             "description": "Successfully retrieved user's casts",
@@ -7971,6 +7953,30 @@
             }
           }
         }
+      },
+      "GenericBadRequestError": {
+        "type": "object",
+        "description": "Generic 400 Bad Request error for simple error messages",
+        "properties": {
+          "errors": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "description": "Error message describing the issue"
+                }
+              },
+              "required": [
+                "message"
+              ]
+            }
+          }
+        },
+        "required": [
+          "errors"
+        ]
       },
       "ErrorResponse": {
         "type": "object",
@@ -11017,30 +11023,6 @@
             "description": "User-provided description of the API key's purpose"
           }
         }
-      },
-      "GenericBadRequestError": {
-        "type": "object",
-        "description": "Generic 400 Bad Request error for simple error messages",
-        "properties": {
-          "errors": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "message": {
-                  "type": "string",
-                  "description": "Error message describing the issue"
-                }
-              },
-              "required": [
-                "message"
-              ]
-            }
-          }
-        },
-        "required": [
-          "errors"
-        ]
       },
       "DirectCastSendResponse": {
         "$ref": "#/components/schemas/SuccessResponse"
