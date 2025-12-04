@@ -3725,11 +3725,7 @@
             "$ref": "#/components/parameters/fidParam"
           }
         ],
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
+        "security": [],
         "responses": {
           "200": {
             "description": "Successful response with list of followed channels",

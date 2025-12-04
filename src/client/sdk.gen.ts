@@ -2127,7 +2127,6 @@ export const getUserFollowedChannels = <ThrowOnError extends boolean = false>(
   >({
     requestValidator: async (data) =>
       await zGetUserFollowedChannelsData.parseAsync(data),
-    security: [{ scheme: "bearer", type: "http" }],
     url: "/v1/user-following-channels",
     ...options,
   });
