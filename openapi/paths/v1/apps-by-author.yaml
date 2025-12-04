@@ -16,5 +16,4 @@ get:
             $ref: '../../index.yaml#/components/schemas/AppsByAuthorResponse'
     '401':
       $ref: '../../components/responses/index.yaml#/Unauthorized'
-  security:
-    - bearerAuth: []
+  security: [ ]

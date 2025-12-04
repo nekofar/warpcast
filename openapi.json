@@ -5962,11 +5962,7 @@
             "$ref": "#/components/responses/Unauthorized"
           }
         },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ]
+        "security": []
       }
     },
     "/v1/domain-manifest": {

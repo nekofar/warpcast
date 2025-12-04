@@ -2733,7 +2733,6 @@ export const getAppsByAuthor = <ThrowOnError extends boolean = false>(
   >({
     requestValidator: async (data) =>
       await zGetAppsByAuthorData.parseAsync(data),
-    security: [{ scheme: "bearer", type: "http" }],
     url: "/v1/apps-by-author",
     ...options,
   });
