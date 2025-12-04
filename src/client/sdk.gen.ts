@@ -2570,7 +2570,6 @@ export const getAccountVerifications = <ThrowOnError extends boolean = false>(
   >({
     requestValidator: async (data) =>
       await zGetAccountVerificationsData.parseAsync(data),
-    security: [{ scheme: "bearer", type: "http" }],
     url: "/fc/account-verifications",
     ...options,
   });

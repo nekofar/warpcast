@@ -5271,11 +5271,7 @@
         ],
         "operationId": "getAccountVerifications",
         "summary": "Get account verifications",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
+        "security": [],
         "parameters": [
           {
             "$ref": "#/components/parameters/fidParam"
