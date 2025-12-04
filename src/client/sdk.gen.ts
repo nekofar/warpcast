@@ -2964,7 +2964,6 @@ export const getProfileCasts = <ThrowOnError extends boolean = false>(
     requestValidator: async (data) =>
       await zGetProfileCastsData.parseAsync(data),
     responseTransformer: getProfileCastsResponseTransformer,
-    security: [{ scheme: "bearer", type: "http" }],
     url: "/v2/profile-casts",
     ...options,
   });

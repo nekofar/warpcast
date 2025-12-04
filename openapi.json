@@ -6909,11 +6909,7 @@
             "description": "Cursor for pagination"
           }
         ],
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
+        "security": [],
         "responses": {
           "200": {
             "description": "Successfully retrieved user's casts",
