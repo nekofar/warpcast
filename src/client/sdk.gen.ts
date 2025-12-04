@@ -2608,7 +2608,6 @@ export const getUserPrimaryAddress = <ThrowOnError extends boolean = false>(
   >({
     requestValidator: async (data) =>
       await zGetUserPrimaryAddressData.parseAsync(data),
-    security: [{ scheme: "bearer", type: "http" }],
     url: "/fc/primary-address",
     ...options,
   });

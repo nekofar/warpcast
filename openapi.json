@@ -5466,11 +5466,7 @@
       "get": {
         "operationId": "getUserPrimaryAddress",
         "summary": "Get User Primary Address",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
+        "security": [],
         "parameters": [
           {
             "$ref": "#/components/parameters/fidParam"
