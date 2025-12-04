@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.101] - 2025-12-04
+
+### 🐛 Bug Fixes
+
+- *(openapi)* Mark primary-address endpoint public
+- *(openapi)* Mark user-following-channels endpoint public
+- *(openapi)* Mark account-verifications endpoint public
+
 ## [2.0.0-alpha.100] - 2025-12-04
 
 ### 🐛 Bug Fixes
