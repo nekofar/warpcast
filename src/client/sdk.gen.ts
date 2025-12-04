@@ -2032,7 +2032,6 @@ export const getCastsByFid = <ThrowOnError extends boolean = false>(
   >({
     requestValidator: async (data) => await zGetCastsByFidData.parseAsync(data),
     responseTransformer: getCastsByFidResponseTransformer,
-    security: [{ scheme: "bearer", type: "http" }],
     url: "/v2/casts",
     ...options,
   });
