@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.103] - 2025-12-12
+
+### 🐛 Bug Fixes
+
+- *(client)* Normalize sse line endings and bigint transforms
+
 ## [2.0.0-alpha.102] - 2025-12-07
 
 ### 🐛 Bug Fixes
