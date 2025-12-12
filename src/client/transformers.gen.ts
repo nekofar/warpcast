@@ -17,15 +17,20 @@ import type {
   GetUserLikedCastsResponse,
 } from "./types.gen";
 
-const directCastInboxResponseSchemaResponseTransformer = (data: any) => {
-  data.result = directCastInboxResultSchemaResponseTransformer(data.result);
+const directCastMessageSchemaResponseTransformer = (data: any) => {
+  data.serverTimestamp = BigInt(data.serverTimestamp.toString());
+  if (data.inReplyTo) {
+    data.inReplyTo = directCastMessageSchemaResponseTransformer(data.inReplyTo);
+  }
   return data;
 };
 
-const directCastInboxResultSchemaResponseTransformer = (data: any) => {
-  data.conversations = data.conversations.map((item: any) =>
-    directCastConversationSchemaResponseTransformer(item),
-  );
+const directCastConversationViewerContextSchemaResponseTransformer = (
+  data: any,
+) => {
+  if (data.lastReadAt) {
+    data.lastReadAt = BigInt(data.lastReadAt.toString());
+  }
   return data;
 };
 
@@ -52,20 +57,15 @@ const directCastConversationSchemaResponseTransformer = (data: any) => {
   return data;
 };
 
-const directCastMessageSchemaResponseTransformer = (data: any) => {
-  data.serverTimestamp = BigInt(data.serverTimestamp.toString());
-  if (data.inReplyTo) {
-    data.inReplyTo = directCastMessageSchemaResponseTransformer(data.inReplyTo);
-  }
+const directCastInboxResultSchemaResponseTransformer = (data: any) => {
+  data.conversations = data.conversations.map((item: any) =>
+    directCastConversationSchemaResponseTransformer(item),
+  );
   return data;
 };
 
-const directCastConversationViewerContextSchemaResponseTransformer = (
-  data: any,
-) => {
-  if (data.lastReadAt) {
-    data.lastReadAt = BigInt(data.lastReadAt.toString());
-  }
+const directCastInboxResponseSchemaResponseTransformer = (data: any) => {
+  data.result = directCastInboxResultSchemaResponseTransformer(data.result);
   return data;
 };
 
@@ -76,16 +76,16 @@ export const getDirectCastInboxResponseTransformer = async (
   return data;
 };
 
+const castSchemaResponseTransformer = (data: any) => {
+  data.timestamp = BigInt(data.timestamp.toString());
+  return data;
+};
+
 const feedItemsResponseSchemaResponseTransformer = (data: any) => {
   data.result.items = data.result.items.map((item: any) => {
     item.cast = castSchemaResponseTransformer(item.cast);
     return item;
   });
-  return data;
-};
-
-const castSchemaResponseTransformer = (data: any) => {
-  data.timestamp = BigInt(data.timestamp.toString());
   return data;
 };
 
