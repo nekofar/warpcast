@@ -1,6 +1,6 @@
 {
   "name": "@nekofar/warpcast",
-  "version": "2.0.0-alpha.103",
+  "version": "2.0.0-alpha.104",
   "description": "TypeScript client for interacting with Warpcast APIs",
   "keywords": [
     "warpcast",
@@ -62,10 +62,10 @@
     "@biomejs/biome": "^2.3.4",
     "@hey-api/openapi-ts": "^0.89.0",
     "@redocly/cli": "^2.12.2",
-    "@types/node": "^25.0.0",
+    "@types/node": "^25.0.2",
     "globals": "^16.4.0",
     "rimraf": "^6.0.1",
-    "tsdown": "0.17.2",
+    "tsdown": "0.17.4",
     "typedoc": "^0.28.15",
     "typedoc-plugin-markdown": "^4.8.1",
     "typescript": "^5.9.2",
@@ -78,7 +78,7 @@
   "overrides": {
     "jsonpath-plus": ">=10.3.0"
   },
-  "packageManager": "pnpm@10.24.0",
+  "packageManager": "pnpm@10.25.0",
   "publishConfig": {
     "access": "public"
   }
