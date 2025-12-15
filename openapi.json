@@ -895,9 +895,8 @@
               "enum": [
                 "all",
                 "follows",
-                "reactions",
                 "mentions",
-                "replies"
+                "moderate"
               ]
             },
             "description": "Notification tab type"
@@ -908,11 +907,20 @@
             "required": false,
             "schema": {
               "type": "integer",
-              "default": 15,
+              "default": 25,
               "minimum": 1,
               "maximum": 100
             },
             "description": "Number of notifications to return"
+          },
+          {
+            "in": "query",
+            "name": "cursor",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Pagination cursor returned by a previous call"
           }
         ],
         "security": [
@@ -9517,13 +9525,79 @@
         "properties": {
           "result": {
             "type": "object",
+            "required": [
+              "notifications"
+            ],
             "properties": {
               "notifications": {
                 "type": "array",
+                "description": "Notification items for the requested tab.",
                 "items": {
                   "type": "object",
-                  "additionalProperties": true
+                  "required": [
+                    "id",
+                    "type",
+                    "latestTimestamp",
+                    "totalItemCount",
+                    "previewItems",
+                    "isUnread"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "Notification identifier."
+                    },
+                    "type": {
+                      "type": "string",
+                      "description": "Notification type.",
+                      "enum": [
+                        "channel-pinned-cast",
+                        "channel-role-invite",
+                        "new-cast-in-channel",
+                        "cast-mention",
+                        "cast-quote",
+                        "cast-reaction",
+                        "cast-reply",
+                        "dormant-user-new-cast",
+                        "follow",
+                        "mini-app",
+                        "new-article",
+                        "new-cast",
+                        "recast"
+                      ]
+                    },
+                    "latestTimestamp": {
+                      "type": "integer",
+                      "format": "int64",
+                      "description": "Latest activity timestamp (ms)."
+                    },
+                    "totalItemCount": {
+                      "type": "integer",
+                      "description": "Number of items represented by this notification."
+                    },
+                    "previewItems": {
+                      "type": "array",
+                      "description": "Sample items for this notification; structure varies by type.",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": true
+                      }
+                    },
+                    "isUnread": {
+                      "type": "boolean",
+                      "description": "Whether the notification is unread."
+                    },
+                    "metadata": {
+                      "type": "object",
+                      "description": "Additional notification-specific fields.",
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": false
                 }
+              },
+              "next": {
+                "$ref": "#/components/schemas/PaginationCursor"
               }
             }
           }

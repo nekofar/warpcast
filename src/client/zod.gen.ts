@@ -833,7 +833,57 @@ export const zSuccessResponse = zGenericResponse.and(
 
 export const zNotificationsResponse = z.object({
   result: z.object({
-    notifications: z.optional(z.array(z.record(z.string(), z.unknown()))),
+    notifications: z
+      .array(
+        z.object({
+          id: z.string().register(z.globalRegistry, {
+            description: "Notification identifier.",
+          }),
+          type: z
+            .enum([
+              "channel-pinned-cast",
+              "channel-role-invite",
+              "new-cast-in-channel",
+              "cast-mention",
+              "cast-quote",
+              "cast-reaction",
+              "cast-reply",
+              "dormant-user-new-cast",
+              "follow",
+              "mini-app",
+              "new-article",
+              "new-cast",
+              "recast",
+            ])
+            .register(z.globalRegistry, {
+              description: "Notification type.",
+            }),
+          latestTimestamp: z.coerce.bigint().register(z.globalRegistry, {
+            description: "Latest activity timestamp (ms).",
+          }),
+          totalItemCount: z.int().register(z.globalRegistry, {
+            description: "Number of items represented by this notification.",
+          }),
+          previewItems: z
+            .array(z.record(z.string(), z.unknown()))
+            .register(z.globalRegistry, {
+              description:
+                "Sample items for this notification; structure varies by type.",
+            }),
+          isUnread: z.boolean().register(z.globalRegistry, {
+            description: "Whether the notification is unread.",
+          }),
+          metadata: z.optional(
+            z.record(z.string(), z.unknown()).register(z.globalRegistry, {
+              description: "Additional notification-specific fields.",
+            }),
+          ),
+        }),
+      )
+      .register(z.globalRegistry, {
+        description: "Notification items for the requested tab.",
+      }),
+    next: z.optional(zPaginationCursor),
   }),
 });
 
@@ -1872,7 +1922,7 @@ export const zGetNotificationsData = z.object({
   path: z.optional(z.never()),
   query: z.object({
     tab: z
-      .enum(["all", "follows", "reactions", "mentions", "replies"])
+      .enum(["all", "follows", "mentions", "moderate"])
       .register(z.globalRegistry, {
         description: "Notification tab type",
       }),
@@ -1882,7 +1932,12 @@ export const zGetNotificationsData = z.object({
           description: "Number of notifications to return",
         }),
       )
-      .default(15),
+      .default(25),
+    cursor: z.optional(
+      z.string().register(z.globalRegistry, {
+        description: "Pagination cursor returned by a previous call",
+      }),
+    ),
   }),
 });
 

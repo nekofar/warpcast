@@ -11,6 +11,7 @@ import type {
   GetDirectCastInboxResponse,
   GetFeedItemsResponse,
   GetMiniAppAnalyticsRollupResponse,
+  GetNotificationsResponse,
   GetProfileCastsResponse,
   GetRewardsMetadataResponse,
   GetStarterPackMembersResponse,
@@ -93,6 +94,21 @@ export const getFeedItemsResponseTransformer = async (
   data: any,
 ): Promise<GetFeedItemsResponse> => {
   data = feedItemsResponseSchemaResponseTransformer(data);
+  return data;
+};
+
+const notificationsResponseSchemaResponseTransformer = (data: any) => {
+  data.result.notifications = data.result.notifications.map((item: any) => {
+    item.latestTimestamp = BigInt(item.latestTimestamp.toString());
+    return item;
+  });
+  return data;
+};
+
+export const getNotificationsResponseTransformer = async (
+  data: any,
+): Promise<GetNotificationsResponse> => {
+  data = notificationsResponseSchemaResponseTransformer(data);
   return data;
 };
 

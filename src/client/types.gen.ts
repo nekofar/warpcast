@@ -770,9 +770,57 @@ export type SuccessResponse = GenericResponse & {
 
 export type NotificationsResponse = {
   result: {
-    notifications?: Array<{
-      [key: string]: unknown;
+    /**
+     * Notification items for the requested tab.
+     */
+    notifications: Array<{
+      /**
+       * Notification identifier.
+       */
+      id: string;
+      /**
+       * Notification type.
+       */
+      type:
+        | "channel-pinned-cast"
+        | "channel-role-invite"
+        | "new-cast-in-channel"
+        | "cast-mention"
+        | "cast-quote"
+        | "cast-reaction"
+        | "cast-reply"
+        | "dormant-user-new-cast"
+        | "follow"
+        | "mini-app"
+        | "new-article"
+        | "new-cast"
+        | "recast";
+      /**
+       * Latest activity timestamp (ms).
+       */
+      latestTimestamp: bigint;
+      /**
+       * Number of items represented by this notification.
+       */
+      totalItemCount: number;
+      /**
+       * Sample items for this notification; structure varies by type.
+       */
+      previewItems: Array<{
+        [key: string]: unknown;
+      }>;
+      /**
+       * Whether the notification is unread.
+       */
+      isUnread: boolean;
+      /**
+       * Additional notification-specific fields.
+       */
+      metadata?: {
+        [key: string]: unknown;
+      };
     }>;
+    next?: PaginationCursor;
   };
 };
 
@@ -2142,11 +2190,15 @@ export type GetNotificationsData = {
     /**
      * Notification tab type
      */
-    tab: "all" | "follows" | "reactions" | "mentions" | "replies";
+    tab: "all" | "follows" | "mentions" | "moderate";
     /**
      * Number of notifications to return
      */
     limit?: number;
+    /**
+     * Pagination cursor returned by a previous call
+     */
+    cursor?: string;
   };
   url: "/v1/notifications-for-tab";
 };
