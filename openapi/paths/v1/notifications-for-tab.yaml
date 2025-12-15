@@ -28,6 +28,8 @@ get:
         application/json:
           schema:
             $ref: '../../index.yaml#/components/schemas/NotificationsResponse'
+    '400':
+      $ref: '../../components/responses/index.yaml#/GenericBadRequest'
     '401':
       $ref: '../../components/responses/index.yaml#/Unauthorized'
     '429':

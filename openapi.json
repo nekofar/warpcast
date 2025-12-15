@@ -931,6 +931,9 @@
               }
             }
           },
+          "400": {
+            "$ref": "#/components/responses/GenericBadRequest"
+          },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
           },

@@ -2153,6 +2153,10 @@ export type GetNotificationsData = {
 
 export type GetNotificationsErrors = {
   /**
+   * Bad request - generic error
+   */
+  400: GenericBadRequestError;
+  /**
    * Authentication is required or failed
    */
   401: ErrorResponse;
