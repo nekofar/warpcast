@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.105] - 2025-12-15
+
+### 🐛 Bug Fixes
+
+- *(openapi)* Document bad request for notifications tab
+
+### 🚜 Refactor
+
+- *(openapi)* Extend notifications response schema
+
 ## [2.0.0-alpha.104] - 2025-12-14
 
 ### 🐛 Bug Fixes

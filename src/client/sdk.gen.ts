@@ -13,6 +13,7 @@ import {
   getDirectCastInboxResponseTransformer,
   getFeedItemsResponseTransformer,
   getMiniAppAnalyticsRollupResponseTransformer,
+  getNotificationsResponseTransformer,
   getProfileCastsResponseTransformer,
   getRewardsMetadataResponseTransformer,
   getStarterPackMembersResponseTransformer,
@@ -887,6 +888,7 @@ export const getNotifications = <ThrowOnError extends boolean = false>(
   >({
     requestValidator: async (data) =>
       await zGetNotificationsData.parseAsync(data),
+    responseTransformer: getNotificationsResponseTransformer,
     security: [{ scheme: "bearer", type: "http" }],
     url: "/v1/notifications-for-tab",
     ...options,
