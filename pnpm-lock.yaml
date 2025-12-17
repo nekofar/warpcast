@@ -19,8 +19,8 @@ importers:
         specifier: ^4.1.0
         version: 4.1.1(@babel/core@7.12.9)(@opentelemetry/api@1.9.0)(@types/node@25.0.2)(csstype@3.2.3)(encoding@0.1.13)(immer@9.0.21)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(ts-node@10.9.2(@types/node@25.0.2)(typescript@5.9.3))
       '@asyncapi/generator':
-        specifier: ^2.11.0
-        version: 2.11.0(@types/node@25.0.2)(encoding@0.1.13)
+        specifier: ^3.0.1
+        version: 3.0.1(@types/node@25.0.2)(encoding@0.1.13)
       '@biomejs/biome':
         specifier: ^2.3.4
         version: 2.3.9
@@ -113,14 +113,11 @@ packages:
   '@asyncapi/diff@0.5.0':
     resolution: {integrity: sha512-lvKuEBDUOqOQfFwaTJfNTLwztby2r/6mfwoH/l7f1Kyf+7tH2+73ChV0VfIF498FJNKrdivo8isbLzfgi/KNjQ==}
 
-  '@asyncapi/generator-components@0.4.0':
-    resolution: {integrity: sha512-cTO79bwLpYtsvWCDXU5k56+JrbgCZy0zE+l8+P0HFeH+5aDWdPg00jpFITDh/YuZw+nqJh7bY5ZADZH5WguJbw==}
+  '@asyncapi/generator-components@0.4.1':
+    resolution: {integrity: sha512-Yu060C1eCmMx1Ed3+pxz4ZOt+H37p+KwHJIyw6h5y1+p5M2QLvbZFUe7q1YcWS42i6j7zhNfahoTb9wp1VoZng==}
 
-  '@asyncapi/generator-components@1.0.0':
-    resolution: {integrity: sha512-6yf1yUjmSJEwKLiDurwWnY7CQz2RfbdH7gmGpTPJWyqBjqklxyyWMqKLDbluNABwwHdttsDqK56TyJ/hHsR0Zw==}
-
-  '@asyncapi/generator-helpers@1.0.0':
-    resolution: {integrity: sha512-uw6g+x7Pvzoj9OL+vzSuvIX0sQySWT63CJJb+zsvAwGimrCNoEyLe1ThinnLioEc4rl6UBF3qaJb8aK6YHktfw==}
+  '@asyncapi/generator-helpers@1.0.1':
+    resolution: {integrity: sha512-+3aRLi2L07TCfbmzfpjhwOJmzodLocwlgixU/jNnVu3ILbYQO3GJHAAr17n4ObiyJi/Cib/G7dwS+IqtzkkPdw==}
 
   '@asyncapi/generator-hooks@0.1.0':
     resolution: {integrity: sha512-cTfwiXNrNE4Z5ZkbLyX4jCAnJEQgTXpPRhSzTpt08R3Md+2tO8CMQWo4B4C8fSSy3M4aBWePJ4bbILOEqduvUg==}
@@ -134,15 +131,14 @@ packages:
     engines: {node: '>12.16', npm: '>6.13.7'}
     hasBin: true
 
-  '@asyncapi/generator@2.11.0':
-    resolution: {integrity: sha512-JGaIld3hQgmANAZ+i3nQyNY48RkJ9xU/0m3jmss65kgg17GGWo9h+nWwrflneQfYlcRey4I9I4bl1oOQ0BIeAA==}
-    engines: {node: '>=18.12.0', npm: '>=8.19.0'}
-    hasBin: true
-
   '@asyncapi/generator@2.8.3':
     resolution: {integrity: sha512-toFdCdYZZXAxP9cTpKz3cbK4wkjKw4FmIeT4vAv/85uL6QL3/CZCY0VJcDzroXpLTTlQ37/4MjSecAEg9DLqEQ==}
     engines: {node: '>=18.12.0', npm: '>=8.19.0'}
     hasBin: true
+
+  '@asyncapi/generator@3.0.1':
+    resolution: {integrity: sha512-RXk2YoD+/Eoj0aSb6ZTTysKqyyLGjnkyyoT3e1Vkeh4BST+JBukmq2o/Pvh/lIzLsgJlYEEQMa1gK++vYERPLw==}
+    engines: {node: '>=24.11', npm: '>=11.5.1'}
 
   '@asyncapi/modelina-cli@4.4.3':
     resolution: {integrity: sha512-XkAIHeJUJdOd9MSl3FqXCEfGORx5aIp52Iy0gyOkxFmwNQlN1iMklSYvNFfp+E4PXC29EO5v2VViJS/DgBbIjA==}
@@ -3190,8 +3186,8 @@ packages:
     resolution: {integrity: sha512-616V5YX4bepJFzNyOfce5Fa8fDJMfoxzOIzDCZwaGL8MKVpFrXqfNUoIpRn9YMI5pXf/VKgzjB4htFMsFKKdiQ==}
     hasBin: true
 
-  baseline-browser-mapping@2.9.2:
-    resolution: {integrity: sha512-PxSsosKQjI38iXkmb3d0Y32efqyA0uW4s41u4IVBsLlWLhCiYNpH/AfNOVWRqCQBlD8TFJTz6OUWNd4DFJCnmw==}
+  baseline-browser-mapping@2.9.8:
+    resolution: {integrity: sha512-Y1fOuNDowLfgKOypdc9SPABfoWXuZHBOyCS4cD52IeZBhr4Md6CLLs6atcxVrzRmQ06E7hSlm5bHHApPKR/byA==}
     hasBin: true
 
   better-ajv-errors@1.2.0:
@@ -3349,8 +3345,8 @@ packages:
   caniuse-lite@1.0.30001753:
     resolution: {integrity: sha512-Bj5H35MD/ebaOV4iDLqPEtiliTN29qkGtEHCwawWn4cYm+bPJM2NsaP30vtZcnERClMzp52J4+aw2UNbK4o+zw==}
 
-  caniuse-lite@1.0.30001759:
-    resolution: {integrity: sha512-Pzfx9fOKoKvevQf8oCXoyNRQ5QyxJj+3O0Rqx2V5oxT61KGx8+n6hV/IUyJeifUci2clnmmKVpvtiqRzgiWjSw==}
+  caniuse-lite@1.0.30001760:
+    resolution: {integrity: sha512-7AAMPcueWELt1p3mi13HR/LHH0TJLT11cnwDJEs3xA4+CK/PLKeO9Kl1oru24htkyUKtkGCvAx4ohB0Ttry8Dw==}
 
   capital-case@1.0.4:
     resolution: {integrity: sha512-ds37W8CytHgwnhGGTi88pcPyR15qoNkOpYwmMMfnWqqWgESapLqvDx6huFjQ5vqWSn2Z06173XNA7LtMOeUh1A==}
@@ -3878,8 +3874,8 @@ packages:
   electron-to-chromium@1.5.244:
     resolution: {integrity: sha512-OszpBN7xZX4vWMPJwB9illkN/znA8M36GQqQxi6MNy9axWxhOfJyZZJtSLQCpEFLHP2xK33BiWx9aIuIEXVCcw==}
 
-  electron-to-chromium@1.5.264:
-    resolution: {integrity: sha512-1tEf0nLgltC3iy9wtlYDlQDc5Rg9lEKVjEmIHJ21rI9OcqkvD45K1oyNIRA4rR1z3LgJ7KeGzEBojVcV6m4qjA==}
+  electron-to-chromium@1.5.267:
+    resolution: {integrity: sha512-0Drusm6MVRXSOJpGbaSVgcQsuB4hEkMpHXaVstcPmhu5LIedxs1xNK/nIxmQIU/RPC0+1/o0AVZfBTkTNJOdUw==}
 
   emoji-regex@8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
@@ -3926,8 +3922,8 @@ packages:
   error-ex@1.3.4:
     resolution: {integrity: sha512-sqQamAnR14VgCr1A618A3sGrygcpK+HEbenA/HiEAkkUwcZIIB/tgWqHFxWgOyDh4nB4JCRimh79dR5Ywc9MDQ==}
 
-  es-abstract@1.24.0:
-    resolution: {integrity: sha512-WSzPgsdLtTcQwm4CROfS5ju2Wa1QQcVeT37jFjYzdFz1r9ahadC8B8/a4qxJxM+09F18iumCdRmlr96ZYkQvEg==}
+  es-abstract@1.24.1:
+    resolution: {integrity: sha512-zHXBLhP+QehSSbsS9Pt23Gg964240DPd6QCf8WpkqEXxQ7fhdZzYsocOr5u7apWonsS5EjZDmTF+/slGMyasvw==}
     engines: {node: '>= 0.4'}
 
   es-aggregate-error@1.0.14:
@@ -6938,8 +6934,8 @@ packages:
     peerDependencies:
       browserslist: '>= 4.21.0'
 
-  update-browserslist-db@1.2.2:
-    resolution: {integrity: sha512-E85pfNzMQ9jpKkA7+TJAi4TJN+tBCuWh5rUcS/sv6cFi+1q9LYDwDI5dpUL0u/73EElyQ8d3TEaeW4sPedBqYA==}
+  update-browserslist-db@1.2.3:
+    resolution: {integrity: sha512-Js0m9cx+qOgDxo0eMiFGEueWztz+d4+M3rGlmKPT+T4IS/jP4ylw3Nwpu6cpTTP8R1MAC1kF4VbdLt3ARf209w==}
     hasBin: true
     peerDependencies:
       browserslist: '>= 4.21.0'
@@ -7340,7 +7336,7 @@ snapshots:
     dependencies:
       '@jsdevtools/ono': 7.1.3
       '@types/json-schema': 7.0.15
-      js-yaml: 4.1.0
+      js-yaml: 4.1.1
 
   '@apidevtools/openapi-schemas@2.1.0': {}
 
@@ -7388,7 +7384,7 @@ snapshots:
       '@apidevtools/json-schema-ref-parser': 11.9.3
       '@types/json-schema': 7.0.15
       '@ungap/structured-clone': 1.3.0
-      js-yaml: 4.1.0
+      js-yaml: 4.1.1
       lodash: 4.17.21
 
   '@asyncapi/cli@4.1.1(@babel/core@7.12.9)(@opentelemetry/api@1.9.0)(@types/node@25.0.2)(csstype@3.2.3)(encoding@0.1.13)(immer@9.0.21)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(ts-node@10.9.2(@types/node@25.0.2)(typescript@5.9.3))':
@@ -7484,12 +7480,12 @@ snapshots:
   '@asyncapi/diff@0.5.0':
     dependencies:
       fast-json-patch: 3.1.1
-      js-yaml: 4.1.0
+      js-yaml: 4.1.1
       json2md: 1.13.0
 
-  '@asyncapi/generator-components@0.4.0(encoding@0.1.13)':
+  '@asyncapi/generator-components@0.4.1(encoding@0.1.13)':
     dependencies:
-      '@asyncapi/generator-helpers': 1.0.0
+      '@asyncapi/generator-helpers': 1.0.1
       '@asyncapi/generator-react-sdk': 1.1.3(encoding@0.1.13)
       '@asyncapi/modelina': 5.10.1(encoding@0.1.13)
     transitivePeerDependencies:
@@ -7499,18 +7495,7 @@ snapshots:
       - encoding
       - supports-color
 
-  '@asyncapi/generator-components@1.0.0(encoding@0.1.13)':
-    dependencies:
-      '@asyncapi/generator-react-sdk': 1.1.3(encoding@0.1.13)
-      '@asyncapi/modelina': 4.4.3(encoding@0.1.13)
-    transitivePeerDependencies:
-      - '@swc/core'
-      - '@swc/wasm'
-      - '@types/babel__core'
-      - encoding
-      - supports-color
-
-  '@asyncapi/generator-helpers@1.0.0': {}
+  '@asyncapi/generator-helpers@1.0.1': {}
 
   '@asyncapi/generator-hooks@0.1.0':
     dependencies:
@@ -7568,50 +7553,10 @@ snapshots:
       - encoding
       - supports-color
 
-  '@asyncapi/generator@2.11.0(@types/node@25.0.2)(encoding@0.1.13)':
-    dependencies:
-      '@asyncapi/generator-components': 1.0.0(encoding@0.1.13)
-      '@asyncapi/generator-helpers': 1.0.0
-      '@asyncapi/generator-hooks': 0.1.0
-      '@asyncapi/generator-react-sdk': 1.1.3(encoding@0.1.13)
-      '@asyncapi/multi-parser': 2.2.0(encoding@0.1.13)
-      '@asyncapi/nunjucks-filters': 2.1.0
-      '@asyncapi/parser': 3.4.0(encoding@0.1.13)
-      '@npmcli/arborist': 5.6.3
-      '@npmcli/config': 8.3.4
-      ajv: 8.17.1
-      chokidar: 3.6.0
-      commander: 6.2.1
-      filenamify: 4.3.0
-      fs.extra: 1.3.2
-      global-dirs: 3.0.1
-      jmespath: 0.15.0
-      js-yaml: 4.1.1
-      levenshtein-edit-distance: 2.0.5
-      loglevel: 1.9.2
-      minimatch: 3.1.2
-      node-fetch: 2.7.0(encoding@0.1.13)
-      nunjucks: 3.2.4(chokidar@3.6.0)
-      requireg: 0.2.2
-      resolve-from: 5.0.0
-      resolve-pkg: 2.0.0
-      semver: 7.7.3
-      simple-git: 3.30.0
-      ts-node: 10.9.2(@types/node@25.0.2)(typescript@4.9.5)
-      typescript: 4.9.5
-    transitivePeerDependencies:
-      - '@swc/core'
-      - '@swc/wasm'
-      - '@types/babel__core'
-      - '@types/node'
-      - bluebird
-      - encoding
-      - supports-color
-
   '@asyncapi/generator@2.8.3(@types/node@25.0.2)(encoding@0.1.13)':
     dependencies:
-      '@asyncapi/generator-components': 0.4.0(encoding@0.1.13)
-      '@asyncapi/generator-helpers': 1.0.0
+      '@asyncapi/generator-components': 0.4.1(encoding@0.1.13)
+      '@asyncapi/generator-helpers': 1.0.1
       '@asyncapi/generator-hooks': 0.1.0
       '@asyncapi/generator-react-sdk': 1.1.3(encoding@0.1.13)
       '@asyncapi/multi-parser': 2.2.0(encoding@0.1.13)
@@ -7648,6 +7593,43 @@ snapshots:
       - encoding
       - supports-color
 
+  '@asyncapi/generator@3.0.1(@types/node@25.0.2)(encoding@0.1.13)':
+    dependencies:
+      '@asyncapi/generator-components': 0.4.1(encoding@0.1.13)
+      '@asyncapi/generator-helpers': 1.0.1
+      '@asyncapi/generator-hooks': 0.1.0
+      '@asyncapi/generator-react-sdk': 1.1.3(encoding@0.1.13)
+      '@asyncapi/multi-parser': 2.2.0(encoding@0.1.13)
+      '@asyncapi/parser': 3.4.0(encoding@0.1.13)
+      '@npmcli/arborist': 5.6.3
+      '@npmcli/config': 8.3.4
+      ajv: 8.17.1
+      commander: 6.2.1
+      filenamify: 4.3.0
+      fs.extra: 1.3.2
+      global-dirs: 3.0.1
+      jmespath: 0.15.0
+      js-yaml: 4.1.1
+      levenshtein-edit-distance: 2.0.5
+      loglevel: 1.9.2
+      minimatch: 3.1.2
+      node-fetch: 2.7.0(encoding@0.1.13)
+      requireg: 0.2.2
+      resolve-from: 5.0.0
+      resolve-pkg: 2.0.0
+      semver: 7.7.3
+      simple-git: 3.30.0
+      ts-node: 10.9.2(@types/node@25.0.2)(typescript@4.9.5)
+      typescript: 4.9.5
+    transitivePeerDependencies:
+      - '@swc/core'
+      - '@swc/wasm'
+      - '@types/babel__core'
+      - '@types/node'
+      - bluebird
+      - encoding
+      - supports-color
+
   '@asyncapi/modelina-cli@4.4.3(@types/node@25.0.2)(encoding@0.1.13)':
     dependencies:
       '@asyncapi/modelina': 4.4.3(encoding@0.1.13)
@@ -7658,7 +7640,7 @@ snapshots:
       '@oclif/plugin-not-found': 3.2.72(@types/node@25.0.2)
       '@oclif/plugin-plugins': 5.4.53
       '@oclif/plugin-version': 2.2.36
-      js-yaml: 4.1.0
+      js-yaml: 4.1.1
       node-fetch: 2.7.0(encoding@0.1.13)
     transitivePeerDependencies:
       - '@swc/core'
@@ -7692,7 +7674,7 @@ snapshots:
       alterschema: 1.1.3(encoding@0.1.13)
       change-case: 4.1.2
       fast-xml-parser: 5.3.3
-      js-yaml: 4.1.0
+      js-yaml: 4.1.1
       openapi-types: 12.1.3
       typescript-json-schema: 0.58.1
     transitivePeerDependencies:
@@ -7733,7 +7715,7 @@ snapshots:
       '@asyncapi/parser': 3.4.0(encoding@0.1.13)
       '@types/debug': 4.1.12
       debug: 4.4.3(supports-color@8.1.1)
-      js-yaml: 4.1.0
+      js-yaml: 4.1.1
       jsonpath-plus: 10.3.0
       lodash: 4.17.21
       merge-deep: 3.0.3
@@ -7806,7 +7788,7 @@ snapshots:
       ajv-errors: 3.0.0(ajv@8.17.1)
       ajv-formats: 2.1.1(ajv@8.17.1)
       avsc: 5.7.9
-      js-yaml: 4.1.0
+      js-yaml: 4.1.1
       jsonpath-plus: 10.3.0
       node-fetch: 2.6.7(encoding@0.1.13)
     transitivePeerDependencies:
@@ -7827,7 +7809,7 @@ snapshots:
   '@asyncapi/raml-dt-schema-parser@4.0.24(encoding@0.1.13)':
     dependencies:
       '@asyncapi/parser': 3.4.0(encoding@0.1.13)
-      js-yaml: 4.1.0
+      js-yaml: 4.1.1
       ramldt2jsonschema: 1.2.3
       webapi-parser: 0.5.0
     transitivePeerDependencies:
@@ -7888,7 +7870,7 @@ snapshots:
       driver.js: 1.3.6
       js-base64: 3.7.8
       js-file-download: 0.4.12
-      js-yaml: 4.1.0
+      js-yaml: 4.1.1
       monaco-editor: 0.34.1
       monaco-yaml: 4.0.2(monaco-editor@0.34.1)
       next: 14.2.26(@babel/core@7.12.9)(@opentelemetry/api@1.9.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -11002,7 +10984,7 @@ snapshots:
 
   '@stoplight/json-ref-readers@1.2.2(encoding@0.1.13)':
     dependencies:
-      node-fetch: 2.6.7(encoding@0.1.13)
+      node-fetch: 2.7.0(encoding@0.1.13)
       tslib: 1.14.1
     transitivePeerDependencies:
       - encoding
@@ -11103,7 +11085,7 @@ snapshots:
 
   '@stoplight/spectral-formats@1.8.2(encoding@0.1.13)':
     dependencies:
-      '@stoplight/json': 3.21.0
+      '@stoplight/json': 3.21.7
       '@stoplight/spectral-core': 1.20.0(encoding@0.1.13)
       '@types/json-schema': 7.0.15
       tslib: 2.8.1
@@ -11725,7 +11707,7 @@ snapshots:
       array-buffer-byte-length: 1.0.2
       call-bind: 1.0.8
       define-properties: 1.2.1
-      es-abstract: 1.24.0
+      es-abstract: 1.24.1
       es-errors: 1.3.0
       get-intrinsic: 1.3.0
       is-array-buffer: 3.0.5
@@ -11817,7 +11799,7 @@ snapshots:
 
   baseline-browser-mapping@2.8.23: {}
 
-  baseline-browser-mapping@2.9.2: {}
+  baseline-browser-mapping@2.9.8: {}
 
   better-ajv-errors@1.2.0(ajv@8.17.1):
     dependencies:
@@ -11916,11 +11898,11 @@ snapshots:
 
   browserslist@4.28.1:
     dependencies:
-      baseline-browser-mapping: 2.9.2
-      caniuse-lite: 1.0.30001759
-      electron-to-chromium: 1.5.264
+      baseline-browser-mapping: 2.9.8
+      caniuse-lite: 1.0.30001760
+      electron-to-chromium: 1.5.267
       node-releases: 2.0.27
-      update-browserslist-db: 1.2.2(browserslist@4.28.1)
+      update-browserslist-db: 1.2.3(browserslist@4.28.1)
 
   buffer-crc32@1.0.0: {}
 
@@ -12038,7 +12020,7 @@ snapshots:
 
   caniuse-lite@1.0.30001753: {}
 
-  caniuse-lite@1.0.30001759: {}
+  caniuse-lite@1.0.30001760: {}
 
   capital-case@1.0.4:
     dependencies:
@@ -12538,7 +12520,7 @@ snapshots:
 
   electron-to-chromium@1.5.244: {}
 
-  electron-to-chromium@1.5.264: {}
+  electron-to-chromium@1.5.267: {}
 
   emoji-regex@8.0.0: {}
 
@@ -12571,7 +12553,7 @@ snapshots:
     dependencies:
       is-arrayish: 0.2.1
 
-  es-abstract@1.24.0:
+  es-abstract@1.24.1:
     dependencies:
       array-buffer-byte-length: 1.0.2
       arraybuffer.prototype.slice: 1.0.4
@@ -12632,7 +12614,7 @@ snapshots:
     dependencies:
       define-data-property: 1.1.4
       define-properties: 1.2.1
-      es-abstract: 1.24.0
+      es-abstract: 1.24.1
       es-errors: 1.3.0
       function-bind: 1.1.2
       globalthis: 1.0.4
@@ -14879,7 +14861,7 @@ snapshots:
     dependencies:
       call-bind: 1.0.8
       define-properties: 1.2.1
-      es-abstract: 1.24.0
+      es-abstract: 1.24.1
       es-errors: 1.3.0
       es-object-atoms: 1.1.1
       get-intrinsic: 1.3.0
@@ -15436,7 +15418,7 @@ snapshots:
       call-bound: 1.0.4
       define-data-property: 1.1.4
       define-properties: 1.2.1
-      es-abstract: 1.24.0
+      es-abstract: 1.24.1
       es-object-atoms: 1.1.1
       has-property-descriptors: 1.0.2
 
@@ -15929,7 +15911,7 @@ snapshots:
       escalade: 3.2.0
       picocolors: 1.1.1
 
-  update-browserslist-db@1.2.2(browserslist@4.28.1):
+  update-browserslist-db@1.2.3(browserslist@4.28.1):
     dependencies:
       browserslist: 4.28.1
       escalade: 3.2.0
