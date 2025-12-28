@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.109] - 2025-12-28
+
+### ⚙️ Miscellaneous Tasks
+
+- *(config)* Update biome overrides for generated files
+- *(config)* Update biome overrides for openapi files
+
 ## [2.0.0-alpha.108] - 2025-12-22
 
 ### ⚙️ Miscellaneous Tasks
