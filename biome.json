@@ -33,6 +33,12 @@
   },
   "overrides": [
     {
+      "includes": ["openapi.json"],
+      "formatter": {
+        "enabled": false
+      }
+    },
+    {
       "includes": ["**/*.gen.ts"],
       "linter": {
         "rules": {
