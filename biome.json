@@ -30,5 +30,37 @@
         "organizeImports": "on"
       }
     }
-  }
+  },
+  "overrides": [
+    {
+      "includes": ["openapi.json"],
+      "formatter": {
+        "enabled": false
+      }
+    },
+    {
+      "includes": ["**/*.gen.ts"],
+      "linter": {
+        "rules": {
+          "complexity": {
+            "noUselessSwitchCase": "off"
+          },
+          "style": {
+            "noNonNullAssertion": "off"
+          },
+          "suspicious": {
+            "noExplicitAny": "off",
+            "useIterableCallbackReturn": "off"
+          }
+        }
+      },
+      "assist": {
+        "actions": {
+          "source": {
+            "organizeImports": "off"
+          }
+        }
+      }
+    }
+  ]
 }
