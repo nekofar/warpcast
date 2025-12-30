@@ -1,6 +1,6 @@
 {
   "name": "@nekofar/warpcast",
-  "version": "2.0.0-alpha.110",
+  "version": "2.0.0-alpha.111",
   "description": "TypeScript client for interacting with Warpcast APIs",
   "keywords": [
     "warpcast",
@@ -37,7 +37,8 @@
     "LICENSE"
   ],
   "engines": {
-    "node": ">=20.0.0"
+    "node": "^24",
+    "pnpm": "^10"
   },
   "scripts": {
     "prebuild": "pnpm clean && pnpm openapi:lint && pnpm openapi:bundle && pnpm openapi:generate",
@@ -76,6 +77,9 @@
     "zod": "^4.0.10"
   },
   "overrides": {
+    "ajv": ">=6.12.3",
+    "body-parser": ">=2.2.1",
+    "js-yaml": ">=4.1.1",
     "jsonpath-plus": ">=10.3.0"
   },
   "packageManager": "pnpm@10.26.2",
