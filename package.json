@@ -64,7 +64,7 @@
     "@hey-api/openapi-ts": "^0.89.0",
     "@redocly/cli": "^2.14.1",
     "@types/node": "^25.0.2",
-    "globals": "^16.4.0",
+    "globals": "^17.0.0",
     "rimraf": "^6.0.1",
     "tsdown": "0.18.4",
     "typedoc": "^0.28.15",
