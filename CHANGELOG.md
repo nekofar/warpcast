@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-alpha.115] - 2026-01-31
+
+### 🐛 Bug Fixes
+
+- *(schema)* Enforce `int64` range validation for `bigint`
+
+### ⚙️ Miscellaneous Tasks
+
+- *(config)* Add `postProcess` options for biome formatting
+
 ## [2.0.0-alpha.114] - 2026-01-28
 
 ### 🐛 Bug Fixes
