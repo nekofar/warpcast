@@ -256,9 +256,17 @@ export const zDirectCastMessage = z.object({
   messageId: z.string().register(z.globalRegistry, {
     description: "Unique identifier for the message",
   }),
-  serverTimestamp: z.coerce.bigint().register(z.globalRegistry, {
-    description: "Server timestamp when message was sent (Unix milliseconds)",
-  }),
+  serverTimestamp: z.coerce
+    .bigint()
+    .min(BigInt("-9223372036854775808"), {
+      error: "Invalid value: Expected int64 to be >= -9223372036854775808",
+    })
+    .max(BigInt("9223372036854775807"), {
+      error: "Invalid value: Expected int64 to be <= 9223372036854775807",
+    })
+    .register(z.globalRegistry, {
+      description: "Server timestamp when message was sent (Unix milliseconds)",
+    }),
   type: z
     .enum([
       "text",
@@ -323,9 +331,17 @@ export const zDirectCastConversationViewerContext = z.object({
     }),
   ),
   lastReadAt: z.optional(
-    z.coerce.bigint().register(z.globalRegistry, {
-      description: "Timestamp of last read (Unix milliseconds)",
-    }),
+    z.coerce
+      .bigint()
+      .min(BigInt("-9223372036854775808"), {
+        error: "Invalid value: Expected int64 to be >= -9223372036854775808",
+      })
+      .max(BigInt("9223372036854775807"), {
+        error: "Invalid value: Expected int64 to be <= 9223372036854775807",
+      })
+      .register(z.globalRegistry, {
+        description: "Timestamp of last read (Unix milliseconds)",
+      }),
   ),
   muted: z.optional(
     z.boolean().register(z.globalRegistry, {
@@ -392,13 +408,29 @@ export const zDirectCastConversation = z.object({
       description: "List of conversation participants",
     }),
   ),
-  lastReadTime: z.coerce.bigint().register(z.globalRegistry, {
-    description: "Timestamp of last read time (Unix milliseconds)",
-  }),
-  selfLastReadTime: z.optional(
-    z.coerce.bigint().register(z.globalRegistry, {
-      description: "Timestamp of viewer's last read time (Unix milliseconds)",
+  lastReadTime: z.coerce
+    .bigint()
+    .min(BigInt("-9223372036854775808"), {
+      error: "Invalid value: Expected int64 to be >= -9223372036854775808",
+    })
+    .max(BigInt("9223372036854775807"), {
+      error: "Invalid value: Expected int64 to be <= 9223372036854775807",
+    })
+    .register(z.globalRegistry, {
+      description: "Timestamp of last read time (Unix milliseconds)",
     }),
+  selfLastReadTime: z.optional(
+    z.coerce
+      .bigint()
+      .min(BigInt("-9223372036854775808"), {
+        error: "Invalid value: Expected int64 to be >= -9223372036854775808",
+      })
+      .max(BigInt("9223372036854775807"), {
+        error: "Invalid value: Expected int64 to be <= 9223372036854775807",
+      })
+      .register(z.globalRegistry, {
+        description: "Timestamp of viewer's last read time (Unix milliseconds)",
+      }),
   ),
   pinnedMessages: z.optional(
     z.array(zDirectCastMessage).register(z.globalRegistry, {
@@ -433,9 +465,18 @@ export const zDirectCastConversation = z.object({
       }),
     ]),
   ),
-  createdAt: z.coerce.bigint().register(z.globalRegistry, {
-    description: "Timestamp when conversation was created (Unix milliseconds)",
-  }),
+  createdAt: z.coerce
+    .bigint()
+    .min(BigInt("-9223372036854775808"), {
+      error: "Invalid value: Expected int64 to be >= -9223372036854775808",
+    })
+    .max(BigInt("9223372036854775807"), {
+      error: "Invalid value: Expected int64 to be <= 9223372036854775807",
+    })
+    .register(z.globalRegistry, {
+      description:
+        "Timestamp when conversation was created (Unix milliseconds)",
+    }),
   unreadCount: z.optional(
     z.int().gte(0).register(z.globalRegistry, {
       description: "Number of unread messages",
@@ -662,9 +703,17 @@ export const zCast = z.object({
   text: z.string().register(z.globalRegistry, {
     description: "The text content of the cast",
   }),
-  timestamp: z.coerce.bigint().register(z.globalRegistry, {
-    description: "Unix timestamp in milliseconds",
-  }),
+  timestamp: z.coerce
+    .bigint()
+    .min(BigInt("-9223372036854775808"), {
+      error: "Invalid value: Expected int64 to be >= -9223372036854775808",
+    })
+    .max(BigInt("9223372036854775807"), {
+      error: "Invalid value: Expected int64 to be <= 9223372036854775807",
+    })
+    .register(z.globalRegistry, {
+      description: "Unix timestamp in milliseconds",
+    }),
   mentions: z.optional(z.array(zUser)),
   embeds: z.optional(
     z.object({
@@ -858,9 +907,19 @@ export const zNotificationsResponse = z.object({
             .register(z.globalRegistry, {
               description: "Notification type.",
             }),
-          latestTimestamp: z.coerce.bigint().register(z.globalRegistry, {
-            description: "Latest activity timestamp (ms).",
-          }),
+          latestTimestamp: z.coerce
+            .bigint()
+            .min(BigInt("-9223372036854775808"), {
+              error:
+                "Invalid value: Expected int64 to be >= -9223372036854775808",
+            })
+            .max(BigInt("9223372036854775807"), {
+              error:
+                "Invalid value: Expected int64 to be <= 9223372036854775807",
+            })
+            .register(z.globalRegistry, {
+              description: "Latest activity timestamp (ms).",
+            }),
           totalItemCount: z.int().register(z.globalRegistry, {
             description: "Number of items represented by this notification.",
           }),
@@ -1052,9 +1111,33 @@ export const zRewardsMetadataResponse = z.object({
     metadata: z.optional(
       z.object({
         type: z.string(),
-        lastUpdateTimestamp: z.coerce.bigint(),
-        currentPeriodStartTimestamp: z.coerce.bigint(),
-        currentPeriodEndTimestamp: z.coerce.bigint(),
+        lastUpdateTimestamp: z.coerce
+          .bigint()
+          .min(BigInt("-9223372036854775808"), {
+            error:
+              "Invalid value: Expected int64 to be >= -9223372036854775808",
+          })
+          .max(BigInt("9223372036854775807"), {
+            error: "Invalid value: Expected int64 to be <= 9223372036854775807",
+          }),
+        currentPeriodStartTimestamp: z.coerce
+          .bigint()
+          .min(BigInt("-9223372036854775808"), {
+            error:
+              "Invalid value: Expected int64 to be >= -9223372036854775808",
+          })
+          .max(BigInt("9223372036854775807"), {
+            error: "Invalid value: Expected int64 to be <= 9223372036854775807",
+          }),
+        currentPeriodEndTimestamp: z.coerce
+          .bigint()
+          .min(BigInt("-9223372036854775808"), {
+            error:
+              "Invalid value: Expected int64 to be >= -9223372036854775808",
+          })
+          .max(BigInt("9223372036854775807"), {
+            error: "Invalid value: Expected int64 to be <= 9223372036854775807",
+          }),
         tiers: z.optional(z.array(z.record(z.string(), z.unknown()))),
         proportionalPayout: z.optional(
           z.object({
@@ -1601,15 +1684,43 @@ export const zApiKey = z.object({
   id: z.uuid().register(z.globalRegistry, {
     description: "Unique identifier for the API key",
   }),
-  createdAt: z.coerce.bigint().register(z.globalRegistry, {
-    description:
-      "Timestamp when the API key was created (in milliseconds since epoch)",
-  }),
-  expiresAt: z.coerce.bigint().register(z.globalRegistry, {
-    description:
-      "Timestamp when the API key expires (in milliseconds since epoch)",
-  }),
-  revokedAt: z.optional(z.union([z.string(), z.null()])),
+  createdAt: z.coerce
+    .bigint()
+    .min(BigInt("-9223372036854775808"), {
+      error: "Invalid value: Expected int64 to be >= -9223372036854775808",
+    })
+    .max(BigInt("9223372036854775807"), {
+      error: "Invalid value: Expected int64 to be <= 9223372036854775807",
+    })
+    .register(z.globalRegistry, {
+      description:
+        "Timestamp when the API key was created (in milliseconds since epoch)",
+    }),
+  expiresAt: z.coerce
+    .bigint()
+    .min(BigInt("-9223372036854775808"), {
+      error: "Invalid value: Expected int64 to be >= -9223372036854775808",
+    })
+    .max(BigInt("9223372036854775807"), {
+      error: "Invalid value: Expected int64 to be <= 9223372036854775807",
+    })
+    .register(z.globalRegistry, {
+      description:
+        "Timestamp when the API key expires (in milliseconds since epoch)",
+    }),
+  revokedAt: z.optional(
+    z.union([
+      z.coerce
+        .bigint()
+        .min(BigInt("-9223372036854775808"), {
+          error: "Invalid value: Expected int64 to be >= -9223372036854775808",
+        })
+        .max(BigInt("9223372036854775807"), {
+          error: "Invalid value: Expected int64 to be <= 9223372036854775807",
+        }),
+      z.null(),
+    ]),
+  ),
   tag: z.string().register(z.globalRegistry, {
     description: "Short identifier tag for the API key",
   }),
@@ -1728,14 +1839,30 @@ export const zGetFeedItemsData = z.object({
       description: "Type of feed to retrieve",
     }),
     olderThan: z.optional(
-      z.coerce.bigint().register(z.globalRegistry, {
-        description: "Only return items older than this timestamp (ms)",
-      }),
+      z.coerce
+        .bigint()
+        .min(BigInt("-9223372036854775808"), {
+          error: "Invalid value: Expected int64 to be >= -9223372036854775808",
+        })
+        .max(BigInt("9223372036854775807"), {
+          error: "Invalid value: Expected int64 to be <= 9223372036854775807",
+        })
+        .register(z.globalRegistry, {
+          description: "Only return items older than this timestamp (ms)",
+        }),
     ),
     latestMainCastTimestamp: z.optional(
-      z.coerce.bigint().register(z.globalRegistry, {
-        description: "Latest main cast timestamp used for pagination (ms)",
-      }),
+      z.coerce
+        .bigint()
+        .min(BigInt("-9223372036854775808"), {
+          error: "Invalid value: Expected int64 to be >= -9223372036854775808",
+        })
+        .max(BigInt("9223372036854775807"), {
+          error: "Invalid value: Expected int64 to be <= 9223372036854775807",
+        })
+        .register(z.globalRegistry, {
+          description: "Latest main cast timestamp used for pagination (ms)",
+        }),
     ),
     excludeItemIdPrefixes: z.optional(
       z.array(z.string()).register(z.globalRegistry, {
@@ -1747,9 +1874,19 @@ export const zGetFeedItemsData = z.object({
         .array(
           z.object({
             ts: z.optional(
-              z.coerce.bigint().register(z.globalRegistry, {
-                description: "Event timestamp in ms",
-              }),
+              z.coerce
+                .bigint()
+                .min(BigInt("-9223372036854775808"), {
+                  error:
+                    "Invalid value: Expected int64 to be >= -9223372036854775808",
+                })
+                .max(BigInt("9223372036854775807"), {
+                  error:
+                    "Invalid value: Expected int64 to be <= 9223372036854775807",
+                })
+                .register(z.globalRegistry, {
+                  description: "Event timestamp in ms",
+                }),
             ),
             hash: z.optional(
               z.string().register(z.globalRegistry, {
@@ -3042,10 +3179,18 @@ export const zCreateApiKeyData = z.object({
     description: z.string().register(z.globalRegistry, {
       description: "User-provided description of the API key's purpose",
     }),
-    expiresAt: z.coerce.bigint().register(z.globalRegistry, {
-      description:
-        "Timestamp when the API key should expire (in milliseconds since epoch)",
-    }),
+    expiresAt: z.coerce
+      .bigint()
+      .min(BigInt("-9223372036854775808"), {
+        error: "Invalid value: Expected int64 to be >= -9223372036854775808",
+      })
+      .max(BigInt("9223372036854775807"), {
+        error: "Invalid value: Expected int64 to be <= 9223372036854775807",
+      })
+      .register(z.globalRegistry, {
+        description:
+          "Timestamp when the API key should expire (in milliseconds since epoch)",
+      }),
   }),
   path: z.optional(z.never()),
   query: z.optional(z.never()),
@@ -3146,10 +3291,20 @@ export const zSubmitAnalyticsEventsData = z.object({
           data: z.record(z.string(), z.unknown()).register(z.globalRegistry, {
             description: "Event-specific data",
           }),
-          ts: z.coerce.bigint().register(z.globalRegistry, {
-            description:
-              "Unix timestamp in milliseconds when the event occurred",
-          }),
+          ts: z.coerce
+            .bigint()
+            .min(BigInt("-9223372036854775808"), {
+              error:
+                "Invalid value: Expected int64 to be >= -9223372036854775808",
+            })
+            .max(BigInt("9223372036854775807"), {
+              error:
+                "Invalid value: Expected int64 to be <= 9223372036854775807",
+            })
+            .register(z.globalRegistry, {
+              description:
+                "Unix timestamp in milliseconds when the event occurred",
+            }),
         }),
       )
       .register(z.globalRegistry, {
@@ -3293,10 +3448,20 @@ export const zRegisterStatsigEventsData = z.object({
               description: "Event metadata",
             }),
           ),
-          time: z.coerce.bigint().register(z.globalRegistry, {
-            description:
-              "Unix timestamp in milliseconds when the event occurred",
-          }),
+          time: z.coerce
+            .bigint()
+            .min(BigInt("-9223372036854775808"), {
+              error:
+                "Invalid value: Expected int64 to be >= -9223372036854775808",
+            })
+            .max(BigInt("9223372036854775807"), {
+              error:
+                "Invalid value: Expected int64 to be <= 9223372036854775807",
+            })
+            .register(z.globalRegistry, {
+              description:
+                "Unix timestamp in milliseconds when the event occurred",
+            }),
           statsigMetadata: z.optional(
             z.record(z.string(), z.unknown()).register(z.globalRegistry, {
               description: "Additional Statsig metadata",
