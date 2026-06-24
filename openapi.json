@@ -3208,7 +3208,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/user-response_UserResponse"
+                  "$ref": "#/components/schemas/UserResponse-2"
                 }
               }
             }
@@ -10303,7 +10303,7 @@
           }
         }
       },
-      "mini-app_ViewerContext": {
+      "ViewerContext-2": {
         "type": "object",
         "properties": {},
         "description": "Context information for the viewer"
@@ -10427,7 +10427,7 @@
             "description": "Required blockchain chains"
           },
           "viewerContext": {
-            "$ref": "#/components/schemas/mini-app_ViewerContext"
+            "$ref": "#/components/schemas/ViewerContext-2"
           }
         }
       },
@@ -10655,7 +10655,7 @@
           }
         }
       },
-      "user-response_UserResponse": {
+      "UserResponse-2": {
         "type": "object",
         "required": [
           "result"

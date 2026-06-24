@@ -97,7 +97,6 @@ export {
   MutedKeywordPropertiesSchema, // Muted keyword properties schema definition.
   MutedKeywordSchema, // Muted keyword schema definition.
   MutedKeywordsResponseSchema, // Muted keywords response schema definition.
-  mini_app_ViewerContextSchema, // Mini app viewer context schema definition.
   NotificationsResponseSchema, // Notifications response schema definition.
   OnboardingStateResponseSchema, // Onboarding state response schema definition.
   OnboardingStateSchema, // Onboarding state schema definition.
@@ -128,16 +127,17 @@ export {
   UserByFidResponseSchema, // User by fid response schema definition.
   UserExtrasSchema, // User extras schema definition.
   UserPreferencesResponseSchema, // User preferences response schema definition.
+  UserResponse_2Schema, // User response user response schema definition.
   UserResponseSchema, // User response schema definition.
   UserSchema, // User schema definition.
   UsersResponseSchema, // Users response schema definition.
   UsersWithCountResponseSchema, // Users with count response schema definition.
   UserThreadCastsResponseSchema, // User thread casts response schema definition.
   UserWithExtrasSchema, // User with extras schema definition.
-  user_response_UserResponseSchema, // User response user response schema definition.
   ValidationErrorSchema, // Validation error schema definition.
   VerifiedAddressSchema, // Verified address schema definition.
   VideoEmbedSchema, // Video embed schema definition.
+  ViewerContext_2Schema, // Mini app viewer context schema definition.
   ViewerContextSchema, // Viewer context schema definition.
   WinnerSchema, // Winner schema definition.
 } from "./client/schemas.gen";
@@ -860,7 +860,6 @@ export type {
   MarkAllNotificationsReadResponse, // Mark all notifications read type definition.
   MarkAllNotificationsReadResponses, // Mark all notifications read type definition.
   MiniApp, // Mini app type definition.
-  MiniAppViewerContext, // Mini app viewer type definition.
   ModerateCastData, // Moderate cast type definition.
   ModerateCastError, // Moderate cast type definition.
   ModerateCastErrors, // Moderate cast type definition.
@@ -1021,7 +1020,7 @@ export type {
   UserExtras, // User extras type definition.
   UserPreferencesResponse, // User preferences type definition.
   UserResponse, // User type definition.
-  UserResponseUserResponse, // User response user type definition.
+  UserResponse2, // User response user type definition.
   UsersResponse, // Users type definition.
   UsersWithCountResponse, // Users with count type definition.
   UserThreadCastsResponse, // User thread casts type definition.
