@@ -43,14 +43,15 @@
       "linter": {
         "rules": {
           "complexity": {
-            "noUselessSwitchCase": "off"
+            "noBannedTypes": "warn",
+            "noUselessSwitchCase": "warn"
           },
           "style": {
-            "noNonNullAssertion": "off"
+            "noNonNullAssertion": "warn"
           },
           "suspicious": {
-            "noExplicitAny": "off",
-            "useIterableCallbackReturn": "off"
+            "noExplicitAny": "warn",
+            "useIterableCallbackReturn": "warn"
           }
         }
       },
