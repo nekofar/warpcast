@@ -58,7 +58,7 @@
     "test": "vitest run"
   },
   "devDependencies": {
-    "@asyncapi/cli": "^6.0.0",
+    "@asyncapi/cli": "^6.0.2",
     "@asyncapi/generator": "^3.3.0",
     "@biomejs/biome": "^2.5.1",
     "@hey-api/openapi-ts": "^0.99.0",
