@@ -37,7 +37,7 @@ export {
   BookmarkedCastSchema, // Bookmarked cast schema definition.
   BookmarkedCastsResponseSchema, // Bookmarked casts response schema definition.
   CastActionSchema, // Cast action schema definition.
-  CastCreatedResponseSchema, // Cast created response schema definition.
+  CastCreatedResponseSchema, // Cast-created response schema definition.
   CastHashResponseSchema, // Cast hash response schema definition.
   CastQuoteSchema, // Cast quote schema definition.
   CastQuotesResponseSchema, // Cast quotes response schema definition.
@@ -97,7 +97,7 @@ export {
   MutedKeywordPropertiesSchema, // Muted keyword properties schema definition.
   MutedKeywordSchema, // Muted keyword schema definition.
   MutedKeywordsResponseSchema, // Muted keywords response schema definition.
-  NotificationsResponseSchema, // Notifications response schema definition.
+  NotificationsResponseSchema, // Notification response schema definition.
   OnboardingStateResponseSchema, // Onboarding state response schema definition.
   OnboardingStateSchema, // Onboarding state schema definition.
   PaginatedResponseSchema, // Paginated response schema definition.
@@ -133,7 +133,7 @@ export {
   UsersResponseSchema, // Users response schema definition.
   UsersWithCountResponseSchema, // Users with count response schema definition.
   UserThreadCastsResponseSchema, // User thread casts response schema definition.
-  UserWithExtrasSchema, // User with extras schema definition.
+  UserWithExtrasSchema, // User with extra schema definition.
   ValidationErrorSchema, // Validation error schema definition.
   VerifiedAddressSchema, // Verified address schema definition.
   VideoEmbedSchema, // Video embed schema definition.
@@ -231,7 +231,7 @@ export {
   getUserByVerificationAddress, // Get user by verification address endpoint helper.
   getUserFavoriteFrames, // Get user favorite frames endpoint helper.
   getUserFollowedChannels, // Get user followed channels endpoint helper.
-  getUserFollowingChannels, // Get user following channels endpoint helper.
+  getUserFollowingChannels, // Get user-following channels endpoint helper.
   getUserLikedCasts, // Get user liked casts endpoint helper.
   getUserOnboardingState, // Get user onboarding state endpoint helper.
   getUserPreferences, // Get user preferences endpoint helper.
@@ -304,12 +304,12 @@ export type {
   AddDirectCastMessageReactionResponses, // Add direct cast message reaction type definition.
   ApiKey, // Api key type definition.
   AppsByAuthorResponse, // Apps by author type definition.
-  AttachEmbedsData, // Attach embeds type definition.
-  AttachEmbedsError, // Attach embeds type definition.
-  AttachEmbedsErrors, // Attach embeds type definition.
-  AttachEmbedsResponse, // Attach embeds type definition.
-  AttachEmbedsResponse2, // Attach embeds response2 type definition.
-  AttachEmbedsResponses, // Attach embeds type definition.
+  AttachEmbedsData, // Attach embed type definition.
+  AttachEmbedsError, // Attach embed type definition.
+  AttachEmbedsErrors, // Attach embed type definition.
+  AttachEmbedsResponse, // Attach embed type definition.
+  AttachEmbedsResponse2, // Attach embed response2 type definition.
+  AttachEmbedsResponses, // Attach embed type definition.
   BadRequestError, // Bad request type definition.
   BanUserFromChannelData, // Ban user from channel type definition.
   BanUserFromChannelError, // Ban user from channel type definition.
@@ -326,7 +326,7 @@ export type {
   BookmarkedCastsResponse, // Bookmarked casts type definition.
   Cast, // Cast type definition.
   CastAction, // Cast action type definition.
-  CastCreatedResponse, // Cast created type definition.
+  CastCreatedResponse, // Cast-created type definition.
   CastHashResponse, // Cast hash type definition.
   CastQuote, // Cast quote type definition.
   CastQuotesResponse, // Cast quotes type definition.
@@ -405,16 +405,16 @@ export type {
   DirectCastPinConversationRequest, // Direct cast pin conversation type definition.
   DirectCastSendRequest, // Direct cast send type definition.
   DirectCastSendResponse, // Direct cast send type definition.
-  DiscoverChannelsData, // Discover channels type definition.
-  DiscoverChannelsError, // Discover channels type definition.
-  DiscoverChannelsErrors, // Discover channels type definition.
-  DiscoverChannelsResponse, // Discover channels type definition.
-  DiscoverChannelsResponse2, // Discover channels response2 type definition.
-  DiscoverChannelsResponses, // Discover channels type definition.
+  DiscoverChannelsData, // Discover channel type definition.
+  DiscoverChannelsError, // Discover channel type definition.
+  DiscoverChannelsErrors, // Discover channel type definition.
+  DiscoverChannelsResponse, // Discover channel type definition.
+  DiscoverChannelsResponse2, // Discover channel response2 type definition.
+  DiscoverChannelsResponses, // Discover channel type definition.
   Draft, // Draft type definition.
   DraftCast, // Draft cast type definition.
   DraftCreatedResponse, // Draft created type definition.
-  DraftsResponse, // Drafts type definition.
+  DraftsResponse, // Draft type definition.
   ErrorResponse, // Error type definition.
   ExportMiniAppUserDataData, // Export mini app user data type definition.
   ExportMiniAppUserDataError, // Export mini app user data type definition.
@@ -464,11 +464,11 @@ export type {
   GetBlockedUsersErrors, // Get blocked users type definition.
   GetBlockedUsersResponse, // Get blocked users type definition.
   GetBlockedUsersResponses, // Get blocked users type definition.
-  GetBookmarkedCastsData, // Get bookmarked casts type definition.
-  GetBookmarkedCastsError, // Get bookmarked casts type definition.
-  GetBookmarkedCastsErrors, // Get bookmarked casts type definition.
-  GetBookmarkedCastsResponse, // Get bookmarked casts type definition.
-  GetBookmarkedCastsResponses, // Get bookmarked casts type definition.
+  GetBookmarkedCastsData, // Get bookmarked cast type definition.
+  GetBookmarkedCastsError, // Get bookmarked cast type definition.
+  GetBookmarkedCastsErrors, // Get bookmarked cast type definition.
+  GetBookmarkedCastsResponse, // Get bookmarked cast type definition.
+  GetBookmarkedCastsResponses, // Get bookmarked cast type definition.
   GetCastLikesData, // Get cast likes type definition.
   GetCastLikesError, // Get cast likes type definition.
   GetCastLikesErrors, // Get cast likes type definition.
@@ -529,11 +529,11 @@ export type {
   GetChannelModeratedCastsResponses, // Get channel moderated casts type definition.
   GetChannelResponse, // Get channel type definition.
   GetChannelResponses, // Get channel type definition.
-  GetChannelRestrictedUsersData, // Get channel restricted users type definition.
-  GetChannelRestrictedUsersError, // Get channel restricted users type definition.
-  GetChannelRestrictedUsersErrors, // Get channel restricted users type definition.
-  GetChannelRestrictedUsersResponse, // Get channel restricted users type definition.
-  GetChannelRestrictedUsersResponses, // Get channel restricted users type definition.
+  GetChannelRestrictedUsersData, // Get channel-restricted users type definition.
+  GetChannelRestrictedUsersError, // Get channel-restricted users type definition.
+  GetChannelRestrictedUsersErrors, // Get channel-restricted users type definition.
+  GetChannelRestrictedUsersResponse, // Get channel-restricted users type definition.
+  GetChannelRestrictedUsersResponses, // Get channel-restricted users type definition.
   GetChannelStreaksForUserData, // Get channel streaks for user type definition.
   GetChannelStreaksForUserError, // Get channel streaks for user type definition.
   GetChannelStreaksForUserErrors, // Get channel streaks for user type definition.
@@ -614,11 +614,11 @@ export type {
   GetFeedItemsErrors, // Get feed items type definition.
   GetFeedItemsResponse, // Get feed items type definition.
   GetFeedItemsResponses, // Get feed items type definition.
-  GetFollowersData, // Get followers type definition.
-  GetFollowersError, // Get followers type definition.
-  GetFollowersErrors, // Get followers type definition.
-  GetFollowersResponse, // Get followers type definition.
-  GetFollowersResponses, // Get followers type definition.
+  GetFollowersData, // Get follower type definition.
+  GetFollowersError, // Get follower type definition.
+  GetFollowersErrors, // Get follower type definition.
+  GetFollowersResponse, // Get follower type definition.
+  GetFollowersResponses, // Get follower type definition.
   GetFollowingData, // Get following type definition.
   GetFollowingError, // Get following type definition.
   GetFollowingErrors, // Get following type definition.
@@ -762,16 +762,16 @@ export type {
   GetUserFavoriteFramesErrors, // Get user favorite frames type definition.
   GetUserFavoriteFramesResponse, // Get user favorite frames type definition.
   GetUserFavoriteFramesResponses, // Get user favorite frames type definition.
-  GetUserFollowedChannelsData, // Get user followed channels type definition.
-  GetUserFollowedChannelsError, // Get user followed channels type definition.
-  GetUserFollowedChannelsErrors, // Get user followed channels type definition.
-  GetUserFollowedChannelsResponse, // Get user followed channels type definition.
-  GetUserFollowedChannelsResponses, // Get user followed channels type definition.
-  GetUserFollowingChannelsData, // Get user following channels type definition.
-  GetUserFollowingChannelsError, // Get user following channels type definition.
-  GetUserFollowingChannelsErrors, // Get user following channels type definition.
-  GetUserFollowingChannelsResponse, // Get user following channels type definition.
-  GetUserFollowingChannelsResponses, // Get user following channels type definition.
+  GetUserFollowedChannelsData, // Get user followed channel type definition.
+  GetUserFollowedChannelsError, // Get user followed channel type definition.
+  GetUserFollowedChannelsErrors, // Get user followed channel type definition.
+  GetUserFollowedChannelsResponse, // Get user followed channel type definition.
+  GetUserFollowedChannelsResponses, // Get user followed channel type definition.
+  GetUserFollowingChannelsData, // Get user-following channels type definition.
+  GetUserFollowingChannelsError, // Get user-following channels type definition.
+  GetUserFollowingChannelsErrors, // Get user-following channels type definition.
+  GetUserFollowingChannelsResponse, // Get user-following channels type definition.
+  GetUserFollowingChannelsResponses, // Get user-following channels type definition.
   GetUserLikedCastsData, // Get user liked cast type definition.
   GetUserLikedCastsError, // Get user liked cast type definition.
   GetUserLikedCastsErrors, // Get user liked cast type definition.
@@ -814,11 +814,11 @@ export type {
   GetUserThreadCastsErrors, // Get user thread casts type definition.
   GetUserThreadCastsResponse, // Get user thread casts type definition.
   GetUserThreadCastsResponses, // Get user thread casts type definition.
-  GetVerificationsData, // Get verifications type definition.
-  GetVerificationsError, // Get verifications type definition.
-  GetVerificationsErrors, // Get verifications type definition.
-  GetVerificationsResponse, // Get verifications type definition.
-  GetVerificationsResponses, // Get verifications type definition.
+  GetVerificationsData, // Get verification type definition.
+  GetVerificationsError, // Get verification type definition.
+  GetVerificationsErrors, // Get verification type definition.
+  GetVerificationsResponse, // Get verification type definition.
+  GetVerificationsResponses, // Get verification type definition.
   GetXpClaimableSummaryData, // Get xp claimable summary type definition.
   GetXpClaimableSummaryError, // Get xp claimable summary type definition.
   GetXpClaimableSummaryErrors, // Get xp claimable summary type definition.
@@ -1021,7 +1021,7 @@ export type {
   UserPreferencesResponse, // User preferences type definition.
   UserResponse, // User type definition.
   UserResponse2, // User response user type definition.
-  UsersResponse, // Users type definition.
+  UsersResponse, // Users' type definition.
   UsersWithCountResponse, // Users with count type definition.
   UserThreadCastsResponse, // User thread casts type definition.
   UserWithExtras, // User with extra type definition.
@@ -1029,20 +1029,21 @@ export type {
   VerifiedAddress, // Verified address type definition.
   VideoEmbed, // Video embed type definition.
   ViewerContext, // Viewer type definition.
+  ViewerContext2, // Mini app viewer type definition.
   Winner, // Winner type definition.
 } from "./client/types.gen";
 export {
-  zAcceptChannelInviteData, // Accept channel invite data Zod schema.
+  zAcceptChannelInviteBody, // Accept channel invite data Zod schema.
   zAction, // Action Zod schema.
-  zAddDirectCastMessageReactionData, // Add direct cast message reaction data Zod schema.
+  zAddDirectCastMessageReactionBody, // Add direct cast message reaction data Zod schema.
   zApiKey, // Api key Zod schema.
   zAppsByAuthorResponse, // Apps by author response Zod schema.
-  zAttachEmbedsData, // Attach embeds data Zod schema.
+  zAttachEmbedsBody, // Attach embeds data Zod schema.
   zAttachEmbedsResponse, // Attach embeds response Zod schema.
   zBadRequestError, // Bad request error Zod schema.
-  zBanUserFromChannelData, // Ban user from channel data Zod schema.
+  zBanUserFromChannelBody, // Ban user from channel data Zod schema.
   zBio, // Bio Zod schema.
-  zBlockUserData, // Block user data Zod schema.
+  zBlockUserBody, // Block user data Zod schema.
   zBookmarkedCast, // Bookmarked cast Zod schema.
   zBookmarkedCastsResponse, // Bookmarked casts response Zod schema.
   zCast, // Cast Zod schema.
@@ -1052,7 +1053,7 @@ export {
   zCastQuote, // Cast quote Zod schema.
   zCastQuotesResponse, // Cast quotes response Zod schema.
   zCastRecastersResponse, // Cast recasters response Zod schema.
-  zCategorizeDirectCastConversationData, // Categorize direct cast conversation data Zod schema.
+  zCategorizeDirectCastConversationBody, // Categorize direct cast conversation data Zod schema.
   zChannel, // Channel Zod schema.
   zChannelFollower, // Channel follower Zod schema.
   zChannelFollowersResponse, // Channel followers response Zod schema.
@@ -1063,13 +1064,13 @@ export {
   zChannelResponse, // Channel response Zod schema.
   zChannelStreaksResponse, // Channel streaks response Zod schema.
   zChannelUsersResponse, // Channel users response Zod schema.
-  zCheckUserChannelFollowStatusData, // Check user channel follow status data Zod schema.
-  zCreateApiKeyData, // Create api key data Zod schema.
-  zCreateCastData, // Create cast data Zod schema.
-  zCreateDraftCastsData, // Create draft casts data Zod schema.
+  zCheckUserChannelFollowStatusQuery, // Check user channel follow status data Zod schema.
+  zCreateApiKeyBody, // Create api key data Zod schema.
+  zCreateCastBody, // Create cast data Zod schema.
+  zCreateDraftCastsBody, // Create draft casts data Zod schema.
   zCursorParam, // Cursor param Zod schema.
-  zDeleteCastData, // Delete cast data Zod schema.
-  zDeleteDraftCastData, // Delete draft cast data Zod schema.
+  zDeleteCastBody, // Delete cast data Zod schema.
+  zDeleteDraftCastBody, // Delete draft cast data Zod schema.
   zDirectCastConversation, // Direct cast conversation Zod schema.
   zDirectCastConversationCategorizationRequest, // Direct cast conversation categorization request Zod schema.
   zDirectCastConversationCategorizationResponse, // Direct cast conversation categorization response Zod schema.
@@ -1082,7 +1083,7 @@ export {
   zDirectCastConversationViewerContext, // Direct cast conversation viewer context Zod schema.
   zDirectCastInboxResponse, // Direct cast inbox response Zod schema.
   zDirectCastInboxResult, // Direct cast inbox result Zod schema.
-  zDirectCastManuallyMarkUnreadData, // Direct cast manually mark unread data Zod schema.
+  zDirectCastManuallyMarkUnreadBody, // Direct cast manually mark unread data Zod schema.
   zDirectCastManuallyMarkUnreadRequest, // Direct cast manually mark unread request Zod schema.
   zDirectCastMessage, // Direct cast message Zod schema.
   zDirectCastMessageMention, // Direct cast message mention Zod schema.
@@ -1094,167 +1095,152 @@ export {
   zDirectCastPinConversationRequest, // Direct cast pin conversation request Zod schema.
   zDirectCastSendRequest, // Direct cast send request Zod schema.
   zDirectCastSendResponse, // Direct cast send response Zod schema.
-  zDiscoverChannelsData, // Discover channels data Zod schema.
+  zDiscoverChannelsQuery, // Discover channels data Zod schema.
   zDiscoverChannelsResponse, // Discover channels response Zod schema.
   zDraft, // Draft Zod schema.
   zDraftCast, // Draft cast Zod schema.
   zDraftCreatedResponse, // Draft created response Zod schema.
   zDraftsResponse, // Drafts response Zod schema.
   zErrorResponse, // Error response Zod schema.
-  zExportMiniAppUserDataData, // Export mini app user data data Zod schema.
+  zExportMiniAppUserDataQuery, // Export mini app user data data Zod schema.
   zFavoriteFramesResponse, // Favorite frames response Zod schema.
   zFeedItemsResponse, // Feed items response Zod schema.
   zFidParam, // Fid param Zod schema.
-  zFollowChannelData, // Follow channel data Zod schema.
+  zFollowChannelBody, // Follow channel data Zod schema.
   zFrame, // Frame Zod schema.
   zFrameApp, // Frame app Zod schema.
   zFrameAppsResponse, // Frame apps response Zod schema.
   zGenericBadRequestError, // Generic bad request error Zod schema.
   zGenericResponse, // Generic response Zod schema.
-  zGetAccountVerificationsData, // Get account verifications data Zod schema.
-  zGetAllChannelsData, // Get all channels data Zod schema.
-  zGetApiKeysData, // Get api keys data Zod schema.
-  zGetAppsByAuthorData, // Get apps by author data Zod schema.
-  zGetAvailableInvitesData, // Get available invites data Zod schema.
-  zGetBlockedUsersData, // Get blocked users data Zod schema.
-  zGetBookmarkedCastsData, // Get bookmarked casts data Zod schema.
-  zGetCastLikesData, // Get cast likes data Zod schema.
-  zGetCastQuotesData, // Get cast quotes data Zod schema.
-  zGetCastRecastersData, // Get cast recasters data Zod schema.
-  zGetCastsByFidData, // Get casts by fid data Zod schema.
-  zGetChannelBannedUsersData, // Get channel banned users data Zod schema.
-  zGetChannelData, // Get channel data Zod schema.
-  zGetChannelDetailsData, // Get channel details data Zod schema.
-  zGetChannelFollowersData, // Get channel followers data Zod schema.
-  zGetChannelFollowersYouKnowData, // Get channel followers you know data Zod schema.
-  zGetChannelInvitesData, // Get channel invites data Zod schema.
-  zGetChannelMembersData, // Get channel members data Zod schema.
-  zGetChannelModeratedCastsData, // Get channel moderated casts data Zod schema.
-  zGetChannelRestrictedUsersData, // Get channel restricted users data Zod schema.
-  zGetChannelStreaksForUserData, // Get channel streaks for user data Zod schema.
-  zGetChannelUsersData, // Get channel users data Zod schema.
-  zGetConnectedAccountsData, // Get connected accounts data Zod schema.
-  zGetCreatorRewardWinnersData, // Get creator reward winners data Zod schema.
-  zGetCurrentUserData, // Get current user data Zod schema.
-  zGetDeveloperRewardWinnersData, // Get developer reward winners data Zod schema.
-  zGetDirectCastConversationData, // Get direct cast conversation data Zod schema.
-  zGetDirectCastConversationMessagesData, // Get direct cast conversation messages data Zod schema.
-  zGetDirectCastConversationRecentMessagesData, // Get direct cast conversation recent messages data Zod schema.
-  zGetDirectCastInboxData, // Get direct cast inbox data Zod schema.
-  zGetDiscoverableActionsData, // Get discoverable actions data Zod schema.
-  zGetDiscoverableComposerActionsData, // Get discoverable composer actions data Zod schema.
-  zGetDomainManifestData, // Get domain manifest data Zod schema.
-  zGetDraftCastsData, // Get draft casts data Zod schema.
-  zGetFarcasterJsonData, // Get farcaster json data Zod schema.
-  zGetFeedItemsData, // Get feed items data Zod schema.
-  zGetFollowersData, // Get followers data Zod schema.
-  zGetFollowingData, // Get following data Zod schema.
-  zGetHighlightedChannelsData, // Get highlighted channels data Zod schema.
-  zGetManagedAppsData, // Get managed apps data Zod schema.
-  zGetMetaTagsData, // Get meta tags data Zod schema.
-  zGetMiniAppAnalyticsRollupData, // Get mini app analytics rollup data Zod schema.
-  zGetMutedKeywordsData, // Get muted keywords data Zod schema.
-  zGetMutualFollowersData, // Get mutual followers data Zod schema.
-  zGetNotificationsData, // Get notifications data Zod schema.
-  zGetOrCreateReferralCodeData, // Get or create referral code data Zod schema.
-  zGetOwnedDomainsData, // Get owned domains data Zod schema.
-  zGetProfileCastsData, // Get profile casts data Zod schema.
-  zGetRewardsLeaderboardData, // Get rewards leaderboard data Zod schema.
-  zGetRewardsMetadataData, // Get rewards metadata data Zod schema.
-  zGetSponsoredInvitesData, // Get sponsored invites data Zod schema.
-  zGetStarterPackData, // Get starter pack data Zod schema.
-  zGetStarterPackMembersData, // Get starter pack members data Zod schema.
-  zGetStarterPackUsersData, // Get starter pack users data Zod schema.
-  zGetSuggestedStarterPacksData, // Get suggested starter packs data Zod schema.
-  zGetSuggestedUsersData, // Get suggested users data Zod schema.
-  zGetTopFrameAppsData, // Get top frame apps data Zod schema.
-  zGetTopMiniAppsData, // Get top mini apps data Zod schema.
-  zGetTrendingTopicsData, // Get trending topics data Zod schema.
-  zGetUnseenCountsData, // Get unseen counts data Zod schema.
-  zGetUserAppContextData, // Get user app context data Zod schema.
-  zGetUserByFidData, // Get user by fid data Zod schema.
-  zGetUserByUsernameData, // Get user by username data Zod schema.
-  zGetUserByVerificationAddressData, // Get user by verification address data Zod schema.
-  zGetUserData, // Get user data Zod schema.
-  zGetUserFavoriteFramesData, // Get user favorite frames data Zod schema.
-  zGetUserFollowedChannelsData, // Get user followed channels data Zod schema.
-  zGetUserFollowingChannelsData, // Get user following channels data Zod schema.
-  zGetUserLikedCastsData, // Get user liked casts data Zod schema.
-  zGetUserOnboardingStateData, // Get user onboarding state data Zod schema.
-  zGetUserPreferencesData, // Get user preferences data Zod schema.
-  zGetUserPrimaryAddressData, // Get user primary address data Zod schema.
-  zGetUserPrimaryAddressesData, // Get user primary addresses data Zod schema.
-  zGetUserRewardsScoresData, // Get user rewards scores data Zod schema.
-  zGetUserStarterPacksData, // Get user starter packs data Zod schema.
-  zGetUserThreadCastsData, // Get user thread casts data Zod schema.
-  zGetVerificationsData, // Get verifications data Zod schema.
-  zGetXpClaimableSummaryData, // Get xp claimable summary data Zod schema.
-  zGetXpRewardsData, // Get xp rewards data Zod schema.
+  zGetAccountVerificationsQuery, // Get account verifications data Zod schema.
+  zGetAppsByAuthorQuery, // Get apps by author data Zod schema.
+  zGetBookmarkedCastsQuery, // Get bookmarked casts data Zod schema.
+  zGetCastLikesQuery, // Get cast likes data Zod schema.
+  zGetCastQuotesQuery, // Get cast quotes data Zod schema.
+  zGetCastRecastersQuery, // Get cast recasters data Zod schema.
+  zGetCastsByFidQuery, // Get casts by fid data Zod schema.
+  zGetChannelBannedUsersQuery, // Get channel banned users data Zod schema.
+  zGetChannelDetailsQuery, // Get channel details data Zod schema.
+  zGetChannelFollowersQuery, // Get channel followers data Zod schema.
+  zGetChannelFollowersYouKnowQuery, // Get channel followers you know data Zod schema.
+  zGetChannelInvitesQuery, // Get channel invites data Zod schema.
+  zGetChannelMembersQuery, // Get channel members data Zod schema.
+  zGetChannelModeratedCastsQuery, // Get channel moderated casts data Zod schema.
+  zGetChannelQuery, // Get channel data Zod schema.
+  zGetChannelRestrictedUsersQuery, // Get channel restricted users data Zod schema.
+  zGetChannelStreaksForUserQuery, // Get channel streaks for user data Zod schema.
+  zGetChannelUsersQuery, // Get channel users data Zod schema.
+  zGetConnectedAccountsQuery, // Get connected accounts data Zod schema.
+  zGetCreatorRewardWinnersQuery, // Get creator reward winners data Zod schema.
+  zGetDeveloperRewardWinnersQuery, // Get developer reward winners data Zod schema.
+  zGetDirectCastConversationMessagesQuery, // Get direct cast conversation messages data Zod schema.
+  zGetDirectCastConversationQuery, // Get direct cast conversation data Zod schema.
+  zGetDirectCastConversationRecentMessagesQuery, // Get direct cast conversation recent messages data Zod schema.
+  zGetDirectCastInboxQuery, // Get direct cast inbox data Zod schema.
+  zGetDiscoverableActionsQuery, // Get discoverable actions data Zod schema.
+  zGetDiscoverableComposerActionsQuery, // Get discoverable composer actions data Zod schema.
+  zGetDomainManifestQuery, // Get domain manifest data Zod schema.
+  zGetDraftCastsQuery, // Get draft casts data Zod schema.
+  zGetFarcasterJsonQuery, // Get farcaster json data Zod schema.
+  zGetFeedItemsBody, // Get feed items data Zod schema.
+  zGetFollowersQuery, // Get followers data Zod schema.
+  zGetFollowingQuery, // Get following data Zod schema.
+  zGetManagedAppsQuery, // Get managed apps data Zod schema.
+  zGetMetaTagsQuery, // Get meta tags data Zod schema.
+  zGetMiniAppAnalyticsRollupBody, // Get mini app analytics rollup data Zod schema.
+  zGetMutualFollowersQuery, // Get mutual followers data Zod schema.
+  zGetNotificationsQuery, // Get notifications data Zod schema.
+  zGetOrCreateReferralCodeBody, // Get or create referral code data Zod schema.
+  zGetProfileCastsQuery, // Get profile casts data Zod schema.
+  zGetRewardsLeaderboardQuery, // Get rewards leaderboard data Zod schema.
+  zGetRewardsMetadataQuery, // Get rewards metadata data Zod schema.
+  zGetStarterPackMembersQuery, // Get starter pack members data Zod schema.
+  zGetStarterPackQuery, // Get starter pack data Zod schema.
+  zGetStarterPackUsersQuery, // Get starter pack users data Zod schema.
+  zGetSuggestedStarterPacksQuery, // Get suggested starter packs data Zod schema.
+  zGetSuggestedUsersQuery, // Get suggested users data Zod schema.
+  zGetTopFrameAppsQuery, // Get top frame apps data Zod schema.
+  zGetTopMiniAppsQuery, // Get top mini apps data Zod schema.
+  zGetUserByFidQuery, // Get user by fid data Zod schema.
+  zGetUserByUsernameQuery, // Get user by username data Zod schema.
+  zGetUserByVerificationAddressQuery, // Get user by verification address data Zod schema.
+  zGetUserFavoriteFramesQuery, // Get user favorite frames data Zod schema.
+  zGetUserFollowedChannelsQuery, // Get user followed channels data Zod schema.
+  zGetUserFollowingChannelsQuery, // Get user-following channels data Zod schema.
+  zGetUserLikedCastsQuery, // Get user-liked casts data Zod schema.
+  zGetUserPrimaryAddressesQuery, // Get user primary addresses data Zod schema.
+  zGetUserPrimaryAddressQuery, // Get user primary address data Zod schema.
+  zGetUserQuery, // Get user data Zod schema.
+  zGetUserRewardsScoresQuery, // Get user rewards scores data Zod schema.
+  zGetUserStarterPacksQuery, // Get user starter packs data Zod schema.
+  zGetUserThreadCastsQuery, // Get user thread casts data Zod schema.
+  zGetVerificationsQuery, // Get verifications data Zod schema.
+  zGetXpClaimableSummaryBody, // Get xp claimable summary data Zod schema.
+  zGetXpRewardsQuery, // Get xp rewards data Zod schema.
   zHighlightedChannelsResponse, // Highlighted channels response Zod schema.
   zImageEmbed, // Image embed Zod schema.
-  zInspectImageUrlData, // Inspect image url data Zod schema.
-  zInspectMiniAppUrlData, // Inspect mini app url data Zod schema.
+  zInspectImageUrlQuery, // Inspect image url data Zod schema.
+  zInspectMiniAppUrlQuery, // Inspect mini app url data Zod schema.
   zInvitesAvailableResponse, // Invites available response Zod schema.
-  zInviteUserToChannelData, // Invite user to channel data Zod schema.
-  zLikeCastData, // Like cast data Zod schema.
+  zInviteUserToChannelBody, // Invite user to channel data Zod schema.
+  zLikeCastBody, // Like cast data Zod schema.
   zLimitParam, // Limit param Zod schema.
   zLocation, // Location Zod schema.
-  zMarkAllNotificationsReadData, // Mark all notifications read data Zod schema.
+  zMarkAllNotificationsReadBody, // Mark all notifications read data Zod schema.
   zMiniApp, // Mini app Zod schema.
-  zMiniAppViewerContext, // Mini app viewer context Zod schema.
-  zModerateCastData, // Moderate cast data Zod schema.
+  zModerateCastBody, // Moderate cast data Zod schema.
   zMutedKeyword, // Muted keyword Zod schema.
   zMutedKeywordProperties, // Muted keyword properties Zod schema.
   zMutedKeywordsResponse, // Muted keywords response Zod schema.
-  zMuteKeywordData, // Mute keyword data Zod schema.
+  zMuteKeywordBody, // Mute keyword data Zod schema.
   zNotificationsResponse, // Notifications response Zod schema.
   zOnboardingState, // Onboarding state Zod schema.
   zOnboardingStateResponse, // Onboarding state response Zod schema.
   zPaginatedResponse, // Paginated response Zod schema.
   zPaginationCursor, // Pagination cursor Zod schema.
-  zPinCastToChannelData, // Pin cast to channel data Zod schema.
-  zPinDirectCastConversationData, // Pin direct cast conversation data Zod schema.
+  zPinCastToChannelBody, // Pin cast to channel data Zod schema.
+  zPinDirectCastConversationBody, // Pin direct cast conversation data Zod schema.
   zProfile, // Profile Zod schema.
   zProfilePicture, // Profile picture Zod schema.
   zRankedMiniApp, // Ranked mini app Zod schema.
   zRawChannel, // Raw channel Zod schema.
   zRawChannelResponse, // Raw channel response Zod schema.
-  zRecastCastData, // Recast cast data Zod schema.
+  zRecastCastBody, // Recast cast data Zod schema.
   zRecaster, // Recaster Zod schema.
-  zRegisterStatsigEventsData, // Register statsig events data Zod schema.
-  zRemoveChannelInviteData, // Remove channel invite data Zod schema.
-  zRemoveDirectCastMessageReactionData, // Remove direct cast message reaction data Zod schema.
-  zRevokeApiKeyData, // Revoke api key data Zod schema.
+  zRegisterStatsigEventsBody, // Register statsig events data Zod schema.
+  zRemoveChannelInviteBody, // Remove channel invite data Zod schema.
+  zRemoveDirectCastMessageReactionBody, // Remove direct cast message reaction data Zod schema.
+  zRevokeApiKeyBody, // Revoke api key data Zod schema.
   zRewardsLeaderboardResponse, // Rewards leaderboard response Zod schema.
   zRewardsMetadataResponse, // Rewards metadata response Zod schema.
   zRewardsScoresResponse, // Rewards scores response Zod schema.
-  zSearchChannelsData, // Search channels data Zod schema.
+  zSearchChannelsQuery, // Search channels data Zod schema.
   zSearchChannelsResponse, // Search channels response Zod schema.
-  zSendDirectCastData, // Send direct cast data Zod schema.
-  zSendDirectCastMessageData, // Send direct cast message data Zod schema.
-  zSetDirectCastConversationMessageTtlData, // Set direct cast conversation message ttl data Zod schema.
-  zSetLastCheckedTimestampData, // Set last checked timestamp data Zod schema.
+  zSendDirectCastBody, // Send direct cast data Zod schema.
+  zSendDirectCastMessageBody, // Send direct cast message data Zod schema.
+  zSetDirectCastConversationMessageTtlBody, // Set direct cast conversation message ttl data Zod schema.
+  zSetLastCheckedTimestampBody, // Set last checked timestamp data Zod schema.
   zSponsoredInvitesResponse, // Sponsored invites response Zod schema.
   zStarterPack, // Starter pack Zod schema.
   zStarterPackResponse, // Starter pack response Zod schema.
   zStarterPacksResponse, // Starter packs response Zod schema.
   zStarterPackUpdateRequest, // Starter pack update request Zod schema.
   zStarterPackUsersResponse, // Starter pack users response Zod schema.
-  zSubmitAnalyticsEventsData, // Submit analytics events data Zod schema.
+  zSubmitAnalyticsEventsBody, // Submit analytics events data Zod schema.
   zSuccessResponse, // Success response Zod schema.
   zSuggestedUsersResponse, // Suggested users response Zod schema.
   zTopMiniAppsResponse, // Top mini apps response Zod schema.
-  zUnbanUserFromChannelData, // Unban user from channel data Zod schema.
-  zUnblockUserData, // Unblock user data Zod schema.
-  zUndoRecastData, // Undo recast data Zod schema.
-  zUnfollowChannelData, // Unfollow channel data Zod schema.
-  zUnlikeCastData, // Unlike cast data Zod schema.
-  zUnmuteKeywordData, // Unmute keyword data Zod schema.
-  zUnpinCastFromChannelData, // Unpin cast from channel data Zod schema.
-  zUnpinDirectCastConversationData, // Unpin direct cast conversation data Zod schema.
+  zUnbanUserFromChannelBody, // Unban user from channel data Zod schema.
+  zUnblockUserBody, // Unblock user data Zod schema.
+  zUndoRecastBody, // Undo recast data Zod schema.
+  zUnfollowChannelBody, // Unfollow channel data Zod schema.
+  zUnlikeCastBody, // Unlike cast data Zod schema.
+  zUnmuteKeywordBody, // Unmute keyword data Zod schema.
+  zUnpinCastFromChannelBody, // Unpin cast from channel data Zod schema.
+  zUnpinDirectCastConversationBody, // Unpin direct cast conversation data Zod schema.
   zUnseenCountsResponse, // Unseen counts response Zod schema.
-  zUpdateDirectCastConversationNotificationsData, // Update direct cast conversation notifications data Zod schema.
-  zUpdateStarterPackData, // Update starter pack data Zod schema.
+  zUpdateDirectCastConversationNotificationsBody, // Update direct cast conversation notifications data Zod schema.
+  zUpdateStarterPackBody, // Update starter pack data Zod schema.
   zUrlEmbed, // Url embed Zod schema.
   zUser, // User Zod schema.
   zUserAppContextResponse, // User app context response Zod schema.
@@ -1262,7 +1248,7 @@ export {
   zUserExtras, // User extras Zod schema.
   zUserPreferencesResponse, // User preferences response Zod schema.
   zUserResponse, // User response Zod schema.
-  zUserResponseUserResponse, // User response user response Zod schema.
+  zUserResponse2, // User response user response Zod schema.
   zUsersResponse, // Users response Zod schema.
   zUsersWithCountResponse, // Users with count response Zod schema.
   zUserThreadCastsResponse, // User thread casts response Zod schema.
@@ -1271,5 +1257,6 @@ export {
   zVerifiedAddress, // Verified address Zod schema.
   zVideoEmbed, // Video embed Zod schema.
   zViewerContext, // Viewer context Zod schema.
+  zViewerContext2, // Mini app viewer context Zod schema.
   zWinner, // Winner Zod schema.
 } from "./client/zod.gen";

@@ -2439,7 +2439,7 @@ export const FrameAppsResponseSchema = {
   },
 } as const;
 
-export const mini_app_ViewerContextSchema = {
+export const ViewerContext_2Schema = {
   type: "object",
   properties: {},
   description: "Context information for the viewer",
@@ -2564,7 +2564,7 @@ export const MiniAppSchema = {
       description: "Required blockchain chains",
     },
     viewerContext: {
-      $ref: "#/components/schemas/mini-app_ViewerContext",
+      $ref: "#/components/schemas/ViewerContext-2",
     },
   },
 } as const;
@@ -2787,7 +2787,7 @@ export const CastQuotesResponseSchema = {
   },
 } as const;
 
-export const user_response_UserResponseSchema = {
+export const UserResponse_2Schema = {
   type: "object",
   required: ["result"],
   properties: {

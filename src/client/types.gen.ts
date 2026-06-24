@@ -442,7 +442,7 @@ export type PaginationCursor = {
    * Base64 encoded cursor for pagination
    */
   cursor?: string;
-  [key: string]: unknown | string | undefined;
+  [key: string]: unknown;
 };
 
 export type DirectCastInboxResponse = {
@@ -952,14 +952,7 @@ export type SponsoredInvitesResponse = GenericResponse & {
       [key: string]: unknown;
     }>;
   };
-  [key: string]:
-    | unknown
-    | {
-        invites?: Array<{
-          [key: string]: unknown;
-        }>;
-      }
-    | undefined;
+  [key: string]: unknown;
 };
 
 export type RewardsLeaderboardResponse = {
@@ -1051,16 +1044,7 @@ export type StarterPack = {
    * Labels/tags for the starter pack
    */
   labels?: Array<string>;
-  [key: string]:
-    | unknown
-    | string
-    | User
-    | number
-    | Array<{
-        [key: string]: unknown;
-      }>
-    | Array<string>
-    | undefined;
+  [key: string]: unknown;
 };
 
 export type StarterPacksResponse = {
@@ -1142,7 +1126,7 @@ export type FrameAppsResponse = {
 /**
  * Context information for the viewer
  */
-export type MiniAppViewerContext = {
+export type ViewerContext2 = {
   [key: string]: unknown;
 };
 
@@ -1248,7 +1232,7 @@ export type MiniApp = {
    * Required blockchain chains
    */
   requiredChains?: Array<string>;
-  viewerContext?: MiniAppViewerContext;
+  viewerContext?: ViewerContext2;
 };
 
 export type RankedMiniApp = {
@@ -1335,7 +1319,7 @@ export type CastQuotesResponse = {
   };
 };
 
-export type UserResponseUserResponse = {
+export type UserResponse2 = {
   result: {
     user: User;
   };
@@ -3939,7 +3923,7 @@ export type GetCurrentUserResponses = {
   /**
    * Successful retrieval of current user
    */
-  200: UserResponseUserResponse;
+  200: UserResponse2;
 };
 
 export type GetCurrentUserResponse =
