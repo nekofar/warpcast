@@ -17,7 +17,7 @@ importers:
     devDependencies:
       '@asyncapi/cli':
         specifier: ^6.0.0
-        version: 6.0.2(@babel/core@7.12.9)(@noble/hashes@1.8.0)(@opentelemetry/api@1.9.0)(@types/node@26.0.1)(csstype@3.2.3)(encoding@0.1.13)(immer@9.0.21)(ts-node@10.9.2(@types/node@26.0.1)(typescript@5.9.3))
+        version: 6.0.2(@babel/core@7.12.9)(@noble/hashes@1.8.0)(@opentelemetry/api@1.9.0)(@types/node@26.0.1)(csstype@3.2.3)(encoding@0.1.13)(immer@9.0.21)(ts-node@10.9.2(@types/node@26.0.1)(typescript@6.0.3))
       '@asyncapi/generator':
         specifier: ^3.1.0
         version: 3.1.1(@types/node@26.0.1)(encoding@0.1.13)
@@ -26,7 +26,7 @@ importers:
         version: 2.5.1
       '@hey-api/openapi-ts':
         specifier: ^0.91.0
-        version: 0.91.0(typescript@5.9.3)
+        version: 0.91.0(typescript@6.0.3)
       '@redocly/cli':
         specifier: ^2.14.5
         version: 2.15.0(@opentelemetry/api@1.9.0)(core-js@3.47.0)(encoding@0.1.13)
@@ -41,16 +41,16 @@ importers:
         version: 6.1.3
       tsdown:
         specifier: 0.22.3
-        version: 0.22.3(typescript@5.9.3)(unrun@0.2.26(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1))
+        version: 0.22.3(typescript@6.0.3)(unrun@0.2.26(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1))
       typedoc:
         specifier: ^0.28.16
-        version: 0.28.19(typescript@5.9.3)
+        version: 0.28.19(typescript@6.0.3)
       typedoc-plugin-markdown:
         specifier: ^4.8.1
-        version: 4.9.0(typedoc@0.28.19(typescript@5.9.3))
+        version: 4.9.0(typedoc@0.28.19(typescript@6.0.3))
       typescript:
-        specifier: ^5.9.2
-        version: 5.9.3
+        specifier: ^6.0.3
+        version: 6.0.3
       vitest:
         specifier: ^4.0.17
         version: 4.1.9(@opentelemetry/api@1.9.0)(@types/node@26.0.1)(jsdom@28.1.0(@noble/hashes@1.8.0))(vite@7.3.0(@types/node@26.0.1)(jiti@2.6.1)(yaml@2.9.0))
@@ -7117,8 +7117,8 @@ packages:
     engines: {node: '>=14.17'}
     hasBin: true
 
-  typescript@5.9.3:
-    resolution: {integrity: sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==}
+  typescript@6.0.3:
+    resolution: {integrity: sha512-y2TvuxSZPDyQakkFRPZHKFm+KKVqIisdg9/CZwm9ftvKXLP8NRWj38/ODjNbr43SsoXqNuAisEf1GdCxqWcdBw==}
     engines: {node: '>=14.17'}
     hasBin: true
 
@@ -7691,7 +7691,7 @@ snapshots:
       js-yaml: 4.3.0
       lodash: 4.18.1
 
-  '@asyncapi/cli@6.0.2(@babel/core@7.12.9)(@noble/hashes@1.8.0)(@opentelemetry/api@1.9.0)(@types/node@26.0.1)(csstype@3.2.3)(encoding@0.1.13)(immer@9.0.21)(ts-node@10.9.2(@types/node@26.0.1)(typescript@5.9.3))':
+  '@asyncapi/cli@6.0.2(@babel/core@7.12.9)(@noble/hashes@1.8.0)(@opentelemetry/api@1.9.0)(@types/node@26.0.1)(csstype@3.2.3)(encoding@0.1.13)(immer@9.0.21)(ts-node@10.9.2(@types/node@26.0.1)(typescript@6.0.3))':
     dependencies:
       '@asyncapi/avro-schema-parser': 3.0.24(encoding@0.1.13)
       '@asyncapi/bundler': 1.0.2
@@ -7705,7 +7705,7 @@ snapshots:
       '@asyncapi/problem': 1.0.0
       '@asyncapi/protobuf-schema-parser': 3.7.0(encoding@0.1.13)
       '@asyncapi/raml-dt-schema-parser': 4.0.24(encoding@0.1.13)
-      '@asyncapi/studio': 1.3.0(@babel/core@7.12.9)(@noble/hashes@1.8.0)(@opentelemetry/api@1.9.0)(csstype@3.2.3)(encoding@0.1.13)(immer@9.0.21)(ts-node@10.9.2(@types/node@26.0.1)(typescript@5.9.3))
+      '@asyncapi/studio': 1.3.0(@babel/core@7.12.9)(@noble/hashes@1.8.0)(@opentelemetry/api@1.9.0)(csstype@3.2.3)(encoding@0.1.13)(immer@9.0.21)(ts-node@10.9.2(@types/node@26.0.1)(typescript@6.0.3))
       '@changesets/changelog-git': 0.2.1
       '@clack/prompts': 0.11.0
       '@oclif/core': 4.11.11
@@ -8034,11 +8034,11 @@ snapshots:
       '@stoplight/types': 13.20.0
       '@types/json-schema': 7.0.15
       '@types/urijs': 1.19.26
-      ajv: 8.17.1
-      ajv-errors: 3.0.0(ajv@8.17.1)
-      ajv-formats: 2.1.1(ajv@8.17.1)
+      ajv: 8.20.0
+      ajv-errors: 3.0.0(ajv@8.20.0)
+      ajv-formats: 2.1.1(ajv@8.20.0)
       avsc: 5.7.9
-      js-yaml: 4.1.1
+      js-yaml: 4.3.0
       jsonpath-plus: 7.2.0
       node-fetch: 2.6.7(encoding@0.1.13)
     transitivePeerDependencies:
@@ -8054,11 +8054,11 @@ snapshots:
       '@stoplight/spectral-parsers': 1.0.5
       '@types/json-schema': 7.0.15
       '@types/urijs': 1.19.26
-      ajv: 8.17.1
-      ajv-errors: 3.0.0(ajv@8.17.1)
-      ajv-formats: 2.1.1(ajv@8.17.1)
+      ajv: 8.20.0
+      ajv-errors: 3.0.0(ajv@8.20.0)
+      ajv-formats: 2.1.1(ajv@8.20.0)
       avsc: 5.7.9
-      js-yaml: 4.1.1
+      js-yaml: 4.3.0
       jsonpath-plus: 7.2.0
       node-fetch: 2.6.7(encoding@0.1.13)
       ramldt2jsonschema: 1.2.3
@@ -8167,7 +8167,7 @@ snapshots:
     dependencies:
       '@types/json-schema': 7.0.15
 
-  '@asyncapi/studio@1.3.0(@babel/core@7.12.9)(@noble/hashes@1.8.0)(@opentelemetry/api@1.9.0)(csstype@3.2.3)(encoding@0.1.13)(immer@9.0.21)(ts-node@10.9.2(@types/node@26.0.1)(typescript@5.9.3))':
+  '@asyncapi/studio@1.3.0(@babel/core@7.12.9)(@noble/hashes@1.8.0)(@opentelemetry/api@1.9.0)(csstype@3.2.3)(encoding@0.1.13)(immer@9.0.21)(ts-node@10.9.2(@types/node@26.0.1)(typescript@6.0.3))':
     dependencies:
       '@asyncapi/avro-schema-parser': 3.0.24(encoding@0.1.13)
       '@asyncapi/converter': 2.0.1(encoding@0.1.13)
@@ -8204,7 +8204,7 @@ snapshots:
       react-hot-toast: 2.4.0(csstype@3.2.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react-icons: 4.12.0(react@18.2.0)
       reactflow: 11.11.4(@types/react@18.2.18)(immer@9.0.21)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      tailwindcss: 3.3.3(ts-node@10.9.2(@types/node@26.0.1)(typescript@5.9.3))
+      tailwindcss: 3.3.3(ts-node@10.9.2(@types/node@26.0.1)(typescript@6.0.3))
       tippy.js: 6.3.7
       typescript: 5.1.6
       zustand: 4.5.7(@types/react@18.2.18)(immer@9.0.21)(react@18.2.0)
@@ -9478,13 +9478,13 @@ snapshots:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
 
-  '@hey-api/codegen-core@0.6.0(typescript@5.9.3)':
+  '@hey-api/codegen-core@0.6.0(typescript@6.0.3)':
     dependencies:
-      '@hey-api/types': 0.1.3(typescript@5.9.3)
+      '@hey-api/types': 0.1.3(typescript@6.0.3)
       ansi-colors: 4.1.3
       c12: 3.3.3
       color-support: 1.1.3
-      typescript: 5.9.3
+      typescript: 6.0.3
     transitivePeerDependencies:
       - magicast
 
@@ -9495,35 +9495,35 @@ snapshots:
       js-yaml: 4.3.0
       lodash: 4.17.23
 
-  '@hey-api/openapi-ts@0.91.0(typescript@5.9.3)':
+  '@hey-api/openapi-ts@0.91.0(typescript@6.0.3)':
     dependencies:
-      '@hey-api/codegen-core': 0.6.0(typescript@5.9.3)
+      '@hey-api/codegen-core': 0.6.0(typescript@6.0.3)
       '@hey-api/json-schema-ref-parser': 1.2.3
-      '@hey-api/shared': 0.1.0(typescript@5.9.3)
-      '@hey-api/types': 0.1.3(typescript@5.9.3)
+      '@hey-api/shared': 0.1.0(typescript@6.0.3)
+      '@hey-api/types': 0.1.3(typescript@6.0.3)
       ansi-colors: 4.1.3
       color-support: 1.1.3
       commander: 14.0.2
-      typescript: 5.9.3
+      typescript: 6.0.3
     transitivePeerDependencies:
       - magicast
 
-  '@hey-api/shared@0.1.0(typescript@5.9.3)':
+  '@hey-api/shared@0.1.0(typescript@6.0.3)':
     dependencies:
-      '@hey-api/codegen-core': 0.6.0(typescript@5.9.3)
+      '@hey-api/codegen-core': 0.6.0(typescript@6.0.3)
       '@hey-api/json-schema-ref-parser': 1.2.3
-      '@hey-api/types': 0.1.3(typescript@5.9.3)
+      '@hey-api/types': 0.1.3(typescript@6.0.3)
       ansi-colors: 4.1.3
       cross-spawn: 7.0.6
       open: 11.0.0
       semver: 7.7.3
-      typescript: 5.9.3
+      typescript: 6.0.3
     transitivePeerDependencies:
       - magicast
 
-  '@hey-api/types@0.1.3(typescript@5.9.3)':
+  '@hey-api/types@0.1.3(typescript@6.0.3)':
     dependencies:
-      typescript: 5.9.3
+      typescript: 6.0.3
 
   '@hookstate/core@4.0.2(react@18.2.0)':
     dependencies:
@@ -10934,12 +10934,6 @@ snapshots:
 
   '@standard-schema/spec@1.1.0': {}
 
-  '@stoplight/better-ajv-errors@1.0.3(ajv@8.17.1)':
-    dependencies:
-      ajv: 8.17.1
-      jsonpointer: 5.0.1
-      leven: 3.1.0
-
   '@stoplight/better-ajv-errors@1.0.3(ajv@8.20.0)':
     dependencies:
       ajv: 8.20.0
@@ -10948,7 +10942,7 @@ snapshots:
 
   '@stoplight/json-ref-readers@1.2.2(encoding@0.1.13)':
     dependencies:
-      node-fetch: 2.6.7(encoding@0.1.13)
+      node-fetch: 2.7.0(encoding@0.1.13)
       tslib: 1.14.1
     transitivePeerDependencies:
       - encoding
@@ -11014,7 +11008,7 @@ snapshots:
 
   '@stoplight/spectral-core@1.20.0(encoding@0.1.13)':
     dependencies:
-      '@stoplight/better-ajv-errors': 1.0.3(ajv@8.17.1)
+      '@stoplight/better-ajv-errors': 1.0.3(ajv@8.20.0)
       '@stoplight/json': 3.21.0
       '@stoplight/path': 1.3.2
       '@stoplight/spectral-parsers': 1.0.5
@@ -11023,9 +11017,9 @@ snapshots:
       '@stoplight/types': 13.6.0
       '@types/es-aggregate-error': 1.0.6
       '@types/json-schema': 7.0.15
-      ajv: 8.17.1
-      ajv-errors: 3.0.0(ajv@8.17.1)
-      ajv-formats: 2.1.1(ajv@8.17.1)
+      ajv: 8.20.0
+      ajv-errors: 3.0.0(ajv@8.20.0)
+      ajv-formats: 2.1.1(ajv@8.20.0)
       es-aggregate-error: 1.0.14
       jsonpath-plus: 10.3.0
       lodash: 4.17.23
@@ -11093,8 +11087,8 @@ snapshots:
 
   '@stoplight/spectral-formats@1.8.2(encoding@0.1.13)':
     dependencies:
-      '@stoplight/json': 3.21.0
-      '@stoplight/spectral-core': 1.20.0(encoding@0.1.13)
+      '@stoplight/json': 3.21.7
+      '@stoplight/spectral-core': 1.23.1(encoding@0.1.13)
       '@types/json-schema': 7.0.15
       tslib: 2.8.1
     transitivePeerDependencies:
@@ -11102,7 +11096,7 @@ snapshots:
 
   '@stoplight/spectral-formats@1.8.3(encoding@0.1.13)':
     dependencies:
-      '@stoplight/json': 3.21.0
+      '@stoplight/json': 3.21.7
       '@stoplight/spectral-core': 1.23.0(encoding@0.1.13)
       '@types/json-schema': 7.0.15
       tslib: 2.8.1
@@ -11139,15 +11133,15 @@ snapshots:
 
   '@stoplight/spectral-functions@1.10.1(encoding@0.1.13)':
     dependencies:
-      '@stoplight/better-ajv-errors': 1.0.3(ajv@8.17.1)
+      '@stoplight/better-ajv-errors': 1.0.3(ajv@8.20.0)
       '@stoplight/json': 3.21.0
       '@stoplight/spectral-core': 1.20.0(encoding@0.1.13)
       '@stoplight/spectral-formats': 1.8.2(encoding@0.1.13)
       '@stoplight/spectral-runtime': 1.1.5(encoding@0.1.13)
-      ajv: 8.17.1
-      ajv-draft-04: 1.0.0(ajv@8.17.1)
-      ajv-errors: 3.0.0(ajv@8.17.1)
-      ajv-formats: 2.1.1(ajv@8.17.1)
+      ajv: 8.20.0
+      ajv-draft-04: 1.0.0(ajv@8.20.0)
+      ajv-errors: 3.0.0(ajv@8.20.0)
+      ajv-formats: 2.1.1(ajv@8.20.0)
       lodash: 4.17.23
       tslib: 2.8.1
     transitivePeerDependencies:
@@ -11656,10 +11650,6 @@ snapshots:
     dependencies:
       clean-stack: 2.2.0
       indent-string: 4.0.0
-
-  ajv-draft-04@1.0.0(ajv@8.17.1):
-    optionalDependencies:
-      ajv: 8.17.1
 
   ajv-draft-04@1.0.0(ajv@8.20.0):
     optionalDependencies:
@@ -13355,7 +13345,7 @@ snapshots:
       fs.realpath: 1.0.0
       inflight: 1.0.6
       inherits: 2.0.4
-      minimatch: 3.1.2
+      minimatch: 3.1.5
       once: 1.4.0
       path-is-absolute: 1.0.1
 
@@ -15004,13 +14994,13 @@ snapshots:
       camelcase-css: 2.0.1
       postcss: 8.4.31
 
-  postcss-load-config@4.0.2(postcss@8.4.31)(ts-node@10.9.2(@types/node@26.0.1)(typescript@5.9.3)):
+  postcss-load-config@4.0.2(postcss@8.4.31)(ts-node@10.9.2(@types/node@26.0.1)(typescript@6.0.3)):
     dependencies:
       lilconfig: 3.1.3
       yaml: 2.9.0
     optionalDependencies:
       postcss: 8.4.31
-      ts-node: 10.9.2(@types/node@26.0.1)(typescript@5.9.3)
+      ts-node: 10.9.2(@types/node@26.0.1)(typescript@6.0.3)
 
   postcss-nested@6.2.0(postcss@8.4.31):
     dependencies:
@@ -15445,7 +15435,7 @@ snapshots:
 
   robust-predicates@3.0.3: {}
 
-  rolldown-plugin-dts@0.26.0(rolldown@1.1.3)(typescript@5.9.3):
+  rolldown-plugin-dts@0.26.0(rolldown@1.1.3)(typescript@6.0.3):
     dependencies:
       '@babel/generator': 8.0.0
       '@babel/helper-validator-identifier': 8.0.2
@@ -15457,7 +15447,7 @@ snapshots:
       obug: 2.1.3
       rolldown: 1.1.3
     optionalDependencies:
-      typescript: 5.9.3
+      typescript: 6.0.3
     transitivePeerDependencies:
       - oxc-resolver
 
@@ -16060,7 +16050,7 @@ snapshots:
 
   symbol-tree@3.2.4: {}
 
-  tailwindcss@3.3.3(ts-node@10.9.2(@types/node@26.0.1)(typescript@5.9.3)):
+  tailwindcss@3.3.3(ts-node@10.9.2(@types/node@26.0.1)(typescript@6.0.3)):
     dependencies:
       '@alloc/quick-lru': 5.2.0
       arg: 5.0.2
@@ -16079,7 +16069,7 @@ snapshots:
       postcss: 8.4.31
       postcss-import: 15.1.0(postcss@8.4.31)
       postcss-js: 4.1.0(postcss@8.4.31)
-      postcss-load-config: 4.0.2(postcss@8.4.31)(ts-node@10.9.2(@types/node@26.0.1)(typescript@5.9.3))
+      postcss-load-config: 4.0.2(postcss@8.4.31)(ts-node@10.9.2(@types/node@26.0.1)(typescript@6.0.3))
       postcss-nested: 6.2.0(postcss@8.4.31)
       postcss-selector-parser: 6.1.4
       resolve: 1.22.12
@@ -16235,7 +16225,7 @@ snapshots:
       v8-compile-cache-lib: 3.0.1
       yn: 3.1.1
 
-  ts-node@10.9.2(@types/node@26.0.1)(typescript@5.9.3):
+  ts-node@10.9.2(@types/node@26.0.1)(typescript@6.0.3):
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
       '@tsconfig/node10': 1.0.12
@@ -16249,12 +16239,12 @@ snapshots:
       create-require: 1.1.1
       diff: 4.0.2
       make-error: 1.3.6
-      typescript: 5.9.3
+      typescript: 6.0.3
       v8-compile-cache-lib: 3.0.1
       yn: 3.1.1
     optional: true
 
-  tsdown@0.22.3(typescript@5.9.3)(unrun@0.2.26(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)):
+  tsdown@0.22.3(typescript@6.0.3)(unrun@0.2.26(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)):
     dependencies:
       ansis: 4.3.1
       cac: 7.0.0
@@ -16265,14 +16255,14 @@ snapshots:
       obug: 2.1.3
       picomatch: 4.0.4
       rolldown: 1.1.3
-      rolldown-plugin-dts: 0.26.0(rolldown@1.1.3)(typescript@5.9.3)
+      rolldown-plugin-dts: 0.26.0(rolldown@1.1.3)(typescript@6.0.3)
       semver: 7.8.5
       tinyexec: 1.2.4
       tinyglobby: 0.2.17
       tree-kill: 1.2.2
       unconfig-core: 7.5.0
     optionalDependencies:
-      typescript: 5.9.3
+      typescript: 6.0.3
       unrun: 0.2.26(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)
     transitivePeerDependencies:
       - '@ts-macro/tsc'
@@ -16337,17 +16327,17 @@ snapshots:
       possible-typed-array-names: 1.1.0
       reflect.getprototypeof: 1.0.10
 
-  typedoc-plugin-markdown@4.9.0(typedoc@0.28.19(typescript@5.9.3)):
+  typedoc-plugin-markdown@4.9.0(typedoc@0.28.19(typescript@6.0.3)):
     dependencies:
-      typedoc: 0.28.19(typescript@5.9.3)
+      typedoc: 0.28.19(typescript@6.0.3)
 
-  typedoc@0.28.19(typescript@5.9.3):
+  typedoc@0.28.19(typescript@6.0.3):
     dependencies:
       '@gerrit0/mini-shiki': 3.23.0
       lunr: 2.3.9
       markdown-it: 14.2.0
       minimatch: 10.2.5
-      typescript: 5.9.3
+      typescript: 6.0.3
       yaml: 2.9.0
 
   typescript-json-schema@0.58.1:
@@ -16368,7 +16358,7 @@ snapshots:
 
   typescript@5.1.6: {}
 
-  typescript@5.9.3: {}
+  typescript@6.0.3: {}
 
   uc.micro@2.1.0: {}
 
